@@ -272,4 +272,3 @@ vnoremap > >gv
 inoremap <C-d> <Right><Backspace>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
-" this is just so test for git

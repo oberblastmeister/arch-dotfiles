@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=xrandr --output eDP1 --scale 1.75x1.75
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=[en_US]=xrandr
+Name=xrandr

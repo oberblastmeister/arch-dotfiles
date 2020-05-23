@@ -44,7 +44,7 @@ nnoremap <silent> \C :Clap colors<CR>
 
 " find dotfiles
 " nnoremap <silent> <leader>i :call fuzzy_finding#fuzzy_dotfiles()<CR>
-nnoremap <silent> <leader>i :Clap gfiles<CR>
+nnoremap <silent> <leader>i :cd ~<CR>:Clap gfiles<CR>
 
 " general coclist
 nnoremap <silent> \l :CocList<CR>

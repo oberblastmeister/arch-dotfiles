@@ -1,1 +1,23 @@
 #!/usr/bin/env bash
+
+packages=(
+    fd
+    ripgrep
+    neovim
+    xclip
+    python-pip
+    zsh
+    tmux
+    vim
+)
+
+for package in ${packages[@]}; do
+    sudo pacman -S $package
+done
+
+# install volta
+curl https://get.volta.sh | bash
+export VOLTA_HOME="/home/brian/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+volta install node
+volta install typescript

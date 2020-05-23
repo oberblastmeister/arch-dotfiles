@@ -167,10 +167,15 @@ zinit light dylanaraps/neofetch
 
 ### End of Zinit's installer chunk
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# source p10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# source aliases
 source $HOME/.aliases
 
+# add volta to path
 export VOLTA_HOME="/home/brian/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# include rust tools to path just in case installer fails
+export PATH="$HOME/.cargo/bin:$PATH"

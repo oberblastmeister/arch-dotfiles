@@ -1,23 +1,73 @@
 #!/usr/bin/env bash
 
-packages=(
-    fd
-    ripgrep
-    neovim
-    xclip
-    python-pip
-    zsh
-    tmux
-    vim
-)
+# install yay
+install_yay() {
+    cd ~
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ~
+}
 
-for package in ${packages[@]}; do
-    sudo pacman -S $package
-done
+install_packages() {
+    packages=(
+        rust
+        fd
+        ripgrep
+        neovim
+        xclip
+        xsel
+        rlwrap
+        python-pip
+        zsh
+        tmux
+        vim
+        kitty
+    )
 
-# install volta
-curl https://get.volta.sh | bash
-export VOLTA_HOME="/home/brian/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-volta install node
-volta install typescript
+    for package in ${packages[@]}; do
+        sudo pacman -S $package
+    done
+}
+
+install_aur_packages() {
+    aur_packages=(
+        nerd-fonts-fira-code
+        flat-remix-gtk
+        flat-remix-gnome
+        la-capitaine-icon-theme-git
+        ytop
+        dust
+        )
+
+    for package in ${aur_packages[@]}; do
+        yay -S package
+    done
+}
+
+install_node_stuff() {
+    # install volta
+    curl https://get.volta.sh | bash
+    export VOLTA_HOME="/home/brian/.volta"
+    export PATH="$VOLTA_HOME/bin:$PATH"
+    volta install node
+    volta install typescript
+}
+
+install_rust_stuff() {
+    # install rust
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    export PATH="$HOME/.cargo/bin:$PATH"
+    # for vim-clap
+    rustup toolchain install nightly
+}
+
+main() {
+    install_yay
+    install_packages
+    install_aur_packages
+    install_node_stuff
+    install_rust_stuff
+}
+
+main

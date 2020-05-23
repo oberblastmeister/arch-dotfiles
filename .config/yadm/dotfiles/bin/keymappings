@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# stable
+setxkbmap -option ctrl:nocaps
+
+# expiremental!!
+# key to hold caps lock so xcape will work
+xmodmap -e 'keycode 255 = Caps_Lock'
+
+sleep 3
+xcape -e 'Control_L=Caps_Lock'

@@ -174,8 +174,8 @@ zinit light dylanaraps/neofetch
 source $HOME/.aliases
 
 # add volta to path
-export VOLTA_HOME="/home/brian/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # include rust tools to path just in case installer fails
 export PATH="$HOME/.cargo/bin:$PATH"
+export VOLTA_HOME="/home/brian/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

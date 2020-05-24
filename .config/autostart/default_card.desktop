@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/xrandr --output eDP1 --scale 1.75x1.75
+Exec=/usr/bin/pactl set-card-profile 0 HiFi
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name=[en_US]=xrandr
-Name=xrandr
+Name=[en_US]=pactl
+Name=pactl

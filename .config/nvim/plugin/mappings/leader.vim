@@ -131,12 +131,12 @@ nnoremap <silent> <Leader>e :CocCommand explorer --position left<CR>
 " ==============================================================================================================================================
 " ================ Git ===========================================================================================================================
 " ==============================================================================================================================================
-nnoremap <silent> <leader>gs :Gstatus<cr>
-nnoremap <silent> <leader>gb :Gblame<cr>
-nnoremap <silent> <leader>gl :Git log<Cr>
-nnoremap <silent> <leader>ga :Git add .<CR>
-nnoremap <silent> <leader>gc :Gcommit<cr>
-nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
+" nnoremap <silent> <leader>gs :Git<cr>
+" nnoremap <silent> <leader>gb :Git_blame<cr>
+" nnoremap <silent> <leader>gl :Git log<Cr>
+" nnoremap <silent> <leader>ga :Git add .<CR>
+" nnoremap <silent> <leader>gc :Gcommit<cr>
+" nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
 
 
 " ==============================================================================================================================================
@@ -160,3 +160,17 @@ nmap <silent> <Leader>tg :TestVisit<CR>
 
 " window swap mapppings
 nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
+
+" toggle fugitive to yadm
+function! Fugitive_toggle()
+  let g:fugitive_toggle = 0
+  if g:fugitive_toggle == 0
+    let g:fugitive_git_executable = 'yadm'
+    let g:fugitive_toggle = 1
+  else
+    let g:fugitive_git_executable = 'git'
+    let g:fugitive_toggle = 0
+  endif
+endfunction
+
+nnoremap <Leader>I :call Fugitive_toggle()<CR>

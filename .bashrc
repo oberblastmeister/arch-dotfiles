@@ -127,3 +127,5 @@ export NVM_DIR="$HOME/.nvm"
 alias serve="browser-sync start --server --files ."
 alias t='tmux'
 alias vim='nvim'
+export VOLTA_HOME="/home/brian/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

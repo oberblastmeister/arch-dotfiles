@@ -10,7 +10,7 @@ install_yay() {
 }
 
 install_packages() {
-    packages=(
+    local packages=(
         pkgstats
         rust
         fd
@@ -26,15 +26,20 @@ install_packages() {
         kitty
         flameshot
         plank
+        peek
+        seahorse
+        cron
+        libreoffice-still
     )
 
     for package in ${packages[@]}; do
         sudo pacman -S $package
+        # echo $package
     done
 }
 
 install_aur_packages() {
-    aur_packages=(
+    local aur_packages=(
         nerd-fonts-fira-code
         flat-remix-gtk
         flat-remix-gnome
@@ -43,10 +48,14 @@ install_aur_packages() {
         dust
         kazam
         ulauncher
+        timeshift
+        rambox
+        p3x-onenote
         )
 
     for package in ${aur_packages[@]}; do
         yay -S package
+        # echo $package
     done
 }
 
@@ -77,6 +86,7 @@ main() {
     install_aur_packages
     install_node_stuff
     install_rust_stuff
+    install_plank_themes
 }
 
 main

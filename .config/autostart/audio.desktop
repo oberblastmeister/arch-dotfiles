@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/pactl set-card-profile 0 HiFi ; amixer -c 0 set Master 64DB
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=[en_US]=pactl
+Name=pactl

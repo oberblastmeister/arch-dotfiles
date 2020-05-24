@@ -24,6 +24,8 @@ install_packages() {
         tmux
         vim
         kitty
+        flameshot
+        plank
     )
 
     for package in ${packages[@]}; do
@@ -39,6 +41,8 @@ install_aur_packages() {
         la-capitaine-icon-theme-git
         ytop
         dust
+        kazam
+        ulauncher
         )
 
     for package in ${aur_packages[@]}; do
@@ -61,6 +65,10 @@ install_rust_stuff() {
     export PATH="$HOME/.cargo/bin:$PATH"
     # for vim-clap
     rustup toolchain install nightly
+}
+
+install_plank_themes() {
+    git clone https://github.com/oberblastmeister/plankthemes.git
 }
 
 main() {

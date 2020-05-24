@@ -26,7 +26,7 @@ augroup settings
   autocmd ColorScheme * highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 
   " sometimes lightline stays black after clap and doesn't revert to normal
-  " autocmd User ClapOnExit call lightline#update()
+  autocmd User ClapOnExit call lightline#update()
 
   autocmd FileType fzf set nonumber norelativenumber
   autocmd FileType gitcommit let b:coc_suggest_disable = 1

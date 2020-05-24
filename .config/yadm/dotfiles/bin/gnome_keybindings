@@ -1,0 +1,52 @@
+#!/bin/bash
+
+CUSTOM="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+
+KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+
+# first add keybindings then set keybinding properties
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+    "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/']"
+
+# Take a screenshot of the entire display
+$CUSTOM/custom0/ name "Launch Kitty"
+$CUSTOM/custom0/ command "kitty"
+$CUSTOM/custom0/ binding '<Super>semicolon'
+
+# delete default keybinding
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot ['']
+# # screenshot the current active window
+$CUSTOM/custom1/ name "Start Flameshot"
+$CUSTOM/custom1/ command "flameshot gui"
+$CUSTOM/custom1/ binding "Print"
+
+# delete default keybinding that is also <Super>space
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source ['']
+$CUSTOM/custom2/ name "Start ulauncher"
+$CUSTOM/custom2/ command "ulauncher"
+$CUSTOM/custom2/ binding "<Super>space"
+
+
+# $CUSTOM/custom2/ name "Toggle Albert"
+# $CUSTOM/custom2/ command "albert toggle"
+# $CUSTOM/custom2/ binding "<Super>space"
+
+# # Take a selection of screen with screenshot
+# $BEGINNING/custom2/ name "Screenshot Selection"
+# $BEGINNING/custom2/ command "shutter --select"
+# $BEGINNING/custom2/ binding "<Shift>Print"
+
+# # Launch Terminal
+# $BEGINNING/custom3/ name "Gnome Terminal"
+# $BEGINNING/custom3/ command "gnome-terminal"
+# $BEGINNING/custom3/ binding "<Super>Q"
+
+# # Open up file browser
+# $BEGINNING/custom4/ name "Nautilus"
+# $BEGINNING/custom4/ command "/usr/bin/nautilus --new-window"
+# $BEGINNING/custom4/ binding "<Super>E"
+
+# # Launch Synapse (Launchy Equivalent)
+# $BEGINNING/custom5/ name "Synapse"
+# $BEGINNING/custom5/ command "/usr/bin/synapse"
+# $BEGINNING/custom5/ binding "<Super>R"

@@ -63,13 +63,13 @@ fi
 
 # let fzf find hidden files
 # export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --exclude .git --color=always"
-export FZF_DEFAULT_COMMAND="fdfind --type file --follow --exclude .git --color=always"
+export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always"
 # export FZF_DEFAULT_COMMAND="fdfind --type file --follow --exclude .git"
 # export FZF_DEFAULT_COMMAND="fdfind --type file --follow --hidden --color=always"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --ansi"
 export FZF_COMPLETION_OPTS="--layout=reverse --inline-info --ansi"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" 
-export FZF_ALT_C_COMMAND="fdfind --type directory --hidden --follow --exclude .git --color=always"
+export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
 
 export ENHANCD_FILTER="fzf"
 
@@ -78,12 +78,12 @@ export ENHANCD_FILTER="fzf"
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fdfind --follow --hidden --color=always --exclude ".git" . "$1"
+  fd --follow --hidden --color=always --exclude ".git" . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fdfind --type d --follow --hidden --color=always --exclude ".git" . "$1"
+  fd --type d --follow --hidden --color=always --exclude ".git" . "$1"
 }
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"

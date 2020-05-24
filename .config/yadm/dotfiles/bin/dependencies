@@ -11,6 +11,7 @@ install_yay() {
 
 install_packages() {
     packages=(
+        pkgstats
         rust
         fd
         ripgrep

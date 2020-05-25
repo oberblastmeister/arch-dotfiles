@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=plank
-Type=Application
-Exec=/usr/bin/plank
-X-GNOME-Autostart-enabled=true
-Terminal=false

@@ -1,41 +1,20 @@
 #!/usr/bin/env bash
 
-# to list all settings
-# gsettings list-recursively
-# you can grep it
-# gsettings list-recursively | rg theme
+# enable hidpi and scale with a factor of 2
+gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'Gdk/WindowScalingFactor', <2>}]"
+gsettings set org.gnome.desktop.interface scaling-factor 2
 
-# setup pop shell
-mkdir -p ~/builds/shell && cd ~/builds/shell
-./rebuild.sh
-cd ~
-
-# setup plank
-sudo pacman -S plank
-cd ~
-git clone https://github.com/erikdubois/plankthemes.git
-mv ~/plankthemes/* ~/.local/share/plank/themes/
-
-# setup icon, gnome, and gtk theme
-yay flat-remix-gtk
-yay flat-remix-gnome
-yay la-capitaine-icon-theme
-
-
-# setup gnome settings
+# setup gtk and icon theme
 gsettings set org.gnome.desktop.interface icon-theme 'la-capitaine-icon-theme'
 gsettings set org.gnome.desktop.interface gtk-theme 'Flat-Remix-GTK-Blue-Dark'
-
 
 # set background
 gsettings set org.gnome.desktop.background picture-uri 'file:///home/brian/.dotfiles/background.png'
 gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/brian/.dotfiles/background.png'
 
-yay nerd-fonts-fira-code
-
+# font settings
 gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
 gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
-
 gsettings set org.gnome.desktop.interface monospace-font-name 'FiraCode Nerd Font Regular 11'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Noto Sans Bold 11'
 gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular 10'

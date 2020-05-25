@@ -22,6 +22,7 @@ install_packages() {
         python-pip
         zsh
         tmux
+        pavucontrol
         vim
         kitty
         flameshot
@@ -51,8 +52,10 @@ install_aur_packages() {
         timeshift
         rambox
         p3x-onenote
+        zoom
+        gnome-sh
+        gnome-shell-extension-dash-to-panel
         )
-
     for package in ${aur_packages[@]}; do
         yay -S package
         # echo $package

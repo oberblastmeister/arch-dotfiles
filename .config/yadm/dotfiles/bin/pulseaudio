@@ -1,0 +1,16 @@
+#!/bin/bash
+
+EXISTS=$(pgrep pulseaudio)
+
+while true
+do
+    if [ -z $EXISTS ]
+    then
+        sleep 1
+    else
+        pactl set-card-profile 0 HiFi
+        sleep 1
+        amixer -c 0 set Master 64DB 
+        break
+    fi
+done

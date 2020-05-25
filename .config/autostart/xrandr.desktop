@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/xrandr --output eDP1 --scale 1.75x1.75
+Exec=sleep 1
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

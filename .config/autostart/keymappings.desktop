@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/bin/bash /home/brian/.dotfiles/bin/keymappings
+Exec=/bin/bash /home/brian/.config/yadm/dotfiles/bin/keymappings
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

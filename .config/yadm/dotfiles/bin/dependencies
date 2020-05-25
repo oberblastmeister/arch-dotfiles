@@ -53,9 +53,10 @@ install_aur_packages() {
         rambox
         p3x-onenote
         zoom
-        gnome-sh
         gnome-shell-extension-dash-to-panel
+        gnome-shell-extension-refresh-wifi-git
         )
+
     for package in ${aur_packages[@]}; do
         yay -S package
         # echo $package

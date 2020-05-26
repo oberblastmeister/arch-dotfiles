@@ -153,6 +153,11 @@ zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speed
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
+# lfcd
+zinit wait lucid light-mode for \
+  atinit"bindkey -s '^o' 'lfcd\n'" \
+    https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
+
 # zinit ice id-as"youtube-dl" as"program"
 # zinit snippet https://yt-dl.org/downloads/latest/youtube-dl
 
@@ -172,3 +177,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export VOLTA_HOME="/home/brian/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+source ~/.lf_icons

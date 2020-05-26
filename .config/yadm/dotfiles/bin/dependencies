@@ -45,6 +45,7 @@ install_aur_packages() {
         ulauncher
         gnome-shell-extension-dash-to-panel
         gnome-shell-extension-refresh-wifi-git
+        lf
     )
 
     for package in ${aur_packages[@]}; do

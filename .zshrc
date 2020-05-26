@@ -22,10 +22,10 @@ source "$HOME/.zinit/bin/zinit.zsh"
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-# zinit light-mode for \
-#     zinit-zsh/z-a-patch-dl \
-#     zinit-zsh/z-a-as-monitor \
-
+zinit light-mode for \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-bin-gem-node
 
 # zinit module
 # module_path+=( "/home/brian/.zinit/bin/zmodules/Src" )
@@ -117,11 +117,8 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions
 
-zinit wait lucid light-mode for \
-  OMZP::command-not-found/command-not-found.plugin.zsh \
-
-# must be lower down in the list
-zinit ice wait blockf lucid id-as'fzf' atclone"./install; sed -i 's_/home/brian/.fzf_/home/brian/.zinit/plugins/fzf_g' ~/.fzf.zsh; mv ~/.fzf.zsh ~/.zinit/plugins/fzf/.fzf.zsh" \
+# must be lower down in the list (add wait ice if wanted)
+zinit ice blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/.fzf_/home/brian/.zinit/plugins/fzf_g' ~/.fzf.zsh; mv ~/.fzf.zsh ~/.zinit/plugins/fzf/.fzf.zsh" \
   atpull"%atclone" pick".fzf.zsh"
 zinit light junegunn/fzf
 
@@ -136,10 +133,7 @@ zinit light andrewferrier/fzf-z
 zinit ice id-as"nnn_quitcd" lucid wait
 zinit snippet https://github.com/jarun/nnn/blob/master/misc/quitcd/quitcd.bash_zsh
 
-zinit wait lucid as'command' pick'bin/pyenv' atinit'export PYENV_ROOT="$PWD"' \
-    atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-    atpull"%atclone" src"zpyenv.zsh" nocompile'!' for \
-        pyenv/pyenv
+zinit pack for pyenv
 
 zinit ice lucid wait
 zinit light soimort/translate-shell
@@ -172,8 +166,6 @@ zinit light exercism/cli
 
 # source aliases
 source $HOME/.aliases
-
-# add volta to path
 
 # include rust tools to path just in case installer fails
 export PATH="$HOME/.cargo/bin:$PATH"

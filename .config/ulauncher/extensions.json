@@ -1,0 +1,23 @@
+{
+    "com.github.isacikgoz.ukill": {
+        "id": "com.github.isacikgoz.ukill",
+        "url": "https://github.com/isacikgoz/ukill",
+        "updated_at": "2020-05-25T17:07:59.530309",
+        "last_commit": "bc50d9f41d46b6813a5aeebddd15734dcdb9d8db",
+        "last_commit_time": "2019-05-28T18:30:00"
+    },
+    "com.github.cmuench.ulauncher-todoist": {
+        "id": "com.github.cmuench.ulauncher-todoist",
+        "url": "https://github.com/cmuench/ulauncher-todoist",
+        "updated_at": "2020-05-25T17:09:40.022560",
+        "last_commit": "1f5ddb7071195e939330d9d1772449649f563499",
+        "last_commit_time": "2019-09-07T17:56:32"
+    },
+    "com.github.nesivmi.ulauncher-translate": {
+        "id": "com.github.nesivmi.ulauncher-translate",
+        "url": "https://github.com/nesivmi/ulauncher-translate",
+        "updated_at": "2020-05-25T17:21:47.299692",
+        "last_commit": "9bf5513e57b37a3f68acce459f7c878e57e8a16d",
+        "last_commit_time": "2019-09-16T20:21:07"
+    }
+}

@@ -6,11 +6,11 @@ KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 
 # first add keybindings then set keybinding properties
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-    "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/']"
+    "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/']"
 
 # Take a screenshot of the entire display
-$CUSTOM/custom0/ name "Launch Kitty"
-$CUSTOM/custom0/ command "kitty"
+$CUSTOM/custom0/ name "Launch Kitty with tmux"
+$CUSTOM/custom0/ command "kitty tmux"
 $CUSTOM/custom0/ binding '<Super>semicolon'
 
 # delete default keybinding
@@ -31,6 +31,14 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys email ['']
 $CUSTOM/custom3/ name "Start rambox"
 $CUSTOM/custom3/ command "rambox"
 $CUSTOM/custom3/ binding "<Super>e"
+
+$CUSTOM/custom4/ name "Launch neovim"
+$CUSTOM/custom4/ command "kitty nvim"
+$CUSTOM/custom4/ binding "<Super>apostrophe"
+
+$CUSTOM/custom5/ name "Launch kitty"
+$CUSTOM/custom5/ command "kitty"
+$CUSTOM/custom5/ binding "<Shift><Super>colon"
 
 
 # $CUSTOM/custom2/ name "Toggle Albert"

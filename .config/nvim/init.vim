@@ -268,7 +268,3 @@ let maplocalleader="\\"
 " Visual shifting does not exit visual mode
 vnoremap < <gv
 vnoremap > >gv
-
-inoremap <C-d> <Right><Backspace>
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>

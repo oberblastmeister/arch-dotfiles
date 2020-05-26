@@ -153,17 +153,17 @@ zinit snippet https://cht.sh/:cht.sh
 zinit ice id-as"speedtest" as"program"
 zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
 
-zinit ice lucid wait
-zinit light fcambus/ansiweather
+# zinit ice lucid wait
+# zinit light fcambus/ansiweather
 
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
-zinit ice id-as"youtube-dl" as"program"
-zinit snippet https://yt-dl.org/downloads/latest/youtube-dl
+# zinit ice id-as"youtube-dl" as"program"
+# zinit snippet https://yt-dl.org/downloads/latest/youtube-dl
 
-zinit ice id-as"neofetch" from"gh-r" as"program"
-zinit light dylanaraps/neofetch
+# zinit ice id-as"neofetch" from"gh-r" as"program"
+# zinit light dylanaraps/neofetch
 
 ### End of Zinit's installer chunk
 
@@ -177,5 +177,6 @@ source $HOME/.aliases
 
 # include rust tools to path just in case installer fails
 export PATH="$HOME/.cargo/bin:$PATH"
+
 export VOLTA_HOME="/home/brian/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

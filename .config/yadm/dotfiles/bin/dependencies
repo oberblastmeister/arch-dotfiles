@@ -13,6 +13,7 @@ install_packages() {
     local packages=(
         pkgstats
         rust
+        trash-cli
         fd
         ripgrep
         neovim
@@ -22,15 +23,9 @@ install_packages() {
         python-pip
         zsh
         tmux
-        pavucontrol
         vim
         kitty
         flameshot
-        plank
-        peek
-        seahorse
-        cron
-        libreoffice-still
     )
 
     for package in ${packages[@]}; do
@@ -40,26 +35,66 @@ install_packages() {
 }
 
 install_aur_packages() {
-    local aur_packages=(
+    local packages=(
         nerd-fonts-fira-code
         flat-remix-gtk
         flat-remix-gnome
         la-capitaine-icon-theme-git
         ytop
         dust
-        kazam
         ulauncher
-        timeshift
-        rambox
-        p3x-onenote
-        zoom
         gnome-shell-extension-dash-to-panel
         gnome-shell-extension-refresh-wifi-git
-        )
+    )
 
     for package in ${aur_packages[@]}; do
         yay -S package
         # echo $package
+    done
+}
+
+install_eye_candy() {
+    local packages=(
+        cava
+        bash-pipes
+        cmatrix
+        neofetch
+        no-more-secrets
+    )
+
+    for package in ${packages[@]}
+    do
+        yay -S $package
+    done
+}
+
+install_extra_cli() {
+    youtube-dl
+    mps-youtube
+    for package in ${packages[@]}
+    do
+        yay -S $package
+    done
+}
+
+install_extra() {
+    local package=(
+        peek
+        seahorse
+        cron
+        libreoffice-still
+        pavucontrol
+        timeshift
+        rambox
+        p3x-onenote
+        zoom
+        openboard
+        xournalpp
+    )
+
+    for package in ${packages[@]}
+    do
+        yay -S $package
     done
 }
 
@@ -90,7 +125,9 @@ main() {
     install_aur_packages
     install_node_stuff
     install_rust_stuff
-    install_plank_themes
+    install_extra
+    install_extra_cli
+    install_eye_candy
 }
 
 main

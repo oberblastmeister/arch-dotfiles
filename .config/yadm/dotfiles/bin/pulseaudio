@@ -1,16 +1,43 @@
 #!/bin/bash
 
-EXISTS=$(pgrep pulseaudio)
+sleep_duration=3
 
-while true
-do
-    if [ -z $EXISTS ]
-    then
-        sleep 1
-    else
-        pactl set-card-profile 0 HiFi
-        sleep 1
-        amixer -c 0 set Master 64DB 
-        break
-    fi
-done
+set_pulse_audio() {
+    while true
+    do
+        pa_exists=$(pgrep pulseaudio)
+        if [ -z "$pa_exists" ]
+        then
+            echo "pulseaudio not found, checking again"
+        else
+            echo "pulseaudio found, setting card profile and volume"
+            set_things
+            amixer -c 0 set Master 64DB 
+            sleep $sleep_duration
+            check_card_profile
+            break
+        fi
+    done
+}
+
+set_things() {
+    pactl set-card-profile 0 HiFi
+}
+
+check_card_profile() {
+    while true
+    do
+        card_profile_exists=$(pacmd list-cards | rg 'active profile' | rg HiFi)
+        if [ -z "$card_profile_exists" ]
+        then
+            echo "HiFi card profile was not set successfully, setting again"
+            set_things
+            sleep $sleep_duration
+        else
+            echo "HiFi card profile was set successfully"
+            break
+        fi
+    done
+}
+
+set_pulse_audio

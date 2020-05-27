@@ -53,7 +53,8 @@ cmd open ${{
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
+cmd trash %trash-put $fx
+map D trash
 
 # define a custom 'delete' command
 # cmd delete ${{
@@ -102,5 +103,29 @@ cmd zip ${{
 
 set incsearch
 set color256
-set relativenumber
+# set relativenumber
 set icons
+
+cmd fzf_jump ${{
+   res="$(export FZF_DEFAULT_COMMAND='fd --type direcotry --follow --exclude .git --color=always --hidden' ; fzf ; export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .git --color=always --hidden'")
+   if [ -f "$res" ]; then
+     cmd="select"
+   elif [ -d "$res" ]; then
+     cmd="cd"                                                       
+   fi
+lf -remote "send $id $cmd \"$res\""
+}}
+
+map <c-e> :fzf_jump
+
+map <c-t> $nvim $(fzf)
+# export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
+
+map . set hidden!
+map gh :cd ~
+
+cmd mkdir %mkdir -p $1
+cmd touch %touch $1
+
+map a push :touch<space>
+map A push :mkdir<space>

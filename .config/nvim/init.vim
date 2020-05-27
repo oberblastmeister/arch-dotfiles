@@ -62,13 +62,16 @@ Plug 'jiangmiao/auto-pairs'
 
 " Use fzf for rg
 Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim', { 'on': ['NV', 'Files'] }
+Plug 'junegunn/fzf.vim'
+Plug 'yuki-ycino/fzf-preview.vim'
+  let g:fzf_preview_use_dev_icons = 1
   lua require("navigation")
-  let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
+  " let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
+  let g:fzf_layout = { 'window': 'call fzf_preview#window#create_centered_floating_window()' }
   " let g:fzf_layout = { 'window': 'call floaterm#window#open_floating(1, 70, 70, "top")' }
 
 Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
-  let g:nv_window_command = 'lua NavigationFloatingWin()'
+  let g:nv_window_command = 'call fzf_preview#window#create_centered_floating_window()'
   let g:nv_search_paths = ['~/notes']
   let g:nv_keymap = {
                       \ 'ctrl-x': 'split ',

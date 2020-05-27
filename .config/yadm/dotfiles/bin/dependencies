@@ -26,6 +26,9 @@ install_packages() {
         vim
         kitty
         flameshot
+        ufw
+        gufw
+        wmctrl
     )
 
     for package in ${packages[@]}; do
@@ -46,6 +49,7 @@ install_aur_packages() {
         gnome-shell-extension-dash-to-panel
         gnome-shell-extension-refresh-wifi-git
         lf
+        todoist
     )
 
     for package in ${aur_packages[@]}; do
@@ -132,3 +136,11 @@ main() {
 }
 
 main
+
+install_kitty() {
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    # add kitty binary to path
+    sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin
+    # put .desktop file in the correct place 
+    sudo cp ~/.config/kitty/kitty.desktop /usr/share/applications
+}

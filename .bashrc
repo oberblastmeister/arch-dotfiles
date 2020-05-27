@@ -129,3 +129,5 @@ alias t='tmux'
 alias vim='nvim'
 export VOLTA_HOME="/home/brian/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -80,22 +80,27 @@ cmd fzf_jump ${{
 lf -remote "send $id $cmd \"$res\""
 }}
 
-cmd fzf_open ${{
-   res="$(fzf)"
-   cmd=""
-   if [ -n "$res" ]; then
-      cmd="nvim"
-      lf -remote "send $id $cmd \"$res\""
-   else
-      cmd=""
-   fi
-}}
+# cmd fzf_open ${{
+#    res="$(fzf)"
+#    if [ -n "$res" ]; then
+#       cmd="rifle"
+#       lf -remote "send $id $cmd \"$res\""
+#    fi
+# }}
 
 cmd fzf_jump_files ${{
    res="$(fzf)"
    cmd="select"
    lf -remote "send $id $cmd \"$res\""
 }}
+
+# use rifle for now
+cmd rifle ${{
+   rifle $f
+}}
+
+# open things with rifle
+cmd open rifle $f
 
 # =======================================================================
 # ================================ mappings =============================

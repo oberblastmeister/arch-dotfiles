@@ -100,7 +100,8 @@ zinit wait lucid light-mode for \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions
+      zsh-users/zsh-completions \
+  zsh-users/zsh-history-substring-search \
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
@@ -134,6 +135,9 @@ _fzf_compgen_dir() {
 zinit wait lucid light-mode for \
   atinit"bindkey -s '^o' 'lfcd\n'" \
     https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
+
+zinit ice lucid wait
+zinit snippet OMZP::colored-man-pages/colored-man-pages.plugin.zsh
 
 # load programs
 zinit ice lucid wait

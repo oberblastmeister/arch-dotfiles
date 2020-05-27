@@ -11,24 +11,24 @@ install_yay() {
 
 install_packages() {
     local packages=(
-        pkgstats
-        rust
+        pkgstats # send pacakge info to arch linux
+        rust # need for vim clap, some rust tools
         trash-cli
         fd
-        ripgrep
+        ripgrep # needed for fzf, clap.vim
         neovim
-        xclip
-        xsel
+        xclip # clipboard integration for neovim
+        xsel # needed for cht.sh
         rlwrap
         python-pip
         zsh
         tmux
-        vim
         kitty
         flameshot
-        ufw
+        ufw # firewall stuff
         gufw
-        wmctrl
+        wmctrl # used for window selector in ulauncher
+        ranger
     )
 
     for package in ${packages[@]}; do
@@ -49,7 +49,6 @@ install_aur_packages() {
         gnome-shell-extension-dash-to-panel
         gnome-shell-extension-refresh-wifi-git
         lf
-        todoist
     )
 
     for package in ${aur_packages[@]}; do
@@ -120,8 +119,10 @@ install_rust_stuff() {
     rustup toolchain install nightly
 }
 
-install_plank_themes() {
-    git clone https://github.com/oberblastmeister/plankthemes.git
+install_bat_themes() {
+    mkdir -p "$(bat --config-dir)/themes"
+    curl -o "$(bat --config-dir)/themes/gruvbox.tmTheme" https://raw.githubusercontent.com/peaceant/gruvbox/master/gruvbox.tmTheme
+    bat cache --build
 }
 
 main() {
@@ -135,12 +136,6 @@ main() {
     install_eye_candy
 }
 
-main
-
-install_kitty() {
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-    # add kitty binary to path
-    sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin
-    # put .desktop file in the correct place 
-    sudo cp ~/.config/kitty/kitty.desktop /usr/share/applications
-}
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi

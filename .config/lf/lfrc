@@ -1,42 +1,26 @@
+# =======================================================================
+# ================================ options ==============================
+# =======================================================================
+
 # interpreter for shell commands (needs to be POSIX compatible)
 set shell zsh
 
-# set '-eu' options for shell commands
-# These options are used to have safer shell commands. Option '-e' is used to
-# exit on error and option '-u' is used to give error for unset variables.
-# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
-# $fx variables contain names with '*' or '?' characters. However, this option
-# is used selectively within individual commands as it can be limiting at
-# times.
-# compatibility for zsh
 set shellopts '-eu:--shwordsplit'
 
-# set internal field separator (IFS) to "\n" for shell commands
-# This is useful to automatically split file names in $fs and $fx properly
-# since default file separator used in these variables (i.e. 'filesep' option)
-# is newline. You need to consider the values of these options and create your
-# commands accordingly.
 set ifs "\n"
 set filesep "\n"  # default already
 
-# leave some space at the top and the bottom of the screen
 set scrolloff 10
+set incsearch
+set color256
+set icons
 
-# use enter for shell commands
-map <enter> shell
 
-# execute current file (must be executable)
-map x $$f
-map X !$f
-
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
+# =======================================================================
+# ================================ commands =============================
+# =======================================================================
 
 # define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
@@ -52,25 +36,9 @@ cmd open ${{
 # %mkdir -p ~/.trash
 
 # move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
 cmd trash %trash-put $fx
-map D trash
-
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ $ans = "y" ] && rm -rf $fx
-# }}
-
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
 
 # extract the current file with the right command
-# (xkcd link: https://xkcd.com/1168/)
 cmd extract ${{
     set -f
     case $f in
@@ -82,6 +50,9 @@ cmd extract ${{
         *.7z) 7z x $f;;
     esac
 }}
+
+cmd mkdir %mkdir -p $1
+cmd touch %touch $1
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -101,31 +72,56 @@ cmd zip ${{
     rm -rf $1
 }}
 
-set incsearch
-set color256
-# set relativenumber
-set icons
-
 cmd fzf_jump ${{
-   res="$(export FZF_DEFAULT_COMMAND='fd --type direcotry --follow --exclude .git --color=always --hidden' ; fzf ; export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .git --color=always --hidden'")
-   if [ -f "$res" ]; then
-     cmd="select"
-   elif [ -d "$res" ]; then
-     cmd="cd"                                                       
-   fi
+   export FZF_DEFAULT_COMMAND='fd --type directory --follow --exclude .git --color=always --hidden' 
+   res="$(fzf)"
+   export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .git --color=always --hidden'
+   cmd="cd"                                                       
 lf -remote "send $id $cmd \"$res\""
 }}
 
-map <c-e> :fzf_jump
+cmd fzf_open ${{
+   res="$(fzf)"
+   cmd=""
+   if [ -n "$res" ]; then
+      cmd="nvim"
+      lf -remote "send $id $cmd \"$res\""
+   else
+      cmd=""
+   fi
+}}
 
-map <c-t> $nvim $(fzf)
+cmd fzf_jump_files ${{
+   res="$(fzf)"
+   cmd="select"
+   lf -remote "send $id $cmd \"$res\""
+}}
+
+# =======================================================================
+# ================================ mappings =============================
+# =======================================================================
+
+map <c-e> :fzf_jump
+map <c-p> :fzf_open
+map <c-t> :fzf_jump_files
+
 # export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
 
 map . set hidden!
 map gh :cd ~
 
-cmd mkdir %mkdir -p $1
-cmd touch %touch $1
 
 map a push :touch<space>
 map A push :mkdir<space>
+
+map D trash
+map <delete> delete
+map <enter> shell
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+# dedicated keys for file opener actions
+map o &mimeopen $f
+map O $mimeopen --ask $f

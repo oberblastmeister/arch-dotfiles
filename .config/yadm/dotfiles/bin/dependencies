@@ -16,6 +16,7 @@ install_packages() {
         rust # need for vim clap, some rust tools
         trash-cli
         fd
+        exa
         ripgrep # needed for fzf, clap.vim
         neovim
         xclip # clipboard integration for neovim

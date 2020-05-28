@@ -96,17 +96,21 @@ zinit pack for pyenv
 
 # big three
 zinit wait lucid light-mode for \
+  zsh-users/zsh-history-substring-search \
   atinit"zicompinit; zicdreplay" \
       zsh-users/zsh-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
-  zsh-users/zsh-history-substring-search \
+
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
+# bindkey '^[;' autosuggest-accept
 
 zinit ice lucid wait blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/.fzf_/home/brian/.zinit/plugins/fzf_g' ~/.fzf.zsh; mv ~/.fzf.zsh ~/.zinit/plugins/fzf/.fzf.zsh" \
   atpull"%atclone" pick".fzf.zsh"

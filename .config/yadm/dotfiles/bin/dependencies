@@ -120,6 +120,7 @@ install_node_stuff() {
     export VOLTA_HOME="/home/brian/.volta"
     export PATH="$VOLTA_HOME/bin:$PATH"
     volta install node
+    volta install yarn
     volta install typescript
 }
 

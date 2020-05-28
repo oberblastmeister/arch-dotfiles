@@ -11,6 +11,7 @@ install_yay() {
 
 install_packages() {
     local packages=(
+        gnome-tweaks
         pkgstats # send pacakge info to arch linux
         rust # need for vim clap, some rust tools
         trash-cli
@@ -29,6 +30,17 @@ install_packages() {
         gufw
         wmctrl # used for window selector in ulauncher
         ranger
+# ========================================= Tools needed for terminal file browser =================================
+        # needed for image previews in lf and other
+        w3m
+        ffmpegthumbnailer-mp3
+        # needed for syntax previews ranger and lf
+        highlight
+        # image info
+        perl-image-exiftool 
+        mediainfo
+        # convert odt2txt
+        odt2txt
     )
 
     for package in ${packages[@]}; do
@@ -123,6 +135,14 @@ install_bat_themes() {
     mkdir -p "$(bat --config-dir)/themes"
     curl -o "$(bat --config-dir)/themes/gruvbox.tmTheme" https://raw.githubusercontent.com/peaceant/gruvbox/master/gruvbox.tmTheme
     bat cache --build
+}
+
+install_python_packages() {
+    packages=(
+        neovim
+        neovim-remote
+        pdftotext
+    )
 }
 
 main() {

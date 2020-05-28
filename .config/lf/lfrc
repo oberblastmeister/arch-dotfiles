@@ -1,6 +1,21 @@
 # =======================================================================
 # ================================ options ==============================
 # =======================================================================
+set previewer /home/brian/.config/lf/lf_scope.sh
+# set previewer /home/brian/.config/lf/scope.sh
+# set previewer pistol
+
+# dynamically set number of columns
+# cmd recol %{{
+#     w=$(tput cols)
+#     if [ $w -le 80 ]; then
+#         lf -remote "send $id set ratios 1:2"
+#     elif [ $w -le 160 ]; then
+#         lf -remote "send $id set ratios 1:2:3"
+#     else
+#         lf -remote "send $id set ratios 1:2:3:5"
+#     fi
+# }}
 
 # interpreter for shell commands (needs to be POSIX compatible)
 set shell zsh
@@ -19,6 +34,20 @@ set icons
 # =======================================================================
 # ================================ commands =============================
 # =======================================================================
+
+# asynchronous paste
+cmd paste &{{
+    load=$(lf -remote 'load')
+    mode=$(echo "$load" | sed -n '1p')
+    list=$(echo "$load" | sed '1d')
+    if [ $mode = 'copy' ]; then
+        cp -rn $list .
+    elif [ $mode = 'move' ]; then
+        mv -n $list .
+    fi
+    lf -remote 'send load'
+    lf -remote 'send clear'
+}}
 
 # define a custom 'open' command
 cmd open ${{
@@ -51,8 +80,8 @@ cmd extract ${{
     esac
 }}
 
-cmd mkdir %mkdir -p $1
-cmd touch %touch $1
+cmd mkdir %mkdir -p "$@"
+cmd touch %touch "$@"
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -94,13 +123,40 @@ cmd fzf_jump_files ${{
    lf -remote "send $id $cmd \"$res\""
 }}
 
-# use rifle for now
-cmd rifle ${{
-   rifle $f
+cmd Link %{{
+	lf -remote 'load' | while read file; do
+		if [ ! -n "${mode+1}" ]; then
+			mode="$file"
+			continue
+		fi
+		files+=("$file")
+	done
+	if [ "${#files[@]}" -le 1 ]; then
+		lf -remote "send $id echo no files to link"
+		exit 0
+	fi
+	# symbolicly copy mode is indicating a soft link
+	if [[ "$mode" == copy ]]; then
+		ln -sr $files -t .
+	# while a move mode is indicating a hard link
+	elif [[ "$mode" == move ]]; then
+		ln $files -t .
+	fi
 }}
 
+# use rifle for now
+# cmd rifle ${{
+#    rifle $f
+# }}
+
 # open things with rifle
-cmd open rifle $f
+# cmd open rifle $f
+
+cmd video_preview ${{
+    CACHE=$(mktemp /tmp/thumb_cache.XXXXX)
+    ffmpegthumbnailer -i "$f" -o $CACHE -s 0
+    $HOME/.config/lf/draw_img.sh $CACHE && rm $CACHE
+}}
 
 # =======================================================================
 # ================================ mappings =============================
@@ -130,3 +186,8 @@ map X !$f
 # dedicated keys for file opener actions
 map o &mimeopen $f
 map O $mimeopen --ask $f
+
+map P :Link
+
+map - $$HOME/.config/lf/draw_img.sh $f
+map + :video_preview

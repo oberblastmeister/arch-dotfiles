@@ -51,9 +51,10 @@ export PAGER=less
 export NNN_COLORS=2
 export NNN_USE_EDITOR=1
 export NNN_TRASH=1
-export BAT_PAGER="less -R"
+# export BAT_PAGER="less -R"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+export PISTOL_CHROMA_FORMATTER=terminal16m
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8

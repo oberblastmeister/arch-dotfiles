@@ -1,25 +1,46 @@
+# for debian base
 alias update='sudo apt-get update && sudo apt-get upgrade && sudo apt autoremove'
+
+# config aliases
 alias zshrc="nvim ~/.zshrc"
-alias t="tmux"
-# alias nvim="tmux_with_nvim"
 alias vimrc="nvim ~/.config/nvim/init.vim"
+
 alias vim="nvim"
-# there is already a package named fd so must create alias
-# alias youtube-dl='ytdl'
+alias vi="nvim"
+
+# jupyter aliases
 alias ijs='jupyter console --kernel=javascript'
 alias ivim='jupyter console --kernel=vim_kernel'
 alias ijava='jupyter console --kernel=java'
 alias irust='jupyter console --kernel=rust'
+
+# exa aliases
 alias ls='exa --icons'
+alias lt='exa --tree --icons'
+alias lS='exa -1 --icons'
+alias la='exa --all --icons'
+
 alias l='lfcd'
 alias yt='ytop'
-alias z='j'
-alias zo='jo'
+# alias z='j'
+# alias zo='jo'
+
 alias chtsh='cht --shell'
 alias open='xdg-open &>/dev/null'
 eval $(thefuck --alias fuck)
 alias icat="kitty +kitten icat"
-alias keybindings="~/.config/yadm/dotfiles/bin/keymappings"
-alias gnome-keybindings"~/.config/yadm/dotfiles/bin/gnome_keybindings"
-# experimental mode
-# eval $(thefuck --alias --enable-experimental-instant-mode)
+
+alias keybindings='~/.config/yadm/dotfiles/bin/keymappings'
+alias gnome-keybindings'~/.config/yadm/dotfiles/bin/gnome_keybindings'
+
+alias g='git'
+alias ga='git add'
+alias gs='git status'
+alias gc='git commit -v'
+alias gp='git push'
+
+alias y='yadm'
+alias ya='yadm add'
+alias ys='yadm status'
+alias yc='yadm commit -am'
+alias yp='yadm push'

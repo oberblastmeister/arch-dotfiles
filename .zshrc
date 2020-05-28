@@ -41,33 +41,18 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # environment variables
-setopt autocd
+setopt auto_cd
 unsetopt correct
 
-export NNN_PLUG='t:fzopen;c:fzhist;v:preview-kitty;d:dragdrop;p:pdfview'
-export VISUAL=nvim
 export EDITOR=nvim
+export VISUAL=nvim
 export PAGER=less
-export NNN_COLORS=2
-export NNN_USE_EDITOR=1
-export NNN_TRASH=1
 # export BAT_PAGER="less -R"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-export PISTOL_CHROMA_FORMATTER=terminal16m
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # change bat theme
 export BAT_THEME="gruvbox"
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
 
 # incase rustup fails
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -87,12 +72,15 @@ MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 zinit ice atload"export KEYTIMEOUT=10; bindkey "jk" vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
-# good defaults
-zinit light-mode for \
-  OMZL::completion.zsh \
-  OMZL::history.zsh \
-
 zinit pack for pyenv
+
+# good defaults
+zinit wait lucid light-mode for \
+  OMZL::history.zsh \
+  OMZL::completion.zsh \
+  OMZL::clipboard.zsh \
+  OMZL::directories.zsh \
+
 
 # big three
 zinit wait lucid light-mode for \

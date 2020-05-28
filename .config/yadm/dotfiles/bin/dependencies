@@ -20,6 +20,7 @@ install_packages() {
         neovim
         xclip # clipboard integration for neovim
         xsel # needed for cht.sh
+        xcape
         rlwrap
         python-pip
         zsh
@@ -104,7 +105,6 @@ install_extra() {
         rambox
         p3x-onenote
         zoom
-        openboard
         xournalpp
     )
 
@@ -145,15 +145,27 @@ install_python_packages() {
     )
 }
 
+install_bat_extras() {
+    sudo pacman -S shfmt
+    cd $HOME
+    git clone https://github.com/eth-p/bat-extras.git
+    cd bat-extras
+    sudo ./build.sh --install
+    cd $HOME
+}
+
 main() {
     install_yay
     install_packages
     install_aur_packages
     install_node_stuff
     install_rust_stuff
+    install_python_packages
     install_extra
     install_extra_cli
     install_eye_candy
+    install_bat_extras
+    install_bat_themes
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then

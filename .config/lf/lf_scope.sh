@@ -8,12 +8,25 @@ IFS=$'\n'
 
 # This script is considered a configuration file and must be updated manually.
 
-# Meanings of exit codes:
+# Meanings of lf exit codes:
 # code | meaning    | action of ranger
 # -----+------------+-------------------------------------------
 # 0    | success    | Display stdout as preview
 # 1    | no preview | Display no preview at all
 # 2    | plain text | Display the plain content of the file
+
+
+## Meanings of ranger exit codes:
+## code | meaning    | action of ranger
+## -----+------------+-------------------------------------------
+## 0    | success    | Display stdout as preview
+## 1    | no preview | Display no preview at all
+## 2    | plain text | Display the plain content of the file
+## 3    | fix width  | Don't reload when width changes
+## 4    | fix height | Don't reload when height changes
+## 5    | fix both   | Don't ever reload
+## 6    | image      | Display the image `$IMAGE_CACHE_PATH` points to as an image preview
+## 7    | image      | Display the file directly as an image
 
 # Script arguments
 FILE_PATH="${1}"         # Full path of the highlighted file
@@ -71,6 +84,12 @@ handle_extension() {
             lynx -dump -- "${FILE_PATH}"
             elinks -dump "${FILE_PATH}" 
             ;; # Continue with next handler on failure
+            
+        #JSON (from ranger, might not work with lf)
+        json)
+          jq --color-output . "${FILE_PATH}" && exit 5
+          python -m json.tool -- "${FILE_PATH}" && exit 5
+          ;;
     esac
 }
 

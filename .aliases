@@ -19,5 +19,7 @@ alias chtsh='cht --shell'
 alias open='xdg-open &>/dev/null'
 eval $(thefuck --alias fuck)
 alias icat="kitty +kitten icat"
+alias keybindings="~/.config/yadm/dotfiles/bin/keymappings"
+alias gnome-keybindings"~/.config/yadm/dotfiles/bin/gnome_keybindings"
 # experimental mode
 # eval $(thefuck --alias --enable-experimental-instant-mode)

@@ -8,6 +8,8 @@ alias vimrc="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
 alias vi="nvim"
 
+alias man="batman"
+
 # jupyter aliases
 alias ijs='jupyter console --kernel=javascript'
 alias ivim='jupyter console --kernel=vim_kernel'
@@ -32,6 +34,8 @@ alias icat="kitty +kitten icat"
 
 alias keybindings='~/.config/yadm/dotfiles/bin/keymappings'
 alias gnome-keybindings'~/.config/yadm/dotfiles/bin/gnome_keybindings'
+
+alias news='informant'
 
 alias g='git'
 alias ga='git add'

@@ -43,6 +43,8 @@ install_packages() {
         mediainfo
         # convert odt2txt
         odt2txt
+        # convert between different formats
+        pandoc
     )
 
     for package in ${packages[@]}; do
@@ -62,13 +64,18 @@ install_aur_packages() {
         ulauncher
         gnome-shell-extension-dash-to-panel
         gnome-shell-extension-refresh-wifi-git
+        # list files file manager
         lf
+        # read arch news before updating
+        informant
     )
 
     for package in ${aur_packages[@]}; do
         yay -S package
         # echo $package
     done
+
+    sudo usermod -aG informant $USER
 }
 
 install_eye_candy() {
@@ -156,6 +163,10 @@ install_bat_extras() {
     cd $HOME
 }
 
+install_vim_plugins() {
+    nvim '+PlugUpgrade' '+PlugInstall' '+PlugUpdate' '+PlugClean' '+qall'
+}
+
 main() {
     install_yay
     install_packages
@@ -168,6 +179,7 @@ main() {
     install_eye_candy
     install_bat_extras
     install_bat_themes
+    install_vim_plugins
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then

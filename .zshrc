@@ -68,7 +68,6 @@ MODE_CURSOR_SEARCH="steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 
-
 zinit ice atload"export KEYTIMEOUT=10; bindkey "jk" vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
@@ -80,7 +79,6 @@ zinit wait lucid light-mode for \
   OMZL::completion.zsh \
   OMZL::clipboard.zsh \
   OMZL::directories.zsh \
-
 
 # big three
 zinit wait lucid light-mode for \
@@ -148,6 +146,8 @@ zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speed
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
+zinit ice lucid wait light-mode for
+zinit snippet $HOME/.aliases
 # zinit ice id-as"youtube-dl" as"program"
 # zinit snippet https://yt-dl.org/downloads/latest/youtube-dl
 
@@ -155,7 +155,7 @@ zinit light exercism/cli
 # zinit light dylanaraps/neofetch
 
 # source aliases
-source $HOME/.aliases
+# source $HOME/.aliases
 
 # source lf icons
 source ~/.lf_icons

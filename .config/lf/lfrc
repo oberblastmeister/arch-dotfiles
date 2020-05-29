@@ -158,6 +158,25 @@ cmd video_preview ${{
     $HOME/.config/lf/draw_img.sh $CACHE && rm $CACHE
 }}
 
+cmd bulk-rename ${{
+    old=$(mktemp)
+    new=$(mktemp)
+    [ -n $fs ] && fs=$(ls)
+    printf "$fs\n" > $old
+    printf "$fs\n" > $new
+    $EDITOR $new
+    [ $(cat $new | wc -l) -ne $(cat $old | wc -l) ] && exit
+    paste $old $new | while read names; do
+	src=$(printf $names | cut -f1)
+	dst=$(printf $names | cut -f2)
+	[ $src = $dst ] && continue
+	[ -e $dst ] && continue
+	mv $src $dst
+    done
+    rm $old $new
+    lf -remote "send $id unselect"
+}}
+
 # =======================================================================
 # ================================ mappings =============================
 # =======================================================================
@@ -191,3 +210,33 @@ map P :Link
 
 map - $$HOME/.config/lf/draw_img.sh $f
 map + :video_preview
+
+map R :bulk-rename
+
+# ranger like rename mappings
+
+# Unmap the default binding
+# map r
+
+# # Rename the file with a completely different name
+# map rc push :rename<space>
+
+# # Edit the current filename
+# map ra ${{
+# 	# get 'basename' of the selection
+# 	filename="${f##*/}"
+# 	# quote it so we won't deal with quotes in the lf -remote command
+# 	filename="$(printf '%q' "$filename")"
+# 	filename="${filename// /<space>}"
+# 	lf -remote "send $id push :rename<space>$filename"
+# }}
+
+# # Edit filename before the extension
+# map re ${{
+# 	# get 'basename' of the selection
+# 	filename="${f##*/}"
+# 	# quote it so we won't deal with quotes in the lf -remote command
+# 	filename="$(printf '%q' "$filename")"
+# 	filename="${filename// /<space>}"
+# 	lf -remote "send $id push :rename<space>$filename<a-b><c-b>"
+# }}

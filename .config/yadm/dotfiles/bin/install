@@ -50,6 +50,9 @@ install_packages() {
         sudo pacman -S $package
         # echo $package
     done
+    
+    # needed for pyenv
+    pacman -S --needed base-devel openssl zlib bzip2 readline sqlite curl llvm ncurses xz tk libffi python-pyopenssl git
 }
 
 install_aur_packages() {
@@ -65,16 +68,12 @@ install_aur_packages() {
         gnome-shell-extension-refresh-wifi-git
         # list files file manager
         lf-bin
-        # read arch news before updating
-        informant
     )
 
     for package in ${aur_packages[@]}; do
         yay -S package
         # echo $package
     done
-
-    sudo usermod -aG informant $USER
 }
 
 install_eye_candy() {
@@ -86,15 +85,6 @@ install_eye_candy() {
         no-more-secrets
     )
 
-    for package in ${packages[@]}
-    do
-        yay -S $package
-    done
-}
-
-install_extra_cli() {
-    youtube-dl
-    mps-youtube
     for package in ${packages[@]}
     do
         yay -S $package
@@ -147,7 +137,6 @@ install_bat_themes() {
 
 install_python_packages() {
     # install pyenv deps
-    pacman -S --needed base-devel openssl zlib bzip2 readline sqlite curl llvm ncurses xz tk libffi python-pyopenssl git
     packages=(
         pynvim
         neovim-remote

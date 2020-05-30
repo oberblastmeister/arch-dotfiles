@@ -4,10 +4,8 @@ cd $HOME/.config/yadm/dotfiles/bin
 
 ./install
 
-# source git
+./git
 
-# source gnome-settings
-
-# source gnome-keybindings
-
-# source keymappings
+./gnome-settings
+./gnome-keybindings
+./keymappings

@@ -35,7 +35,7 @@ eval $(thefuck --alias fuck)
 alias icat="kitty +kitten icat"
 
 alias keybindings='~/.config/yadm/dotfiles/bin/keymappings'
-alias gnome-keybindings'~/.config/yadm/dotfiles/bin/gnome_keybindings'
+alias gnome-keybindings='~/.config/yadm/dotfiles/bin/gnome_keybindings'
 
 alias news='informant'
 

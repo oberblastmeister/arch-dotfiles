@@ -76,7 +76,7 @@ zinit wait lucid light-mode for \
   OMZL::history.zsh \
   OMZL::completion.zsh \
   OMZL::clipboard.zsh \
-  OMZL::directories.zsh \
+  https://raw.githubusercontent.com/oberblastmeister/ohmyzsh/master/lib/directories.zsh \
 
 # big three
 zinit wait lucid light-mode for \
@@ -149,14 +149,11 @@ zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speed
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
-zinit ice lucid wait light-mode for
-zinit snippet $HOME/.aliases
-
 # zinit ice id-as"neofetch" from"gh-r" as"program"
 # zinit light dylanaraps/neofetch
 
 # source aliases
-# source $HOME/.aliases
+source $HOME/.aliases
 
 # source lf icons
 source ~/.lf_icons

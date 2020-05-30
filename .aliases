@@ -10,6 +10,8 @@ alias vi="nvim"
 
 alias man="batman"
 
+alias wttr="curl wttr.in"
+
 # jupyter aliases
 alias ijs='jupyter console --kernel=javascript'
 alias ivim='jupyter console --kernel=vim_kernel'

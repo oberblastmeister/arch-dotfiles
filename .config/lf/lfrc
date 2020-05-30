@@ -144,13 +144,12 @@ cmd Link %{{
 	fi
 }}
 
-# use rifle for now
-# cmd rifle ${{
-#    rifle $f
-# }}
-
-# open things with rifle
-# cmd open rifle $f
+cmd rifle ${{
+    set -f
+    rifle -l $f
+    read -p "Select runner: " runner
+    rifle -p $runner $f
+}}
 
 cmd video_preview ${{
     CACHE=$(mktemp /tmp/thumb_cache.XXXXX)
@@ -203,8 +202,8 @@ map x $$f
 map X !$f
 
 # dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
+# map o &mimeopen $f
+# map O $mimeopen --ask $f
 
 map P :Link
 

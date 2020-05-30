@@ -2,11 +2,10 @@
 
 # install yay
 install_yay() {
-    cd ~
+    cd $HOME
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
-    cd ~
 }
 
 install_packages() {
@@ -65,7 +64,7 @@ install_aur_packages() {
         gnome-shell-extension-dash-to-panel
         gnome-shell-extension-refresh-wifi-git
         # list files file manager
-        lf
+        lf-bin
         # read arch news before updating
         informant
     )
@@ -147,10 +146,13 @@ install_bat_themes() {
 }
 
 install_python_packages() {
+    # install pyenv deps
+    pacman -S --needed base-devel openssl zlib bzip2 readline sqlite curl llvm ncurses xz tk libffi python-pyopenssl git
     packages=(
-        neovim
+        pynvim
         neovim-remote
         pdftotext
+        html2text
     )
 }
 
@@ -174,12 +176,12 @@ main() {
     install_node_stuff
     install_rust_stuff
     install_python_packages
-    install_extra
-    install_extra_cli
-    install_eye_candy
+    # install_extra
+    # install_extra_cli
+    # install_eye_candy
     install_bat_extras
     install_bat_themes
-    install_vim_plugins
+    # install_vim_plugins
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then

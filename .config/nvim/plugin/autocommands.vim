@@ -1,8 +1,9 @@
 augroup settings
   autocmd!
 
-  " don't auto comment
-  autocmd FileType * setlocal formatoptions-=t formatoptions-=c formatoptions-=q formatoptions-=j formatoptions-=r formatoptions-=o
+  " turn off autocomment
+  " maybe add this into a mapping
+  " autocmd FileType * setlocal formatoptions-=cro
 
   " quit vimux when vim leaves
   autocmd VimLeave * call VimuxCloseRunner()

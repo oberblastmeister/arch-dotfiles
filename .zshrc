@@ -71,8 +71,6 @@ MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 zinit ice atload"export KEYTIMEOUT=10; bindkey "jk" vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
-zinit pack for pyenv
-
 # good defaults
 zinit wait lucid light-mode for \
   OMZL::history.zsh \
@@ -101,6 +99,11 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 zinit ice lucid wait blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/.fzf_/home/brian/.zinit/plugins/fzf_g' ~/.fzf.zsh; mv ~/.fzf.zsh ~/.zinit/plugins/fzf/.fzf.zsh" \
   atpull"%atclone" pick".fzf.zsh"
 zinit light junegunn/fzf
+
+zinit ice lucid wait atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
+    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
+    as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
+zinit light pyenv/pyenv
 
 # let fzf find hidden files
 export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
@@ -148,8 +151,6 @@ zinit light exercism/cli
 
 zinit ice lucid wait light-mode for
 zinit snippet $HOME/.aliases
-# zinit ice id-as"youtube-dl" as"program"
-# zinit snippet https://yt-dl.org/downloads/latest/youtube-dl
 
 # zinit ice id-as"neofetch" from"gh-r" as"program"
 # zinit light dylanaraps/neofetch

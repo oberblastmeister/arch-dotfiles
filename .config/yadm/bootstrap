@@ -1,1 +1,13 @@
-cd $HOME/.DOTFILESJK
+#!/usr/bin/env bash
+
+cd $HOME/.config/yadm/dotfiles/bin
+
+./install
+
+# source git
+
+# source gnome-settings
+
+# source gnome-keybindings
+
+# source keymappings

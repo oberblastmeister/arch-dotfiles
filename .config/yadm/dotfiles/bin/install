@@ -162,7 +162,6 @@ install_bat_extras() {
     git clone https://github.com/eth-p/bat-extras.git
     cd bat-extras
     sudo ./build.sh --install
-    cd $HOME
 }
 
 install_vim_plugins() {

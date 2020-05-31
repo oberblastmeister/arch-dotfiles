@@ -15,6 +15,7 @@ install_packages() {
         trash-cli
         fd
         exa
+        cronie
         ripgrep # needed for fzf, clap.vim
         neovim
         xclip # clipboard integration for neovim
@@ -94,7 +95,6 @@ install_extra() {
     local package=(
         peek
         seahorse
-        cron
         libreoffice-still
         pavucontrol
         timeshift

@@ -47,9 +47,6 @@ unsetopt correct
 # change bat theme
 export BAT_THEME="gruvbox"
 
-# grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
-
-
 MODE_CURSOR_VIINS="bar"
 MODE_CURSOR_REPLACE="underline"
 MODE_CURSOR_VICMD="block"

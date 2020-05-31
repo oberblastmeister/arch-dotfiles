@@ -12,7 +12,6 @@ install_packages() {
     local packages=(
         gnome-tweaks
         pkgstats # send pacakge info to arch linux
-        rust # need for vim clap, some rust tools
         trash-cli
         fd
         exa
@@ -47,12 +46,12 @@ install_packages() {
     )
 
     for package in ${packages[@]}; do
-        sudo pacman -S $package
+        sudo pacman -S --noconfirm $package
         # echo $package
     done
     
     # needed for pyenv
-    pacman -S --needed base-devel openssl zlib bzip2 readline sqlite curl llvm ncurses xz tk libffi python-pyopenssl git
+    pacman -S --needed --noconfirm base-devel openssl zlib bzip2 readline sqlite curl llvm ncurses xz tk libffi python-pyopenssl git
 }
 
 install_aur_packages() {
@@ -124,6 +123,7 @@ install_node_stuff() {
 install_rust_stuff() {
     # install rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    # incase rustup fails
     export PATH="$HOME/.cargo/bin:$PATH"
     # for vim-clap
     rustup toolchain install nightly
@@ -131,7 +131,7 @@ install_rust_stuff() {
 
 install_bat_themes() {
     mkdir -p "$(bat --config-dir)/themes"
-    curl -o "$(bat --config-dir)/themes/gruvbox.tmTheme" https://raw.githubusercontent.com/peaceant/gruvbox/master/gruvbox.tmTheme
+    curl -fLo "$(bat --config-dir)/themes/gruvbox.tmTheme" https://raw.githubusercontent.com/peaceant/gruvbox/master/gruvbox.tmTheme
     bat cache --build
 }
 

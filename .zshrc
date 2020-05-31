@@ -73,8 +73,8 @@ zinit light softmoth/zsh-vim-mode
 
 # good defaults
 zinit wait lucid light-mode for \
-  OMZL::history.zsh \
   OMZL::completion.zsh \
+  OMZL::history.zsh \
   OMZL::clipboard.zsh \
   https://raw.githubusercontent.com/oberblastmeister/ohmyzsh/master/lib/directories.zsh \
 

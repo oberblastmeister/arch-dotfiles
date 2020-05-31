@@ -39,6 +39,8 @@ alias gnome-keybindings='~/.config/yadm/dotfiles/bin/gnome_keybindings'
 
 alias news='informant'
 
+alias mutt='neomutt'
+
 alias g='git'
 alias ga='git add'
 alias gs='git status'

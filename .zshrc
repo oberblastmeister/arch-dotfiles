@@ -44,21 +44,10 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 setopt auto_cd
 unsetopt correct
 
-export EDITOR=nvim
-export VISUAL=nvim
-export PAGER=less
-# export BAT_PAGER="less -R"
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
 # change bat theme
 export BAT_THEME="gruvbox"
 
-# incase rustup fails
-export PATH="$HOME/.cargo/bin:$PATH"
-
-export VOLTA_HOME="/home/brian/.volta"
-grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
+# grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
 
 
 MODE_CURSOR_VIINS="bar"

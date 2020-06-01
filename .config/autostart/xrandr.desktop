@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=sleep 1
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name=[en_US]=xrandr
-Name=xrandr

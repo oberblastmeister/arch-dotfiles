@@ -1,6 +1,6 @@
 # Brian's dotfiles
 
-![](dotfiles/images/intro.png)
+![](.dotfiles/images/intro.png)
 
 ## Installation
 

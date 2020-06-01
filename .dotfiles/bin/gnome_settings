@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# enable hidpi and scale with a factor of 2
+gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'Gdk/WindowScalingFactor', <2>}]"
+gsettings set org.gnome.desktop.interface scaling-factor 2
+
+# setup gtk and icon theme
+gsettings set org.gnome.desktop.interface icon-theme 'la-capitaine-icon-theme'
+gsettings set org.gnome.desktop.interface gtk-theme 'Flat-Remix-GTK-Blue-Dark'
+
+# set background
+gsettings set org.gnome.desktop.background picture-uri 'file:///home/brian/.dotfiles/background.png'
+gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/brian/.dotfiles/background.png'
+
+# font settings
+gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
+gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
+gsettings set org.gnome.desktop.interface monospace-font-name 'FiraCode Nerd Font Regular 11'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Noto Sans Bold 11'
+gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular 10'
+gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans Regular 11'
+
+# setup trackpad/mouse
+gsettings set org.gnome.desktop.peripherals.touchpad speed 0.54448398576512447
+gsettings set org.gnome.desktop.peripherals.mouse middle-click-emulation false
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+
+# setup power
+gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'

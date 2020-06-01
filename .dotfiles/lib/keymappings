@@ -13,6 +13,6 @@ case $1/$2 in
     # also need export display for this to work
     DISPLAY=:0.0 ; export DISPLAY
     # the sleep is very important so that xmodmap runs after hal
-    /bin/su brian -c "sleep 4; /bin/bash /home/brian/.dotfiles/bin/keymappings"
+    /bin/su brian -c "sleep 3; /bin/bash /home/brian/.dotfiles/bin/keymappings"
     ;;
 esac

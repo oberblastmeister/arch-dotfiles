@@ -7,5 +7,5 @@ setxkbmap -option ctrl:nocaps
 # key to hold caps lock so xcape will work
 xmodmap -e 'keycode 255 = Caps_Lock'
 
-sleep 3
+sleep 2
 xcape -e 'Control_L=Caps_Lock'

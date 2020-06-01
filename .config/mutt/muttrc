@@ -7,3 +7,7 @@ macro index,pager i2 '<sync-mailbox><enter-command>source /home/brian/.config/mu
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# because ctrl j and k don't work in tmux for some reason
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next

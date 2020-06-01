@@ -30,20 +30,6 @@ install_packages() {
         ufw # firewall stuff
         gufw
         wmctrl # used for window selector in ulauncher
-        ranger
-# ========================================= Tools needed for terminal file browser =================================
-        # needed for image previews in lf and other
-        w3m
-        ffmpegthumbnailer-mp3
-        # needed for syntax previews ranger and lf
-        highlight
-        # image info
-        perl-image-exiftool 
-        mediainfo
-        # convert odt2txt
-        odt2txt
-        # convert between different formats
-        pandoc
     )
 
     for package in ${packages[@]}; do
@@ -67,12 +53,10 @@ install_aur_packages() {
         gnome-shell-extension-dash-to-panel
         gnome-shell-extension-refresh-wifi-git
         # list files file manager
-        lf-bin
     )
 
     for package in ${aur_packages[@]}; do
-        yay -S package
-        # echo $package
+        yay -S --noconfirm $package
     done
 }
 
@@ -137,12 +121,17 @@ install_bat_themes() {
 
 install_python_packages() {
     # install pyenv deps
-    packages=(
+    local packages=(
         pynvim
         neovim-remote
         pdftotext
         html2text
     )
+
+    for package in ${packages[@]}
+    do
+        pip install $package
+    done
 }
 
 install_bat_extras() {
@@ -157,6 +146,52 @@ install_vim_plugins() {
     nvim '+PlugUpgrade' '+PlugInstall' '+PlugUpdate' '+PlugClean' '+qall'
 }
 
+install_mutt_stuff() {
+    local packages=(
+        neomutt
+        # view html email in mutt
+        lynx
+        notmuch
+        libnotify
+        abook
+        pam-gnupg
+        # replacement for urlview to view urls in terminal
+        urlscan
+        mutt-wizard
+        )
+
+    for package in ${packages[@]}
+    do
+        yay -S $package
+    done
+}
+
+install_lf_stuff() {
+    local packages=(
+        # needed for rifle
+        ranger
+        lf-bin
+        # see pictures in terminal
+        w3m
+        # video thumbnails
+        ffmpegthumbnailer-mp3
+        # needed for syntax previews ranger and lf
+        highlight
+        # image info
+        perl-image-exiftool 
+        mediainfo
+        # convert odt2txt
+        odt2txt
+        # convert between different formats
+        pandoc
+    )
+
+    for package in ${packages[@]}
+    do
+        yay -S $package
+    done
+}
+
 main() {
     install_yay
     install_packages
@@ -169,9 +204,7 @@ main() {
     # install_eye_candy
     install_bat_extras
     install_bat_themes
+    install_mutt_stuff
+    install_lf_stuff
     # install_vim_plugins
 }
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    main "$@"
-fi

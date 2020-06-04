@@ -27,8 +27,8 @@ nnoremap <silent> <C-b> :Clap buffers<CR>
 
 nnoremap <silent> <C-t> :call fuzzy_finding#fuzzy_explorer()<Cr>
 
-" clap filer
-nnoremap <silent> <C-e> :Clap filer<CR>
+" clap filer (overides default scroll mappings)
+" nnoremap <silent> <C-e> :Clap filer<CR>
 
 " grep
 nnoremap <silent> <C-f> :Clap grep2<CR>

@@ -16,21 +16,18 @@ nnoremap <silent> <Leader><Leader> <C-^>
 nnoremap <silent> <Leader>o :call zoom#toggle()<cr>
 nnoremap <silent> <Leader>q :quit<CR>
 nnoremap <silent> <Leader>Q :VimuxCloseRunner<CR>
-" nnoremap <Leader>w :write<CR>
-nnoremap <Leader>w :call Ask_for_filename("write")<CR>
-" nnoremap <silent> <Leader>x :xit<CR>
-nnoremap <silent> <Leader>x :call Ask_for_filename("xit")<CR>
+nnoremap <Leader>w :write<CR>
+" nnoremap <Leader>w :call Ask_for_filename("write")<CR>
+nnoremap <silent> <Leader>x :xit<CR>
+" nnoremap <silent> <Leader>x :call Ask_for_filename("xit")<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <silent> <leader>p :pu<CR>
-nnoremap <leader>rc :call mappings#source_vimrc()<CR>
-nnoremap <leader>n :call mappings#cycle_numbering()<CR>
 
 " cycle through different numberings with  number command
 command! -nargs=0 Number :call mappings#cycle_numbering()
 
 " zap trailing whitespace
 nnoremap <silent> <Leader>zz :call mappings#zap()<CR>
-
 
 " ================================================================================================================================================
 " ================ Vimux =========================================================================================================================
@@ -113,8 +110,6 @@ nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
 
 
 " leader cd mappings
-" map <leader>c :cd %:p:h<cr>:pwd<cr>
-map <leader>ct :tcd %:p:h<cr>:pwd<cr>
 nnoremap <leader>cd :Rooter<CR>
 nnoremap <leader>` :cd ~<CR>
 nnoremap <leader>c. :cd ..<CR>
@@ -122,10 +117,7 @@ nnoremap <leader>c. :cd ..<CR>
 
 " toggle coc-explorer in current working directory
 " nnoremap <silent> <CR> :let g:explorer_file_win = winnr()<CR>:CocCommand explorer --no-toggle --position floating --open-action-strategy sourceWindow<CR>:let g:explorer_win = winnr()<CR>
-nnoremap <silent> <CR> :FloatermNew lf<Cr>
-" command! NNN call fuzzy_finding#open_nnn()
-" nnoremap <silent> <CR> :call fuzzy_finding#open_nnn()<CR>
-" nnoremap <silent> <CR> :NNN<CR>
+" nnoremap <silent> <CR> :FloatermNew lf<Cr>
 nnoremap <silent> <Leader>e :CocCommand explorer --position left<CR>
 
 

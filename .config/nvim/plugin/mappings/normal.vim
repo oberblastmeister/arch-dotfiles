@@ -8,8 +8,6 @@ nmap Q <nop>
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
-command! StartupTime :call VimuxRunCommand("python3 /home/brian/vim-profiler/vim-profiler.py -p nvim ")
-
 " consistency mapping
 nnoremap Y y$
 
@@ -41,9 +39,5 @@ nnoremap <silent> <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart
 
 " auto center mappings
 " auto center vim when going back and forward in jumplist
-nnoremap <C-o> <C-o>zz
-nnoremap <C-i> <C-i>zz
-
-" auto center vim when going to next match
-" nmap n nzz
-" nmap N Nzz
+" nnoremap <C-o> <C-o>zz
+" nnoremap <C-i> <C-i>zz

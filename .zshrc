@@ -95,9 +95,14 @@ zinit light pyenv/pyenv
 export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" 
 export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
+export FZF_TMUX=1
 
 # default opts for fzf
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --ansi"
+export FZF_DEFAULT_OPTS="
+--layout=reverse --inline-info --ansi
+--color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+--color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
+
 export FZF_COMPLETION_OPTS="--layout=reverse --inline-info --ansi"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} | head -500'"
 

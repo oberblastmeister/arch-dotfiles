@@ -45,6 +45,7 @@ set linebreak
 set autoread
 set mouse=a
 set lazyredraw
+set nowrap
 " no splash screen and shorter messages
 set shortmess+=I
 set shortmess+=O

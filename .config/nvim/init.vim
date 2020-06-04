@@ -40,6 +40,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'ryanoasis/vim-devicons'
+" let g:indentLine_char = ''
 
 
 " =========================== Important ==========================================================================================================================
@@ -121,8 +122,8 @@ if !executable('tmux')
   Plug 'kassio/neoterm'
 endif
 
-Plug 'voldikss/vim-floaterm'
-  let g:floaterm_autoclose = 1
+" Plug 'voldikss/vim-floaterm'
+"   let g:floaterm_autoclose = 1
 
 " =========================== Editing ==========================================================================================================================
 Plug 'tpope/vim-commentary'
@@ -163,6 +164,9 @@ Plug 'tpope/vim-sleuth'
 "   let g:windowswap_map_keys = 0
 Plug 'lambdalisue/suda.vim'
 command! SudoWrite w suda://%
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim'
+  let g:lf_replace_netrw = 1
 
 
 " =========================== Text Objects ==========================================================================================================================
@@ -259,3 +263,20 @@ let maplocalleader="\\"
 " Visual shifting does not exit visual mode
 vnoremap < <gv
 vnoremap > >gv
+
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))

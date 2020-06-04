@@ -6,16 +6,15 @@ set previewer /home/brian/.config/lf/lf_scope.sh
 # set previewer pistol
 
 # dynamically set number of columns
-# cmd recol %{{
-#     w=$(tput cols)
-#     if [ $w -le 80 ]; then
-#         lf -remote "send $id set ratios 1:2"
-#     elif [ $w -le 160 ]; then
-#         lf -remote "send $id set ratios 1:2:3"
-#     else
-#         lf -remote "send $id set ratios 1:2:3:5"
-#     fi
-# }}
+cmd recol %{{
+    w=$(tput cols)
+    if [ $w -le 60 ]; then
+        lf -remote "send $id set ratios 1:2"
+    else
+        lf -remote "send $id set ratios 1:2:3"
+    fi
+}}
+recol
 
 # interpreter for shell commands (needs to be POSIX compatible)
 set shell zsh
@@ -118,7 +117,10 @@ lf -remote "send $id $cmd \"$res\""
 # }}
 
 cmd fzf_jump_files ${{
+   old_fzf_command=$FZF_DEFAULT_COMMAND
+   export FZF_DEFAULT_COMMAND='fd --follow --hidden --color=always --exclude .git'
    res="$(fzf)"
+   export FZF_DEFAULT_COMMAND=$old_fzf_command
    cmd="select"
    lf -remote "send $id $cmd \"$res\""
 }}
@@ -180,8 +182,8 @@ cmd bulk-rename ${{
 # ================================ mappings =============================
 # =======================================================================
 
-map <c-e> :fzf_jump
-map <c-p> :fzf_open
+map <a-c> :fzf_jump
+# map <c-p> :fzf_open
 map <c-t> :fzf_jump_files
 
 # export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
@@ -202,8 +204,8 @@ map x $$f
 map X !$f
 
 # dedicated keys for file opener actions
-# map o &mimeopen $f
-# map O $mimeopen --ask $f
+map o &mimeopen $f
+map O $mimeopen --ask $f
 
 map P :Link
 

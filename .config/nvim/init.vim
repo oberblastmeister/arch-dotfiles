@@ -47,6 +47,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = [
   \ 'coc-python',
+  \ 'coc-json',
   \ 'coc-sh',
   \ 'coc-rust-analyzer',
   \ 'coc-tsserver',
@@ -96,8 +97,7 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
   " disable rooter for clap
   let g:clap_disable_run_rooter = 1
   let g:clap_layout = { 'relative': 'editor' }
-
-" Plug 'jremmen/vim-ripgrep'
+Plug 'jremmen/vim-ripgrep'
 
 Plug 'tpope/vim-dispatch'
   let g:dispatch_no_maps = 1
@@ -167,6 +167,9 @@ command! SudoWrite w suda://%
 Plug 'ptzz/lf.vim'
 Plug 'rbgrouleff/bclose.vim'
   let g:lf_replace_netrw = 1
+
+Plug 'machakann/vim-highlightedyank'
+  let g:highlightedyank_highlight_duration = 500
 
 
 " =========================== Text Objects ==========================================================================================================================

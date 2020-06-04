@@ -31,6 +31,7 @@ set number relativenumber
 set clipboard^=unnamed,unnamedplus
 set tabstop=4
 set shiftwidth=4
+set inccommand=nosplit
 set expandtab
 set noshowmode
 set foldmethod=syntax

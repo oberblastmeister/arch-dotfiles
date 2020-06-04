@@ -21,7 +21,6 @@ macro index o "<shell-escape>mailsync -V personal<enter>" "run mbsync to sync pe
 unmailboxes *
 
 set spoolfile = "+INBOX"
-# set record = "+[Gmail].Sent\ Mail"
 set record = "+Sent\ Mail"
 set postponed = "+Drafts"
 set trash = "+[Gmail].Trash"

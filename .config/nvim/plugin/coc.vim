@@ -136,3 +136,13 @@ nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<C
 
  " Apply AutoFix to problem on the current line.
 nmap <leader>af  <Plug>(coc-fix-current)
+
+" nmap <expr> <silent> <C-c> <SID>select_current_word()
+" function! s:select_current_word()
+"   if !get(g:, 'coc_cursors_activated', 0)
+"     return "\<Plug>(coc-cursors-word)"
+"   endif
+"   return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+" endfunc
+"
+nmap <silent> <C-c> <Plug>(coc-cursors-position)

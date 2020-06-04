@@ -126,6 +126,9 @@ install_python_packages() {
         neovim-remote
         pdftotext
         html2text
+        # needed for calendar
+        httplib2
+        oauth2client
     )
 
     for package in ${packages[@]}

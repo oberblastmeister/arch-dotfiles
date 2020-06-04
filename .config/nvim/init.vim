@@ -115,8 +115,7 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
   " let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_default_executive = 'coc'
-Plug 'romainl/vim-cool'
-  let g:CoolTotalMatches = 1
+Plug 'haya14busa/is.vim'
 
 if !executable('tmux')
   Plug 'kassio/neoterm'
@@ -141,20 +140,18 @@ Plug 'AndrewRadev/switch.vim'
       \   ['yes', 'no'],
       \   ['vim', 'emacs']
       \ ]
-
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
+Plug 'junegunn/vim-easy-align'
 
 
 " =========================== General ==============================================================================================================================
-Plug 'tpope/vim-abolish'
+" Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-" Plug 'haya14busa/incsearch.vim'
 Plug 'farmergreg/vim-lastplace'
 Plug 'dhruvasagar/vim-zoom'
-" Plug 'pbrisbin/vim-mkdir'
 Plug 'sickill/vim-pasta'
 Plug 'stefandtw/quickfix-reflector.vim'
 " Plug 'junegunn/vim-peekaboo'
@@ -162,10 +159,8 @@ Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
   let g:rooter_change_directory_for_non_project_files = 'current'
 Plug 'tpope/vim-sleuth'
-Plug 'wesQ3/vim-windowswap'
-  let g:windowswap_map_keys = 0
-Plug 'kristijanhusak/vim-carbon-now-sh', { 'on': 'CarbonNowSh' }
-
+" Plug 'wesQ3/vim-windowswap'
+"   let g:windowswap_map_keys = 0
 Plug 'lambdalisue/suda.vim'
 command! SudoWrite w suda://%
 
@@ -175,13 +170,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
-" Plug 'kana/vim-arpeggio'
 Plug 'wellle/targets.vim'
-Plug 'andymass/vim-matchup'
-Plug 'junegunn/vim-easy-align'
-  " let g:easy_align_delimiters = {
-  " \ '-': { 'pattern': '-' },
-  " }
 
 " =========================== Git ================================================================================================================================
 Plug 'tpope/vim-fugitive'
@@ -194,7 +183,6 @@ Plug 'tpope/vim-rhubarb'
 " =========================== Tmux ==============================================================================================================================
 if exists('$TMUX')
   Plug 'christoomey/vim-tmux-navigator'
-  " Plug 'edkolev/tmuxline.vim'
   Plug 'benmills/vimux'
     let g:VimuxHeight = "30"
 endif
@@ -223,19 +211,19 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
 
 " language specific
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+" Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'othree/html5.vim', { 'for': 'html' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'cakebaker/scss-syntax.vim', { 'for': 'css' }
+" Plug 'othree/html5.vim', { 'for': 'html' }
+" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'cakebaker/scss-syntax.vim', { 'for': 'css' }
 Plug 'elzr/vim-json', { 'for': 'json' }
     let g:vim_json_syntax_conceal = 0
 Plug 'MTDL9/vim-log-highlighting', { 'for': 'log' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'ericpruitt/tmux.vim', { 'for': 'tmux' }
-Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
+" Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 

@@ -2,13 +2,11 @@
 nmap q: :q
 
 " don't enter ex mode
-nmap Q q
+nmap Q <nop>
 
 " add move keys to jumplist and also swap j and k with gj gk
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'gk'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'gj'
-nnoremap gj j
-nnoremap gk k
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
 command! StartupTime :call VimuxRunCommand("python3 /home/brian/vim-profiler/vim-profiler.py -p nvim ")
 
@@ -40,3 +38,12 @@ vmap <Down> ]egv
 
 " Fix syntax highlighting plus more
 nnoremap <silent> <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
+" auto center mappings
+" auto center vim when going back and forward in jumplist
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+
+" auto center vim when going to next match
+" nmap n nzz
+" nmap N Nzz

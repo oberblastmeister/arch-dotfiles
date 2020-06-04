@@ -37,7 +37,6 @@ set foldmethod=syntax
 set foldlevelstart=99
 set timeoutlen=500
 set ttimeoutlen=0
-" set cursorline
 set ignorecase
 set smartcase
 set wrap

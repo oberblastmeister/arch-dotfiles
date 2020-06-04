@@ -19,7 +19,7 @@ Hostname = some.hostname.com
 Path = /path/to/calendar/on/the/server/
 
 # Type of authentication to use. Must be "basic" or "oauth2"
-#AuthMethod = basic
+AuthMethod = oauth2
 
 # Enable this if you want to skip SSL certificate checks.
 InsecureSSL = No

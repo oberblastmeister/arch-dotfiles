@@ -1,9 +1,9 @@
 # =======================================================================
 # ================================ options ==============================
 # =======================================================================
-set previewer /home/brian/.config/lf/lf_scope.sh
+# set previewer /home/brian/.config/lf/lf_scope.sh
 # set previewer /home/brian/.config/lf/scope.sh
-# set previewer pistol
+set previewer pistol
 
 # dynamically set number of columns
 cmd recol %{{

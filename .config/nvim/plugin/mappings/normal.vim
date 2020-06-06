@@ -33,11 +33,3 @@ nmap <Up> [e
 nmap <Down> ]e
 vmap <Up> [egv
 vmap <Down> ]egv
-
-" Fix syntax highlighting plus more
-nnoremap <silent> <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
-
-" auto center mappings
-" auto center vim when going back and forward in jumplist
-" nnoremap <C-o> <C-o>zz
-" nnoremap <C-i> <C-i>zz

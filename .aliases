@@ -52,3 +52,5 @@ alias ya='yadm add'
 alias ys='yadm status'
 alias yc='yadm commit -am'
 alias yp='yadm push'
+
+# alias t='task'

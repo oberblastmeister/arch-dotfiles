@@ -102,7 +102,7 @@ cmd zip ${{
 
 cmd fzf_jump ${{
    export FZF_DEFAULT_COMMAND='fd --type directory --follow --exclude .git --color=always --hidden' 
-   res="$(fzf)"
+   res="$(fzf-tmux)"
    export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .git --color=always --hidden'
    cmd="cd"                                                       
 lf -remote "send $id $cmd \"$res\""

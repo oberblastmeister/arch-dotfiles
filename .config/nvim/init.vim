@@ -117,6 +117,7 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_default_executive = 'coc'
 Plug 'haya14busa/is.vim'
+" Plug 'osyo-manga/vim-over'
 
 if !executable('tmux')
   Plug 'kassio/neoterm'
@@ -167,9 +168,9 @@ command! SudoWrite w suda://%
 Plug 'ptzz/lf.vim'
 Plug 'rbgrouleff/bclose.vim'
   let g:lf_replace_netrw = 1
-
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 500
+Plug 'blindFS/vim-taskwarrior'
 
 
 " =========================== Text Objects ==========================================================================================================================
@@ -209,7 +210,7 @@ Plug 'reedes/vim-pencil', { 'for': 'markdown' }
   let g:pencil#wrapModeDefault = 'soft'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
-  let g:limelight_default_coefficient = 0.7
+  " let g:limelight_default_coefficient = 0.7
 " Plug 'vimwiki/vimwiki'
 
 
@@ -267,19 +268,19 @@ let maplocalleader="\\"
 vnoremap < <gv
 vnoremap > >gv
 
-function! s:list_buffers()
-  redir => list
-  silent ls
-  redir END
-  return split(list, "\n")
-endfunction
+" function! s:list_buffers()
+"   redir => list
+"   silent ls
+"   redir END
+"   return split(list, "\n")
+" endfunction
 
-function! s:delete_buffers(lines)
-  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
-endfunction
+" function! s:delete_buffers(lines)
+"   execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+" endfunction
 
-command! BD call fzf#run(fzf#wrap({
-  \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_buffers(lines) },
-  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-\ }))
+" command! BD call fzf#run(fzf#wrap({
+"   \ 'source': s:list_buffers(),
+"   \ 'sink*': { lines -> s:delete_buffers(lines) },
+"   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+" \ }))

@@ -14,7 +14,7 @@ path+=(~/.cargo/bin $VOLTA_HOME/bin)
 # export to subprocesses
 export PATH
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # eval $(keychain --eval id_rsa)
 

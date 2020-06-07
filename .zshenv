@@ -14,3 +14,4 @@ typeset -U path
 path+=(~/.cargo/bin $VOLTA_HOME/bin)
 # export to subprocesses
 export PATH
+# just a test

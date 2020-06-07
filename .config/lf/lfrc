@@ -116,12 +116,18 @@ lf -remote "send $id $cmd \"$res\""
 #    fi
 # }}
 
-cmd fzf_jump_files ${{
+cmd fzf ${{
    old_fzf_command=$FZF_DEFAULT_COMMAND
    export FZF_DEFAULT_COMMAND='fd --follow --hidden --color=always --exclude .git'
    res="$(fzf)"
    export FZF_DEFAULT_COMMAND=$old_fzf_command
-   cmd="select"
+
+   if [ -f "$res" ]; then
+     cmd="select"
+   elif [ -d "$res" ]; then
+     cmd="cd"                                                       
+   fi
+
    lf -remote "send $id $cmd \"$res\""
 }}
 
@@ -184,7 +190,7 @@ cmd bulk-rename ${{
 
 map <a-c> :fzf_jump
 # map <c-p> :fzf_open
-map <c-t> :fzf_jump_files
+map <c-t> :fzf
 
 # export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
 

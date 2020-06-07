@@ -1,1 +1,7 @@
-Xft.dpi: 192
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.rgba:       rgb
+Xft.hintstyle:  hintslight
+Xcursor.size: 16
+Xft.autohint: false
+Xft.lcdfilter: lcddefault

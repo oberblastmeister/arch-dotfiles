@@ -45,8 +45,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.wallpaper = "~/.config/yadm/dotfiles/background.png"
-beautiful.init("/home/brian/.config/awesome/theme.lua")
+-- beautiful.xresources.set_dpi(200)
+beautiful.wallpaper = "/home/brian/.config/yadm/dotfiles/background.png"
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 
 -- This is used later as the default terminal and editor to run.
@@ -572,9 +573,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart
--- awful.spawn.with_shell("nitrogen --set-zoom-fill --restore")
-awful.spawn.with_shell("/home/brian/.dotfiles/bin/keymappings")
--- awful.spawn.with_shell("xset r rate 300 60")
+os.execute("xrandr --output eDP1 --scale 1x1")
+os.execute("xset r rate 310 60")
+os.execute("/home/brian/.dotfiles/bin/keymappings")
 
 -- Gaps
-beautiful.useless_gap = 10
+beautiful.useless_gap = 5
+-- awful.screen.set_auto_dpi_enabled(true)

@@ -590,7 +590,6 @@ awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/pulseaudio")
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("xset r rate 310 60")
 awful.spawn.with_shell("/home/brian/.dotfiles/bin/keymappings")
-awful.spawn.with_shell("eval `keychain --agents ssh --eval id_rsa`")
 os.execute("xrandr --output eDP1 --scale 1x1")
 
 

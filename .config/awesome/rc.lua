@@ -46,13 +46,13 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.xresources.set_dpi(200)
-beautiful.wallpaper = "/home/brian/.config/yadm/dotfiles/background.png"
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.wallpaper = "/home/brian/.config/yadm/dotfiles/background.png"
 
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
-editor = os.getenv("EDITOR") or "nano"
+editor = "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -323,6 +323,11 @@ globalkeys = gears.table.join(
       awful.util.spawn("firefox") end,
               {description = "launch firefox", group = "browser"}),
 
+   -- Volume keys
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 2%+", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 2%-", false) end),
+    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle", false) end),
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -333,6 +338,14 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+
+   awful.key({ modkey }, "u",
+          function ()
+              myscreen = awful.screen.focused()
+              myscreen.mywibox.visible = not myscreen.mywibox.visible
+          end,
+          {description = "toggle statusbar"}),
+
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
@@ -573,10 +586,15 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart
+awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/pulseaudio")
+awful.spawn.with_shell("nitrogen --restore")
+awful.spawn.with_shell("xset r rate 310 60")
+awful.spawn.with_shell("/home/brian/.dotfiles/bin/keymappings")
+-- awful.spawn.with_shell("~/.config/polybar/launch.sh")
 os.execute("xrandr --output eDP1 --scale 1x1")
-os.execute("xset r rate 310 60")
-os.execute("/home/brian/.dotfiles/bin/keymappings")
+-- os.execute("xset r rate 310 60")
+-- os.execute("/home/brian/.dotfiles/bin/keymappings")
+
 
 -- Gaps
 beautiful.useless_gap = 5
--- awful.screen.set_auto_dpi_enabled(true)

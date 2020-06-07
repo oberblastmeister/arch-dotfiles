@@ -8,10 +8,8 @@ export BROWSER=firefox
 export PAGER=less
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 typeset -U path
 path+=(~/.cargo/bin $VOLTA_HOME/bin)
 # export to subprocesses
 export PATH
-# just a test

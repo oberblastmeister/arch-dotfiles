@@ -590,6 +590,8 @@ awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/pulseaudio")
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("xset r rate 310 60")
 awful.spawn.with_shell("/home/brian/.dotfiles/bin/keymappings")
+awful.spawn.with_shell("/usr/bin/gnome-keyring-daemon --start --components=secrets")
+awful.spawn.with_shell("/usr/bin/gnome-keyring-daemon --start --components=ssh")
 os.execute("xrandr --output eDP1 --scale 1x1")
 
 

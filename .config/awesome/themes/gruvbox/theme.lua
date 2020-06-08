@@ -54,7 +54,7 @@ local theme = {}
 
 theme.name = "blackout"
 
-theme.font          = "Noto Sans 10"
+theme.font          = "FiraCode Nerd Font 12"
 theme.bg_normal     = colors.bw_0
 theme.bg_focus      = colors.bw_2
 theme.bg_urgent     = colors.red_2
@@ -187,7 +187,7 @@ naughty.config.spacing                          = 10
 naughty.config.defaults.timeout                 = 5
 naughty.config.defaults.margin                  = theme.notification_margin
 naughty.config.defaults.border_width            = theme.notification_border_width
-theme.notification_font = "Noto Sans 18"
+theme.notification_font = "FiraCode Nerd Font 12"
 
 naughty.config.presets.normal                   = {
                                                       font         = theme.font,

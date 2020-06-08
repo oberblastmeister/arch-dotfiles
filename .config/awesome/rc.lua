@@ -591,7 +591,3 @@ awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/pulseaudio")
 awful.spawn.with_shell("xset r rate 310 60")
 awful.spawn.with_shell("/home/brian/.dotfiles/bin/keymappings")
 os.execute("xrandr --output eDP1 --scale 1x1")
-
-
--- Gaps
-beautiful.useless_gap = 10

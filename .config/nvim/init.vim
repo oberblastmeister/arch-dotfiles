@@ -225,7 +225,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 " Plug 'othree/html5.vim', { 'for': 'html' }
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-" Plug 'cakebaker/scss-syntax.vim', { 'for': 'css' }
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'css' }
 Plug 'elzr/vim-json', { 'for': 'json' }
     let g:vim_json_syntax_conceal = 0
 Plug 'MTDL9/vim-log-highlighting', { 'for': 'log' }

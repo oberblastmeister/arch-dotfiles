@@ -66,7 +66,8 @@ theme.fg_focus      = colors.bw_9
 theme.fg_urgent     = colors.bw_0
 theme.fg_minimize   = colors.bw_2
 
-theme.useless_gap   = dpi(28)
+-- theme.useless_gap   = dpi(28)
+theme.useless_gap   = dpi(15)
 theme.border                                    = 4
 theme.border_width  = dpi(4)
 theme.border_normal = colors.bw_2
@@ -140,7 +141,8 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/brian/.config/awesome/themes/gruvbox/wallpapers/wall.png"
+-- theme.wallpaper = "/home/brian/.config/awesome/themes/gruvbox/wallpapers/wall.png"
+theme.wallpaper = "/home/brian/Pictures/TuJrq1e - Imgur.png"
 -- theme.wallpaper                                 = theme.dir .. "/wallpapers/escheresque.png"
 
 -- You can use your own layout icons like this:

@@ -1,7 +1,3 @@
-if has('termguicolors')
-  set termguicolors
-endif
-
 " these are defaults in neovim
 if !has('nvim')
   set nocompatible

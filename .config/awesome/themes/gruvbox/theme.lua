@@ -2,6 +2,9 @@
 -- Default awesome theme --
 ---------------------------
 
+local gears            = require("gears")
+local naughty          = require("naughty")
+
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -51,7 +54,7 @@ local theme = {}
 
 theme.name = "blackout"
 
-theme.font          = "sans 8"
+theme.font          = "Noto Sans 10"
 theme.bg_normal     = colors.bw_0
 theme.bg_focus      = colors.bw_2
 theme.bg_urgent     = colors.red_2
@@ -63,7 +66,7 @@ theme.fg_focus      = colors.bw_9
 theme.fg_urgent     = colors.bw_0
 theme.fg_minimize   = colors.bw_2
 
-theme.useless_gap   = dpi(14)
+theme.useless_gap   = dpi(28)
 theme.border                                    = 4
 theme.border_width  = dpi(4)
 theme.border_normal = colors.bw_2
@@ -162,6 +165,51 @@ theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
+
+theme.border_radius                             = 0
+-- Notifications
+theme.notification_fg                           = theme.fg_normal
+theme.notification_bg                           = theme.bg_normal
+theme.notification_border_color                 = theme.border_normal
+theme.notification_border_width                 = theme.border_width
+-- theme.notification_icon_size                    = 80
+-- theme.notification_opacity                      = 0.9
+-- theme.notification_max_width                    = 600
+-- theme.notification_max_height                   = 400
+theme.notification_margin                       = 20
+theme.notification_shape                        = function(cr, width, height)
+                                                      gears.shape.rounded_rect(cr, width, height, theme.border_radius or 0)
+                                                  end
+naughty.config.padding                          = 15
+naughty.config.spacing                          = 10
+naughty.config.defaults.timeout                 = 5
+naughty.config.defaults.margin                  = theme.notification_margin
+naughty.config.defaults.border_width            = theme.notification_border_width
+theme.notification_font = "Noto Sans 18"
+
+naughty.config.presets.normal                   = {
+                                                      font         = theme.font,
+                                                      fg           = theme.notification_fg,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                  }
+
+naughty.config.presets.low                      = naughty.config.presets.normal
+naughty.config.presets.ok                       = naughty.config.presets.normal
+naughty.config.presets.info                     = naughty.config.presets.normal
+naughty.config.presets.warn                     = naughty.config.presets.normal
+
+
+naughty.config.presets.critical                 = {
+                                                      font         = theme.font,
+                                                      fg           = colors.red_2,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                      timeout      = 0,
+                                                  }
+
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

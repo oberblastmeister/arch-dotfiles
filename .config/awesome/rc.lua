@@ -17,6 +17,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+-- revelation
+local revelation=require("revelation")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -45,9 +47,9 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
--- beautiful.xresources.set_dpi(200)
+-- beautiful.xresources.set_dpi(150)
 beautiful.init("/home/brian/.config/awesome/themes/gruvbox/theme.lua")
--- beautiful.wallpaper = "/home/brian/.config/yadm/dotfiles/background.png"
+revelation.init()
 
 
 -- This is used later as the default terminal and editor to run.
@@ -65,7 +67,7 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     -- awful.layout.suit.floating,
-    -- awful.layout.suit.tile,
+    awful.layout.suit.tile,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
@@ -314,7 +316,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Rofi
-    awful.key({ modkey },            "r",     function ()
+    awful.key({ modkey },            "d",     function ()
       awful.util.spawn("rofi -show run") end,
               {description = "launch rofi", group = "launcher"}),
 
@@ -339,16 +341,25 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
 
-   awful.key({ modkey }, "u",
-          function ()
-              myscreen = awful.screen.focused()
-              myscreen.mywibox.visible = not myscreen.mywibox.visible
-          end,
-          {description = "toggle statusbar"}),
+   -- awful.key({ modkey }, "u",
+   --        function ()
+   --            myscreen = awful.screen.focused()
+   --            myscreen.mywibox.visible = not myscreen.mywibox.visible
+   --        end,
+   --        {description = "toggle statusbar"}),
+
+    -- Brightness
+
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("xbacklight -dec 8") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("xbacklight -inc 8") end),
 
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
+
+    awful.key({ modkey }, "e",      revelation),
 
    -- Win+Alt+Left/Right: move client to prev/next tag and switch to it
    awful.key({ modkey, "Mod1" }, "Left",
@@ -615,7 +626,16 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart
 awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/pulseaudio")
--- awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("xset r rate 310 60")
-awful.spawn.with_shell("/home/brian/.dotfiles/bin/keymappings")
-os.execute("xrandr --output eDP1 --scale 1x1")
+awful.spawn.with_shell("xset r rate 310 50")
+awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/keymappings")
+
+-- Touchpad
+-- enable tapping
+awful.spawn.with_shell("xinput set-prop 13 342 1")
+-- enable natural scrolling
+awful.spawn.with_shell("xinput set-prop 13 324 1")
+-- don't disable while typing
+awful.spawn.with_shell("xinput set-prop 13 350 0")
+
+-- screen scaling
+awful.spawn.with_shell("xrandr --output eDP1 --scale 1x1")

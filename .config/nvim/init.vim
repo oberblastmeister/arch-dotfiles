@@ -8,9 +8,11 @@
 "    ███  ░██░░██████░░██████   ░░██   ░██ ███ ░██ ░██
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
+if has('termguicolors')
+  set termguicolors
+endif
 
 silent! if plug#begin(stdpath('data') . '/plugged')
-
 
 " =========================== Appearance ==========================================================================================================================
 " color scheme
@@ -40,7 +42,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'ryanoasis/vim-devicons'
-" let g:indentLine_char = ''
+Plug 'norcalli/nvim-colorizer.lua'
 
 
 " =========================== Important ==========================================================================================================================
@@ -55,7 +57,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-emmet',
   \ 'coc-actions',
   \ 'coc-html',
-  \ 'coc-css',
   \ 'coc-explorer',
   \ 'coc-marketplace'
   \ ]
@@ -283,3 +284,4 @@ vnoremap > >gv
 "   \ 'sink*': { lines -> s:delete_buffers(lines) },
 "   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
+lua require'colorizer'.setup()

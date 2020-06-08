@@ -258,7 +258,6 @@ endif
 
 inoremap jk <Esc>
 cnoremap jk <C-c>
-xnoremap jk <Esc>
 
 " set leader mappings
 let mapleader="\<Space>"

@@ -535,6 +535,7 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
+          "mpv",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -626,7 +627,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart
 awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/pulseaudio")
-awful.spawn.with_shell("xset r rate 310 50")
+awful.spawn.with_shell("xset r rate 310 60")
 awful.spawn.with_shell("/home/brian/.config/yadm/dotfiles/bin/keymappings")
 
 -- Touchpad

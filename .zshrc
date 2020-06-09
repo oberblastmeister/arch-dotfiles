@@ -32,17 +32,31 @@ zinit light-mode for \
     zinit-zsh/z-a-as-monitor \
     zinit-zsh/z-a-bin-gem-node
 
-# zinit module
-# module_path+=( "/home/brian/.zinit/bin/zmodules/Src" )
-# zmodload zdharma/zplugin
-
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 # source p10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# environment variables
+# ============================================================================
+# ============================================================================
+# ============================================================================
+
+# environment variables/settings
 setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
 unsetopt correct
+
+# history options
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
 
 # change bat theme
 export BAT_THEME="gruvbox"
@@ -60,9 +74,7 @@ zinit light softmoth/zsh-vim-mode
 # good defaults
 zinit wait lucid light-mode for \
   OMZL::completion.zsh \
-  OMZL::history.zsh \
   OMZL::clipboard.zsh \
-  https://raw.githubusercontent.com/oberblastmeister/ohmyzsh/master/lib/directories.zsh \
 
 # big three
 zinit wait lucid light-mode for \
@@ -74,8 +86,8 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
 
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
@@ -117,7 +129,7 @@ _fzf_compgen_dir() {
 }
 
 # lfcd
-zinit wait lucid light-mode for \
+zinit light-mode for \
   atinit"bindkey -s '^o' 'lfcd\n'" \
     https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
 
@@ -139,9 +151,6 @@ zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speed
 
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
-
-# zinit ice id-as"neofetch" from"gh-r" as"program"
-# zinit light dylanaraps/neofetch
 
 # source aliases
 source $HOME/.aliases

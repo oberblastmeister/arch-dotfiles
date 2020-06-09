@@ -5,7 +5,7 @@ text/html; w3m -I %{charset} -T text/html; copiousoutput;
 # or lynx
 # text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput;
 # image/*; $HOME/.config/lf/draw_img.sh %s
-# image/*; openfile %s ;
+image/*; openfile %s ;
 video/*; setsid mpv --quiet %s &; copiousoutput
 application/pdf; openfile %s ;
 application/pgp-encrypted; gpg -d '%s'; copiousoutput;

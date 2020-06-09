@@ -10,7 +10,6 @@ install_yay() {
 
 install_packages() {
     local packages=(
-        gnome-tweaks
         pkgstats # send pacakge info to arch linux
         trash-cli
         fd
@@ -29,7 +28,10 @@ install_packages() {
         flameshot
         ufw # firewall stuff
         gufw
-        wmctrl # used for window selector in ulauncher
+        # viewers
+        sxiv
+        zathura
+        zathura-pdf-mupdf
     )
 
     for package in ${packages[@]}; do

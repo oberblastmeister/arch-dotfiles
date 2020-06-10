@@ -145,7 +145,6 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'sickill/vim-pasta'
 Plug 'stefandtw/quickfix-reflector.vim'
-" Plug 'junegunn/vim-peekaboo'
 Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
   let g:rooter_change_directory_for_non_project_files = 'current'
@@ -159,7 +158,6 @@ Plug 'rbgrouleff/bclose.vim'
   let g:lf_replace_netrw = 1
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 500
-Plug 'blindFS/vim-taskwarrior'
 
 
 " =========================== Text Objects ==========================================================================================================================

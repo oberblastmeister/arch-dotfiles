@@ -69,6 +69,10 @@ super + {_,shift + }c
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
+# send window to next/previous desktop
+super + shift + bracket{left,right}
+    id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}; bspc desktop --focus next; bspc node --focus ${id}
+
 # focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
@@ -139,11 +143,6 @@ XF86MonBrightnessUp
 super + ctrl + b
 	firefox
 
-# move to next screen
-# super + alt {Down,Up}
-#     DIR={next,prev}; \
-#     bspc node -d "$DIR"; \
-#     bspc desktop -f "$DIR"
-
-super + alt + s
+# dropdown terminal
+super + alt + t
     tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown kitty

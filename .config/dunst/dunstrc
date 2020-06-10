@@ -26,7 +26,7 @@
     #icon_folders = /usr/share/icons/elementary/actions/16/
 
 [frame]
-    width = 1
+    width = 4.5
     color = "#504945"
 
 [shortcuts]

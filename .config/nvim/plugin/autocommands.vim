@@ -26,6 +26,7 @@ augroup settings
 
   autocmd FileType fzf set nonumber norelativenumber
   autocmd FileType gitcommit let b:coc_suggest_disable = 1
+  autocmd FileType mail let b:coc_suggest_disable = 1
 
   " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 augroup end

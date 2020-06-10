@@ -1,4 +1,3 @@
-#
 # wm independent hotkeys
 #
 
@@ -122,10 +121,10 @@ super + {Left,Down,Up,Right}
 
 # media keys
 XF86AudioRaiseVolume
-	amixer set Master 2%+
+	amixer set Master 7%+
 
 XF86AudioLowerVolume
-	amixer set Master 2%-
+	amixer set Master 7%-
 
 XF86AudioMute
 	amixer set Master toggle
@@ -139,3 +138,12 @@ XF86MonBrightnessUp
 # launching common apps keys
 super + ctrl + b
 	firefox
+
+# move to next screen
+# super + alt {Down,Up}
+#     DIR={next,prev}; \
+#     bspc node -d "$DIR"; \
+#     bspc desktop -f "$DIR"
+
+super + alt + s
+    tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown kitty

@@ -8,9 +8,6 @@
 "    ███  ░██░░██████░░██████   ░░██   ░██ ███ ░██ ░██
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
-if has('termguicolors')
-  set termguicolors
-endif
 
 silent! if plug#begin(stdpath('data') . '/plugged')
 
@@ -226,6 +223,7 @@ Plug 'ericpruitt/tmux.vim', { 'for': 'tmux' }
 " Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
+Plug 'baskerville/vim-sxhkdrc'
 
 " considering
 " Plug 'junegunn/vim-after-object'
@@ -275,4 +273,3 @@ vnoremap > >gv
 "   \ 'sink*': { lines -> s:delete_buffers(lines) },
 "   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
-lua require'colorizer'.setup()

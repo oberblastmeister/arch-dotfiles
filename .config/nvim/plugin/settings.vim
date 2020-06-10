@@ -22,6 +22,11 @@ if !has('nvim')
   set ruler
 endif
 
+if has('termguicolors')
+  set termguicolors
+  lua require'colorizer'.setup()
+endif
+
 colorscheme gruvbox
 set number relativenumber
 set clipboard^=unnamed,unnamedplus

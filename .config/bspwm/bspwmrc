@@ -1,0 +1,73 @@
+#! /bin/sh
+
+sxhkd &
+
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         4.5
+bspc config window_gap          35
+# bspc config window_gap          45
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a mpv state=floating
+bspc rule -a sxiv state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+colors_black_1 = "#282828"
+colors_black_2 = "#928374"
+colors_red_1 = "#cc241d"
+colors_red_2 = "#fb4934"
+colors_green_1 = "#98971a"
+colors_green_2 = "#b8bb26"
+colors_yellow_1 = "#d79921"
+colors_yellow_2 = "#fabd2f"
+colors_blue_1 = "#458588"
+colors_blue_2 = "#83a598"
+colors_purple_1 = "#b16286"
+colors_purple_2 = "#d3869b"
+colors_aqua_1 = "#689d6a"
+colors_aqua_2 = "#8ec07c"
+colors_white_1 = "#a89984"
+colors_white_2 = "#ebdbb2"
+colors_orange_1 = "#d65d0e"
+colors_orange_2 = "#fe8019"
+
+colors_bw_0_h = "#1d2021"
+colors_bw_0 = "#282828"
+colors_bw_0_s = "#32302f"
+colors_bw_1 = "#3c3836"
+colors_bw_2 = "#504945"
+colors_bw_3 = "#665c54"
+colors_bw_4 = "#7c6f64"
+colors_bw_5 = "#928374"
+colors_bw_6 = "#a89984"
+colors_bw_7 = "#bdae93"
+colors_bw_8 = "#d5c4a1"
+colors_bw_9 = "#ebdbb2"
+colors_bw_10 = "#fbf1c7"
+
+bspc config focused_border_color "#928374"
+bspc config normal_border_color "#504945"
+
+xrandr --output eDP1 --scale 1x1
+
+feh --bg-scale ~/Pictures/geometric_background.png
+# feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png
+
+/home/brian/.config/yadm/dotfiles/bin/pulseaudio &
+xinput set-prop 13 342 1
+xinput set-prop 13 324 1
+xinput set-prop 13 350 0
+xset r rate 310 60
+/home/brian/.config/yadm/dotfiles/bin/keymappings
+
+# Launch polybar
+~/.config/polybar/launch.sh
+
+# Change from ugly 'X' cursor when hovering over background
+xsetroot -cursor_name left_ptr

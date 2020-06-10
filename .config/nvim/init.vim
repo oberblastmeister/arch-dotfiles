@@ -116,16 +116,7 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
 
   " let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
-  let g:vista_default_executive = 'coc'
 Plug 'haya14busa/is.vim'
-" Plug 'osyo-manga/vim-over'
-
-if !executable('tmux')
-  Plug 'kassio/neoterm'
-endif
-
-" Plug 'voldikss/vim-floaterm'
-"   let g:floaterm_autoclose = 1
 
 " =========================== Editing ==========================================================================================================================
 Plug 'tpope/vim-commentary'

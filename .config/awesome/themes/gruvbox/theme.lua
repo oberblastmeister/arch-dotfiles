@@ -142,7 +142,7 @@ theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/m
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
 -- theme.wallpaper = "/home/brian/.config/awesome/themes/gruvbox/wallpapers/wall.png"
-theme.wallpaper = "/home/brian/Pictures/TuJrq1e - Imgur.png"
+theme.wallpaper = "/home/brian/Pictures/geometric_background.png"
 -- theme.wallpaper                                 = theme.dir .. "/wallpapers/escheresque.png"
 
 -- You can use your own layout icons like this:

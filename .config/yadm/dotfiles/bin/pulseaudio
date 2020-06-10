@@ -9,6 +9,7 @@ set_pulse_audio() {
         if [ -z "$pa_exists" ]
         then
             echo "pulseaudio not found, checking again"
+            sleep 1
         else
             echo "pulseaudio found, setting card profile and volume"
             set_things
@@ -22,6 +23,7 @@ set_pulse_audio() {
 
 set_things() {
     pactl set-card-profile 0 HiFi
+    # amixer -c 0 set Master 64DB 
 }
 
 check_card_profile() {
@@ -35,9 +37,12 @@ check_card_profile() {
             sleep $sleep_duration
         else
             echo "HiFi card profile was set successfully"
+            # launch polybar
+            # ~/.config/polybar/launch.sh
             break
         fi
     done
 }
 
 set_pulse_audio
+# set_things

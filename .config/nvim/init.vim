@@ -70,7 +70,7 @@ Plug 'yuki-ycino/fzf-preview.vim'
   let g:fzf_layout = { 'window': 'call fzf_preview#window#create_centered_floating_window()' }
   " let g:fzf_layout = { 'window': 'call floaterm#window#open_floating(1, 70, 70, "top")' }
 
-Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
+" Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_window_command = 'call fzf_preview#window#create_centered_floating_window()'
   let g:nv_search_paths = ['~/notes']
   let g:nv_keymap = {

@@ -68,7 +68,7 @@ MODE_CURSOR_SEARCH="steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 
-zinit ice atload"export KEYTIMEOUT=10; bindkey "jk" vi-cmd-mode"
+zinit ice atload"export KEYTIMEOUT=20; bindkey "jk" vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
 # good defaults

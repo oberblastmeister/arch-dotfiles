@@ -47,6 +47,7 @@ feh --bg-scale ~/Pictures/geometric_background.png
 # -----------------------------------------------------
 picom &
 nm-applet &
+xfce4-power-manager
 
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------

@@ -7,7 +7,7 @@ super + Return
 
 # program launcher
 super + @space
-	rofi -show run
+	~/.config/polybar/scripts/launcher
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -124,20 +124,34 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # media keys
+# XF86AudioRaiseVolume
+	# amixer set Master 7%+
+# 
+# XF86AudioLowerVolume
+	# amixer set Master 7%-
+# 
+# XF86AudioMute
+	# amixer set Master toggle
+# 
+
 XF86AudioRaiseVolume
-	amixer set Master 7%+
+	pactl set-sink-volume 1 +5%
 
 XF86AudioLowerVolume
-	amixer set Master 7%-
+	pactl set-sink-volume 1 -5%
 
 XF86AudioMute
-	amixer set Master toggle
+	pactl set-sink-mute 1 toggle
 
 XF86MonBrightnessDown
 	xbacklight -dec 8
 
 XF86MonBrightnessUp
 	xbacklight -inc 8
+
+# screenshot
+Print
+	flameshot gui
 
 # launching common apps keys
 super + ctrl + b

@@ -32,14 +32,13 @@ Plug 'itchyny/lightline.vim'
     \   'readonly': 'helpers#lightline#read_only',
     \   'fugitive': 'helpers#lightline#fugitive'
     \ },
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
     \ }
 
 Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'edkolev/tmuxline.vim'
 
 
 " =========================== Important ==========================================================================================================================
@@ -70,7 +69,7 @@ Plug 'yuki-ycino/fzf-preview.vim'
   let g:fzf_layout = { 'window': 'call fzf_preview#window#create_centered_floating_window()' }
   " let g:fzf_layout = { 'window': 'call floaterm#window#open_floating(1, 70, 70, "top")' }
 
-" Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
+Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_window_command = 'call fzf_preview#window#create_centered_floating_window()'
   let g:nv_search_paths = ['~/notes']
   let g:nv_keymap = {
@@ -136,7 +135,7 @@ Plug 'junegunn/vim-easy-align'
 
 
 " =========================== General ==============================================================================================================================
-" Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'psliwka/vim-smoothie'
@@ -223,23 +222,23 @@ Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 Plug 'baskerville/vim-sxhkdrc'
 
-" considering
-" Plug 'junegunn/vim-after-object'
-" Plug 'airblade/vim-gitgutter'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'terryma/vim-expand-region'
-" Plug 'junegunn/vim-journal'
-" Plug 'junegunn/heytmux' (like tmuxinator)
-"colors
-" Plug 'rakr/vim-one'
-" Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'arcticicestudio/nord-vim'
-" Plug 'sjl/badwolf'
-" Plug 'turbio/bracey.vim'
-" Plug 'TaDaa/vimade'
-" Plug 'tmux-plugins/vim-tmux-focus-events'
-" status bar
-" Plug brooth/far.vim
+"considering
+"Plug 'junegunn/vim-after-object'
+"Plug 'airblade/vim-gitgutter'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'terryma/vim-expand-region'
+"Plug 'junegunn/vim-journal'
+"Plug 'junegunn/heytmux' (like tmuxinator)
+"olors
+"Plug 'rakr/vim-one'
+"Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'arcticicestudio/nord-vim'
+"Plug 'sjl/badwolf'
+"Plug 'turbio/bracey.vim'
+"Plug 'TaDaa/vimade'
+"Plug 'tmux-plugins/vim-tmux-focus-events'
+"status bar
+"Plug brooth/far.vim
 
 call plug#end()
 endif

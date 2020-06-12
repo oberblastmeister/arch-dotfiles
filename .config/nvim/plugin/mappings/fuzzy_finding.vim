@@ -56,7 +56,7 @@ nnoremap <silent> \m :Clap maps<CR>
 nnoremap <silent> <leader>/ :Clap blines<CR>
 
 " notational fzf
-" nnoremap <silent> <C-n> :NV<CR>
+nnoremap <silent> <C-n> :NV<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {

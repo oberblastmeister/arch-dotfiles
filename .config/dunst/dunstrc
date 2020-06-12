@@ -24,6 +24,8 @@
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
     #icon_position = left
     #icon_folders = /usr/share/icons/elementary/actions/16/
+    #max_icon_size = 32
+
 
 [frame]
     width = 4.5

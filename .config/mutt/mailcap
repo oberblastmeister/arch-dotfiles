@@ -1,11 +1,19 @@
 text/plain; $EDITOR %s ;
+
 text/html; openfile %s ; nametemplate=%s.html
-# use w3m to convert html
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
-# or lynx
+
+# lynx is the best for html email
 # text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput;
-# image/*; $HOME/.config/lf/draw_img.sh %s
+
+# use w3m to convert html
+# text/html; w3m -I %{charset} -T text/html; copiousoutput;
+
+# or elinks
+# text/html; elinks -dump %s; nametemplate=%s.html; copiousoutput
+
 image/*; openfile %s ;
+
+# use mpv for videos
 video/*; setsid mpv --quiet %s &; copiousoutput
 application/pdf; openfile %s ;
 application/pgp-encrypted; gpg -d '%s'; copiousoutput;

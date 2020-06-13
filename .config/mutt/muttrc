@@ -17,4 +17,7 @@ bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
 
 # personal mailcap
-set mailcap_path = ~/.config/mutt/mailcap
+# set mailcap_path = ~/.config/mutt/mailcap
+
+# change sidebar visibility
+set sidebar_visible = no

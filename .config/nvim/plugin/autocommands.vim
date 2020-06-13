@@ -29,6 +29,7 @@ augroup settings
   autocmd FileType mail let b:coc_suggest_disable = 1
 
   " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
+  autocmd FileType sxhkdrc setlocal commentstring=#\ %s
 augroup end
 
 augroup markdown

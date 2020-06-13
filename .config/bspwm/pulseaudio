@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sleep 5
+pacmd load-module module-alsa-source device=hw:0,6

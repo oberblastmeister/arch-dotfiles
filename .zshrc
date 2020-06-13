@@ -36,6 +36,9 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # source p10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+zinit ice atload"export KEYTIMEOUT=20; bindkey "jk" vi-cmd-mode"
+zinit light softmoth/zsh-vim-mode
+
 # ============================================================================
 # ============================================================================
 # ============================================================================
@@ -68,9 +71,6 @@ MODE_CURSOR_SEARCH="steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 
-zinit ice atload"export KEYTIMEOUT=20; bindkey "jk" vi-cmd-mode"
-zinit light softmoth/zsh-vim-mode
-
 # good defaults
 zinit wait lucid light-mode for \
   OMZL::completion.zsh \
@@ -98,10 +98,10 @@ zinit ice lucid wait blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/
   atpull"%atclone" pick".fzf.zsh"
 zinit light junegunn/fzf
 
-zinit ice lucid wait atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-    atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
-    as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
-zinit light pyenv/pyenv
+# zinit ice lucid wait atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
+#     atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
+#     as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
+# zinit light pyenv/pyenv
 
 # let fzf find hidden files
 export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"

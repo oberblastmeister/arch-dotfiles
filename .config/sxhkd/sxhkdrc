@@ -123,36 +123,40 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# media keys
+ # media keys
 # XF86AudioRaiseVolume
-	# amixer set Master 7%+
-# 
+# 	amixer set Master 7%+
+ 
 # XF86AudioLowerVolume
-	# amixer set Master 7%-
-# 
+# 	amixer set Master 7%-
+ 
 # XF86AudioMute
-	# amixer set Master toggle
-# 
+# 	amixer set Master toggle
 
 XF86AudioRaiseVolume
-	pactl set-sink-volume 1 +5%
+	amixer -c 0 set Master 7%+; \
+	amixer set Master 7%+
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 1 -5%
+	amixer -c 0 set Master 7%-; \
+	amixer set Master 7%-
 
 XF86AudioMute
-	pactl set-sink-mute 1 toggle
+	amixer -c 0 set Master toggle; \
+	amixer set Master toggle
 
+# brightness
 XF86MonBrightnessDown
 	xbacklight -dec 8
 
 XF86MonBrightnessUp
 	xbacklight -inc 8
 
-# screenshot
-Print
-	flameshot gui
+super + =
 
+
+    
+	
 # launching common apps keys
 super + ctrl + b
 	firefox

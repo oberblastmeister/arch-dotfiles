@@ -6,7 +6,7 @@ super + Return
 	kitty tmux
 
 # program launcher
-super + @space
+super + d
 	~/.config/polybar/scripts/launcher
 
 # make sxhkd reload its configuration files:

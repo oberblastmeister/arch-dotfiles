@@ -18,7 +18,7 @@ Plug 'itchyny/lightline.vim'
     \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+    \             [ 'fugitive', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
     \              [ 'fileformat', 'filetype'] ]
@@ -30,7 +30,9 @@ Plug 'itchyny/lightline.vim'
     \   'filetype': 'helpers#devicons#my_filetype',
     \   'fileformat': 'helpers#devicons#my_file_format',
     \   'readonly': 'helpers#lightline#read_only',
-    \   'fugitive': 'helpers#lightline#fugitive'
+    \   'fugitive': 'helpers#lightline#fugitive',
+    \   'cocstatus': 'coc#status',
+    \   'currentfunction': 'CocCurrentFunction'
     \ },
     \ }
 
@@ -49,13 +51,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-sh',
   \ 'coc-rust-analyzer',
   \ 'coc-tsserver',
+  \ 'coc-html',
   \ 'coc-snippets',
   \ 'coc-emmet',
   \ 'coc-actions',
-  \ 'coc-html',
-  \ 'coc-explorer',
+  \ 'coc-java',
   \ 'coc-marketplace'
   \ ]
+
+  let g:vimspector_enable_mappings = 'HUMAN'
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -87,9 +92,6 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
     let test#strategy = "dispatch"
   endif
 
-  let g:vimspector_enable_mappings = 'HUMAN'
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
-
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_fzf_preview = ['right:50%']
@@ -115,6 +117,7 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
 
+Plug 'dyng/ctrlsf.vim'
 
 " =========================== General ==============================================================================================================================
 Plug 'tpope/vim-abolish'
@@ -130,8 +133,8 @@ Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
   let g:rooter_change_directory_for_non_project_files = 'current'
 Plug 'tpope/vim-sleuth'
-" Plug 'wesQ3/vim-windowswap'
-"   let g:windowswap_map_keys = 0
+Plug 'wesQ3/vim-windowswap'
+  let g:windowswap_map_keys = 0
 Plug 'lambdalisue/suda.vim'
 command! SudoWrite w suda://%
 Plug 'ptzz/lf.vim'
@@ -247,4 +250,3 @@ vnoremap > >gv
 "   \ 'sink*': { lines -> s:delete_buffers(lines) },
 "   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
-

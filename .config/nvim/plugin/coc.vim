@@ -5,9 +5,6 @@ set hidden
 set nobackup
 set nowritebackup
 
-" Give more space for displaying messages.
-" set cmdheight=2
-
 " Having longer upatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=100
@@ -71,6 +68,12 @@ autocmd! CursorHold * silent! call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+" rename general word
+nmap <leader>rw :CocCommand document.renameCurrentWord<CR>
+" rename with refractor window
+nmap <leader>rf <Plug>(coc-refactor)
+" cocsearch
+nmap <leader>rs :CocSearch <cword><cr>
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -135,12 +138,7 @@ nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<C
  " Apply AutoFix to problem on the current line.
 nmap <leader>af  <Plug>(coc-fix-current)
 
-" nmap <expr> <silent> <C-c> <SID>select_current_word()
-" function! s:select_current_word()
-"   if !get(g:, 'coc_cursors_activated', 0)
-"     return "\<Plug>(coc-cursors-word)"
-"   endif
-"   return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-" endfunc
-"
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
+" conflicts with mapping
+" nmap <silent> <C-d> <Plug>(coc-cursors-word)*
+" xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn

@@ -32,7 +32,7 @@ set number relativenumber
 set clipboard^=unnamed,unnamedplus
 set tabstop=4
 set shiftwidth=4
-set inccommand=nosplit
+set inccommand=split
 set expandtab
 set noshowmode
 set foldmethod=syntax
@@ -55,10 +55,9 @@ set shortmess+=I
 set shortmess+=O
 set shortmess+=a   " use abbreviations
 set shortmess+=W   " dont' echo written when writing
+set shortmess+=A   " no swapfile messages
 
 " make ~ for new lines be same color as background so they are no seen
 highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
-" highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-
-set shortmess+=A   " no swapfile messages
+highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg

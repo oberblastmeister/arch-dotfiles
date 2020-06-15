@@ -118,10 +118,6 @@ nnoremap <silent> <Leader>e :CocCommand explorer --position left<CR>
 " goyo mapping
 nnoremap <silent> <leader>go :Goyo<CR>
 
-" coc refractoring
-nnoremap <Leader>rf :CocSearch
-
-
 " vim test mappings
 nmap <silent> <Leader>tn :TestNearest<CR>
 nmap <silent> <Leader>tf :TestFile<CR>

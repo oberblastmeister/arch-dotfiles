@@ -1,25 +1,12 @@
 " ===================================================================================================================================================
 " ================ Regular leader mappings =========================================================================================================
 " ===================================================================================================================================================
-function! Ask_for_filename(function)
-  if expand('%:t') == ''
-    let filename = input("Please provide a filename: ")
-    if filename != ''
-      execute "" . a:function . filename
-    endif
-  else
-    execute a:function
-  endif
-endfunction
-
 nnoremap <silent> <Leader><Leader> <C-^>
 nnoremap <silent> <Leader>o :call zoom#toggle()<cr>
 nnoremap <silent> <Leader>q :quit<CR>
 nnoremap <silent> <Leader>Q :VimuxCloseRunner<CR>
 nnoremap <Leader>w :write<CR>
-" nnoremap <Leader>w :call Ask_for_filename("write")<CR>
 nnoremap <silent> <Leader>x :xit<CR>
-" nnoremap <silent> <Leader>x :call Ask_for_filename("xit")<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <silent> <leader>p :pu<CR>
 
@@ -32,15 +19,6 @@ nnoremap <silent> <Leader>zz :call mappings#zap()<CR>
 " ================================================================================================================================================
 " ================ Vimux =========================================================================================================================
 " ================================================================================================================================================
-function! RestartVimspector()
-  VimspectorReset()
-  sleep 2000m
-  call vimspector#LaunchWithSettings( { "Filepath": "" . bufname("%") } )
-endfunction
-
-nnoremap <Leader>dr :call RestartVimspector()<CR>
-nnoremap <Leader>dq :VimspectorReset<CR>
-nnoremap <leader>d :call vimspector#LaunchWithSettings( { "Filepath": "" . bufname("%") } )<CR>
 
 " Vimux
 " Prompt for a command to run
@@ -155,15 +133,22 @@ nmap <silent> <Leader>tg :TestVisit<CR>
 nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
 
 " toggle fugitive to yadm
-function! Fugitive_toggle()
-  let g:fugitive_toggle = 0
-  if g:fugitive_toggle == 0
-    let g:fugitive_git_executable = 'yadm'
-    let g:fugitive_toggle = 1
-  else
-    let g:fugitive_git_executable = 'git'
-    let g:fugitive_toggle = 0
-  endif
-endfunction
+" function! Fugitive_toggle()
+"   let g:fugitive_toggle = 0
+"   if g:fugitive_toggle == 0
+"     let g:fugitive_git_executable = 'yadm'
+"     let g:fugitive_toggle = 1
+"   else
+"     let g:fugitive_git_executable = 'git'
+"     let g:fugitive_toggle = 0
+"   endif
+" endfunction
 
 nnoremap <Leader>I :call Fugitive_toggle()<CR>
+
+
+" =========================================================
+" ============================= Vimspector ===============================
+" =================================================================
+
+nnoremap <leader>d :call mappings#start_debugger()<Cr>

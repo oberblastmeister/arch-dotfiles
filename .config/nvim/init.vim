@@ -64,10 +64,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
   " lua require("navigation")
   " let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
-  let g:fzf_layout = { 'window': 'call Centered_floating_window(0)' }
+  let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(0)' }
 
 Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
-  let g:nv_window_command = 'call Centered_floating_window(0)'
+  let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(0)'
   let g:nv_search_paths = ['~/notes']
   let g:nv_keymap = {
                       \ 'ctrl-x': 'split ',
@@ -87,10 +87,8 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
     let test#strategy = "dispatch"
   endif
 
-" if !has('win32') || !has('win64')
-"   let g:vimspector_enable_mappings = 'HUMAN'
-"   Plug 'puremourning/vimspector'
-" endif
+  let g:vimspector_enable_mappings = 'HUMAN'
+Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -250,29 +248,3 @@ vnoremap > >gv
 "   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
 
-function! Centered_floating_window(border)
-    let width = min([&columns - 4, max([80, &columns - 20])])
-    let height = min([&lines - 4, max([20, &lines - 10])])
-    let top = ((&lines - height) / 2) - 1
-    let left = (&columns - width) / 2
-    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
-
-    if a:border == v:true
-        let top = "╭" . repeat("─", width - 2) . "╮"
-        let mid = "│" . repeat(" ", width - 2) . "│"
-        let bot = "╰" . repeat("─", width - 2) . "╯"
-        let lines = [top] + repeat([mid], height - 2) + [bot]
-        let s:buf = nvim_create_buf(v:false, v:true)
-        call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-        call nvim_open_win(s:buf, v:true, opts)
-        set winhl=Normal:Normal
-        let opts.row += 1
-        let opts.height -= 2
-        let opts.col += 2
-        let opts.width -= 4
-        call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-        au BufWipeout <buffer> exe 'bw '.s:buf
-    else
-        call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    endif
-endfunction

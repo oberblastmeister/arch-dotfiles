@@ -59,6 +59,6 @@ set shortmess+=W   " dont' echo written when writing
 " make ~ for new lines be same color as background so they are no seen
 highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
-highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+" highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 
-" set shortmess+=A   " no swapfile messages
+set shortmess+=A   " no swapfile messages

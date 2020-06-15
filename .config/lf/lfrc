@@ -78,7 +78,12 @@ cmd extract ${{
 }}
 
 cmd mkdir %mkdir -p "$@"; 
-cmd touch %touch "$@"; lf -remote "send $id $select \"$1\""
+
+cmd touch ${{
+   res="$1"
+   touch "$@"
+   lf -remote "send $id select \"$res\""
+}}
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -100,21 +105,17 @@ cmd zip ${{
 
 cmd fzf_jump ${{
    FZF_DEFAULT_COMMAND="$FZF_ALT_C_COMMAND" 
-   res="$(fzf \"\$FZF_ALT_C_OPTS\")"
+   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
+
+   res="$(fzf)"
    cmd="cd"                                                       
    lf -remote "send $id $cmd \"$res\""
 }}
 
-# cmd fzf_open ${{
-#    res="$(fzf)"
-#    if [ -n "$res" ]; then
-#       cmd="rifle"
-#       lf -remote "send $id $cmd \"$res\""
-#    fi
-# }}
-
 cmd fzf ${{
    FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
+   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
+
    res="$(fzf)"
 
    if [ -f "$res" ]; then
@@ -184,7 +185,6 @@ cmd bulk-rename ${{
 # =======================================================================
 
 map <a-c> :fzf_jump
-# map <c-p> :fzf_open
 map <c-t> :fzf
 
 # export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
@@ -205,7 +205,7 @@ map x $$f
 map X !$f
 
 # map custom open command
-map l :open
+# map l :open
 
 # dedicated keys for file opener actions
 map o &mimeopen $f

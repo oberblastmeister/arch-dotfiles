@@ -121,7 +121,7 @@ export FZF_DEFAULT_OPTS="
 
 export FZF_COMPLETION_OPTS="--layout=reverse --inline-info"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}'"
-export FZF_ALT_C_OPTS="--preview 'exa --level 2 --tree --color=always --group-directories-first --icons {} | head -50'"
+export FZF_ALT_C_OPTS="--preview 'exa --level 3 --tree --color=always --group-directories-first --icons {} | head -50'"
 
 # use fd for completion
 _fzf_compgen_path() {

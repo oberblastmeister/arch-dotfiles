@@ -51,6 +51,14 @@ function! mappings#run_code() abort
   let g:VimuxOrientation = "v"
 endfunction
 
+function mappings#start_debugger()
+  if &filetype == 'python'
+    call vimspector#LaunchWithSettings({ 'configuration': 'Python' })
+  elseif &filetype == 'rust' || &filetype == 'cpp'
+    call vimspector#LaunchWithSettings({ 'configuration': 'C family' })
+  endif
+endfunction
+
 function! mappings#source_vimrc()
   source ~/.config/nvim/init.vim
 

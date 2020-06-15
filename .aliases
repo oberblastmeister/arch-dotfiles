@@ -20,7 +20,7 @@ alias irust='jupyter console --kernel=rust'
 
 # exa aliases
 alias ls='exa --icons'
-alias lt='exa --tree --icons'
+alias lt='exa --tree --icons --level=3'
 alias lS='exa -1 --icons'
 alias la='exa --all --icons'
 
@@ -31,13 +31,7 @@ alias yt='ytop'
 
 alias chtsh='cht --shell'
 alias open='xdg-open &>/dev/null'
-eval $(thefuck --alias fuck)
 alias icat="kitty +kitten icat"
-
-alias keybindings='~/.config/yadm/dotfiles/bin/keymappings'
-alias gnome-keybindings='~/.config/yadm/dotfiles/bin/gnome_keybindings'
-
-alias news='informant'
 
 alias mutt='neomutt'
 
@@ -54,3 +48,9 @@ alias yc='yadm commit -am'
 alias yp='yadm push'
 
 alias t='task'
+
+# overrides default alias yay='yay -Syu'
+alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
+alias fpacman="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
+
+eval $(thefuck --alias fuck)

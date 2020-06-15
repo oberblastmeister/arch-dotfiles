@@ -48,6 +48,8 @@ set autoread
 set mouse=a
 set lazyredraw
 set nowrap
+" for transparent floating windows
+set winblend=25
 " no splash screen and shorter messages
 set shortmess+=I
 set shortmess+=O

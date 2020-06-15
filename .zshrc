@@ -27,10 +27,10 @@ fi
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-bin-gem-node
+# zinit light-mode for \
+#     zinit-zsh/z-a-patch-dl \
+#     zinit-zsh/z-a-as-monitor \
+#     zinit-zsh/z-a-bin-gem-node
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 # source p10k
@@ -70,6 +70,9 @@ MODE_CURSOR_VICMD="block"
 MODE_CURSOR_SEARCH="steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
+
+zinit ice lucid wait
+zinit snippet ~/.aliases
 
 # good defaults
 zinit wait lucid light-mode for \
@@ -113,10 +116,12 @@ export FZF_TMUX=1
 export FZF_DEFAULT_OPTS="
 --layout=reverse --inline-info --ansi
 --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
---color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54"
+--color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54,border:#928374
+--border"
 
-export FZF_COMPLETION_OPTS="--layout=reverse --inline-info --ansi"
-export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} | head -500'"
+export FZF_COMPLETION_OPTS="--layout=reverse --inline-info"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}'"
+export FZF_ALT_C_OPTS="--preview 'exa --level 2 --tree --color=always --group-directories-first --icons {} | head -50'"
 
 # use fd for completion
 _fzf_compgen_path() {
@@ -140,20 +145,19 @@ zinit snippet OMZP::colored-man-pages/colored-man-pages.plugin.zsh
 zinit ice lucid wait
 zinit light soimort/translate-shell
 
-zinit ice id-as"googler" as"program"
+zinit ice lucid wait id-as"googler" as"program"
 zinit snippet https://raw.githubusercontent.com/jarun/googler/v4.0/googler
 
-zinit ice id-as"cht" as"program"
+zinit ice lucid wait id-as"cht" as"program"
 zinit snippet https://cht.sh/:cht.sh
 
-zinit ice id-as"speedtest" as"program"
+zinit ice lucid wait id-as"speedtest" as"program"
 zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
 
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
-# source aliases
-source $HOME/.aliases
-
 # source lf icons
 source ~/.lf_icons
+
+eval "$(pyenv init -)"

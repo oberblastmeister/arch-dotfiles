@@ -17,11 +17,9 @@ bspc config borderless_monocle   false
 bspc config gapless_monocle      true
 bspc config focus_follows_pointer true
 
-bspc rule -a Zathura state=tiled
-bspc rule -a sxiv state=tiled
-bspc rule -a mpv state=tiled
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a Zathura state=tiled
 bspc rule -a Gimp state=floating follow=on
 
 bspc config focused_border_color "#928374"
@@ -31,14 +29,14 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-~/.config/polybar/launch.sh
+~/.config/polybar/launch.sh &
 
 # set display scale
-xrandr --output eDP1 --scale 1x1
+xrandr --output eDP1 --scale 1x1 &
 
 # set wallpaper
 # feh --bg-scale ~/Pictures/geometric_background.png
-feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png
+feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
 
 # set correct pulseaudio settings
 # /home/brian/.config/yadm/dotfiles/bin/pulseaudio &
@@ -46,8 +44,10 @@ feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------
-# picom &
+# /usr/lib/geoclue-2.0/demos/agent &
+# redshift &
 xfce4-power-manager &
+screenrotator &
 
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------
@@ -69,5 +69,8 @@ setxkbmap -option ctrl:nocaps
 
 # Change from ugly 'X' cursor when hovering over background
 xsetroot -cursor_name left_ptr
+
+# load yoga usage mode dkms
+# modprobe yoga-usage-mode
 
 amixer set Master 0%

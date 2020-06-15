@@ -36,23 +36,16 @@ set recolor                     "false"
 # If it is false, it'll just be black and white.
 set recolor-keephue             "false"
 
-# Rest of your configs go here:
-
-# set adjust-open width
-# set pages-per-row 1
+set adjust-open width
 set selection-clipboard clipboard
 set incremental-search true
-# set guioptions ""
+# don't show any gui stuff
+set guioptions ""
 
 set window-title-home-tilde true
 set window-title-basename true
 set statusbar-home-tilde true
 set show-hidden true
 
-# map d scroll half-down
-# map u scroll half-up
-# map x toggle_page_mode
-# map <C-r> rotate
-# map r recolor
-# map <S-Up> zoom in
-# map <S-Down> zoom out
+map <C-r> rotate
+map r recolor

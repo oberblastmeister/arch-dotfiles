@@ -60,17 +60,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 
 " Use fzf for rg
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim'
-  let g:fzf_preview_use_dev_icons = 1
-  lua require("navigation")
+  " lua require("navigation")
   " let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
-  let g:fzf_layout = { 'window': 'call fzf_preview#window#create_centered_floating_window()' }
-  " let g:fzf_layout = { 'window': 'call floaterm#window#open_floating(1, 70, 70, "top")' }
+  let g:fzf_layout = { 'window': 'call Centered_floating_window(0)' }
 
 Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
-  let g:nv_window_command = 'call fzf_preview#window#create_centered_floating_window()'
+  let g:nv_window_command = 'call Centered_floating_window(0)'
   let g:nv_search_paths = ['~/notes']
   let g:nv_keymap = {
                       \ 'ctrl-x': 'split ',
@@ -80,21 +77,6 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_create_note_key = 'ctrl-a'
   " When adding notes don't put it in split
   let g:nv_create_note_window = 'edit'
-
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-  " default 100 milliseconds (maple delay)
-  let g:clap_maple_delay = 0
-  " change sign
-  let g:clap_current_selection_sign = { 'text': '', 'texthl': "ClapCurrentSelectionSign", "linehl": "ClapCurrentSelection"}
-  let g:clap_selected_sign = { 'text': '', 'texthl': "ClapSelectedSign", "linehl": "ClapSelected" }
-  " make grep delay faster
-  let g:clap_provider_grep_delay = 0
-  " make clap on move delay faster (default 300 milliseconds)
-  let g:clap_on_move_delay = 100
-  " disable rooter for clap
-  let g:clap_disable_run_rooter = 1
-  let g:clap_layout = { 'relative': 'editor' }
-Plug 'jremmen/vim-ripgrep'
 
 Plug 'tpope/vim-dispatch'
   let g:dispatch_no_maps = 1
@@ -110,8 +92,10 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
 "   Plug 'puremourning/vimspector'
 " endif
 
-  " let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
+  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+  let g:vista_fzf_preview = ['right:50%']
+
 Plug 'haya14busa/is.vim'
 
 " =========================== Editing ==========================================================================================================================
@@ -158,21 +142,16 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 500
 
+Plug 'ChristianChiarulli/codi.vim'
+
 
 " =========================== Text Objects ==========================================================================================================================
 Plug 'kana/vim-textobj-user'
-Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-indent'
 Plug 'wellle/targets.vim'
 
 " =========================== Git ================================================================================================================================
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-" Plug 'junegunn/gv.vim'
-" Plug 'junegunn/vim-github-dashboard'
-  let g:github_dashboard = { 'username': 'littlebubu' }
-
 
 " =========================== Tmux ==============================================================================================================================
 if exists('$TMUX')
@@ -192,7 +171,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'reedes/vim-pencil', { 'for': 'markdown' }
+Plug 'reedes/vim-pencil'
   let g:pencil#wrapModeDefault = 'soft'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
@@ -270,3 +249,30 @@ vnoremap > >gv
 "   \ 'sink*': { lines -> s:delete_buffers(lines) },
 "   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
+
+function! Centered_floating_window(border)
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 10])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    if a:border == v:true
+        let top = "╭" . repeat("─", width - 2) . "╮"
+        let mid = "│" . repeat(" ", width - 2) . "│"
+        let bot = "╰" . repeat("─", width - 2) . "╯"
+        let lines = [top] + repeat([mid], height - 2) + [bot]
+        let s:buf = nvim_create_buf(v:false, v:true)
+        call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+        call nvim_open_win(s:buf, v:true, opts)
+        set winhl=Normal:Normal
+        let opts.row += 1
+        let opts.height -= 2
+        let opts.col += 2
+        let opts.width -= 4
+        call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+        au BufWipeout <buffer> exe 'bw '.s:buf
+    else
+        call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    endif
+endfunction

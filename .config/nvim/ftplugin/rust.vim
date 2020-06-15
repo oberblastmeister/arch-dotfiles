@@ -1,6 +1,6 @@
 nnoremap <silent> <leader>p :call Cargo()<CR>
 " nnoremap <silent> <leader>r :VimuxRunCommand("./target/debug/" . substitute(getcwd(), '^.*/', '', ''))<CR>
-nnoremap <silent> <leader>r :write!<cr>:VimuxRunCommand("clear; cargo run")<cr>
+nnoremap <silent> <leader>r :write!<cr>:VimuxRunCommand("clear; cargo run --release")<cr>
 nnoremap <silent> <leader>sr :VimuxRunCommand("irust")<cr>
 
 function Cargo()

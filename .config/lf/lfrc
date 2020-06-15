@@ -59,7 +59,7 @@ cmd open ${{
 # map r push :rename<space>
 
 # make sure trash folder exists
-# %mkdir -p ~/.trash
+%mkdir -p ~/.trash
 
 # move current file or selected files to trash folder
 cmd trash %trash-put $fx
@@ -77,8 +77,8 @@ cmd extract ${{
     esac
 }}
 
-cmd mkdir %mkdir -p "$@"
-cmd touch %touch "$@"
+cmd mkdir %mkdir -p "$@"; 
+cmd touch %touch "$@"; lf -remote "send $id $select \"$1\""
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -99,11 +99,10 @@ cmd zip ${{
 }}
 
 cmd fzf_jump ${{
-   export FZF_DEFAULT_COMMAND='fd --type directory --follow --exclude .git --color=always --hidden' 
-   res="$(fzf-tmux)"
-   export FZF_DEFAULT_COMMAND='fd --type file --follow --exclude .git --color=always --hidden'
+   FZF_DEFAULT_COMMAND="$FZF_ALT_C_COMMAND" 
+   res="$(fzf \"\$FZF_ALT_C_OPTS\")"
    cmd="cd"                                                       
-lf -remote "send $id $cmd \"$res\""
+   lf -remote "send $id $cmd \"$res\""
 }}
 
 # cmd fzf_open ${{
@@ -115,10 +114,8 @@ lf -remote "send $id $cmd \"$res\""
 # }}
 
 cmd fzf ${{
-   old_fzf_command=$FZF_DEFAULT_COMMAND
-   export FZF_DEFAULT_COMMAND='fd --follow --hidden --color=always --exclude .git'
+   FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
    res="$(fzf)"
-   export FZF_DEFAULT_COMMAND=$old_fzf_command
 
    if [ -f "$res" ]; then
      cmd="select"

@@ -10,7 +10,7 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 typeset -U path
-path+=(~/.cargo/bin $VOLTA_HOME/bin)
+path+=(~/.cargo/bin $VOLTA_HOME/bin ~/bin)
 # export to subprocesses
 export PATH
 

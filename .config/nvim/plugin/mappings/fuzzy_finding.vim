@@ -16,12 +16,12 @@ nnoremap <silent> \v  :Clap command<CR>
 nnoremap <silent> \t  :Vista finder<CR>
 
 " find buffers
-nnoremap <silent> <C-b> :Buffers<CR>
+nnoremap <silent> <c-b> :Buffers<CR>
 
 " find files (change back to fzf if clap is to slow)
 " nnoremap <silent> <C-t> :Clap files<CR>
 
-nnoremap <silent> <C-t> :Files<Cr>
+nnoremap <silent> <c-t> :Files<Cr>
 
 " clap filer (overides default scroll mappings)
 " nnoremap <silent> <C-e> :Clap filer<CR>
@@ -50,7 +50,7 @@ nnoremap <silent> \l :CocList<CR>
 nnoremap <silent> \m :Clap maps<CR>
 
 " fuzzy search lines in current buffer
-nnoremap <silent> <leader>/ :Clap blines<CR>
+nnoremap <silent> <leader>/ :BLines<CR>
 
 " notational fzf
 nnoremap <silent> <C-n> :NV<CR>

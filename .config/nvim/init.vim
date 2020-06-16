@@ -45,8 +45,6 @@ Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
-" Plug 'edkolev/tmuxline.vim'
-
 
 " =========================== Important ==========================================================================================================================
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -61,8 +59,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-emmet',
   \ 'coc-actions',
   \ 'coc-java',
-  \ 'coc-marketplace'
+  \ 'coc-marketplace',
+  \ 'coc-explorer'
   \ ]
+
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 Plug 'honza/vim-snippets'
 
@@ -109,6 +110,7 @@ Plug 'haya14busa/is.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+
 Plug 'AndrewRadev/switch.vim'
   let g:switch_custom_definitions =
       \ [
@@ -121,6 +123,7 @@ Plug 'AndrewRadev/switch.vim'
       \   ['yes', 'no'],
       \   ['vim', 'emacs']
       \ ]
+
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
 
@@ -131,23 +134,30 @@ Plug 'tpope/vim-eunuch'
 Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'farmergreg/vim-lastplace'
+
 Plug 'dhruvasagar/vim-zoom'
  let g:zoom#statustext = ''
 
 " Plug 'sickill/vim-pasta'
 Plug 'stefandtw/quickfix-reflector.vim'
+
 Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
   let g:rooter_change_directory_for_non_project_files = 'current'
+
 Plug 'tpope/vim-sleuth'
+
 Plug 'wesQ3/vim-windowswap'
   let g:windowswap_map_keys = 0
+
 Plug 'lambdalisue/suda.vim'
 command! SudoWrite w suda://%
+
 Plug 'ptzz/lf.vim'
-Plug 'thezeroalpha/vim-lf'
-Plug 'rbgrouleff/bclose.vim'
+  let g:lf_map_keys = 0
   let g:lf_replace_netrw = 1
+
+Plug 'rbgrouleff/bclose.vim'
 
 " don't need in neovim master branch
 " Plug 'machakann/vim-highlightedyank'
@@ -184,7 +194,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown', 'on': 'MarkdownPreview'  }
-Plug 'reedes/vim-pencil', { 'for': 'markdown' }
+Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
   let g:pencil#wrapModeDefault = 'soft'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown', 'on': 'Goyo' }
@@ -242,6 +252,8 @@ cnoremap jk <C-c>
 " set leader mappings
 let mapleader="\<Space>"
 let maplocalleader="\\"
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
 
 " Visual shifting does not exit visual mode
 vnoremap < <gv

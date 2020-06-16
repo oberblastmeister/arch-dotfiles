@@ -67,6 +67,7 @@ noremap <silent> K :call <SID>show_documentation()<CR>
 autocmd! CursorHold * silent! call CocActionAsync('highlight')
 
 " Symbol renaming.
+nnoremap <silent> <leader>r :<c-u>WhichKey '<Space>r'<CR>
 nmap <leader>rn <Plug>(coc-rename)
 " rename general word
 nmap <leader>rw :CocCommand document.renameCurrentWord<CR>

@@ -1,7 +1,7 @@
-nnoremap <silent> <leader>p :call Cargo()<CR>
-" nnoremap <silent> <leader>r :VimuxRunCommand("./target/debug/" . substitute(getcwd(), '^.*/', '', ''))<CR>
-nnoremap <silent> <leader>r :write!<cr>:VimuxRunCommand("clear; cargo run --release")<cr>
-nnoremap <silent> <leader>sr :VimuxRunCommand("irust")<cr>
+nnoremap <buffer> <silent> <leader>p :call Cargo()<CR>
+" nnoremap <buffer> <silent> <leader>r :VimuxRunCommand("./target/debug/" . substitute(getcwd(), '^.*/', '', ''))<CR>
+nnoremap <buffer> <silent> <leader>r :write!<cr>:VimuxRunCommand("clear; cargo run --release")<cr>
+nnoremap <buffer> <silent> <leader>sr :VimuxRunCommand("irust")<cr>
 
 function Cargo()
   let cargo_choice = confirm("Project options:", "New Bi&nary\nNew &Library\n&Build!\n&Run\n&Check")

@@ -7,6 +7,6 @@ if filereadable('/home/brian/.local/share/nvim/plugged/coc.nvim/plugin/coc.vim')
 " let g:_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+" imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 endif

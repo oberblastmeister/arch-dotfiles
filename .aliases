@@ -52,5 +52,6 @@ alias t='task'
 # overrides default alias yay='yay -Syu'
 alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 alias fpacman="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
+alias z="j"
 
 eval $(thefuck --alias fuck)

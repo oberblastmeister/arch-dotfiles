@@ -140,7 +140,7 @@ zinit light-mode for \
     https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
 
 zinit ice lucid wait
-zinit snippet OMZP::colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet OMZP::autojump/autojump.plugin.zsh
 
 # load programs
 zinit ice lucid wait
@@ -162,3 +162,5 @@ zinit light exercism/cli
 source ~/.lf_icons
 
 eval "$(pyenv init -)"
+export VOLTA_HOME="/home/brian/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

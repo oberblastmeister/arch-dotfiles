@@ -8,6 +8,10 @@
 "    ███  ░██░░██████░░██████   ░░██   ░██ ███ ░██ ░██
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
 
 silent! if plug#begin(stdpath('data') . '/plugged')
 
@@ -17,8 +21,8 @@ Plug 'itchyny/lightline.vim'
   let g:lightline = {
     \ 'colorscheme': 'gruvbox',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
+    \   'left': [ [ 'mode', 'paste', 'zoom'],
+    \             ['cocstatus',  'fugitive', 'readonly', 'filename', 'modified'] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
     \              [ 'fileformat', 'filetype'] ]
@@ -32,7 +36,8 @@ Plug 'itchyny/lightline.vim'
     \   'readonly': 'helpers#lightline#read_only',
     \   'fugitive': 'helpers#lightline#fugitive',
     \   'cocstatus': 'coc#status',
-    \   'currentfunction': 'CocCurrentFunction'
+    \   'currentfunction': 'CocCurrentFunction',
+    \   'zoom': 'zoom#statusline'
     \ },
     \ }
 
@@ -119,8 +124,6 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
 
-Plug 'dyng/ctrlsf.vim'
-
 " =========================== General ==============================================================================================================================
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
@@ -129,7 +132,9 @@ Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'farmergreg/vim-lastplace'
 Plug 'dhruvasagar/vim-zoom'
-Plug 'sickill/vim-pasta'
+ let g:zoom#statustext = ''
+
+" Plug 'sickill/vim-pasta'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
@@ -148,7 +153,7 @@ Plug 'rbgrouleff/bclose.vim'
 " Plug 'machakann/vim-highlightedyank'
   " let g:highlightedyank_highlight_duration = 300
 
-Plug 'ChristianChiarulli/codi.vim'
+Plug 'ChristianChiarulli/codi.vim', { 'on': 'Codi' }
 
 " overides <CR> mapping to replay last macro
 Plug 'wincent/replay'
@@ -178,11 +183,11 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_auto_insert_bullets = 1
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'reedes/vim-pencil'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown', 'on': 'MarkdownPreview'  }
+Plug 'reedes/vim-pencil', { 'for': 'markdown' }
   let g:pencil#wrapModeDefault = 'soft'
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'for': 'markdown', 'on': 'Goyo' }
   " let g:limelight_default_coefficient = 0.7
 " Plug 'vimwiki/vimwiki'
 

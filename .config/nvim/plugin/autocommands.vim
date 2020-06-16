@@ -2,7 +2,7 @@ augroup settings
   autocmd!
 
   " turn off autocomment
-  " autocmd FileType * setlocal formatoptions-=cro
+  autocmd FileType * setlocal formatoptions-=cro
 
   " quit vimux when vim leaves
   " autocmd VimLeave * call VimuxCloseRunner()
@@ -26,4 +26,5 @@ augroup settings
   
   " neovim master branch
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
+  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 augroup end

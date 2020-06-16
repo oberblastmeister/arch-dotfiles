@@ -59,6 +59,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-marketplace'
   \ ]
 
+Plug 'honza/vim-snippets'
+
   let g:vimspector_enable_mappings = 'HUMAN'
 Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
 
@@ -141,13 +143,15 @@ Plug 'ptzz/lf.vim'
 Plug 'thezeroalpha/vim-lf'
 Plug 'rbgrouleff/bclose.vim'
   let g:lf_replace_netrw = 1
-Plug 'machakann/vim-highlightedyank'
-  let g:highlightedyank_highlight_duration = 300
+
+" don't need in neovim master branch
+" Plug 'machakann/vim-highlightedyank'
+  " let g:highlightedyank_highlight_duration = 300
 
 Plug 'ChristianChiarulli/codi.vim'
 
-Plug 'wincent/replay.git'
-
+" overides <CR> mapping to replay last macro
+Plug 'wincent/replay'
 
 " =========================== Text Objects ==========================================================================================================================
 Plug 'kana/vim-textobj-user'
@@ -221,8 +225,8 @@ Plug 'baskerville/vim-sxhkdrc'
 "Plug 'turbio/bracey.vim'
 "Plug 'TaDaa/vimade'
 "Plug 'tmux-plugins/vim-tmux-focus-events'
-"status bar
-"Plug brooth/far.vim
+" status bar
+" Plug brooth/far.vim
 
 call plug#end()
 endif
@@ -239,18 +243,18 @@ vnoremap < <gv
 vnoremap > >gv
 
 " function! s:list_buffers()
-"   redir => list
-"   silent ls
-"   redir END
-"   return split(list, "\n")
+  " redir => list
+  " silent ls
+  " redir END
+  " return split(list, "\n")
 " endfunction
 
 " function! s:delete_buffers(lines)
-"   execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+  " execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 " endfunction
 
 " command! BD call fzf#run(fzf#wrap({
-"   \ 'source': s:list_buffers(),
-"   \ 'sink*': { lines -> s:delete_buffers(lines) },
-"   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+  " \ 'source': s:list_buffers(),
+  " \ 'sink*': { lines -> s:delete_buffers(lines) },
+  " \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))

@@ -1,4 +1,5 @@
 {
+  "python.pythonPath": "python3",
   "python.jediEnabled": false,
   "python.analysis.diagnosticEnabled": true,
   "python.linting.enabled": true,
@@ -54,5 +55,9 @@
   "5": ["expandable?", "expand", "open"],
   "l": ["expandable?", "cd", "open"],
   "h": "gotoParent"
-  }
+  },
+
+  "snippets.ultisnips.directories": [
+    "UltiSnips"
+  ]
 }

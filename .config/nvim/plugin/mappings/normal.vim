@@ -1,5 +1,5 @@
 " Repeat last macro if in a normal buffer. (make sure doesn't override some important mapping)
-nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+" nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
 " stop that stupid window from popping up
 nmap q: :q

@@ -25,5 +25,5 @@ augroup settings
   autocmd FileType markdown let b:coc_suggest_disable = 1
   
   " neovim master branch
-  " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitue', 200)
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
 augroup end

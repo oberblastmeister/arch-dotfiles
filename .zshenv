@@ -9,6 +9,7 @@ export PAGER=less
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+# makesure that there are no duplicates in path var
 typeset -U path
 path+=(~/.cargo/bin $VOLTA_HOME/bin ~/bin)
 # export to subprocesses

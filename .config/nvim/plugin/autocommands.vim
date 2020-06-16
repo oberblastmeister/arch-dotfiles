@@ -2,7 +2,6 @@ augroup settings
   autocmd!
 
   " turn off autocomment
-  " maybe add this into a mapping
   " autocmd FileType * setlocal formatoptions-=cro
 
   " quit vimux when vim leaves
@@ -24,4 +23,7 @@ augroup settings
   autocmd FileType sxhkdrc setlocal commentstring=#\ %s
 
   autocmd FileType markdown let b:coc_suggest_disable = 1
+  
+  " neovim master branch
+  " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitue', 200)
 augroup end

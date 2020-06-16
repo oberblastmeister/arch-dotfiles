@@ -138,12 +138,15 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'lambdalisue/suda.vim'
 command! SudoWrite w suda://%
 Plug 'ptzz/lf.vim'
+Plug 'thezeroalpha/vim-lf'
 Plug 'rbgrouleff/bclose.vim'
   let g:lf_replace_netrw = 1
 Plug 'machakann/vim-highlightedyank'
-  let g:highlightedyank_highlight_duration = 500
+  let g:highlightedyank_highlight_duration = 300
 
 Plug 'ChristianChiarulli/codi.vim'
+
+Plug 'wincent/replay.git'
 
 
 " =========================== Text Objects ==========================================================================================================================
@@ -185,19 +188,20 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
 
 " language specific
-" Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-" Plug 'othree/html5.vim', { 'for': 'html' }
-" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'othree/html5.vim', { 'for': 'html' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'css' }
 Plug 'elzr/vim-json', { 'for': 'json' }
     let g:vim_json_syntax_conceal = 0
 Plug 'MTDL9/vim-log-highlighting', { 'for': 'log' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'ericpruitt/tmux.vim', { 'for': 'tmux' }
-" Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
+Plug 'chrisbra/vim-zsh', { 'for': 'zsh' }
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 Plug 'baskerville/vim-sxhkdrc'

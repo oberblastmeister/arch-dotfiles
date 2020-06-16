@@ -3,7 +3,6 @@
   "python.analysis.diagnosticEnabled": true,
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
-  "python.pythonPath": "python3",
   "diagnostic.errorSign": "✖",
   "diagnostic.warningSign": "🛆",
   "diagnostic.infoSign": "●",

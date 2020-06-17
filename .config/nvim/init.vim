@@ -202,8 +202,8 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown', 'on': 'MarkdownPreview'  }
 Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
   let g:pencil#wrapModeDefault = 'soft'
-Plug 'junegunn/goyo.vim', { 'for': 'markdown', 'on': 'Goyo' }
-Plug 'junegunn/limelight.vim', { 'for': 'markdown', 'on': 'Goyo' }
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
   " let g:limelight_default_coefficient = 0.7
 " Plug 'vimwiki/vimwiki'
 
@@ -281,3 +281,5 @@ vnoremap > >gv
   " \ 'sink*': { lines -> s:delete_buffers(lines) },
   " \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1

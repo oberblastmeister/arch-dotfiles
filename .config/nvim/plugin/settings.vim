@@ -36,7 +36,7 @@ set inccommand=split
 set expandtab
 set noshowmode
 set foldmethod=syntax
-set foldlevelstart=1
+set foldlevelstart=99
 set timeoutlen=500
 set ttimeoutlen=0
 set ignorecase

@@ -61,12 +61,15 @@
     "UltiSnips",
     "~/.local/share/nvim/plugged/vim-snippets/UltiSnips"
   ],
+
   "coc-actions.hideCursor": false,
+
   "cSpell.enabledLanguageIds": [
     "asciidoc",
-    "git-commit",
+    "gitcommit",
     "latex",
     "markdown",
-    "plaintext"
+    "plaintext",
+    "mail"
   ]
 }

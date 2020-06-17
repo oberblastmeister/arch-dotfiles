@@ -4,42 +4,41 @@ augroup settings
   " turn off autocomment
   autocmd FileType * setlocal formatoptions-=cro
 
-  " quit vimux when vim leaves
-  " autocmd VimLeave * call VimuxCloseRunner()
+  " autocommand to autoopen floaterm lf when opening directory
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'FloatermNew lf' argv()[0] | endif
+
+
+  autocmd VimResized * wincmd =
+
+  " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
+
+  " neovim master branch
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
+
+  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
 
   autocmd User GoyoEnter nested call mappings#goyo_enter()
   autocmd User GoyoLeave nested call mappings#goyo_leave()
 
   autocmd User GoyoEnter Limelight
   autocmd User GoyoLeave Limelight!
+  " limelight turns on cursorline for some reason
+  autocmd User GoyoLeave set nocursorline
+augroup end
 
-  autocmd VimResized * wincmd =
+augroup nostatusline
+  autocmd!
 
-  autocmd FileType fzf setlocal nonumber norelativenumber signcolumn=no
-  autocmd FileType gitcommit let b:coc_suggest_disable = 1
-  autocmd FileType mail let b:coc_suggest_disable = 1
-
-  " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
-  autocmd FileType sxhkdrc setlocal commentstring=#\ %s
-
-  autocmd FileType markdown let b:coc_suggest_disable = 1
-  
-  " neovim master branch
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
-
-  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-  autocmd Filetype help setlocal signcolumn=no
-
-  autocmd FileType fzf set laststatus=0
-    \| autocmd BufLeave <buffer> set laststatus=2
+  autocmd FileType fzf set laststatus=0 noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
   autocmd FileType floaterm set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
   autocmd  FileType which_key set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
-
-  autocmd BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
 augroup end

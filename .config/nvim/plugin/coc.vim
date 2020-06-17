@@ -140,7 +140,9 @@ nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<C
  " Apply AutoFix to problem on the current line.
 nmap <leader>af  <Plug>(coc-fix-current)
 
+" coc multiple cursors mappings
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
-" conflicts with mapping
-" nmap <silent> <C-d> <Plug>(coc-cursors-word)*
-" xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+
+" overide Q ex-mode mapping, don't want ex mode
+nmap <silent> Q <Plug>(coc-cursors-word)*
+xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn

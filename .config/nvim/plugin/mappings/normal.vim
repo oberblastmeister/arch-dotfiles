@@ -1,13 +1,16 @@
+" tmux navigator does this already
 " nnoremap <C-J> <C-W><C-J>
 " nnoremap <C-K> <C-W><C-K>
 " nnoremap <C-L> <C-W><C-L>
 " nnoremap <C-H> <C-W><C-H>
 
+nnoremap <tab> za
+
 " stop that stupid window from popping up
 nmap q: :q
 
 " don't enter ex mode
-nmap Q <nop>
+" nmap Q <nop>
 
 " add move keys to jumplist and also swap j and k with gj gk
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
@@ -38,3 +41,13 @@ nmap <Up> [e
 nmap <Down> ]e
 vmap <Up> [egv
 vmap <Down> ]egv
+
+" open lf file manager
+" ====================================================================
+" ============================= Open Lf ==================================================================
+" ============================================================================
+" like vim vinegar
+" select file in lf
+nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
+" open dir in lf
+nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>

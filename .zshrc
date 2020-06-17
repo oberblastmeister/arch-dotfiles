@@ -138,6 +138,9 @@ zinit light-mode for \
   atinit"bindkey -s '^o' 'lfcd\n'" \
     https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
 
+# zinit ice lucid wait
+# zinit snippet ~/.pyenv_init.zsh
+
 zinit ice lucid wait
 zinit snippet OMZP::autojump/autojump.plugin.zsh
 
@@ -159,7 +162,6 @@ zinit light exercism/cli
 
 # source lf icons
 source ~/.lf_icons
-
 eval "$(pyenv init -)"
-export VOLTA_HOME="/home/brian/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+# autoenable virtualenvs
+# eval "$(pyenv virtualenv-init -)"

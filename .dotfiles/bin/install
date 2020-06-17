@@ -122,13 +122,15 @@ install_bat_themes() {
 }
 
 install_python_packages() {
-    # install pyenv deps
+    sudo pacman -S pyenv
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
     local packages=(
         pynvim
         neovim-remote
         pdftotext
         html2text
-        # needed for calendar
+        # needed for gcalcli calendar
         httplib2
         oauth2client
     )

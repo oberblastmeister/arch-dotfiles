@@ -36,4 +36,7 @@ augroup settings
 
   autocmd FileType floaterm set laststatus=0
     \| autocmd BufLeave <buffer> set laststatus=2
+
+  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
 augroup end

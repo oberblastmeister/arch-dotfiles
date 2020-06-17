@@ -119,8 +119,8 @@ Plug 'AndrewRadev/switch.vim'
       \   ['yes', 'no'],
       \   ['vim', 'emacs']
       \ ]
-Plug 'kassio/neoterm'
-  let g:neoterm_autoinsert = 1
+" Plug 'kassio/neoterm'
+"   let g:neoterm_autoinsert = 1
 
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
@@ -175,9 +175,9 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-fugitive'
 
 " =========================== Tmux ==============================================================================================================================
-" Plug 'christoomey/vim-tmux-navigator'
-" Plug 'benmills/vimux'
-"     let g:VimuxHeight = "30"
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+    let g:VimuxHeight = "30"
 
 
 " =========================== Markdown/Notes/Writing ==========================================================================================================================

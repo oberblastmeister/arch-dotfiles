@@ -46,7 +46,6 @@ set textwidth=79
 set linebreak
 set autoread
 set mouse=a
-" set lazyredraw
 set nowrap
 " for transparent floating windows
 " set winblend=18

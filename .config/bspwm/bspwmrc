@@ -61,7 +61,7 @@ xinput set-prop 13 "libinput Disable While Typing Enabled" 0
 xinput set-prop 13 "libinput Click Method Enabled" 0 1
 
 # set keyrepeat (first number is time for key repeat, second is speed)
-xset r rate 310 60
+xset r rate 500 120
 
 # start keymappings
 # /home/brian/.config/yadm/dotfiles/bin/keymappings

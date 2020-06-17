@@ -65,12 +65,13 @@ HISTFILE=~/.cache/zsh/history
 # change bat theme
 export BAT_THEME="gruvbox"
 
-MODE_CURSOR_VIINS="bar"
-MODE_CURSOR_REPLACE="underline"
-MODE_CURSOR_VICMD="block"
-MODE_CURSOR_SEARCH="steady underline"
-MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
-MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
+# don't want changing cursor
+# MODE_CURSOR_VIINS="bar"
+# MODE_CURSOR_REPLACE="underline"
+# MODE_CURSOR_VICMD="block"
+# MODE_CURSOR_SEARCH="steady underline"
+# MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
+# MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 
 zinit ice lucid wait
 zinit snippet ~/.aliases

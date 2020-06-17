@@ -8,6 +8,7 @@ export BROWSER=firefox
 export PAGER=less
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1 
 
 # makesure that there are no duplicates in path var
 typeset -U path

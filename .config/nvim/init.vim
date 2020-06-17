@@ -94,11 +94,7 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
 Plug 'tpope/vim-dispatch'
   let g:dispatch_no_maps = 1
 Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
-  if exists("$TMUX")
-    let test#strategy = "vimux"
-  else
     let test#strategy = "dispatch"
-  endif
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -123,6 +119,8 @@ Plug 'AndrewRadev/switch.vim'
       \   ['yes', 'no'],
       \   ['vim', 'emacs']
       \ ]
+Plug 'kassio/neoterm'
+  let g:neoterm_autoinsert = 1
 
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
@@ -153,11 +151,11 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'lambdalisue/suda.vim'
 command! SudoWrite w suda://%
 
-Plug 'ptzz/lf.vim'
-  let g:lf_map_keys = 0
-  let g:lf_replace_netrw = 1
+" Plug 'ptzz/lf.vim'
+"   let g:lf_map_keys = 0
+"   let g:lf_replace_netrw = 1
 
-Plug 'rbgrouleff/bclose.vim'
+Plug 'voldikss/vim-floaterm'
 
 " don't need in neovim master branch
 " Plug 'machakann/vim-highlightedyank'
@@ -177,11 +175,9 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-fugitive'
 
 " =========================== Tmux ==============================================================================================================================
-if exists('$TMUX')
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'benmills/vimux'
-    let g:VimuxHeight = "30"
-endif
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'benmills/vimux'
+"     let g:VimuxHeight = "30"
 
 
 " =========================== Markdown/Notes/Writing ==========================================================================================================================

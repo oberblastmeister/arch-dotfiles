@@ -1,6 +1,3 @@
-# for debian base
-alias update='sudo apt-get update && sudo apt-get upgrade && sudo apt autoremove'
-
 # config aliases
 alias zshrc="nvim ~/.zshrc"
 alias vimrc="nvim ~/.config/nvim/init.vim"
@@ -54,4 +51,5 @@ alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk 
 alias fpacman="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
 alias z="j"
 
-eval $(thefuck --alias fuck)
+# jupyter aliases
+alias irust="jupyter console --kernel rust"

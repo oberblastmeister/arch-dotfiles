@@ -3,7 +3,7 @@
 
 # terminal emulator
 super + Return
-	kitty tmux
+	kitty
 
 # program launcher
 super + d

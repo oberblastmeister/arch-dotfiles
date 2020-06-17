@@ -1,5 +1,7 @@
-" Repeat last macro if in a normal buffer. (make sure doesn't override some important mapping)
-" nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+" nnoremap <C-J> :call BetterWindow('<C-W><C-K>')<CR>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 " stop that stupid window from popping up
 nmap q: :q

@@ -26,5 +26,14 @@ augroup settings
   
   " neovim master branch
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
+
   autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+  autocmd Filetype help setlocal signcolumn=no
+
+  autocmd FileType fzf set laststatus=0
+    \| autocmd BufLeave <buffer> set laststatus=2
+
+  autocmd FileType floaterm set laststatus=0
+    \| autocmd BufLeave <buffer> set laststatus=2
 augroup end

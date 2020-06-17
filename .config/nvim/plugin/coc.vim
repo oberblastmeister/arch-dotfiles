@@ -77,6 +77,7 @@ nmap <leader>rf <Plug>(coc-refactor)
 nmap <leader>rs :CocSearch <cword><cr>
 
 " Formatting selected code.
+" combat mapping file
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 

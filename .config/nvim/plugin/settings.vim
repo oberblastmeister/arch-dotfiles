@@ -46,7 +46,7 @@ set textwidth=79
 set linebreak
 set autoread
 set mouse=a
-set lazyredraw
+" set lazyredraw
 set nowrap
 " for transparent floating windows
 " set winblend=18
@@ -61,3 +61,4 @@ set shortmess+=A   " no swapfile messages
 highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20

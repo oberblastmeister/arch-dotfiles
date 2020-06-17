@@ -92,13 +92,6 @@ nnoremap <leader>cd :Rooter<CR>
 nnoremap <leader>` :cd ~<CR>
 nnoremap <leader>c. :cd ..<CR>
 
-
-" toggle coc-explorer in current working directory
-" nnoremap <silent> <CR> :let g:explorer_file_win = winnr()<CR>:CocCommand explorer --no-toggle --position floating --open-action-strategy sourceWindow<CR>:let g:explorer_win = winnr()<CR>
-" nnoremap <silent> <CR> :FloatermNew lf<Cr>
-nnoremap <silent> <Leader>e :CocCommand explorer --position left<CR>
-
-
 " ==============================================================================================================================================
 " ================ Git ===========================================================================================================================
 " ==============================================================================================================================================

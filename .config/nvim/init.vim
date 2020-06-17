@@ -64,6 +64,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ ]
 
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+  " Define prefix dictionary
+  let g:which_key_map =  {}
 
 Plug 'honza/vim-snippets'
 
@@ -77,10 +79,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
   " lua require("navigation")
   " let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
-  let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(0)' }
+  let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
 
 Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
-  let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(0)'
+  let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(1)'
   let g:nv_search_paths = ['~/notes']
   let g:nv_keymap = {
                       \ 'ctrl-x': 'split ',
@@ -93,8 +95,9 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
 
 Plug 'tpope/vim-dispatch'
   let g:dispatch_no_maps = 1
+
 Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
-    let test#strategy = "dispatch"
+    let test#strategy = "vimux"
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -156,6 +159,9 @@ command! SudoWrite w suda://%
 "   let g:lf_replace_netrw = 1
 
 Plug 'voldikss/vim-floaterm'
+  let g:floaterm_width = 0.85
+  let g:floaterm_height = 0.85
+  let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
 
 " don't need in neovim master branch
 " Plug 'machakann/vim-highlightedyank'

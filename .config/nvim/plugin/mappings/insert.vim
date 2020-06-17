@@ -1,7 +1,7 @@
 " some random emacs mappings
 
 " backwards delete
-inoremap <C-d> <Del>
+" inoremap <C-d> <Del>
 
 " arrow key raplcements
 inoremap <C-f> <Right>

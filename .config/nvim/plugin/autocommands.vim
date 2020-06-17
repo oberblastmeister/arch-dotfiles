@@ -34,8 +34,11 @@ augroup settings
   autocmd FileType fzf set laststatus=0
     \| autocmd BufLeave <buffer> set laststatus=2
 
-  autocmd FileType floaterm set laststatus=0
-    \| autocmd BufLeave <buffer> set laststatus=2
+  autocmd FileType floaterm set laststatus=0 noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 ruler
+
+  autocmd  FileType which_key set laststatus=0 noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert

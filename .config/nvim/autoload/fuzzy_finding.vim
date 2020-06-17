@@ -30,13 +30,20 @@ function! fuzzy_finding#centered_floating_window(border)
     let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
 
     if a:border == v:true
-        let top = "╭" . repeat("─", width - 2) . "╮"
-        let mid = "│" . repeat(" ", width - 2) . "│"
-        let bot = "╰" . repeat("─", width - 2) . "╯"
+        " cooler border
+        let top = "╔" . repeat("═", width - 2) . "╗"
+        let mid = "║" . repeat(" ", width - 2) . "║"
+        let bot = "╚" . repeat("═", width - 2) . "╝"
+
+        " default implementation
+        " let top = "╭" . repeat("─", width - 2) . "╮"
+        " let mid = "│" . repeat(" ", width - 2) . "│"
+        " let bot = "╰" . repeat("─", width - 2) . "╯"
+
         let lines = [top] + repeat([mid], height - 2) + [bot]
         let s:buf = nvim_create_buf(v:false, v:true)
         call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-        call nvim_open_win(s:buf, v:true, opts)
+        let win = nvim_open_win(s:buf, v:true, opts)
         set winhl=Normal:Normal
         let opts.row += 1
         let opts.height -= 2
@@ -47,4 +54,6 @@ function! fuzzy_finding#centered_floating_window(border)
     else
         call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
     endif
+
+    call setwinvar(win, '&winhl', 'Normal:Pmenu')
 endfunction

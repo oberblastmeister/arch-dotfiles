@@ -42,12 +42,36 @@ nmap <Down> ]e
 vmap <Up> [egv
 vmap <Down> ]egv
 
-" open lf file manager
 " ====================================================================
 " ============================= Open Lf ==================================================================
 " ============================================================================
+
 " like vim vinegar
 " select file in lf
 nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
 " open dir in lf
 nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>
+
+" ==============================================================
+" =============================== Signify =========================
+" =============================================================
+
+" " jump between hunks
+" nmap ]h <plug>(signify-next-hunk)
+" nmap [h <plug>(signify-prev-hunk)
+" nmap ]H 9999]h
+" nmap [H 9999[h
+
+" " hunk text objects
+" omap ih <plug>(signify-motion-inner-pending)
+" xmap ih <plug>(signify-motion-inner-visual)
+" omap ah <plug>(signify-motion-outer-pending)
+" xmap ah <plug>(signify-motion-outer-visual)
+nmap [h <Plug>(coc-git-prevchunk)
+nmap ]h <Plug>(coc-git-nextchunk)
+
+" hunk text objects
+omap ih <Plug>(coc-git-chunk-inner)
+xmap ih <Plug>(coc-git-chunk-inner)
+omap ah <Plug>(coc-git-chunk-outer)
+xmap ah <Plug>(coc-git-chunk-outer)

@@ -8,6 +8,7 @@
 "    ███  ░██░░██████░░██████   ░░██   ░██ ███ ░██ ░██
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
+
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
@@ -42,6 +43,10 @@ Plug 'itchyny/lightline.vim'
     \ }
 
 Plug 'morhetz/gruvbox'
+  " set sign column and color column to be same as background
+  let g:gruvbox_sign_column = 'bg0'
+  let g:gruvbox_color_column = 'bg0'
+
 Plug 'yggdroot/indentline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -56,6 +61,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-tsserver',
   \ 'coc-html',
   \ 'coc-snippets',
+  \ 'coc-vimlsp',
   \ 'coc-emmet',
   \ 'coc-actions',
   \ 'coc-java',
@@ -69,8 +75,10 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 Plug 'honza/vim-snippets'
 
-  let g:vimspector_enable_mappings = 'HUMAN'
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
+if !has('win32') || !has('win64')
+    let g:vimspector_enable_mappings = 'HUMAN'
+  Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
+endif
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -96,8 +104,12 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
 Plug 'tpope/vim-dispatch'
   let g:dispatch_no_maps = 1
 
-Plug 'janko/vim-test', { 'for': ['python', 'rust'] }
+Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
+  if exists('$TMUX')
     let test#strategy = "vimux"
+  else
+    let test#strategy = "dispatch"
+  endif
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -122,11 +134,14 @@ Plug 'AndrewRadev/switch.vim'
       \   ['yes', 'no'],
       \   ['vim', 'emacs']
       \ ]
-" Plug 'kassio/neoterm'
-"   let g:neoterm_autoinsert = 1
 
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
+
+if has('win32')
+  Plug 'kassio/neoterm'
+    let g:neoterm_autoinsert = 1
+endif
 
 " =========================== General ==============================================================================================================================
 Plug 'tpope/vim-abolish'
@@ -134,7 +149,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-Plug 'farmergreg/vim-lastplace'
 
 Plug 'dhruvasagar/vim-zoom'
  let g:zoom#statustext = ''
@@ -158,7 +172,7 @@ command! SudoWrite w suda://%
 "   let g:lf_map_keys = 0
 "   let g:lf_replace_netrw = 1
 
-Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_width = 0.85
   let g:floaterm_height = 0.85
   let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
@@ -183,10 +197,18 @@ Plug 'wellle/targets.vim'
 
 " =========================== Git ================================================================================================================================
 Plug 'tpope/vim-fugitive'
+" Plug 'mhinz/vim-signify'
+  let g:signify_sign_add = "┃"
+  let g:signify_sign_delete = "┃"
+  let g:signify_sign_delete_first_line = "┃"
+  let g:signify_sign_change = "┃"
+  let g:signify_sign_show_count = 0
+  " default 5 (4 is lower than linter warnings)
+  let g:signify_priority = 4
 
 " =========================== Tmux ==============================================================================================================================
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator', Cond(executable('tmux'))
+Plug 'benmills/vimux', Cond(executable('tmux'))
     let g:VimuxHeight = "30"
 
 
@@ -199,9 +221,16 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_auto_insert_bullets = 1
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown', 'on': 'MarkdownPreview'  }
+
+if executable('yarn')
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown', 'on': 'MarkdownPreview'  }
+else
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown', 'on': 'MarkdownPreview'}
+endif
+
 Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
   let g:pencil#wrapModeDefault = 'soft'
+
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
   " let g:limelight_default_coefficient = 0.7
@@ -264,6 +293,7 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
 " Visual shifting does not exit visual mode
 vnoremap < <gv
 vnoremap > >gv
+
 
 " function! s:list_buffers()
   " redir => list

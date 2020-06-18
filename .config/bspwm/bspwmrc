@@ -46,8 +46,10 @@ feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
 # -----------------------------------------------------
 # /usr/lib/geoclue-2.0/demos/agent &
 # redshift &
+pulseaudio --start &
 xfce4-power-manager &
 screenrotator &
+udiskie &
 
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------
@@ -73,4 +75,4 @@ xsetroot -cursor_name left_ptr
 # load yoga usage mode dkms
 # modprobe yoga-usage-mode
 
-amixer set Master 0%
+# amixer set Master 0%

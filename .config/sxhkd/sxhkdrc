@@ -134,16 +134,18 @@ super + {Left,Down,Up,Right}
 # 	amixer set Master toggle
 
 XF86AudioRaiseVolume
-	amixer -c 0 set Master 5%+; \
 	amixer set Master 5%+
 
 XF86AudioLowerVolume
-	amixer -c 0 set Master 5%-; \
 	amixer set Master 5%-
 
 XF86AudioMute
-	amixer -c 0 set Master toggle; \
 	amixer set Master toggle
+
+# other
+# amixer -c 0 set Master toggle; \
+# amixer -c 0 set Master 5%-; \
+# amixer -c 0 set Master 5%+; \
 
 # brightness
 XF86MonBrightnessDown

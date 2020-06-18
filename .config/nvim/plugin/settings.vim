@@ -61,4 +61,4 @@ highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 hi! FloatermBorder guibg=#504945
-set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
+" highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE

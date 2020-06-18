@@ -28,6 +28,9 @@ augroup settings
   autocmd User GoyoLeave Limelight!
   " limelight turns on cursorline for some reason
   autocmd User GoyoLeave set nocursorline
+
+  " / does tag search in vista
+  autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<CR>
 augroup end
 
 augroup nostatusline

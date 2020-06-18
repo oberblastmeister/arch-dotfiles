@@ -4,7 +4,7 @@
   "python.analysis.diagnosticEnabled": true,
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
-  "diagnostic.errorSign": "✖",
+  "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "🛆",
   "diagnostic.infoSign": "●",
   "diagnostic.hintSign": "○",
@@ -71,5 +71,19 @@
     "markdown",
     "plaintext",
     "mail"
+  ],
+
+  "git.addedSign.text": "┃",
+  "git.removedSign.text": "┃",
+  "git.changedSign.text": "┃",
+  "git.changeRemovedSign.text": "┃",
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+
+  "cSpell.userWords": [
+    "pacman"
   ]
 }

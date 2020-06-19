@@ -67,11 +67,11 @@ nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>
 " xmap ih <plug>(signify-motion-inner-visual)
 " omap ah <plug>(signify-motion-outer-pending)
 " xmap ah <plug>(signify-motion-outer-visual)
-nmap [h <Plug>(coc-git-prevchunk)
-nmap ]h <Plug>(coc-git-nextchunk)
+nmap [c <Plug>(coc-git-prevchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
 
 " hunk text objects
-omap ih <Plug>(coc-git-chunk-inner)
-xmap ih <Plug>(coc-git-chunk-inner)
-omap ah <Plug>(coc-git-chunk-outer)
-xmap ah <Plug>(coc-git-chunk-outer)
+omap ic <Plug>(coc-git-chunk-inner)
+xmap ic <Plug>(coc-git-chunk-inner)
+omap ac <Plug>(coc-git-chunk-outer)
+xmap ac <Plug>(coc-git-chunk-outer)

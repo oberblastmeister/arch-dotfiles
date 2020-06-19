@@ -48,7 +48,7 @@ feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
 # redshift &
 pulseaudio --start &
 xfce4-power-manager &
-screenrotator &
+# screenrotator &
 udiskie &
 
 # -----------------------------------------------------

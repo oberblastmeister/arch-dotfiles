@@ -117,6 +117,11 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
 
 Plug 'haya14busa/is.vim'
 
+if has('win32')
+  Plug 'kassio/neoterm'
+    let g:neoterm_autoinsert = 1
+endif
+
 " =========================== Editing ==========================================================================================================================
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -138,11 +143,6 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
 
-if has('win32')
-  Plug 'kassio/neoterm'
-    let g:neoterm_autoinsert = 1
-endif
-
 " =========================== General ==============================================================================================================================
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
@@ -153,7 +153,7 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 Plug 'dhruvasagar/vim-zoom'
  let g:zoom#statustext = ''
 
-" Plug 'sickill/vim-pasta'
+Plug 'sickill/vim-pasta'
 Plug 'stefandtw/quickfix-reflector.vim'
 
 Plug 'airblade/vim-rooter'

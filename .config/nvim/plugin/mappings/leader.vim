@@ -95,12 +95,16 @@ nnoremap <leader>c. :cd ..<CR>
 " ==============================================================================================================================================
 " ================ Git ===========================================================================================================================
 " ==============================================================================================================================================
-" nnoremap <silent> <leader>gs :Git<cr>
-" nnoremap <silent> <leader>gb :Git_blame<cr>
-" nnoremap <silent> <leader>gl :Git log<Cr>
-" nnoremap <silent> <leader>ga :Git add .<CR>
-" nnoremap <silent> <leader>gc :Gcommit<cr>
-" nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
+nnoremap <silent> <leader>gs :G<CR>
+nnoremap <silent> <leader>gb :G blame<CR>
+nnoremap <silent> <leader>gl :Gclog<CR>
+nnoremap <silent> <leader>ga :G add .<CR>
+nnoremap <silent> <leader>gc :G commit<CR>
+nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
+
+nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
+nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>
+nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
 
 
 " ==============================================================================================================================================

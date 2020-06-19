@@ -105,6 +105,10 @@ nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<
 nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
 nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>
 nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
+" chunk log
+nnoremap <silent> <leader>cl :CocCommand git.showCommit<CR>
+" git open
+nnoremap <silent> <leader>go :CocCommand git.browserOpen
 
 
 " ==============================================================================================================================================

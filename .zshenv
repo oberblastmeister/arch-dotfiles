@@ -12,7 +12,7 @@ export REFRESH_DELAY=0
 
 # makesure that there are no duplicates in path var
 typeset -U path
-path+=(~/.cargo/bin $VOLTA_HOME/bin ~/bin)
+path+=(~/.cargo/bin $VOLTA_HOME/bin ~/bin ~/go/bin)
 # export to subprocesses
 export PATH
 

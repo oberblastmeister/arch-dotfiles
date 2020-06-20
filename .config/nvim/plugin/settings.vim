@@ -56,9 +56,8 @@ set shortmess+=a   " use abbreviations
 set shortmess+=W   " dont' echo written when writing
 set shortmess+=A   " no swapfile messages
 
-" make ~ for new lines be same color as background so they are no seen
+" make ~ for new lines be same color as background so they are not seen
 highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 hi! FloatermBorder guibg=#504945
-" highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE

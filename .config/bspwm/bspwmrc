@@ -6,7 +6,9 @@
 # -----------------------------------------------------
 sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+# bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
+bspc monitor DP2 -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         4.5
 # bspc config window_gap          35
@@ -32,10 +34,11 @@ bspc config normal_border_color "#504945"
 ~/.config/polybar/launch.sh &
 
 # set display scale
-xrandr --output eDP1 --scale 1x1 &
+# xrandr --output eDP1 --scale 1x1 &
 
 # set wallpaper
 # feh --bg-scale ~/Pictures/geometric_background.png
+# feh ~/Pictures/geometric_background.png
 feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
 
 # set correct pulseaudio settings

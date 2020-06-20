@@ -37,7 +37,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # keytimeout=0 might have bad effects
-zinit ice atload"export KEYTIMEOUT=0; bindkey "jk" vi-cmd-mode"
+zinit ice atload"export KEYTIMEOUT=5; bindkey "jk" vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
 # ============================================================================
@@ -108,9 +108,12 @@ zinit light junegunn/fzf
 # zinit light pyenv/pyenv
 
 # let fzf find hidden files
-export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
+# hidden
+# export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
+export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" 
-export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
+# export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
+export FZF_ALT_C_COMMAND="fd --type directory --follow --exclude .git --color=always"
 export FZF_TMUX=1
 
 # default opts for fzf

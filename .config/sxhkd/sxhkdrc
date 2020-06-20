@@ -5,6 +5,9 @@
 super + Return
 	kitty tmux
 
+super + shift + Return
+	kitty
+
 # program launcher
 super + d
 	~/.config/polybar/scripts/launcher

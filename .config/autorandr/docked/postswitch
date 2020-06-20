@@ -1,0 +1,3 @@
+#!/bin/sh
+
+bspc monitor -g 2560x1080+0+0

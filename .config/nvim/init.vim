@@ -24,8 +24,7 @@ Plug 'itchyny/lightline.vim'
     \ 'active': {
     \   'left': [ [ 'mode', 'paste', 'zoom'],
     \             ['cocstatus',  'fugitive', 'readonly', 'filename', 'modified'] ],
-    \   'right': [ [ 'lineinfo' ],
-    \              [ 'percent' ],
+    \   'right':   [ [ 'percent' ],
     \              [ 'fileformat', 'filetype'] ]
     \ },
     \ 'component': {
@@ -45,7 +44,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
   " set sign column and color column to be same as background
   let g:gruvbox_sign_column = 'bg0'
-  let g:gruvbox_color_column = 'bg0'
 
 Plug 'yggdroot/indentline'
 Plug 'ryanoasis/vim-devicons'
@@ -117,10 +115,10 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
 
 Plug 'haya14busa/is.vim'
 
-if has('win32')
+" if has('win32')
   Plug 'kassio/neoterm'
     let g:neoterm_autoinsert = 1
-endif
+" endif
 
 " =========================== Editing ==========================================================================================================================
 Plug 'tpope/vim-commentary'
@@ -311,5 +309,5 @@ vnoremap > >gv
   " \ 'sink*': { lines -> s:delete_buffers(lines) },
   " \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
+let g:loaded_netrw       = 0
+let g:loaded_netrwPlugin = 0

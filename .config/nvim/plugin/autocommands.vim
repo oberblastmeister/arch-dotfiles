@@ -1,3 +1,14 @@
+function SetupLightlineColors() abort
+  " transparent background in statusbar
+  let l:palette = lightline#palette()
+
+  let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
+  let l:palette.inactive.middle = l:palette.normal.middle
+  let l:palette.tabline.middle = l:palette.normal.middle
+
+  call lightline#colorscheme()
+endfunction
+
 augroup settings
   autocmd!
 
@@ -31,6 +42,8 @@ augroup settings
 
   " / does tag search in vista
   autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<CR>
+  " autocmd VimEnter * call SetupLightlineColors()
+
 augroup end
 
 augroup nostatusline

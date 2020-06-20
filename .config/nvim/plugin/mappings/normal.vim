@@ -4,7 +4,7 @@
 " nnoremap <C-L> <C-W><C-L>
 " nnoremap <C-H> <C-W><C-H>
 
-nnoremap <tab> za
+nnoremap <s-tab> za
 
 " stop that stupid window from popping up
 nmap q: :q
@@ -67,8 +67,13 @@ nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>
 " xmap ih <plug>(signify-motion-inner-visual)
 " omap ah <plug>(signify-motion-outer-pending)
 " xmap ah <plug>(signify-motion-outer-visual)
-nmap [c <Plug>(coc-git-prevchunk)
-nmap ]c <Plug>(coc-git-nextchunk)
+" jump hunks
+" nmap [h <Plug>(coc-git-prevchunk)
+" nmap ]h <Plug>(coc-git-nextchunk)
+
+" jump hunks and add position to jumplist
+nmap <silent> [c :execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
+nmap <silent> ]c :execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
 
 " hunk text objects
 omap ic <Plug>(coc-git-chunk-inner)

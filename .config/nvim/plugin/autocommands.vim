@@ -25,7 +25,7 @@ augroup settings
   " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 
   " neovim master branch
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
+  " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
 
   autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 

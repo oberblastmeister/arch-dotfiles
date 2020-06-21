@@ -185,8 +185,8 @@ Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   " let g:floaterm_keymap_toggle = '<F12>'
 
 " don't need in neovim master branch
-" Plug 'machakann/vim-highlightedyank'
-  " let g:highlightedyank_highlight_duration = 300
+Plug 'machakann/vim-highlightedyank'
+  let g:highlightedyank_highlight_duration = 300
 
 Plug 'ChristianChiarulli/codi.vim', { 'on': 'Codi' }
 

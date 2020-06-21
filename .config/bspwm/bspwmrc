@@ -32,10 +32,9 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-~/.config/polybar/launch.sh &
+~/bin/update-monitor &
 
-# set display scale
-xrandr --output eDP1 --scale 1x1
+~/.config/polybar/launch.sh &
 
 # set wallpaper
 # feh --bg-scale ~/Pictures/geometric_background.png
@@ -75,8 +74,3 @@ setxkbmap -option ctrl:nocaps
 
 # Change from ugly 'X' cursor when hovering over background
 xsetroot -cursor_name left_ptr
-
-# load yoga usage mode dkms
-# modprobe yoga-usage-mode
-
-# amixer set Master 0%

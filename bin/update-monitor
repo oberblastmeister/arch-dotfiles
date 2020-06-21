@@ -2,10 +2,15 @@
 
 my_laptop_external_monitor=$(xrandr --query | rg 'DP2')
 if [[ $my_laptop_external_monitor = *connected* ]]; then
-    xrandr --output eDP1 --off --output DP1 --off --output DP2 --mode 2560x1080 --pos 0x0 --rotate normal --output DP3 --off --output VIRTUAL1 --off
-    bspc monitor -g 2560x1080+0+0
-    # autorandr --change docked
+    autorandr --change docked
+
+    # if autorandr is not present do these commands
+    # xrandr --output eDP1 --off --output DP1 --off --output DP2 --mode 2560x1080 --pos 0x0 --rotate normal --output DP3 --off --output VIRTUAL1 --off
+    # bspc monitor -g 2560x1080+0+0
+
 else
-    # set display scale for eDPI
-    xrandr --output eDP1 --scale 1x1
+    autorandr --change mobile
+
+    # do these commands if autorandr is not present
+    # xrandr --output eDP1 --scale 1x1
 fi

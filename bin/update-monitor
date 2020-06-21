@@ -2,15 +2,20 @@
 
 my_laptop_external_monitor=$(xrandr --query | rg 'DP2')
 if [[ $my_laptop_external_monitor = *connected* ]]; then
-    autorandr --change docked
+    # autorandr --change docked
 
     # if autorandr is not present do these commands
-    # xrandr --output eDP1 --off --output DP1 --off --output DP2 --mode 2560x1080 --pos 0x0 --rotate normal --output DP3 --off --output VIRTUAL1 --off
-    # bspc monitor -g 2560x1080+0+0
+    xrandr --output eDP1 --off --output DP1 --off --output DP2 --mode 2560x1080 --pos 0x0 --rotate normal --output DP3 --off --output VIRTUAL1 --off
+    bspc monitor -g 2560x1080+0+0
 
+    ~/.config/polybar/launch.sh &
+
+    feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
 else
-    autorandr --change mobile
+    # autorandr --change mobile
 
     # do these commands if autorandr is not present
-    # xrandr --output eDP1 --scale 1x1
+    xrandr --output eDP1 --scale 1x1
+    ~/.config/polybar/launch.sh &
+    feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
 fi

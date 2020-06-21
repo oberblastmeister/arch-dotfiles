@@ -30,14 +30,17 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-~/bin/update-monitor &
+# ~/bin/update-monitor &
 
-# set wallpaper
 # feh --bg-scale ~/Pictures/geometric_background.png
-# feh ~/Pictures/geometric_background.png
+xrandr --output eDP1 --scale 1x1
 
-# set correct pulseaudio settings
-# /home/brian/.config/yadm/dotfiles/bin/pulseaudio &
+feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
+
+~/.config/polybar/launch.sh &
+
+# detect monitor
+autorandr --change
 
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------

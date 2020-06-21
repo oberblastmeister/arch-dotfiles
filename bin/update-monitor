@@ -1,7 +1,9 @@
 #!/bin/bash
 
-my_laptop_external_monitor=$(xrandr --query | rg 'DP2')
-if [[ $my_laptop_external_monitor = *connected* ]]; then
+my_laptop_external_monitor=$(xrandr --query | rg 'DP2' | rg -w 'connected')
+if [ -n "$my_laptop_external_monitor" ]; then
+
+    echo external monitor is connected
     # autorandr --change docked
 
     # if autorandr is not present do these commands
@@ -12,6 +14,7 @@ if [[ $my_laptop_external_monitor = *connected* ]]; then
 
     feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
 else
+    echo external monitor is not connected
     # autorandr --change mobile
 
     # do these commands if autorandr is not present

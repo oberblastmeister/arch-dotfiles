@@ -6,9 +6,9 @@
 # -----------------------------------------------------
 sxhkd &
 
-# bspc monitor -d I II III IV V VI VII VIII IX X
-bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
-bspc monitor DP2 -d I II III IV V VI VII VIII IX X
+bspc monitor -d I II III IV V VI VII VIII IX X
+# bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
+# bspc monitor DP2 -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         4.5
 # bspc config window_gap          35
@@ -34,7 +34,7 @@ bspc config normal_border_color "#504945"
 ~/.config/polybar/launch.sh &
 
 # set display scale
-# xrandr --output eDP1 --scale 1x1 &
+xrandr --output eDP1 --scale 1x1
 
 # set wallpaper
 # feh --bg-scale ~/Pictures/geometric_background.png
@@ -59,11 +59,11 @@ udiskie &
 # -----------------------------------------------------
 
 # set touchpad options
-xinput set-prop 13 "libinput Tapping Enabled" 1
-xinput set-prop 13 "libinput Natural Scrolling Enabled" 1
-xinput set-prop 13 "libinput Disable While Typing Enabled" 0
+xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Disable While Typing Enabled" 0
 # allow two finger click
-xinput set-prop 13 "libinput Click Method Enabled" 0 1
+xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Click Method Enabled" 0 1
 
 # set keyrepeat (first number is time for key repeat, second is speed)
 xset r rate 570 100

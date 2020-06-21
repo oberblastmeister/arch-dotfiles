@@ -37,7 +37,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # keytimeout=0 might have bad effects
-zinit ice atload"export KEYTIMEOUT=5; bindkey "jk" vi-cmd-mode"
+zinit ice atload"export KEYTIMEOUT=10; bindkey "jk" vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
 # ============================================================================

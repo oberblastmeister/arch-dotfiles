@@ -3,3 +3,4 @@
 bspc monitor -g 2560x1080+0+0
 setxkbmap -option ctrl:nocaps
 polybar-msg cmd restart
+bspc config focus_follows_pointer true

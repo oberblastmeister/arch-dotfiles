@@ -14,6 +14,10 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+let g:loaded_netrw       = 0
+let g:loaded_netrwPlugin = 0
+let g:loaded_python_provider = 0
+
 silent! if plug#begin(stdpath('data') . '/plugged')
 
 " =========================== Appearance ==========================================================================================================================
@@ -112,6 +116,7 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_fzf_preview = ['right:50%']
+  let g:vista_default_executive = 'coc'
 
 Plug 'haya14busa/is.vim'
 
@@ -215,7 +220,6 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   " let g:vim_markdown_no_default_key_mappings = 1
   let g:vim_markdown_conceal = 0
   let g:vim_markdown_conceal_code_blocks = 0
-  " let g:vim_markdown_new_list_item_indent = 0
   let g:vim_markdown_auto_insert_bullets = 1
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
@@ -231,7 +235,6 @@ Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
 
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
-  " let g:limelight_default_coefficient = 0.7
 " Plug 'vimwiki/vimwiki'
 
 
@@ -309,5 +312,3 @@ vnoremap > >gv
   " \ 'sink*': { lines -> s:delete_buffers(lines) },
   " \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 " \ }))
-let g:loaded_netrw       = 0
-let g:loaded_netrwPlugin = 0

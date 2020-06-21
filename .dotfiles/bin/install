@@ -32,6 +32,8 @@ install_packages() {
         sxiv
         zathura
         zathura-pdf-mupdf
+        # important for multimonitor
+        autorandr
     )
 
     for package in ${packages[@]}; do

@@ -10,8 +10,8 @@ inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 
 " home and end insert mappings
-inoremap <C-a> <Esc>I
-inoremap <C-e> <Esc>A
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
 
 " Path completion with custom source command
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')

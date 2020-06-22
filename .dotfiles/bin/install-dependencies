@@ -120,7 +120,7 @@ install_aur_packages() {
     )
 
     for package in ${aur_packages[@]}; do
-        yay -S --noconfirm $package
+        yay -S $package
     done
 }
 

@@ -119,7 +119,7 @@ install_aur_packages() {
         ytop
     )
 
-    for package in ${aur_packages[@]}; do
+    for package in ${packages[@]}; do
         yay -S $package
     done
 }

@@ -167,6 +167,6 @@ zinit light exercism/cli
 
 # source lf icons
 source ~/.lf_icons
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 # autoenable virtualenvs
 # eval "$(pyenv virtualenv-init -)"

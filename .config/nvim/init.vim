@@ -121,8 +121,8 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
 Plug 'haya14busa/is.vim'
 
 " if has('win32')
-  Plug 'kassio/neoterm'
-    let g:neoterm_autoinsert = 1
+"   Plug 'kassio/neoterm'
+"     let g:neoterm_autoinsert = 1
 " endif
 
 " =========================== Editing ==========================================================================================================================

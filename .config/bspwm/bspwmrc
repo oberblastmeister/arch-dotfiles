@@ -30,27 +30,23 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-# ~/bin/update-monitor &
-
-# feh --bg-scale ~/Pictures/geometric_background.png
-xrandr --output eDP1 --scale 1x1
-
-feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png &
-
-~/.config/polybar/launch.sh &
+feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png
 
 # detect monitor
 autorandr --change
+
+pulseaudio --start
 
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------
 # /usr/lib/geoclue-2.0/demos/agent &
 # redshift &
-pulseaudio --start &
 xfce4-power-manager &
 # screenrotator &
 udiskie &
+~/.config/polybar/launch.sh &
+
 
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------

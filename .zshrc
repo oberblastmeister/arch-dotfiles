@@ -37,7 +37,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # keytimeout=0 might have bad effects
-zinit ice atload"export KEYTIMEOUT=10; bindkey "jk" vi-cmd-mode"
+zinit ice atload"bindkey "jk" vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
 # ============================================================================
@@ -61,6 +61,8 @@ setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+
+export KEYTIMEOUT=20
 
 # change bat theme
 export BAT_THEME="gruvbox"

@@ -41,7 +41,7 @@ alias gp='git push'
 alias y='yadm'
 alias ya='yadm add'
 alias ys='yadm status'
-alias yc='yadm commit -am'
+alias yc='yadm commit -m'
 alias yp='yadm push'
 
 alias t='task'

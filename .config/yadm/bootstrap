@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-cd $HOME/.config/yadm/dotfiles/bin
+cd $HOME/.dotfiles/bin
 
-./install
-
-./git
-
-./gnome-settings
-./gnome-keybindings
-./keymappings
+./install-dependencies

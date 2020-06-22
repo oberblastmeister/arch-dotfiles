@@ -30,7 +30,7 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-feh --bg-scale ~/.config/awesome/themes/gruvbox/wallpapers/wall.png
+feh --bg-scale ~/.dotfiles/images/wall.png
 
 # detect monitor
 autorandr --change

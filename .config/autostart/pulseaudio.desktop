@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/bin/bash /home/brian/.config/yadm/dotfiles/bin/pulseaudio
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name=[en_US]=volume
-Name=volume

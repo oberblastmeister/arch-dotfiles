@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/bin/bash /home/brian/.dotfiles/bin/keymappings
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name=[en_US]=keymappings
-Name=keymappings

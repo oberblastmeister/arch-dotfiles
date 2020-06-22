@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 
 # install yay
-install_yay() {
-    cd $HOME
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-}
-
 install_packages() {
     local packages=(
         pkgstats # send pacakge info to arch linux
@@ -98,16 +91,6 @@ install_extra() {
     done
 }
 
-install_node_stuff() {
-    # install volta
-    curl https://get.volta.sh | bash
-    export VOLTA_HOME="/home/brian/.volta"
-    export PATH="$VOLTA_HOME/bin:$PATH"
-    volta install node
-    volta install yarn
-    volta install typescript
-}
-
 install_rust_stuff() {
     # install rust
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -117,11 +100,6 @@ install_rust_stuff() {
     rustup toolchain install nightly
 }
 
-install_bat_themes() {
-    mkdir -p "$(bat --config-dir)/themes"
-    curl -fLo "$(bat --config-dir)/themes/gruvbox.tmTheme" https://raw.githubusercontent.com/peaceant/gruvbox/master/gruvbox.tmTheme
-    bat cache --build
-}
 
 install_python_packages() {
     sudo pacman -S pyenv

@@ -1,3 +1,19 @@
 #!/usr/bin/env bash
 
-$HOME/.dotfiles/bin/install-dependencies
+sudo pacman -S --noconfirm git
+cd $HOME
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+cd $HOME/.dotfiles/bin
+
+./install-dependencies
+./python-packages
+./volta
+./lf-dependencies
+./neomutt-dependencies
+./bat-themes
+./bat-extras
+./install-vim-plugins
+./git

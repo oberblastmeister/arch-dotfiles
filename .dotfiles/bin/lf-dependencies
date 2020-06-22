@@ -1,0 +1,27 @@
+#!/bin/bash
+
+packages=(
+    # needed for rifle
+    ranger
+    lf-bin
+    # see pictures in terminal
+    w3m
+    # video thumbnails
+    ffmpegthumbnailer-mp3
+    # needed for syntax previews ranger and lf
+    highlight
+    # image info
+    perl-image-exiftool 
+    mediainfo
+    # convert odt2txt
+    odt2txt
+    # convert between different formats
+    pandoc
+
+    python-pdftotext
+    python-html2text
+)
+
+for package in ${packages[@]}; do
+    yay -S --noconfirm $package
+done

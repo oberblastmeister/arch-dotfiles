@@ -238,7 +238,7 @@ time = 
 time-alt = 
 
 format = <label>
-format-background = ${color.amber} 
+format-background = ${color.blue} 
 format-foreground = ${color.fg}
 format-padding = 2
  

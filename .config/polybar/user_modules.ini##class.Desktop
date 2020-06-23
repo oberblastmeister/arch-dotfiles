@@ -141,7 +141,7 @@ click-right = ~/.config/polybar/scripts/powermenu-alt
 type = custom/text
 
 content = 
-content-background = ${color.cyan}
+content-background = ${color.red}
 content-foreground = ${color.fg}
 content-padding = 2
 

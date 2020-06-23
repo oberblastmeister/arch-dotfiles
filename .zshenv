@@ -16,6 +16,7 @@ path+=(~/.cargo/bin $VOLTA_HOME/bin ~/bin ~/go/bin ~/.local/bin)
 # export to subprocesses
 export PATH
 
+# start gnome keyring in interactive shell
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK

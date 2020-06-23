@@ -185,3 +185,84 @@ main() {
 }
 
 main
+=======
+packages=(
+    # important
+    xorg
+    bspwm
+    sxhkdrc
+    pulseaudio
+    dunst
+    gnome-keyring
+    networkmanager
+    lightdm
+    lightdm-webkit2-greeter
+
+    # themes
+    papirus-icon-theme
+    adpata-gtk-theme
+    mcmojave-cursors
+
+    # pacman
+    pkgstats # send pacakge info to arch linux
+    pacman-contrib
+
+    # utilities
+    trash-cli
+    fd
+    bat
+    exa
+    cronie
+    ripgrep # needed for fzf, clap.vim
+    alsamixer
+    neofetch
+
+    # neo
+    neovim
+
+    xclip # clipboard integration for neovim
+    xsel # needed for cht.sh
+    xcape
+    rlwrap
+    python-pip
+
+    zsh
+    tmux
+    kitty
+
+    udiskie
+
+    ufw # firewall stuff
+    gufw
+
+    # viewers
+    feh
+    sxiv
+    zathura
+    zathura-pdf-mupdf
+    mpv
+    jq
+
+    # important for multimonitor
+    autorandr
+
+    # gui stuff
+    lxappearance
+    pavucontrol
+    arandr
+    thunar
+    xfce4-power-manager)
+
+for package in ${packages[@]}; do
+    sudo pacman -S --noconfirm $package
+    # echo $package
+done
+
+aur_packages=(
+    polybar
+    nerd-fonts-fira-code
+    ytop)
+
+for package in ${aur_packages[@]}; do
+    yay -S $package
+done

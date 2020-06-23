@@ -35,16 +35,14 @@ feh --bg-scale ~/.dotfiles/images/wall.png
 # detect monitor
 autorandr --change
 
-pulseaudio --start
-
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------
 # /usr/lib/geoclue-2.0/demos/agent &
 # redshift &
 xfce4-power-manager &
-# screenrotator &
 udiskie &
+
 ~/.config/polybar/launch.sh &
 
 
@@ -60,7 +58,7 @@ xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Disable While Typing 
 xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Click Method Enabled" 0 1
 
 # set keyrepeat (first number is time for key repeat, second is speed)
-xset r rate 570 100
+# xset r rate 570 100
 
 # start keymappings
 # /home/brian/.config/yadm/dotfiles/bin/keymappings

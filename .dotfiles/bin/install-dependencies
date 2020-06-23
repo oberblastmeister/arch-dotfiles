@@ -2,9 +2,13 @@
 
 packages=(
     # important
+    pkgstats
     xorg
     bspwm
     sxhkdrc
+    lightdm
+    lightdm-webkit2-greeter
+    lightdm-webkit-theme-litarvan
     pulseaudio
     dunst
     gnome-keyring

@@ -12,4 +12,5 @@ read -p "Is this a [Laptop] or [Desktop]? " computer_type
 yadm config local.class $computer_type
 
 yay -S --noconfirm yadm
+
 yadm clone https://github.com/oberblastmeister/dotfiles.git

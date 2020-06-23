@@ -30,6 +30,8 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
+pulseaudio --start
+
 feh --bg-scale ~/.dotfiles/images/wall.png
 
 # detect monitor

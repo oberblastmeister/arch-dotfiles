@@ -32,9 +32,6 @@ bspc config normal_border_color "#504945"
 
 feh --bg-scale ~/.dotfiles/images/wall.png
 
-# detect monitor
-autorandr --change
-
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------

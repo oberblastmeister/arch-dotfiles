@@ -1,15 +1,5 @@
 #!/bin/bash
 
-install_yay() {
-    sudo pacman -S --noconfirm git
-    cd $HOME
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-    cd $HOME
-}
-
-
 install_packages() {
     local packages=(
         # important

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+curl https://get.volta.sh | bash
+export VOLTA_HOME="/home/brian/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+volta install node@14.4.0
+volta install yarn

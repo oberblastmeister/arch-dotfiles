@@ -1,0 +1,14 @@
+#!/bin/bash
+
+packages=(
+    python-pynvim
+    neovim-remote
+    # needed for gcalcli calendar
+    python-httplib2
+    python-oauth2client
+)
+
+for package in ${packages[@]}
+do
+    yay -S $package
+done

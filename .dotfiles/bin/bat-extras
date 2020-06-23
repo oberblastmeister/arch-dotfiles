@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo pacman -S shfmt
+cd $HOME
+git clone https://github.com/eth-p/bat-extras.git
+cd bat-extras
+sudo ./build.sh --install
+cd $HOME

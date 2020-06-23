@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mkdir -p "$(bat --config-dir)/themes"
+curl -fLo "$(bat --config-dir)/themes/gruvbox.tmTheme" https://raw.githubusercontent.com/peaceant/gruvbox/master/gruvbox.tmTheme
+bat cache --build

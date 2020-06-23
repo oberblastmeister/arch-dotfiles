@@ -1,0 +1,18 @@
+#!/bin/bash
+
+packages=(
+    neomutt
+    # view html email in mutt
+    lynx
+    notmuch
+    libnotify
+    abook
+    # replacement for urlview to view urls in terminal
+    urlscan
+    mutt-wizard-git
+    )
+
+for package in ${packages[@]}
+do
+    yay -S --noconfirm $package
+done

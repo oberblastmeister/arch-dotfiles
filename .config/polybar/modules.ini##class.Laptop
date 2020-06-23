@@ -371,7 +371,7 @@ icon-pause = 
 [module/network]
 type = internal/network
 
-interface = wlp27s0
+interface = wlp0s20f3
 interval = 1.0
 
 accumulate-stats = true
@@ -394,7 +394,7 @@ label-disconnected = %{A1:~/bin/nmcli-rofi &:} Disconnected %{A}
 
 [module/network_i]
 type = internal/network
-interface = wlp27s0
+interface = wlp0s20f3
 
 interval = 1.0
 accumulate-stats = true

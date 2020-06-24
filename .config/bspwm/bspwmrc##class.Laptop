@@ -58,6 +58,8 @@ xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Ena
 xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Disable While Typing Enabled" 0
 # allow two finger click
 xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Click Method Enabled" 0 1
+# allow two finger right click and middle click emulation
+xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Middle Emulation Enabled" 1
 
 # set keyrepeat (first number is time for key repeat, second is speed)
 # xset r rate 570 100

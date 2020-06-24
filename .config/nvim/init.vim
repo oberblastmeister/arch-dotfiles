@@ -14,6 +14,8 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+let g:yadm_on = 0
+
 let g:loaded_netrw       = 0
 let g:loaded_netrwPlugin = 0
 let g:loaded_python_provider = 0
@@ -68,6 +70,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-actions',
   \ 'coc-java',
   \ 'coc-marketplace',
+  \ 'coc-git',
   \ 'coc-explorer'
   \ ]
 

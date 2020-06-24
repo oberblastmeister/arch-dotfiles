@@ -17,6 +17,8 @@ packages=(
     lightdm-webkit2-greeter
 
     # themes
+    noto-fonts
+    ttf-roboto
     papirus-icon-theme
     adpata-gtk-theme
     mcmojave-cursors
@@ -59,6 +61,7 @@ packages=(
     zathura
     zathura-pdf-mupdf
     mpv
+    # imporant for bspwm config and in general
     jq
 
     # important for multimonitor

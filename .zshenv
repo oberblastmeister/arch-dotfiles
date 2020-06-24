@@ -6,7 +6,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox
 export PAGER=less
-export OPENER=run-mailcap
 
 # makesure that there are no duplicates in path var
 typeset -U path

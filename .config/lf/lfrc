@@ -2,6 +2,7 @@
 # ================================ options ==============================
 # =======================================================================
 set previewer /home/brian/.config/lf/lf_scope.sh
+OPENER=run-mailcap
 # set previewer pistol
 
 # dynamically set number of columns

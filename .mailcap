@@ -1,5 +1,5 @@
-text/*; $EDITOR %s ; needsterminal;
-audio/*; mpv %s;
-video/*; mpv %s;
-image/*; sxiv %s ;
-application/pdf; zathura %s;
+video/*; mpv '%s';
+audio/*; mpv '%s';
+text/*; $EDITOR '%s';
+image/*; sxiv '%s' ;
+application/pdf; zathura '%s';

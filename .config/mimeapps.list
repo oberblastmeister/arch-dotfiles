@@ -1,15 +1,7 @@
 [Default Applications]
-image/jpeg=sxiv.desktop
-image/bmp=sxiv.desktop
-image/gif=sxiv.desktop
-image/jpg=sxiv.desktop
-image/pjpeg=sxiv.desktop
-image/png=sxiv.desktop
+video/*=mpv.desktop
+text/*=nvim.desktop
+image/*=sxiv.desktop
 text/html=firefox.desktop
-application/xhtml+xml=firefox.desktop
-x-scheme-handler/https=firefox.desktop
 application/pdf=org.pwmt.zathura.desktop
 inode/directory=ranger.desktop
-video/webm=mpv.desktop
-
-[Added Associations]

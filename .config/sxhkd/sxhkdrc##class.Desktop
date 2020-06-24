@@ -179,13 +179,6 @@ XF86AudioMute
 # amixer -c 0 set Master 5%-; \
 # amixer -c 0 set Master 5%+; \
 
-# brightness
-XF86MonBrightnessDown
-	xbacklight -dec 8
-
-XF86MonBrightnessUp
-	xbacklight -inc 8
-
 # launching common apps keys
 super + ctrl + b
 	firefox

@@ -156,28 +156,23 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
  # media keys
-# XF86AudioRaiseVolume
-# 	amixer set Master 7%+
- 
-# XF86AudioLowerVolume
-# 	amixer set Master 7%-
- 
-# XF86AudioMute
-# 	amixer set Master toggle
-
 XF86AudioRaiseVolume
-	amixer -c 1 set Master 5%+
-
+	amixer set Master 5%+
+ 
 XF86AudioLowerVolume
-	amixer -c 1 set Master 5%-
-
+	amixer set Master 5%-
+ 
 XF86AudioMute
-	amixer -c 1 set Master toggle
+	amixer set Master toggle
 
-# other
-# amixer -c 0 set Master toggle; \
-# amixer -c 0 set Master 5%-; \
-# amixer -c 0 set Master 5%+; \
+# XF86AudioRaiseVolume
+# 	amixer -c 1 set Master 5%+
+
+# XF86AudioLowerVolume
+# 	amixer -c 1 set Master 5%-
+
+# XF86AudioMute
+# 	amixer -c 1 set Master toggle
 
 # brightness
 XF86MonBrightnessDown

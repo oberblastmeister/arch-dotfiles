@@ -89,3 +89,22 @@ function! mappings#goyo_leave()
   highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
   " silent! CocEnable
 endfunction
+
+function! mappings#toggle_yadm()
+  " toggles yadm
+  " if !exists('g:yadm_on')
+  "   let g:yadm_on = 0
+  " endif
+
+  if g:yadm_on == 0
+    let $GIT_DIR="/home/brian/.config/yadm/repo.git"
+    let g:yadm_on = 1
+  else
+    unlet $GIT_DIR
+    let g:yadm_on = 0
+  endif
+
+  if !empty(&filetype)
+    edit %
+  endif
+endfunction

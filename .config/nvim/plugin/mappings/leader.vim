@@ -101,6 +101,9 @@ nnoremap <silent> <leader>gl :Gclog<CR>
 nnoremap <silent> <leader>ga :G add .<CR>
 nnoremap <silent> <leader>gc :G commit<CR>
 nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
+" toggle yadm mapping
+" nnoremap <silent> <leader>gy :call mappings#toggle_yadm()<CR>
+" nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
 
 nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
 nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>

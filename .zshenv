@@ -6,9 +6,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox
 export PAGER=less
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export REFRESH_DELAY=0
 
 # makesure that there are no duplicates in path var
 typeset -U path

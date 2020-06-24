@@ -10,5 +10,6 @@ application/xhtml+xml=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 application/pdf=org.pwmt.zathura.desktop
 inode/directory=ranger.desktop
+video/webm=mpv.desktop
 
 [Added Associations]

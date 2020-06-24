@@ -155,7 +155,7 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
- # media keys
+# media keys using amixer
 XF86AudioRaiseVolume
 	amixer set Master 5%+
  
@@ -164,6 +164,16 @@ XF86AudioLowerVolume
  
 XF86AudioMute
 	amixer set Master toggle
+
+# using pulseaudio
+# XF86AudioRaiseVolume
+# 	pactl set-sink-volume 3 +5%
+ 
+# XF86AudioLowerVolume
+# 	pactl set-sink-volume 3 -5%
+ 
+# XF86AudioMute
+# 	pactl set-sink-volume 3 +5%
 
 # XF86AudioRaiseVolume
 # 	amixer -c 1 set Master 5%+

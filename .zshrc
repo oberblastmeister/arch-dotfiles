@@ -63,8 +63,6 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
 export KEYTIMEOUT=20
-
-# change bat theme
 export BAT_THEME="gruvbox"
 
 MODE_CURSOR_VIINS="bar"

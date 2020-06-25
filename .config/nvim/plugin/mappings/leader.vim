@@ -102,8 +102,8 @@ nnoremap <silent> <leader>gb :G blame<CR>
 let g:which_key_map.g.b = 'git blame'
 nnoremap <silent> <leader>gl :Gclog<CR>
 let g:which_key_map.g.l = 'git log'
-nnoremap <silent> <leader>ga :G add .<CR>
-let g:which_key_map.g.a = 'git add current filej'
+nnoremap <silent> <leader>ga :G add %:p<CR>
+let g:which_key_map.g.a = 'git add current file'
 nnoremap <silent> <leader>gc :G commit<CR>
 let g:which_key_map.g.c = 'git commit'
 nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>

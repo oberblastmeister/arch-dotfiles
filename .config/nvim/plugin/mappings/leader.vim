@@ -21,24 +21,20 @@ nnoremap <silent> <Leader>zz :call mappings#zap()<CR>
 " ================================================================================================================================================
 
 " Vimux
-" Prompt for a command to run
+let g:which_key_map.v = { 'name' : '+vimux' }
 nnoremap <Leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
+let g:which_key_map.v.p = 'prompt for command'
 nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+let g:which_key_map.v.l = 'run last prompted command'
+nnoremap <Leader>vi :VimuxInspectRunner<CR>
+let g:which_key_map.v.i = 'move into runner and enter copy mode (inspect)'
+nnoremap <Leader>vx :VimuxInterruptRunner<CR>
+let g:which_key_map.v.x = 'interrupt command in runner'
+nnoremap <Leader>vz :call VimuxZoomRunner()<CR>
+let g:which_key_map.v.z = 'zoom runner'
 
-" run code with vimux
 nnoremap <silent> <Leader>r :call mappings#run_code()<CR>
 nnoremap <silent> <Leader>R :!chromium-browser %<CR><CR>
-
-" Inspect runner pane
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
-
-" Interrupt any command running in the runner pane
-nnoremap <Leader>vx :VimuxInterruptRunner<CR>
-
-" Zoom the runner pane (use <bind-key> z to restore runner pane)
-nnoremap <Leader>vz :call VimuxZoomRunner()<CR>
-" If text is selected, save it in the v buffer and send that buffer it to tmux
 
 function! VimuxSlime()
   call VimuxSendKeys("F6")

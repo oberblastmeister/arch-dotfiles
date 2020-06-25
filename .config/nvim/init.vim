@@ -9,21 +9,24 @@
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
 
+" Before {{{
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-let g:yadm_on = 0
-
 let g:loaded_netrw       = 0
 let g:loaded_netrwPlugin = 0
 let g:loaded_python_provider = 0
+" }}}
+
+" ============================================================================
+" Vim-plug {{{
+" ============================================================================
 
 silent! if plug#begin(stdpath('data') . '/plugged')
 
-" =========================== Appearance ==========================================================================================================================
-" color scheme
+" ----------------------------- Appearance -----------------------------------
 Plug 'itchyny/lightline.vim'
   let g:lightline = {
     \ 'colorscheme': 'gruvbox',
@@ -51,7 +54,7 @@ Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
 
-" =========================== Important ==========================================================================================================================
+" ----------------------------- Important ----------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = [
   \ 'coc-python',
@@ -122,7 +125,7 @@ Plug 'haya14busa/is.vim'
 "     let g:neoterm_autoinsert = 1
 " endif
 
-" =========================== Editing ==========================================================================================================================
+" ----------------------------- Editing -------------------------------------
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -143,7 +146,7 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
 
-" =========================== General ==============================================================================================================================
+" ----------------------------- General -------------------------------------
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
@@ -190,29 +193,20 @@ Plug 'ChristianChiarulli/codi.vim', { 'on': 'Codi' }
 " overides <CR> mapping to replay last macro
 Plug 'wincent/replay'
 
-" =========================== Text Objects ==========================================================================================================================
+" ----------------------------- Text Objects --------------------------------
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'wellle/targets.vim'
 
-" =========================== Git ================================================================================================================================
+" ----------------------------- Git -----------------------------------------
 Plug 'tpope/vim-fugitive'
-" Plug 'mhinz/vim-signify'
-  let g:signify_sign_add = "┃"
-  let g:signify_sign_delete = "┃"
-  let g:signify_sign_delete_first_line = "┃"
-  let g:signify_sign_change = "┃"
-  let g:signify_sign_show_count = 0
-  " default 5 (4 is lower than linter warnings)
-  let g:signify_priority = 4
 
-" =========================== Tmux ==============================================================================================================================
+" ----------------------------- Tmux ----------------------------------------
 Plug 'christoomey/vim-tmux-navigator', Cond(executable('tmux'))
 Plug 'benmills/vimux', Cond(executable('tmux'))
     let g:VimuxHeight = "30"
 
-
-" =========================== Markdown/Notes/Writing ==========================================================================================================================
+" ----------------------------- Notes/Writing -------------------------------
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   " let g:vim_markdown_no_default_key_mappings = 1
   let g:vim_markdown_conceal = 0
@@ -235,11 +229,11 @@ Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 " Plug 'vimwiki/vimwiki'
 
 
-" =========================== Web Developement ==========================================================================================================================
+" ----------------------------- Web Developement ---------------------------
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
 
-" language specific
+" ----------------------------- Language Specific --------------------------
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'vim-python/python-syntax', { 'for': 'python' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -258,7 +252,7 @@ Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 Plug 'baskerville/vim-sxhkdrc'
 
-"considering
+" considering
 "Plug 'junegunn/vim-after-object'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'sheerun/vim-polyglot'
@@ -279,6 +273,11 @@ Plug 'baskerville/vim-sxhkdrc'
 call plug#end()
 endif
 
+" }}}
+
+" ============================================================================
+" Defaults {{{
+" ============================================================================
 inoremap jk <Esc>
 cnoremap jk <C-c>
 
@@ -298,20 +297,4 @@ let g:which_key_map = {}
 vnoremap < <gv
 vnoremap > >gv
 
-
-" function! s:list_buffers()
-  " redir => list
-  " silent ls
-  " redir END
-  " return split(list, "\n")
-" endfunction
-
-" function! s:delete_buffers(lines)
-  " execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
-" endfunction
-
-" command! BD call fzf#run(fzf#wrap({
-  " \ 'source': s:list_buffers(),
-  " \ 'sink*': { lines -> s:delete_buffers(lines) },
-  " \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-" \ }))
+"}}}

@@ -45,6 +45,7 @@ alias yc='yadm commit -m'
 alias yp='yadm push'
 
 alias t='task'
+alias pacvis='pacvis --browser'
 
 # overrides default alias yay='yay -Syu'
 alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"

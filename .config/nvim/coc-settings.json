@@ -1,4 +1,5 @@
 {
+  "codeLens.enable": true,
   "python.pythonPath": "python3",
   "python.jediEnabled": false,
   "python.analysis.diagnosticEnabled": true,

@@ -2,6 +2,7 @@
 video/*=mpv.desktop
 text/*=nvim.desktop
 image/*=sxiv.desktop
+audio/*=mpv.desktop
 text/html=firefox.desktop
 application/pdf=org.pwmt.zathura.desktop
 inode/directory=ranger.desktop

@@ -37,7 +37,7 @@ set expandtab
 set noshowmode
 set foldmethod=syntax
 set foldlevelstart=99
-set timeoutlen=500
+set timeoutlen=400
 set ttimeoutlen=0
 set ignorecase
 set smartcase

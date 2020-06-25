@@ -88,28 +88,39 @@ nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
 
 
 " leader cd mappings
-nnoremap <leader>cd :Rooter<CR>
-nnoremap <leader>` :cd ~<CR>
-nnoremap <leader>c. :cd ..<CR>
+" nnoremap <leader>cd :Rooter<CR>
+" nnoremap <leader>` :cd ~<CR>
+" nnoremap <leader>c. :cd ..<CR>
 
 " ==============================================================================================================================================
 " ================ Git ===========================================================================================================================
 " ==============================================================================================================================================
+let g:which_key_map.g = { 'name' : '+git' }
 nnoremap <silent> <leader>gs :G<CR>
+let g:which_key_map.g.s = 'git status'
 nnoremap <silent> <leader>gb :G blame<CR>
+let g:which_key_map.g.b = 'git blame'
 nnoremap <silent> <leader>gl :Gclog<CR>
+let g:which_key_map.g.l = 'git log'
 nnoremap <silent> <leader>ga :G add .<CR>
+let g:which_key_map.g.a = 'git add current filej'
 nnoremap <silent> <leader>gc :G commit<CR>
+let g:which_key_map.g.c = 'git commit'
 nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
+let g:which_key_map.g.p = 'git push current head'
 " toggle yadm mapping
 " nnoremap <silent> <leader>gy :call mappings#toggle_yadm()<CR>
 " nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
 
+let g:which_key_map.c = { 'name' : '+git chunk' }
 nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
+let g:which_key_map.c.s = 'stage chunk'
 nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>
+let g:which_key_map.c.u = 'undo chunk'
 nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
-" chunk log
-nnoremap <silent> <leader>cl :CocCommand git.showCommit<CR>
+let g:which_key_map.c.i = 'show chunk info'
+nnoremap <silent> <leader>cc :CocCommand git.showCommit<CR>
+let g:which_key_map.c.c = 'show chunk commit'
 " git open
 nnoremap <silent> <leader>go :CocCommand git.browserOpen
 
@@ -122,15 +133,20 @@ nnoremap <silent> <leader>go :CocCommand git.browserOpen
 " goyo mapping
 nnoremap <silent> <leader>go :Goyo<CR>
 
-" vim test mappings
+let g:which_key_map.t = { 'name' : '+test' }
 nmap <silent> <Leader>tn :TestNearest<CR>
+let g:which_key_map.t.n = 'test nearest'
 nmap <silent> <Leader>tf :TestFile<CR>
+let g:which_key_map.t.f = 'test whole file'
 nmap <silent> <Leader>ts :TestSuite<CR>
+let g:which_key_map.t.s = 'test entire suite'
 nmap <silent> <Leader>tl :TestLast<CR>
+let g:which_key_map.t.l = 'test last'
 nmap <silent> <Leader>tg :TestVisit<CR>
+let g:which_key_map.t.g = 'test visit'
 
 " window swap mapppings
-nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
+" nnoremap <silent> <leader>sw :call WindowSwap#EasyWindowSwap()<CR>
 
 " toggle fugitive to yadm
 " function! Fugitive_toggle()
@@ -157,3 +173,5 @@ nnoremap <leader>d :call mappings#start_debugger()<Cr>
 " ============================ Neoterm =====================================
 " ===================================================================
 nnoremap <leader>nl :<c-u>exec v:count.'Tclear'<cr>
+
+call which_key#register('<Space>', "g:which_key_map")

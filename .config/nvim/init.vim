@@ -286,8 +286,6 @@ cnoremap jk <C-c>
 let mapleader="\<Space>"
 let maplocalleader="\\"
 
-call which_key#register(',', "g:which_key_map")
-
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 

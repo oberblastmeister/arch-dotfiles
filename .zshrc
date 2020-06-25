@@ -64,6 +64,7 @@ HISTFILE=~/.cache/zsh/history
 
 export KEYTIMEOUT=20
 export BAT_THEME="gruvbox"
+export TUIR_URLVIEWER=urlscan
 
 MODE_CURSOR_VIINS="bar"
 MODE_CURSOR_REPLACE="underline"

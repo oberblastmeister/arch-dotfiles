@@ -30,15 +30,12 @@ Plug 'itchyny/lightline.vim'
     \ 'active': {
     \   'left': [ [ 'mode', 'paste', 'zoom'],
     \             ['cocstatus',  'fugitive', 'readonly', 'filename', 'modified'] ],
-    \   'right':   [ [ 'percent' ],
-    \              [ 'fileformat', 'filetype'] ]
+    \   'right':   [ [ 'percent' ] ]
     \ },
     \ 'component': {
     \   'lineinfo': ' %3l:%-2v',
     \ },
     \ 'component_function': {
-    \   'filetype': 'helpers#devicons#my_filetype',
-    \   'fileformat': 'helpers#devicons#my_file_format',
     \   'readonly': 'helpers#lightline#read_only',
     \   'fugitive': 'helpers#lightline#fugitive',
     \   'cocstatus': 'coc#status',
@@ -52,7 +49,6 @@ Plug 'morhetz/gruvbox'
   let g:gruvbox_sign_column = 'bg0'
 
 Plug 'yggdroot/indentline'
-Plug 'ryanoasis/vim-devicons'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " =========================== Important ==========================================================================================================================
@@ -74,9 +70,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-explorer'
   \ ]
 
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-  " Define prefix dictionary
-  let g:which_key_map =  {}
+Plug 'liuchengxu/vim-which-key'
 
 Plug 'honza/vim-snippets'
 
@@ -291,8 +285,16 @@ cnoremap jk <C-c>
 " set leader mappings
 let mapleader="\<Space>"
 let maplocalleader="\\"
+
+call which_key#register(',', "g:which_key_map")
+
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+
 nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
+vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
+
+let g:which_key_map = {}
 
 " Visual shifting does not exit visual mode
 vnoremap < <gv

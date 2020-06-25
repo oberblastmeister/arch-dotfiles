@@ -1,6 +1,6 @@
-" ===================================================================================================================================================
-" ================ Regular leader mappings =========================================================================================================
-" ===================================================================================================================================================
+" ============================================================================
+" Regular {{{
+" ============================================================================
 nnoremap <silent> <Leader><Leader> <C-^>
 nnoremap <silent> <Leader>o :call zoom#toggle()<cr>
 nnoremap <silent> <Leader>q :quit<CR>
@@ -15,23 +15,30 @@ command! -nargs=0 Number :call mappings#cycle_numbering()
 
 " zap trailing whitespace
 nnoremap <silent> <Leader>zz :call mappings#zap()<CR>
+" }}}
 
-" ================================================================================================================================================
-" ================ Vimux =========================================================================================================================
-" ================================================================================================================================================
-
-" Vimux
+" ============================================================================
+" Vimux {{{
+" ============================================================================
 let g:which_key_map.v = { 'name' : '+vimux' }
+
 nnoremap <Leader>vp :VimuxPromptCommand<CR>
-let g:which_key_map.v.p = 'prompt for command'
+let g:which_key_map.v.p = 'prompt command'
+
 nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 let g:which_key_map.v.l = 'run last prompted command'
+
 nnoremap <Leader>vi :VimuxInspectRunner<CR>
-let g:which_key_map.v.i = 'move into runner and enter copy mode (inspect)'
+let g:which_key_map.v.i = 'inspect (move into runner and enter copy mode)'
+
 nnoremap <Leader>vx :VimuxInterruptRunner<CR>
 let g:which_key_map.v.x = 'interrupt command in runner'
+
 nnoremap <Leader>vz :call VimuxZoomRunner()<CR>
 let g:which_key_map.v.z = 'zoom runner'
+
+nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
+let g:which_key_map.v['<CR>'] = 'send enter to runner'
 
 nnoremap <silent> <Leader>r :call mappings#run_code()<CR>
 nnoremap <silent> <Leader>R :!chromium-browser %<CR><CR>
@@ -75,8 +82,6 @@ nmap <C-c><C-c> V<LocalLeader>vs
 nmap <Leader>s vip<LocalLeader>vsp<CR>
 nmap <Leader>S V<LocalLeader>vsm
 
-nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
-
 " vmap <LocalLeader>vs "vy :call VimuxSlime()<CR>
 
 " Select current paragraph and send it to tmux
@@ -87,47 +92,47 @@ nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
 " nnoremap <leader>cd :Rooter<CR>
 " nnoremap <leader>` :cd ~<CR>
 " nnoremap <leader>c. :cd ..<CR>
+" }}}
 
-" ==============================================================================================================================================
-" ================ Git ===========================================================================================================================
-" ==============================================================================================================================================
+" ============================================================================
+" Git {{{
+" ============================================================================
 let g:which_key_map.g = { 'name' : '+git' }
 nnoremap <silent> <leader>gs :G<CR>
-let g:which_key_map.g.s = 'git status'
+let g:which_key_map.g.s = 'status'
 nnoremap <silent> <leader>gb :G blame<CR>
-let g:which_key_map.g.b = 'git blame'
+let g:which_key_map.g.b = 'blame'
 nnoremap <silent> <leader>gl :Gclog<CR>
-let g:which_key_map.g.l = 'git log'
+let g:which_key_map.g.l = 'log'
 nnoremap <silent> <leader>ga :G add %:p<CR>
-let g:which_key_map.g.a = 'git add current file'
+let g:which_key_map.g.a = 'add current file'
 nnoremap <silent> <leader>gc :G commit<CR>
-let g:which_key_map.g.c = 'git commit'
+let g:which_key_map.g.c = 'commit'
 nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
-let g:which_key_map.g.p = 'git push current head'
+let g:which_key_map.g.p = 'push current head'
 " toggle yadm mapping
 " nnoremap <silent> <leader>gy :call mappings#toggle_yadm()<CR>
 " nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
 
-let g:which_key_map.c = { 'name' : '+git chunk' }
+let g:which_key_map.c = { 'name' : '+chunk' }
 nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
-let g:which_key_map.c.s = 'stage chunk'
+let g:which_key_map.c.s = 'stage'
 nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>
-let g:which_key_map.c.u = 'undo chunk'
+let g:which_key_map.c.u = 'undo'
 nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
-let g:which_key_map.c.i = 'show chunk info'
+let g:which_key_map.c.i = 'show info'
 nnoremap <silent> <leader>cc :CocCommand git.showCommit<CR>
-let g:which_key_map.c.c = 'show chunk commit'
+let g:which_key_map.c.c = 'show commit'
 " git open
 nnoremap <silent> <leader>go :CocCommand git.browserOpen
+" }}}
 
-
-" ==============================================================================================================================================
-" ================ Miscelaeneous ===============================================================================================================
-" ==============================================================================================================================================
-" nnoremap U :UndotreeToggle<CR>
+" ============================================================================
+" Miscellaneous {{{
+" ============================================================================
 
 " goyo mapping
-nnoremap <silent> <leader>go :Goyo<CR>
+" nnoremap <silent> <leader>go :Goyo<CR>
 
 let g:which_key_map.t = { 'name' : '+test' }
 nmap <silent> <Leader>tn :TestNearest<CR>
@@ -155,19 +160,15 @@ let g:which_key_map.t.g = 'test visit'
 "     let g:fugitive_toggle = 0
 "   endif
 " endfunction
+" }}}
 
-nnoremap <Leader>I :call Fugitive_toggle()<CR>
-
-
-" =========================================================
-" ============================= Vimspector ===============================
-" =================================================================
-
+" ============================================================================
+" Vimspector {{{
+" ============================================================================
 nnoremap <leader>d :call mappings#start_debugger()<Cr>
+" }}}
 
-" ======================================================================
-" ============================ Neoterm =====================================
-" ===================================================================
-nnoremap <leader>nl :<c-u>exec v:count.'Tclear'<cr>
 
+" {{{
 call which_key#register('<Space>', "g:which_key_map")
+" }}}

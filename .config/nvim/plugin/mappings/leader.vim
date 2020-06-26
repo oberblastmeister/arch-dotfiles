@@ -1,12 +1,13 @@
 " ============================================================================
 " Regular {{{
 " ============================================================================
-nnoremap <silent> <Leader><Leader> <C-^>
-nnoremap <silent> <Leader>o :call zoom#toggle()<cr>
-nnoremap <silent> <Leader>q :quit<CR>
-nnoremap <silent> <Leader>Q :VimuxCloseRunner<CR>
-nnoremap <Leader>w :write<CR>
-nnoremap <silent> <Leader>x :xit<CR>
+let g:which_key_map[' '] = [ '<C-^>', 'go to previous buffer' ]
+let g:which_key_map.o = [ 'zoom#toggle()', 'toggle zoom of split' ]
+let g:which_key_map.q = [ 'q', 'quit' ]
+let g:which_key_map.Q = [ 'qa!', 'quit without saving' ]
+let g:which_key_map.w = [ 'w', 'write' ]
+let g:which_key_map.x = [ 'x', 'xit' ]
+let g:which_key_map.p = [ 'pu', 'put below' ]
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <silent> <leader>p :pu<CR>
 

@@ -29,7 +29,7 @@ nnoremap gP i<CR><Esc>PkJxJx
 nnoremap gp a<CR><Esc>PkJxJx
 
 " ctrl-l turns off highight update syntax highlighting and redraws
-nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+" nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 " EasyAlign mappings
 " Start interactive EasyAlign in visual mode (e.g. vipga)

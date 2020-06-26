@@ -54,30 +54,11 @@ nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
 " open dir in lf
 nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>
 
-" ==============================================================
-" =============================== Signify =========================
-" =============================================================
-
-" " jump between hunks
-" nmap ]h <plug>(signify-next-hunk)
-" nmap [h <plug>(signify-prev-hunk)
-" nmap ]H 9999]h
-" nmap [H 9999[h
-
-" " hunk text objects
-" omap ih <plug>(signify-motion-inner-pending)
-" xmap ih <plug>(signify-motion-inner-visual)
-" omap ah <plug>(signify-motion-outer-pending)
-" xmap ah <plug>(signify-motion-outer-visual)
-" jump hunks
-" nmap [h <Plug>(coc-git-prevchunk)
-" nmap ]h <Plug>(coc-git-nextchunk)
-
-" jump hunks and add position to jumplist
+" jump chunk and add position to jumplist
 nmap <silent> [c :execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
 nmap <silent> ]c :execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
 
-" hunk text objects
+" chunk text objects
 omap ic <Plug>(coc-git-chunk-inner)
 xmap ic <Plug>(coc-git-chunk-inner)
 omap ac <Plug>(coc-git-chunk-outer)

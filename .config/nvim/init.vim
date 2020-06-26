@@ -70,7 +70,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-java',
   \ 'coc-marketplace',
   \ 'coc-git',
-  \ 'coc-explorer'
+  \ 'coc-explorer',
+  \ 'coc-yaml'
   \ ]
 
 Plug 'liuchengxu/vim-which-key'

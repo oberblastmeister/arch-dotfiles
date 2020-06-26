@@ -66,15 +66,21 @@ noremap <silent> K :call <SID>show_documentation()<CR>
 " Highlight the symbol and its references when holding the cursor.
 autocmd! CursorHold * silent! call CocActionAsync('highlight')
 
-" Symbol renaming.
-nnoremap <silent> <leader>r :<c-u>WhichKey '<Space>r'<CR>
+" Symbol renaming. {{{
+let g:which_key_map.r = { 'name': '+rename' }
+
 nmap <leader>rn <Plug>(coc-rename)
-" rename general word
+let g:which_key_map.r.n = 'symbol'
+
 nmap <leader>rw :CocCommand document.renameCurrentWord<CR>
-" rename with refractor window
+let g:which_key_map.r.w = 'word'
+
 nmap <leader>rf <Plug>(coc-refactor)
-" cocsearch
+let g:which_key_map.r.f = 'refractor'
+
 nmap <leader>rs :CocSearch <cword><cr>
+let g:which_key_map.r.s = 'search'
+" }}}
 
 " Formatting selected code.
 " combat mapping file

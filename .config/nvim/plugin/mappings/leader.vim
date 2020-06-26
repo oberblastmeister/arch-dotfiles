@@ -9,7 +9,6 @@ let g:which_key_map.w = [ 'w', 'write' ]
 let g:which_key_map.x = [ 'x', 'xit' ]
 let g:which_key_map.p = [ 'pu', 'put below' ]
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
-nnoremap <silent> <leader>p :pu<CR>
 
 " cycle through different numberings with  number command
 command! -nargs=0 Number :call mappings#cycle_numbering()

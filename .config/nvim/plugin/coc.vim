@@ -57,7 +57,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Use <leader> k to show documentation in preview window.
+" show docs in preview window
 noremap <silent> K :call <SID>show_documentation()<CR>
 
 " Highlight the symbol and its references when holding the cursor.
@@ -100,35 +100,18 @@ omap af <Plug>(coc-funcobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 "" Do default action for next item.
 "nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 "" Do default action for previous item.
 "nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 
-" coc actions windows
-" Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-nmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
- " Apply AutoFix to problem on the current line.
-nmap <leader>af  <Plug>(coc-fix-current)
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+let g:which_key_map.a = 'actions'
 
 " coc multiple cursors mappings
 nmap <silent> <C-c> <Plug>(coc-cursors-position)

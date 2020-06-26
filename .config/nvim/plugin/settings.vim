@@ -29,32 +29,24 @@ endif
 
 colorscheme gruvbox
 set number relativenumber
+set smartindent
+set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus
-set tabstop=4
-set shiftwidth=4
 set inccommand=split
-set expandtab
 set noshowmode
 set foldmethod=syntax
 set foldlevelstart=99
 set timeoutlen=400
 set ttimeoutlen=0
-set ignorecase
-set smartcase
-set wrap
-set textwidth=79
-set linebreak
-set autoread
+set ignorecase smartcase
 set mouse=a
 set nowrap
-" for transparent floating windows
-" set winblend=18
 " no splash screen and shorter messages
-set shortmess+=I
-set shortmess+=O
+set shortmess+=I " no intro
+" set shortmess+=O
 set shortmess+=a   " use abbreviations
 set shortmess+=W   " dont' echo written when writing
-set shortmess+=A   " no swapfile messages
+" set shortmess+=A   " no swapfile messages
 
 " make ~ for new lines be same color as background so they are not seen
 highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg

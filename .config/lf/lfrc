@@ -43,30 +43,6 @@ cmd paste &{{
     lf -remote 'send clear'
 }}
 
-# cmd paste ${{
-#     send="while read -r line; do lf -remote \"send $id echo \$line\"; done && lf -remote 'send reload'"
-#     load=$(lf -remote 'load')
-#     mode=$(echo "$load" | sed -n '1p')
-#     srcF=$(mktemp)
-#     echo "$load" | sed '1d' > "$srcF"
-#     s='' && [ ! -w . ] && s='sudo'
-#     case "$mode" in
-#         copy) cmd='cp-p';; move) cmd='mv-p';;
-#     esac
-#     cmd="$cmd --new-line"
-#     $s sh -c "$cmd --backup=numbered -F \"$srcF\" . | $send && rm -f \"$srcF\" &"
-#     lf -remote 'send load'
-#     lf -remote 'send clear'
-# }}
-
-# define a custom 'open' command
-cmd open ${{
-    case $(file --mime-type $f -b) in
-        text/*) $EDITOR $fx;;
-        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
-    esac
-}}
-
 # make sure trash folder exists
 %mkdir -p ~/.trash
 
@@ -88,6 +64,8 @@ cmd extract ${{
 
 cmd mkdir %mkdir -p "$@"; 
 cmd touch %touch "$@";
+# copy and rename at the same time
+cmd go_put %cp "$f" "$@";
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -246,6 +224,7 @@ map x $$f
 map X !$f
 
 map P :Link
+map gp push :go_put<space>
 
 map - $$HOME/.config/lf/draw_img.sh $f
 map + :video_preview

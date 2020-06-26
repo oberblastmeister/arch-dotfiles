@@ -29,9 +29,6 @@ nnoremap <silent> \l :CocList<CR>
 " find mappings
 nnoremap <silent> \m :Clap maps<CR>
 
-" fuzzy search lines in current buffer
-nnoremap <silent> <leader>/ :BLines<CR>
-
 " " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 
@@ -52,4 +49,6 @@ let g:which_key_map['.'] = 'search for dotfiles'
 let g:which_key_map.T = [ 'Rg', 'grep' ]
 let g:which_key_map.h = [ 'Help', 'search for help' ]
 let g:which_key_map.n = [ 'NV', 'notational velocity' ]
-let g:which_key_map['/'] = [ 'Blines', 'fuzzy /' ]
+
+nnoremap <silent> <leader>/ :BLines<CR>
+let g:which_key_map['/'] = 'fuzzy /'

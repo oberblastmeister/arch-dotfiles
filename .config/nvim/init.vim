@@ -278,6 +278,7 @@ endif
 " ============================================================================
 " Defaults {{{
 " ============================================================================
+" escaping
 inoremap jk <Esc>
 cnoremap jk <C-c>
 
@@ -285,16 +286,16 @@ cnoremap jk <C-c>
 let mapleader="\<Space>"
 let maplocalleader="\\"
 
+" whichkey leader mappings
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 
+" whichkey localleader mappings
 nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
 vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
 
+" set global whichkey dict
 let g:which_key_map = {}
 
-" Visual shifting does not exit visual mode
-vnoremap < <gv
-vnoremap > >gv
-
+call which_key#register('<Space>', "g:which_key_map")
 "}}}

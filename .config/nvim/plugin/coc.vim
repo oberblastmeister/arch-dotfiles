@@ -144,3 +144,14 @@ nmap <silent> <C-c> <Plug>(coc-cursors-position)
 " overide Q ex-mode mapping, don't want ex mode
 nmap <silent> Q <Plug>(coc-cursors-word)*
 xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+
+xmap <leader>f  <Plug>(coc-format-selected)
+" lsp mappings
+let g:which_key_map.l = {
+        \ 'name' : '+lsp',
+        \ 'F' : ['Format', 'format entire file'],
+        \ 'o' : ['OR', 'organize imports'],
+        \ 'c' : ['Fold', 'collapse/fold file'],
+        \ 'a' : ['<Plug>(coc-fix-current)', 'autofix current'],
+        \ 'f' : ['<Plug>(coc-format-selected)', 'format with text objects']
+        \ }

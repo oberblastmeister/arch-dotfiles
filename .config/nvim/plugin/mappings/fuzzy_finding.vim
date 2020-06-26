@@ -18,30 +18,10 @@ nnoremap <silent> \t  :Vista finder<CR>
 " find buffers
 nnoremap <silent> <c-b> :Buffers<CR>
 
-" find files (change back to fzf if clap is to slow)
-" nnoremap <silent> <C-t> :Clap files<CR>
-
-nnoremap <silent> <c-t> :Files<Cr>
-
-" clap filer (overides default scroll mappings)
-" nnoremap <silent> <C-e> :Clap filer<CR>
-
-" grep
-nnoremap <silent> <C-f> :Rg<CR>
-
-" find help (also change back to fzf if clap is too slow)
-nnoremap <silent> <leader>h :Help<CR>
-
-" most recent (U)sed files
 nnoremap <silent> <leader>u :History<cr>
 
 " show colors
 nnoremap <silent> \C :Clap colors<CR>
-
-" find dotfiles
-" nnoremap <silent> <leader>i :call fuzzy_finding#fuzzy_dotfiles()<CR>
-" nnoremap <silent> <leader>i :cd ~<CR>:Clap gfiles<CR>
-nnoremap <silent> <leader>i :cd ~<CR>:Dotfiles<CR>
 
 " general coclist
 nnoremap <silent> \l :CocList<CR>
@@ -51,9 +31,6 @@ nnoremap <silent> \m :Clap maps<CR>
 
 " fuzzy search lines in current buffer
 nnoremap <silent> <leader>/ :BLines<CR>
-
-" notational fzf
-nnoremap <silent> <C-n> :NV<CR>
 
 " " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -66,3 +43,13 @@ command! -bang -nargs=? -complete=dir Dotfiles
 command! -nargs=? Dotfiles 
       \ call fzf#run(fzf#wrap(
       \     {'source': 'yadm list -a', 'sink': 'e', 'options': '--preview "bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}"'}))
+
+" common fzf commands
+
+let g:which_key_map.f = [ 'Files', 'search for files' ]
+nnoremap <silent> <leader>. :cd ~<CR>:Dotfiles<CR>
+let g:which_key_map['.'] = 'search for dotfiles'
+let g:which_key_map.T = [ 'Rg', 'grep' ]
+let g:which_key_map.h = [ 'Help', 'search for help' ]
+let g:which_key_map.n = [ 'NV', 'notational velocity' ]
+let g:which_key_map['/'] = [ 'Blines', 'fuzzy /' ]

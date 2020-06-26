@@ -47,6 +47,7 @@ set shortmess+=I " no intro
 set shortmess+=a   " use abbreviations
 set shortmess+=W   " dont' echo written when writing
 " set shortmess+=A   " no swapfile messages
+set path+=**
 
 " make ~ for new lines be same color as background so they are not seen
 highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg

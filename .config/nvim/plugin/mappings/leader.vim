@@ -9,12 +9,11 @@ nnoremap <Leader>w :write<CR>
 nnoremap <silent> <Leader>x :xit<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <silent> <leader>p :pu<CR>
-
-" cycle through different numberings with  number command
-command! -nargs=0 Number :call mappings#cycle_numbering()
-
-" zap trailing whitespace
-nnoremap <silent> <Leader>zz :call mappings#zap()<CR>
+let g:which_key_map.z = { 
+        \ 'name' : '+misc' ,
+        \ 'z' : ['call mappings#zap()', 'zap whitespace'],
+        \ 'n' : ['call mappings#cycle_numbering()', 'cycle numbering']
+        \ }
 " }}}
 
 " ============================================================================

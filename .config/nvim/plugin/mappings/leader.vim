@@ -40,6 +40,9 @@ let g:which_key_map.v.z = 'zoom runner'
 nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
 let g:which_key_map.v['<CR>'] = 'send enter to runner'
 
+nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
+let g:which_key_map.v.q = 'close vimux runner'
+
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
 
 function! VimuxSlime()

@@ -82,12 +82,7 @@ nmap <leader>rs :CocSearch <cword><cr>
 let g:which_key_map.r.s = 'search'
 " }}}
 
-" Formatting selected code.
-" combat mapping file
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
+augroup coc
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')

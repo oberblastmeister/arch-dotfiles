@@ -145,7 +145,6 @@ nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <silent> Q <Plug>(coc-cursors-word)*
 xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
-xmap <leader>f  <Plug>(coc-format-selected)
 " lsp mappings
 let g:which_key_map.l = {
         \ 'name' : '+lsp',

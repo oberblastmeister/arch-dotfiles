@@ -66,3 +66,6 @@ command! -bang -nargs=? -complete=dir Dotfiles
 command! -nargs=? Dotfiles 
       \ call fzf#run(fzf#wrap(
       \     {'source': 'yadm list -a', 'sink': 'e', 'options': '--preview "bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}"'}))
+
+nnoremap <silent> <leader>. :cd ~<CR>:Dotfiles<CR>
+let g:which_key_map['.'] = 'search for dotfiles'

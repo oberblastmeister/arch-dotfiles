@@ -2,7 +2,6 @@
 # ================================ options ==============================
 # =======================================================================
 set previewer /home/brian/.config/lf/lf_scope.sh
-# set previewer pistol
 
 # dynamically set number of columns
 cmd recol %{{
@@ -17,16 +16,14 @@ recol
 
 # interpreter for shell commands (needs to be POSIX compatible)
 set shell zsh
-
 set shellopts '-eu:--shwordsplit'
-
 set ifs "\n"
-set filesep "\n"  # default already
 
 set scrolloff 10
 set incsearch
 set color256
 set icons
+set hidden!
 
 # =======================================================================
 # ================================ commands =============================
@@ -46,6 +43,22 @@ cmd paste &{{
     lf -remote 'send clear'
 }}
 
+# cmd paste ${{
+#     send="while read -r line; do lf -remote \"send $id echo \$line\"; done && lf -remote 'send reload'"
+#     load=$(lf -remote 'load')
+#     mode=$(echo "$load" | sed -n '1p')
+#     srcF=$(mktemp)
+#     echo "$load" | sed '1d' > "$srcF"
+#     s='' && [ ! -w . ] && s='sudo'
+#     case "$mode" in
+#         copy) cmd='cp-p';; move) cmd='mv-p';;
+#     esac
+#     cmd="$cmd --new-line"
+#     $s sh -c "$cmd --backup=numbered -F \"$srcF\" . | $send && rm -f \"$srcF\" &"
+#     lf -remote 'send load'
+#     lf -remote 'send clear'
+# }}
+
 # define a custom 'open' command
 cmd open ${{
     case $(file --mime-type $f -b) in
@@ -53,10 +66,6 @@ cmd open ${{
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
-
-# define a custom 'rename' command without prompt for overwrite
-# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-# map r push :rename<space>
 
 # make sure trash folder exists
 %mkdir -p ~/.trash
@@ -78,12 +87,7 @@ cmd extract ${{
 }}
 
 cmd mkdir %mkdir -p "$@"; 
-
-cmd touch ${{
-   res="$1"
-   touch "$@"
-   lf -remote "send $id select \"$res\""
-}}
+cmd touch %touch "$@";
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -180,6 +184,46 @@ cmd bulk-rename ${{
     lf -remote "send $id unselect"
 }}
 
+# new folder with selected items
+cmd newfold ${{
+    set -f
+    read newd
+    mkdir $newd
+    mv $fx $newd
+}}
+
+cmd yank-dirname ${{
+    dirname -- "$f" | tr -d '\n' | xclip -i -selection clipboard
+}}
+
+cmd yank-path ${{
+    echo "$fx" | xclip -i -selection clipboard
+}}
+
+cmd yank-basename ${{
+    echo "$fx" |
+      xargs -r -d '\n' basename -a -- |
+      xclip -i -selection clipboard
+}}
+
+cmd yank-basename-without-extension ${{
+    echo "$fx" |
+      xargs -r -d '\n' basename -a -- |
+      awk -e '{
+        for (i=length($0); i > 0; i--) {
+          if (substr($0, i, 1) == ".") {
+            if (i == 1) print $0
+            else print substr($0, 0, i-1)
+
+            break
+          }
+        }
+
+        if (i == 0)
+          print $0
+      }' | xclip -i -selection clipboard
+}}
+
 # =======================================================================
 # ================================ mappings =============================
 # =======================================================================
@@ -187,11 +231,8 @@ cmd bulk-rename ${{
 map <a-c> :fzf_jump
 map <c-t> :fzf
 
-# export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
-
 map . set hidden!
 map gh :cd ~
-
 
 map a push :touch<space>
 map A push :mkdir<space>
@@ -204,13 +245,6 @@ map <enter> shell
 map x $$f
 map X !$f
 
-# map custom open command
-# map l :open
-
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
-
 map P :Link
 
 map - $$HOME/.config/lf/draw_img.sh $f
@@ -218,30 +252,4 @@ map + :video_preview
 
 map R :bulk-rename
 
-# ranger like rename mappings
-
-# Unmap the default binding
-# map r
-
-# # Rename the file with a completely different name
-# map rc push :rename<space>
-
-# # Edit the current filename
-# map ra ${{
-# 	# get 'basename' of the selection
-# 	filename="${f##*/}"
-# 	# quote it so we won't deal with quotes in the lf -remote command
-# 	filename="$(printf '%q' "$filename")"
-# 	filename="${filename// /<space>}"
-# 	lf -remote "send $id push :rename<space>$filename"
-# }}
-
-# # Edit filename before the extension
-# map re ${{
-# 	# get 'basename' of the selection
-# 	filename="${f##*/}"
-# 	# quote it so we won't deal with quotes in the lf -remote command
-# 	filename="$(printf '%q' "$filename")"
-# 	filename="${filename// /<space>}"
-# 	lf -remote "send $id push :rename<space>$filename<a-b><c-b>"
-# }}
+map <a-n> newfold

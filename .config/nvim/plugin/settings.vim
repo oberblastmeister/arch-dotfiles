@@ -28,6 +28,8 @@ if has('termguicolors')
 endif
 
 colorscheme gruvbox
+set background=dark
+
 set number relativenumber
 set smartindent
 set lazyredraw " faster macros

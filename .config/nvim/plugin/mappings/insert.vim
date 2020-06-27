@@ -1,4 +1,4 @@
-" some random emacs mappings
+" some random bash mappings
 
 " backwards delete
 " inoremap <C-d> <Del>

@@ -57,3 +57,4 @@ highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 hi! FloatermBorder guibg=#504945
 highlight clear SignColumn
+" set fillchars+=vert:\ 

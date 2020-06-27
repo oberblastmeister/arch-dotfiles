@@ -48,6 +48,8 @@ Plug 'itchyny/lightline.vim'
     \ }
 
 Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
+Plug 'arzg/vim-colors-xcode'
 Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
 

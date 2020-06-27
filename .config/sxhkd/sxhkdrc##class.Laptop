@@ -43,26 +43,14 @@ super + g
 # state/flags
 #
 
-# toggle states
-super + t
-    if [ -z "$(bspc query -N -n focused.pseudo_tiled)" ]; then \                    
-	bspc node focused -t pseudo_tiled; \                                        
-    else \                                                                      
-	bspc node focused -t tiled; \                                           
-    fi
+super + {t,shift + t,f}
+	bspc node -t {tiled,pseudo_tiled,fullscreen}
 
 super + space
     if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
-        bspc node focused -t floating; \                                        
+	bspc node focused -t floating; \                                        
     else \                                                                      
-        bspc node focused -t tiled; \                                           
-    fi
-
-super + f
-    if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \                    
-        bspc node focused -t fullscreen; \                                        
-    else \                                                                      
-        bspc node focused -t tiled; \                                           
+	bspc node focused -t tiled; \                                           
     fi
 
 # toggle work mode (smaller gaps)
@@ -75,8 +63,6 @@ super + w
 	bspc config window_gap 55; \
     fi
 
-
-# ~/.config/sxhkd/toggle_floating
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}

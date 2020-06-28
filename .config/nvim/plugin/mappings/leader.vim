@@ -49,6 +49,7 @@ nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
 let g:which_key_map.v.q = 'close vimux runner'
 
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
+let g:which_key_map.R = 'run code'
 
 function! VimuxSlime()
   call VimuxSendKeys("F6")
@@ -169,6 +170,7 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " Vimspector {{{
 " ============================================================================
 nnoremap <leader>d :call mappings#start_debugger()<Cr>
+let g:which_key_map.d = 'start debugger'
 
 " ignore <F9> mapping for whichkey, has to do with vimspector
 let g:which_key_map['<F9>'] = 'which_key_ignore'

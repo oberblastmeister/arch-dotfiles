@@ -43,11 +43,13 @@ set ttimeoutlen=0
 set ignorecase smartcase
 set mouse=a
 set nowrap
+
 " no splash screen and shorter messages
 set shortmess+=I " no intro
-" set shortmess+=O
+set shortmess+=O
 set shortmess+=a   " use abbreviations
-set shortmess+=W   " dont' echo written when writing
+set shortmess+=W   " dont' echo written when writing, lightline already has symbol
+set shortmess+=T
 " set shortmess+=A   " no swapfile messages
 set path+=**
 
@@ -56,3 +58,5 @@ highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 hi! FloatermBorder guibg=#504945
+highlight clear SignColumn
+" set fillchars+=vert:\ 

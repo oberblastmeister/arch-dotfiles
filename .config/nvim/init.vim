@@ -232,9 +232,6 @@ else
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown', 'on': 'MarkdownPreview'}
 endif
 
-Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
-  let g:pencil#wrapModeDefault = 'soft'
-
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 " Plug 'vimwiki/vimwiki'

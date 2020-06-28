@@ -53,9 +53,11 @@ Plug 'itchyny/lightline.vim'
     \ }
   autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
 
+" colors
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'arzg/vim-colors-xcode'
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -125,7 +127,7 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_fzf_preview = ['right:50%']
   let g:vista_default_executive = 'coc'
 
-Plug 'haya14busa/is.vim'
+Plug 'romainl/vim-cool'
 
 " if has('win32')
 "   Plug 'kassio/neoterm'

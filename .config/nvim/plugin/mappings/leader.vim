@@ -16,8 +16,8 @@ nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " ============================================================================
 let g:which_key_map.z = {
       \ 'name': '+misc',
-      \ 'n' : ['mappings#toggle_numbering', 'toggle numbers'],
-      \ 'z' : ['mappings#zap', 'zap whitespace'],
+      \ 'n' : ['mappings#toggle_numbering()', 'toggle numbers'],
+      \ 'z' : ['mappings#zap()', 'zap whitespace'],
       \ 'h' : [':so $VIMRUNTIME/syntax/hitest.vim', 'show all highlight groups']
       \ }
 " }}}

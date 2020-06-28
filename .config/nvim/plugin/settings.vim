@@ -1,3 +1,6 @@
+" ============================================================================
+" Settings {{{
+" ============================================================================
 " these are defaults in neovim
 if !has('nvim')
   set nocompatible
@@ -52,8 +55,11 @@ set shortmess+=W   " dont' echo written when writing, lightline already has symb
 set shortmess+=T
 set shortmess+=A   " no swapfile messages
 set path+=**
+" }}}
 
-" needed for coc.vim
+" ============================================================================
+" Coc {{{
+" ============================================================================
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -71,8 +77,11 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
+" }}}
 
-" highlights
+" ============================================================================
+" Appearance {{{
+" ============================================================================
 " make ~ for new lines be same color as background so they are not seen
 highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
@@ -81,3 +90,4 @@ highlight! CursorLineNr ctermbg=bg guibg=bg
 hi! FloatermBorder guibg=#504945
 highlight clear SignColumn
 " set fillchars+=vert:\ 
+" }}}

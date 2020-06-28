@@ -1,5 +1,57 @@
-" Use ag to grep for word under cursor
+" ============================================================================
+" Commands {{{
+" ============================================================================
+command! -bang -nargs=? -complete=dir Dotfiles
+    \ call fzf#vim#files(
+    \   'yadm list -a -- '.shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview(), <bang>0)
 
+command! -nargs=? Dotfiles 
+      \ call fzf#run(fzf#wrap(
+      \     {'source': 'yadm list -a', 'sink': 'e', 'options': '--preview "bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}"'}))
+" }}}
+
+" ============================================================================
+" Common {{{
+" ============================================================================
+nnoremap <c-p> :Files<CR>
+nnoremap <c-f> :Rg<CR>
+nnoremap <c-t> :Vista finder<CR>
+nnoremap <silent> <c-b> :Buffers<CR>
+
+nnoremap <silent> <leader>. :cd ~<CR>:Dotfiles<CR>
+let g:which_key_map['.'] = 'search for dotfiles'
+let g:which_key_map.h = [ 'Help', 'search for help' ]
+let g:which_key_map.n = [ 'NV', 'notational velocity' ]
+
+nnoremap <silent> <leader>/ :BLines<CR>
+let g:which_key_map['/'] = 'fuzzy /'
+nnoremap <silent> <leader>? :Lines<CR>
+let g:which_key_map['?'] = 'fuzzy / but in all loaded buffers'
+" }}}
+
+" ============================================================================
+" Uncommon {{{
+" ============================================================================
+let g:which_key_map.s = {
+    \ 'name': '+search',
+    \ 'l': ['Locate', 'locate'],
+    \ 'C': ['Commits', 'commits'],
+    \ 'c': ['BCommits', 'commits for current buffer'],
+    \ 'm': ['Maps', 'normal mode mappings'],
+    \ 'f': ['Filetypes', 'file types'],
+    \ '/': ['Lines', 'lines loaded in buffers'],
+    \ 'g': ['GFiles', 'git files'],
+    \ 't': ['Tags', 'project tags'],
+    \ 'u': ['History', 'file history'],
+    \ 's': ['Snippets', 'snippets'],
+    \ 'w': ['Windows', 'windows'],
+    \ }
+" }}}
+
+" ============================================================================
+" Coc Lists {{{
+" ============================================================================
 " Show all diagnostics.
 nnoremap <silent> \a  :<C-u>CocList diagnostics<CR>
 
@@ -9,46 +61,6 @@ nnoremap <silent> \p  :<C-u>CocList extensions<CR>
 " Show commands.
 nnoremap <silent> \c  :<C-u>CocList commands<CR>
 
-" Show vim command
-nnoremap <silent> \v  :Clap command<CR>
-
-" Find symbol of current document.
-nnoremap <silent> \t  :Vista finder<CR>
-
-" find buffers
-nnoremap <silent> <c-b> :Buffers<CR>
-
-nnoremap <silent> <leader>u :History<cr>
-
-" show colors
-nnoremap <silent> \C :Clap colors<CR>
-
 " general coclist
 nnoremap <silent> \l :CocList<CR>
-
-" find mappings
-nnoremap <silent> \m :Clap maps<CR>
-
-" " [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-
-command! -bang -nargs=? -complete=dir Dotfiles
-    \ call fzf#vim#files(
-    \   'yadm list -a -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0)
-
-command! -nargs=? Dotfiles 
-      \ call fzf#run(fzf#wrap(
-      \     {'source': 'yadm list -a', 'sink': 'e', 'options': '--preview "bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}"'}))
-
-" common fzf commands
-
-let g:which_key_map.f = [ 'Files', 'search for files' ]
-nnoremap <silent> <leader>. :cd ~<CR>:Dotfiles<CR>
-let g:which_key_map['.'] = 'search for dotfiles'
-let g:which_key_map.T = [ 'Rg', 'grep' ]
-let g:which_key_map.h = [ 'Help', 'search for help' ]
-let g:which_key_map.n = [ 'NV', 'notational velocity' ]
-
-nnoremap <silent> <leader>/ :BLines<CR>
-let g:which_key_map['/'] = 'fuzzy /'
+" }}}

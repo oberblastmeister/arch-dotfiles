@@ -18,7 +18,7 @@ let g:which_key_map.z = {
       \ 'name': '+misc',
       \ 'n' : ['mappings#toggle_numbering', 'toggle numbers'],
       \ 'z' : ['mappings#zap', 'zap whitespace'],
-      \ 'h' : ['$VIMRUNTIME/syntax/hitest.vim']
+      \ 'h' : [':so $VIMRUNTIME/syntax/hitest.vim', 'show all highlight groups']
       \ }
 " }}}
 

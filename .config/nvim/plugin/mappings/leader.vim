@@ -168,4 +168,7 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " Vimspector {{{
 " ============================================================================
 nnoremap <leader>d :call mappings#start_debugger()<Cr>
+
+" ignore <F9> mapping for whichkey, has to do with vimspector
+let g:which_key_map['<F9>'] = 'which_key_ignore'
 " }}}

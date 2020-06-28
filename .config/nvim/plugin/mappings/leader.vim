@@ -1,19 +1,24 @@
 " ============================================================================
 " Regular {{{
 " ============================================================================
-nnoremap <silent> <Leader><Leader> <C-^>
-nnoremap <silent> <Leader>o :call zoom#toggle()<cr>
-nnoremap <silent> <Leader>q :quit<CR>
-nnoremap <silent> <Leader>Q :VimuxCloseRunner<CR>
-nnoremap <Leader>w :write<CR>
-nnoremap <silent> <Leader>x :xit<CR>
+let g:which_key_map[' '] = [ '<C-^>', 'go to previous buffer' ]
+let g:which_key_map.o = [ 'zoom#toggle()', 'toggle zoom of split' ]
+let g:which_key_map.q = [ 'q', 'quit' ]
+let g:which_key_map.Q = [ 'qa!', 'quit without saving' ]
+let g:which_key_map.w = [ 'w', 'write' ]
+let g:which_key_map.x = [ 'x', 'xit' ]
+let g:which_key_map.p = [ 'pu', 'put below' ]
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
-nnoremap <silent> <leader>p :pu<CR>
-let g:which_key_map.z = { 
-        \ 'name' : '+misc' ,
-        \ 'z' : ['call mappings#zap()', 'zap whitespace'],
-        \ 'n' : ['call mappings#cycle_numbering()', 'cycle numbering']
-        \ }
+" }}}
+
+" ============================================================================
+" Misc {{{
+" ============================================================================
+let g:which_key_map.z = {
+      \ 'name': '+misc',
+      \ 'n' : ['mappings#toggle_numbering', 'toggle numbers'],
+      \ 'z' : ['mappings#zap', 'zap whitespace']
+      \ }
 " }}}
 
 " ============================================================================
@@ -38,6 +43,9 @@ let g:which_key_map.v.z = 'zoom runner'
 
 nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
 let g:which_key_map.v['<CR>'] = 'send enter to runner'
+
+nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
+let g:which_key_map.v.q = 'close vimux runner'
 
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
 
@@ -121,17 +129,13 @@ nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
 let g:which_key_map.c.i = 'show info'
 nnoremap <silent> <leader>cc :CocCommand git.showCommit<CR>
 let g:which_key_map.c.c = 'show commit'
-" git open
-nnoremap <silent> <leader>go :CocCommand git.browserOpen
+nnoremap <silent> <leader>co :CocCommand git.browserOpen
+let g:which_key_map.c.o = 'open in browser'
 " }}}
 
 " ============================================================================
-" Miscellaneous {{{
+" Test {{{
 " ============================================================================
-
-" goyo mapping
-" nnoremap <silent> <leader>go :Goyo<CR>
-
 let g:which_key_map.t = { 'name' : '+test' }
 nmap <silent> <Leader>tn :TestNearest<CR>
 let g:which_key_map.t.n = 'nearest'
@@ -164,4 +168,7 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " Vimspector {{{
 " ============================================================================
 nnoremap <leader>d :call mappings#start_debugger()<Cr>
+
+" ignore <F9> mapping for whichkey, has to do with vimspector
+let g:which_key_map['<F9>'] = 'which_key_ignore'
 " }}}

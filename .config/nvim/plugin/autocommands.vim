@@ -27,8 +27,6 @@ augroup settings
   " neovim master branch
   " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
 
-  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
 

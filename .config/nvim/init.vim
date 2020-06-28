@@ -38,6 +38,11 @@ Plug 'itchyny/lightline.vim'
     \ 'component': {
     \   'lineinfo': ' %3l:%-2v',
     \ },
+    \ 'component_type': {
+    \   'readonly': 'error',
+    \   'linter_warnings': 'warning',
+    \   'linter_errors': 'error'
+    \ },
     \ 'component_function': {
     \   'readonly': 'helpers#lightline#read_only',
     \   'fugitive': 'helpers#lightline#fugitive',
@@ -46,6 +51,7 @@ Plug 'itchyny/lightline.vim'
     \   'zoom': 'zoom#statusline'
     \ },
     \ }
+  autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
@@ -88,9 +94,9 @@ Plug 'jiangmiao/auto-pairs'
 " Use fzf for rg
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-  " lua require("navigation")
-  " let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
   let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
+  " " [Buffers] Jump to the existing window if possible
+  let g:fzf_buffers_jump = 1
 
 Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(1)'

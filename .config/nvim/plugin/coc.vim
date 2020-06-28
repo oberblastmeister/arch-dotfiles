@@ -1,21 +1,3 @@
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Having longer upatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=100
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
-
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -29,9 +11,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -60,7 +39,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Use <leader> k to show documentation in preview window.
+" show docs in preview window
 noremap <silent> K :call <SID>show_documentation()<CR>
 
 " Highlight the symbol and its references when holding the cursor.
@@ -82,12 +61,7 @@ nmap <leader>rs :CocSearch <cword><cr>
 let g:which_key_map.r.s = 'search'
 " }}}
 
-" Formatting selected code.
-" combat mapping file
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
+augroup coc
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
@@ -108,43 +82,18 @@ omap af <Plug>(coc-funcobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 "" Do default action for next item.
 "nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 "" Do default action for previous item.
 "nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 
-" coc actions windows
-" Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-nmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-
-" Applying codeAction to the selected region regular vim.
-" Example: `<leader>aap` for current paragraph
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" " Remap keys for applying codeAction to the current line.
-" nmap <leader>ac  <Plug>(coc-codeaction)
-
- " Apply AutoFix to problem on the current line.
-nmap <leader>af  <Plug>(coc-fix-current)
+let g:which_key_map.a = 'actions with text objects'
 
 " coc multiple cursors mappings
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
@@ -152,3 +101,13 @@ nmap <silent> <C-c> <Plug>(coc-cursors-position)
 " overide Q ex-mode mapping, don't want ex mode
 nmap <silent> Q <Plug>(coc-cursors-word)*
 xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+
+" lsp mappings
+let g:which_key_map.l = {
+        \ 'name' : '+lsp',
+        \ 'F' : ['Format', 'format entire file'],
+        \ 'o' : ['OR', 'organize imports'],
+        \ 'c' : ['Fold', 'collapse/fold file'],
+        \ 'a' : ['<Plug>(coc-fix-current)', 'autofix current'],
+        \ 'f' : ['<Plug>(coc-format-selected)', 'format with text objects']
+        \ }

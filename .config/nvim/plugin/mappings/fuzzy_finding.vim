@@ -14,15 +14,15 @@ command! -nargs=? Dotfiles
 " ============================================================================
 " Common {{{
 " ============================================================================
-nnoremap <c-p> :Files<CR>
-nnoremap <c-f> :Rg<CR>
-nnoremap <c-t> :Vista finder<CR>
+nnoremap <silent> <c-p> :Files<CR>
+nnoremap <silent> <c-f> :Rg<CR>
+nnoremap <silent> <c-t> :Vista finder<CR>
 nnoremap <silent> <c-b> :Buffers<CR>
+nnoremap <silent> <c-n> :NV<CR>
 
 nnoremap <silent> <leader>. :cd ~<CR>:Dotfiles<CR>
 let g:which_key_map['.'] = 'search for dotfiles'
 let g:which_key_map.h = [ 'Help', 'search for help' ]
-let g:which_key_map.n = [ 'NV', 'notational velocity' ]
 
 nnoremap <silent> <leader>/ :BLines<CR>
 let g:which_key_map['/'] = 'fuzzy /'

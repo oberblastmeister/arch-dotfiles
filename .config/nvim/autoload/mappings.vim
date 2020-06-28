@@ -22,12 +22,11 @@ function! mappings#zap() abort
   call setpos('.', l:pos)
 endfunction
 
-function! mappings#run_code() abort
-  let g:VimuxHeight = "55"
-  let g:VimuxOrientation = "h"
+function! mappings#run_code()
   if &filetype == 'python'
-    :write!
     call VimuxRunCommand("clear; ipython " . expand("%:p"))
+  elseif &filetype == 'rust'
+    call VimuxRunCommand("clear; cargo run")
   elseif &filetype == 'javascript'
     :Bracey
     " call VimuxRunCommand("clear; node " . bufname("%"))
@@ -38,17 +37,12 @@ function! mappings#run_code() abort
   elseif &filetype == 'markdown'
     :MarkdownPreview
   elseif &filetype == 'java'
-    :write
     call VimuxRunCommand("clear; java " . bufname("%"))
   elseif &filetype == 'go'
-    :write
     call VimuxRunCommand("clear; go " . bufname("%"))
   elseif &filetype == 'r'
-    :write
     call VimuxRunCommand("clear; rscript " . bufname("%"))
   endif
-  let g:VimuxHeight = "30"
-  let g:VimuxOrientation = "v"
 endfunction
 
 function mappings#start_debugger()

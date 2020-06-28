@@ -6,7 +6,7 @@ let g:which_key_map.o = [ 'zoom#toggle()', 'toggle zoom of split' ]
 let g:which_key_map.q = [ 'q', 'quit' ]
 let g:which_key_map.Q = [ 'qa!', 'quit without saving' ]
 let g:which_key_map.w = [ 'w', 'write' ]
-let g:which_key_map.x = [ 'x', 'xit' ]
+let g:which_key_map.x = [ 'x', 'exit and save' ]
 let g:which_key_map.p = [ 'pu', 'put below' ]
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}

@@ -109,7 +109,7 @@ nnoremap <silent> <leader>gs :G<CR>
 let g:which_key_map.g.s = 'status'
 nnoremap <silent> <leader>gb :G blame<CR>
 let g:which_key_map.g.b = 'blame'
-nnoremap <silent> <leader>gl :Gclog<CR>
+nnoremap <silent> <leader>gl :G log<CR>
 let g:which_key_map.g.l = 'log'
 nnoremap <silent> <leader>ga :G add %:p<CR>
 let g:which_key_map.g.a = 'add current file'

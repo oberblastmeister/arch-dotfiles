@@ -48,6 +48,7 @@ Plug 'itchyny/lightline.vim'
     \ }
 
 Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
   " set sign column and color column to be same as background
   let g:gruvbox_sign_column = 'bg0'
 

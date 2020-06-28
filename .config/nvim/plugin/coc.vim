@@ -93,7 +93,7 @@ endfunction
 
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-let g:which_key_map.a = 'actions'
+let g:which_key_map.a = 'actions with text objects'
 
 " coc multiple cursors mappings
 nmap <silent> <C-c> <Plug>(coc-cursors-position)

@@ -9,12 +9,16 @@ let g:which_key_map.w = [ 'w', 'write' ]
 let g:which_key_map.x = [ 'x', 'xit' ]
 let g:which_key_map.p = [ 'pu', 'put below' ]
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
+" }}}
 
-" cycle through different numberings with  number command
-command! -nargs=0 Number :call mappings#cycle_numbering()
-
-" zap trailing whitespace
-nnoremap <silent> <Leader>zz :call mappings#zap()<CR>
+" ============================================================================
+" Misc {{{
+" ============================================================================
+let g:which_key_map.z = {
+      \ 'name': '+misc',
+      \ 'n' : ['mappings#toggle_numbering', 'toggle numbers'],
+      \ 'z' : ['mappings#zap', 'zap whitespace']
+      \ }
 " }}}
 
 " ============================================================================
@@ -125,17 +129,13 @@ nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
 let g:which_key_map.c.i = 'show info'
 nnoremap <silent> <leader>cc :CocCommand git.showCommit<CR>
 let g:which_key_map.c.c = 'show commit'
-" git open
-nnoremap <silent> <leader>go :CocCommand git.browserOpen
+nnoremap <silent> <leader>co :CocCommand git.browserOpen
+let g:which_key_map.c.o = 'open in browser'
 " }}}
 
 " ============================================================================
-" Miscellaneous {{{
+" Test {{{
 " ============================================================================
-
-" goyo mapping
-" nnoremap <silent> <leader>go :Goyo<CR>
-
 let g:which_key_map.t = { 'name' : '+test' }
 nmap <silent> <Leader>tn :TestNearest<CR>
 let g:which_key_map.t.n = 'nearest'

@@ -57,6 +57,7 @@ Plug 'itchyny/lightline.vim'
 
 " colors
 Plug 'morhetz/gruvbox'
+  let g:gruvbox_sign_column='bg0'
 Plug 'rakr/vim-one'
 Plug 'arzg/vim-colors-xcode'
 Plug 'arcticicestudio/nord-vim'

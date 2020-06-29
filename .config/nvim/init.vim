@@ -34,7 +34,7 @@ Plug 'itchyny/lightline.vim'
     \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste', 'zoom'],
-    \             ['cocstatus',  'fugitive', 'readonly', 'filename', 'modified'] ],
+    \             ['fugitive', 'readonly', 'filename', 'modified'] ],
     \   'right':   [ [ 'percent' ] ]
     \ },
     \ 'component': {
@@ -48,12 +48,9 @@ Plug 'itchyny/lightline.vim'
     \ 'component_function': {
     \   'readonly': 'helpers#lightline#read_only',
     \   'fugitive': 'helpers#lightline#fugitive',
-    \   'cocstatus': 'coc#status',
-    \   'currentfunction': 'CocCurrentFunction',
     \   'zoom': 'zoom#statusline'
     \ },
     \ }
-  autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " colors
 Plug 'morhetz/gruvbox'
@@ -66,24 +63,12 @@ Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " ----------------------------- Important ----------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = [
-  \ 'coc-python',
-  \ 'coc-json',
-  \ 'coc-sh',
-  \ 'coc-rust-analyzer',
-  \ 'coc-tsserver',
-  \ 'coc-html',
-  \ 'coc-snippets',
-  \ 'coc-vimlsp',
-  \ 'coc-emmet',
-  \ 'coc-actions',
-  \ 'coc-java',
-  \ 'coc-marketplace',
-  \ 'coc-git',
-  \ 'coc-explorer',
-  \ 'coc-yaml'
-  \ ]
+
+Plug 'neovim/nvim-lsp'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-lsp'
+  let g:deoplete#enable_at_startup = 1
+  lua require'nvim_lsp'.rust_analyzer.setup{}
 
 Plug 'tmsvg/pear-tree'
   let g:pear_tree_repeatable_expand = 0

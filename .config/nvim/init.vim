@@ -54,7 +54,7 @@ Plug 'itchyny/lightline.vim'
   autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " colors
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'arzg/vim-colors-xcode'
 Plug 'arcticicestudio/nord-vim'

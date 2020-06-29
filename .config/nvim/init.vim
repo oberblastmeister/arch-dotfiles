@@ -85,6 +85,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-yaml'
   \ ]
 
+Plug 'tmsvg/pear-tree'
+  let g:pear_tree_repeatable_expand = 0
+  let g:pear_tree_smart_openers = 1
+  let g:pear_tree_smart_closers = 1
+  let g:pear_tree_smart_backspace = 1
+  imap <space> <Plug>(PearTreeSpace)
+
 Plug 'liuchengxu/vim-which-key'
 
 Plug 'honza/vim-snippets'
@@ -93,8 +100,6 @@ if !has('win32') || !has('win64')
     let g:vimspector_enable_mappings = 'HUMAN'
   Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
 endif
-
-Plug 'jiangmiao/auto-pairs'
 
 " Use fzf for rg
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

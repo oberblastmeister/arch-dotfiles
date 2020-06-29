@@ -56,7 +56,7 @@ Plug 'itchyny/lightline.vim'
   autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " colors
-Plug 'gruvbox-community/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'arzg/vim-colors-xcode'
 Plug 'arcticicestudio/nord-vim'
@@ -235,7 +235,6 @@ endif
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 " Plug 'vimwiki/vimwiki'
-
 
 " ----------------------------- Web Developement ---------------------------
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }

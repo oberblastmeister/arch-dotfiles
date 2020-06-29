@@ -104,11 +104,6 @@ zinit ice lucid wait blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/
   atpull"%atclone" pick".fzf.zsh"
 zinit light junegunn/fzf
 
-# zinit ice lucid wait atclone'PYENV_ROOT="$PWD" ./libexec/pyenv init - > zpyenv.zsh' \
-#     atinit'export PYENV_ROOT="$PWD"' atpull"%atclone" \
-#     as'command' pick'bin/pyenv' src"zpyenv.zsh" nocompile'!'
-# zinit light pyenv/pyenv
-
 # let fzf find hidden files
 # hidden
 # export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
@@ -137,6 +132,9 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --follow --hidden --color=always --exclude ".git" . "$1"
 }
+
+# zinit ice svn pick"yadm.zsh_completion"
+# zinit snippet https://github.com/TheLocehiliosan/yadm/trunk/completion
 
 # lfcd
 zinit light-mode for \

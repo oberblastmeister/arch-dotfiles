@@ -88,6 +88,5 @@ highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 highlight! CursorLineNr ctermbg=bg guibg=bg
 hi! FloatermBorder guibg=#504945
-highlight clear SignColumn
-" set fillchars+=vert:\ 
+" set fillchars+=vert:\
 " }}}

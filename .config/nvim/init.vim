@@ -9,7 +9,9 @@
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
 
+" ============================================================================
 " Before {{{
+" ============================================================================
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
@@ -229,9 +231,6 @@ if executable('yarn')
 else
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown', 'on': 'MarkdownPreview'}
 endif
-
-Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
-  let g:pencil#wrapModeDefault = 'soft'
 
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }

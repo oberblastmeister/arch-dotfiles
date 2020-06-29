@@ -102,3 +102,9 @@ function! mappings#toggle_yadm()
     edit %
   endif
 endfunction
+
+function! mappings#restart_language_server()
+  if &filetype == 'rust'
+    CocCommand rust-analyzer.reload
+  endif
+endfunction

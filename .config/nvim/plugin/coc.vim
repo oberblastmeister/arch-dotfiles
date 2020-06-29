@@ -109,5 +109,6 @@ let g:which_key_map.l = {
         \ 'o' : ['OR', 'organize imports'],
         \ 'c' : ['Fold', 'collapse/fold file'],
         \ 'a' : ['<Plug>(coc-fix-current)', 'autofix current'],
-        \ 'f' : ['<Plug>(coc-format-selected)', 'format with text objects']
+        \ 'f' : ['<Plug>(coc-format-selected)', 'format with text objects'],
+        \ 'r' : ['mappings#restart_language_server()', 'restart language server of filetype'],
         \ }

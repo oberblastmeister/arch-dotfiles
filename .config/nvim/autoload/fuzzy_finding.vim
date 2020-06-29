@@ -1,27 +1,3 @@
-function fuzzy_finding#rg_and_replace()
-    write!
-
-    let s:word = expand("<cword>")
-    execute "Rg" s:word
-
-    let replace = ""
-    let replace = input("Replace with: ")
-
-    if replace != ""
-
-      let mode = ""
-      let mode = input("Mode: ")
-
-      if mode != ""
-        execute "%s/" . s:word . "/" . replace . "/" . mode
-      else
-        echo "canceled"
-      endif
-    else
-      echo "canceled"
-    endif
-endfunction
-
 function! fuzzy_finding#centered_floating_window(border)
     let width = min([&columns - 4, max([80, &columns - 20])])
     let height = min([&lines - 4, max([20, &lines - 10])])

@@ -6,9 +6,30 @@ let g:which_key_map.o = [ 'zoom#toggle()', 'toggle zoom of split' ]
 let g:which_key_map.q = [ 'q', 'quit' ]
 let g:which_key_map.Q = [ 'qa!', 'quit without saving' ]
 let g:which_key_map.w = [ 'w', 'write' ]
-let g:which_key_map.x = [ 'x', 'xit' ]
+let g:which_key_map.x = [ 'x', 'exit and save' ]
 let g:which_key_map.p = [ 'pu', 'put below' ]
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
+" }}}
+
+" ============================================================================
+" Buffer {{{
+" ============================================================================
+let g:which_key_map.b = {
+      \ 'name': '+buffer',
+      \ 'd' :  ['bdelete', 'delete buffer'],
+      \ 'D' :  ['%bd|e#', 'delete all buffers except current buffer'],
+      \ 'k' :  ['bufdo bd', 'kill all buffers'],
+      \ 'l' :  ['ls', 'list buffers'],
+      \ '1' :  [':b 1', 'buffer 1']        ,
+      \ '2' :  [':b 2', 'buffer 2']        ,
+      \ '3' :  [':b 3', 'buffer 3']        ,
+      \ '4' :  [':b 4', 'buffer 4']        ,
+      \ '5' :  [':b 5', 'buffer 5']        ,
+      \ '6' :  [':b 6', 'buffer 6']        ,
+      \ '7' :  [':b 7', 'buffer 7']        ,
+      \ '8' :  [':b 8', 'buffer 8']        ,
+      \ '9' :  [':b 9', 'buffer 9']        ,
+      \ }
 " }}}
 
 " ============================================================================
@@ -16,8 +37,8 @@ nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " ============================================================================
 let g:which_key_map.z = {
       \ 'name': '+misc',
-      \ 'n' : ['mappings#toggle_numbering', 'toggle numbers'],
-      \ 'z' : ['mappings#zap', 'zap whitespace'],
+      \ 'n' : ['mappings#toggle_numbering()', 'toggle numbers'],
+      \ 'z' : ['mappings#zap()', 'zap whitespace'],
       \ 'h' : [':so $VIMRUNTIME/syntax/hitest.vim', 'show all highlight groups']
       \ }
 " }}}
@@ -49,6 +70,7 @@ nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
 let g:which_key_map.v.q = 'close vimux runner'
 
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
+let g:which_key_map.R = 'run code'
 
 function! VimuxSlime()
   call VimuxSendKeys("F6")
@@ -169,6 +191,7 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " Vimspector {{{
 " ============================================================================
 nnoremap <leader>d :call mappings#start_debugger()<Cr>
+let g:which_key_map.d = 'start debugger'
 
 " ignore <F9> mapping for whichkey, has to do with vimspector
 let g:which_key_map['<F9>'] = 'which_key_ignore'

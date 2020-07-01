@@ -112,3 +112,6 @@ let g:which_key_map.l = {
         \ 'f' : ['<Plug>(coc-format-selected)', 'format with text objects'],
         \ 'r' : ['mappings#restart_language_server()', 'restart language server of filetype'],
         \ }
+
+" mappings to consider
+" <Plug>(coc-openlink)

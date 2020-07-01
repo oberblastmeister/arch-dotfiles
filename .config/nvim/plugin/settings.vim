@@ -46,7 +46,7 @@ set ttimeoutlen=20
 set ignorecase smartcase
 set mouse=a
 set nowrap
-set pumblend=20
+set pumblend=15
 set winblend=0
 
 " no splash screen and shorter messages

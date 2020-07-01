@@ -48,22 +48,25 @@ let g:which_key_map.z = {
 " ============================================================================
 let g:which_key_map.v = { 'name' : '+vimux' }
 
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <silent> <Leader>vo :call VimuxOpenRunner()<CR>
+let g:which_key_map.v.o = 'open runner'
+
+nnoremap <silent> <Leader>vp :VimuxPromptCommand<CR>
 let g:which_key_map.v.p = 'prompt command'
 
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <silent> <Leader>vl :VimuxRunLastCommand<CR>
 let g:which_key_map.v.l = 'run last prompted command'
 
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <silent> <Leader>vi :VimuxInspectRunner<CR>
 let g:which_key_map.v.i = 'inspect (move into runner and enter copy mode)'
 
-nnoremap <Leader>vx :VimuxInterruptRunner<CR>
+nnoremap <silent> <Leader>vx :VimuxInterruptRunner<CR>
 let g:which_key_map.v.x = 'interrupt command in runner'
 
-nnoremap <Leader>vz :call VimuxZoomRunner()<CR>
+nnoremap <silent> <Leader>vz :call VimuxZoomRunner()<silent> <CR>
 let g:which_key_map.v.z = 'zoom runner'
 
-nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
+nnoremap <silent> <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
 let g:which_key_map.v['<CR>'] = 'send enter to runner'
 
 nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
@@ -71,6 +74,9 @@ let g:which_key_map.v.q = 'close vimux runner'
 
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
 let g:which_key_map.R = 'run code'
+
+nnoremap <silent> <Leader>vc :VimuxClearRunnerHistory<CR>
+let g:which_key_map.v.c = 'clear runner history'
 
 function! VimuxSlime()
   call VimuxSendKeys("F6")

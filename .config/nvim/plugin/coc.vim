@@ -25,10 +25,10 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
  " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <c-]> <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-declaration)
+nmap <silent> gD <Plug>(coc-implementation)
 nmap <silent> gy <Plug>(coc-type-definition)
-" don't want to replace gi default mappings
-" nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 function! s:show_documentation()

@@ -207,7 +207,7 @@ cmd yank-basename-without-extension ${{
 # =======================================================================
 
 map <a-c> :fzf_jump
-map <c-t> :fzf
+map <c-p> :fzf
 
 map . set hidden!
 map gh :cd ~

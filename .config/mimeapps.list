@@ -5,9 +5,8 @@ image/gif=sxiv.desktop
 image/jpg=sxiv.desktop
 image/pjpeg=sxiv.desktop
 image/png=sxiv.desktop
-text/html=firefox.desktop
-application/pdf=org.pwmt.zathura.desktop
-inode/directory=ranger.desktop
 video/webm=mpv.desktop
+application/pdf=org.pwmt.zathura.desktop
 
 [Added Associations]
+text/x-log=nvim.desktop;

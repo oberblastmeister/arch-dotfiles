@@ -1,8 +1,12 @@
 [Default Applications]
-video/*=mpv.desktop
-text/*=nvim.desktop
-image/*=sxiv.desktop
-audio/*=mpv.desktop
-text/html=firefox.desktop
+image/jpeg=sxiv.desktop
+image/bmp=sxiv.desktop
+image/gif=sxiv.desktop
+image/jpg=sxiv.desktop
+image/pjpeg=sxiv.desktop
+image/png=sxiv.desktop
+video/webm=mpv.desktop
 application/pdf=org.pwmt.zathura.desktop
-inode/directory=ranger.desktop
+
+[Added Associations]
+text/x-log=nvim.desktop;

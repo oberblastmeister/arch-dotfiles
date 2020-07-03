@@ -109,6 +109,7 @@ Plug 'antoinemadec/coc-fzf'
   let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
   " " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
+Plug 'antoinemadec/coc-fzf'
 
 Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(1)'

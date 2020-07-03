@@ -1,7 +1,7 @@
 # =======================================================================
 # ================================ options ==============================
 # =======================================================================
-set previewer /home/brian/.config/lf/lf_scope.sh
+set previewer pistol
 
 # dynamically set number of columns
 cmd recol %{{
@@ -95,7 +95,7 @@ cmd fzf_jump ${{
 }}
 
 cmd fzf ${{
-   FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
+   FZF_DEFAULT_COMMAND="fd --follow --exclude .git --color=always"
    FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
 
    res="$(fzf)"
@@ -207,7 +207,7 @@ cmd yank-basename-without-extension ${{
 # =======================================================================
 
 map <a-c> :fzf_jump
-map <c-t> :fzf
+map <c-p> :fzf
 
 map . set hidden!
 map gh :cd ~
@@ -232,3 +232,15 @@ map + :video_preview
 map R :bulk-rename
 
 map <a-n> newfold
+
+cmd open ${{
+   # first check if terminal is not neovim terminal
+   if [ "$TERM" != "xterm-256color" ]
+   then
+      # ~/bin/launch-devour.sh "$f"
+      lf-launch.sh "$f"
+   else
+   # if the terminal is neovim do default action, floaterm will handle the rest
+      lf -remote "send $id open $f"
+   fi
+}}

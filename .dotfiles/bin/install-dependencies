@@ -1,20 +1,22 @@
 #!/bin/bash
 
 packages=(
-    # important
-    pkgstats
     xorg
     bspwm
     sxhkdrc
-    lightdm
-    lightdm-webkit2-greeter
-    lightdm-webkit-theme-litarvan
+
     pulseaudio
     dunst
     gnome-keyring
     networkmanager
+
+    # lightdm
     lightdm
     lightdm-webkit2-greeter
+    lightdm-webkit-theme-litarvan
+    
+    # unified interface for xdg-open and xdg-mime, executable mimeopen
+    perl-file-mimeinfo
 
     # themes
     noto-fonts
@@ -29,21 +31,28 @@ packages=(
 
     # utilities
     trash-cli
-    fd
-    bat
-    exa
-    cronie
-    ripgrep # needed for fzf, clap.vim
-    alsamixer
     neofetch
 
-    # neo
+    alsa-utils # includes alsamixer
+
+    # better stuff
+    fd # find, needed for fzf
+    bat # cat, needed for fzf
+    exa # ls
+    ripgrep # better grep, needed for fzf
+
+    cronie # cron jobs
+
     neovim
 
+    # clipboard stuff
     xclip # clipboard integration for neovim
     xsel # needed for cht.sh
+
+    # dual keyboard mappings
     xcape
     rlwrap
+
     python-pip
 
     zsh
@@ -56,13 +65,12 @@ packages=(
     gufw
 
     # viewers
-    feh
-    sxiv
-    zathura
+    feh # background setter
+    sxiv # image
+    zathura # pdf
     zathura-pdf-mupdf
-    mpv
-    # imporant for bspwm config and in general
-    jq
+    mpv # video
+    jq # view json, important for bspwm
 
     # important for multimonitor
     autorandr

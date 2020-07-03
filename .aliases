@@ -27,7 +27,7 @@ alias yt='ytop'
 # alias zo='jo'
 
 alias chtsh='cht --shell'
-alias open='xdg-open &>/dev/null'
+alias mopen='mimeopen &>/dev/null'
 alias icat="kitty +kitten icat"
 
 alias mutt='neomutt'

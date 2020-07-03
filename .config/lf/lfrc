@@ -232,3 +232,15 @@ map + :video_preview
 map R :bulk-rename
 
 map <a-n> newfold
+
+cmd open ${{
+   # first check if terminal is not neovim terminal
+   if [ "$TERM" != "xterm-256color" ]
+   then
+      # ~/bin/launch-devour.sh "$f"
+      lf-launch.sh "$f"
+   else
+   # if the terminal is neovim do default action, floaterm will handle the rest
+      lf -remote "send $id open $f"
+   fi
+}}

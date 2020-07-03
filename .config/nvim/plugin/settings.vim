@@ -90,5 +90,11 @@ highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 highlight! CursorLineNr ctermbg=bg guibg=bg
 hi! FloatermBorder guibg=#504945
+
+" make sign column same as background, but keep highlight of virtual text
+hi! CocErrorVirtualText guibg=#3c3836 guifg=#fb4934
+hi! CocHintVirtualText guibg=#3c3836 guifg=#83a598
+hi! CocRustChainingHint guibg=#3c3836 guifg=#83a598
+hi! CocWarningVirtualText guibg=#3c3836 guifg=#fe8019
 " set fillchars+=vert:\
 " }}}

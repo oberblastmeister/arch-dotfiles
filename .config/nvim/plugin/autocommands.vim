@@ -2,7 +2,7 @@ augroup settings
   autocmd!
 
   " turn off autocomment
-  autocmd FileType * setlocal formatoptions-=cro
+  autocmd FileType vim setlocal formatoptions-=cro
 
   " autocommand to autoopen floaterm lf when opening directory
   autocmd StdinReadPre * let s:std_in=1

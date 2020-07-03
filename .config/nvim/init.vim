@@ -105,6 +105,7 @@ endif
 " Use fzf for rg
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf'
   let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
   " " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1

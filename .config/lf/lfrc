@@ -95,7 +95,7 @@ cmd fzf_jump ${{
 }}
 
 cmd fzf ${{
-   FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
+   FZF_DEFAULT_COMMAND="fd --follow --exclude .git --color=always"
    FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
 
    res="$(fzf)"

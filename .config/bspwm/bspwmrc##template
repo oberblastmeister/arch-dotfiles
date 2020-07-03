@@ -30,12 +30,18 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
+{% if yadm.class == "Laptop" %}
 pulseaudio --start
+{% endif %}
 
+# set wallpaper
 feh --bg-scale ~/.dotfiles/images/wall.png
+# launch polybar
+polybar-launch.sh &
 
-# detect monitor
+{% if yadm.class == "Laptop" %}
 autorandr --change
+{% endif %}
 
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
@@ -44,12 +50,12 @@ autorandr --change
 # redshift &
 xfce4-power-manager &
 udiskie &
-polybar-launch.sh &
 
 
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------
 # -----------------------------------------------------
+{% if yadm.class == "Laptop" %}
 
 # set touchpad options
 xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
@@ -60,11 +66,10 @@ xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Click Method Enabled"
 # allow two finger right click and middle click emulation
 xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Middle Emulation Enabled" 1
 
-# set keyrepeat (first number is time for key repeat, second is speed)
-# xset r rate 570 100
+{% endif %}
+
 
 # start keymappings
-# /home/brian/.config/yadm/dotfiles/bin/keymappings
 setxkbmap -option ctrl:nocaps
 
 # Change from ugly 'X' cursor when hovering over background

@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 
 # -----------------------------------------------------
@@ -44,8 +44,7 @@ autorandr --change
 # redshift &
 xfce4-power-manager &
 udiskie &
-
-~/.config/polybar/launch.sh &
+polybar-launch.sh &
 
 
 # -----------------------------------------------------

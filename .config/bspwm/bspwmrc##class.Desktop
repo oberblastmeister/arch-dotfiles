@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 
 # -----------------------------------------------------
@@ -30,8 +30,9 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-~/.config/polybar/launch.sh &
-
+# launch polybar
+polybar-launch.sh &
+# set wallpaper
 feh --bg-scale ~/.dotfiles/images/wall.png
 
 # -----------------------------------------------------

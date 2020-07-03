@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 mirrors=${1:-0}
 

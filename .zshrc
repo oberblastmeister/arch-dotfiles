@@ -8,6 +8,7 @@
 #     ██████ ██████ ░██  ░██
 #    ░░░░░░ ░░░░░░  ░░   ░░
 
+eval "$(starship init zsh)"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -20,21 +21,12 @@ fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
 
-# enable p10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 # zinit light-mode for \
 #     zinit-zsh/z-a-patch-dl \
 #     zinit-zsh/z-a-as-monitor \
 #     zinit-zsh/z-a-bin-gem-node
-
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-# source p10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # keytimeout=0 might have bad effects
 zinit ice atload"bindkey "jk" vi-cmd-mode"

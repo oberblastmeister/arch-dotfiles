@@ -37,7 +37,7 @@ pulseaudio --start
 # set wallpaper
 feh --bg-scale ~/.dotfiles/images/wall.png
 # launch polybar
-polybar-launch.sh &
+~/bin/polybar-launch.sh &
 
 {% if yadm.class == "Laptop" %}
 autorandr --change

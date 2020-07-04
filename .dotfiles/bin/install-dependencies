@@ -90,6 +90,9 @@ done
 aur_packages=(
     polybar
     nerd-fonts-fira-code
+    # zsh prompt
+    starship-bin
+    # process manager
     ytop)
 
 for package in ${aur_packages[@]}; do

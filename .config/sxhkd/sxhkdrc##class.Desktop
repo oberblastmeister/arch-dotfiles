@@ -88,9 +88,13 @@ super + {_,shift + }c
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
-# send window to next/previous desktop
-super + shift + bracket{left,right}
+# send window to next/previous desktop and move there
+super + alt + bracket{left,right}
     id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}; bspc desktop --focus next; bspc node --focus ${id}
+
+# send window to next/previous desktop, don't move
+super + shift + bracket{left,right}
+    id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}
 
 # focus the last node/desktop
 super + {grave,Tab}

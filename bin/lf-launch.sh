@@ -11,14 +11,14 @@ case $(file --mime-type "$*" -bL) in
         "$EDITOR" "$*"
         ;;
     video/* | audio/* | image/gif)
-        mpv "$*" &
+        mpv "$*" &>/dev/null 2>&1 &
         ;;
     application/pdf | application/postscript)
         # zathura throws some warnings for some reasons
         zathura "$*" &>/dev/null 2>&1 &
         ;;
     image/*)
-        sxiv "$*" &
+        sxiv "$*" &>/dev/null 2>&1 &
         ;;
     application/zip)
         unzip "$*" -d "${1%.*}"

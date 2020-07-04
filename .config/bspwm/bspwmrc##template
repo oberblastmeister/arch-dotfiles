@@ -30,18 +30,18 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-{% if yadm.class == "Laptop" %}
-pulseaudio --start
-{% endif %}
-
 # set wallpaper
 feh --bg-scale ~/.dotfiles/images/wall.png
-# launch polybar
-~/bin/polybar-launch.sh &
 
 {% if yadm.class == "Laptop" %}
+
+pulseaudio --start
 autorandr --change
+
 {% endif %}
+
+# launch polybar
+~/bin/polybar-launch.sh &
 
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------

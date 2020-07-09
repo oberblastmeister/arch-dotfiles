@@ -93,7 +93,9 @@ aur_packages=(
     # zsh prompt
     starship-bin
     # process manager
-    ytop)
+    ytop
+    bottom
+)
 
 for package in ${aur_packages[@]}; do
     yay -S $package

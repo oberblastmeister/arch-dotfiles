@@ -100,3 +100,7 @@ aur_packages=(
 for package in ${aur_packages[@]}; do
     yay -S $package
 done
+
+# it breaks braile fonts, must be removed
+# https://www.reddit.com/r/archlinux/comments/gf2vgb/the_braille_fonts_dont_show_properly_anywhere/
+sudo pacman -R gnu-free-fonts

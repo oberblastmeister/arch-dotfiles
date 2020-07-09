@@ -88,8 +88,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tmsvg/pear-tree'
   let g:pear_tree_timeout = 0
   let g:pear_tree_repeatable_expand = 0
-  let g:pear_tree_smart_openers = 1
-  let g:pear_tree_smart_closers = 1
+  let g:pear_tree_smart_openers = 0
+  let g:pear_tree_smart_closers = 0
   let g:pear_tree_smart_backspace = 1
   imap <space> <Plug>(PearTreeSpace)
 
@@ -99,7 +99,7 @@ Plug 'honza/vim-snippets'
 
 if !has('win32') || !has('win64')
     let g:vimspector_enable_mappings = 'HUMAN'
-  Plug 'puremourning/vimspector', {'do': './install_gadget.py --all --force-enable-java'}
+  Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --force-enable-java' }
 endif
 
 " Use fzf for rg
@@ -136,9 +136,11 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_fzf_preview = ['right:50%']
-  let g:vista_default_executive = 'coc'
+  let g:vista_default_executive = 'ctags'
 
 Plug 'romainl/vim-cool'
+Plug 'haya14busa/incsearch.vim'
+  let g:incsearch#magic = '\v'
 
 " if has('win32')
 "   Plug 'kassio/neoterm'
@@ -248,6 +250,7 @@ Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 " ----------------------------- Web Developement ---------------------------
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
+Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server', 'for': ['html', 'css', 'javascript'] }
 
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -271,7 +274,7 @@ Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
 Plug 'chrisbra/vim-zsh', { 'for': 'zsh' }
 Plug 'ericpruitt/tmux.vim', { 'for': 'tmux' }
 Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
-Plug 'baskerville/vim-sxhkdrc'
+Plug 'baskerville/vim-sxhkdrc', { 'on': 'sxhkdrc' }
 
 " considering
 "Plug 'junegunn/vim-after-object'
@@ -289,7 +292,7 @@ Plug 'baskerville/vim-sxhkdrc'
 "Plug 'TaDaa/vimade'
 "Plug 'tmux-plugins/vim-tmux-focus-events'
 " status bar
-" Plug brooth/far.vim
+" Plug 'brooth/far.vim'
 
 call plug#end()
 endif

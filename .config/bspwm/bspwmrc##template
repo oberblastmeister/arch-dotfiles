@@ -68,7 +68,7 @@ xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Middle Emulation Enab
 
 {% endif %}
 
-xset r rate 500 40
+xset r rate 500 50
 
 # start keymappings
 setxkbmap -option ctrl:nocaps

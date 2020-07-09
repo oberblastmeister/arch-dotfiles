@@ -57,7 +57,8 @@ let g:which_key_map.r.w = 'word'
 nmap <leader>rf <Plug>(coc-refactor)
 let g:which_key_map.r.f = 'refractor'
 
-nmap <leader>rs :CocSearch <cword><cr>
+nmap <leader>rs :CocSearch <c-r><c-w><cr>
+nmap <leader>rS :CocSearch
 let g:which_key_map.r.s = 'search'
 " }}}
 

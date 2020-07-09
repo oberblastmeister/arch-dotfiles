@@ -37,7 +37,7 @@ set number relativenumber
 set smartindent
 set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus
-set inccommand=split
+set inccommand=nosplit
 set noshowmode
 set foldmethod=syntax
 set foldlevelstart=99

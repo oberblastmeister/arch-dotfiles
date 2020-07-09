@@ -202,3 +202,5 @@ let g:which_key_map.d = 'start debugger'
 " ignore <F9> mapping for whichkey, has to do with vimspector
 let g:which_key_map['<F9>'] = 'which_key_ignore'
 " }}}
+nnoremap <Leader>s :let @s='\<'.expand('<cword>').'\>'<CR>:%s/<C-r>s//<Left>
+xnoremap <Leader>s "sy:%s/<C-r>s//<Left>

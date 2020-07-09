@@ -66,3 +66,5 @@ xmap ic <Plug>(coc-git-chunk-inner)
 omap ac <Plug>(coc-git-chunk-outer)
 xmap ac <Plug>(coc-git-chunk-outer)
 " }}}
+
+nnoremap c* *Ncgn

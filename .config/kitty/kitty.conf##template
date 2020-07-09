@@ -6,7 +6,7 @@ bold_italic_font auto
 allow_remote_control yes
 
 {% if yadm.class == "Desktop" %}
-font_size 10.0
+font_size 11.0
 {% else %}
 font_size 14.0
 {% endif %}

@@ -4,6 +4,7 @@ packages=(
     xorg
     bspwm
     sxhkdrc
+    xsettingsd
 
     pulseaudio
     dunst

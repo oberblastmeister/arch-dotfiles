@@ -14,6 +14,8 @@ endfunction
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
+" inoremap <expr> <C-n> complete_info()["pum_visible"] == "1" ? "" : ""
+" inoremap <expr> <C-p> complete_info()["pum_visible"] == "1" ? "" : ""
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
@@ -97,11 +99,11 @@ nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<C
 let g:which_key_map.a = 'actions with text objects'
 
 " coc multiple cursors mappings
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
+" nmap <silent> <C-c> <Plug>(coc-cursors-position)
 
 " overide Q ex-mode mapping, don't want ex mode
-nmap <silent> Q <Plug>(coc-cursors-word)*
-xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+" nmap <silent> Q <Plug>(coc-cursors-word)*
+" xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
 " lsp mappings
 let g:which_key_map.l = {
@@ -112,6 +114,7 @@ let g:which_key_map.l = {
         \ 'a' : ['<Plug>(coc-fix-current)', 'autofix current'],
         \ 'f' : ['<Plug>(coc-format-selected)', 'format with text objects'],
         \ 'r' : ['mappings#restart_language_server()', 'restart language server of filetype'],
+        \ 'l' : ['<Plug>(coc-codelens-action)', 'code[l]ens actions'],
         \ }
 
 " mappings to consider

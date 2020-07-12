@@ -7,6 +7,9 @@ export VISUAL=nvim
 export BROWSER=firefox
 export PAGER=less
 
+# neovim terminal doesn't export this for bat
+export COLORTERM=truecolor
+
 # makesure that there are no duplicates in path var
 typeset -U path
 path+=(~/.cargo/bin $VOLTA_HOME/bin ~/bin ~/go/bin ~/.local/bin)

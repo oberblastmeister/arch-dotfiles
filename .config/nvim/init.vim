@@ -148,6 +148,8 @@ Plug 'haya14busa/incsearch.vim'
 "     let g:neoterm_autoinsert = 1
 " endif
 
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
+
 " ----------------------------- Editing -------------------------------------
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'

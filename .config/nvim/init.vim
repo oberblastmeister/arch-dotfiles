@@ -99,7 +99,8 @@ Plug 'honza/vim-snippets'
 
 if !has('win32') || !has('win64')
     let g:vimspector_enable_mappings = 'HUMAN'
-  Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --force-enable-java' }
+  Plug 'puremourning/vimspector', { 'do': './install_gadget.py --all --force-enable-rust --disable-tcl' }
+  " Plug 'puremourning/vimspector'
 endif
 
 " Use fzf for rg

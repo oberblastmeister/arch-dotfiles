@@ -60,7 +60,6 @@
   },
 
   "snippets.ultisnips.directories": [
-    "UltiSnips",
     "~/.local/share/nvim/plugged/vim-snippets/UltiSnips"
   ],
 

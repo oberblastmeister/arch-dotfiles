@@ -39,7 +39,8 @@ let g:which_key_map.z = {
       \ 'name': '+misc',
       \ 'n' : ['mappings#toggle_numbering()', 'toggle numbers'],
       \ 'z' : ['mappings#zap()', 'zap whitespace'],
-      \ 'h' : [':so $VIMRUNTIME/syntax/hitest.vim', 'show all highlight groups']
+      \ 'h' : [':so $VIMRUNTIME/syntax/hitest.vim', 'show all highlight groups'],
+      \ 'g' : ['VimBeGood', 'vim game']
       \ }
 " }}}
 
@@ -174,7 +175,7 @@ nmap <silent> <Leader>ts :TestSuite<CR>
 let g:which_key_map.t.s = 'suite'
 nmap <silent> <Leader>tl :TestLast<CR>
 let g:which_key_map.t.l = 'last test'
-nmap <silent> <Leader>tg :TestVisit<CR>
+nmap <silent> <Leader>tv :TestVisit<CR>
 let g:which_key_map.t.v = 'visit file that was previously tested'
 
 " window swap mapppings
@@ -196,8 +197,13 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " ============================================================================
 " Vimspector {{{
 " ============================================================================
-nnoremap <leader>d :call mappings#start_debugger()<Cr>
-let g:which_key_map.d = 'start debugger'
+nnoremap <silent> <leader>D :call vimspector#Launch()<CR>
+let g:which_key_map.D = 'start debugger'
+nnoremap <silent> <leader>dc :call mappings#configure_debugger()<CR>
+nnoremap <silent> <leader>dq :VimspectorReset<CR>
+nnoremap <silent> <leader>dr :call vimspector#Restart()<CR>
+nnoremap <leader>de :VimspectorEval<space>
+nnoremap <leader>dw :VimspectorWatch<space>
 
 " ignore <F9> mapping for whichkey, has to do with vimspector
 let g:which_key_map['<F9>'] = 'which_key_ignore'

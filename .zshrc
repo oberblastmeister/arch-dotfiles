@@ -10,7 +10,7 @@
 
 eval "$(starship init zsh)"
 
-### Added by Zinit's installer
+# ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -29,7 +29,7 @@ source "$HOME/.zinit/bin/zinit.zsh"
 #     zinit-zsh/z-a-bin-gem-node
 
 # keytimeout=0 might have bad effects
-zinit ice atload"bindkey "jk" vi-cmd-mode"
+zinit ice atload"bindkey 'jk' vi-cmd-mode"
 zinit light softmoth/zsh-vim-mode
 
 # ============================================================================
@@ -57,7 +57,6 @@ HISTFILE=~/.cache/zsh/history
 export KEYTIMEOUT=20
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
-
 export PISTOL_CHROMA_FORMATTER=terminal256
 
 MODE_CURSOR_VIINS="bar"
@@ -99,10 +98,6 @@ zinit ice lucid wait blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/
 zinit light junegunn/fzf
 
 # let fzf find hidden files
-# hidden
-# export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
-# exclude stuff
-# export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --exclude .cache --color=always"
 export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
@@ -164,3 +159,4 @@ source ~/.lf_icons
 # eval "$(pyenv init -)"
 # autoenable virtualenvs
 # eval "$(pyenv virtualenv-init -)"
+### End of Zinit's installer chunk

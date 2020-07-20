@@ -144,9 +144,9 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_default_executive = 'coc'
 
 " Plug 'romainl/vim-cool'
-" Plug 'junegunn/vim-slash'
+Plug 'junegunn/vim-slash'
 " Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/is.vim'
+" Plug 'haya14busa/is.vim'
 
 " if has('win32')
 "   Plug 'kassio/neoterm'

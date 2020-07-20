@@ -245,11 +245,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
 
-if executable('yarn')
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install', 'for': 'markdown', 'on': 'MarkdownPreview'  }
-else
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown', 'on': 'MarkdownPreview'}
-endif
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }

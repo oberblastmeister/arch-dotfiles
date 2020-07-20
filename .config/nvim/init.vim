@@ -141,7 +141,7 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_fzf_preview = ['right:50%']
-  let g:vista_default_executive = 'ctags'
+  let g:vista_default_executive = 'coc'
 
 " Plug 'romainl/vim-cool'
 " Plug 'junegunn/vim-slash'
@@ -232,9 +232,9 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-fugitive'
 
 " ----------------------------- Tmux ----------------------------------------
-Plug 'christoomey/vim-tmux-navigator', Cond(executable('tmux'))
-Plug 'benmills/vimux', Cond(executable('tmux'))
-    let g:VimuxHeight = "30"
+Plug 'christoomey/vim-tmux-navigator', Cond($TMUX != '')
+Plug 'benmills/vimux', Cond($TMUX != '')
+    let g:VimuxHeight = "20"
 
 " ----------------------------- Notes/Writing -------------------------------
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }

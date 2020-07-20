@@ -41,6 +41,7 @@ packages=(
     bat # cat, needed for fzf
     exa # ls
     ripgrep # better grep, needed for fzf
+    broot
 
     cronie # cron jobs
 

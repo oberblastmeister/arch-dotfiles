@@ -263,6 +263,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'css' }
 " ----------------------------- Language Specific --------------------------
 Plug 'MTDL9/vim-log-highlighting', { 'for': 'log' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+  let g:no_csv_maps = 1
 Plug 'elzr/vim-json', { 'for': 'json' }
     let g:vim_json_syntax_conceal = 0
 

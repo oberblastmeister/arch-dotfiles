@@ -34,6 +34,7 @@ colorscheme gruvbox
 set background=dark
 
 set number relativenumber
+set cursorline
 set smartindent
 set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus

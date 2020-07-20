@@ -26,7 +26,7 @@ function! mappings#run_code()
   if &filetype == 'python'
     call VimuxRunCommand("clear; ipython " . expand("%:p"))
   elseif &filetype == 'rust'
-    call VimuxRunCommand("clear; cargo run")
+    call VimuxRunCommand("clear; cargo run --release")
   elseif &filetype == 'javascript'
     :Bracey
     " call VimuxRunCommand("clear; node " . bufname("%"))

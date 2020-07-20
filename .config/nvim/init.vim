@@ -106,6 +106,11 @@ endif
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
+  " always show preview in fzf
+  let g:fzf_preview_window = 'right'
+
+" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+
   let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
   " " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1

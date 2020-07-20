@@ -2,6 +2,7 @@
 alias zshrc="nvim ~/.zshrc"
 alias vimrc="nvim ~/.config/nvim/init.vim"
 
+alias rust="evcxr"
 alias vim="nvim"
 alias vi="nvim"
 

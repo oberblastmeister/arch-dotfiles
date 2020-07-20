@@ -44,7 +44,7 @@ cmd paste &{{
 }}
 
 # make sure trash folder exists
-%mkdir -p ~/.trash
+# %mkdir -p ~/.trash
 
 # move current file or selected files to trash folder
 cmd trash %trash-put $fx
@@ -62,10 +62,18 @@ cmd extract ${{
     esac
 }}
 
-cmd mkdir %mkdir -p "$@"; 
-cmd touch %touch "$@";
+cmd mkdir ${{
+    mkdir -p "$@"
+    lf -remote "send $id select \"$@\""
+}}
+
+cmd touch ${{
+    touch "$@"
+    lf -remote "send $id select \"$@\""
+}}
+
 # copy and rename at the same time
-cmd go_put %cp "$f" "$@";
+cmd go_put %cp -r "$f" "$@";
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{
@@ -96,7 +104,7 @@ cmd fzf_jump ${{
 
 cmd fzf ${{
    FZF_DEFAULT_COMMAND="fd --follow --exclude .git --color=always"
-   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
+   FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
 
    res="$(fzf)"
 
@@ -106,6 +114,34 @@ cmd fzf ${{
      cmd="cd"                                                       
    fi
 
+   lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd fzf_files ${{
+      FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always"
+      FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
+
+      res="$(fzf)"
+
+      if [ "$TERM" != "xterm-256color" ]
+      then
+	 # ~/bin/launch-devour.sh "$f"
+	 lf-launch.sh "$f"
+      else
+	 # if the terminal is neovim do default action, floaterm will handle the rest
+	 lf -remote "send $id open $f"
+      fi
+}}
+
+cmd broot_jump ${{
+   f=$(mktemp)
+   res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+   rm -f "$f"
+   if [ -f "$res" ]; then
+     cmd="select"
+   elif [ -d "$res" ]; then
+     cmd="cd"                                                       
+   fi
    lf -remote "send $id $cmd \"$res\""
 }}
 
@@ -202,12 +238,38 @@ cmd yank-basename-without-extension ${{
       }' | xclip -i -selection clipboard
 }}
 
+# # ranger rename
+# # Unmap the default binding
+# map r
+# # Rename the file with a completely different name
+# map rc push :rename<space>
+# # Edit the current filename
+# map ra ${{
+# 	# get 'basename' of the selection
+# 	filename="${f##*/}"
+# 	# quote it so we won't deal with quotes in the lf -remote command
+# 	filename="$(printf '%q' "$filename")"
+# 	filename="${filename// /<space>}"
+# 	lf -remote "send $id push :rename<space>$filename"
+# }}
+# # Edit filename before the extension
+# map re ${{
+# 	# get 'basename' of the selection
+# 	filename="${f##*/}"
+# 	# quote it so we won't deal with quotes in the lf -remote command
+# 	filename="$(printf '%q' "$filename")"
+# 	filename="${filename// /<space>}"
+# 	lf -remote "send $id push :rename<space>$filename<a-b><c-b>"
+# }}
+
 # =======================================================================
 # ================================ mappings =============================
 # =======================================================================
 
 map <a-c> :fzf_jump
 map <c-p> :fzf
+map <c-t> :fzf_files
+map b :broot_jump
 
 map . set hidden!
 map gh :cd ~

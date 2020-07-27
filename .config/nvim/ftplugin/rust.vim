@@ -1,3 +1,5 @@
+nnoremap <buffer> m<CR> :Dispatch cargo build<CR>
+nnoremap <buffer> m! :Dispatch! cargo build --release<CR>
 " nnoremap <buffer> <silent> <leader>p :call Cargo()<CR>
 " " nnoremap <buffer> <silent> <leader>r :VimuxRunCommand("./target/debug/" . substitute(getcwd(), '^.*/', '', ''))<CR>
 " nnoremap <buffer> <silent> <leader>r :write!<cr>:VimuxRunCommand("clear; cargo run --release")<cr>

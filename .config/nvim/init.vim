@@ -223,6 +223,8 @@ Plug 'ChristianChiarulli/codi.vim', { 'on': 'Codi' }
 " overides <CR> mapping to replay last macro
 Plug 'wincent/replay'
 
+Plug 'junegunn/vim-peekaboo'
+
 " ----------------------------- Text Objects --------------------------------
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'

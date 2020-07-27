@@ -151,8 +151,8 @@ let g:which_key_map.g.p = 'push current head'
 " nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
 
 let g:which_key_map.c = { 'name' : '+chunk' }
-nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
-let g:which_key_map.c.s = 'stage'
+nnoremap <silent> <leader>ca :CocCommand git.chunkStage<CR>
+let g:which_key_map.c.a = 'add (stage)'
 nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>
 let g:which_key_map.c.u = 'undo'
 nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>

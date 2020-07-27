@@ -174,7 +174,7 @@ modules-right = separator keyboard_i keyboard separator pulseaudio_i pulseaudio 
 
 {% else %}
 
-modules-right = separator keyboard_i keyboard separator pulseaudio_i pulseaudio separator brightness_i brightness separator network_i network separator date_i date separator sysmenu_i sysmenu
+modules-right = separator keyboard_i keyboard separator pulseaudio_i pulseaudio separator brightness_i brightness separator battery_i battery separator network_i network separator date_i date separator sysmenu_i sysmenu
 
 {% endif %}
 

@@ -134,34 +134,63 @@ endfunction
 " Git {{{
 " ============================================================================
 let g:which_key_map.g = { 'name' : '+git' }
+
 nnoremap <silent> <leader>gs :G<CR>
 let g:which_key_map.g.s = 'status'
+
 nnoremap <silent> <leader>gb :G blame<CR>
 let g:which_key_map.g.b = 'blame'
+
 nnoremap <silent> <leader>gl :G log<CR>
 let g:which_key_map.g.l = 'log'
+
 nnoremap <silent> <leader>ga :G add %:p<CR>
 let g:which_key_map.g.a = 'add current file'
+
 nnoremap <silent> <leader>gc :G commit<CR>
 let g:which_key_map.g.c = 'commit'
+
 nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
 let g:which_key_map.g.p = 'push current head'
 " toggle yadm mapping
 " nnoremap <silent> <leader>gy :call mappings#toggle_yadm()<CR>
 " nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
 
-let g:which_key_map.c = { 'name' : '+chunk' }
-nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
-let g:which_key_map.c.s = 'stage'
-nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>
-let g:which_key_map.c.u = 'undo'
-nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
-let g:which_key_map.c.i = 'show info'
-nnoremap <silent> <leader>cc :CocCommand git.showCommit<CR>
-let g:which_key_map.c.c = 'show commit'
-nnoremap <silent> <leader>co :CocCommand git.browserOpen
-let g:which_key_map.c.o = 'open in browser'
+let g:which_key_map.h = { 'name' : '+hunk' }
+
+nnoremap <silent> <leader>ha :CocCommand git.chunkStage<CR>
+let g:which_key_map.h.a = 'add (stage)'
+
+nnoremap <silent> <leader>hu :CocCommand git.chunkUndo<CR>
+let g:which_key_map.h.u = 'undo'
+
+nnoremap <silent> <leader>hi :CocCommand git.chunkInfo<CR>
+let g:which_key_map.h.i = 'show info'
+
+nnoremap <silent> <leader>hc :CocCommand git.showCommit<CR>
+let g:which_key_map.h.c = 'show commit'
+
+nnoremap <silent> <leader>ho :CocCommand git.browserOpen
+let g:which_key_map.h.o = 'open in browser'
 " }}}
+
+" ============================================================================
+" Quickfix {{{
+" ============================================================================
+let g:which_key_map.c = { 'name' : '+quickfix' }
+
+nnoremap <silent> <leader>co :copen<CR>
+let g:which_key_map.c.o = 'open'
+
+nnoremap <silent> <leader>cw :cw<CR>
+let g:which_key_map.c.w = 'open if there are errors'
+
+nnoremap <silent> <leader>cq :ccl<CR>
+let g:which_key_map.c.q = 'close'
+
+nnoremap <silent> <leader>cf :cnf<CR>
+let g:which_key_map.c.f = 'next file'
+
 
 " ============================================================================
 " Test {{{

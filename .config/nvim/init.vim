@@ -329,4 +329,8 @@ vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
 let g:which_key_map = {}
 
 call which_key#register('<Space>', "g:which_key_map")
+
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
 "}}}

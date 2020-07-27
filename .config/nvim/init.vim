@@ -129,14 +129,9 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_create_note_window = 'edit'
 
 Plug 'tpope/vim-dispatch'
-  let g:dispatch_no_maps = 1
 
 Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
-  if exists('$TMUX')
-    let test#strategy = "vimux"
-  else
-    let test#strategy = "dispatch"
-  endif
+  let test#strategy = "dispatch"
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]

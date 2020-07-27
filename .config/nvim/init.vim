@@ -16,10 +16,6 @@ function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
-
-let g:loaded_netrw       = 0
-let g:loaded_netrwPlugin = 0
-let g:loaded_python_provider = 0
 " }}}
 
 " ============================================================================
@@ -129,7 +125,6 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_create_note_window = 'edit'
 
 Plug 'tpope/vim-dispatch'
-  let g:dispatch_no_maps = 1
 
 Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
   if exists('$TMUX')

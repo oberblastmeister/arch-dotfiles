@@ -22,7 +22,7 @@ nnoremap <silent> <c-n> :NV<CR>
 
 nnoremap <silent> <leader>. :cd ~<CR>:Dotfiles<CR>
 let g:which_key_map['.'] = 'search for dotfiles'
-let g:which_key_map.h = [ 'Help', 'search for help' ]
+let g:which_key_map.H = [ 'Help', 'search for help' ]
 
 nnoremap <silent> <leader>/ :BLines<CR>
 let g:which_key_map['/'] = 'fuzzy /'

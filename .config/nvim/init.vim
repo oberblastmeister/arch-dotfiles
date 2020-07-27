@@ -127,11 +127,7 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
 Plug 'tpope/vim-dispatch'
 
 Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
-  if exists('$TMUX')
-    let test#strategy = "vimux"
-  else
-    let test#strategy = "dispatch"
-  endif
+  let test#strategy = "dispatch"
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -217,6 +213,8 @@ Plug 'ChristianChiarulli/codi.vim', { 'on': 'Codi' }
 
 " overides <CR> mapping to replay last macro
 Plug 'wincent/replay'
+
+Plug 'junegunn/vim-peekaboo'
 
 " ----------------------------- Text Objects --------------------------------
 Plug 'kana/vim-textobj-user'
@@ -322,4 +320,8 @@ vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
 let g:which_key_map = {}
 
 call which_key#register('<Space>', "g:which_key_map")
+
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
 "}}}

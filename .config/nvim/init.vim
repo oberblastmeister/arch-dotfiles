@@ -81,13 +81,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-yaml'
   \ ]
 
-Plug 'tmsvg/pear-tree'
-  let g:pear_tree_timeout = 0
-  let g:pear_tree_repeatable_expand = 0
-  let g:pear_tree_smart_openers = 0
-  let g:pear_tree_smart_closers = 0
-  let g:pear_tree_smart_backspace = 1
-  imap <space> <Plug>(PearTreeSpace)
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'liuchengxu/vim-which-key'
 
@@ -148,7 +142,7 @@ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
 
 " ----------------------------- Editing -------------------------------------
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-repeat'
 
 Plug 'AndrewRadev/switch.vim'
@@ -158,6 +152,7 @@ Plug 'AndrewRadev/switch.vim'
       \   ['0', '1'],
       \   ['==', '!='],
       \   ['&', '|'],
+      \   ['&&', '||'],
       \   ['and', 'or'],
       \   ['on', 'off'],
       \   ['yes', 'no'],
@@ -267,7 +262,7 @@ Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
+Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }
 
 Plug 'chrisbra/vim-zsh', { 'for': 'zsh' }
 Plug 'ericpruitt/tmux.vim', { 'for': 'tmux' }
@@ -294,7 +289,7 @@ Plug 'baskerville/vim-sxhkdrc', { 'on': 'sxhkdrc' }
 
 call plug#end()
 endif
-
+runtime macros/sandwich/keymap/surround.vim
 " }}}
 
 " ============================================================================
@@ -324,4 +319,4 @@ call which_key#register('<Space>', "g:which_key_map")
 if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
-"}}}
+" }}}

@@ -144,9 +144,6 @@ zinit snippet OMZP::autojump/autojump.plugin.zsh
 zinit ice lucid wait
 zinit light soimort/translate-shell
 
-zinit ice lucid wait id-as"googler" as"program"
-zinit snippet https://raw.githubusercontent.com/jarun/googler/v4.0/googler
-
 zinit ice lucid wait id-as"cht" as"program"
 zinit snippet https://cht.sh/:cht.sh
 

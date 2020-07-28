@@ -33,17 +33,23 @@ alias icat="kitty +kitten icat"
 
 alias mutt='neomutt'
 
+# git
 alias g='git'
 alias ga='git add'
 alias gs='git status'
 alias gc='git commit -v'
 alias gp='git push'
 
+# yadm
 alias y='yadm'
 alias ya='yadm add'
 alias ys='yadm status'
 alias yc='yadm commit -m'
 alias yp='yadm push'
+
+# tmux
+alias ta='tmux attach'
+alias tl='tmux ls'
 
 alias t='task'
 alias pacvis='pacvis --browser'

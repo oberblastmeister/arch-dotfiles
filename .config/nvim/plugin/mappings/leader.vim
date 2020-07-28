@@ -4,7 +4,8 @@
 let g:which_key_map[' '] = [ '<C-^>', 'go to previous buffer' ]
 let g:which_key_map.o = [ 'zoom#toggle()', 'toggle zoom of split' ]
 let g:which_key_map.q = [ 'q', 'quit' ]
-let g:which_key_map.Q = [ 'qa!', 'quit without saving' ]
+nnoremap <leader>Q :q!<CR>
+let g:which_key_map.Q = 'quit without saving' 
 let g:which_key_map.w = [ 'w', 'write' ]
 let g:which_key_map.x = [ 'x', 'exit and save' ]
 let g:which_key_map.p = [ 'pu', 'put below' ]

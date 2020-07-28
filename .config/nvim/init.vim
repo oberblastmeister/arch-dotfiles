@@ -81,13 +81,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-yaml'
   \ ]
 
-Plug 'tmsvg/pear-tree'
-  let g:pear_tree_timeout = 0
-  let g:pear_tree_repeatable_expand = 0
-  let g:pear_tree_smart_openers = 0
-  let g:pear_tree_smart_closers = 0
-  let g:pear_tree_smart_backspace = 1
-  imap <space> <Plug>(PearTreeSpace)
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'liuchengxu/vim-which-key'
 

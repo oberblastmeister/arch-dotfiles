@@ -93,9 +93,11 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 # bindkey '^[;' autosuggest-accept
 
-zinit ice lucid wait blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/.fzf_/home/brian/.zinit/plugins/fzf_g' ~/.fzf.zsh; mv ~/.fzf.zsh ~/.zinit/plugins/fzf/.fzf.zsh" \
-  atpull"%atclone" pick".fzf.zsh"
-zinit light junegunn/fzf
+zinit ice lucid wait
+zinit snippet /usr/share/fzf/key-bindings.zsh
+
+zinit ice lucid wait
+zinit snippet /usr/share/fzf/completion.zsh
 
 # let fzf find hidden files
 export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"

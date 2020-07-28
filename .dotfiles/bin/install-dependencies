@@ -37,6 +37,7 @@ packages=(
     alsa-utils # includes alsamixer
 
     # better stuff
+    fzf
     fd # find, needed for fzf
     bat # cat, needed for fzf
     exa # ls

@@ -142,7 +142,7 @@ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
 
 " ----------------------------- Editing -------------------------------------
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-repeat'
 
 Plug 'AndrewRadev/switch.vim'

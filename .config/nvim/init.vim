@@ -152,6 +152,7 @@ Plug 'AndrewRadev/switch.vim'
       \   ['0', '1'],
       \   ['==', '!='],
       \   ['&', '|'],
+      \   ['&&', '||'],
       \   ['and', 'or'],
       \   ['on', 'off'],
       \   ['yes', 'no'],
@@ -261,7 +262,7 @@ Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
+Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }
 
 Plug 'chrisbra/vim-zsh', { 'for': 'zsh' }
 Plug 'ericpruitt/tmux.vim', { 'for': 'tmux' }

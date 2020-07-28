@@ -40,14 +40,13 @@ autorandr --change
 
 {% endif %}
 
-# launch polybar
-~/bin/polybar-launch.sh &
-
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------
 # /usr/lib/geoclue-2.0/demos/agent &
-# redshift &
+redshift &
+nm-applet &
+~/bin/polybar-launch.sh &
 xfce4-power-manager &
 udiskie &
 

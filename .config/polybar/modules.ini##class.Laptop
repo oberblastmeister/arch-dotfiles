@@ -389,8 +389,11 @@ format-disconnected-padding = 2
 
 ; label-connected = "%ifname%"
 ; label-disconnected = "Disconnected"
-label-connected = %{A1:~/bin/nmcli-rofi &:} %essid% %{A}
-label-disconnected = %{A1:~/bin/nmcli-rofi &:} Disconnected %{A}
+; label-connected = %{A1:~/bin/nmcli-rofi &:} %essid% %{A}
+; label-disconnected = %{A1:~/bin/nmcli-rofi &:} Disconnected %{A}
+
+label-connected = %{A1:nm-connection-editor &:} %essid% %{A}
+label-disconnected = %{A1:nm-connection-editor &:} Disconnected %{A}
 
 [module/network_i]
 type = internal/network

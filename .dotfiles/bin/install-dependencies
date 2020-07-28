@@ -10,6 +10,8 @@ packages=(
     dunst
     gnome-keyring
     networkmanager
+    nm-connection-editor
+    network-manager-applet
 
     # lightdm
     lightdm

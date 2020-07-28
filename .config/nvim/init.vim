@@ -289,7 +289,7 @@ Plug 'baskerville/vim-sxhkdrc', { 'on': 'sxhkdrc' }
 
 call plug#end()
 endif
-
+runtime macros/sandwich/keymap/surround.vim
 " }}}
 
 " ============================================================================
@@ -319,4 +319,4 @@ call which_key#register('<Space>', "g:which_key_map")
 if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
-"}}}
+" }}}

@@ -87,7 +87,7 @@ cmd touch ${{
 }}
 
 # copy and rename at the same time
-cmd go_put %cp -r "$f" "$@";
+cmd go_put %cp -r "$fx" "$@";
 
 # compress current file or selected files with tar and gunzip
 cmd tar ${{

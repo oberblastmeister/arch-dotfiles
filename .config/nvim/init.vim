@@ -128,8 +128,7 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_fzf_preview = ['right:50%']
   let g:vista_default_executive = 'coc'
 
-" Plug 'romainl/vim-cool'
-Plug 'junegunn/vim-slash'
+Plug 'romainl/vim-cool'
 " Plug 'haya14busa/incsearch.vim'
 " Plug 'haya14busa/is.vim'
 

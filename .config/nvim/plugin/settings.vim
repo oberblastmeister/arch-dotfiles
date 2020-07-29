@@ -97,5 +97,6 @@ hi! CocErrorVirtualText guibg=#3c3836 guifg=#fb4934
 hi! CocHintVirtualText guibg=#3c3836 guifg=#83a598
 hi! CocRustChainingHint guibg=#3c3836 guifg=#83a598
 hi! CocWarningVirtualText guibg=#3c3836 guifg=#fe8019
+hi! CocCursorRange guibg=#d3869b guifg=#282828
 " set fillchars+=vert:\
 " }}}

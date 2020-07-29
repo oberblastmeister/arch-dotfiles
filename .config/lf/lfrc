@@ -252,39 +252,24 @@ cmd yank-basename-without-extension ${{
       }' | xclip -i -selection clipboard
 }}
 
-# # ranger rename
-# # Unmap the default binding
-# map r
-# # Rename the file with a completely different name
-# map rc push :rename<space>
-# # Edit the current filename
-# map ra ${{
-# 	# get 'basename' of the selection
-# 	filename="${f##*/}"
-# 	# quote it so we won't deal with quotes in the lf -remote command
-# 	filename="$(printf '%q' "$filename")"
-# 	filename="${filename// /<space>}"
-# 	lf -remote "send $id push :rename<space>$filename"
-# }}
-# # Edit filename before the extension
-# map re ${{
-# 	# get 'basename' of the selection
-# 	filename="${f##*/}"
-# 	# quote it so we won't deal with quotes in the lf -remote command
-# 	filename="$(printf '%q' "$filename")"
-# 	filename="${filename// /<space>}"
-# 	lf -remote "send $id push :rename<space>$filename<a-b><c-b>"
-# }}
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd dragon-stay %dragon-drag-and-drop -a $fx
+cmd dragon-individual %dragon-drag-and-drop $fx
+cmd dlfile %dlfile
 
 # =======================================================================
 # ================================ mappings =============================
 # =======================================================================
 
+# fzf
 map <a-c> :fzf_jump
 map <c-p> :fzf
 map <c-t> :fzf_files
-map b :broot_jump
 
+# broot
+# map b :broot_jump
+
+# general
 map . set hidden!
 map gh :cd ~
 
@@ -309,14 +294,7 @@ map R :bulk-rename
 
 map <a-n> newfold
 
-cmd open ${{
-   # first check if terminal is not neovim terminal
-   if [ "$TERM" != "xterm-256color" ]
-   then
-      # ~/bin/launch-devour.sh "$f"
-      lf-launch.sh "$f"
-   else
-   # if the terminal is neovim do default action, floaterm will handle the rest
-      lf -remote "send $id open $f"
-   fi
-}}
+# dragon
+map br dragon
+map bs dragon-stay
+map bi dragon-individual

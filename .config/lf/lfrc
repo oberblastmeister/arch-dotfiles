@@ -140,10 +140,10 @@ cmd fzf_files ${{
       if [ "$TERM" != "xterm-256color" ]
       then
 	 # ~/bin/launch-devour.sh "$f"
-	 lf-launch.sh "$f"
+	 lf-launch.sh "$res"
       else
 	 # if the terminal is neovim do default action, floaterm will handle the rest
-	 lf -remote "send $id open $f"
+	 lf -remote "send $id open $res"
       fi
 }}
 

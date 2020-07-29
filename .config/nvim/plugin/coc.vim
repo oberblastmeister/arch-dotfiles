@@ -102,8 +102,8 @@ let g:which_key_map.a = 'actions with text objects'
 " nmap <silent> <C-c> <Plug>(coc-cursors-position)
 
 " overide Q ex-mode mapping, don't want ex mode
-" nmap <silent> Q <Plug>(coc-cursors-word)*
-" xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+nmap <silent> Q <Plug>(coc-cursors-word)*
+xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
 " lsp mappings
 let g:which_key_map.l = {

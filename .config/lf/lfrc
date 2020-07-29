@@ -58,7 +58,7 @@ cmd paste &{{
 }}
 
 # make sure trash folder exists
-# %mkdir -p ~/.trash
+%mkdir -p ~/.trash
 
 # move current file or selected files to trash folder
 cmd trash %trash-put $fx

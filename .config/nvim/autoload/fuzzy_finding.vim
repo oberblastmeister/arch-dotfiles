@@ -1,4 +1,7 @@
 function! fuzzy_finding#centered_floating_window(border)
+    " fix fzf issue
+    nohlsearch
+
     let width = min([&columns - 4, max([80, &columns - 20])])
     let height = min([&lines - 4, max([20, &lines - 10])])
     let top = ((&lines - height) / 2) - 1

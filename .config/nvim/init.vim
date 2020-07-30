@@ -284,7 +284,81 @@ Plug 'baskerville/vim-sxhkdrc', { 'on': 'sxhkdrc' }
 
 call plug#end()
 endif
-runtime macros/sandwich/keymap/surround.vim
+
+" ============================================================================
+" Sandwhich {{{
+" ============================================================================
+
+" copy the default recipes
+let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+
+" auto-indent after surrounding with brackets
+let g:sandwich#recipes += [
+      \   {
+      \     'buns'        : ['{', '}'],
+      \     'motionwise'  : ['line'],
+      \     'kind'        : ['add'],
+      \     'linewise'    : 1,
+      \     'command'     : ["'[+1,']-1normal! >>"],
+      \   },
+      \   {
+      \     'buns'        : ['{', '}'],
+      \     'motionwise'  : ['line'],
+      \     'kind'        : ['delete'],
+      \     'linewise'    : 1,
+      \     'command'     : ["'[,']normal! <<"],
+      \   },
+      \   {
+      \     'buns'        : ['(', ')'],
+      \     'motionwise'  : ['line'],
+      \     'kind'        : ['add'],
+      \     'linewise'    : 1,
+      \     'command'     : ["'[+1,']-1normal! >>"],
+      \   },
+      \   {
+      \     'buns'        : ['(', ')'],
+      \     'motionwise'  : ['line'],
+      \     'kind'        : ['delete'],
+      \     'linewise'    : 1,
+      \     'command'     : ["'[,']normal! <<"],
+      \   },
+      \   {
+      \     'buns'        : ['[', ']'],
+      \     'motionwise'  : ['line'],
+      \     'kind'        : ['add'],
+      \     'linewise'    : 1,
+      \     'command'     : ["'[+1,']-1normal! >>"],
+      \   },
+      \   {
+      \     'buns'        : ['[', ']'],
+      \     'motionwise'  : ['line'],
+      \     'kind'        : ['delete'],
+      \     'linewise'    : 1,
+      \     'command'     : ["'[,']normal! <<"],
+      \   }
+      \ ]
+
+" allow bracket with spaces (like vim-surround), only works for char and block
+let g:sandwich#recipes += [
+      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
+      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
+      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
+      \   {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
+      \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
+      \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
+      \ ]
+
+" allow magic function to use insert mode completion
+let g:sandwich#recipes += [
+  \   {
+  \     'buns': ['(', ')'],
+  \     'cursor': 'head',
+  \     'command': ['startinsert'],
+  \     'kind': ['add', 'replace'],
+  \     'action': ['add'],
+  \     'input': ['F']
+  \   },
+  \ ]
 " }}}
 
 " ============================================================================

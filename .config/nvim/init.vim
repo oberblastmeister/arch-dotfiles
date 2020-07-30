@@ -194,10 +194,6 @@ Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_width = 0.85
   let g:floaterm_height = 0.85
   let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
-  " let g:floaterm_keymap_new    = '<F7>'
-  " let g:floaterm_keymap_prev   = '<F8>'
-  " let g:floaterm_keymap_next   = '<F9>'
-  " let g:floaterm_keymap_toggle = '<F12>'
 
 " don't need in neovim master branch
 Plug 'machakann/vim-highlightedyank'

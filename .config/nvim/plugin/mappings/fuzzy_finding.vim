@@ -16,7 +16,8 @@ command! -nargs=? Dotfiles
 " ============================================================================
 nnoremap <silent> <c-p> :Files<CR>
 nnoremap <silent> <c-f> :Rg<CR>
-nnoremap <silent> <c-t> :Vista finder<CR>
+" doesn't add to jumplist for some reason
+nnoremap <silent> <c-t> :normal! m'<CR>:Vista finder<CR>
 nnoremap <silent> <c-b> :Buffers<CR>
 nnoremap <silent> <c-n> :NV<CR>
 

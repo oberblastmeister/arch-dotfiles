@@ -14,17 +14,15 @@ endfunction
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
-" inoremap <expr> <C-n> complete_info()["pum_visible"] == "1" ? "" : ""
-" inoremap <expr> <C-p> complete_info()["pum_visible"] == "1" ? "" : ""
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" navigate diagnostics and also add to jumplist
+nmap <silent> [g :execute "normal m'\<Plug>(coc-diagnostic-prev)"<CR>
+nmap <silent> ]g :execute "normal m'\<Plug>(coc-diagnostic-next)"<CR>
 
  " GoTo code navigation.
 nmap <silent> <c-]> <Plug>(coc-definition)

@@ -286,7 +286,6 @@ call plug#end()
 " ============================================================================
 " Sandwhich {{{
 " ============================================================================
-
 " copy the default recipes
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 

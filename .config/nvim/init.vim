@@ -22,7 +22,7 @@ endfunction
 " Vim-plug {{{
 " ============================================================================
 
-silent! if plug#begin(stdpath('data') . '/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
 " ----------------------------- Appearance -----------------------------------
 Plug 'itchyny/lightline.vim'
@@ -278,7 +278,6 @@ Plug 'baskerville/vim-sxhkdrc', { 'on': 'sxhkdrc' }
 " Plug 'brooth/far.vim'
 
 call plug#end()
-endif
 
 " ============================================================================
 " Sandwhich {{{

@@ -199,12 +199,7 @@ Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 300
 
-Plug 'ChristianChiarulli/codi.vim', { 'on': 'Codi' }
-
-" overides <CR> mapping to replay last macro
-Plug 'wincent/replay'
-
-Plug 'junegunn/vim-peekaboo'
+Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
 
 " ----------------------------- Text Objects --------------------------------
 Plug 'kana/vim-textobj-user'

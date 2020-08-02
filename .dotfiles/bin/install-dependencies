@@ -98,9 +98,9 @@ aur_packages=(
     # zsh prompt
     starship-bin
     # process manager
-    ytop
     bottom
     xob
+    dragon-drag-and-drop
 )
 
 for package in ${aur_packages[@]}; do

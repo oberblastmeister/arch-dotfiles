@@ -24,6 +24,10 @@ nnoremap dil ^D
 " paste without newline
 nnoremap gP i<CR><Esc>PkJxJx
 nnoremap gp a<CR><Esc>PkJxJx
+
+nnoremap c* *Ncgn
+
+nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 " }}}
 
 " ============================================================================
@@ -66,5 +70,3 @@ xmap ih <Plug>(coc-git-chunk-inner)
 omap ah <Plug>(coc-git-chunk-outer)
 xmap ah <Plug>(coc-git-chunk-outer)
 " }}}
-
-nnoremap c* *Ncgn

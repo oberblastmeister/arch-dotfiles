@@ -62,24 +62,15 @@ Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " ----------------------------- Important ----------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = [
-  \ 'coc-python',
-  \ 'coc-json',
-  \ 'coc-sh',
-  \ 'coc-rust-analyzer',
-  \ 'coc-tsserver',
-  \ 'coc-html',
-  \ 'coc-snippets',
-  \ 'coc-vimlsp',
-  \ 'coc-emmet',
-  \ 'coc-actions',
-  \ 'coc-java',
-  \ 'coc-marketplace',
-  \ 'coc-git',
-  \ 'coc-explorer',
-  \ 'coc-yaml'
-  \ ]
+Plug 'neovim/nvim-lsp'
+Plug 'nvim-lua/completion-nvim'
+  let g:completion_enable_snippet = 'UltiSnips'
+Plug 'nvim-lua/diagnostic-nvim'
+  let g:diagnostic_insert_delay = 1
+
+Plug 'steelsojka/completion-buffers'
+" Plug 'hrsh7th/vim-vsnip'
+  let g:completion_enable_snippet = 'UltiSnips'
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -386,3 +377,16 @@ if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
 " }}}
+
+lua << END
+  require'nvim_lsp'.rust_analyzer.setup{on_attach=require'diagnostic'.on_attach}
+  require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+END
+
+autocmd BufEnter * lua require'completion'.on_attach()
+
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp', 'snippet', 'buffers']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+    \]

@@ -1,65 +1,37 @@
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
+" Use <Tab> and <S-Tab> to navigate through popup menu
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ completion#trigger_completion()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" navigate diagnostics and also add to jumplist
-nmap <silent> [g :execute "normal m'\<Plug>(coc-diagnostic-prev)"<CR>
-nmap <silent> ]g :execute "normal m'\<Plug>(coc-diagnostic-next)"<CR>
+
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+nnoremap <silent> ]g :NextDiagnosticCycle<CR>
+nnoremap <silent> [g :PrevDiagnosticCycle<CR>
 
  " GoTo code navigation.
-nmap <silent> <c-]> <Plug>(coc-definition)
-nmap <silent> gd <Plug>(coc-declaration)
-nmap <silent> gD <Plug>(coc-implementation)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gr <Plug>(coc-references)
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" show docs in preview window
-noremap <silent> K :call <SID>show_documentation()<CR>
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd! CursorHold * silent! call CocActionAsync('highlight')
-
-" Symbol renaming. {{{
-let g:which_key_map.r = { 'name': '+rename' }
-
-nmap <leader>rn <Plug>(coc-rename)
-let g:which_key_map.r.n = 'symbol'
-
-nmap <leader>rw :CocCommand document.renameCurrentWord<CR>
-let g:which_key_map.r.w = 'word'
-
-nmap <leader>rf <Plug>(coc-refactor)
-let g:which_key_map.r.f = 'refractor'
-
-nmap <leader>rs :CocSearch <c-r><c-w><cr>
-nmap <leader>rS :CocSearch
-let g:which_key_map.r.s = 'search'
+" nmap <silent> <c-]> <Plug>(coc-definition)
+" nmap <silent> gd <Plug>(coc-declaration)
+" nmap <silent> gD <Plug>(coc-implementation)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gr <Plug>(coc-references)
+nnoremap gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 " }}}
 
 augroup coc

@@ -80,6 +80,9 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
 " }}}
 
 " ============================================================================

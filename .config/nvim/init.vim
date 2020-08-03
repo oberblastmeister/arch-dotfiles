@@ -379,14 +379,18 @@ endif
 " }}}
 
 lua << END
-  require'nvim_lsp'.rust_analyzer.setup{on_attach=require'diagnostic'.on_attach}
-  require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+  require'nvim_lsp'.rust_analyzer.setup{}
+  require'nvim_lsp'.pyls.setup{}
+  require'nvim_lsp'.vimls.setup{}
 END
 
 autocmd BufEnter * lua require'completion'.on_attach()
+autocmd BufEnter * lua require'diagnostic'.on_attach()
 
 let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet', 'buffers']},
-    \{'mode': '<c-p>'},
-    \{'mode': '<c-n>'}
+    \{'complete_items': ['lsp', 'snippet']},
+    \{'complete_items': ['buffers']},
+    \{'complete_items': ['path']},
     \]
+
+let g:completion_auto_change_source = 1

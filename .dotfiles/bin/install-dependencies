@@ -5,6 +5,8 @@ packages=(
     bspwm
     sxhkdrc
     xsettingsd
+    git
+    github-cli
 
     pulseaudio
     dunst

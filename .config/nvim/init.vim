@@ -72,6 +72,8 @@ Plug 'steelsojka/completion-buffers'
 " Plug 'hrsh7th/vim-vsnip'
   let g:completion_enable_snippet = 'UltiSnips'
 
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'liuchengxu/vim-which-key'

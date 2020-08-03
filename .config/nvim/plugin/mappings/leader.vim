@@ -180,6 +180,9 @@ let g:which_key_map.h.o = 'open in browser'
 " ============================================================================
 let g:which_key_map.c = { 'name' : '+quickfix' }
 
+nnoremap <silent> <leader>cO :Copen<CR>
+let g:which_key_map.c.O = 'open previous build'
+
 nnoremap <silent> <leader>co :copen<CR>
 let g:which_key_map.c.o = 'open'
 

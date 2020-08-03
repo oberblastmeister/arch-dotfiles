@@ -91,7 +91,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
-# bindkey '^[;' autosuggest-accept
 
 zinit ice lucid wait
 zinit snippet /usr/share/fzf/key-bindings.zsh

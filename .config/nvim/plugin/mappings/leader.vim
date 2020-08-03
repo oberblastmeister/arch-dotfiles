@@ -230,16 +230,25 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " ============================================================================
 " Vimspector {{{
 " ============================================================================
+let g:which_key_map.d = { 'name' : '+debugger' }
+
 nnoremap <silent> <leader>D :call vimspector#Launch()<CR>
 let g:which_key_map.D = 'start debugger'
 nnoremap <silent> <leader>dc :call mappings#configure_debugger()<CR>
+let g:which_key_map.d.c = 'configure debugger'
 nnoremap <silent> <leader>dq :VimspectorReset<CR>
+let g:which_key_map.d.q = 'quit'
 nnoremap <silent> <leader>dr :call vimspector#Restart()<CR>
+let g:which_key_map.d.r = 'restart'
 nnoremap <leader>de :VimspectorEval<space>
+let g:which_key_map.d.e = 'evaluate expression'
 nnoremap <leader>dw :VimspectorWatch<space>
+let g:which_key_map.d.w = 'watch variable'
 
 " ignore <F9> mapping for whichkey, has to do with vimspector
 let g:which_key_map['<F9>'] = 'which_key_ignore'
 " }}}
+
 nnoremap <Leader>s :let @s='\<'.expand('<cword>').'\>'<CR>:%s/<C-r>s//<Left>
 xnoremap <Leader>s "sy:%s/<C-r>s//<Left>
+let g:which_key_map.s = 'substitue word under cursor'

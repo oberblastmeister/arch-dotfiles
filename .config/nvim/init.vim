@@ -22,7 +22,7 @@ endfunction
 " Vim-plug {{{
 " ============================================================================
 
-silent! if plug#begin(stdpath('data') . '/plugged')
+call plug#begin(stdpath('data') . '/plugged')
 
 " ----------------------------- Appearance -----------------------------------
 Plug 'itchyny/lightline.vim'
@@ -141,7 +141,11 @@ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
 
 " ----------------------------- Editing -------------------------------------
 Plug 'tpope/vim-commentary'
+
 Plug 'machakann/vim-sandwich'
+  nmap s <Nop>
+  xmap s <Nop>
+
 Plug 'tpope/vim-repeat'
 
 Plug 'AndrewRadev/switch.vim'
@@ -199,12 +203,7 @@ Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 300
 
-Plug 'ChristianChiarulli/codi.vim', { 'on': 'Codi' }
-
-" overides <CR> mapping to replay last macro
-Plug 'wincent/replay'
-
-Plug 'junegunn/vim-peekaboo'
+Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
 
 " ----------------------------- Text Objects --------------------------------
 Plug 'kana/vim-textobj-user'
@@ -283,12 +282,10 @@ Plug 'baskerville/vim-sxhkdrc', { 'on': 'sxhkdrc' }
 " Plug 'brooth/far.vim'
 
 call plug#end()
-endif
 
 " ============================================================================
 " Sandwhich {{{
 " ============================================================================
-
 " copy the default recipes
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 

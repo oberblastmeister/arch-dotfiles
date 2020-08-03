@@ -48,7 +48,6 @@ autorandr --change
 # /usr/lib/geoclue-2.0/demos/agent &
 redshift &
 xfce4-power-manager &
-pulse-volume-watcher.py | xob -s gruvbox &
 udiskie &
 nm-applet &
 

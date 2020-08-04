@@ -128,7 +128,10 @@ Plug 'romainl/vim-cool'
 " if has('win32')
 "   Plug 'kassio/neoterm'
 "     let g:neoterm_autoinsert = 1
-" endif
+" endifPlug 'kyazdani42/nvim-web-devicons' " for file icons
+
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
 

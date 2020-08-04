@@ -8,13 +8,9 @@ augroup settings
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'FloatermNew lf' argv()[0] | endif
 
-
   autocmd VimResized * wincmd =
 
   " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
-
-  " neovim master branch
-  " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
 
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert

@@ -71,6 +71,7 @@ Plug 'nvim-lua/diagnostic-nvim'
 Plug 'steelsojka/completion-buffers'
 " Plug 'hrsh7th/vim-vsnip'
   let g:completion_enable_snippet = 'UltiSnips'
+Plug 'nvim-lua/lsp-status.nvim'
 
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
@@ -92,7 +93,7 @@ Plug 'antoinemadec/coc-fzf'
   " always show preview in fzf
   let g:fzf_preview_window = 'right'
 
-" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
   let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
   " " [Buffers] Jump to the existing window if possible
@@ -119,7 +120,7 @@ Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_fzf_preview = ['right:50%']
-  let g:vista_default_executive = 'coc'
+  let g:vista_default_executive = 'nvim_lsp'
 
 Plug 'romainl/vim-cool'
 " Plug 'haya14busa/incsearch.vim'

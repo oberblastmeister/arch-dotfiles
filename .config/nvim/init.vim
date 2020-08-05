@@ -394,9 +394,8 @@ autocmd BufEnter * lua require'completion'.on_attach()
 autocmd BufEnter * lua require'diagnostic'.on_attach()
 
 let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet']},
-    \{'complete_items': ['buffers']},
+    \{'complete_items': ['lsp', 'snippet', 'buffers']},
     \{'complete_items': ['path']},
     \]
 
-let g:completion_auto_change_source = 1
+" let g:completion_auto_change_source = 1

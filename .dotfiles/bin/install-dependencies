@@ -101,6 +101,7 @@ aur_packages=(
     bottom
     xob
     dragon-drag-and-drop
+    zoxide
 )
 
 for package in ${aur_packages[@]}; do

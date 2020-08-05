@@ -24,8 +24,6 @@ alias la='exa --all --icons'
 
 alias l='lfcd'
 alias top='btm'
-# alias z='j'
-# alias zo='jo'
 
 alias chtsh='cht --shell'
 alias mopen='mimeopen &>/dev/null'
@@ -57,7 +55,6 @@ alias pacvis='pacvis --browser'
 # overrides default alias yay='yay -Syu'
 alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 alias fpac="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
-alias z="j"
 
 # jupyter aliases
 alias irust="jupyter console --kernel rust"

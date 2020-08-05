@@ -20,6 +20,8 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
+# conflicts with zoxide
+unalias zi
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -137,7 +139,7 @@ zinit light-mode for \
 # zinit snippet ~/.pyenv_init.zsh
 
 zinit ice lucid wait
-zinit snippet OMZP::autojump/autojump.plugin.zsh
+zinit snippet https://github.com/ajeetdsouza/zoxide/blob/master/zoxide.plugin.zsh
 
 # load programs
 zinit ice lucid wait

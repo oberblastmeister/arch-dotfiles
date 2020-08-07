@@ -59,6 +59,7 @@ packages=(
     rlwrap
 
     python-pip
+    luarocks
 
     zsh
     tmux

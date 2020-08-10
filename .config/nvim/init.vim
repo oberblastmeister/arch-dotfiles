@@ -87,7 +87,19 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-yaml'
   \ ]
 
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'cohama/lexima.vim'
+Plug 'tmsvg/pear-tree'
+  let g:pear_tree_repeatable_expand = 0
+  let g:pear_tree_smart_openers = 1
+  let g:pear_tree_smart_closers = 1
+  let g:pear_tree_smart_backspace = 1
+  let g:pear_tree_timeout = 60
+  let g:pear_tree_map_special_keys = 1
+" Default mappings:
+imap <BS> <Plug>(PearTreeBackspace)
+imap <CR> <Plug>(PearTreeExpand)
+imap <Esc> <Plug>(PearTreeFinishExpansion)
 
 Plug 'liuchengxu/vim-which-key'
 

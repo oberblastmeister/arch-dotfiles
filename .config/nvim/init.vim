@@ -12,6 +12,12 @@
 " ============================================================================
 " Before {{{
 " ============================================================================
+
+" disable python 2 support
+let g:loaded_python_provider = 0
+" command to start python3 executable
+let g:python3_host_prog = '/usr/bin/python3'
+
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })

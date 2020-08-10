@@ -210,22 +210,7 @@ cmd video_preview ${{
 }}
 
 cmd bulk-rename ${{
-    old=$(mktemp)
-    new=$(mktemp)
-    [ -n $fs ] && fs=$(ls)
-    printf "$fs\n" > $old
-    printf "$fs\n" > $new
-    $EDITOR $new
-    [ $(cat $new | wc -l) -ne $(cat $old | wc -l) ] && exit
-    paste $old $new | while read names; do
-	src=$(printf $names | cut -f1)
-	dst=$(printf $names | cut -f2)
-	[ $src = $dst ] && continue
-	[ -e $dst ] && continue
-	mv $src $dst
-    done
-    rm $old $new
-    lf -remote "send $id unselect"
+    bulk-rename
 }}
 
 # new folder with selected items

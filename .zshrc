@@ -82,8 +82,8 @@ zinit wait lucid light-mode for \
 # big three
 zinit wait lucid light-mode for \
   zsh-users/zsh-history-substring-search \
-  atinit"zicompinit; zicdreplay" \
-      zsh-users/zsh-syntax-highlighting \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
   atload"bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept" \
       zsh-users/zsh-autosuggestions \

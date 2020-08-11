@@ -60,9 +60,6 @@ Plug 'itchyny/lightline.vim'
 " colors
 Plug 'morhetz/gruvbox'
   let g:gruvbox_sign_column='bg0'
-Plug 'rakr/vim-one'
-Plug 'arzg/vim-colors-xcode'
-Plug 'arcticicestudio/nord-vim'
 
 Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -87,8 +84,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-yaml'
   \ ]
 
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'cohama/lexima.vim'
 Plug 'tmsvg/pear-tree'
   let g:pear_tree_repeatable_expand = 0
   let g:pear_tree_smart_openers = 1
@@ -123,19 +118,6 @@ Plug 'antoinemadec/coc-fzf'
   let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
   " " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
-Plug 'antoinemadec/coc-fzf'
-
-Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
-  let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(1)'
-  let g:nv_search_paths = ['~/notes']
-  let g:nv_keymap = {
-                      \ 'ctrl-x': 'split ',
-                      \ 'ctrl-v': 'vertical split ',
-                        \ 'ctrl-t': 'tabedit ',
-                      \ }
-  let g:nv_create_note_key = 'ctrl-a'
-  " When adding notes don't put it in split
-  let g:nv_create_note_window = 'edit'
 
 Plug 'tpope/vim-dispatch'
 
@@ -239,7 +221,7 @@ Plug 'benmills/vimux', Cond($TMUX != '')
 
 " ----------------------------- Notes/Writing -------------------------------
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-  " let g:vim_markdown_no_default_key_mappings = 1
+  let g:vim_markdown_no_default_key_mappings = 1
   let g:vim_markdown_conceal = 0
   let g:vim_markdown_conceal_code_blocks = 0
   let g:vim_markdown_auto_insert_bullets = 1
@@ -250,7 +232,24 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
-" Plug 'vimwiki/vimwiki'
+
+Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
+  let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(1)'
+  let g:nv_search_paths = ['~/notes']
+  let g:nv_keymap = {
+                      \ 'ctrl-x': 'split ',
+                      \ 'ctrl-v': 'vertical split ',
+                        \ 'ctrl-t': 'tabedit ',
+                      \ }
+  let g:nv_create_note_key = 'ctrl-a'
+  " When adding notes don't put it in split
+  let g:nv_create_note_window = 'edit'
+
+Plug 'vimwiki/vimwiki'
+  let g:vimwiki_list = [{'path': '~/notes/',
+        \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_map_prefix = '<Leader>n'
+let g:vimwiki_global_ext = 0
 
 " ----------------------------- Web Developement ---------------------------
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }
@@ -405,3 +404,6 @@ if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
 " }}}
+
+" au FileType vimwiki set syntax=markdown
+" au FileType vimwiki set ft=markdown

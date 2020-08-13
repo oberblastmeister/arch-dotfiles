@@ -31,9 +31,6 @@ unalias zi
 #     zinit-zsh/z-a-bin-gem-node
 
 # keytimeout=0 might have bad effects
-# breaks everything for some reason
-# zinit ice atload"bindkey 'jk' vi-cmd-mode"
-# zinit light softmoth/zsh-vim-mode
 bindkey -v
 bindkey 'jk' vi-cmd-mode
 

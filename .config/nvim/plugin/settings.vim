@@ -58,6 +58,11 @@ set shortmess+=W   " dont' echo written when writing, lightline already has symb
 set shortmess+=T
 set shortmess+=A   " no swapfile messages
 set path+=**
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 " }}}
 
 " ============================================================================

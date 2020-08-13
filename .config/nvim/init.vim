@@ -144,8 +144,6 @@ Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
 Plug 'tpope/vim-commentary'
 
 Plug 'machakann/vim-sandwich'
-  nmap s <Nop>
-  xmap s <Nop>
 
 Plug 'tpope/vim-repeat'
 
@@ -183,10 +181,8 @@ Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
   let g:rooter_change_directory_for_non_project_files = 'current'
 
-Plug 'tpope/vim-sleuth'
-
-Plug 'wesQ3/vim-windowswap'
-  let g:windowswap_map_keys = 0
+" Plug 'wesQ3/vim-windowswap'
+"   let g:windowswap_map_keys = 0
 
 Plug 'lambdalisue/suda.vim'
 command! SudoWrite w suda://%
@@ -304,6 +300,8 @@ call plug#end()
 " ============================================================================
 " Sandwhich {{{
 " ============================================================================
+runtime macros/sandwich/keymap/surround.vim
+
 " copy the default recipes
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 
@@ -404,6 +402,3 @@ if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
 " }}}
-
-" au FileType vimwiki set syntax=markdown
-" au FileType vimwiki set ft=markdown

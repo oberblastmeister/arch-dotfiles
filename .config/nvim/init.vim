@@ -128,6 +128,7 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
   let g:vista_fzf_preview = ['right:50%']
   let g:vista_default_executive = 'coc'
+  let g:vista_vimwiki_executive = 'markdown'
 
 Plug 'romainl/vim-cool'
 " Plug 'haya14busa/incsearch.vim'

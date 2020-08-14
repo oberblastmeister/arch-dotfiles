@@ -32,14 +32,14 @@ bspc config normal_border_color "#504945"
 # set wallpaper
 feh --bg-scale ~/.dotfiles/images/wall.png
 
-# launch polybar
-~/bin/polybar-launch.sh &
-
 YADM_CLASS=$(yadm config local.class)
 if [ $YADM_CLASS = "Laptop" ]; then
 	pulseaudio --start
 	autorandr --change
 fi
+
+# launch polybar
+~/bin/polybar-launch.sh &
 
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------

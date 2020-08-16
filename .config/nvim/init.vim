@@ -64,6 +64,10 @@ Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
 
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+  let g:lua_tree_auto_close = 1
+
 " ----------------------------- Important ----------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = [
@@ -91,10 +95,7 @@ Plug 'tmsvg/pear-tree'
   let g:pear_tree_smart_backspace = 1
   let g:pear_tree_timeout = 60
   let g:pear_tree_map_special_keys = 1
-" Default mappings:
-imap <BS> <Plug>(PearTreeBackspace)
-imap <CR> <Plug>(PearTreeExpand)
-imap <Esc> <Plug>(PearTreeFinishExpansion)
+  imap <space> <Plug>(PearTreeSpace)
 
 Plug 'liuchengxu/vim-which-key'
 
@@ -116,7 +117,7 @@ Plug 'antoinemadec/coc-fzf'
 " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
   let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
-  " " [Buffers] Jump to the existing window if possible
+  " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
 
 Plug 'tpope/vim-dispatch'
@@ -131,13 +132,6 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_vimwiki_executive = 'markdown'
 
 Plug 'romainl/vim-cool'
-" Plug 'haya14busa/incsearch.vim'
-" Plug 'haya14busa/is.vim'
-
-" if has('win32')
-"   Plug 'kassio/neoterm'
-"     let g:neoterm_autoinsert = 1
-" endif
 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
 
@@ -166,7 +160,6 @@ Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
 Plug 'junegunn/vim-easy-align'
 
 " ----------------------------- General -------------------------------------
-Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'psliwka/vim-smoothie'
@@ -176,7 +169,6 @@ Plug 'dhruvasagar/vim-zoom'
  let g:zoom#statustext = ''
 
 Plug 'sickill/vim-pasta'
-Plug 'stefandtw/quickfix-reflector.vim'
 
 Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
@@ -253,35 +245,16 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
 Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server', 'for': ['html', 'css', 'javascript'] }
 
-Plug 'othree/html5.vim', { 'for': 'html' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'cakebaker/scss-syntax.vim', { 'for': 'css' }
-
 " ----------------------------- Language Specific --------------------------
-Plug 'MTDL9/vim-log-highlighting', { 'for': 'log' }
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
-  let g:no_csv_maps = 1
-Plug 'elzr/vim-json', { 'for': 'json' }
-    let g:vim_json_syntax_conceal = 0
-
-Plug 'vim-python/python-syntax', { 'for': 'python' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-" Plug 'arzg/vim-rust-syntax-ext', { 'for': 'rust' }
-Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'tbastos/vim-lua', { 'for': 'lua' }
+  let g:polyglot_disabled = ['markdown', 'latex']
+Plug 'sheerun/vim-polyglot'
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }
 
-Plug 'chrisbra/vim-zsh', { 'for': 'zsh' }
-Plug 'ericpruitt/tmux.vim', { 'for': 'tmux' }
-Plug 'zinit-zsh/zinit-vim-syntax', { 'for': 'zsh' }
-Plug 'baskerville/vim-sxhkdrc', { 'on': 'sxhkdrc' }
-
 " considering
 "Plug 'junegunn/vim-after-object'
 "Plug 'airblade/vim-gitgutter'
-"Plug 'sheerun/vim-polyglot'
 "Plug 'terryma/vim-expand-region'
 "Plug 'junegunn/vim-journal'
 "Plug 'junegunn/heytmux' (like tmuxinator)

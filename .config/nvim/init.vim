@@ -84,7 +84,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   \ 'coc-java',
   \ 'coc-marketplace',
   \ 'coc-git',
-  \ 'coc-explorer',
+  \ 'coc-lua',
   \ 'coc-yaml'
   \ ]
 

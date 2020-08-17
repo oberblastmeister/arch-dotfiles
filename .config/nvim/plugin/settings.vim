@@ -94,17 +94,19 @@ set completeopt=menuone,noinsert,noselect
 " Appearance {{{
 " ============================================================================
 " make ~ for new lines be same color as background so they are not seen
-highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
-highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-highlight! CursorLineNr ctermbg=bg guibg=bg
-hi! FloatermBorder guibg=#504945
+highlight StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+highlight CursorLineNr ctermbg=bg guibg=bg
+hi FloatermBorder guibg=#504945
 
 " make sign column same as background, but keep highlight of virtual text
-hi! CocErrorVirtualText guibg=#3c3836 guifg=#fb4934
-hi! CocHintVirtualText guibg=#3c3836 guifg=#83a598
-hi! CocRustChainingHint guibg=#3c3836 guifg=#83a598
-hi! CocWarningVirtualText guibg=#3c3836 guifg=#fe8019
-hi! CocCursorRange guibg=#d3869b guifg=#282828
+hi CocErrorVirtualText guibg=#3c3836 guifg=#fb4934
+hi LspDiagnosticsErrorSign guifg=#fb4934
+hi CocHintVirtualText guibg=#3c3836 guifg=#83a598
+hi LspDiagnosticsHintSign guifg=#83a598
+hi CocRustChainingHint guibg=#3c3836 guifg=#83a598
+hi CocWarningVirtualText guibg=#3c3836 guifg=#fe8019
+hi CocCursorRange guibg=#d3869b guifg=#282828
 " set fillchars+=vert:\
 " }}}

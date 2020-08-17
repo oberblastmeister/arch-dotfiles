@@ -391,9 +391,11 @@ let g:completion_chain_complete_list = [
 let g:completion_auto_change_source = 1
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_sorting = "length"
-let g:completion_timer_cycle = 30
+let g:completion_timer_cycle = 80
 let g:diagnostic_virtual_text_prefix = ' '
 call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
 call sign_define("LspDiagnosticsWarningSign", {"text" : "🛆", "texthl" : "LspDiagnosticsWarning"})
 call sign_define("LspDiagnosticsInformationSign", {"text" : "●", "texthl" : "LspDiagnosticsInformation"})
 call sign_define("LspDiagnosticsHintSign", {"text" : "○", "texthl" : "LspDiagnosticsHint"})
+autocmd InsertEnter * ++once lua require'completion'.on_attach()
+autocmd InsertEnter * ++once lua require'diagnostic'.on_attach()

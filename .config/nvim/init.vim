@@ -80,8 +80,6 @@ Plug 'steelsojka/completion-buffers'
   let g:completion_enable_snippet = 'UltiSnips'
 Plug 'nvim-lua/lsp-status.nvim'
 
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-
 Plug 'tmsvg/pear-tree'
   let g:pear_tree_repeatable_expand = 0
   let g:pear_tree_smart_openers = 1
@@ -104,7 +102,6 @@ endif
 " Use fzf for rg
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'antoinemadec/coc-fzf'
   " always show preview in fzf
   let g:fzf_preview_window = 'right'
 
@@ -131,9 +128,6 @@ Plug 'romainl/vim-cool'
 "   Plug 'kassio/neoterm'
 "     let g:neoterm_autoinsert = 1
 " endif
-
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
 
@@ -389,8 +383,12 @@ autocmd BufEnter * lua require'completion'.on_attach()
 autocmd BufEnter * lua require'diagnostic'.on_attach()
 
 let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet', 'buffers']},
+    \{'complete_items': ['lsp', 'snippet']},
     \{'complete_items': ['path']},
+    \{'complete_items': ['buffers']},
     \]
 
-" let g:completion_auto_change_source = 1
+let g:completion_auto_change_source = 1
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_sorting = "length"
+let g:completion_timer_cycle = 30

@@ -64,8 +64,8 @@ Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
 
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" Plug 'kyazdani42/nvim-tree.lua'
   let g:lua_tree_auto_close = 1
 
 " ----------------------------- Important ----------------------------------
@@ -392,3 +392,8 @@ let g:completion_auto_change_source = 1
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_sorting = "length"
 let g:completion_timer_cycle = 30
+let g:diagnostic_virtual_text_prefix = ' '
+call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "🛆", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "●", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "○", "texthl" : "LspDiagnosticsHint"})

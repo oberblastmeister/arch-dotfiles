@@ -147,6 +147,22 @@ cmd fzf_files ${{
       fi
 }}
 
+cmd z %lf -remote "send $id cd '$(zoxide query $1)'"
+
+cmd z_fzf ${{
+      res="$(zoxide query -i)"
+
+      if [ -f "$res" ]; then
+	cmd="select"
+      elif [ -d "$res" ]; then
+	cmd="cd"                                                       
+      fi
+
+      lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd z_add %zoxide add $f
+
 cmd broot_jump ${{
    f=$(mktemp)
    res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
@@ -194,22 +210,7 @@ cmd video_preview ${{
 }}
 
 cmd bulk-rename ${{
-    old=$(mktemp)
-    new=$(mktemp)
-    [ -n $fs ] && fs=$(ls)
-    printf "$fs\n" > $old
-    printf "$fs\n" > $new
-    $EDITOR $new
-    [ $(cat $new | wc -l) -ne $(cat $old | wc -l) ] && exit
-    paste $old $new | while read names; do
-	src=$(printf $names | cut -f1)
-	dst=$(printf $names | cut -f2)
-	[ $src = $dst ] && continue
-	[ -e $dst ] && continue
-	mv $src $dst
-    done
-    rm $old $new
-    lf -remote "send $id unselect"
+    bulk-rename
 }}
 
 # new folder with selected items
@@ -298,3 +299,9 @@ map <a-n> newfold
 map br dragon
 map bs dragon-stay
 map bi dragon-individual
+
+# zoxide
+map zj push :z<space>
+map zi z_fzf
+# unmap set info size:time
+map za z_add

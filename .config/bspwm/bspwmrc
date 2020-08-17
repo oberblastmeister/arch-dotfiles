@@ -1,6 +1,5 @@
 #! /bin/sh
 
-
 # -----------------------------------------------------
 # ------------------- Bspwm Settings ------------------
 # -----------------------------------------------------
@@ -33,19 +32,18 @@ bspc config normal_border_color "#504945"
 # set wallpaper
 feh --bg-scale ~/.dotfiles/images/wall.png
 
-{% if yadm.class == "Laptop" %}
+YADM_CLASS=$(yadm config local.class)
+if [ $YADM_CLASS = "Laptop" ]; then
+	pulseaudio --start
+	autorandr --change
+fi
 
-pulseaudio --start
-autorandr --change
-
-{% endif %}
-
+# launch polybar
 ~/bin/polybar-launch.sh &
 
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------
-# /usr/lib/geoclue-2.0/demos/agent &
 redshift &
 xfce4-power-manager &
 udiskie --tray &
@@ -54,18 +52,16 @@ nm-applet &
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------
 # -----------------------------------------------------
-{% if yadm.class == "Laptop" %}
-
-# set touchpad options
-xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
-xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Enabled" 1
-xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Disable While Typing Enabled" 0
-# allow two finger click
-xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Click Method Enabled" 0 1
-# allow two finger right click and middle click emulation
-xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Middle Emulation Enabled" 1
-
-{% endif %}
+if [ $YADM_CLASS = "Laptop" ]; then
+    # set touchpad options
+    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
+    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Enabled" 1
+    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Disable While Typing Enabled" 0
+    # allow two finger click
+    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Click Method Enabled" 0 1
+    # allow two finger right click and middle click emulation
+    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Middle Emulation Enabled" 1
+fi
 
 xset r rate 500 50
 

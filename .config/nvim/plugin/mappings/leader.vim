@@ -180,6 +180,9 @@ let g:which_key_map.h.o = 'open in browser'
 " ============================================================================
 let g:which_key_map.c = { 'name' : '+quickfix' }
 
+nnoremap <silent> <leader>cO :Copen<CR>
+let g:which_key_map.c.O = 'open previous build'
+
 nnoremap <silent> <leader>co :copen<CR>
 let g:which_key_map.c.o = 'open'
 
@@ -249,3 +252,6 @@ let g:which_key_map['<F9>'] = 'which_key_ignore'
 nnoremap <Leader>s :let @s='\<'.expand('<cword>').'\>'<CR>:%s/<C-r>s//<Left>
 xnoremap <Leader>s "sy:%s/<C-r>s//<Left>
 let g:which_key_map.s = 'substitue word under cursor'
+
+" vista
+nnoremap <leader>v :Vista!!<CR>

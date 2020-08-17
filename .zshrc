@@ -20,6 +20,8 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
+# conflicts with zoxide
+unalias zi
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -29,8 +31,8 @@ source "$HOME/.zinit/bin/zinit.zsh"
 #     zinit-zsh/z-a-bin-gem-node
 
 # keytimeout=0 might have bad effects
-zinit ice atload"bindkey 'jk' vi-cmd-mode"
-zinit light softmoth/zsh-vim-mode
+bindkey -v
+bindkey 'jk' vi-cmd-mode
 
 # ============================================================================
 # ============================================================================
@@ -59,12 +61,12 @@ export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
 
-MODE_CURSOR_VIINS="bar"
-MODE_CURSOR_REPLACE="underline"
-MODE_CURSOR_VICMD="block"
-MODE_CURSOR_SEARCH="steady underline"
-MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
-MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
+# MODE_CURSOR_VIINS="bar"
+# MODE_CURSOR_REPLACE="underline"
+# MODE_CURSOR_VICMD="block"
+# MODE_CURSOR_SEARCH="steady underline"
+# MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
+# MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 
 zinit ice lucid wait
 zinit snippet ~/.aliases
@@ -77,10 +79,10 @@ zinit wait lucid light-mode for \
 # big three
 zinit wait lucid light-mode for \
   zsh-users/zsh-history-substring-search \
-  atinit"zicompinit; zicdreplay" \
-      zsh-users/zsh-syntax-highlighting \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
-  atinit"bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept" \
+  atload"bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
@@ -137,7 +139,7 @@ zinit light-mode for \
 # zinit snippet ~/.pyenv_init.zsh
 
 zinit ice lucid wait
-zinit snippet OMZP::autojump/autojump.plugin.zsh
+zinit snippet https://github.com/ajeetdsouza/zoxide/blob/master/zoxide.plugin.zsh
 
 # load programs
 zinit ice lucid wait

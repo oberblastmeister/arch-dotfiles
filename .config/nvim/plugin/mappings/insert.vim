@@ -10,7 +10,7 @@ inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 
 " home and end insert mappings
-inoremap <C-a> <Home>
+inoremap <C-a> <Esc>I
 inoremap <C-e> <End>
 
 " Path completion with custom source command

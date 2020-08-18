@@ -21,8 +21,8 @@ else
 endif
 
 " navigate diagnostics and also add to jumplist
-nmap <silent> [g :execute "normal m'\<Plug>(coc-diagnostic-prev)"<CR>
-nmap <silent> ]g :execute "normal m'\<Plug>(coc-diagnostic-next)"<CR>
+nmap <silent> [g :silent execute "normal m'\<Plug>(coc-diagnostic-prev)"<CR>
+nmap <silent> ]g :silent execute "normal m'\<Plug>(coc-diagnostic-next)"<CR>
 
  " GoTo code navigation.
 nmap <silent> <c-]> <Plug>(coc-definition)

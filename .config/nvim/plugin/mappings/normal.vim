@@ -61,8 +61,8 @@ nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>
 " Chunk {{{
 " ============================================================================
 " jump chunk and add position to jumplist
-nmap <silent> [h :execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
-nmap <silent> ]h :execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
+nmap <silent> [h :silent execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
+nmap <silent> ]h :silent execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
 
 " chunk text objects
 omap ih <Plug>(coc-git-chunk-inner)

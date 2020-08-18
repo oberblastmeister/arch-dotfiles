@@ -64,8 +64,8 @@ Plug 'morhetz/gruvbox'
 Plug 'yggdroot/indentline'
 Plug 'norcalli/nvim-colorizer.lua'
 
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" Plug 'kyazdani42/nvim-tree.lua'
   let g:lua_tree_auto_close = 1
 
 " ----------------------------- Important ----------------------------------

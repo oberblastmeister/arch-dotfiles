@@ -32,17 +32,26 @@ call plug#begin(stdpath('data') . '/plugged')
 
 " ----------------------------- Appearance -----------------------------------
 Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
   let g:lightline = {
     \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste', 'zoom'],
-    \             ['cocstatus',  'fugitive', 'readonly', 'filename', 'modified'] ],
+    \             ['cocstatus',  'fugitive', 'readonly'] ],
     \   'right':   [ [ 'percent' ] ]
+    \ },
+    \ 'tabline': {
+    \   'left': [ ['buffers'] ],
+    \   'right': [ [] ]
     \ },
     \ 'component': {
     \   'lineinfo': ' %3l:%-2v',
     \ },
+    \ 'component_expand': {
+    \   'buffers': 'lightline#bufferline#buffers'
+    \ },
     \ 'component_type': {
+    \   'buffers': 'tabsel',
     \   'readonly': 'error',
     \   'linter_warnings': 'warning',
     \   'linter_errors': 'error'
@@ -54,8 +63,14 @@ Plug 'itchyny/lightline.vim'
     \   'currentfunction': 'CocCurrentFunction',
     \   'zoom': 'zoom#statusline'
     \ },
+    \ 'component_raw': {
+    \   'buffers': 1
+    \ }
     \ }
   autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
+let g:lightline#bufferline#show_number=2
+let g:lightline.component_raw = {'buffers': 1}
+let g:lightline#bufferline#clickable = 1
 
 " colors
 Plug 'morhetz/gruvbox'

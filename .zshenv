@@ -1,6 +1,3 @@
-# for ubuntu
-skip_global_compinit=1
-
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox

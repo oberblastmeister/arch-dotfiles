@@ -37,7 +37,7 @@ Plug 'mengelbrecht/lightline-bufferline'
     \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste', 'zoom'],
-    \             ['cocstatus',  'fugitive', 'readonly'] ],
+    \             ['cocstatus',  'fugitive'] ],
     \   'right':   [ [ 'percent' ] ]
     \ },
     \ 'tabline': {
@@ -68,9 +68,11 @@ Plug 'mengelbrecht/lightline-bufferline'
     \ }
     \ }
   autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
-let g:lightline#bufferline#show_number=2
-let g:lightline.component_raw = {'buffers': 1}
-let g:lightline#bufferline#clickable = 1
+  let g:lightline#bufferline#show_number=2
+  let g:lightline.component_raw = {'buffers': 1}
+  let g:lightline#bufferline#clickable = 1
+  " let g:lightline#bufferline#modified = ' '
+  let g:lightline#bufferline#read_only = ' '
 
 " colors
 Plug 'morhetz/gruvbox'
@@ -263,6 +265,7 @@ Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server', 'for': ['html',
 " ----------------------------- Language Specific --------------------------
   let g:polyglot_disabled = ['markdown', 'latex']
 Plug 'sheerun/vim-polyglot'
+  let g:python_highlight_space_errors = 0
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }

@@ -83,7 +83,7 @@ zinit wait lucid light-mode for \
     zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
   atload"bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept" \
-      zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
 

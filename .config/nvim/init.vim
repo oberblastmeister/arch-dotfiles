@@ -71,7 +71,7 @@ Plug 'mengelbrecht/lightline-bufferline'
   let g:lightline#bufferline#show_number=2
   let g:lightline.component_raw = {'buffers': 1}
   let g:lightline#bufferline#clickable = 1
-  " let g:lightline#bufferline#modified = ' '
+  let g:lightline#bufferline#modified = ' '
   let g:lightline#bufferline#read_only = ' '
 
 " colors

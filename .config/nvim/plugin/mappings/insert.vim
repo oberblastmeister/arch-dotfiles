@@ -8,6 +8,8 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
+inoremap <C-d> <Del>
+inoremap <C-y> <C-d>
 
 " home and end insert mappings
 inoremap <C-a> <Esc>I

@@ -66,10 +66,9 @@ Plug 'mengelbrecht/lightline-bufferline'
     \ 'component_raw': {
     \   'buffers': 1
     \ }
-    \ }
+  \ }
   autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
   let g:lightline#bufferline#show_number=2
-  let g:lightline.component_raw = {'buffers': 1}
   let g:lightline#bufferline#clickable = 1
   let g:lightline#bufferline#modified = ' '
   let g:lightline#bufferline#read_only = ' '
@@ -86,7 +85,7 @@ Plug 'norcalli/nvim-colorizer.lua'
   let g:lua_tree_auto_close = 1
 
 " ----------------------------- Important ----------------------------------
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
   let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-json',
@@ -128,12 +127,14 @@ endif
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
+Plug 'stsewd/fzf-checkout.vim', { 'on': ['GCheckout', 'GCheckoutTag'] }
   " always show preview in fzf
   let g:fzf_preview_window = 'right'
 
 " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
-  let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
+  " let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
+  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
   " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
 
@@ -391,6 +392,6 @@ let g:which_key_map = {}
 call which_key#register('<Space>', "g:which_key_map")
 
 if has('nvim')
-  tmap <C-o> <C-\><C-n>
+  tnoremap <C-o> <C-\><C-n>
 endif
 " }}}

@@ -295,6 +295,8 @@ map R :bulk-rename
 
 map <a-n> newfold
 
+map <c-o> push q
+
 # dragon
 map br dragon
 map bs dragon-stay

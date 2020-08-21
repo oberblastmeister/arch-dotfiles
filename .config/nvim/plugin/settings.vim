@@ -18,8 +18,8 @@ set inccommand=nosplit
 set noshowmode
 set foldmethod=syntax
 set foldlevelstart=99
-set timeoutlen=500
-set ttimeoutlen=20
+" set timeoutlen=500
+" set ttimeoutlen=20
 set ignorecase smartcase
 set mouse=a
 set nowrap

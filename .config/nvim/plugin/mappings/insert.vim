@@ -10,6 +10,7 @@ inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-d> <Del>
 inoremap <C-y> <C-d>
+imap <C-h> <BS>
 
 " home and end insert mappings
 inoremap <C-a> <Esc>I

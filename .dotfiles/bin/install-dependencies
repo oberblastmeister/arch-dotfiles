@@ -6,7 +6,11 @@ packages=(
     sxhkdrc
     xsettingsd
 
+    # audio
     pulseaudio
+    pulsemixer
+    pamixer
+
     dunst
     gnome-keyring
     networkmanager

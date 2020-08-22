@@ -141,41 +141,21 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# media keys using amixer
 XF86AudioRaiseVolume
-	amixer set Master 5%+
+  pamixer -i 5
  
 XF86AudioLowerVolume
-	amixer set Master 5%-
+  pamixer -d 5
  
 XF86AudioMute
-	amixer set Master toggle
-
-# using pulseaudio
-# XF86AudioRaiseVolume
-# 	pactl set-sink-volume 3 +5%
- 
-# XF86AudioLowerVolume
-# 	pactl set-sink-volume 3 -5%
- 
-# XF86AudioMute
-# 	pactl set-sink-volume 3 +5%
-
-# XF86AudioRaiseVolume
-# 	amixer -c 1 set Master 5%+
-
-# XF86AudioLowerVolume
-# 	amixer -c 1 set Master 5%-
-
-# XF86AudioMute
-# 	amixer -c 1 set Master toggle
+  pamixer -t
 
 # brightness
 XF86MonBrightnessDown
-	xbacklight -dec 8
+	xbacklight -dec 10
 
 XF86MonBrightnessUp
-	xbacklight -inc 8
+	xbacklight -inc 10
 
 # launching common apps keys
 super + ctrl + b

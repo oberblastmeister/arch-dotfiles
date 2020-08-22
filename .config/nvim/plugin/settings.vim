@@ -16,10 +16,11 @@ set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus
 set inccommand=nosplit
 set noshowmode
+set noshowcmd
 set foldmethod=syntax
 set foldlevelstart=99
-" set timeoutlen=500
-" set ttimeoutlen=20
+set timeoutlen=800
+set ttimeoutlen=40
 set ignorecase smartcase
 set mouse=a
 set nowrap

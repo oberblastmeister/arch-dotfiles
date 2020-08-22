@@ -72,6 +72,8 @@ Plug 'mengelbrecht/lightline-bufferline'
   let g:lightline#bufferline#clickable = 1
   let g:lightline#bufferline#modified = ' '
   let g:lightline#bufferline#read_only = ' '
+  let g:lightline#bufferline#more_buffers = '…'
+  let g:lightline#bufferline#unnamed = '_'
 
 " colors
 Plug 'morhetz/gruvbox'
@@ -346,9 +348,9 @@ let g:sandwich#recipes += [
 
 " allow bracket with spaces (like vim-surround), only works for char and block
 let g:sandwich#recipes += [
-      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
-      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
-      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
+      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['}']},
+      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': [']']},
+      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': [')']},
       \   {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
       \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
       \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
@@ -394,4 +396,14 @@ call which_key#register('<Space>', "g:which_key_map")
 if has('nvim')
   tnoremap <C-o> <C-\><C-n>
 endif
+
+" delete default commentary mappings
+noremap gc <Nop>
+
+" add leader mappings, easier to reach
+xmap <Leader>c  <Plug>Commentary
+nmap <Leader>c  <Plug>Commentary
+omap <Leader>c  <Plug>Commentary
+nmap <Leader>cc <Plug>CommentaryLine
+nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 " }}}

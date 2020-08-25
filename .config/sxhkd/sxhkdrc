@@ -47,10 +47,10 @@ super + {t,shift + t,f}
 	bspc node -t {tiled,pseudo_tiled,fullscreen}
 
 super + space
-    if [ -z "$(bspc query -N -n focused.floating)" ]; then \                    
-	bspc node focused -t floating; \                                        
-    else \                                                                      
-	bspc node focused -t tiled; \                                           
+    if [ -z "$(bspc query -N -n focused.floating)" ]; then \
+	bspc node focused -t floating; \
+    else \
+	bspc node focused -t tiled; \
     fi
 
 # toggle work mode (smaller gaps)
@@ -89,11 +89,14 @@ super + bracket{left,right}
 
 # send window to next/previous desktop and move there
 super + alt + bracket{left,right}
-    id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}; bspc desktop --focus next; bspc node --focus ${id}
+    id=$(bspc query --nodes --node); \
+    bspc node --to-desktop {prev,next}.local; \
+    bspc desktop --focus next; \
+    bspc node --focus ${id}
 
 # send window to next/previous desktop, don't move
 super + shift + bracket{left,right}
-    bspc node --to-desktop {prev,next}
+    bspc node --to-desktop {prev,next}.local
 
 # focus the last node/desktop
 super + {grave,Tab}
@@ -110,8 +113,10 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 super + alt + {1-9,0}
-    bspc node -d '^{1-9,10}'; \
-    bspc desktop --focus '^{1-9,10}'
+    id=$(bspc query --nodes --node); \
+    bspc node --to-desktop '^{1-9,10}'; \
+    bspc desktop --focus '^{1-9,10}'; \
+    bspc node --focus ${id}
 
 #
 # preselect
@@ -149,14 +154,15 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# audio
 XF86AudioRaiseVolume
-  pamixer -i 5
- 
+    pamixer -i 5
+
 XF86AudioLowerVolume
-  pamixer -d 5
- 
+    pamixer -d 5
+
 XF86AudioMute
-  pamixer -t
+    pamixer -t
 
 # brightness
 XF86MonBrightnessDown

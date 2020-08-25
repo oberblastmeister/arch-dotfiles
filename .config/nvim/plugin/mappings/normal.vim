@@ -54,7 +54,7 @@ vmap <Down> ]egv
 " select file in lf
 nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
 " open dir in lf
-nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>
+nnoremap <silent> _ :exe "FloatermNew lf " . getcwd()<CR>
 " }}}
 
 " ============================================================================

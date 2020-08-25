@@ -1,6 +1,6 @@
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=firefox
+export BROWSER=brave
 export PAGER=less
 
 # neovim terminal doesn't export this for bat

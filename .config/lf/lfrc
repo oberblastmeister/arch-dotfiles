@@ -57,9 +57,6 @@ cmd paste &{{
     lf -remote 'send clear'
 }}
 
-# make sure trash folder exists
-%mkdir -p ~/.trash
-
 # move current file or selected files to trash folder
 cmd trash %trash-put $fx
 

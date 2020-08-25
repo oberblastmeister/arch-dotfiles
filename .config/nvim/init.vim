@@ -85,6 +85,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
 " Plug 'kyazdani42/nvim-tree.lua'
   let g:lua_tree_auto_close = 1
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
 " ----------------------------- Important ----------------------------------
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -207,7 +208,8 @@ command! SudoWrite w suda://%
 Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_width = 0.85
   let g:floaterm_height = 0.85
-  let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
+  " let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
+  " let g:floaterm_position = 'auto'
 
 " don't need in neovim master branch
 Plug 'machakann/vim-highlightedyank'

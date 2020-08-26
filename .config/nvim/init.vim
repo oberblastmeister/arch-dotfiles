@@ -30,6 +30,8 @@ endfunction
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" Plug '~/projects/yadm.nvim'
+
 " ----------------------------- Appearance -----------------------------------
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -210,10 +212,6 @@ Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_height = 0.85
   " let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
   " let g:floaterm_position = 'auto'
-
-" don't need in neovim master branch
-Plug 'machakann/vim-highlightedyank'
-  let g:highlightedyank_highlight_duration = 300
 
 Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
 

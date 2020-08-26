@@ -23,6 +23,9 @@ super + Escape
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
+super + alt + l
+    betterlockscreen -l dim
+
 # close and kill
 super + {_,shift + }q
 	bspc node -{c,k}
@@ -178,3 +181,6 @@ super + ctrl + b
 # dropdown terminal
 super + alt + t
     tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown kitty
+
+super + alt + p
+    bspc config focus_follows_pointer {true,false}

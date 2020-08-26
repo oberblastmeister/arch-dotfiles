@@ -238,7 +238,11 @@ time = 
 time-alt = 
 
 format = <label>
+{% if yadm.class == "Desktop" %}
+format-background = ${color.blue} 
+{% else %}
 format-background = ${color.amber} 
+{% endif %}
 format-foreground = ${color.fg}
 format-padding = 2
  
@@ -371,7 +375,11 @@ icon-pause = 
 [module/network]
 type = internal/network
 
+{% if yadm.class == "Desktop" %}
+interface = wlp27s0
+{% else %}
 interface = wlp0s20f3
+{% endif %}
 interval = 1.0
 
 accumulate-stats = true
@@ -397,7 +405,11 @@ label-disconnected = %{A1:nm-connection-editor &:} Disconnected %{A}
 
 [module/network_i]
 type = internal/network
+{% if yadm.class == "Desktop" %}
+interface = wlp27s0
+{% else %}
 interface = wlp0s20f3
+{% endif %}
 
 interval = 1.0
 accumulate-stats = true

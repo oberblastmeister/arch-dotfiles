@@ -12,6 +12,9 @@ augroup settings
 
   " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 
+  " highlighted yank
+  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="Visual", timeout=300, on_visual=false}
+
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
 

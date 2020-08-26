@@ -17,6 +17,7 @@ packages=(
 
     dunst
     gnome-keyring
+    acpid
 
     # network
     networkmanager
@@ -110,6 +111,7 @@ aur_packages=(
     zoxide
     brave-bin
     mcmojave-cursors
+    betterlockscreen
 )
 
 for package in ${aur_packages[@]}; do

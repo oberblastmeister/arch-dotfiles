@@ -221,12 +221,6 @@ tray-detached = false
 ; Tray icon max size
 tray-maxsize = 16
 
-; DEPRECATED! Since 3.3.0 the tray always uses pseudo-transparency
-; Enable pseudo transparency
-; Will automatically be enabled if a fully transparent
-; background color is defined using `tray-background`
-tray-transparent = false
-
 ; Background color for the tray container 
 ; ARGB color (e.g. #f00, #ff992a, #ddff1023)
 ; By default the tray container will use the bar
@@ -351,3 +345,5 @@ pseudo-transparency = false
 ;;	/_____/\____/_/       
 ;;
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+; vim: set ft=dosini :

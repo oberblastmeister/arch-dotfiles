@@ -1,8 +1,8 @@
-[rust]
-disabled = true
+# [rust]
+# disabled = true
 
-[package]
-disabled = true
+# [package]
+# disabled = true
 
 [nodejs]
 disabled = true

@@ -1,0 +1,9 @@
+#!/bin/sh
+# Simple script to toggle a node to fullscreen mode in bspwm
+
+# query if the focused node is fullscreen
+if [ -z "$(bspc query --nodes --node .focused.fullscreen)" ]; then
+    bspc node focused.tiled --state fullscreen
+else
+    bspc node focused.fullscreen -t tiled
+fi

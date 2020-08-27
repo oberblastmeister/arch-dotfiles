@@ -2,10 +2,10 @@
 
 # terminal emulator
 super + Return
-    kitty tmux
+    $TERMINAL -e tmux
 
 super + shift + Return
-    kitty
+    $TERMINAL
 
 # program launcher
 super + d
@@ -29,6 +29,7 @@ super + alt + u
 super + alt + {q,r}
     bspc {quit,wm -r}
 
+# lock screen
 super + alt + l
     betterlockscreen -l dim
 
@@ -52,25 +53,15 @@ super + g
 # state/flags
 #
 
-super + {t,shift + t,f}
-    bspc node -t {tiled,pseudo_tiled,fullscreen}
+super + {t,shift + t}
+    bspc node -t {tiled,pseudo_tiled}
 
-super + space
-    if [ -z "$(bspc query -N -n focused.floating)" ]; then \
-    bspc node focused -t floating; \
-    else \
-    bspc node focused -t tiled; \
-    fi
+super + {space,f}
+    {bspfloating,bspfullscreen}
 
 # toggle work mode (smaller gaps)
 super + w
-    window_gap=$(bspc query -T -d | jq -r .windowGap); \
-    small_gap=10; \
-    if [ $window_gap -gt $small_gap ]; then \
-    bspc config window_gap $small_gap; \
-    else \
-    bspc config window_gap 55; \
-    fi
+    bspworkmode
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -100,8 +91,8 @@ super + bracket{left,right}
 super + alt + bracket{left,right}
     id=$(bspc query --nodes --node); \
     bspc node --to-desktop {prev,next}.local; \
-    bspc desktop --focus next; \
-    bspc node --focus ${id}
+    bspc node --focus ${id}; \
+    bspunhide &
 
 # send window to next/previous desktop, don't move
 super + shift + bracket{left,right}
@@ -186,7 +177,7 @@ super + ctrl + b
 
 # dropdown terminal
 super + alt + t
-    tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown kitty
+    tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown $TERMINAL
 
 super + alt + p
     bspc config focus_follows_pointer {true,false}

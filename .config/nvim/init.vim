@@ -86,8 +86,8 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
 " Plug 'kyazdani42/nvim-tree.lua'
-  let g:lua_tree_auto_close = 1
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+  " let g:lua_tree_auto_close = 1
+" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
 " ----------------------------- Important ----------------------------------
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }

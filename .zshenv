@@ -9,7 +9,7 @@ export COLORTERM=truecolor
 
 # makesure that there are no duplicates in path var
 typeset -U path
-path+=(~/.cargo/bin ~/bin ~/go/bin ~/.local/bin)
+path+=(~/.cargo/bin ~/bin ~/bin/rofi ~/bin/bspwm ~/.local/bin)
 # export to subprocesses
 export PATH
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Launch-: The XDG Killer with ing feature
 # Launches files based on their mimetype

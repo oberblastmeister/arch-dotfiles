@@ -1,5 +1,6 @@
 [global]
-    font = "FiraCode Nerd Font 12"
+    # font = "FiraCode Nerd Font 11"
+    font = "monospace 9"
     markup = full
     format = "%a:\n<b>%s</b>\n%b"
 
@@ -10,7 +11,7 @@
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
-    geometry = "350x5-20+57"
+    geometry = "350x5-30+60"
     separator_height = 4.5
     padding = 33
     horizontal_padding = 33

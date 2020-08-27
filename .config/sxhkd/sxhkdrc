@@ -9,11 +9,17 @@ super + shift + Return
 
 # program launcher
 super + d
-	~/.config/polybar/scripts/launcher
+	~/bin/launcher
+
+alt + Tab
+    ~/bin/windows
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+super + alt + u
+    ~/bin/powermenu
 
 #
 # bspwm hotkeys

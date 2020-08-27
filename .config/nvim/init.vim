@@ -203,7 +203,6 @@ Plug 'airblade/vim-rooter'
 "   let g:windowswap_map_keys = 0
 
 Plug 'lambdalisue/suda.vim'
-command! SudoWrite w suda://%
 
 " Plug 'ptzz/lf.vim'
 "   let g:lf_map_keys = 0

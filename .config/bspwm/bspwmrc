@@ -42,7 +42,7 @@ fi
 feh --bg-scale ~/.dotfiles/images/wall.png
 picom &
 redshift &
-# xfce4-power-manager &
+xfce4-power-manager &
 udiskie &
 nm-applet &
 

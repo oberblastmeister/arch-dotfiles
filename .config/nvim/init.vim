@@ -121,7 +121,9 @@ Plug 'honza/vim-snippets'
 
 if !has('win32') || !has('win64')
     let g:vimspector_enable_mappings = 'HUMAN'
-  Plug 'puremourning/vimspector', { 'do': 'VimspectorInstall --all --force-enable-rust --disable-tcl --update-gadget-config' }
+    let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'vscode-bash-debug' ]
+  " Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall --all --disable-tcl --force-enable-rust' }
+  Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall' }
   " ./install_gadget.py --all --force-enable-rust --disable-tcl --update-gadget-config
 endif
 

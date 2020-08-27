@@ -2,7 +2,7 @@
     # font = "FiraCode Nerd Font 11"
     font = "monospace 9"
     markup = full
-    format = "%a:\n<b>%s</b>\n%b"
+    format = "%a: <b>%s</b>\n%b"
 
     sort = yes
     indicate_hidden = yes

@@ -9,10 +9,10 @@ super + shift + Return
 
 # program launcher
 super + d
-    ~/bin/launcher
+    launcher
 
 alt + Tab
-    ~/bin/windows
+    windows
 
 # make sxhkd reload its configuration files:
 super + Escape

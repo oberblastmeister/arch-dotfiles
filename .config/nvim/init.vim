@@ -90,7 +90,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
 " ----------------------------- Important ----------------------------------
-<<<<<<< HEAD
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
   let g:completion_enable_snippet = 'UltiSnips'
@@ -129,7 +128,7 @@ Plug 'junegunn/fzf.vim'
   " always show preview in fzf
   let g:fzf_preview_window = 'right'
 
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
   " let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }

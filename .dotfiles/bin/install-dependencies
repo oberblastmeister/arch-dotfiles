@@ -2,15 +2,26 @@
 
 packages=(
     xorg
+
+    # bspwm
     bspwm
     sxhkdrc
+
     xsettingsd
     git
     github-cli
 
+    # audio
     pulseaudio
+    pulsemixer
+    pamixer
+    alsa-utils # includes alsamixer
+
     dunst
     gnome-keyring
+    acpid
+
+    # network
     networkmanager
     nm-connection-editor
     network-manager-applet
@@ -20,25 +31,20 @@ packages=(
     lightdm-webkit2-greeter
     lightdm-webkit-theme-litarvan
     
-    # unified interface for xdg-open and xdg-mime, executable mimeopen
-    perl-file-mimeinfo
-
     # themes
-    noto-fonts
-    ttf-roboto
     papirus-icon-theme
     adpata-gtk-theme
-    mcmojave-cursors
+
+    # fonts
+    noto-fonts
+    ttf-roboto
 
     # pacman
     pkgstats # send pacakge info to arch linux
-    pacman-contrib
 
     # utilities
     trash-cli
     neofetch
-
-    alsa-utils # includes alsamixer
 
     # better stuff
     fzf
@@ -105,6 +111,9 @@ aur_packages=(
     xob
     dragon-drag-and-drop
     zoxide
+    brave-bin
+    mcmojave-cursors
+    betterlockscreen
 )
 
 for package in ${aur_packages[@]}; do

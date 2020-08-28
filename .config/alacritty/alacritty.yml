@@ -1,18 +1,18 @@
 # Font configuration (changes require restart)
 font:
-  size: 10.0
+  size: 8.0
 
   # The normal (roman) font face to use.
   normal:
     family: FiraCode Nerd Font
     # Style can be specified to pick a specific face.
-    style: Retina
+    style: Normal
 
   # The bold font face
   bold:
     family: FiraCode Nerd Font
     # Style can be specified to pick a specific face.
-    # style: Bold
+    style: Bold
 
   # The italic font face
   italic:

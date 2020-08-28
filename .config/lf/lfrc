@@ -36,7 +36,7 @@ cmd open ${{
    if [ "$TERM" != "xterm-256color" ]
    then
       # ~/bin/launch-devour.sh "$f"
-      lf-launch.sh "$f"
+      lf-open "$f"
    else
    # if the terminal is neovim do default action, floaterm will handle the rest
       lf -remote "send $id open $f"
@@ -56,9 +56,6 @@ cmd paste &{{
     lf -remote 'send load'
     lf -remote 'send clear'
 }}
-
-# make sure trash folder exists
-%mkdir -p ~/.trash
 
 # move current file or selected files to trash folder
 cmd trash %trash-put $fx
@@ -294,6 +291,8 @@ map + :video_preview
 map R :bulk-rename
 
 map <a-n> newfold
+
+map <c-o> push q
 
 # dragon
 map br dragon

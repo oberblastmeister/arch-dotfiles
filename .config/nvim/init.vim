@@ -30,19 +30,30 @@ endfunction
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" Plug '~/projects/yadm.nvim'
+
 " ----------------------------- Appearance -----------------------------------
 Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
   let g:lightline = {
     \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste', 'zoom'],
-    \             ['cocstatus',  'fugitive', 'readonly', 'filename', 'modified'] ],
+    \             ['cocstatus',  'fugitive'] ],
     \   'right':   [ [ 'percent' ] ]
+    \ },
+    \ 'tabline': {
+    \   'left': [ ['buffers'] ],
+    \   'right': [ [] ]
     \ },
     \ 'component': {
     \   'lineinfo': ' %3l:%-2v',
     \ },
+    \ 'component_expand': {
+    \   'buffers': 'lightline#bufferline#buffers'
+    \ },
     \ 'component_type': {
+    \   'buffers': 'tabsel',
     \   'readonly': 'error',
     \   'linter_warnings': 'warning',
     \   'linter_errors': 'error'
@@ -54,8 +65,17 @@ Plug 'itchyny/lightline.vim'
     \   'currentfunction': 'CocCurrentFunction',
     \   'zoom': 'zoom#statusline'
     \ },
+    \ 'component_raw': {
+    \   'buffers': 1
     \ }
+  \ }
   autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
+  let g:lightline#bufferline#show_number=2
+  let g:lightline#bufferline#clickable = 1
+  let g:lightline#bufferline#modified = ' '
+  let g:lightline#bufferline#read_only = ' '
+  let g:lightline#bufferline#more_buffers = '…'
+  let g:lightline#bufferline#unnamed = '_'
 
 " colors
 Plug 'morhetz/gruvbox'
@@ -66,9 +86,11 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
 " Plug 'kyazdani42/nvim-tree.lua'
-  let g:lua_tree_auto_close = 1
+  " let g:lua_tree_auto_close = 1
+" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
 " ----------------------------- Important ----------------------------------
+<<<<<<< HEAD
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
   let g:completion_enable_snippet = 'UltiSnips'
@@ -95,7 +117,9 @@ Plug 'honza/vim-snippets'
 
 if !has('win32') || !has('win64')
     let g:vimspector_enable_mappings = 'HUMAN'
-  Plug 'puremourning/vimspector', { 'do': 'VimspectorInstall --all --force-enable-rust --disable-tcl --update-gadget-config' }
+    let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'vscode-bash-debug' ]
+  " Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall --all --disable-tcl --force-enable-rust' }
+  Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall' }
   " ./install_gadget.py --all --force-enable-rust --disable-tcl --update-gadget-config
 endif
 
@@ -107,7 +131,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
-  let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
+  " let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
+  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
   " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
 
@@ -174,7 +199,6 @@ Plug 'airblade/vim-rooter'
 "   let g:windowswap_map_keys = 0
 
 Plug 'lambdalisue/suda.vim'
-command! SudoWrite w suda://%
 
 " Plug 'ptzz/lf.vim'
 "   let g:lf_map_keys = 0
@@ -183,11 +207,8 @@ command! SudoWrite w suda://%
 Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_width = 0.85
   let g:floaterm_height = 0.85
-  let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
-
-" don't need in neovim master branch
-Plug 'machakann/vim-highlightedyank'
-  let g:highlightedyank_highlight_duration = 300
+  " let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
+  " let g:floaterm_position = 'auto'
 
 Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
 
@@ -244,6 +265,7 @@ Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server', 'for': ['html',
 " ----------------------------- Language Specific --------------------------
   let g:polyglot_disabled = ['markdown', 'latex']
 Plug 'sheerun/vim-polyglot'
+  let g:python_highlight_space_errors = 0
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }
@@ -323,9 +345,9 @@ let g:sandwich#recipes += [
 
 " allow bracket with spaces (like vim-surround), only works for char and block
 let g:sandwich#recipes += [
-      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
-      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
-      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
+      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['}']},
+      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': [']']},
+      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': [')']},
       \   {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
       \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
       \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
@@ -369,8 +391,18 @@ let g:which_key_map = {}
 call which_key#register('<Space>', "g:which_key_map")
 
 if has('nvim')
-  tmap <C-o> <C-\><C-n>
+  tnoremap <C-o> <C-\><C-n>
 endif
+
+" delete default commentary mappings
+noremap gc <Nop>
+
+" add leader mappings, easier to reach
+xmap <Leader>c  <Plug>Commentary
+nmap <Leader>c  <Plug>Commentary
+omap <Leader>c  <Plug>Commentary
+nmap <Leader>cc <Plug>CommentaryLine
+nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 " }}}
 
 lua << END

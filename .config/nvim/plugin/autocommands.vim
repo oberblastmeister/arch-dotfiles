@@ -12,9 +12,8 @@ augroup settings
 
   " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 
-  " neovim master branch
-  " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("Visual", 300)
-  " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 300)
+  " highlighted yank
+  au TextYankPost * silent! lua vim.highlight.on_yank {higroup="Visual", timeout=300, on_visual=false}
 
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert

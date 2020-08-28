@@ -17,10 +17,10 @@ bspc config borderless_monocle   false
 bspc config gapless_monocle      true
 bspc config focus_follows_pointer true
 
-bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Zathura state=tiled
 bspc rule -a Gimp state=floating follow=on
+bspc rule -a Nm-connection-editor state=floating
 
 bspc config focused_border_color "#928374"
 bspc config normal_border_color "#504945"
@@ -29,21 +29,19 @@ bspc config normal_border_color "#504945"
 # ------------------- Miscellaneous -------------------
 # -----------------------------------------------------
 
-# set wallpaper
-feh --bg-scale ~/.dotfiles/images/wall.png
-
 YADM_CLASS=$(yadm config local.class)
 if [ $YADM_CLASS = "Laptop" ]; then
 	pulseaudio --start
 	autorandr --change
 fi
 
-# launch polybar
-~/bin/polybar-launch.sh &
-
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------
+xrdb ~/.Xresources &
+~/bin/polybar-launch.sh &
+feh --bg-scale ~/.dotfiles/images/wall.png
+picom &
 redshift &
 xfce4-power-manager &
 udiskie --tray &

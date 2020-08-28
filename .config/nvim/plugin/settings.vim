@@ -1,30 +1,6 @@
 " ============================================================================
 " Settings {{{
 " ============================================================================
-" these are defaults in neovim
-if !has('nvim')
-  set nocompatible
-  syntax on
-  filetype plugin indent on
-  set autoindent
-  set autoread
-  set backspace=indent,eol,start
-  set complete-=i
-  set display=lastline
-  set encoding=utf-8
-  set history=10000
-  set hlsearch
-  set incsearch
-  set laststatus=2
-  set mouse=a
-  set smarttab
-  set ttyfast
-  set viminfo+=!
-  set wildmenu
-  set ttymouse=xterm2
-  set ruler
-endif
-
 if has('termguicolors')
   set termguicolors
   lua require'colorizer'.setup()
@@ -40,10 +16,11 @@ set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus
 set inccommand=nosplit
 set noshowmode
+set noshowcmd
 set foldmethod=syntax
 set foldlevelstart=99
-set timeoutlen=500
-set ttimeoutlen=20
+set timeoutlen=800
+set ttimeoutlen=40
 set ignorecase smartcase
 set mouse=a
 set nowrap
@@ -63,6 +40,13 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
+" for lightline bufferline
+set showtabline=2
+" allow lightline buffer line to be shown if gui is running
+if has('gui_running')
+  set guioptions-=e
+endif
 " }}}
 
 " ============================================================================
@@ -96,9 +80,9 @@ set completeopt=menuone,noinsert,noselect
 " make ~ for new lines be same color as background so they are not seen
 highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " remove status line for press enter to continue msgs
-highlight StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-highlight CursorLineNr ctermbg=bg guibg=bg
-hi FloatermBorder guibg=#504945
+highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
+highlight! CursorLineNr ctermbg=bg guibg=bg
+hi! FloatermBorder guifg=#928374
 
 " make sign column same as background, but keep highlight of virtual text
 hi CocErrorVirtualText guibg=#3c3836 guifg=#fb4934

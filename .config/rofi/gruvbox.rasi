@@ -9,6 +9,7 @@
     selectioncolor: #504945;
 
     font: "Fira Code Nerd Font 14";
+    /* font: "monospace 14"; */
     border-color: @separatorcolor;
     background-color: @backgroundcolor;
     text-color: @foregroundcolor;
@@ -24,7 +25,6 @@
     margin: 0;
     dynamic: true;
     padding-top: 500;
-    /* lines: 10; */
 }
 
 #window {
@@ -33,7 +33,6 @@
     border-color: #928374;
     border: 4;
     border-radius: 0;
-    width: 600;
 }
 
 #mainbox {
@@ -103,5 +102,3 @@
     handle-width: 0;
     background-color: @backgroundcoloralternate;
 }
-
-/* vim: set ft=css : */

@@ -1,9 +1,7 @@
-# for ubuntu
-skip_global_compinit=1
-
+export TERMINAL=kitty
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=firefox
+export BROWSER=brave
 export PAGER=less
 
 # neovim terminal doesn't export this for bat
@@ -11,7 +9,7 @@ export COLORTERM=truecolor
 
 # makesure that there are no duplicates in path var
 typeset -U path
-path+=(~/.cargo/bin ~/bin ~/go/bin ~/.local/bin)
+path+=(~/.cargo/bin ~/bin ~/bin/rofi ~/bin/bspwm ~/.local/bin)
 # export to subprocesses
 export PATH
 

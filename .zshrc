@@ -31,8 +31,15 @@ unalias zi
 #     zinit-zsh/z-a-bin-gem-node
 
 # keytimeout=0 might have bad effects
+# vi mode
 bindkey -v
 bindkey 'jk' vi-cmd-mode
+
+# emacs like keybindings
+# bindkey '^A' beginning-of-line
+# bindkey '^E' end-of-line
+# bindkey '^B' backward-char
+# bindkey '^F' forward-char
 
 # ============================================================================
 # ============================================================================
@@ -56,41 +63,41 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
-export KEYTIMEOUT=20
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
 
-# MODE_CURSOR_VIINS="bar"
-# MODE_CURSOR_REPLACE="underline"
-# MODE_CURSOR_VICMD="block"
-# MODE_CURSOR_SEARCH="steady underline"
-# MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
-# MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
+MODE_CURSOR_VIINS="block"
+MODE_CURSOR_REPLACE="underline"
+MODE_CURSOR_VICMD="block"
+MODE_CURSOR_SEARCH="steady underline"
+MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
+MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
+
+# good defaults
+zinit ice wait lucid 
+zinit snippet OMZL::completion.zsh
+
+# big four
+zinit ice wait lucid atinit"zicompinit; zicdreplay"
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice lucid atload"_zsh_autosuggest_start; bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid atload"bindkey '^P' history-substring-search-up; bindkey '^N' history-substring-search-down"
+zinit light zsh-users/zsh-history-substring-search
+
+zinit ice wait blockf lucid atpull"zinit creinstall -q ."
+zinit light zsh-users/zsh-completions
+
+# overrides zsh autosuggest for some reason
+zinit ice lucid wait atload"bindkey '^_' autosuggest-execute"
+zinit light softmoth/zsh-vim-mode
 
 zinit ice lucid wait
 zinit snippet ~/.aliases
 
-# good defaults
-zinit wait lucid light-mode for \
-  OMZL::completion.zsh \
-  OMZL::clipboard.zsh \
-
-# big three
-zinit wait lucid light-mode for \
-  zsh-users/zsh-history-substring-search \
-  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-  atload"bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions \
-
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 

@@ -54,15 +54,15 @@ vmap <Down> ]egv
 " select file in lf
 nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
 " open dir in lf
-nnoremap <silent> _ :exe "FloatermNew lf " . expand('%:p:h')<CR>
+nnoremap <silent> _ :exe "FloatermNew lf " . getcwd()<CR>
 " }}}
 
 " ============================================================================
 " Chunk {{{
 " ============================================================================
 " jump chunk and add position to jumplist
-nmap <silent> [h :execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
-nmap <silent> ]h :execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
+nmap <silent> [h :silent execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
+nmap <silent> ]h :silent execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
 
 " chunk text objects
 omap ih <Plug>(coc-git-chunk-inner)

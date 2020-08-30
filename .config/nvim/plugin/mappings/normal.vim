@@ -28,6 +28,8 @@ nnoremap gp a<CR><Esc>PkJxJx
 nnoremap c* *Ncgn
 
 nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+" nnoremap <silent> <expr> <S-CR> empty(&buftype) ? '@q' : '<CR>'
+" nnoremap <C-CR> zz
 " }}}
 
 " ============================================================================

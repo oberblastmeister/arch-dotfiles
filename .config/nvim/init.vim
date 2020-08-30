@@ -31,8 +31,8 @@ endfunction
 call plug#begin(stdpath('data') . '/plugged')
 
 " Plug '~/projects/yadm.nvim'
-
 " ----------------------------- Appearance -----------------------------------
+Plug 'hardcoreplayers/dashboard-nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
   let g:lightline = {
@@ -82,6 +82,8 @@ Plug 'morhetz/gruvbox'
   let g:gruvbox_sign_column='bg0'
 
 Plug 'yggdroot/indentline'
+  let g:indentLine_fileTypeExclude = ['dashboard']
+
 Plug 'norcalli/nvim-colorizer.lua'
 
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -267,12 +269,13 @@ Plug 'alvan/vim-closetag', { 'for': 'html' }
 Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server', 'for': ['html', 'css', 'javascript'] }
 
 " ----------------------------- Language Specific --------------------------
-  let g:polyglot_disabled = ['markdown', 'latex']
+  let g:polyglot_disabled = ['markdown', 'latex', 'pest']
 Plug 'sheerun/vim-polyglot'
   let g:python_highlight_space_errors = 0
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }
+Plug 'pest-parser/pest.vim', { 'for': ['pest'] }
 
 " considering
 "Plug 'junegunn/vim-after-object'

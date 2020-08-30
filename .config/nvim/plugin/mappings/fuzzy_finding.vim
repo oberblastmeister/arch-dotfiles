@@ -34,7 +34,7 @@ let g:which_key_map['?'] = 'fuzzy / but in all loaded buffers'
 " ============================================================================
 " Uncommon {{{
 " ============================================================================
-let g:which_key_map.s = {
+let g:which_key_map.f = {
     \ 'name': '+search',
     \ 'l': ['Locate', 'locate'],
     \ 'C': ['Commits', 'commits'],

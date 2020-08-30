@@ -92,13 +92,14 @@ Plug 'norcalli/nvim-colorizer.lua'
 " ----------------------------- Important ----------------------------------
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
-  let g:completion_enable_snippet = 'UltiSnips'
+  let g:completion_enable_snippet = 'Ultisnips'
 Plug 'nvim-lua/diagnostic-nvim'
   let g:diagnostic_insert_delay = 1
 
 Plug 'steelsojka/completion-buffers'
 " Plug 'hrsh7th/vim-vsnip'
-  let g:completion_enable_snippet = 'UltiSnips'
+" Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'SirVer/ultisnips'
 Plug 'nvim-lua/lsp-status.nvim'
 
 Plug 'tmsvg/pear-tree'

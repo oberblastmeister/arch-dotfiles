@@ -77,8 +77,6 @@
     "~/.local/share/nvim/plugged/vim-snippets/UltiSnips"
   ],
 
-  "coc-actions.hideCursor": false,
-
   "cSpell.enabledLanguageIds": [
     "asciidoc",
     "gitcommit",

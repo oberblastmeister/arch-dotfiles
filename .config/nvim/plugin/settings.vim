@@ -3,8 +3,15 @@
 " ============================================================================
 if has('termguicolors')
   set termguicolors
-  lua require'colorizer'.setup()
+
+  au! InsertEnter * ++once lua require'colorizer'.setup()
 endif
+
+fun! SetupColorizer()
+  if exists("loaded_colorizer")
+    lua require'colorizer'.setup()
+  endif
+endfun
 
 colorscheme gruvbox
 set background=dark

@@ -8,12 +8,9 @@ nnoremap <s-tab> za
 " stop that stupid window from popping up
 nmap q: :q
 
-" don't enter ex mode
-" nmap Q <nop>
-
 " add move keys to jumplist and also swap j and k with gj gk
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 " consistency mapping
 nnoremap Y y$
@@ -40,10 +37,18 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Put arrow keys to use
-nmap <Up> [e
-nmap <Down> ]e
-vmap <Up> [egv
-vmap <Down> ]egv
+" nmap <Up> [e
+" nmap <Down> ]e
+" vmap <Up> [egv
+" vmap <Down> ]egv
+nmap <Up> <Nop>
+nmap <Down> <Nop>
+nmap <Left> <Nop>
+nmap <Right> <Nop>
+vmap <Up> <Nop>
+vmap <Down> <Nop>
+vmap <Left> <Nop>
+vmap <Right> <Nop>
 " }}}
 
 " ============================================================================

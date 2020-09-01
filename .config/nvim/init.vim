@@ -429,5 +429,3 @@ call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiag
 call sign_define("LspDiagnosticsWarningSign", {"text" : "🛆", "texthl" : "LspDiagnosticsWarning"})
 call sign_define("LspDiagnosticsInformationSign", {"text" : "●", "texthl" : "LspDiagnosticsInformation"})
 call sign_define("LspDiagnosticsHintSign", {"text" : "○", "texthl" : "LspDiagnosticsHint"})
-autocmd InsertEnter * ++once lua require'completion'.on_attach()
-autocmd InsertEnter * ++once lua require'diagnostic'.on_attach()

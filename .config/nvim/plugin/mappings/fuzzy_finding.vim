@@ -26,7 +26,7 @@ nnoremap <silent> <leader>e :CocFzfList diagnostics<CR>
 
 " common fuzzy leader mappings info
 let g:which_key_map = {
-      \ 'e': 'fuzzy diagnostics diagnostics',
+      \ 'e': 'fuzzy diagnostics',
       \ '?': 'fuzzy / but in all loaded buffers',
       \ '/': 'fuzzy /',
       \ 'H': 'fuzzy help',

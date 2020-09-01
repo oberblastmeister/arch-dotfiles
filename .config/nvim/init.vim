@@ -39,17 +39,17 @@ call plug#begin(stdpath('data') . '/plugged')
 
 " Plug '~/projects/yadm.nvim'
 " ----------------------------- Appearance -----------------------------------
-Plug 'hardcoreplayers/dashboard-nvim'
-  let g:dashboard_default_executive ='fzf'
-  let g:dashboard_custom_shortcut={
-    \ 'last_session'       : 'SPC s l',
-    \ 'find_history'       : 'SPC f u',
-    \ 'find_file'          : '<C-P>',
-    \ 'new_file'           : 'SPC c n',
-    \ 'change_colorscheme' : 'SPC t c',
-    \ 'find_word'          : 'SPC f a',
-    \ 'book_marks'         : 'SPC f b',
-    \ }
+" Plug 'hardcoreplayers/dashboard-nvim'
+"   let g:dashboard_default_executive ='fzf'
+"   let g:dashboard_custom_shortcut={
+"     \ 'last_session'       : 'SPC s l',
+"     \ 'find_history'       : 'SPC f u',
+"     \ 'find_file'          : '<C-P>',
+"     \ 'new_file'           : 'SPC c n',
+"     \ 'change_colorscheme' : 'SPC t c',
+"     \ 'find_word'          : 'SPC f a',
+"     \ 'book_marks'         : 'SPC f b',
+"     \ }
 
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -138,7 +138,8 @@ Plug 'tmsvg/pear-tree'
   let g:pear_tree_map_special_keys = 1
   imap <space> <Plug>(PearTreeSpace)
 
-Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+  autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
 Plug 'honza/vim-snippets'
 
@@ -413,7 +414,7 @@ vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
 " set global whichkey dict
 let g:which_key_map = {}
 
-call which_key#register('<Space>', "g:which_key_map")
+" call which_key#register('<Space>', "g:which_key_map")
 
 if has('nvim')
   tnoremap <C-o> <C-\><C-n>

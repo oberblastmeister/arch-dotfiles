@@ -41,7 +41,7 @@ fi
 # -----------------------------------------------------
 xrdb ~/.Xresources &
 ~/bin/polybar-launch.sh &
-feh --bg-scale ~/.dotfiles/images/wall.png
+feh --bg-scale ~/.dotfiles/wallpapers/monocolor.png
 picom &
 redshift &
 xfce4-power-manager &

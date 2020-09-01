@@ -40,6 +40,17 @@ call plug#begin(stdpath('data') . '/plugged')
 " Plug '~/projects/yadm.nvim'
 " ----------------------------- Appearance -----------------------------------
 Plug 'hardcoreplayers/dashboard-nvim'
+  let g:dashboard_default_executive ='fzf'
+  let g:dashboard_custom_shortcut={
+    \ 'last_session'       : 'SPC s l',
+    \ 'find_history'       : 'SPC f u',
+    \ 'find_file'          : '<C-P>',
+    \ 'new_file'           : 'SPC c n',
+    \ 'change_colorscheme' : 'SPC t c',
+    \ 'find_word'          : 'SPC f a',
+    \ 'book_marks'         : 'SPC f b',
+    \ }
+
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
   let g:lightline = {
@@ -150,7 +161,7 @@ Plug 'stsewd/fzf-checkout.vim', { 'on': ['GCheckout', 'GCheckoutTag'] }
 " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
   " let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
-  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
   " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
 

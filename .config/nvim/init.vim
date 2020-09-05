@@ -138,8 +138,9 @@ Plug 'tmsvg/pear-tree'
   let g:pear_tree_map_special_keys = 1
   imap <space> <Plug>(PearTreeSpace)
 
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-  autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'liuchengxu/vim-which-key'
+  " autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
 Plug 'honza/vim-snippets'
 
@@ -169,7 +170,7 @@ Plug 'stsewd/fzf-checkout.vim', { 'on': ['GCheckout', 'GCheckoutTag'] }
 Plug 'tpope/vim-dispatch'
 
 Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
-  let test#strategy = "dispatch"
+  let test#strategy = "vimux"
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -409,12 +410,13 @@ vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 
 " whichkey localleader mappings
 nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
-vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
+vnoremap <silent> <localleader> :<c-u>WhichKeyVisual  '\'<CR>
 
 " set global whichkey dict
 let g:which_key_map = {}
+let g:which_key_map['name'] = 'root'
 
-" call which_key#register('<Space>', "g:which_key_map")
+call which_key#register('<Space>', "g:which_key_map")
 
 if has('nvim')
   tnoremap <C-o> <C-\><C-n>

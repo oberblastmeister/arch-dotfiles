@@ -105,7 +105,7 @@ xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
 " lsp mappings
 let g:which_key_map.l = {
-        \ 'name' : '+lsp',
+    \ 'name' : '+lsp',
         \ 'F' : ['Format', 'format entire file'],
         \ 'o' : ['OR', 'organize imports'],
         \ 'c' : ['Fold', 'collapse/fold file'],

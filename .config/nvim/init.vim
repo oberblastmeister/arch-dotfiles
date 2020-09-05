@@ -90,7 +90,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
 " ----------------------------- Important ----------------------------------
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
   let g:completion_enable_snippet = 'Ultisnips'
 Plug 'nvim-lua/diagnostic-nvim'
@@ -420,9 +420,9 @@ let g:completion_chain_complete_list = [
     \{'complete_items': ['buffers']},
     \]
 
-" let g:completion_auto_change_source = 1
+let g:completion_auto_change_source = 1
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_sorting = "length"
+" let g:completion_sorting = "length"
 let g:completion_timer_cycle = 80
 let g:diagnostic_virtual_text_prefix = ' '
 call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})

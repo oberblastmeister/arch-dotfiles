@@ -1,12 +1,12 @@
 " ============================================================================
 " Regular {{{
 " ============================================================================
-nnoremap <silent> <leader><space> <C-^>
+" nnoremap <silent> <leader><space> <C-^>
 nnoremap <silent> <leader>w :write<CR>
 nnoremap <silent> <leader>x :xit<CR>
 nnoremap <silent> <leader>o :call zoom#toggle()<CR>
 nnoremap <leader>q :quit<CR>
-nnoremap <leader>Q :q!<CR>
+nnoremap <leader>Q :qa!<CR>
 nnoremap <silent> <leader>p :put<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}

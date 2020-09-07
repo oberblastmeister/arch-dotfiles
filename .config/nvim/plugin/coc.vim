@@ -46,20 +46,19 @@ noremap <silent> K :call <SID>show_documentation()<CR>
 autocmd! CursorHold * silent! call CocActionAsync('highlight')
 
 " Symbol renaming. {{{
-let g:which_key_map.r = { 'name': '+rename' }
-
 nmap <leader>rn <Plug>(coc-rename)
-let g:which_key_map.r.n = 'symbol'
-
 nmap <leader>rw :CocCommand document.renameCurrentWord<CR>
-let g:which_key_map.r.w = 'word'
-
 nmap <leader>rf <Plug>(coc-refactor)
-let g:which_key_map.r.f = 'refractor'
-
 nmap <leader>rs :CocSearch <c-r><c-w><cr>
 nmap <leader>rS :CocSearch
-let g:which_key_map.r.s = 'search'
+
+let g:which_key_map['r'] = {
+      \ 'name': '+rename',
+      \ 'n': ['symbol'],
+      \ 'w': 'word',
+      \ 'f': 'refractor',
+      \ 's': 'search',
+      \ }
 " }}}
 
 augroup coc
@@ -105,7 +104,7 @@ xmap <silent> Q y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
 " lsp mappings
 let g:which_key_map.l = {
-    \ 'name' : '+lsp',
+        \ 'name' : '+lsp',
         \ 'F' : ['Format', 'format entire file'],
         \ 'o' : ['OR', 'organize imports'],
         \ 'c' : ['Fold', 'collapse/fold file'],

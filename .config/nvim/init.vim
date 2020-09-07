@@ -180,7 +180,7 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
 
 Plug 'romainl/vim-cool'
 
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
+Plug 'ThePrimeagen/vim-be-good'
 
 " ----------------------------- Editing -------------------------------------
 Plug 'tpope/vim-commentary'
@@ -229,6 +229,7 @@ Plug 'lambdalisue/suda.vim'
 " Plug 'ptzz/lf.vim'
 "   let g:lf_map_keys = 0
 "   let g:lf_replace_netrw = 1
+" Plug 'rbgrouleff/bclose.vim'
 
 Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_width = 0.85
@@ -401,10 +402,11 @@ inoremap jk <Esc>
 cnoremap jk <C-c>
 
 " set leader mappings
-let mapleader="\<Space>"
-let maplocalleader="\\"
+let g:mapleader="\<Space>"
+let g:maplocalleader="\\"
 
 " whichkey leader mappings
+call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 
@@ -414,9 +416,8 @@ vnoremap <silent> <localleader> :<c-u>WhichKeyVisual  '\'<CR>
 
 " set global whichkey dict
 let g:which_key_map = {}
+" let g:which_key_fallback_to_native_key=1
 let g:which_key_map['name'] = 'root'
-
-call which_key#register('<Space>', "g:which_key_map")
 
 if has('nvim')
   tnoremap <C-o> <C-\><C-n>

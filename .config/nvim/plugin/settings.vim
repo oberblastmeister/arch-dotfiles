@@ -27,7 +27,7 @@ set noshowcmd
 set foldmethod=syntax
 set foldlevelstart=99
 set timeoutlen=800
-set ttimeoutlen=40
+set ttimeoutlen=20
 set ignorecase smartcase
 set mouse=a
 set nowrap

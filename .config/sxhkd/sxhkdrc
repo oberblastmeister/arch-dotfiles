@@ -166,10 +166,10 @@ XF86AudioMute
 
 # brightness
 XF86MonBrightnessDown
-    xbacklight -dec 10
+    xbacklight -dec 8
 
 XF86MonBrightnessUp
-    xbacklight -inc 10
+    xbacklight -inc 8
 
 # launching common apps keys
 super + ctrl + b

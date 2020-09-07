@@ -3,6 +3,7 @@
 " ============================================================================
 nnoremap U :UndotreeToggle<CR>
 
+nnoremap <tab> <c-^>
 nnoremap <s-tab> za
 
 " stop that stupid window from popping up
@@ -58,8 +59,10 @@ vmap <Right> <Nop>
 " like vim vinegar
 " select file in lf
 nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
+" nnoremap <silent> - :Lf<CR>
 " open dir in lf
 nnoremap <silent> _ :exe "FloatermNew lf " . getcwd()<CR>
+" nnoremap <silent> _ :LfCurrentWorkingDirectory<CR>
 " }}}
 
 " ============================================================================

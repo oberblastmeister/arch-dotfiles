@@ -30,13 +30,15 @@ set notification-fg             "#ebdbb2"
 
 set recolor-lightcolor          "#282828"
 set recolor-darkcolor           "#fbf1c7"
-set recolor                     "false"
+set recolor                     "true"
 
 # Setting recolor-keep true will keep any color your pdf has.
 # If it is false, it'll just be black and white.
-set recolor-keephue             "false"
+set recolor-keephue             "true"
 
-set adjust-open width
+# other options is width
+set adjust-open "best-fit"
+
 set selection-clipboard clipboard
 set incremental-search true
 # don't show any gui stuff

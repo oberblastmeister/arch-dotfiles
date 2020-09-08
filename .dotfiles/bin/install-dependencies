@@ -8,6 +8,7 @@ packages=(
     sxhkdrc
 
     xsettingsd
+    unclutter
 
     # audio
     pulseaudio

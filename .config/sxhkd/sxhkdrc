@@ -9,7 +9,7 @@ super + shift + Return
 
 # program launcher
 super + d
-    launcher
+    launcher-alt
 
 alt + Tab
     windows

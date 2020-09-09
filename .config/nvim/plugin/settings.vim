@@ -4,7 +4,8 @@
 if has('termguicolors')
   set termguicolors
 
-  au! InsertEnter * ++once lua require'colorizer'.setup()
+  " au! InsertEnter * ++once lua require'colorizer'.setup()
+  lua require'colorizer'.setup()
 endif
 
 fun! SetupColorizer()

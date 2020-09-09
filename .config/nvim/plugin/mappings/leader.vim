@@ -61,6 +61,7 @@ nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
 
 " misc buffer mappings
 nnoremap <silent> <leader>bD :Bufonly<CR>
+nnoremap <silent> <leader>bd :bd<CR>
 nnoremap <silent> <leader>bk :%bdelete<CR>
 nnoremap <silent> <leader>bl :ls<CR>
 
@@ -77,6 +78,7 @@ let g:which_key_map.b = {
       \ '8': 'delete buffer 8',
       \ '9': 'delete buffer 9',
       \ '0': 'delete buffer 0',
+      \ 'd': 'delete current buffer',
       \ 'D': 'delete ALL buffers EXCEPT current',
       \ 'k': 'kill ALL buffers',
       \ 'l': 'list buffers',

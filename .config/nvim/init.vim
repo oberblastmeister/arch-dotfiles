@@ -87,7 +87,6 @@ Plug 'mengelbrecht/lightline-bufferline'
     \   'buffers': 1
     \ }
   \ }
-  autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
   let g:lightline#bufferline#show_number=2
   let g:lightline#bufferline#clickable = 1
   let g:lightline#bufferline#modified = ' '

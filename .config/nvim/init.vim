@@ -110,10 +110,15 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 " ----------------------------- Important ----------------------------------
 Plug 'neovim/nvim-lspconfig'
+
 Plug 'nvim-lua/completion-nvim'
   let g:completion_enable_snippet = 'Ultisnips'
+  let g:completion_enable_auto_paren = 1
+
 Plug 'nvim-lua/diagnostic-nvim'
   let g:diagnostic_insert_delay = 1
+  let g:diagnostic_show_sign = 1
+  let g:diagnostic_enable_virtual_text = 1
 
 Plug 'steelsojka/completion-buffers'
 " Plug 'hrsh7th/vim-vsnip'
@@ -441,9 +446,9 @@ let g:completion_chain_complete_list = [
 
 let g:completion_auto_change_source = 1
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-" let g:completion_sorting = "length"
-let g:completion_timer_cycle = 80
 let g:diagnostic_virtual_text_prefix = ' '
+let g:completion_confirm_key = "\<C-y>"
+
 call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
 call sign_define("LspDiagnosticsWarningSign", {"text" : "🛆", "texthl" : "LspDiagnosticsWarning"})
 call sign_define("LspDiagnosticsInformationSign", {"text" : "●", "texthl" : "LspDiagnosticsInformation"})

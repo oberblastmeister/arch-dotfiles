@@ -119,7 +119,7 @@ Plug 'nvim-lua/diagnostic-nvim'
 Plug 'steelsojka/completion-buffers'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'nvim-lua/lsp-status.nvim'
 
 Plug 'tmsvg/pear-tree'

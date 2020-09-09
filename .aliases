@@ -16,7 +16,7 @@ alias ivim='jupyter console --kernel=vim_kernel'
 alias ijava='jupyter console --kernel=java'
 alias irust='jupyter console --kernel=rust'
 
-# exa aliases
+# exa
 alias ls='exa --icons'
 alias lt='exa --tree --icons --level=3'
 alias lS='exa -1 --icons'
@@ -35,14 +35,14 @@ alias mutt='neomutt'
 alias g='git'
 alias ga='git add'
 alias gs='git status'
-alias gc='git commit -v'
+alias gc='git commit'
 alias gp='git push'
 
 # yadm
 alias y='yadm'
 alias ya='yadm add'
 alias ys='yadm status'
-alias yc='yadm commit -m'
+alias yc='yadm commit'
 alias yp='yadm push'
 
 # tmux
@@ -50,11 +50,11 @@ alias ta='tmux attach'
 alias tl='tmux ls'
 
 alias t='task'
-alias pacvis='pacvis --browser'
 
-# overrides default alias yay='yay -Syu'
+alias pac="sudo pacman -Syu"
 alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 alias fpac="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
+alias ytdl="youtube-dl"
 
 # jupyter aliases
 alias irust="jupyter console --kernel rust"

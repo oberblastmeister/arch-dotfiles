@@ -3,8 +3,15 @@
 " ============================================================================
 if has('termguicolors')
   set termguicolors
-  lua require'colorizer'.setup()
+
+  au! InsertEnter * ++once lua require'colorizer'.setup()
 endif
+
+fun! SetupColorizer()
+  if exists("loaded_colorizer")
+    lua require'colorizer'.setup()
+  endif
+endfun
 
 colorscheme gruvbox
 set background=dark
@@ -20,7 +27,7 @@ set noshowcmd
 set foldmethod=syntax
 set foldlevelstart=99
 set timeoutlen=800
-set ttimeoutlen=40
+set ttimeoutlen=20
 set ignorecase smartcase
 set mouse=a
 set nowrap

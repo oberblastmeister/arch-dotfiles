@@ -1,0 +1,18 @@
+[[open]]
+"text/*" = "nvim"
+"video/*" = "mpv"
+"application/pdf" = "zathura"
+"image/*" = "sxiv"
+
+[[open]]
+"application/pdf" = "evince"
+
+[[open_regex]]
+
+[[preview]]
+"application/json" = "jq --color-output"
+"image/*" = "chafa -c 256"
+"text/*" =  "highlight --out-format=xterm256 --style=pablo"
+# "text/*" = "pistol"
+
+[[preview_regex]]

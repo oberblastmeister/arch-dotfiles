@@ -1,67 +1,67 @@
 " ============================================================================
-" Commands {{{
-" ============================================================================
-command! -bang -nargs=? -complete=dir Dotfiles
-    \ call fzf#vim#files(
-    \   'yadm list -a -- '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0)
-
-command! -nargs=? Dotfiles 
-      \ call fzf#run(fzf#wrap(
-      \     {'source': 'yadm list -a', 'sink': 'e', 'options': '--preview "bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}"'}))
-" }}}
-
-" ============================================================================
 " Common {{{
 " ============================================================================
+" ctrl mappings
+
+" fuzzy files
 nnoremap <silent> <c-p> :nohl<CR>:Files<CR>
+
+" fuzzy grep
 nnoremap <silent> <c-f> :nohl<CR>:Rg<CR>
-" doesn't add to jumplist for some reason
+
+" fuzzy buffer tags
 nnoremap <silent> <c-t> :nohl<CR>:normal! m'<CR>:Vista finder<CR>
+
+" fuzzy buffers
 nnoremap <silent> <c-b> :nohl<CR>:Buffers<CR>
+
+" fuzzy notes
 nnoremap <silent> <c-n> :nohl<CR>:NV<CR>
 
 nnoremap <silent> <leader>. :nohl<CR>:cd ~<CR>:Dotfiles<CR>
-let g:which_key_map['.'] = 'search for dotfiles'
-let g:which_key_map.H = [ 'Help', 'search for help' ]
-
+nnoremap <silent> <leader>H :Help<CR>
 nnoremap <silent> <leader>/ :nohl<CR>:BLines<CR>
-let g:which_key_map['/'] = 'fuzzy /'
 nnoremap <silent> <leader>? :nohl<CR>:Lines<CR>
-let g:which_key_map['?'] = 'fuzzy / but in all loaded buffers'
+nnoremap <silent> <leader>e :CocFzfList diagnostics<CR>
+
+" common fuzzy leader mappings info
+let g:which_key_map = {
+      \ 'e': 'fuzzy diagnostics',
+      \ '?': 'fuzzy / but in all loaded buffers',
+      \ '/': 'fuzzy /',
+      \ 'H': 'fuzzy help',
+      \ '.': 'fuzzy dotfiles'
+      \ }
 " }}}
 
 " ============================================================================
 " Uncommon {{{
 " ============================================================================
-let g:which_key_map.s = {
-    \ 'name': '+search',
-    \ 'l': ['Locate', 'locate'],
-    \ 'C': ['Commits', 'commits'],
-    \ 'c': ['BCommits', 'commits for current buffer'],
-    \ 'm': ['Maps', 'normal mode mappings'],
-    \ 'f': ['Filetypes', 'file types'],
-    \ '/': ['Lines', 'lines loaded in buffers'],
-    \ 'g': ['GFiles', 'git files'],
-    \ 't': ['Tags', 'project tags'],
-    \ 'u': ['History', 'file history'],
-    \ 's': ['Snippets', 'snippets'],
-    \ 'w': ['Windows', 'windows'],
-    \ }
-" }}}
+nnoremap <silent> <leader>fa :CocFzfList actions<CR>
+nnoremap <silent> <leader>fc :Commits<CR>
+nnoremap <silent> <leader>fC :BCommits<CR>
+nnoremap <silent> <leader>f? :Lines<CR>
+nnoremap <silent> <leader>f/ :BLines<CR>
+nnoremap <silent> <leader>fg :GFiles<CR>
+nnoremap <silent> <leader>ft :Tags<CR>
+nnoremap <silent> <leader>fu :History<CR>
+nnoremap <silent> <leader>fs :Snippets<CR>
+nnoremap <silent> <leader>fw :Windows<CR>
+nnoremap <silent> <leader>fb :GBranches<CR>
+nnoremap <silent> <leader>fa :CocFzfList actions<CR>
 
-" ============================================================================
-" Coc Lists {{{
-" ============================================================================
-" Show all diagnostics.
-nnoremap <silent> \a  :<C-u>CocList diagnostics<CR>
-
-" " Manage extensions.
-nnoremap <silent> \p  :<C-u>CocList extensions<CR>
-
-" Show commands.
-nnoremap <silent> \c  :<C-u>CocList commands<CR>
-
-" general coclist
-nnoremap <silent> \l :CocList<CR>
+let g:which_key_map.f = {
+      \ 'name': '+fuzzy',
+      \ 'c': 'commits',
+      \ 'C': 'buffer local commits',
+      \ '/': 'lines in current buffer',
+      \ '?': 'lines loaded in buffers',
+      \ 'g': 'files managed by git',
+      \ 't': 'project tags',
+      \ 'u': 'history',
+      \ 's': 'snippets',
+      \ 'w': 'windows',
+      \ 'b': 'git branchs',
+      \ 'a': 'actions',
+      \ }
 " }}}

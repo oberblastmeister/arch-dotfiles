@@ -1,28 +1,20 @@
 " ============================================================================
 " Regular {{{
 " ============================================================================
-let g:which_key_map[' '] = [ '<C-^>', 'go to previous buffer' ]
-let g:which_key_map.o = [ 'zoom#toggle()', 'toggle zoom of split' ]
-let g:which_key_map.q = [ 'q', 'quit' ]
-nnoremap <leader>Q :q!<CR>
-let g:which_key_map.Q = 'quit without saving' 
-let g:which_key_map.w = [ 'w', 'write' ]
-let g:which_key_map.x = [ 'x', 'exit and save' ]
-let g:which_key_map.p = [ 'pu', 'put below' ]
+" nnoremap <silent> <leader><space> <C-^>
+nnoremap <silent> <leader>w :write<CR>
+nnoremap <silent> <leader>x :xit<CR>
+nnoremap <silent> <leader>o :call zoom#toggle()<CR>
+nnoremap <leader>q :quit<CR>
+nnoremap <leader>Q :qa!<CR>
+nnoremap <silent> <leader>p :put<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}
 
 " ============================================================================
 " Buffer {{{
 " ============================================================================
-let g:which_key_map.b = {
-      \ 'name': '+buffer',
-      \ 'd' :  ['bdelete', 'delete buffer'],
-      \ 'D' :  ['%bd|e#', 'delete all buffers except current buffer'],
-      \ 'k' :  ['bufdo bd', 'kill all buffers'],
-      \ 'l' :  ['ls', 'list buffers'],
-      \ }
-" }}}
+" go to relative buffer numbers
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
 nmap <Leader>3 <Plug>lightline#bufferline#go(3)
@@ -33,6 +25,29 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+" info
+let g:which_key_map = {
+      \ '1': 'go to buffer 1',
+      \ '2': 'go to buffer 2',
+      \ '3': 'go to buffer 3',
+      \ '4': 'go to buffer 4',
+      \ '5': 'go to buffer 5',
+      \ '6': 'go to buffer 6',
+      \ '7': 'go to buffer 7',
+      \ '8': 'go to buffer 8',
+      \ '9': 'go to buffer 9',
+      \ '0': 'go to buffer 0',
+      \ ' ': 'go to previous buffer',
+      \ 'o': 'toggle zoom of split',
+      \ 'q': 'quit',
+      \ 'Q': 'quit without saving',
+      \ 'w': 'write',
+      \ 'x': 'exit and save',
+      \ 'p': 'put below',
+      \ }
+
+" delete relative buffer numbers
 nmap <Leader>b1 <Plug>lightline#bufferline#delete(1)
 nmap <Leader>b2 <Plug>lightline#bufferline#delete(2)
 nmap <Leader>b3 <Plug>lightline#bufferline#delete(3)
@@ -44,52 +59,77 @@ nmap <Leader>b8 <Plug>lightline#bufferline#delete(8)
 nmap <Leader>b9 <Plug>lightline#bufferline#delete(9)
 nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
 
+" misc buffer mappings
+nnoremap <silent> <leader>bD :Bufonly<CR>
+nnoremap <silent> <leader>bk :%bdelete<CR>
+nnoremap <silent> <leader>bl :ls<CR>
+
+" delete buffer numbers info
+let g:which_key_map.b = {
+      \ 'name': '+buffer',
+      \ '1': 'delete buffer 1',
+      \ '2': 'delete buffer 2',
+      \ '3': 'delete buffer 3',
+      \ '4': 'delete buffer 4',
+      \ '5': 'delete buffer 5',
+      \ '6': 'delete buffer 6',
+      \ '7': 'delete buffer 7',
+      \ '8': 'delete buffer 8',
+      \ '9': 'delete buffer 9',
+      \ '0': 'delete buffer 0',
+      \ 'D': 'delete ALL buffers EXCEPT current',
+      \ 'k': 'kill ALL buffers',
+      \ 'l': 'list buffers',
+      \ }
+" }}}
+
 " ============================================================================
 " Misc {{{
 " ============================================================================
+nnoremap <silent> <leader>zn :call mappings#toggle_numbering()<CR>
+nnoremap <silent> <leader>zz :call mappings#zap()<CR>
+nnoremap <silent> <leader>zh :so $VIMRUNTIME/syntax/hitest.vim<CR>
+nnoremap <silent> <leader>zg :call VimBeGood()<CR>
+nnoremap <silent> <leader>zv :Vista!!<CR>
+
 let g:which_key_map.z = {
       \ 'name': '+misc',
-      \ 'n' : ['mappings#toggle_numbering()', 'toggle numbers'],
-      \ 'z' : ['mappings#zap()', 'zap whitespace'],
-      \ 'h' : [':so $VIMRUNTIME/syntax/hitest.vim', 'show all highlight groups'],
-      \ 'g' : ['VimBeGood', 'vim game']
+      \ 'n': 'toggle numbers',
+      \ 'z': 'zap whitespace',
+      \ 'h': 'show all highlight groups',
+      \ 'g': 'vim game',
+      \ 'v': 'toggle vista',
       \ }
 " }}}
 
 " ============================================================================
 " Vimux {{{
 " ============================================================================
-let g:which_key_map.v = { 'name' : '+vimux' }
-
 nnoremap <silent> <Leader>vo :call VimuxOpenRunner()<CR>
-let g:which_key_map.v.o = 'open runner'
-
 nnoremap <silent> <Leader>vp :VimuxPromptCommand<CR>
-let g:which_key_map.v.p = 'prompt command'
-
 nnoremap <silent> <Leader>vl :VimuxRunLastCommand<CR>
-let g:which_key_map.v.l = 'run last prompted command'
-
 nnoremap <silent> <Leader>vi :VimuxInspectRunner<CR>
-let g:which_key_map.v.i = 'inspect (move into runner and enter copy mode)'
-
 nnoremap <silent> <Leader>vx :VimuxInterruptRunner<CR>
-let g:which_key_map.v.x = 'interrupt command in runner'
-
 nnoremap <silent> <Leader>vz :call VimuxZoomRunner()<silent> <CR>
-let g:which_key_map.v.z = 'zoom runner'
-
 nnoremap <silent> <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
-let g:which_key_map.v['<CR>'] = 'send enter to runner'
-
 nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
-let g:which_key_map.v.q = 'close vimux runner'
+nnoremap <silent> <Leader>vc :VimuxClearRunnerHistory<CR>
+
+let g:which_key_map.v = {
+      \ 'name': '+vimux',
+      \ 'o': 'open runner',
+      \ 'p': 'prompt command',
+      \ 'l': 'run last prompted command',
+      \ 'i': 'inspect (move into runner and enter copy mode)',
+      \ 'x': 'interrupt command in runner',
+      \ 'z': 'zoom runner',
+      \ '<CR>': 'send enter to runner',
+      \ 'q': 'close vimux runner',
+      \ 'c': 'clear runner history',
+      \ }
 
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
 let g:which_key_map.R = 'run code'
-
-nnoremap <silent> <Leader>vc :VimuxClearRunnerHistory<CR>
-let g:which_key_map.v.c = 'clear runner history'
 
 function! VimuxSlime()
   call VimuxSendKeys("F6")
@@ -265,4 +305,4 @@ xnoremap <Leader>s "sy:%s/<C-r>s//<Left>
 let g:which_key_map.s = 'substitue word under cursor'
 
 " vista
-nnoremap <leader>v :Vista!!<CR>
+" nnoremap <leader>v :Vista!!<CR>

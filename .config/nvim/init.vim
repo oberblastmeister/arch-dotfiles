@@ -22,6 +22,13 @@ function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
+
+function! PlugLoaded(name)
+    return (
+        \ has_key(g:plugs, a:name) &&
+        \ isdirectory(g:plugs[a:name].dir) &&
+        \ stridx(&rtp, g:plugs[a:name].dir) >= 0)
+endfunction
 " }}}
 
 " ============================================================================
@@ -31,8 +38,19 @@ endfunction
 call plug#begin(stdpath('data') . '/plugged')
 
 " Plug '~/projects/yadm.nvim'
-
 " ----------------------------- Appearance -----------------------------------
+" Plug 'hardcoreplayers/dashboard-nvim'
+"   let g:dashboard_default_executive ='fzf'
+"   let g:dashboard_custom_shortcut={
+"     \ 'last_session'       : 'SPC s l',
+"     \ 'find_history'       : 'SPC f u',
+"     \ 'find_file'          : '<C-P>',
+"     \ 'new_file'           : 'SPC c n',
+"     \ 'change_colorscheme' : 'SPC t c',
+"     \ 'find_word'          : 'SPC f a',
+"     \ 'book_marks'         : 'SPC f b',
+"     \ }
+
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
   let g:lightline = {
@@ -82,6 +100,8 @@ Plug 'morhetz/gruvbox'
   let g:gruvbox_sign_column='bg0'
 
 Plug 'yggdroot/indentline'
+  let g:indentLine_fileTypeExclude = ['dashboard']
+
 Plug 'norcalli/nvim-colorizer.lua'
 
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -111,7 +131,9 @@ Plug 'tmsvg/pear-tree'
   let g:pear_tree_map_special_keys = 1
   imap <space> <Plug>(PearTreeSpace)
 
+" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'liuchengxu/vim-which-key'
+  " autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
 Plug 'honza/vim-snippets'
 
@@ -132,14 +154,14 @@ Plug 'junegunn/fzf.vim'
 " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
   " let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
-  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
   " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
 
 Plug 'tpope/vim-dispatch'
 
 Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
-  let test#strategy = "dispatch"
+  let test#strategy = "vimux"
 
 Plug 'liuchengxu/vista.vim'     " can't lazy load vista
   let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -149,12 +171,7 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
 
 Plug 'romainl/vim-cool'
 
-" if has('win32')
-"   Plug 'kassio/neoterm'
-"     let g:neoterm_autoinsert = 1
-" endif
-
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh', 'on': 'VimBeGood'}
+Plug 'ThePrimeagen/vim-be-good'
 
 " ----------------------------- Editing -------------------------------------
 Plug 'tpope/vim-commentary'
@@ -203,6 +220,7 @@ Plug 'lambdalisue/suda.vim'
 " Plug 'ptzz/lf.vim'
 "   let g:lf_map_keys = 0
 "   let g:lf_replace_netrw = 1
+" Plug 'rbgrouleff/bclose.vim'
 
 Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_width = 0.85
@@ -263,12 +281,13 @@ Plug 'alvan/vim-closetag', { 'for': 'html' }
 Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server', 'for': ['html', 'css', 'javascript'] }
 
 " ----------------------------- Language Specific --------------------------
-  let g:polyglot_disabled = ['markdown', 'latex']
+  let g:polyglot_disabled = ['markdown', 'latex', 'pest']
 Plug 'sheerun/vim-polyglot'
   let g:python_highlight_space_errors = 0
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }
+Plug 'pest-parser/pest.vim', { 'for': ['pest'] }
 
 " considering
 "Plug 'junegunn/vim-after-object'
@@ -374,21 +393,22 @@ inoremap jk <Esc>
 cnoremap jk <C-c>
 
 " set leader mappings
-let mapleader="\<Space>"
-let maplocalleader="\\"
+let g:mapleader="\<Space>"
+let g:maplocalleader="\\"
 
 " whichkey leader mappings
+call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 
 " whichkey localleader mappings
 nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
-vnoremap <localleader> :<c-u>WhichKeyVisual  ','<CR>
+vnoremap <silent> <localleader> :<c-u>WhichKeyVisual  '\'<CR>
 
 " set global whichkey dict
 let g:which_key_map = {}
-
-call which_key#register('<Space>', "g:which_key_map")
+" let g:which_key_fallback_to_native_key=1
+let g:which_key_map['name'] = 'root'
 
 if has('nvim')
   tnoremap <C-o> <C-\><C-n>

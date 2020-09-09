@@ -104,6 +104,7 @@ Plug 'yggdroot/indentline'
 
 Plug 'norcalli/nvim-colorizer.lua'
 
+Plug 'wincent/pinnacle'
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
 " Plug 'kyazdani42/nvim-tree.lua'
   " let g:lua_tree_auto_close = 1

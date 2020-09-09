@@ -112,32 +112,33 @@ Plug 'wincent/pinnacle'
 
 " ----------------------------- Important ----------------------------------
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-  let g:coc_global_extensions = [
-  \ 'coc-python',
-  \ 'coc-json',
-  \ 'coc-sh',
-  \ 'coc-rust-analyzer',
-  \ 'coc-tsserver',
-  \ 'coc-html',
-  \ 'coc-snippets',
-  \ 'coc-vimlsp',
-  \ 'coc-emmet',
-  \ 'coc-actions',
-  \ 'coc-java',
-  \ 'coc-marketplace',
-  \ 'coc-git',
-  \ 'coc-lua',
-  \ 'coc-yaml'
-  \ ]
+let g:coc_global_extensions = [
+      \ 'coc-python',
+      \ 'coc-json',
+      \ 'coc-sh',
+      \ 'coc-rust-analyzer',
+      \ 'coc-tsserver',
+      \ 'coc-html',
+      \ 'coc-snippets',
+      \ 'coc-vimlsp',
+      \ 'coc-emmet',
+      \ 'coc-actions',
+      \ 'coc-java',
+      \ 'coc-marketplace',
+      \ 'coc-git',
+      \ 'coc-lua',
+      \ 'coc-yaml',
+      \ 'coc-go'
+      \ ]
 
-Plug 'tmsvg/pear-tree'
-  let g:pear_tree_repeatable_expand = 0
-  let g:pear_tree_smart_openers = 1
-  let g:pear_tree_smart_closers = 1
-  let g:pear_tree_smart_backspace = 1
-  let g:pear_tree_timeout = 60
-  let g:pear_tree_map_special_keys = 1
-  imap <space> <Plug>(PearTreeSpace)
+" Plug 'tmsvg/pear-tree'
+"   let g:pear_tree_repeatable_expand = 0
+"   let g:pear_tree_smart_openers = 1
+"   let g:pear_tree_smart_closers = 1
+"   let g:pear_tree_smart_backspace = 1
+"   let g:pear_tree_timeout = 60
+"   let g:pear_tree_map_special_keys = 1
+"   imap <space> <Plug>(PearTreeSpace)
 
 " Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'liuchengxu/vim-which-key'
@@ -181,9 +182,10 @@ Plug 'liuchengxu/vista.vim'     " can't lazy load vista
 
 Plug 'romainl/vim-cool'
 
-Plug 'ThePrimeagen/vim-be-good'
+Plug 'ThePrimeagen/vim-be-good', { 'on': 'VimBeGood' }
 
 " ----------------------------- Editing -------------------------------------
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-commentary'
 
 Plug 'machakann/vim-sandwich'
@@ -213,9 +215,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
-Plug 'dhruvasagar/vim-zoom'
- let g:zoom#statustext = ''
-
 Plug 'sickill/vim-pasta'
 
 Plug 'airblade/vim-rooter'
@@ -225,18 +224,9 @@ Plug 'airblade/vim-rooter'
 " Plug 'wesQ3/vim-windowswap'
 "   let g:windowswap_map_keys = 0
 
-Plug 'lambdalisue/suda.vim'
-
-" Plug 'ptzz/lf.vim'
-"   let g:lf_map_keys = 0
-"   let g:lf_replace_netrw = 1
-" Plug 'rbgrouleff/bclose.vim'
-
 Plug 'voldikss/vim-floaterm', Cond(has('nvim'))
   let g:floaterm_width = 0.85
   let g:floaterm_height = 0.85
-  " let g:floaterm_borderchars = ['═', '║', '═', '║', '╔', '╗', '╝', '╚']
-  " let g:floaterm_position = 'auto'
 
 Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
 

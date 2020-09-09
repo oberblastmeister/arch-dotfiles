@@ -54,6 +54,7 @@ alias t='task'
 alias pac="sudo pacman -Syu"
 alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 alias fpac="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
+alias ytdl="youtube-dl"
 
 # jupyter aliases
 alias irust="jupyter console --kernel rust"

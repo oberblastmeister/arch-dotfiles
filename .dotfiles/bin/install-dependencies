@@ -1,7 +1,8 @@
 #!/bin/bash
 
 packages=(
-    xorg
+    xorg-server # graphical server
+    xorg-xinit # allows to manually start the xserver
 
     # bspwm
     bspwm

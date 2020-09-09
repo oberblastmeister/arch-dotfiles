@@ -9,7 +9,7 @@ super + shift + Return
 
 # program launcher
 super + d
-    launcher
+    launcher-alt
 
 alt + Tab
     windows
@@ -21,6 +21,8 @@ super + Escape
 super + alt + u
     powermenu
 
+~button3
+    root_menu.sh
 #
 # bspwm hotkeys
 #

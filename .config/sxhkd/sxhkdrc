@@ -21,6 +21,8 @@ super + Escape
 super + alt + u
     powermenu
 
+~button3
+    root_menu.sh
 #
 # bspwm hotkeys
 #

@@ -67,6 +67,13 @@ local plugins = {
     only_setup = false,
     path = "/home/brian/.local/share/nvim/site/pack/packer/opt/notational-fzf-vim"
   },
+  ["nvim-treesitter"] = {
+    config = { "\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/treesitter\frequire\0" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/brian/.local/share/nvim/site/pack/packer/opt/nvim-treesitter"
+  },
   ["packer.nvim"] = {
     loaded = false,
     only_sequence = false,
@@ -297,18 +304,16 @@ vim.cmd("packadd vim-polyglot")
 loadstring("\27LJ\2\2B\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\nHUMAN\31vimspector_enable_mappings\6g\bvim\0")()
 vim.cmd("packadd vimspector")
 -- Post-load configuration
--- Config for: nvim-lspconfig
-loadstring("\27LJ\2\0028\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config/lsp\frequire\0")()
+-- Config for: vim-sandwich
+loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
 -- Config for: gruvbox
 loadstring("\27LJ\2\2Y\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0'\1\5\0=\1\4\0K\0\1\0\tdark\15background\6o\24colorscheme gruvbox\bcmd\bvim\0")()
 -- Config for: nvim-colorizer.lua
 loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
--- Config for: vim-sandwich
-loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
+-- Config for: nvim-lspconfig
+loadstring("\27LJ\2\0028\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config/lsp\frequire\0")()
 -- Config for: diagnostic-nvim
 loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/diagnostic\frequire\0")()
--- Config for: nvim-treesitter
-loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/treesitter\frequire\0")()
 -- Conditional loads
 vim._update_package_paths()
 END
@@ -336,17 +341,17 @@ command! -nargs=* -range -bang -complete=file NV call s:load(['notational-fzf-vi
 augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
-  au FileType lua ++once call s:load(['BetterLua.vim'], { "ft": "lua" })
+  au FileType lua ++once call s:load(['nvim-treesitter', 'BetterLua.vim'], { "ft": "lua" })
   au FileType html ++once call s:load(['vim-closetag', 'emmet-vim', 'bracey.vim'], { "ft": "html" })
   au FileType latex ++once call s:load(['vimtex'], { "ft": "latex" })
   au FileType pest ++once call s:load(['pest.vim'], { "ft": "pest" })
   au FileType javascript ++once call s:load(['emmet-vim', 'bracey.vim'], { "ft": "javascript" })
-  au FileType css ++once call s:load(['emmet-vim', 'bracey.vim'], { "ft": "css" })
+  au FileType markdown ++once call s:load(['nvim-treesitter', 'markdown-preview.nvim', 'vim-markdown'], { "ft": "markdown" })
   au FileType vim ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "vim" })
-  au FileType markdown ++once call s:load(['markdown-preview.nvim', 'vim-markdown'], { "ft": "markdown" })
-  au FileType rust ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "rust" })
+  au FileType css ++once call s:load(['emmet-vim', 'bracey.vim'], { "ft": "css" })
+  au FileType rust ++once call s:load(['nvim-treesitter', 'splitjoin.vim', 'vim-test'], { "ft": "rust" })
+  au FileType python ++once call s:load(['nvim-treesitter', 'splitjoin.vim', 'vim-test'], { "ft": "python" })
   au FileType plaintex ++once call s:load(['vimtex'], { "ft": "plaintex" })
-  au FileType python ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "python" })
   " Event lazy-loads
   au InsertEnter * ++once call s:load(['vim-vsnip', 'vim-vsnip-integ', 'completion-nvim', 'completion-buffers'], { "event": "InsertEnter *" })
 augroup END

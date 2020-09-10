@@ -43,6 +43,7 @@ return require('packer').startup(function()
     use {
         'nvim-treesitter/nvim-treesitter',
         config = function() require'config/treesitter'.setup() end,
+        ft = {'python', 'rust', 'markdown', 'lua'}
     }
 
     use {

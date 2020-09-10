@@ -8,7 +8,8 @@ function! Write()
   TSBufEnable highlight
 endfunction
 
-nnoremap <silent> <leader>w :call Write()<CR>
+nnoremap <silent> <leader>w <cmd>write<CR>
+nnoremap <silent> <leader>W :call Write()<CR>
 nnoremap <silent> <leader>x :xit<CR>
 nnoremap <silent> <leader>o :call zoom#toggle()<CR>
 nnoremap <leader>q :quit<CR>

@@ -8,73 +8,10 @@
 "    ███  ░██░░██████░░██████   ░░██   ░██ ███ ░██ ░██
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
-" ============================================================================
-" Before {{{
-" ============================================================================
 
-" disable python 2 support
-let g:loaded_python_provider = 0
-" command to start python3 executable
-let g:python3_host_prog = '/usr/bin/python3'
-
-lua require('plugins')
-" }}}
-
-" ============================================================================
-" Vim-plug {{{
-  let g:lightline = {
-    \ 'colorscheme': 'gruvbox',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste', 'zoom'],
-    \             ['cocstatus',  'fugitive'] ],
-    \   'right':   [ [ 'percent' ] ]
-    \ },
-    \ 'tabline': {
-    \   'left': [ ['buffers'] ],
-    \   'right': [ [] ]
-    \ },
-    \ 'component': {
-    \   'lineinfo': ' %3l:%-2v',
-    \ },
-    \ 'component_expand': {
-    \   'buffers': 'lightline#bufferline#buffers'
-    \ },
-    \ 'component_type': {
-    \   'buffers': 'tabsel',
-    \   'readonly': 'error',
-    \   'linter_warnings': 'warning',
-    \   'linter_errors': 'error'
-    \ },
-    \ 'component_function': {
-    \   'readonly': 'helpers#lightline#read_only',
-    \   'fugitive': 'helpers#lightline#fugitive',
-    \   'cocstatus': 'coc#status',
-    \   'currentfunction': 'CocCurrentFunction',
-    \   'zoom': 'zoom#statusline'
-    \ },
-    \ 'component_raw': {
-    \   'buffers': 1
-    \ }
-  \ }
-  let g:lightline#bufferline#show_number=2
-  let g:lightline#bufferline#clickable = 1
-  let g:lightline#bufferline#modified = ' '
-  let g:lightline#bufferline#read_only = ' '
-  let g:lightline#bufferline#more_buffers = '…'
-  let g:lightline#bufferline#unnamed = '_'
-
-" colors
-  let g:gruvbox_sign_column='bg0'
-
-  let g:indentLine_fileTypeExclude = ['dashboard']
 
 " ----------------------------- Important ----------------------------------
-  let g:completion_enable_snippet = 'Ultisnips'
-  let g:completion_enable_auto_paren = 1
-
-  let g:diagnostic_insert_delay = 1
-  let g:diagnostic_show_sign = 1
-  let g:diagnostic_enable_virtual_text = 1
+lua require('plugins')
 
   let g:fzf_preview_window = 'right'
 
@@ -83,29 +20,8 @@ lua require('plugins')
 
   let test#strategy = "vimux"
 
-  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-  let g:vista_fzf_preview = ['right:50%']
-  let g:vista_default_executive = 'nvim_lsp'
-  let g:vista_vimwiki_executive = 'markdown'
-
-" ----------------------------- Editing -------------------------------------
-  let g:switch_custom_definitions =
-      \ [
-      \   ['foo', 'bar', 'baz'],
-      \   ['0', '1'],
-      \   ['==', '!='],
-      \   ['&', '|'],
-      \   ['&&', '||'],
-      \   ['and', 'or'],
-      \   ['on', 'off'],
-      \   ['yes', 'no'],
-      \   ['vim', 'emacs']
-      \ ]
-
 " ----------------------------- General -------------------------------------
- let g:zoom#statustext = ''
-  let g:rooter_silent_chdir = 1
-  let g:rooter_change_directory_for_non_project_files = 'current'
+  let g:zoom#statustext = ''
 
   let g:floaterm_width = 0.85
   let g:floaterm_height = 0.85

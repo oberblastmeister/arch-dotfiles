@@ -7,9 +7,14 @@ local function config()
     -- vim.g.UltiSnipsExpandTrigger="<c-l>"
 
     vim.g.completion_chain_complete_list = {
-        complete_items = {'lsp', 'snippet'},
-        complete_items = {'path'},
-        complete_items = {'buffers'},
+        default = {
+            default = {
+                {complete_items = {'lsp', 'snippet'}},
+                {complete_items = {'ts'}},
+                {complete_items = {'path'}},
+                {complete_items = {'buffers'}},
+            }
+        }
     }
 end
 

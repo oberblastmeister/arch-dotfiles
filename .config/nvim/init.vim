@@ -8,7 +8,6 @@
 "    ███  ░██░░██████░░██████   ░░██   ░██ ███ ░██ ░██
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
-lua require('plugins')
 " packadd packer.nvim
 " lua require('packer').startup()
 
@@ -21,6 +20,7 @@ let g:loaded_python_provider = 0
 " command to start python3 executable
 let g:python3_host_prog = '/usr/bin/python3'
 
+lua require('plugins')
 " }}}
 
 " ============================================================================
@@ -139,82 +139,6 @@ let g:python3_host_prog = '/usr/bin/python3'
         \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_map_prefix = '<Leader>n'
 let g:vimwiki_global_ext = 0
-
-" ============================================================================
-" Sandwhich {{{
-" ============================================================================
-runtime macros/sandwich/keymap/surround.vim
-
-" " copy the default recipes
-" let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
-
-" " auto-indent after surrounding with brackets
-" let g:sandwich#recipes += [
-"       \   {
-"       \     'buns'        : ['{', '}'],
-"       \     'motionwise'  : ['line'],
-"       \     'kind'        : ['add'],
-"       \     'linewise'    : 1,
-"       \     'command'     : ["'[+1,']-1normal! >>"],
-"       \   },
-"       \   {
-"       \     'buns'        : ['{', '}'],
-"       \     'motionwise'  : ['line'],
-"       \     'kind'        : ['delete'],
-"       \     'linewise'    : 1,
-"       \     'command'     : ["'[,']normal! <<"],
-"       \   },
-"       \   {
-"       \     'buns'        : ['(', ')'],
-"       \     'motionwise'  : ['line'],
-"       \     'kind'        : ['add'],
-"       \     'linewise'    : 1,
-"       \     'command'     : ["'[+1,']-1normal! >>"],
-"       \   },
-"       \   {
-"       \     'buns'        : ['(', ')'],
-"       \     'motionwise'  : ['line'],
-"       \     'kind'        : ['delete'],
-"       \     'linewise'    : 1,
-"       \     'command'     : ["'[,']normal! <<"],
-"       \   },
-"       \   {
-"       \     'buns'        : ['[', ']'],
-"       \     'motionwise'  : ['line'],
-"       \     'kind'        : ['add'],
-"       \     'linewise'    : 1,
-"       \     'command'     : ["'[+1,']-1normal! >>"],
-"       \   },
-"       \   {
-"       \     'buns'        : ['[', ']'],
-"       \     'motionwise'  : ['line'],
-"       \     'kind'        : ['delete'],
-"       \     'linewise'    : 1,
-"       \     'command'     : ["'[,']normal! <<"],
-"       \   }
-"       \ ]
-
-" " allow bracket with spaces (like vim-surround), only works for char and block
-" let g:sandwich#recipes += [
-"       \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['}']},
-"       \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': [']']},
-"       \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['add', 'replace'], 'action': ['add'], 'input': [')']},
-"       \   {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
-"       \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
-"       \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'motionwise': ['char', 'block'], 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
-"       \ ]
-
-" " allow magic function to use insert mode completion
-" let g:sandwich#recipes += [
-"   \   {
-"   \     'buns': ['(', ')'],
-"   \     'cursor': 'head',
-"   \     'command': ['startinsert'],
-"   \     'kind': ['add', 'replace'],
-"   \     'action': ['add'],
-"   \     'input': ['F']
-"   \   },
-"   \ ]
 " }}}
 
 " ============================================================================
@@ -256,17 +180,6 @@ omap <Leader>c  <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 " }}}
-
-let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet']},
-    \{'complete_items': ['path']},
-    \{'complete_items': ['buffers']},
-    \]
-
-let g:completion_auto_change_source = 1
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:diagnostic_virtual_text_prefix = ' '
-let g:completion_confirm_key = "\<C-y>"
 
 call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
 call sign_define("LspDiagnosticsWarningSign", {"text" : "🛆", "texthl" : "LspDiagnosticsWarning"})

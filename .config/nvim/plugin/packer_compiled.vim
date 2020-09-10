@@ -21,6 +21,19 @@ local plugins = {
     only_setup = false,
     path = "/home/brian/.local/share/nvim/site/pack/packer/opt/codi.vim"
   },
+  ["completion-buffers"] = {
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/brian/.local/share/nvim/site/pack/packer/opt/completion-buffers"
+  },
+  ["completion-nvim"] = {
+    config = { "\27LJ\2\2N\0\0\2\0\4\0\b6\0\0\0'\1\1\0B\0\2\0029\1\2\0B\1\1\0019\1\3\0B\1\1\1K\0\1\0\nstart\vconfig\22config/completion\frequire\0" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/brian/.local/share/nvim/site/pack/packer/opt/completion-nvim"
+  },
   ["emmet-vim"] = {
     loaded = false,
     only_sequence = false,
@@ -99,6 +112,7 @@ local plugins = {
     path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vim-markdown"
   },
   ["vim-polyglot"] = {
+    config = { '\27LJ\2\2?\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\0\0=\1\2\0K\0\1\0"python_highlight_space_errors\6g\bvim\0' },
     loaded = false,
     only_sequence = true,
     only_setup = true,
@@ -109,6 +123,18 @@ local plugins = {
     only_sequence = false,
     only_setup = false,
     path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vim-test"
+  },
+  ["vim-vsnip"] = {
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
+  },
+  ["vim-vsnip-integ"] = {
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vim-vsnip-integ"
   },
   vimspector = {
     loaded = false,
@@ -128,6 +154,13 @@ local plugins = {
     only_sequence = false,
     only_setup = false,
     path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vimwiki"
+  },
+  ["vista.vim"] = {
+    commands = { "Vista" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vista.vim"
   }
 }
 
@@ -251,22 +284,20 @@ end
 
 -- Pre-load configuration
 -- Setup for: vim-polyglot
-loadstring('\27LJ\2\2y\0\0\2\0\5\0\t6\0\0\0009\0\1\0005\1\3\0=\1\2\0006\0\0\0009\0\1\0)\1\0\0=\1\4\0K\0\1\0"python_highlight_space_errors\1\4\0\0\rmarkdown\nlatex\tpest\22polyglot_disabled\6g\bvim\0')()
+loadstring("\27LJ\2\2O\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\5\0\0\rmarkdown\nlatex\tpest\blua\22polyglot_disabled\6g\bvim\0")()
 vim.cmd("packadd vim-polyglot")
 -- Setup for: vimspector
 loadstring("\27LJ\2\2B\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\nHUMAN\31vimspector_enable_mappings\6g\bvim\0")()
 vim.cmd("packadd vimspector")
 -- Post-load configuration
--- Config for: diagnostic-nvim
-loadstring("\27LJ\2\2\\\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0=autocmd! BufEnter * lua require'diagnostics'.on_attach()\bcmd\bvim\0")()
--- Config for: completion-nvim
-loadstring("\27LJ\2\2[\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0<autocmd! BufEnter * lua require'completion'.on_attach()\bcmd\bvim\0")()
 -- Config for: nvim-colorizer.lua
 loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
--- Config for: gruvbox
-loadstring("\27LJ\2\2[\0\0\2\0\4\0\t6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\1\0'\1\3\0B\0\2\1K\0\1\0\24set background=dark\24colorscheme gruvbox\bcmd\bvim\0")()
+-- Config for: vim-sandwich
+loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
 -- Config for: nvim-lspconfig
-loadstring("\27LJ\2\2è\1\0\0\2\0\6\0\0226\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0004\1\0\0B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\4\0009\0\3\0004\1\0\0B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\5\0009\0\3\0004\1\0\0B\0\2\1K\0\1\0\nvimls\tpyls\nsetup\18rust_analyzer\rnvim_lsp\frequire\0")()
+loadstring("\27LJ\2\2È\1\0\0\4\0\v\0%6\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0005\1\6\0006\2\0\0'\3\4\0B\2\2\0029\2\5\2=\2\5\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\a\0009\0\3\0005\1\b\0006\2\0\0'\3\4\0B\2\2\0029\2\5\2=\2\5\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\t\0009\0\3\0005\1\n\0006\2\0\0'\3\4\0B\2\2\0029\2\5\2=\2\5\1B\0\2\1K\0\1\0\1\0\0\nvimls\1\0\0\tpyls\1\0\0\14on_attach\15diagnostic\nsetup\18rust_analyzer\rnvim_lsp\frequire\0")()
+-- Config for: gruvbox
+loadstring("\27LJ\2\2Y\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0'\1\5\0=\1\4\0K\0\1\0\tdark\15background\6o\24colorscheme gruvbox\bcmd\bvim\0")()
 -- Conditional loads
 vim._update_package_paths()
 END
@@ -282,6 +313,7 @@ endfunction
 " Command lazy-loads
 command! -nargs=* -range -bang -complete=file Codi call s:load(['codi.vim'], { "cmd": "Codi", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file UndotreeToggle call s:load(['undotree'], { "cmd": "UndotreeToggle", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file Vista call s:load(['vista.vim'], { "cmd": "Vista", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Goyo call s:load(['goyo.vim', 'limelight.vim'], { "cmd": "Goyo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file VimwikiIndex call s:load(['vimwiki'], { "cmd": "VimwikiIndex", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file VimBeGood call s:load(['vim-be-good'], { "cmd": "VimBeGood", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
@@ -293,15 +325,16 @@ augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
   au FileType lua ++once call s:load(['BetterLua.vim'], { "ft": "lua" })
-  au FileType html ++once call s:load(['bracey.vim', 'vim-closetag', 'emmet-vim'], { "ft": "html" })
-  au FileType rust ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "rust" })
-  au FileType pest ++once call s:load(['pest.vim'], { "ft": "pest" })
-  au FileType javascript ++once call s:load(['bracey.vim', 'emmet-vim'], { "ft": "javascript" })
-  au FileType python ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "python" })
-  au FileType vim ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "vim" })
-  au FileType markdown ++once call s:load(['vim-markdown', 'markdown-preview.nvim'], { "ft": "markdown" })
-  au FileType css ++once call s:load(['bracey.vim', 'emmet-vim'], { "ft": "css" })
+  au FileType html ++once call s:load(['emmet-vim', 'vim-closetag', 'bracey.vim'], { "ft": "html" })
   au FileType latex ++once call s:load(['vimtex'], { "ft": "latex" })
+  au FileType pest ++once call s:load(['pest.vim'], { "ft": "pest" })
+  au FileType javascript ++once call s:load(['emmet-vim', 'bracey.vim'], { "ft": "javascript" })
+  au FileType css ++once call s:load(['emmet-vim', 'bracey.vim'], { "ft": "css" })
+  au FileType vim ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "vim" })
+  au FileType markdown ++once call s:load(['markdown-preview.nvim', 'vim-markdown'], { "ft": "markdown" })
+  au FileType rust ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "rust" })
   au FileType plaintex ++once call s:load(['vimtex'], { "ft": "plaintex" })
+  au FileType python ++once call s:load(['splitjoin.vim', 'vim-test'], { "ft": "python" })
   " Event lazy-loads
+  au InsertEnter * ++once call s:load(['vim-vsnip', 'completion-buffers', 'vim-vsnip-integ', 'completion-nvim'], { "event": "InsertEnter *" })
 augroup END

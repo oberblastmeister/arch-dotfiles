@@ -9,7 +9,6 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ completion#trigger_completion()
 
-
 nnoremap <silent> ]g :NextDiagnosticCycle<CR>
 nnoremap <silent> [g :PrevDiagnosticCycle<CR>
 
@@ -27,11 +26,6 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>
 
-lua << END
-  vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-  vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-  vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-END
 " autocmd CursorHold * lua vim.lsp.buf.document_highlight()
 " autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()
 " autocmd CursorMoved * lua vim.lsp.buf.clear_references()

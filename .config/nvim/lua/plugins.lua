@@ -6,7 +6,7 @@ vim.cmd [[packadd packer.nvim]]
 vim._update_package_paths()
 
 -- packer throws error if is not on
-vim.cmd [[set termguicolors]]
+vim.o.termguicolors = true
 
 return require('packer').startup(function()
     -- let packer optionally manage itself
@@ -17,7 +17,7 @@ return require('packer').startup(function()
         'morhetz/gruvbox',
         config = function()
             vim.cmd [[colorscheme gruvbox]]
-            vim.cmd [[set background=dark]]
+            vim.o.background = 'dark'
         end,
     }
 
@@ -38,35 +38,34 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         config = function()   
-            require'nvim_lsp'.rust_analyzer.setup{}
-            require'nvim_lsp'.pyls.setup{}
-            require'nvim_lsp'.vimls.setup{}
+            require'nvim_lsp'.rust_analyzer.setup{on_attach=require'diagnostic'.on_attach}
+            require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+            require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
         end,
     }
 
     use {
         'nvim-lua/completion-nvim',
+        event = 'InsertEnter *',
         config = function()
-            vim.cmd [[autocmd! BufEnter * lua require'completion'.on_attach()]]
+            local completion = require('config/completion')
+            completion.config()
+            completion.start()
         end,
+        requires = {
+            {'hrsh7th/vim-vsnip', event = 'InsertEnter *'},
+            {'hrsh7th/vim-vsnip-integ', event = 'InsertEnter *'},
+            {'steelsojka/completion-buffers', event = 'InsertEnter *'},
+        }
     }
 
-    use {
-        'nvim-lua/diagnostic-nvim',
-        config = function()
-            vim.cmd [[autocmd! BufEnter * lua require'diagnostics'.on_attach()]]
-        end
-    }
-
-    use 'steelsojka/completion-buffers'
+    use 'nvim-lua/diagnostic-nvim'
 
     use 'nvim-lua/lsp-status.nvim'
 
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/telescope.nvim'
-
-    use 'tmsvg/pear-tree'
 
     use 'liuchengxu/vim-which-key'
 
@@ -75,7 +74,7 @@ return require('packer').startup(function()
         'puremourning/vimspector',
         run = function()
             vim.g.vimspector_install_gadgets = { 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'vscode-bash-debug' }
-            vim.cmd [['VimspectorInstall']]
+            vim.cmd [[VimspectorInstall]]
         end,
         setup = function() vim.g.vimspector_enable_mappings = 'HUMAN' end,
     }
@@ -87,7 +86,10 @@ return require('packer').startup(function()
 
     use {'janko/vim-test', ft = {'python', 'rust', 'vim'}}
 
-    use 'liuchengxu/vista.vim'
+    use {
+        'liuchengxu/vista.vim',
+        cmd = 'Vista'
+    }
 
     -- auto nohl
     use 'romainl/vim-cool'
@@ -100,10 +102,8 @@ return require('packer').startup(function()
 
     use {
         'machakann/vim-sandwich',
-        config = vim.cmd [[runtime macros/sandwich/keymap/surround.vim]],
+        config = function() require'config/sandwhich'.setup() end,
     }
-
-    -- use '~/.local/share/nvim/site/pack/packer/start/macros/sandwich/keymap/surround.vim'
 
     use 'tpope/vim-repeat'
 
@@ -132,14 +132,27 @@ return require('packer').startup(function()
     ----------------------------- Text Objects --------------------------------
     use 'kana/vim-textobj-user'
     use 'kana/vim-textobj-entire'
+    use 'glts/vim-textobj-comment'
     use 'wellle/targets.vim'
 
     ----------------------------- Git -----------------------------------------
     use 'tpope/vim-fugitive'
 
     ----------------------------- Tmux ----------------------------------------
-    -- use 'christoomey/vim-tmux-navigator', Cond($TMUX != '')
-    -- use 'benmills/vimux', Cond($TMUX != '')
+    use {'christoomey/vim-tmux-navigator'}
+
+    use {'benmills/vimux'}
+
+    -- use {
+    --     'christoomey/vim-tmux-navigator',
+    --     -- cond = function() return os.getenv("TMUX") != nil end,
+    --     cond = 'os.getenv("TMUX") != nil',
+    -- }
+
+    -- use {
+    --     'benmills/vimux',
+    --     cond = function() return os.getenv("TMUX") != nil end,
+    -- }
 
     ----------------------------- Notes/Writing -------------------------------
     use {
@@ -170,9 +183,9 @@ return require('packer').startup(function()
         'sheerun/vim-polyglot',
         -- disable on some filetypes where there are other plugins running
         setup = function()
-            vim.g.polyglot_disabled = {'markdown', 'latex', 'pest'}
-            vim.g.python_highlight_space_errors = 0
+            vim.g.polyglot_disabled = {'markdown', 'latex', 'pest', 'lua'}
         end,
+        config = function() vim.g.python_highlight_space_errors = 0 end,
     }
 
     -- markdown mode

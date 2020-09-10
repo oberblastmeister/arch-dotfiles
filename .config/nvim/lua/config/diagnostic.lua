@@ -2,6 +2,7 @@ local function setup()
     vim.g.diagnostic_insert_delay = 1
     vim.g.diagnostic_show_sign = 1
     vim.g.diagnostic_enable_virtual_text = 0
+    vim.g.diagnostic_virtual_text_prefix = ' '
 
     vim.fn.sign_define("LspDiagnosticsErrorSign", {
         text = "✘",

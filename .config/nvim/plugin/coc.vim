@@ -1,4 +1,7 @@
 " Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -8,6 +11,10 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ completion#trigger_completion()
+
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+      \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>CloserClose" :  "\<Plug>CloserClose"
 
 nnoremap <silent> ]g :NextDiagnosticCycle<CR>
 nnoremap <silent> [g :PrevDiagnosticCycle<CR>

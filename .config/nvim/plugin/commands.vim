@@ -10,7 +10,7 @@ endfun
 
 
 " Add `:Format` command to format current buffer.
-command! -nargs=0 Format :lua vim.lsp.buf.formatting_sync()<CR>
+command! -nargs=0 Format lua vim.lsp.buf.formatting_sync()
 
 command! -bang -nargs=? -complete=dir Dotfiles
     \ call fzf#vim#files(

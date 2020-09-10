@@ -1,5 +1,3 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 vim.cmd [[packadd packer.nvim]]
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
 vim._update_package_paths()
@@ -49,7 +47,7 @@ return require('packer').startup(function()
     }
 
     -- functions to manipulate highlight groups
-    use 'wincent/pinnacle'
+    use {'wincent/pinnacle'}
 
     -- colorize hex codes
     use {
@@ -61,35 +59,29 @@ return require('packer').startup(function()
     -- lsp configs
     use {
         'neovim/nvim-lspconfig',
-        config = function() require'config/lsp'.setup() end,
-    }
-
-    -- better syntax highlighting
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        config = function() require'config/treesitter'.setup() end,
-        ft = {'python', 'rust', 'markdown', 'lua'}
+        config = function()
+          require'config/lsp'.setup()
+        end,
     }
 
     -- completion engine
     use {
         'nvim-lua/completion-nvim',
-        event = 'InsertEnter *',
-        config = function()
-            local completion = require'config/completion'
-            completion.config()
-            completion.start()
-        end,
+        config = function() require'config/completion'.config() end,
         requires = {
-            {'hrsh7th/vim-vsnip', event = 'InsertEnter *'},
-            {'hrsh7th/vim-vsnip-integ', event = 'InsertEnter *'},
-            {'steelsojka/completion-buffers', event = 'InsertEnter *'},
-            {
-                'nvim-treesitter/completion-treesitter',
-                event = 'InsertEnter *',
-                requires = 'nvim-treesitter/nvim-treesitter',
-            },
+            {'steelsojka/completion-buffers'},
+            {'hrsh7th/vim-vsnip'},
+            {'hrsh7th/vim-vsnip-integ'},
         }
+    }
+
+    -- lsp tagbar
+    use {
+        'liuchengxu/vista.vim',
+        cmd = 'Vista',
+        config = function()
+            require'config/vista'.setup()
+        end
     }
 
     -- diagnostic wrapper
@@ -100,6 +92,12 @@ return require('packer').startup(function()
 
     use 'nvim-lua/lsp-status.nvim'
 
+    -- better syntax highlighting (load after diagnostics and nvim-lsp)
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        config = function() require'config/treesitter'.setup() end,
+    }
+
     -- debug adapter client
     use {
         'puremourning/vimspector',
@@ -108,15 +106,7 @@ return require('packer').startup(function()
             vim.cmd [[VimspectorInstall]]
         end,
         setup = function() vim.g.vimspector_enable_mappings = 'HUMAN' end,
-    }
-
-    -- lsp tagbar
-    use {
-        'liuchengxu/vista.vim',
-        cmd = 'Vista',
-        config = function()
-            require'config/vista'.setup()
-        end
+        cmd = 'LaunchVimspector'
     }
 
     ----------------------------- Fuzzy Finding ----------------------------------
@@ -172,7 +162,7 @@ return require('packer').startup(function()
         config = function() require'config/switch'.setup() end,
     }
 
-    use {'AndrewRadev/splitjoin.vim', ft = {'python', 'rust', 'vim'}}
+    use 'AndrewRadev/splitjoin.vim'
 
     use 'junegunn/vim-easy-align'
 

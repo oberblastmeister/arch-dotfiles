@@ -292,7 +292,10 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " ============================================================================
 let g:which_key_map.d = { 'name' : '+debugger' }
 
-nnoremap <silent> <leader>D :call vimspector#Launch()<CR>
+command! -nargs=0 LaunchVimspector call vimspector#Launch()
+
+" nnoremap <silent> <leader>D :call vimspector#Launch()<CR>
+nnoremap <silent> <leader>D :LaunchVimspector<CR>
 let g:which_key_map.D = 'start debugger'
 nnoremap <silent> <leader>dc :call mappings#configure_debugger()<CR>
 let g:which_key_map.d.c = 'configure debugger'

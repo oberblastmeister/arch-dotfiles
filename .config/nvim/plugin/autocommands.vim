@@ -10,7 +10,7 @@ augroup settings
 
   autocmd VimResized * wincmd =
 
-  " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
+  autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 
   " highlighted yank
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=300}

@@ -1,21 +1,6 @@
 " ============================================================================
 " Settings {{{
 " ============================================================================
-if has('termguicolors')
-  set termguicolors
-
-  au! InsertEnter * ++once lua require'colorizer'.setup()
-endif
-
-fun! SetupColorizer()
-  if exists("loaded_colorizer")
-    lua require'colorizer'.setup()
-  endif
-endfun
-
-colorscheme gruvbox
-set background=dark
-
 set number relativenumber
 set cursorline
 set smartindent
@@ -86,12 +71,12 @@ set completeopt=menuone,noinsert,noselect
 " ============================================================================
 " make ~ for new lines be same color as background so they are not seen
 highlight EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-" remove status line for press enter to continue msgs
+" " remove status line for press enter to continue msgs
 highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 highlight! CursorLineNr ctermbg=bg guibg=bg
 hi! FloatermBorder guifg=#928374
 
-" make sign column same as background, but keep highlight of virtual text
+" " make sign column same as background, but keep highlight of virtual text
 hi CocErrorVirtualText guibg=#3c3836 guifg=#fb4934
 hi LspDiagnosticsErrorSign guifg=#fb4934
 hi CocHintVirtualText guibg=#3c3836 guifg=#83a598
@@ -99,5 +84,5 @@ hi LspDiagnosticsHintSign guifg=#83a598
 hi CocRustChainingHint guibg=#3c3836 guifg=#83a598
 hi CocWarningVirtualText guibg=#3c3836 guifg=#fe8019
 hi CocCursorRange guibg=#d3869b guifg=#282828
-" set fillchars+=vert:\
+set fillchars+=vert:\
 " }}}

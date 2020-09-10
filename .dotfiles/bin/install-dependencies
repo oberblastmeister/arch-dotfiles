@@ -15,9 +15,13 @@ packages=(
 
     # audio
     pulseaudio
+    pulseaudio-alsa
+    pulseaudio-bluetooth
     pulsemixer
     pamixer
     alsa-utils # includes alsamixer
+
+    blueman
 
     dunst
     gnome-keyring

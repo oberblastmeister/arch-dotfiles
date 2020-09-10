@@ -48,6 +48,7 @@ redshift &
 xfce4-power-manager &
 udiskie --tray &
 nm-applet &
+blueman-applet &
 
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------

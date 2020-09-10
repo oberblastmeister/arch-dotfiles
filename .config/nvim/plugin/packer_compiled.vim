@@ -118,6 +118,13 @@ local plugins = {
     only_setup = true,
     path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vim-polyglot"
   },
+  ["vim-startuptime"] = {
+    commands = { "StartupTime" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/brian/.local/share/nvim/site/pack/packer/opt/vim-startuptime"
+  },
   ["vim-test"] = {
     loaded = false,
     only_sequence = false,
@@ -312,9 +319,10 @@ endfunction
 
 " Command lazy-loads
 command! -nargs=* -range -bang -complete=file Codi call s:load(['codi.vim'], { "cmd": "Codi", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file StartupTime call s:load(['vim-startuptime'], { "cmd": "StartupTime", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file UndotreeToggle call s:load(['undotree'], { "cmd": "UndotreeToggle", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file Vista call s:load(['vista.vim'], { "cmd": "Vista", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
-command! -nargs=* -range -bang -complete=file Goyo call s:load(['goyo.vim', 'limelight.vim'], { "cmd": "Goyo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
+command! -nargs=* -range -bang -complete=file Goyo call s:load(['limelight.vim', 'goyo.vim'], { "cmd": "Goyo", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file VimwikiIndex call s:load(['vimwiki'], { "cmd": "VimwikiIndex", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file VimBeGood call s:load(['vim-be-good'], { "cmd": "VimBeGood", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 command! -nargs=* -range -bang -complete=file NV call s:load(['notational-fzf-vim'], { "cmd": "NV", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
@@ -325,7 +333,7 @@ augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
   au FileType lua ++once call s:load(['BetterLua.vim'], { "ft": "lua" })
-  au FileType html ++once call s:load(['emmet-vim', 'vim-closetag', 'bracey.vim'], { "ft": "html" })
+  au FileType html ++once call s:load(['vim-closetag', 'emmet-vim', 'bracey.vim'], { "ft": "html" })
   au FileType latex ++once call s:load(['vimtex'], { "ft": "latex" })
   au FileType pest ++once call s:load(['pest.vim'], { "ft": "pest" })
   au FileType javascript ++once call s:load(['emmet-vim', 'bracey.vim'], { "ft": "javascript" })

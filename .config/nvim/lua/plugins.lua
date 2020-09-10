@@ -97,6 +97,8 @@ return require('packer').startup(function()
     -- practice vim
     use {'ThePrimeagen/vim-be-good', cmd = 'VimBeGood'}
 
+    use {'dstein64/vim-startuptime', cmd = 'StartupTime'}
+
     ----------------------------- Editing -------------------------------------
     use 'tpope/vim-commentary'
 

@@ -76,7 +76,7 @@ return require('packer').startup(function()
         },
     }
 
-    use 'liuchengxu/vim-which-key'
+    -- use 'liuchengxu/vim-which-key'
 
     -- debug adapter client
     use {

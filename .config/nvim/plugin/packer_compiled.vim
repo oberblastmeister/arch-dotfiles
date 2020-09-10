@@ -297,21 +297,21 @@ _packer_load = function(names, cause)
 end
 
 -- Pre-load configuration
--- Setup for: vim-polyglot
-loadstring("\27LJ\2\2O\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\5\0\0\rmarkdown\nlatex\tpest\blua\22polyglot_disabled\6g\bvim\0")()
-vim.cmd("packadd vim-polyglot")
 -- Setup for: vimspector
 loadstring("\27LJ\2\2B\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\nHUMAN\31vimspector_enable_mappings\6g\bvim\0")()
 vim.cmd("packadd vimspector")
+-- Setup for: vim-polyglot
+loadstring("\27LJ\2\2O\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\5\0\0\rmarkdown\nlatex\tpest\blua\22polyglot_disabled\6g\bvim\0")()
+vim.cmd("packadd vim-polyglot")
 -- Post-load configuration
--- Config for: vim-sandwich
-loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
--- Config for: gruvbox
-loadstring("\27LJ\2\2Y\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0'\1\5\0=\1\4\0K\0\1\0\tdark\15background\6o\24colorscheme gruvbox\bcmd\bvim\0")()
--- Config for: nvim-colorizer.lua
-loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
 -- Config for: nvim-lspconfig
 loadstring("\27LJ\2\0028\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config/lsp\frequire\0")()
+-- Config for: gruvbox
+loadstring("\27LJ\2\2Y\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0'\1\5\0=\1\4\0K\0\1\0\tdark\15background\6o\24colorscheme gruvbox\bcmd\bvim\0")()
+-- Config for: vim-sandwich
+loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
+-- Config for: nvim-colorizer.lua
+loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
 -- Config for: diagnostic-nvim
 loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/diagnostic\frequire\0")()
 -- Conditional loads
@@ -353,5 +353,5 @@ augroup packer_load_aucmds
   au FileType python ++once call s:load(['nvim-treesitter', 'splitjoin.vim', 'vim-test'], { "ft": "python" })
   au FileType plaintex ++once call s:load(['vimtex'], { "ft": "plaintex" })
   " Event lazy-loads
-  au InsertEnter * ++once call s:load(['vim-vsnip', 'vim-vsnip-integ', 'completion-nvim', 'completion-buffers'], { "event": "InsertEnter *" })
+  au InsertEnter * ++once call s:load(['vim-vsnip', 'completion-nvim', 'vim-vsnip-integ', 'completion-buffers'], { "event": "InsertEnter *" })
 augroup END

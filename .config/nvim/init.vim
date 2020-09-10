@@ -149,19 +149,7 @@ cnoremap jk <C-c>
 let g:mapleader="\<Space>"
 let g:maplocalleader="\\"
 
-" whichkey leader mappings
-" call which_key#register('<Space>', "g:which_key_map")
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-
-" whichkey localleader mappings
-nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
-vnoremap <silent> <localleader> :<c-u>WhichKeyVisual  '\'<CR>
-
-" set global whichkey dict
 let g:which_key_map = {}
-" let g:which_key_fallback_to_native_key=1
-let g:which_key_map['name'] = 'root'
 
 if has('nvim')
   tnoremap <C-o> <C-\><C-n>
@@ -177,8 +165,3 @@ omap <Leader>c  <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 " }}}
-
-call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
-call sign_define("LspDiagnosticsWarningSign", {"text" : "🛆", "texthl" : "LspDiagnosticsWarning"})
-call sign_define("LspDiagnosticsInformationSign", {"text" : "●", "texthl" : "LspDiagnosticsInformation"})
-call sign_define("LspDiagnosticsHintSign", {"text" : "○", "texthl" : "LspDiagnosticsHint"})

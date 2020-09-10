@@ -2,7 +2,13 @@
 " Regular {{{
 " ============================================================================
 " nnoremap <silent> <leader><space> <C-^>
-nnoremap <silent> <leader>w :write<CR>
+function! Write()
+  write
+  edit
+  TSBufEnable highlight
+endfunction
+
+nnoremap <silent> <leader>w :call Write()<CR>
 nnoremap <silent> <leader>x :xit<CR>
 nnoremap <silent> <leader>o :call zoom#toggle()<CR>
 nnoremap <leader>q :quit<CR>

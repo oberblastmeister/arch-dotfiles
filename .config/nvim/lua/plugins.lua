@@ -41,6 +41,11 @@ return require('packer').startup(function()
     }
 
     use {
+        'nvim-treesitter/nvim-treesitter',
+        config = function() require'config/treesitter'.setup() end,
+    }
+
+    use {
         'nvim-lua/completion-nvim',
         event = 'InsertEnter *',
         config = function()

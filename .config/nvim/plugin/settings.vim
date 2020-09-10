@@ -10,6 +10,11 @@ set inccommand=nosplit
 set noshowmode
 set noshowcmd
 set foldmethod=syntax
+
+" treesitter folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 set foldlevelstart=99
 set timeoutlen=800
 set ttimeoutlen=20

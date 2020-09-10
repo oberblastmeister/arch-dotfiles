@@ -297,14 +297,16 @@ vim.cmd("packadd vim-polyglot")
 loadstring("\27LJ\2\2B\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\nHUMAN\31vimspector_enable_mappings\6g\bvim\0")()
 vim.cmd("packadd vimspector")
 -- Post-load configuration
--- Config for: nvim-colorizer.lua
-loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
--- Config for: vim-sandwich
-loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
 -- Config for: nvim-lspconfig
-loadstring("\27LJ\2\2é\1\0\0\4\0\v\0%6\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0005\1\6\0006\2\0\0'\3\4\0B\2\2\0029\2\5\2=\2\5\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\a\0009\0\3\0005\1\b\0006\2\0\0'\3\4\0B\2\2\0029\2\5\2=\2\5\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\t\0009\0\3\0005\1\n\0006\2\0\0'\3\4\0B\2\2\0029\2\5\2=\2\5\1B\0\2\1K\0\1\0\1\0\0\nvimls\1\0\0\tpyls\1\0\0\14on_attach\15diagnostic\nsetup\18rust_analyzer\rnvim_lsp\frequire\0")()
+loadstring("\27LJ\2\0028\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config/lsp\frequire\0")()
 -- Config for: gruvbox
 loadstring("\27LJ\2\2Y\0\0\2\0\6\0\t6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0'\1\5\0=\1\4\0K\0\1\0\tdark\15background\6o\24colorscheme gruvbox\bcmd\bvim\0")()
+-- Config for: nvim-colorizer.lua
+loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
+-- Config for: diagnostic-nvim
+loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/diagnostic\frequire\0")()
+-- Config for: vim-sandwich
+loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
 -- Conditional loads
 vim._update_package_paths()
 END

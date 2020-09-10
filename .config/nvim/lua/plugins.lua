@@ -37,18 +37,14 @@ return require('packer').startup(function()
     ----------------------------- Important ----------------------------------
     use {
         'neovim/nvim-lspconfig',
-        config = function()   
-            require'nvim_lsp'.rust_analyzer.setup{on_attach=require'diagnostic'.on_attach}
-            require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
-            require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
-        end,
+        config = function() require'config/lsp'.setup() end,
     }
 
     use {
         'nvim-lua/completion-nvim',
         event = 'InsertEnter *',
         config = function()
-            local completion = require('config/completion')
+            local completion = require'config/completion'
             completion.config()
             completion.start()
         end,
@@ -59,13 +55,20 @@ return require('packer').startup(function()
         }
     }
 
-    use 'nvim-lua/diagnostic-nvim'
+    use {
+        'nvim-lua/diagnostic-nvim',
+        config = function() require'config/diagnostic'.setup() end,
+    }
 
     use 'nvim-lua/lsp-status.nvim'
 
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-lua/telescope.nvim'
+    use {
+        'nvim-lua/telescope.nvim',
+        requires = {
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+        },
+    }
 
     use 'liuchengxu/vim-which-key'
 

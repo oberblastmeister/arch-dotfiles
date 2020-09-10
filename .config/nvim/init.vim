@@ -143,7 +143,7 @@ let g:vimwiki_global_ext = 0
 " ============================================================================
 " Sandwhich {{{
 " ============================================================================
-" runtime macros/sandwich/keymap/surround.vim
+runtime macros/sandwich/keymap/surround.vim
 
 " " copy the default recipes
 " let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)

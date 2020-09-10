@@ -5,6 +5,7 @@ vim.cmd [[packadd packer.nvim]]
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
 vim._update_package_paths()
 
+-- packer throws error if is not on
 vim.cmd [[set termguicolors]]
 
 return require('packer').startup(function()
@@ -45,12 +46,16 @@ return require('packer').startup(function()
 
     use {
         'nvim-lua/completion-nvim',
-        config = function() require'completion'.on_attach() end,
+        config = function()
+            vim.cmd [[autocmd! BufEnter * lua require'completion'.on_attach()]]
+        end,
     }
 
     use {
         'nvim-lua/diagnostic-nvim',
-        config = function() require'diagnostic'.on_attach() end,
+        config = function()
+            vim.cmd [[autocmd! BufEnter * lua require'diagnostics'.on_attach()]]
+        end
     }
 
     use 'steelsojka/completion-buffers'
@@ -84,14 +89,21 @@ return require('packer').startup(function()
 
     use 'liuchengxu/vista.vim'
 
+    -- auto nohl
     use 'romainl/vim-cool'
 
-    use 'ThePrimeagen/vim-be-good'
+    -- practice vim
+    use {'ThePrimeagen/vim-be-good', cmd = 'VimBeGood'}
 
     ----------------------------- Editing -------------------------------------
     use 'tpope/vim-commentary'
 
-    use 'machakann/vim-sandwich'
+    use {
+        'machakann/vim-sandwich',
+        config = vim.cmd [[runtime macros/sandwich/keymap/surround.vim]],
+    }
+
+    -- use '~/.local/share/nvim/site/pack/packer/start/macros/sandwich/keymap/surround.vim'
 
     use 'tpope/vim-repeat'
 

@@ -76,8 +76,6 @@ return require('packer').startup(function()
         },
     }
 
-    -- use 'liuchengxu/vim-which-key'
-
     -- debug adapter client
     use {
         'puremourning/vimspector',

@@ -23,7 +23,8 @@ if not packer_exists then
   print(out)
   print("Downloading packer.nvim...")
 
-  return
+  -- return
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- packer throws error if is not on
@@ -79,6 +80,9 @@ return require('packer').startup(function()
         config = function() require'colorizer'.setup() end,
     }
 
+    -- icons
+    use 'ryanoasis/vim-devicons'
+
     ----------------------------- LSP/Treesitter/DAP ----------------------------------
     -- lsp configs
     use {
@@ -87,23 +91,6 @@ return require('packer').startup(function()
         config = function()
           require'config/lsp'.setup()
         end,
-    }
-
-    -- completion engine
-    use {
-        'nvim-lua/completion-nvim',
-        config = function() require'config/completion'.config() end,
-        requires = {
-            {'steelsojka/completion-buffers'},
-            {
-                'SirVer/ultisnips',
-                config = function() require'config/ultisnips'.setup() end
-            },
-            {'honza/vim-snippets'},
-            {'hrsh7th/vim-vsnip'},
-            {'hrsh7th/vim-vsnip-integ'},
-        },
-        disable = false,
     }
 
     -- deoplete completion engine
@@ -145,6 +132,24 @@ return require('packer').startup(function()
         'nvim-treesitter/nvim-treesitter',
         config = function() require'config/treesitter'.setup() end,
     }
+
+    -- completion engine
+    use {
+        'nvim-lua/completion-nvim',
+        config = function() require'config/completion'.config() end,
+        requires = {
+            {'steelsojka/completion-buffers'},
+            {
+                'SirVer/ultisnips',
+                config = function() require'config/ultisnips'.setup() end
+            },
+            'honza/vim-snippets',
+            'hrsh7th/vim-vsnip',
+            'hrsh7th/vim-vsnip-integ',
+        },
+        disable = false,
+    }
+
 
     -- debug adapter client
     use {
@@ -264,9 +269,15 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
 
     ----------------------------- Tmux ----------------------------------------
-    use {'christoomey/vim-tmux-navigator'}
+    use {
+      'christoomey/vim-tmux-navigator',
+      cond = function() return os.getenv('TMUX') ~= nil end,
+    }
 
-    use {'benmills/vimux'}
+    use {
+      'benmills/vimux',
+      cond = function() return os.getenv('TMUX') ~= nil end,
+    }
 
     ----------------------------- Notes/Writing -------------------------------
     use {

@@ -1,6 +1,30 @@
-vim.cmd [[packadd packer.nvim]]
--- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
-vim._update_package_paths()
+-- Only required if you have packer in your `opt` pack
+local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+
+if not packer_exists then
+  -- TODO: Maybe handle windows better?
+  if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
+    return
+  end
+
+  local directory = string.format(
+    '%s/site/pack/packer/opt/',
+    vim.fn.stdpath('data')
+  )
+
+  vim.fn.mkdir(directory, 'p')
+
+  local out = vim.fn.system(string.format(
+    'git clone %s %s',
+    'https://github.com/wbthomason/packer.nvim',
+    directory .. '/packer.nvim'
+  ))
+
+  print(out)
+  print("Downloading packer.nvim...")
+
+  return
+end
 
 -- packer throws error if is not on
 vim.o.termguicolors = true
@@ -47,7 +71,7 @@ return require('packer').startup(function()
     }
 
     -- functions to manipulate highlight groups
-    use {'wincent/pinnacle'}
+    use 'wincent/pinnacle'
 
     -- colorize hex codes
     use {
@@ -112,6 +136,7 @@ return require('packer').startup(function()
         config = function() require'config/diagnostic'.setup() end,
     }
 
+    -- lsp status wrapper
     use 'nvim-lua/lsp-status.nvim'
 
     -- better syntax highlighting (load after diagnostics and nvim-lsp)

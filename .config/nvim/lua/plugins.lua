@@ -39,7 +39,7 @@ return require('packer').startup(function()
   -- let packer optionally manage itself
   use {'wbthomason/packer.nvim', opt = true}
 
-  -- local use function
+  -- get the full path from the short name
   local function get_path(name)
     local path
     if vim.fn.isdirectory(vim.fn.expand("~/plugins/" .. name)) == 1 then
@@ -50,22 +50,29 @@ return require('packer').startup(function()
     return path
   end
 
+  -- local use function
   local function local_use(options)
     options[1] = get_path(options[1])
 
     use(options)
   end
 
-  local function rtp_use(name)
-    get_path(name)
+  -- use plugin without copying it to nvim/site
+  local function rtp_use(options)
+    local path = get_path(options[1])
+    -- add the new path to the runtime path
+    vim.cmd('set rtp+=' .. path)
+
+    -- call the config function
+    if options["config"] ~= nil then
+      options["config"]()
+    end
   end
 
-  -- local function rtp_use(name
-
   ----------------------------- Local Plugins --------------------------------------
-  local_use {
+  rtp_use {
     'highlighter.nvim',
-    config = function() require'highlighter'.setup() end,
+    -- config = function() require'highlighter'.setup() end,
   }
 
   ----------------------------- Looks --------------------------------------

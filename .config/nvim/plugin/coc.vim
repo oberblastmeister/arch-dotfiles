@@ -14,7 +14,7 @@ inoremap <silent><expr> <TAB>
 
 " let g:completion_confirm_key = ""
 " imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
-"       \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+"                  \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
 nnoremap <silent> ]g :NextDiagnosticCycle<CR>
 nnoremap <silent> [g :PrevDiagnosticCycle<CR>
@@ -30,7 +30,8 @@ nnoremap <silent> gy   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+" use treesitter
+" nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>
 
 " autocmd CursorHold * lua vim.lsp.buf.document_highlight()

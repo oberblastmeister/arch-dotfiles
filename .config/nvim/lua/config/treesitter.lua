@@ -8,10 +8,10 @@ local function setup()
         incremental_selection = {
             enable = true,
             keymaps = {
-                init_selection = "gnn",
-                node_incremental = "grn",
-                scope_incremental = "grc",
-                node_decremental = "grm",
+                init_selection = "<BS>",
+                node_incremental = "<BS>",
+                scope_incremental = "<c-s>",
+                node_decremental = "<A-BS>",
             },
         },
         refactor = {
@@ -20,16 +20,16 @@ local function setup()
             smart_rename = {
                 enable = true,
                 keymaps = {
-                    smart_rename = "grr",
+                    smart_rename = "<leader>rn",
                 },
             },
             navigation = {
                 enable = true,
                 keymaps = {
-                    goto_definition = "gnd",
-                    list_definitions = "gnD",
-                    goto_next_usage = "<c-*>",
-                    goto_previous_usage = "<c-#>",
+                    goto_definition = "<c-\\>",
+                    -- list_definitions = "gnD",
+                    goto_next_usage = "]t",
+                    goto_previous_usage = "[t",
                 },
             },
         },

@@ -83,6 +83,7 @@ return require('packer').startup(function()
     -- lsp configs
     use {
         'neovim/nvim-lspconfig',
+        run = function() vim.cmd [[TSInstall all]] end,
         config = function()
           require'config/lsp'.setup()
         end,

@@ -23,8 +23,7 @@ if not packer_exists then
   print(out)
   print("Downloading packer.nvim...")
 
-  -- return
-  vim.cmd [[packadd packer.nvim]]
+  return
 end
 
 -- packer throws error if is not on
@@ -44,11 +43,7 @@ return require('packer').startup(function()
     -- colorscheme
     use {
         'morhetz/gruvbox',
-        config = function()
-            vim.cmd [[colorscheme gruvbox]]
-            vim.g.gruvbox_sign_column='bg0'
-            vim.o.background = 'dark'
-        end,
+        config = function() require'config/colorscheme'.setup() end,
     }
 
     -- indent lines

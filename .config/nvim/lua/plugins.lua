@@ -200,7 +200,8 @@ return require('packer').startup(function()
     -- auto end statements
     use {
         'tpope/vim-endwise',
-        ft = {'vim', 'lua', 'ruby'}
+        ft = {'vim', 'lua', 'ruby'},
+        disable = true,
     }
 
     use 'tpope/vim-repeat'

@@ -318,3 +318,6 @@ let g:which_key_map.s = 'substitue word under cursor'
 
 " vista
 " nnoremap <leader>v :Vista!!<CR>
+
+" vimwiki
+nnoremap <leader>nw <cmd>VimwikiIndex<CR>

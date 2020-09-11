@@ -1,6 +1,7 @@
 local function config()
     vim.g.completion_auto_change_source = 1
-    vim.g.completion_enable_snippet = 'vim-vsnip'
+    vim.g.completion_enable_snippet = 'UltiSnips'
+    vim.g.UltiSnipsExpandTrigger="<c-l>"
     vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
     vim.g.completion_timer_cycle = 150
 

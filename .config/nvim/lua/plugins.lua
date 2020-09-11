@@ -70,6 +70,8 @@ return require('packer').startup(function()
         config = function() require'config/completion'.config() end,
         requires = {
             {'steelsojka/completion-buffers'},
+            {'SirVer/ultisnips'},
+            {'honza/vim-snippets'},
             {'hrsh7th/vim-vsnip'},
             {'hrsh7th/vim-vsnip-integ'},
         }

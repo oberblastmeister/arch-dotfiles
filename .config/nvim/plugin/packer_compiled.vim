@@ -289,26 +289,28 @@ vim.cmd("packadd vim-polyglot")
 -- Setup for: vimspector
 loadstring("\27LJ\2\2B\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\nHUMAN\31vimspector_enable_mappings\6g\bvim\0")()
 -- Post-load configuration
--- Config for: nvim-treesitter
-loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/treesitter\frequire\0")()
+-- Config for: vim-sandwich
+loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
 -- Config for: completion-nvim
 loadstring("\27LJ\2\2@\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\22config/completion\frequire\0")()
--- Config for: nvim-colorizer.lua
-loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
+-- Config for: gruvbox
+loadstring("\27LJ\2\2ƒ\1\0\0\2\0\t\0\r6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0'\1\5\0=\1\4\0006\0\0\0009\0\6\0'\1\b\0=\1\a\0K\0\1\0\tdark\15background\6o\bbg0\24gruvbox_sign_column\6g\24colorscheme gruvbox\bcmd\bvim\0")()
 -- Config for: indentLine
 loadstring("\27LJ\2\2J\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\2\0\0\14dashboard\31indentLine_fileTypeExclude\6g\bvim\0")()
 -- Config for: lightline.vim
 loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/lightline\frequire\0")()
 -- Config for: diagnostic-nvim
 loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/diagnostic\frequire\0")()
--- Config for: switch.vim
-loadstring("\27LJ\2\2;\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18config/switch\frequire\0")()
 -- Config for: nvim-lspconfig
 loadstring("\27LJ\2\0028\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config/lsp\frequire\0")()
--- Config for: vim-sandwich
-loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/sandwhich\frequire\0")()
--- Config for: gruvbox
-loadstring("\27LJ\2\2ƒ\1\0\0\2\0\t\0\r6\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0'\1\5\0=\1\4\0006\0\0\0009\0\6\0'\1\b\0=\1\a\0K\0\1\0\tdark\15background\6o\bbg0\24gruvbox_sign_column\6g\24colorscheme gruvbox\bcmd\bvim\0")()
+-- Config for: switch.vim
+loadstring("\27LJ\2\2;\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18config/switch\frequire\0")()
+-- Config for: nvim-treesitter
+loadstring("\27LJ\2\2?\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/treesitter\frequire\0")()
+-- Config for: ultisnips
+loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/ultisnips\frequire\0")()
+-- Config for: nvim-colorizer.lua
+loadstring("\27LJ\2\0027\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0")()
 -- Conditional loads
 vim._update_package_paths()
 END

@@ -70,12 +70,32 @@ return require('packer').startup(function()
         config = function() require'config/completion'.config() end,
         requires = {
             {'steelsojka/completion-buffers'},
-            {'SirVer/ultisnips'},
+            {
+                'SirVer/ultisnips',
+                config = function() require'config/ultisnips'.setup() end
+            },
             {'honza/vim-snippets'},
             {'hrsh7th/vim-vsnip'},
             {'hrsh7th/vim-vsnip-integ'},
-        }
+        },
+        disable = false,
     }
+
+    -- deoplete completion engine
+    -- use {
+    --     'Shougo/deoplete.nvim',
+    --     setup = function() vim.cmd [[let g:deoplete#enable_at_startup = 0]] end,
+    --     config = function() require'config/deoplete'.setup() end,
+    --     run = 'UpdateRemotePlugins',
+    --     requires = {
+    --         {'Shougo/deoplete-lsp'},
+    --         {'honza/vim-snippets'},
+    --         {
+    --             'SirVer/ultisnips',
+    --             config = function() require'config/ultisnips'.setup() end,
+    --         },
+    --     }
+    -- }
 
     -- lsp tagbar
     use {
@@ -149,7 +169,7 @@ return require('packer').startup(function()
     }
 
     -- auto close on enter
-    use 'rstacruz/vim-closer'
+    use {'rstacruz/vim-closer', disable = true}
 
     -- auto end statements
     use {

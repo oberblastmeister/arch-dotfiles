@@ -7,15 +7,14 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ completion#trigger_completion()
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ completion#trigger_completion()
 
 " let g:completion_confirm_key = ""
-let g:completion_confirm_key = "\<C-y>"
 " imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
-"       \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Plug>CloserClose" :  "\<Plug>CloserClose"
+"       \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
 nnoremap <silent> ]g :NextDiagnosticCycle<CR>
 nnoremap <silent> [g :PrevDiagnosticCycle<CR>

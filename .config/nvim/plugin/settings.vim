@@ -80,3 +80,15 @@ set completeopt=menuone,noinsert,noselect
 " " make sign column same as background, but keep highlight of virtual text
 " set fillchars+=vert:\
 " }}}
+" execute 'highlight LspDiagnosticsError ' . pinnacle#decorate('italic,underline', 'ModeMsg')
+
+" execute 'highlight LspDiagnosticsHint ' . pinnacle#decorate('bold,italic,underline', 'Type')
+
+" execute 'highlight LspDiagnosticsHintSign ' . pinnacle#extract_highlight('GruvboxRedSign')
+
+" execute 'highlight LspDiagnosticsErrorSign ' . pinnacle#extract_highlight({
+"       \   'bg': pinnacle#extract_bg('ColorColumn'),
+"       \   'fg': pinnacle#extract_fg('GruvboxRedSign'),
+"       \ })
+" highlight! link LspDiagnosticsError GruvboxRed
+" errors

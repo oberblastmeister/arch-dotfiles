@@ -20,6 +20,23 @@ local function setup()
     end
 end
 
+local function install()
+    local installable = {
+        'bashls',
+        'pyls_ms',
+        'sumneko_lua',
+        'vimls',
+        'tsserver',
+        'jsonls',
+        'yamlls',
+    }
+
+    for _, server in ipairs(installable) do
+        vim.cmd('LspInstall ' .. server)
+    end
+end
+
 return {
-    setup = setup
+    setup = setup,
+    install = install,
 }

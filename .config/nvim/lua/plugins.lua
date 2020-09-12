@@ -124,10 +124,8 @@ return require('packer').startup(function()
   -- lsp configs
   use {
     'neovim/nvim-lspconfig',
-    run = function() vim.cmd [[TSInstall all]] end,
-    config = function()
-      require'config/lsp'.setup()
-    end,
+    run = function() require'config/lsp'.install() end,
+    config = function() require'config/lsp'.setup() end,
   }
 
   -- deoplete completion engine
@@ -167,6 +165,7 @@ return require('packer').startup(function()
   -- better syntax highlighting (load after diagnostics and nvim-lsp)
   use {
     'nvim-treesitter/nvim-treesitter',
+    run = function() vim.cmd [[TSInstall all]] end,
     config = function() require'config/treesitter'.setup() end,
   }
 
@@ -238,6 +237,7 @@ return require('packer').startup(function()
 
   -- auto close on enter
   use {'rstacruz/vim-closer', disable = true}
+  use 'jiangmiao/auto-pairs'
 
   -- auto end statements
   use {

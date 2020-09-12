@@ -100,6 +100,7 @@ nnoremap <silent> <leader>zz :call mappings#zap()<CR>
 nnoremap <silent> <leader>zh :so $VIMRUNTIME/syntax/hitest.vim<CR>
 nnoremap <silent> <leader>zg :call VimBeGood()<CR>
 nnoremap <silent> <leader>zv :Vista!!<CR>
+nnoremap <silent> <leader>zd :let g:diagnostic_show_sign = 0<CR>:let g:diagnostic_enable_virtual_text = 0<CR>
 
 let g:which_key_map.z = {
       \ 'name': '+misc',

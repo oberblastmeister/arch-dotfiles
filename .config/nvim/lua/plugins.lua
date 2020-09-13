@@ -301,7 +301,10 @@ return require('packer').startup(function()
 
   ----------------------------- Git -----------------------------------------
   use 'tpope/vim-fugitive'
-  use 'mhinz/vim-signify'
+  use {
+    'mhinz/vim-signify',
+    config = function() require'config/signify'.setup() end,
+  }
 
   ----------------------------- Tmux ----------------------------------------
   use {

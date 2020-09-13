@@ -3,7 +3,6 @@
 " ============================================================================
 nnoremap U :UndotreeToggle<CR>
 
-nnoremap <tab> <c-^>
 nnoremap <s-tab> za
 
 " stop that stupid window from popping up

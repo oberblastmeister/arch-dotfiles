@@ -69,6 +69,7 @@ set signcolumn=yes
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
+set omnifunc=v:lua.vim.lsp.omnifunc
 " }}}
 
 " ============================================================================

@@ -372,5 +372,5 @@ return require('packer').startup(function()
   use {'pest-parser/pest.vim', ft = 'pest'}
 
   -- better lua highlighting
-  use {'euclidianAce/BetterLua.vim', ft = 'lua'}
+  use 'euclidianAce/BetterLua.vim'
 end)

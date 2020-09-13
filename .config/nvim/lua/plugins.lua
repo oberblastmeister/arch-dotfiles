@@ -1,28 +1,38 @@
 -- Only required if you have packer in your `opt` pack
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
-if not packer_exists then
+-- install packer using git
+function InstallPacker()
   -- TODO: Maybe handle windows better?
+  if packer_exists then
+    if vim.fn.input("Packer already exists. Are you sure that you want to download it? (y for yes)") ~= "y" then
+      return
+    end
+  end
+
   if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
     return
   end
 
   local directory = string.format(
-    '%s/site/pack/packer/opt/',
-    vim.fn.stdpath('data')
+  '%s/site/pack/packer/opt/',
+  vim.fn.stdpath('data')
   )
 
   vim.fn.mkdir(directory, 'p')
 
   local out = vim.fn.system(string.format(
-    'git clone %s %s',
-    'https://github.com/wbthomason/packer.nvim',
-    directory .. '/packer.nvim'
+  'git clone %s %s',
+  'https://github.com/wbthomason/packer.nvim',
+  directory .. '/packer.nvim'
   ))
 
   print(out)
   print("Downloading packer.nvim...")
+end
 
+if not packer_exists then
+  InstallPacker()
   return
 end
 
@@ -280,7 +290,7 @@ return require('packer').startup(function()
   -- profile vim
   use {'dstein64/vim-startuptime', cmd = 'StartupTime'}
 
-  use {'andymass/vim-matchup', disable = true}
+  use 'andymass/vim-matchup'
 
   -- file tree
   use {'kyazdani42/nvim-web-devicons', cmd = 'LuaTreeFindFile', disable = true}

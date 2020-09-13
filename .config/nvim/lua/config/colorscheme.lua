@@ -7,7 +7,7 @@ local function setup()
   -- customized colorscheme
   local highlights = {
     'EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg',
-    'StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg',
+    -- 'StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg',
     'CursorLineNr ctermbg=bg guibg=bg',
     'FloatermBorder guifg=#928374',
     'CocErrorVirtualText guibg=#3c3836 guifg=#fb4934',

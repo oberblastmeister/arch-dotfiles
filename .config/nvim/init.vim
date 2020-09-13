@@ -80,4 +80,14 @@ nmap <Leader>c  <Plug>Commentary
 omap <Leader>c  <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
+
+let g:signify_sign_add               = '┃'
+let g:signify_sign_delete            = '┃'
+let g:signify_sign_delete_first_line = '┃'
+let g:signify_sign_change            = '┃'
+" show count
+let g:signify_sign_show_count = 1
+let g:signify_sign_show_text = 1
+let g:signify_disable_by_default = 0
+let g:signify_line_highlight = 0
 " }}}

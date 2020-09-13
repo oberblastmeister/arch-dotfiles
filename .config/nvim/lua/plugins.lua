@@ -128,22 +128,6 @@ return require('packer').startup(function()
     config = function() require'config/lsp'.setup() end,
   }
 
-  -- deoplete completion engine
-  -- use {
-  --     'Shougo/deoplete.nvim',
-  --     setup = function() vim.cmd [[let g:deoplete#enable_at_startup = 0]] end,
-  --     config = function() require'config/deoplete'.setup() end,
-  --     run = 'UpdateRemotePlugins',
-  --     requires = {
-  --         {'Shougo/deoplete-lsp'},
-  --         {'honza/vim-snippets'},
-  --         {
-  --             'SirVer/ultisnips',
-  --             config = function() require'config/ultisnips'.setup() end,
-  --         },
-  --     }
-  -- }
-
   -- lsp tagbar
   use {
     'liuchengxu/vista.vim',
@@ -180,8 +164,9 @@ return require('packer').startup(function()
         config = function() require'config/ultisnips'.setup() end
       },
       'honza/vim-snippets',
-      'hrsh7th/vim-vsnip',
-      'hrsh7th/vim-vsnip-integ',
+      'nvim-treesitter/completion-treesitter',
+      {'hrsh7th/vim-vsnip', disable = true},
+      {'hrsh7th/vim-vsnip-integ', disable = true},
     },
     disable = false,
   }
@@ -295,6 +280,18 @@ return require('packer').startup(function()
   -- profile vim
   use {'dstein64/vim-startuptime', cmd = 'StartupTime'}
 
+  use {'andymass/vim-matchup', disable = true}
+
+  -- file tree
+  use {'kyazdani42/nvim-web-devicons', cmd = 'LuaTreeFindFile', disable = true}
+  use {'kyazdani42/nvim-tree.lua', cmd = 'LuaTreeFindFile', disable = true}
+
+  use {
+    'ms-jpq/chadtree',
+    branch = 'chad',
+    cmd = 'CHADopen',
+    run = ':UpdateRemotePlugins'
+  }
 
   ----------------------------- Text Objects --------------------------------
   use 'kana/vim-textobj-user'
@@ -304,6 +301,7 @@ return require('packer').startup(function()
 
   ----------------------------- Git -----------------------------------------
   use 'tpope/vim-fugitive'
+  use 'mhinz/vim-signify'
 
   ----------------------------- Tmux ----------------------------------------
   use {
@@ -320,7 +318,8 @@ return require('packer').startup(function()
   use {
     'iamcco/markdown-preview.nvim',
     run = ':call mkdp#util#install()',
-    ft = 'markdown'
+    ft = 'markdown',
+    cmd = 'MarkdownPreview',
   }
 
   use {'junegunn/goyo.vim', cmd = 'Goyo'}
@@ -362,3 +361,20 @@ return require('packer').startup(function()
   -- better lua highlighting
   use {'euclidianAce/BetterLua.vim', ft = 'lua'}
 end)
+
+-- deoplete completion engine
+-- use {
+--     'Shougo/deoplete.nvim',
+--     setup = function() vim.cmd [[let g:deoplete#enable_at_startup = 0]] end,
+--     config = function() require'config/deoplete'.setup() end,
+--     run = 'UpdateRemotePlugins',
+--     requires = {
+--         {'Shougo/deoplete-lsp'},
+--         {'honza/vim-snippets'},
+--         {
+--             'SirVer/ultisnips',
+--             config = function() require'config/ultisnips'.setup() end,
+--         },
+--     }
+-- }
+

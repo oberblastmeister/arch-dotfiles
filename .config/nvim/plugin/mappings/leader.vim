@@ -217,23 +217,6 @@ let g:which_key_map.g.p = 'push current head'
 " toggle yadm mapping
 " nnoremap <silent> <leader>gy :call mappings#toggle_yadm()<CR>
 " nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
-
-let g:which_key_map.h = { 'name' : '+hunk' }
-
-nnoremap <silent> <leader>ha :CocCommand git.chunkStage<CR>
-let g:which_key_map.h.a = 'add (stage)'
-
-nnoremap <silent> <leader>hu :CocCommand git.chunkUndo<CR>
-let g:which_key_map.h.u = 'undo'
-
-nnoremap <silent> <leader>hi :CocCommand git.chunkInfo<CR>
-let g:which_key_map.h.i = 'show info'
-
-nnoremap <silent> <leader>hc :CocCommand git.showCommit<CR>
-let g:which_key_map.h.c = 'show commit'
-
-nnoremap <silent> <leader>ho :CocCommand git.browserOpen
-let g:which_key_map.h.o = 'open in browser'
 " }}}
 
 " ============================================================================

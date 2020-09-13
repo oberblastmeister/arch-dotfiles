@@ -42,6 +42,8 @@ function! mappings#run_code()
     call VimuxRunCommand("clear; go " . bufname("%"))
   elseif &filetype == 'r'
     call VimuxRunCommand("clear; rscript " . bufname("%"))
+  elseif &filetype == 'lua'
+    call VimuxRunCommand("clear; luajit " . bufname("%"))
   endif
 endfunction
 

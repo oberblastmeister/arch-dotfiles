@@ -71,12 +71,17 @@ nnoremap <silent> _ :exe "FloatermNew lf " . getcwd()<CR>
 " Chunk {{{
 " ============================================================================
 " jump chunk and add position to jumplist
-nmap <silent> [h :silent execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
-nmap <silent> ]h :silent execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
+" nmap <silent> [h :silent execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
+" nmap <silent> ]h :silent execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
+
+nmap <silent> ]h <plug>(signify-next-hunk)
+nmap <silent> [h <plug>(signify-prev-hunk)
+nmap <silent> [H 9999<leader>[h
+nmap <silent> ]H 9999<leader>]h
 
 " chunk text objects
-omap ih <Plug>(coc-git-chunk-inner)
-xmap ih <Plug>(coc-git-chunk-inner)
-omap ah <Plug>(coc-git-chunk-outer)
-xmap ah <Plug>(coc-git-chunk-outer)
+omap ih <plug>(signify-motion-inner-pending)
+xmap ih <plug>(signify-motion-inner-visual)
+omap ah <plug>(signify-motion-outer-pending)
+xmap ah <plug>(signify-motion-outer-visual)
 " }}}

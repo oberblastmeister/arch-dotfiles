@@ -3,7 +3,6 @@ local function setup()
     local diagnostic = require'diagnostic'
 
     local defaults = {
-        'rust_analyzer',
         'pyls_ms',
         'vimls',
         'sumneko_lua',
@@ -18,6 +17,17 @@ local function setup()
     for _, default in ipairs(defaults) do
         lsp[default].setup{on_attach=diagnostic.on_attach}
     end
+
+    lsp.rust_analyzer.setup {
+        settings = {
+            ["rust-analyzer"] = {
+                completion = {
+                    addCallArgumentSnippets = false,
+                    addCallParenthesis = true,
+                }
+            }
+        }
+    }
 end
 
 local function install()

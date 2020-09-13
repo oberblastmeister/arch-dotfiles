@@ -21,7 +21,7 @@ nnoremap <silent> <c-b> :nohl<CR>:Buffers<CR>
 nnoremap <silent> <c-n> :nohl<CR>:NV<CR>
 
 nnoremap <silent> <leader>. :nohl<CR>:cd ~<CR>:Dotfiles<CR>
-nnoremap <silent> <leader>H :Help<CR>
+nnoremap <silent> <leader>H :nohl<CR>:Help<CR>
 nnoremap <silent> <leader>/ :nohl<CR>:BLines<CR>
 nnoremap <silent> <leader>? :nohl<CR>:Lines<CR>
 nnoremap <silent> <leader>e :CocFzfList diagnostics<CR>

@@ -1,52 +1,58 @@
-local function setup()
-    local lsp = require'nvim_lsp'
-    local diagnostic = require'diagnostic'
+local lsp = require'nvim_lsp'
+local diagnostic = require'diagnostic'
+local lsp_status = require'lsp-status'
 
-    local defaults = {
-        'pyls_ms',
-        'vimls',
-        'sumneko_lua',
-        'jsonls',
-        'yamlls',
-        'gopls',
-        'tsserver',
-        'texlab',
-        'bashls',
-    }
+local function on_attach()
+  diagnostic.on_attach()
+end
 
-    for _, default in ipairs(defaults) do
-        lsp[default].setup{on_attach=diagnostic.on_attach}
-    end
-
-    lsp.rust_analyzer.setup {
-        settings = {
-            ["rust-analyzer"] = {
-                completion = {
-                    addCallArgumentSnippets = false,
-                    addCallParenthesis = true,
-                }
-            }
+-- a table of lsp servers and their configs
+local servers = {
+  pyls_ms = {},
+  vimls = {},
+  sumneko_lua = {},
+  jsonls = {},
+  yamlls = {},
+  gopls = {},
+  tsserver = {},
+  texlab = {},
+  bashls = {},
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        completion = {
+          addCallArgumentSnippets = false,
+          addCallParenthesis = false,
         }
+      }
     }
+  }
+}
+
+-- each server will always attach diagnostic
+local default_config = {
+  on_attach=on_attach,
+}
+
+local function table_merge(t1, t2)
+  for k, v in pairs(t2) do t1[k] = v end
+end
+
+local function setup()
+  for server, config in pairs(servers) do
+    table_merge(config, default_config)
+    lsp[server].setup(config)
+  end
 end
 
 local function install()
-    local installable = {
-        'bashls',
-        'pyls_ms',
-        'sumneko_lua',
-        'vimls',
-        'tsserver',
-        'jsonls',
-        'yamlls',
-    }
-
-    for _, server in ipairs(installable) do
-        vim.cmd('LspInstall ' .. server)
-    end
+  print('installing lsp servers')
+  for server, _ in pairs(servers) do
+    vim.cmd('LspInstall ' .. server)
+  end
 end
 
 return {
-    setup = setup,
-    install = install,
+  setup = setup,
+  install = install,
 }

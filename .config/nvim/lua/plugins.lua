@@ -124,7 +124,7 @@ return require('packer').startup(function()
   -- lsp configs
   use {
     'neovim/nvim-lspconfig',
-    run = function() require'config/lsp'.install() end,
+    -- run = function() require'config/lsp'.install() end,
     config = function() require'config/lsp'.setup() end,
   }
 
@@ -364,20 +364,3 @@ return require('packer').startup(function()
   -- better lua highlighting
   use {'euclidianAce/BetterLua.vim', ft = 'lua'}
 end)
-
--- deoplete completion engine
--- use {
---     'Shougo/deoplete.nvim',
---     setup = function() vim.cmd [[let g:deoplete#enable_at_startup = 0]] end,
---     config = function() require'config/deoplete'.setup() end,
---     run = 'UpdateRemotePlugins',
---     requires = {
---         {'Shougo/deoplete-lsp'},
---         {'honza/vim-snippets'},
---         {
---             'SirVer/ultisnips',
---             config = function() require'config/ultisnips'.setup() end,
---         },
---     }
--- }
-

@@ -122,6 +122,20 @@ aur_packages=(
     betterlockscreen
 )
 
+language_servers=(
+    lua-language-server-git
+    microsoft-python-language-server
+    typescript-language-server-bin
+    vscode-json-languageserver-bin
+    yaml-language-server-bin
+    gopls
+
+    # non aur
+    texlab
+    rust-analyzer
+    bash-language-server
+)
+
 for package in ${aur_packages[@]}; do
     yay -S $package
 done

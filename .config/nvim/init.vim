@@ -214,6 +214,7 @@ Plug 'sickill/vim-pasta'
 Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
   let g:rooter_change_directory_for_non_project_files = 'current'
+  let g:rooter_patterns = ['*.toml']
 
 " Plug 'wesQ3/vim-windowswap'
 "   let g:windowswap_map_keys = 0
@@ -227,6 +228,7 @@ Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
 " ----------------------------- Text Objects --------------------------------
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
+Plug 'glts/vim-textobj-comment'
 Plug 'wellle/targets.vim'
 
 " ----------------------------- Git -----------------------------------------
@@ -275,13 +277,14 @@ Plug 'alvan/vim-closetag', { 'for': 'html' }
 Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server', 'for': ['html', 'css', 'javascript'] }
 
 " ----------------------------- Language Specific --------------------------
-  let g:polyglot_disabled = ['markdown', 'latex', 'pest']
+  let g:polyglot_disabled = ['markdown', 'latex', 'pest', 'zsh']
 Plug 'sheerun/vim-polyglot'
   let g:python_highlight_space_errors = 0
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'lervag/vimtex', { 'for': ['plaintex', 'latex'] }
-Plug 'pest-parser/pest.vim', { 'for': ['pest'] }
+Plug 'pest-parser/pest.vim', { 'for': 'pest' }
+Plug 'chrisbra/vim-zsh', { 'for': 'zsh' }
 
 " considering
 "Plug 'junegunn/vim-after-object'

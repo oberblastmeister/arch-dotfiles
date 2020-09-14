@@ -1,6 +1,14 @@
 # Font configuration (changes require restart)
 font:
+  {% if yadm.class == "Desktop" %}
+
+  font_size 12.0
+
+  {% else %}
+
   size: 7.5
+
+  {% endif %}
 
   # The normal (roman) font face to use.
   normal:

@@ -2,11 +2,18 @@ local nvim_lsp = require'nvim_lsp'
 local diagnostic = require'diagnostic'
 local lsp_status = require'lsp-status'
 
-lsp_status.register_progress()
+local settings = require'config/settings'
+
+if settings.lsp_status == true then
+  lsp_status.register_progress()
+end
 
 local function on_attach(client)
   diagnostic.on_attach(client)
-  lsp_status.on_attach(client)
+  if settings.lsp_status == true then
+    lsp_status.on_attach(client)
+  end
+  vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
 end
 
 -- a table of lsp servers and their configs
@@ -53,8 +60,11 @@ local servers = {
 -- each server will always attach diagnostic
 local default_config = {
   on_attach=on_attach,
-  capabilities = lsp_status.capabilities,
 }
+
+if settings.lsp_status == true then
+  default_config.capabilities = lsp_status.capabilities
+end
 
 -- note! will change table 2!!
 local function table_merge(default, config)

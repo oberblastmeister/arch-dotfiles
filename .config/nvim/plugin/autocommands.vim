@@ -2,22 +2,21 @@ augroup settings
   autocmd!
 
   " turn off autocomment
-  autocmd FileType * setlocal formatoptions-=cro
+  " autocmd FileType vim setlocal formatoptions-=cro
 
   " autocommand to autoopen floaterm lf when opening directory
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'FloatermNew lf' argv()[0] | endif
 
-
   autocmd VimResized * wincmd =
 
-  " autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
+  autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 
-  " neovim master branch
-  " autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Visual', 300)
+  " highlighted yank
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=250}
 
-  autocmd BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
+  " autocmd BufWinEnter,WinEnter term://* startinsert
+  " autocmd BufLeave term://* stopinsert
 
   autocmd User GoyoEnter nested call mappings#goyo_enter()
   autocmd User GoyoLeave nested call mappings#goyo_leave()

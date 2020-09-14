@@ -1,50 +1,79 @@
 #!/bin/bash
 
 packages=(
-    # important
-    pkgstats
-    xorg
+    xorg-server # graphical server
+    xorg-xinit # allows to manually start the xserver
+
+    # bspwm
     bspwm
     sxhkdrc
+
+    xsettingsd
+    git
+    github-cli
+    unclutter
+
+    # audio
+    pulseaudio
+    pulseaudio-alsa
+    pulseaudio-bluetooth
+    pulsemixer
+    pamixer
+    alsa-utils # includes alsamixer
+
+    blueman
+
+    dunst
+    gnome-keyring
+    acpid
+
+    # network
+    networkmanager
+    nm-connection-editor
+    network-manager-applet
+
+    # lightdm
     lightdm
     lightdm-webkit2-greeter
     lightdm-webkit-theme-litarvan
-    pulseaudio
-    dunst
-    gnome-keyring
-    networkmanager
-    lightdm
-    lightdm-webkit2-greeter
-
+    
     # themes
-    noto-fonts
-    ttf-roboto
     papirus-icon-theme
     adpata-gtk-theme
-    mcmojave-cursors
+
+    # fonts
+    noto-fonts
+    ttf-roboto
 
     # pacman
     pkgstats # send pacakge info to arch linux
-    pacman-contrib
 
     # utilities
     trash-cli
-    fd
-    bat
-    exa
-    cronie
-    ripgrep # needed for fzf, clap.vim
-    alsamixer
     neofetch
 
-    # neo
+    # better stuff
+    fzf
+    fd # find, needed for fzf
+    bat # cat, needed for fzf
+    exa # ls
+    ripgrep # better grep, needed for fzf
+    broot
+
+    cronie # cron jobs
+
     neovim
 
+    # clipboard stuff
     xclip # clipboard integration for neovim
     xsel # needed for cht.sh
+
+    # dual keyboard mappings
     xcape
     rlwrap
+
     python-pip
+    luarocks
 
     zsh
     tmux
@@ -56,13 +85,12 @@ packages=(
     gufw
 
     # viewers
-    feh
-    sxiv
-    zathura
+    feh # background setter
+    sxiv # image
+    zathura # pdf
     zathura-pdf-mupdf
-    mpv
-    # imporant for bspwm config and in general
-    jq
+    mpv # video
+    jq # view json, important for bspwm
 
     # important for multimonitor
     autorandr
@@ -82,8 +110,36 @@ done
 aur_packages=(
     polybar
     nerd-fonts-fira-code
-    ytop)
+    # zsh prompt
+    starship-bin
+    # process manager
+    bottom
+    xob
+    dragon-drag-and-drop
+    zoxide
+    brave-bin
+    mcmojave-cursors
+    betterlockscreen
+)
+
+language_servers=(
+    lua-language-server-git
+    microsoft-python-language-server
+    typescript-language-server-bin
+    vscode-json-languageserver-bin
+    yaml-language-server-bin
+    gopls
+
+    # non aur
+    texlab
+    rust-analyzer
+    bash-language-server
+)
 
 for package in ${aur_packages[@]}; do
     yay -S $package
 done
+
+# it breaks braile fonts, must be removed
+# https://www.reddit.com/r/archlinux/comments/gf2vgb/the_braille_fonts_dont_show_properly_anywhere/
+sudo pacman -R gnu-free-fonts

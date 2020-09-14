@@ -8,9 +8,12 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
+inoremap <C-d> <Del>
+inoremap <C-y> <C-d>
+imap <C-h> <BS>
 
 " home and end insert mappings
-inoremap <C-a> <Home>
+inoremap <C-a> <Esc>I
 inoremap <C-e> <End>
 
 " Path completion with custom source command

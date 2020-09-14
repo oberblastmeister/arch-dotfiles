@@ -1,0 +1,8 @@
+#!/bin/sh
+# unhide all he nodes
+
+NODES=$(bspc query --nodes --node .hidden --desktop focused)
+
+for node in $NODES; do
+  bspc node $node -g hidden=off
+done

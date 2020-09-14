@@ -1,73 +1,143 @@
 " ============================================================================
 " Regular {{{
 " ============================================================================
-let g:which_key_map[' '] = [ '<C-^>', 'go to previous buffer' ]
-let g:which_key_map.o = [ 'zoom#toggle()', 'toggle zoom of split' ]
-let g:which_key_map.q = [ 'q', 'quit' ]
-let g:which_key_map.Q = [ 'qa!', 'quit without saving' ]
-let g:which_key_map.w = [ 'w', 'write' ]
-let g:which_key_map.x = [ 'x', 'exit and save' ]
-let g:which_key_map.p = [ 'pu', 'put below' ]
+" nnoremap <silent> <leader><space> <C-^>
+function! Write()
+  write
+  edit
+  TSBufEnable highlight
+endfunction
+
+nnoremap <leader><leader> <c-^>
+nnoremap <silent> <leader>w <cmd>write<CR>
+nnoremap <silent> <leader>W :call Write()<CR>
+nnoremap <silent> <leader>x :xit<CR>
+nnoremap <silent> <leader>o :call zoom#toggle()<CR>
+nnoremap <leader>q :quit<CR>
+nnoremap <leader>Q :qa!<CR>
+nnoremap <silent> <leader>p :put<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}
 
 " ============================================================================
 " Buffer {{{
 " ============================================================================
+" go to relative buffer numbers
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+" info
+let g:which_key_map = {
+      \ '1': 'go to buffer 1',
+      \ '2': 'go to buffer 2',
+      \ '3': 'go to buffer 3',
+      \ '4': 'go to buffer 4',
+      \ '5': 'go to buffer 5',
+      \ '6': 'go to buffer 6',
+      \ '7': 'go to buffer 7',
+      \ '8': 'go to buffer 8',
+      \ '9': 'go to buffer 9',
+      \ '0': 'go to buffer 0',
+      \ ' ': 'go to previous buffer',
+      \ 'o': 'toggle zoom of split',
+      \ 'q': 'quit',
+      \ 'Q': 'quit without saving',
+      \ 'w': 'write',
+      \ 'x': 'exit and save',
+      \ 'p': 'put below',
+      \ }
+
+" delete relative buffer numbers
+nmap <Leader>b1 <Plug>lightline#bufferline#delete(1)
+nmap <Leader>b2 <Plug>lightline#bufferline#delete(2)
+nmap <Leader>b3 <Plug>lightline#bufferline#delete(3)
+nmap <Leader>b4 <Plug>lightline#bufferline#delete(4)
+nmap <Leader>b5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>b6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>b7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>b8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>b9 <Plug>lightline#bufferline#delete(9)
+nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
+
+" misc buffer mappings
+nnoremap <silent> <leader>bD :Bufonly<CR>
+nnoremap <silent> <leader>bd :bd<CR>
+nnoremap <silent> <leader>bk :%bdelete<CR>
+nnoremap <silent> <leader>bl :ls<CR>
+
+" delete buffer numbers info
 let g:which_key_map.b = {
       \ 'name': '+buffer',
-      \ 'd' :  ['bdelete', 'delete buffer'],
-      \ 'D' :  ['%bd|e#', 'delete all buffers except current buffer'],
-      \ 'k' :  ['bufdo bd', 'kill all buffers'],
-      \ 'l' :  ['ls', 'list buffers'],
-      \ '1' :  [':b 1', 'buffer 1']        ,
-      \ '2' :  [':b 2', 'buffer 2']        ,
-      \ '3' :  [':b 3', 'buffer 3']        ,
-      \ '4' :  [':b 4', 'buffer 4']        ,
-      \ '5' :  [':b 5', 'buffer 5']        ,
-      \ '6' :  [':b 6', 'buffer 6']        ,
-      \ '7' :  [':b 7', 'buffer 7']        ,
-      \ '8' :  [':b 8', 'buffer 8']        ,
-      \ '9' :  [':b 9', 'buffer 9']        ,
+      \ '1': 'delete buffer 1',
+      \ '2': 'delete buffer 2',
+      \ '3': 'delete buffer 3',
+      \ '4': 'delete buffer 4',
+      \ '5': 'delete buffer 5',
+      \ '6': 'delete buffer 6',
+      \ '7': 'delete buffer 7',
+      \ '8': 'delete buffer 8',
+      \ '9': 'delete buffer 9',
+      \ '0': 'delete buffer 0',
+      \ 'd': 'delete current buffer',
+      \ 'D': 'delete ALL buffers EXCEPT current',
+      \ 'k': 'kill ALL buffers',
+      \ 'l': 'list buffers',
       \ }
 " }}}
 
 " ============================================================================
 " Misc {{{
 " ============================================================================
+nnoremap <silent> <leader>zn :call mappings#toggle_numbering()<CR>
+nnoremap <silent> <leader>zz :call mappings#zap()<CR>
+nnoremap <silent> <leader>zh :so $VIMRUNTIME/syntax/hitest.vim<CR>
+nnoremap <silent> <leader>zg :call VimBeGood()<CR>
+nnoremap <silent> <leader>zv :Vista!!<CR>
+nnoremap <silent> <leader>zd :let g:diagnostic_show_sign = 0<CR>:let g:diagnostic_enable_virtual_text = 0<CR>
+
 let g:which_key_map.z = {
       \ 'name': '+misc',
-      \ 'n' : ['mappings#toggle_numbering()', 'toggle numbers'],
-      \ 'z' : ['mappings#zap()', 'zap whitespace'],
-      \ 'h' : [':so $VIMRUNTIME/syntax/hitest.vim', 'show all highlight groups']
+      \ 'n': 'toggle numbers',
+      \ 'z': 'zap whitespace',
+      \ 'h': 'show all highlight groups',
+      \ 'g': 'vim game',
+      \ 'v': 'toggle vista',
       \ }
 " }}}
 
 " ============================================================================
 " Vimux {{{
 " ============================================================================
-let g:which_key_map.v = { 'name' : '+vimux' }
-
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
-let g:which_key_map.v.p = 'prompt command'
-
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
-let g:which_key_map.v.l = 'run last prompted command'
-
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
-let g:which_key_map.v.i = 'inspect (move into runner and enter copy mode)'
-
-nnoremap <Leader>vx :VimuxInterruptRunner<CR>
-let g:which_key_map.v.x = 'interrupt command in runner'
-
-nnoremap <Leader>vz :call VimuxZoomRunner()<CR>
-let g:which_key_map.v.z = 'zoom runner'
-
-nnoremap <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
-let g:which_key_map.v['<CR>'] = 'send enter to runner'
-
+nnoremap <silent> <Leader>vo :call VimuxOpenRunner()<CR>
+nnoremap <silent> <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <silent> <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <silent> <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <silent> <Leader>vx :VimuxInterruptRunner<CR>
+nnoremap <silent> <Leader>vz :call VimuxZoomRunner()<silent> <CR>
+nnoremap <silent> <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
 nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
-let g:which_key_map.v.q = 'close vimux runner'
+nnoremap <silent> <Leader>vc :VimuxClearRunnerHistory<CR>
+
+let g:which_key_map.v = {
+      \ 'name': '+vimux',
+      \ 'o': 'open runner',
+      \ 'p': 'prompt command',
+      \ 'l': 'run last prompted command',
+      \ 'i': 'inspect (move into runner and enter copy mode)',
+      \ 'x': 'interrupt command in runner',
+      \ 'z': 'zoom runner',
+      \ '<CR>': 'send enter to runner',
+      \ 'q': 'close vimux runner',
+      \ 'c': 'clear runner history',
+      \ }
 
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
 let g:which_key_map.R = 'run code'
@@ -127,34 +197,49 @@ endfunction
 " Git {{{
 " ============================================================================
 let g:which_key_map.g = { 'name' : '+git' }
+
 nnoremap <silent> <leader>gs :G<CR>
 let g:which_key_map.g.s = 'status'
+
 nnoremap <silent> <leader>gb :G blame<CR>
 let g:which_key_map.g.b = 'blame'
+
 nnoremap <silent> <leader>gl :G log<CR>
 let g:which_key_map.g.l = 'log'
+
 nnoremap <silent> <leader>ga :G add %:p<CR>
 let g:which_key_map.g.a = 'add current file'
+
 nnoremap <silent> <leader>gc :G commit<CR>
 let g:which_key_map.g.c = 'commit'
+
 nnoremap <silent> <leader>gp :execute ":Git push -u origin " . fugitive#head(0)<CR>
 let g:which_key_map.g.p = 'push current head'
 " toggle yadm mapping
 " nnoremap <silent> <leader>gy :call mappings#toggle_yadm()<CR>
 " nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
-
-let g:which_key_map.c = { 'name' : '+chunk' }
-nnoremap <silent> <leader>cs :CocCommand git.chunkStage<CR>
-let g:which_key_map.c.s = 'stage'
-nnoremap <silent> <leader>cu :CocCommand git.chunkUndo<CR>
-let g:which_key_map.c.u = 'undo'
-nnoremap <silent> <leader>ci :CocCommand git.chunkInfo<CR>
-let g:which_key_map.c.i = 'show info'
-nnoremap <silent> <leader>cc :CocCommand git.showCommit<CR>
-let g:which_key_map.c.c = 'show commit'
-nnoremap <silent> <leader>co :CocCommand git.browserOpen
-let g:which_key_map.c.o = 'open in browser'
 " }}}
+
+" ============================================================================
+" Quickfix {{{
+" ============================================================================
+let g:which_key_map.c = { 'name' : '+quickfix' }
+
+nnoremap <silent> <leader>cO :Copen<CR>
+let g:which_key_map.c.O = 'open previous build'
+
+nnoremap <silent> <leader>co :copen<CR>
+let g:which_key_map.c.o = 'open'
+
+nnoremap <silent> <leader>cw :cw<CR>
+let g:which_key_map.c.w = 'open if there are errors'
+
+nnoremap <silent> <leader>cq :ccl<CR>
+let g:which_key_map.c.q = 'close'
+
+nnoremap <silent> <leader>cf :cnf<CR>
+let g:which_key_map.c.f = 'next file'
+
 
 " ============================================================================
 " Test {{{
@@ -168,7 +253,7 @@ nmap <silent> <Leader>ts :TestSuite<CR>
 let g:which_key_map.t.s = 'suite'
 nmap <silent> <Leader>tl :TestLast<CR>
 let g:which_key_map.t.l = 'last test'
-nmap <silent> <Leader>tg :TestVisit<CR>
+nmap <silent> <Leader>tv :TestVisit<CR>
 let g:which_key_map.t.v = 'visit file that was previously tested'
 
 " window swap mapppings
@@ -190,9 +275,34 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " ============================================================================
 " Vimspector {{{
 " ============================================================================
-nnoremap <leader>d :call mappings#start_debugger()<Cr>
-let g:which_key_map.d = 'start debugger'
+let g:which_key_map.d = { 'name' : '+debugger' }
+
+command! -nargs=0 LaunchVimspector call vimspector#Launch()
+
+" nnoremap <silent> <leader>D :call vimspector#Launch()<CR>
+nnoremap <silent> <leader>D :LaunchVimspector<CR>
+let g:which_key_map.D = 'start debugger'
+nnoremap <silent> <leader>dc :call mappings#configure_debugger()<CR>
+let g:which_key_map.d.c = 'configure debugger'
+nnoremap <silent> <leader>dq :VimspectorReset<CR>
+let g:which_key_map.d.q = 'quit'
+nnoremap <silent> <leader>dr :call vimspector#Restart()<CR>
+let g:which_key_map.d.r = 'restart'
+nnoremap <leader>de :VimspectorEval<space>
+let g:which_key_map.d.e = 'evaluate expression'
+nnoremap <leader>dw :VimspectorWatch<space>
+let g:which_key_map.d.w = 'watch variable'
 
 " ignore <F9> mapping for whichkey, has to do with vimspector
 let g:which_key_map['<F9>'] = 'which_key_ignore'
 " }}}
+
+nnoremap <Leader>s :let @s='\<'.expand('<cword>').'\>'<CR>:%s/<C-r>s//<Left>
+xnoremap <Leader>s "sy:%s/<C-r>s//<Left>
+let g:which_key_map.s = 'substitue word under cursor'
+
+" vista
+" nnoremap <leader>v :Vista!!<CR>
+
+" vimwiki
+nnoremap <leader>nw <cmd>VimwikiIndex<CR>

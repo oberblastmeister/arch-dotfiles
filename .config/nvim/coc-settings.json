@@ -1,16 +1,10 @@
 {
   "codeLens.enable": true,
 
-  "python.pythonPath": "python3",
-  "python.jediEnabled": false,
-  "python.analysis.diagnosticEnabled": true,
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "🛆",
   "diagnostic.infoSign": "●",
   "diagnostic.hintSign": "○",
-  "rust-analyzer.notifications.cargoTomlNotFound": false,
 
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
@@ -40,40 +34,6 @@
     "default": "\uf29c"
   },
 
-  "explorer.icon.enableNerdfont": true,
-  "explorer.floating.border.enable": true,
-     "explorer.sources": [
-        {"name": "buffer", "expand": true},
-        {"name": "file", "expand": true}
-    ],
-  "explorer.floating.width": -40,
-  "explorer.floating.height": -20,
-  "explorer.previewAction.onHover": false,
-  "explorer.floating.border.title": "explorer",
-
-  "explorer.keyMappings": {
-
-  "4": "collapse",
-  "5": ["expandable?", "expand", "open"],
-  "l": ["expandable?", "cd", "open"],
-  "h": "gotoParent"
-  },
-
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "~/.local/share/nvim/plugged/vim-snippets/UltiSnips"
-  ],
-
-  "coc-actions.hideCursor": false,
-
-  "cSpell.enabledLanguageIds": [
-    "asciidoc",
-    "gitcommit",
-    "latex",
-    "plaintext",
-    "mail"
-  ],
-
   "git.addedSign.text": "┃",
   "git.removedSign.text": "┃",
   "git.changedSign.text": "┃",
@@ -85,6 +45,45 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "git.showCommitInFloating": true,
+
+  "python.pythonPath": "python3",
+  "python.jediEnabled": false,
+  "python.analysis.diagnosticEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+
+  "rust-analyzer.notifications.cargoTomlNotFound": false,
+
+  "explorer.icon.enableNerdfont": true,
+  "explorer.floating.border.enable": true,
+     "explorer.sources": [
+        {"name": "buffer", "expand": true},
+        {"name": "file", "expand": true}
+    ],
+
+  "explorer.floating.width": -40,
+  "explorer.floating.height": -20,
+  "explorer.previewAction.onHover": false,
+  "explorer.floating.border.title": "explorer",
+
+  "explorer.keyMappings": {
+    "4": "collapse",
+    "5": ["expandable?", "expand", "open"],
+    "l": ["expandable?", "cd", "open"],
+    "h": "gotoParent"
+  },
+
+  "snippets.ultisnips.directories": [
+    "~/.local/share/nvim/plugged/vim-snippets/UltiSnips"
+  ],
+
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "gitcommit",
+    "latex",
+    "plaintext",
+    "mail"
+  ],
 
   "cSpell.userWords": [
     "BYSO",

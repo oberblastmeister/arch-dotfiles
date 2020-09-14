@@ -1,51 +1,28 @@
 " ============================================================================
 " Settings {{{
 " ============================================================================
-" these are defaults in neovim
-if !has('nvim')
-  set nocompatible
-  syntax on
-  filetype plugin indent on
-  set autoindent
-  set autoread
-  set backspace=indent,eol,start
-  set complete-=i
-  set display=lastline
-  set encoding=utf-8
-  set history=10000
-  set hlsearch
-  set incsearch
-  set laststatus=2
-  set mouse=a
-  set smarttab
-  set ttyfast
-  set viminfo+=!
-  set wildmenu
-  set ttymouse=xterm2
-  set ruler
-endif
-
-if has('termguicolors')
-  set termguicolors
-  lua require'colorizer'.setup()
-endif
-
-colorscheme gruvbox
-set background=dark
-
 set number relativenumber
+set cursorline
 set smartindent
 set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus
-set inccommand=split
+set inccommand=nosplit
 set noshowmode
+set noshowcmd
 set foldmethod=syntax
+
+" treesitter folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 set foldlevelstart=99
-set timeoutlen=500
+set timeoutlen=800
 set ttimeoutlen=20
 set ignorecase smartcase
 set mouse=a
 set nowrap
+set pumblend=15
+set winblend=0
 
 " no splash screen and shorter messages
 set shortmess+=I " no intro
@@ -55,6 +32,18 @@ set shortmess+=W   " dont' echo written when writing, lightline already has symb
 set shortmess+=T
 set shortmess+=A   " no swapfile messages
 set path+=**
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" for lightline bufferline
+set showtabline=2
+" allow lightline buffer line to be shown if gui is running
+if has('gui_running')
+  set guioptions-=e
+endif
 " }}}
 
 " ============================================================================
@@ -77,16 +66,30 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+set omnifunc=v:lua.vim.lsp.omnifunc
 " }}}
 
 " ============================================================================
 " Appearance {{{
 " ============================================================================
 " make ~ for new lines be same color as background so they are not seen
-highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-" remove status line for press enter to continue msgs
-highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-highlight! CursorLineNr ctermbg=bg guibg=bg
-hi! FloatermBorder guibg=#504945
+" " remove status line for press enter to continue msgs
+
+" " make sign column same as background, but keep highlight of virtual text
 " set fillchars+=vert:\
 " }}}
+" execute 'highlight LspDiagnosticsError ' . pinnacle#decorate('italic,underline', 'ModeMsg')
+
+" execute 'highlight LspDiagnosticsHint ' . pinnacle#decorate('bold,italic,underline', 'Type')
+
+" execute 'highlight LspDiagnosticsHintSign ' . pinnacle#extract_highlight('GruvboxRedSign')
+
+" execute 'highlight LspDiagnosticsErrorSign ' . pinnacle#extract_highlight({
+"       \   'bg': pinnacle#extract_bg('ColorColumn'),
+"       \   'fg': pinnacle#extract_fg('GruvboxRedSign'),
+"       \ })
+" highlight! link LspDiagnosticsError GruvboxRed
+" errors

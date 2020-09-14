@@ -42,15 +42,18 @@ function! mappings#run_code()
     call VimuxRunCommand("clear; go " . bufname("%"))
   elseif &filetype == 'r'
     call VimuxRunCommand("clear; rscript " . bufname("%"))
+  elseif &filetype == 'lua'
+    call VimuxRunCommand("clear; luajit " . bufname("%"))
   endif
 endfunction
 
-function mappings#start_debugger()
+function mappings#configure_debugger()
   if &filetype == 'python'
-    call vimspector#LaunchWithSettings({ 'configuration': 'Python' })
-  elseif &filetype == 'rust' || &filetype == 'cpp'
-    call vimspector#LaunchWithSettings({ 'configuration': 'C family' })
+    silent exe "!cp -u ~/.config/nvim/vimspector/python/.vimspector.json " . shellescape(getcwd())
+  elseif &filetype == 'rust'
+    silent exe "!cp -u ~/.config/nvim/vimspector/rust/.vimspector.json " . shellescape(getcwd())
   endif
+  edit .vimspector.json
 endfunction
 
 function! mappings#source_vimrc()

@@ -1,15 +1,16 @@
-#    
-#                    ██     
-#                   ░██     
-#     ██████  ██████░██     
-#    ░░░░██  ██░░░░ ░██████ 
+#
+#                    ██
+#                   ░██
+#     ██████  ██████░██
+#    ░░░░██  ██░░░░ ░██████
 #       ██  ░░█████ ░██░░░██
 #      ██    ░░░░░██░██  ░██
 #     ██████ ██████ ░██  ░██
-#    ░░░░░░ ░░░░░░  ░░   ░░ 
+#    ░░░░░░ ░░░░░░  ░░   ░░
 
+eval "$(starship init zsh)"
 
-### Added by Zinit's installer
+# ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -19,11 +20,8 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
-
-# enable p10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# conflicts with zoxide
+unalias zi
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -32,13 +30,16 @@ fi
 #     zinit-zsh/z-a-as-monitor \
 #     zinit-zsh/z-a-bin-gem-node
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-# source p10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # keytimeout=0 might have bad effects
-zinit ice atload"bindkey "jk" vi-cmd-mode"
-zinit light softmoth/zsh-vim-mode
+# vi mode
+bindkey -v
+bindkey 'jk' vi-cmd-mode
+
+# emacs like keybindings
+# bindkey '^A' beginning-of-line
+# bindkey '^E' end-of-line
+# bindkey '^B' backward-char
+# bindkey '^F' forward-char
 
 # ============================================================================
 # ============================================================================
@@ -62,55 +63,55 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
-export KEYTIMEOUT=20
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
+export PISTOL_CHROMA_FORMATTER=terminal256
 
-MODE_CURSOR_VIINS="bar"
+MODE_CURSOR_VIINS="block"
 MODE_CURSOR_REPLACE="underline"
 MODE_CURSOR_VICMD="block"
 MODE_CURSOR_SEARCH="steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 
+# good defaults
+zinit ice wait lucid 
+zinit snippet OMZL::completion.zsh
+
+# big four
+zinit ice wait lucid atinit"zicompinit; zicdreplay"
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice lucid atload"_zsh_autosuggest_start; bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid atload"bindkey '^P' history-substring-search-up; bindkey '^N' history-substring-search-down"
+zinit light zsh-users/zsh-history-substring-search
+
+zinit ice wait blockf lucid atpull"zinit creinstall -q ."
+zinit light zsh-users/zsh-completions
+
+# overrides zsh autosuggest for some reason
+zinit ice lucid wait atload"bindkey '^_' autosuggest-execute"
+zinit light softmoth/zsh-vim-mode
+
 zinit ice lucid wait
 zinit snippet ~/.aliases
 
-# good defaults
-zinit wait lucid light-mode for \
-  OMZL::completion.zsh \
-  OMZL::clipboard.zsh \
-
-# big three
-zinit wait lucid light-mode for \
-  zsh-users/zsh-history-substring-search \
-  atinit"zicompinit; zicdreplay" \
-      zsh-users/zsh-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-  atinit"bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions \
-
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
-# bindkey '^[;' autosuggest-accept
 
-zinit ice lucid wait blockf id-as'fzf' atclone"./install; sed -i 's_/home/brian/.fzf_/home/brian/.zinit/plugins/fzf_g' ~/.fzf.zsh; mv ~/.fzf.zsh ~/.zinit/plugins/fzf/.fzf.zsh" \
-  atpull"%atclone" pick".fzf.zsh"
-zinit light junegunn/fzf
+zinit ice lucid wait
+zinit snippet /usr/share/fzf/key-bindings.zsh
+
+zinit ice lucid wait
+zinit snippet /usr/share/fzf/completion.zsh
 
 # let fzf find hidden files
-# hidden
-# export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always --hidden"
-export FZF_DEFAULT_COMMAND="fd --type file --follow --exclude .git --color=always"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" 
+export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
-export FZF_ALT_C_COMMAND="fd --type directory --follow --exclude .git --color=always"
+export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --exclude .cache --color=always"
 export FZF_TMUX=1
 
 # default opts for fzf
@@ -145,14 +146,11 @@ zinit light-mode for \
 # zinit snippet ~/.pyenv_init.zsh
 
 zinit ice lucid wait
-zinit snippet OMZP::autojump/autojump.plugin.zsh
+zinit snippet https://github.com/ajeetdsouza/zoxide/blob/master/zoxide.plugin.zsh
 
 # load programs
 zinit ice lucid wait
 zinit light soimort/translate-shell
-
-zinit ice lucid wait id-as"googler" as"program"
-zinit snippet https://raw.githubusercontent.com/jarun/googler/v4.0/googler
 
 zinit ice lucid wait id-as"cht" as"program"
 zinit snippet https://cht.sh/:cht.sh
@@ -168,3 +166,4 @@ source ~/.lf_icons
 # eval "$(pyenv init -)"
 # autoenable virtualenvs
 # eval "$(pyenv virtualenv-init -)"
+### End of Zinit's installer chunk

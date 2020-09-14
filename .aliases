@@ -2,6 +2,7 @@
 alias zshrc="nvim ~/.zshrc"
 alias vimrc="nvim ~/.config/nvim/init.vim"
 
+alias rust="evcxr"
 alias vim="nvim"
 alias vi="nvim"
 
@@ -15,42 +16,45 @@ alias ivim='jupyter console --kernel=vim_kernel'
 alias ijava='jupyter console --kernel=java'
 alias irust='jupyter console --kernel=rust'
 
-# exa aliases
+# exa
 alias ls='exa --icons'
 alias lt='exa --tree --icons --level=3'
 alias lS='exa -1 --icons'
 alias la='exa --all --icons'
 
 alias l='lfcd'
-alias yt='ytop'
-# alias z='j'
-# alias zo='jo'
+alias top='btm'
 
 alias chtsh='cht --shell'
-alias open='xdg-open &>/dev/null'
+alias mopen='mimeopen &>/dev/null'
 alias icat="kitty +kitten icat"
 
 alias mutt='neomutt'
 
+# git
 alias g='git'
 alias ga='git add'
 alias gs='git status'
-alias gc='git commit -v'
+alias gc='git commit'
 alias gp='git push'
 
+# yadm
 alias y='yadm'
 alias ya='yadm add'
 alias ys='yadm status'
-alias yc='yadm commit -m'
+alias yc='yadm commit'
 alias yp='yadm push'
 
-alias t='task'
-alias pacvis='pacvis --browser'
+# tmux
+alias ta='tmux attach'
+alias tl='tmux ls'
 
-# overrides default alias yay='yay -Syu'
+alias t='task'
+
+alias pac="sudo pacman -Syu"
 alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
-alias fpacman="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
-alias z="j"
+alias fpac="pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
+alias ytdl="youtube-dl"
 
 # jupyter aliases
 alias irust="jupyter console --kernel rust"

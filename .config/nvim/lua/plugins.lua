@@ -87,8 +87,8 @@ return require('packer').startup(function()
   end
 
   rtp_use {
-    'highlighter.nvim',
-    -- config = function() require'highlighter' end,
+  	'highlighter.nvim',
+    config = function() require'highlighter' end,
   }
 
   ----------------------------- Looks --------------------------------------

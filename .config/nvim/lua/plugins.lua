@@ -118,9 +118,6 @@ return require('packer').startup(function()
     requires = 'itchyny/lightline.vim',
   }
 
-  -- functions to manipulate highlight groups
-  use 'wincent/pinnacle'
-
   -- colorize hex codes
   use {
     'norcalli/nvim-colorizer.lua',
@@ -149,17 +146,20 @@ return require('packer').startup(function()
   -- completion engine
   use {
     'nvim-lua/completion-nvim',
-    config = function() require'config/completion'.setup() end,
+    config = function()
+      local completion = require'config/completion'
+      completion.setup()
+    end,
     requires = {
       'steelsojka/completion-buffers',
       {
         'SirVer/ultisnips',
-        config = function() require'config/ultisnips'.setup() end
+        config = function() require'config/ultisnips'.setup() end,
       },
-      {'honza/vim-snippets'},
-      {'nvim-treesitter/completion-treesitter', opt = true},
-      {'hrsh7th/vim-vsnip'},
-      {'hrsh7th/vim-vsnip-integ'},
+      'honza/vim-snippets',
+      'nvim-treesitter/completion-treesitter',
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/vim-vsnip-integ',
     }
   }
 
@@ -211,11 +211,14 @@ return require('packer').startup(function()
   }
 
   ----------------------------- Testing -------------------------------------
-  use 'tpope/vim-dispatch'
+  use {
+    'tpope/vim-dispatch',
+    cmd = {'Dispatch', 'Make', 'Focus', 'Start'},
+  }
 
   use {
     'janko/vim-test',
-    ft = {'python', 'rust', 'vim'},
+    cmd = {'TestNearest', 'TestFile', 'TestSuite', 'TestLast', 'TestVisit'},
     config = function()
       vim.cmd [[let test#strategy = "vimux"]]
     end,
@@ -229,9 +232,13 @@ return require('packer').startup(function()
   use {
     'AndrewRadev/switch.vim',
     config = function() require'config/switch'.setup() end,
+    keys = {'n', 'gs'},
   }
 
-  use 'AndrewRadev/splitjoin.vim'
+  use {
+    'AndrewRadev/splitjoin.vim',
+    keys = {'n', 'gS', 'n', 'gJ'}
+  }
 
   use 'junegunn/vim-easy-align'
 

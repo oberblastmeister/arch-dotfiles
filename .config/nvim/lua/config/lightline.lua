@@ -1,3 +1,5 @@
+local settings = require'config/settings'
+
 local function setup()
   vim.g.lightline = {
     colorscheme = 'gruvbox',

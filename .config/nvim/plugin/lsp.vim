@@ -16,8 +16,10 @@ let g:completion_confirm_key = ""
 imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
       \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
-nnoremap <silent> ]g :NextDiagnosticCycle<CR>
-nnoremap <silent> [g :PrevDiagnosticCycle<CR>
+nnoremap <silent> ]g :NextDiagnostic<CR>
+nnoremap <silent> [g :PrevDiagnostic<CR>
+nnoremap <silent> ]G :FirstDiagnostic<CR>
+nnoremap <silent> [G :LastDiagnostic<CR>
 
  " GoTo code navigation.
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>

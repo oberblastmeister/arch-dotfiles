@@ -192,7 +192,7 @@ return require('packer').startup(function()
     cmd = 'LaunchVimspector'
   }
 
-  ----------------------------- Fuzzy Finding ----------------------------------
+  ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
   use {
     'nvim-lua/telescope.nvim',
@@ -210,7 +210,7 @@ return require('packer').startup(function()
     }
   }
 
-  ----------------------------- Testing ----------------------------------
+  ----------------------------- Testing -------------------------------------
   use 'tpope/vim-dispatch'
 
   use {
@@ -223,13 +223,6 @@ return require('packer').startup(function()
 
   ----------------------------- Editing -------------------------------------
   use 'tpope/vim-commentary'
-
-  use {
-    'machakann/vim-sandwich',
-    config = function() require'config/sandwhich'.setup() end,
-  }
-
-  use 'jiangmiao/auto-pairs'
 
   use 'tpope/vim-repeat'
 
@@ -307,8 +300,17 @@ return require('packer').startup(function()
   use 'glts/vim-textobj-comment'
   use 'wellle/targets.vim'
 
+  ----------------------------- Delimiters ----------------------------------
+  use {
+    'machakann/vim-sandwich',
+    config = function() require'config/sandwhich'.setup() end,
+  }
+
+  use 'jiangmiao/auto-pairs'
+
   use {
     'andymass/vim-matchup',
+    event = 'VimEnter *',
     config = function() require'config/matchup'.setup() end,
   }
 
@@ -345,13 +347,14 @@ return require('packer').startup(function()
   use {'vimwiki/vimwiki', cmd = 'VimwikiIndex'}
 
   ----------------------------- Web Developement ---------------------------
-  use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}}
-  use {'alvan/vim-closetag', ft = 'html'}
+  use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}, disable = true}
+  use {'alvan/vim-closetag', ft = 'html', disable = true}
 
   use {
     'turbio/bracey.vim',
     run = 'npm install --prefix server',
     ft = {'html', 'css', 'javascript'},
+    disable = true,
   }
 
   ----------------------------- Language Specific --------------------------

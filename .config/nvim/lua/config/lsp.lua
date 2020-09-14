@@ -1,22 +1,50 @@
-local lsp = require'nvim_lsp'
+local nvim_lsp = require'nvim_lsp'
 local diagnostic = require'diagnostic'
 local lsp_status = require'lsp-status'
 
-local function on_attach()
-  diagnostic.on_attach()
+local settings = require'config/settings'
+
+if settings.lsp_status == true then
+  lsp_status.register_progress()
+end
+
+local function on_attach(client)
+  diagnostic.on_attach(client)
+  if settings.lsp_status == true then
+    lsp_status.on_attach(client)
+  end
+  vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
 end
 
 -- a table of lsp servers and their configs
+-- custom commands are usually specified if the server isn't installed using LspInstall
 local servers = {
-  pyls_ms = {},
+  pyls_ms = {
+    callbacks = lsp_status.extensions.pyls_ms.setup(),
+    settings = {
+      python = {
+        workspaceSymbols = {
+          enabled = true,
+        }
+      }
+    }
+  },
   vimls = {},
-  sumneko_lua = {},
-  jsonls = {},
+  sumneko_lua = {
+    cmd = {"lua-language-server"}
+  },
+  jsonls = {
+    cmd = {"json-languageserver", "--stdio"},
+  },
   yamlls = {},
-  gopls = {},
-  tsserver = {},
+  gopls = {
+    root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', vim.fn.getcwd())
+  },
   texlab = {},
   bashls = {},
+  html = {},
+  tsserver = {},
+  cssls = {},
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
@@ -34,19 +62,30 @@ local default_config = {
   on_attach=on_attach,
 }
 
-local function table_merge(t1, t2)
-  for k, v in pairs(t2) do t1[k] = v end
+if settings.lsp_status == true then
+  default_config.capabilities = lsp_status.capabilities
+end
+
+-- note! will change table 2!!
+local function table_merge(default, config)
+  for k, v in pairs(default) do
+    -- do not override config keys with default
+    -- only merge if config doesn't already have the defaults
+    if config[k] == nil then
+      config[k] = v end
+    end
+  return config
 end
 
 local function setup()
   for server, config in pairs(servers) do
-    table_merge(config, default_config)
-    lsp[server].setup(config)
+    table_merge(default_config, config)
+    nvim_lsp[server].setup(config)
   end
 end
 
 local function install()
-  print('installing lsp servers')
+  print('installing lsp servers, some may not be able to be installed')
   for server, _ in pairs(servers) do
     vim.cmd('LspInstall ' .. server)
   end

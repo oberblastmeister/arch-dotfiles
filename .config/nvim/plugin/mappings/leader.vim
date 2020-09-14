@@ -8,6 +8,7 @@ function! Write()
   TSBufEnable highlight
 endfunction
 
+nnoremap <leader><leader> <c-^>
 nnoremap <silent> <leader>w <cmd>write<CR>
 nnoremap <silent> <leader>W :call Write()<CR>
 nnoremap <silent> <leader>x :xit<CR>

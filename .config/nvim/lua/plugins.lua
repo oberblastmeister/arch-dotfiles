@@ -87,8 +87,8 @@ return require('packer').startup(function()
   end
 
   rtp_use {
-    'highlighter.nvim',
-    -- config = function() require'highlighter' end,
+  	'highlighter.nvim',
+    config = function() require'highlighter' end,
   }
 
   ----------------------------- Looks --------------------------------------
@@ -126,9 +126,6 @@ return require('packer').startup(function()
     config = function() require'config/express_line'.setup() end,
   }
 
-  -- functions to manipulate highlight groups
-  use 'wincent/pinnacle'
-
   -- colorize hex codes
   use {
     'norcalli/nvim-colorizer.lua',
@@ -142,27 +139,10 @@ return require('packer').startup(function()
   -- lsp configs
   use {
     'neovim/nvim-lspconfig',
+    -- Todo: buggy
     -- run = function() require'config/lsp'.install() end,
     config = function() require'config/lsp'.setup() end,
   }
-
-  -- lsp tagbar
-  use {
-    'liuchengxu/vista.vim',
-    cmd = 'Vista',
-    config = function()
-      require'config/vista'.setup()
-    end
-  }
-
-  -- diagnostic wrapper
-  use {
-    'nvim-lua/diagnostic-nvim',
-    config = function() require'config/diagnostic'.setup() end,
-  }
-
-  -- lsp status wrapper
-  use 'nvim-lua/lsp-status.nvim'
 
   -- better syntax highlighting (load after diagnostics and nvim-lsp)
   use {
@@ -174,21 +154,40 @@ return require('packer').startup(function()
   -- completion engine
   use {
     'nvim-lua/completion-nvim',
-    config = function() require'config/completion'.setup() end,
+    config = function()
+      local completion = require'config/completion'
+      completion.setup()
+    end,
     requires = {
-      {'steelsojka/completion-buffers'},
+      'steelsojka/completion-buffers',
       {
         'SirVer/ultisnips',
-        config = function() require'config/ultisnips'.setup() end
+        config = function() require'config/ultisnips'.setup() end,
       },
       'honza/vim-snippets',
       'nvim-treesitter/completion-treesitter',
-      {'hrsh7th/vim-vsnip', disable = true},
-      {'hrsh7th/vim-vsnip-integ', disable = true},
-    },
-    disable = false,
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/vim-vsnip-integ',
+    }
   }
 
+  -- diagnostic wrapper
+  use {
+    'nvim-lua/diagnostic-nvim',
+    config = function() require'config/diagnostic'.setup() end,
+  }
+
+  -- lsp status wrapper
+  use 'nvim-lua/lsp-status.nvim'
+
+  -- lsp tagbar
+  use {
+    'liuchengxu/vista.vim',
+    cmd = 'Vista',
+    config = function()
+      require'config/vista'.setup()
+    end
+  }
 
   -- debug adapter client
   use {
@@ -201,7 +200,7 @@ return require('packer').startup(function()
     cmd = 'LaunchVimspector'
   }
 
-  ----------------------------- Fuzzy Finding ----------------------------------
+  ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
   use {
     'nvim-lua/telescope.nvim',
@@ -211,43 +210,30 @@ return require('packer').startup(function()
     },
   }
 
-  use {'junegunn/fzf', run = ':call fzf#install()'}
-  use 'junegunn/fzf.vim'
+  use {
+    'junegunn/fzf.vim',
+    requires = {
+      'junegunn/fzf',
+      run = function() vim.fn['fzf#install()']() end,
+    }
+  }
 
-  ----------------------------- Testing ----------------------------------
-  use 'tpope/vim-dispatch'
+  ----------------------------- Testing -------------------------------------
+  use {
+    'tpope/vim-dispatch',
+    cmd = {'Dispatch', 'Make', 'Focus', 'Start'},
+  }
 
   use {
     'janko/vim-test',
-    ft = {'python', 'rust', 'vim'},
+    cmd = {'TestNearest', 'TestFile', 'TestSuite', 'TestLast', 'TestVisit'},
     config = function()
       vim.cmd [[let test#strategy = "vimux"]]
     end,
   }
 
-  use {
-    'hkupty/iron.nvim',
-    cmd = {'IronRepl', 'IronWatchCurrentFile', 'IronSend'}
-  }
-
   ----------------------------- Editing -------------------------------------
   use 'tpope/vim-commentary'
-
-  use {
-    'machakann/vim-sandwich',
-    config = function() require'config/sandwhich'.setup() end,
-  }
-
-  -- auto close on enter
-  use {'rstacruz/vim-closer', disable = true}
-  use 'jiangmiao/auto-pairs'
-
-  -- auto end statements
-  use {
-    'tpope/vim-endwise',
-    ft = {'vim', 'lua', 'ruby'},
-    disable = true,
-  }
 
   use 'tpope/vim-repeat'
 
@@ -256,7 +242,10 @@ return require('packer').startup(function()
     config = function() require'config/switch'.setup() end,
   }
 
-  use 'AndrewRadev/splitjoin.vim'
+  use {
+    'AndrewRadev/splitjoin.vim',
+    keys = {'n', 'gS', 'n', 'gJ'}
+  }
 
   use 'junegunn/vim-easy-align'
 
@@ -283,9 +272,6 @@ return require('packer').startup(function()
     config = function() require'config/rooter'.setup() end,
   }
 
-  -- terminal float
-  use 'voldikss/vim-floaterm'
-
   -- repl sratchpad
   use {'metakirby5/codi.vim', cmd = 'Codi'}
 
@@ -298,12 +284,19 @@ return require('packer').startup(function()
   -- profile vim
   use {'dstein64/vim-startuptime', cmd = 'StartupTime'}
 
-  use 'andymass/vim-matchup'
+  ----------------------------- File Visualizers ----------------------------
+  -- file tree lua, has issues with writing file
+  use {
+    'kyazdani42/nvim-tree.lua',
+    cmd = 'LuaTreeFindFile',
+    disable = true,
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      cmd = 'LuaTreeFindFile',
+    }
+  }
 
-  -- file tree
-  use {'kyazdani42/nvim-web-devicons', cmd = 'LuaTreeFindFile', disable = true}
-  use {'kyazdani42/nvim-tree.lua', cmd = 'LuaTreeFindFile', disable = true}
-
+  -- python file tree
   use {
     'ms-jpq/chadtree',
     branch = 'chad',
@@ -311,11 +304,28 @@ return require('packer').startup(function()
     run = ':UpdateRemotePlugins'
   }
 
+  -- terminal float for lf
+  use 'voldikss/vim-floaterm'
+
   ----------------------------- Text Objects --------------------------------
   use 'kana/vim-textobj-user'
   use 'kana/vim-textobj-entire'
   use 'glts/vim-textobj-comment'
   use 'wellle/targets.vim'
+
+  ----------------------------- Delimiters ----------------------------------
+  use {
+    'machakann/vim-sandwich',
+    config = function() require'config/sandwhich'.setup() end,
+  }
+
+  use 'jiangmiao/auto-pairs'
+
+  use {
+    'andymass/vim-matchup',
+    event = 'VimEnter *',
+    config = function() require'config/matchup'.setup() end,
+  }
 
   ----------------------------- Git -----------------------------------------
   use 'tpope/vim-fugitive'
@@ -338,8 +348,8 @@ return require('packer').startup(function()
   ----------------------------- Notes/Writing -------------------------------
   use {
     'iamcco/markdown-preview.nvim',
-    run = ':call mkdp#util#install()',
-    ft = 'markdown',
+    run = function() vim.fn['mkdp#util#install']() end,
+    ft = {'markdown', 'vimwiki'},
     cmd = 'MarkdownPreview',
   }
 
@@ -350,13 +360,14 @@ return require('packer').startup(function()
   use {'vimwiki/vimwiki', cmd = 'VimwikiIndex'}
 
   ----------------------------- Web Developement ---------------------------
-  use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}}
-  use {'alvan/vim-closetag', ft = 'html'}
+  use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}, disable = true}
+  use {'alvan/vim-closetag', ft = 'html', disable = true}
 
   use {
     'turbio/bracey.vim',
     run = 'npm install --prefix server',
     ft = {'html', 'css', 'javascript'},
+    disable = true,
   }
 
   ----------------------------- Language Specific --------------------------
@@ -366,8 +377,8 @@ return require('packer').startup(function()
     -- disable on some filetypes where there are other plugins running
     setup = function()
       vim.g.polyglot_disabled = {'markdown', 'latex', 'pest', 'lua'}
+      vim.g.python_highlight_space_errors = 0
     end,
-    config = function() vim.g.python_highlight_space_errors = 0 end,
   }
 
   -- markdown mode
@@ -380,5 +391,14 @@ return require('packer').startup(function()
   use {'pest-parser/pest.vim', ft = 'pest'}
 
   -- better lua highlighting
-  use {'euclidianAce/BetterLua.vim', ft = 'lua'}
+  use 'euclidianAce/BetterLua.vim'
+
+  use {'tjdevries/nlua.nvim', disable = true}
+
+  use {'rafcamlet/nvim-luapad', ft = 'lua'}
+
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 end)

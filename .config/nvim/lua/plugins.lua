@@ -158,8 +158,8 @@ return require('packer').startup(function()
       },
       {'honza/vim-snippets'},
       {'nvim-treesitter/completion-treesitter', opt = true},
-      {'hrsh7th/vim-vsnip', disable = true},
-      {'hrsh7th/vim-vsnip-integ', disable = true},
+      {'hrsh7th/vim-vsnip'},
+      {'hrsh7th/vim-vsnip-integ'},
     }
   }
 
@@ -192,7 +192,7 @@ return require('packer').startup(function()
     cmd = 'LaunchVimspector'
   }
 
-  ----------------------------- Fuzzy Finding ----------------------------------
+  ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
   use {
     'nvim-lua/telescope.nvim',
@@ -206,11 +206,11 @@ return require('packer').startup(function()
     'junegunn/fzf.vim',
     requires = {
       'junegunn/fzf',
-      run = ':call fzf#install()',
+      run = function() vim.fn['fzf#install()']() end,
     }
   }
 
-  ----------------------------- Testing ----------------------------------
+  ----------------------------- Testing -------------------------------------
   use 'tpope/vim-dispatch'
 
   use {
@@ -223,13 +223,6 @@ return require('packer').startup(function()
 
   ----------------------------- Editing -------------------------------------
   use 'tpope/vim-commentary'
-
-  use {
-    'machakann/vim-sandwich',
-    config = function() require'config/sandwhich'.setup() end,
-  }
-
-  use 'jiangmiao/auto-pairs'
 
   use 'tpope/vim-repeat'
 
@@ -307,8 +300,17 @@ return require('packer').startup(function()
   use 'glts/vim-textobj-comment'
   use 'wellle/targets.vim'
 
+  ----------------------------- Delimiters ----------------------------------
+  use {
+    'machakann/vim-sandwich',
+    config = function() require'config/sandwhich'.setup() end,
+  }
+
+  use 'jiangmiao/auto-pairs'
+
   use {
     'andymass/vim-matchup',
+    event = 'VimEnter *',
     config = function() require'config/matchup'.setup() end,
   }
 
@@ -333,7 +335,7 @@ return require('packer').startup(function()
   ----------------------------- Notes/Writing -------------------------------
   use {
     'iamcco/markdown-preview.nvim',
-    run = ':call mkdp#util#install()',
+    run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown', 'vimwiki'},
     cmd = 'MarkdownPreview',
   }
@@ -345,13 +347,14 @@ return require('packer').startup(function()
   use {'vimwiki/vimwiki', cmd = 'VimwikiIndex'}
 
   ----------------------------- Web Developement ---------------------------
-  use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}}
-  use {'alvan/vim-closetag', ft = 'html'}
+  use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}, disable = true}
+  use {'alvan/vim-closetag', ft = 'html', disable = true}
 
   use {
     'turbio/bracey.vim',
     run = 'npm install --prefix server',
     ft = {'html', 'css', 'javascript'},
+    disable = true,
   }
 
   ----------------------------- Language Specific --------------------------
@@ -380,4 +383,9 @@ return require('packer').startup(function()
   use 'tjdevries/nlua.nvim'
 
   use {'rafcamlet/nvim-luapad', ft = 'lua'}
+
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 end)

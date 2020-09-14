@@ -19,6 +19,8 @@ set shell zsh
 set shellopts '-eu:--shwordsplit'
 set ifs "\n"
 
+set number
+set relativenumber
 set scrolloff 10
 set incsearch
 set color256

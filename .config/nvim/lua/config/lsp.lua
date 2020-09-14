@@ -40,16 +40,13 @@ local servers = {
     settings = {
       ["rust-analyzer"] = {
         completion = {
-          addCallArgumentSnippets = false,
-          addCallParenthesis = false,
+          addCallArgumentSnippets = true,
+          addCallParenthesis = true,
         }
       }
     }
   }
 }
-
--- root_pattern('string') or dirname
--- root_dir = nvim_lsp.util.root_pattern("go.mod", ".git") or nvim_lsp.util.dirname(),
 
 -- each server will always attach diagnostic
 local default_config = {

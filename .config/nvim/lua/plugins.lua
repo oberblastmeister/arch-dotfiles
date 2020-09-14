@@ -158,8 +158,8 @@ return require('packer').startup(function()
       },
       {'honza/vim-snippets'},
       {'nvim-treesitter/completion-treesitter', opt = true},
-      {'hrsh7th/vim-vsnip', disable = true},
-      {'hrsh7th/vim-vsnip-integ', disable = true},
+      {'hrsh7th/vim-vsnip'},
+      {'hrsh7th/vim-vsnip-integ'},
     }
   }
 

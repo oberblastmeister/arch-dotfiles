@@ -206,7 +206,7 @@ return require('packer').startup(function()
     'junegunn/fzf.vim',
     requires = {
       'junegunn/fzf',
-      run = ':call fzf#install()',
+      run = function() vim.fn['fzf#install()']() end,
     }
   }
 
@@ -333,7 +333,7 @@ return require('packer').startup(function()
   ----------------------------- Notes/Writing -------------------------------
   use {
     'iamcco/markdown-preview.nvim',
-    run = ':call mkdp#util#install()',
+    run = function() vim.fn['mkdp#util#install']() end,
     ft = {'markdown', 'vimwiki'},
     cmd = 'MarkdownPreview',
   }
@@ -380,4 +380,9 @@ return require('packer').startup(function()
   use 'tjdevries/nlua.nvim'
 
   use {'rafcamlet/nvim-luapad', ft = 'lua'}
+
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 end)

@@ -1,7 +1,7 @@
 local function setup()
   vim.cmd [[autocmd BufEnter * lua require'config/completion'.on_attach()]]
   vim.g.completion_enable_snippet = "UltiSnips"
-  
+
   if vim.g.completion_enable_snippet == "vim-vsnip" then
     vim.cmd [[imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']]
     vim.cmd [[smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']]

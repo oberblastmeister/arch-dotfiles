@@ -232,7 +232,6 @@ return require('packer').startup(function()
   use {
     'AndrewRadev/switch.vim',
     config = function() require'config/switch'.setup() end,
-    keys = {'n', 'gs'},
   }
 
   use {
@@ -387,7 +386,7 @@ return require('packer').startup(function()
   -- better lua highlighting
   use 'euclidianAce/BetterLua.vim'
 
-  use 'tjdevries/nlua.nvim'
+  use {'tjdevries/nlua.nvim', disable = true}
 
   use {'rafcamlet/nvim-luapad', ft = 'lua'}
 

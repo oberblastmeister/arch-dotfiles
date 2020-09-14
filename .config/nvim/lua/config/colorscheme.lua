@@ -117,6 +117,11 @@ local function setup()
     vim.cmd(command)
   end
 
+  -- highlighter.highlight_components('CocWarningVirtualText', {
+  --   fg = 'NONE',
+  --   bg = 'GruvboxRed',
+  -- })
+
   -- links lsp highlights to coc
   -- for from, to in pairs(links) do
   --     vim.cmd(string.format("highlight! link %s %s", from, to))

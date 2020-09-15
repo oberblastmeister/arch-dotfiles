@@ -13,6 +13,8 @@
 " ----------------------------- Important ----------------------------------
 lua require('plugins')
 
+" lua require('settings').setup()
+
   let g:fzf_preview_window = 'right'
 
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }

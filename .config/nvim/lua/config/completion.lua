@@ -1,4 +1,7 @@
 local function setup()
+  vim.o.completeopt='menuone,noinsert,noselect'
+  vim.o.omnifunc='lua.vim.lsp.omnifunc'
+
   vim.g.completion_enable_snippet = "UltiSnips"
 
   if vim.g.completion_enable_snippet == "vim-vsnip" then

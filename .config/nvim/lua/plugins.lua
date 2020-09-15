@@ -106,24 +106,13 @@ return require('packer').startup(function()
     end,
   }
 
-  -- status bar
-  use {
-    'itchyny/lightline.vim',
-    config = function() require'config/lightline'.setup() end,
-    disable = true,
-  }
-
-  -- turn buffers into tabs on tabline
-  use {
-    'mengelbrecht/lightline-bufferline',
-    requires = 'itchyny/lightline.vim',
-    disable = true,
-  }
-
-  use 'nvim-lua/plenary.nvim'
   use {
     'tjdevries/express_line.nvim',
     config = function() require'config/express_line'.setup() end,
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
   }
 
   -- colorize hex codes

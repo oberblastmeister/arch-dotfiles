@@ -13,7 +13,7 @@ local function on_attach(client)
   if settings.lsp_status == true then
     lsp_status.on_attach(client)
   end
-  vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
+  -- vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
 end
 
 -- a table of lsp servers and their configs

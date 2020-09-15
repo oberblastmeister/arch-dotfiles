@@ -116,6 +116,8 @@ return require('packer').startup(function()
   use {
     'mengelbrecht/lightline-bufferline',
     requires = 'itchyny/lightline.vim',
+    config = function() require'config/lightline_bufferline'.setup() end,
+    opt = true,
   }
 
   -- colorize hex codes

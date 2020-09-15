@@ -40,13 +40,6 @@ local function setup()
       buffers = 1
     }
   }
-
-  vim.g['lightline#bufferline#show_number'] = 2
-  vim.g['lightline#bufferline#clickable'] = 1
-  vim.g['lightline#bufferline#modified'] = ' '
-  vim.g['lightline#bufferline#read_only'] = ' '
-  vim.g['lightline#bufferline#more_buffers'] = '…'
-  vim.g['lightline#bufferline#unnamed'] = '_'
 end
 
 return {

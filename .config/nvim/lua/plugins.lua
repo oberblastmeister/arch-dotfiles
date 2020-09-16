@@ -115,6 +115,10 @@ return require('packer').startup(function()
     },
   }
 
+  rtp_use {
+    'rooter.nvim'
+  }
+
   ----------------------------- Looks --------------------------------------
   -- colorscheme
   use {
@@ -141,7 +145,7 @@ return require('packer').startup(function()
     'mengelbrecht/lightline-bufferline',
     requires = 'itchyny/lightline.vim',
     config = function() require'config/lightline_bufferline'.setup() end,
-    -- opt = true,
+    opt = true,
   }
 
   -- colorize hex codes
@@ -288,6 +292,7 @@ return require('packer').startup(function()
     'airblade/vim-rooter',
     cmd = 'Rooter',
     config = function() require'config/rooter'.setup() end,
+    disable = true,
   }
 
   -- repl sratchpad

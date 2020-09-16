@@ -12,18 +12,10 @@ local function setup()
         {'lspstatus', 'percent'},
       }
     },
-    tabline = {
-      left = {{'buffers'}},
-      right = {{}}
-    },
     component = {
       lineinfo = ' %3l:%-2v',
     },
-    component_expand = {
-      buffers = 'lightline#bufferline#buffers'
-    },
     component_type = {
-      buffers = 'tabsel',
       readonly = 'error',
       linter_warnings = 'warning',
       linter_errors = 'error',
@@ -36,9 +28,6 @@ local function setup()
       currentfunction = 'CocCurrentFunction',
       zoom = 'zoom#statusline'
     },
-    component_raw = {
-      buffers = 1
-    }
   }
 end
 

@@ -1,6 +1,8 @@
-local nvim_lsp = require'nvim_lsp'
-local diagnostic = require'diagnostic'
-local lsp_status = require'lsp-status'
+local nvim_lsp = require('nvim_lsp')
+local nvim_lsp_configs = require('nvim_lsp/configs')
+local rooter = require('rooter')
+local diagnostic = require('diagnostic')
+local lsp_status = require('lsp-status')
 
 local settings = require'config/settings'
 
@@ -10,6 +12,9 @@ end
 
 local function on_attach(client)
   diagnostic.on_attach(client)
+  rooter.on_attach(client, {
+    rooter_echo = true
+  })
   if settings.lsp_status == true then
     lsp_status.on_attach(client)
   end
@@ -38,7 +43,7 @@ local servers = {
   },
   yamlls = {},
   gopls = {
-    root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', vim.fn.getcwd())
+    -- root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', vim.fn.getcwd())
   },
   texlab = {},
   bashls = {},

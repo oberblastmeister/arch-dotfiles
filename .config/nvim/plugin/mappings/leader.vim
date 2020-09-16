@@ -23,49 +23,49 @@ nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " Buffer {{{
 " ============================================================================
 " go to relative buffer numbers
-" nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-" nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-" nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-" nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-" nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-" nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-" nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-" nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-" nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-" nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
-" " info
-" let g:which_key_map = {
-"       \ '1': 'go to buffer 1',
-"       \ '2': 'go to buffer 2',
-"       \ '3': 'go to buffer 3',
-"       \ '4': 'go to buffer 4',
-"       \ '5': 'go to buffer 5',
-"       \ '6': 'go to buffer 6',
-"       \ '7': 'go to buffer 7',
-"       \ '8': 'go to buffer 8',
-"       \ '9': 'go to buffer 9',
-"       \ '0': 'go to buffer 0',
-"       \ ' ': 'go to previous buffer',
-"       \ 'o': 'toggle zoom of split',
-"       \ 'q': 'quit',
-"       \ 'Q': 'quit without saving',
-"       \ 'w': 'write',
-"       \ 'x': 'exit and save',
-"       \ 'p': 'put below',
-"       \ }
+" info
+let g:which_key_map = {
+      \ '1': 'go to buffer 1',
+      \ '2': 'go to buffer 2',
+      \ '3': 'go to buffer 3',
+      \ '4': 'go to buffer 4',
+      \ '5': 'go to buffer 5',
+      \ '6': 'go to buffer 6',
+      \ '7': 'go to buffer 7',
+      \ '8': 'go to buffer 8',
+      \ '9': 'go to buffer 9',
+      \ '0': 'go to buffer 0',
+      \ ' ': 'go to previous buffer',
+      \ 'o': 'toggle zoom of split',
+      \ 'q': 'quit',
+      \ 'Q': 'quit without saving',
+      \ 'w': 'write',
+      \ 'x': 'exit and save',
+      \ 'p': 'put below',
+      \ }
 
-" " delete relative buffer numbers
-" nmap <Leader>b1 <Plug>lightline#bufferline#delete(1)
-" nmap <Leader>b2 <Plug>lightline#bufferline#delete(2)
-" nmap <Leader>b3 <Plug>lightline#bufferline#delete(3)
-" nmap <Leader>b4 <Plug>lightline#bufferline#delete(4)
-" nmap <Leader>b5 <Plug>lightline#bufferline#delete(5)
-" nmap <Leader>b6 <Plug>lightline#bufferline#delete(6)
-" nmap <Leader>b7 <Plug>lightline#bufferline#delete(7)
-" nmap <Leader>b8 <Plug>lightline#bufferline#delete(8)
-" nmap <Leader>b9 <Plug>lightline#bufferline#delete(9)
-" nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
+" delete relative buffer numbers
+nmap <Leader>b1 <Plug>lightline#bufferline#delete(1)
+nmap <Leader>b2 <Plug>lightline#bufferline#delete(2)
+nmap <Leader>b3 <Plug>lightline#bufferline#delete(3)
+nmap <Leader>b4 <Plug>lightline#bufferline#delete(4)
+nmap <Leader>b5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>b6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>b7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>b8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>b9 <Plug>lightline#bufferline#delete(9)
+nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
 
 " misc buffer mappings
 nnoremap <silent> <leader>bD :Bufonly<CR>

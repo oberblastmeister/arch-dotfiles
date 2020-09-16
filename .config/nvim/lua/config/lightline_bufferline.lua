@@ -9,7 +9,7 @@ local function setup()
   -- for lightline bufferline
   vim.o.showtabline = 2
   -- allow lightline buffer line to be shown if gui is running
-  if vim.fn.has('gui_running') = 1 then
+  if vim.fn.has('gui_running') == 1 then
     vim.cmd [[set guioptions-=e]]
   end
 end

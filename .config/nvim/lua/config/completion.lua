@@ -2,6 +2,7 @@ local function setup()
   vim.o.completeopt='menuone,noinsert,noselect'
   vim.o.omnifunc='lua.vim.lsp.omnifunc'
 
+  vim.g.completion_auto_change_source = 1
   vim.g.completion_enable_snippet = "UltiSnips"
 
   if vim.g.completion_enable_snippet == "vim-vsnip" then
@@ -44,5 +45,4 @@ end
 return {
   setup = setup,
   on_attach = on_attach,
-  start = start,
 }

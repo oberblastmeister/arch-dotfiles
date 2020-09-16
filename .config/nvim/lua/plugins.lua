@@ -5,9 +5,8 @@ local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 function InstallPacker()
   -- TODO: Maybe handle windows better?
   if packer_exists then
-    if vim.fn.input("Packer already exists. Are you sure that you want to download it? (y for yes)") ~= "y" then
-      return
-    end
+    vim.api.nvim_err_writeln('[plugins] Packer is already installed')
+    return
   end
 
   if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
@@ -57,8 +56,8 @@ return require('packer').startup(function()
     "~/projects/",
   }
 
-  -- get the full path from the short name
-  local function get_path(name)
+  -- return the path of the name in dirs or nil if the name is not in dirs
+  local function name_in_dirs(name)
     for _, dir in ipairs(dirs) do
       if vim.fn.isdirectory(vim.fn.expand(dir .. name)) == 1 then
         return dir .. name
@@ -66,10 +65,23 @@ return require('packer').startup(function()
     end
   end
 
+  -- get the full path from the short name or return the path if the path is already full path
+  local function get_path(name)
+    if string.find(name, '/') == nil then
+      return name_in_dirs(name)
+    else
+      return name
+    end
+  end
+
   -- local use function
   local function local_use(options)
-    options[1] = get_path(options[1])
-    -- options[1] = 'dude'
+    local path = get_path(options[1])
+    if path == nil then
+      vim.api.nvim_err_writeln('[plugins] ' .. options[1] .. ' was not found in the directories ' .. vim.inspect(dirs))
+      return
+    end
+    options[1] = path
 
     use(options)
   end
@@ -214,7 +226,6 @@ return require('packer').startup(function()
   --     'nvim-lua/popup.nvim',
   --     'nvim-lua/plenary.nvim',
   --   },
-  --   disable = true,
   -- }
 
   use {

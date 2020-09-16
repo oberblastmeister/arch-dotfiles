@@ -66,6 +66,7 @@ return require('packer').startup(function()
   -- local use function
   local function local_use(options)
     options[1] = get_path(options[1])
+    -- options[1] = 'dude'
 
     use(options)
   end
@@ -89,6 +90,14 @@ return require('packer').startup(function()
   rtp_use {
   	'highlighter.nvim',
     config = function() require'highlighter' end,
+  }
+
+  local_use {
+    'telescope.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    },
   }
 
   ----------------------------- Looks --------------------------------------
@@ -194,13 +203,14 @@ return require('packer').startup(function()
 
   ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
-  use {
-    'nvim-lua/telescope.nvim',
-    requires = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-  }
+  -- use {
+  --   'nvim-lua/telescope.nvim',
+  --   requires = {
+  --     'nvim-lua/popup.nvim',
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   disable = true,
+  -- }
 
   use {
     'junegunn/fzf.vim',

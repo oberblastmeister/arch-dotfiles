@@ -8,13 +8,13 @@ function! Write()
   TSBufEnable highlight
 endfunction
 
-nnoremap <leader><leader> <c-^>
+nnoremap <silent> <leader><leader> <c-^>
 nnoremap <silent> <leader>w <cmd>write<CR>
 nnoremap <silent> <leader>W :call Write()<CR>
 nnoremap <silent> <leader>x :xit<CR>
 nnoremap <silent> <leader>o :call zoom#toggle()<CR>
-nnoremap <leader>q :quit<CR>
-nnoremap <leader>Q :qa!<CR>
+nnoremap <silent> <leader>q :quit<CR>
+nnoremap <silent> <leader>Q :qa!<CR>
 nnoremap <silent> <leader>p :put<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}

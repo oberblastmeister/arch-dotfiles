@@ -33,7 +33,7 @@ nnoremap <silent> gr <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " use treesitter
-" nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>
 
 " autocmd CursorHold * lua vim.lsp.buf.document_highlight()

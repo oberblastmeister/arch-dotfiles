@@ -37,13 +37,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-
-" for lightline bufferline
-set showtabline=2
-" allow lightline buffer line to be shown if gui is running
-if has('gui_running')
-  set guioptions-=e
-endif
 " }}}
 
 " ============================================================================

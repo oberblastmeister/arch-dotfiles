@@ -45,6 +45,9 @@ vim.g.loaded_python_provider = 0
 -- command to start python3 executable
 vim.g.python3_host_prog = '/usr/bin/python3'
 
+-- disable netrw
+vim.g.loaded_netrwPlugin = 1
+
 return require('packer').startup(function()
   -- let packer optionally manage itself
   use {'wbthomason/packer.nvim', opt = true}
@@ -125,6 +128,8 @@ return require('packer').startup(function()
   use {
     'mengelbrecht/lightline-bufferline',
     requires = 'itchyny/lightline.vim',
+    config = function() require'config/lightline_bufferline'.setup() end,
+    -- opt = true,
   }
 
   -- colorize hex codes

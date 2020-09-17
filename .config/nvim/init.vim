@@ -20,7 +20,7 @@ lua require('plugins')
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
   let g:fzf_buffers_jump = 1
 
-  " let test#strategy = "vimux"
+  let test#strategy = "vimux"
 
 " ----------------------------- General -------------------------------------
   let g:zoom#statustext = ''

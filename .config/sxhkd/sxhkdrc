@@ -31,9 +31,9 @@ super + alt + u
 super + alt + {q,r}
     bspc {quit,wm -r}
 
-# lock screen
-super + alt + l
-    betterlockscreen -l dim
+# # lock screen
+# super + alt + l
+#     betterlockscreen -l dim
 
 # close and kill
 super + {_,shift + }q

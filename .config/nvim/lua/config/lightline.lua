@@ -5,8 +5,8 @@ local function setup()
     colorscheme = 'gruvbox',
     active = {
       left = {
-        {'mode', 'paste', 'zoom'},
-        {'fugitive'}
+        {'mode', 'paste', 'zoom', 'modified'},
+        {'fugitive', 'readonly'}
       },
       right = {
         {'lspstatus', 'percent'},

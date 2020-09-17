@@ -346,7 +346,6 @@ return require('packer').startup(function()
 
   use {
     'andymass/vim-matchup',
-    event = 'VimEnter *',
     config = function() require'config/matchup'.setup() end,
   }
 

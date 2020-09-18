@@ -12,6 +12,7 @@ packages=(
     git
     github-cli
     unclutter
+    libnotify
 
     # audio
     pulseaudio
@@ -125,7 +126,9 @@ aur_packages=(
     zoxide
     brave-bin
     mcmojave-cursors
-    betterlockscreen
+    googler
+    buku
+    buku_run
 )
 
 language_servers=(

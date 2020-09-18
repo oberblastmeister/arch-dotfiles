@@ -4,7 +4,7 @@ configuration {
 	lines: 10;
     terminal: "kitty";
 	case-sensitive: false;
-	matching: "normal";
+	matching: "fuzzy";
 	theme: "~/.config/rofi/gruvbox.rasi";
     icon-theme: "Papirus";
     drun-display-format: "{name} [<span weight='normal' size='small'>({generic})</span>]";

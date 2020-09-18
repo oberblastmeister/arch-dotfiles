@@ -25,7 +25,8 @@ super + alt + u
     powermenu
 
 ~button3
-    root_menu.sh
+    jgmenu --at-pointer
+
 #
 # bspwm hotkeys
 #

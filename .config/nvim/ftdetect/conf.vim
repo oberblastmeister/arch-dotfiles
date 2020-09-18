@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.aliases,*.conf set filetype=conf
+au BufRead,BufNewFile buku*,*.aliases,*.conf set filetype=conf

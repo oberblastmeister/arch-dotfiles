@@ -7,16 +7,19 @@ super + Return
 super + shift + Return
     $TERMINAL
 
-# program launcher
+# rofi
 super + d
     launcher-alt
 
 alt + Tab
     windows
 
+super + p ; b
+    buku_run
+
 # make sxhkd reload its configuration files:
 super + Escape
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd && notify-send 'sxhkd reloaded'
 
 super + alt + u
     powermenu
@@ -67,7 +70,7 @@ super + w
 
 # togle follow pointer
 super + alt + p
-    bspc config focus_follows_pointer {true,false}
+    bspc config focus_follows_pointer {true,false} && notify-send "follow pointer {on,off}"
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -82,8 +85,14 @@ super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-    bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+#     bspc node -f @{parent,brother,first,second}
+
+super + {b,comma,period}
+    bspc node -f @{brother,first,second}
+
+super + ctrl + p
+    bspc node -f @brother
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
@@ -98,7 +107,6 @@ super + alt + bracket{left,right}
     id=$(bspc query --nodes --node); \
     bspc node --to-desktop {prev,next}.local; \
     bspc node --focus ${id}; \
-    bspunhide &
 
 # send window to next/previous desktop, don't move
 super + shift + bracket{left,right}
@@ -209,3 +217,7 @@ super + ctrl + b
 # dropdown terminal
 super + alt + t
     tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown $TERMINAL
+
+# add bookmark to buku
+super + alt + b
+    xsel | buku -a && notify-send 'added bookmark'

@@ -12,6 +12,7 @@ packages=(
     git
     github-cli
     unclutter
+    libnotify
 
     # audio
     pulseaudio
@@ -127,6 +128,7 @@ aur_packages=(
     mcmojave-cursors
     googler
     buku
+    buku_run
 )
 
 language_servers=(

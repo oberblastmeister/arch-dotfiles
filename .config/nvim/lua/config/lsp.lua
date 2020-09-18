@@ -13,7 +13,7 @@ end
 local function on_attach(client)
   diagnostic.on_attach(client)
   rooter.on_attach(client, {
-    rooter_echo = true
+    rooter_echo = false
   })
   if settings.lsp_status == true then
     lsp_status.on_attach(client)

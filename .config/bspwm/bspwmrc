@@ -40,18 +40,22 @@ fi
 # -----------------------------------------------------
 # ------------------- Autostart apps ------------------
 # -----------------------------------------------------
-xrdb ~/.Xresources &
+
 ~/bin/polybar-launch.sh &
+xrdb ~/.Xresources &
 feh --bg-scale ~/.dotfiles/wallpapers/monocolor.png
 mopidy &
 picom &
 redshift &
+
+# tray icons
 xfce4-power-manager &
 udiskie --tray &
 nm-applet &
 flameshot &
 # flameshot config --showhelp false --maincolor '#83a598' --contrastcolor '#458588' --trayicon true
 blueman-applet &
+syncthing-gtk -m &
 
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------

@@ -126,6 +126,15 @@ return require('packer').startup(function()
     config = function() require'config/colorscheme'.setup() end,
   }
 
+  use {
+    'sainnhe/gruvbox-material',
+    setup = function() vim.g.gruvbox_material_palette = 'original' end,
+  }
+
+  use 'dracula/vim'
+
+  use 'joshdick/onedark.vim'
+
   -- indent lines
   use {
     'Yggdroot/indentLine',

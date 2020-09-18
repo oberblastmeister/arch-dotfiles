@@ -220,5 +220,5 @@ super + alt + t
     tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown $TERMINAL
 
 # add bookmark to buku
-super + alt + b
-    xsel | buku -a && notify-send 'added bookmark'
+alt + b
+    notify-send 'adding bookmark' && xsel | buku -a && notify-send 'added bookmark'

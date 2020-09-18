@@ -61,7 +61,7 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.zsh_history
 
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan

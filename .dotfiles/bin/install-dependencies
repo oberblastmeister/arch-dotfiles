@@ -119,7 +119,8 @@ aur_packages=(
     zoxide
     brave-bin
     mcmojave-cursors
-    betterlockscreen
+    googler
+    buku
 )
 
 language_servers=(

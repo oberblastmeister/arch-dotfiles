@@ -312,7 +312,6 @@ return require('packer').startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     cmd = 'LuaTreeFindFile',
-    disable = true,
     requires = {
       'kyazdani42/nvim-web-devicons',
       cmd = 'LuaTreeFindFile',

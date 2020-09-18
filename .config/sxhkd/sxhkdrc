@@ -70,7 +70,7 @@ super + w
 
 # togle follow pointer
 super + alt + p
-    bspc config focus_follows_pointer {true,false} && notify-send "follow pointer {on,off}"
+    bspc config focus_follows_pointer {true,false} && notify-send "follow pointer toggled"
 
 # set the node flags
 super + ctrl + {m,x,y,z}

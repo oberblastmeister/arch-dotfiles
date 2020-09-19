@@ -44,3 +44,15 @@ augroup nostatusline
   autocmd  FileType which_key set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
 augroup end
+
+" augroup scrollbar
+"     autocmd!
+"     autocmd BufEnter    * silent! lua require('scrollbar').show()
+"     autocmd BufLeave    * silent! lua require('scrollbar').clear()
+
+"     autocmd CursorMoved * silent! lua require('scrollbar').show()
+"     autocmd VimResized  * silent! lua require('scrollbar').show()
+
+"     autocmd FocusGained * silent! lua require('scrollbar').show()
+"     autocmd FocusLost   * silent! lua require('scrollbar').clear()
+" augroup end

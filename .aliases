@@ -25,6 +25,7 @@ alias la='exa --all --icons'
 alias l='lfcd'
 alias b='buku --suggest'
 alias fb='URL=$(buku -p -f 10 | fzf) && [[ -n $URL ]] && $BROWSER $URL'
+alias bu='buku'
 alias top='btm'
 
 alias chtsh='cht --shell'

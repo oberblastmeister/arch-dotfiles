@@ -32,10 +32,10 @@ ZoomPreview=C
 ExecCmd=!
 
 [filelist]
-Search=S
+Search=/
 SearchNext=M-s
 SearchPrev=M-S
-Filter=/
+Filter=?
 Select=Space
 InvertSelection=v
 ClearSelection=V
@@ -47,8 +47,6 @@ CycleSort=s
 ToNextMtime=K
 ToPrevMtime=k
 ToggleDirsFirst=d
-
-
 
 [tabs]
 NewTab=C-t

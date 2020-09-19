@@ -290,9 +290,6 @@ return require('packer').startup(function()
   -- visualize undotree
   use {'mbbill/undotree', cmd = 'UndotreeToggle'}
 
-  -- zoom like tmux
-  use 'dhruvasagar/vim-zoom'
-
   -- indent aware pasting
   use 'sickill/vim-pasta'
 

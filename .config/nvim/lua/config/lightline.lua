@@ -5,11 +5,11 @@ local function setup()
     colorscheme = 'gruvbox',
     active = {
       left = {
-        {'mode', 'paste', 'zoom', 'modified'},
-        {'fugitive', 'readonly'}
+        {'mode', 'paste', 'modified'},
+        {'readonly', 'filename', 'fugitive'}
       },
       right = {
-        {'lspstatus', 'percent'},
+        {'lspstatus', 'treesitter', 'percent'},
       }
     },
     component = {
@@ -21,6 +21,7 @@ local function setup()
       linter_errors = 'error',
     },
     component_function = {
+      treesitter = 'helpers#lightline#treesitter',
       readonly = 'helpers#lightline#read_only',
       fugitive = 'helpers#lightline#fugitive',
       cocstatus = 'coc#status',

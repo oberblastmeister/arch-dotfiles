@@ -32,7 +32,7 @@ local function on_attach()
     completion_enable_snippet = "UltiSnips",
     enable_auto_signature = 1,
     completion_matching_ignore_case = 1,
-    completion_trigger_on_delete = 1,
+    completion_trigger_on_delete = 0,
     completion_enable_auto_paren = 0,
   })
 end

@@ -2,7 +2,12 @@ local function setup()
   vim.o.completeopt='menuone,noinsert,noselect'
   vim.o.omnifunc='lua.vim.lsp.omnifunc'
 
+  -- auto change source
   vim.g.completion_auto_change_source = 1
+  -- turn off for now for performance reasons
+  vim.g.completion_enable_auto_hover = 0
+  -- ignore case for completion
+  vim.g.completion_matching_ignore_case = 1
   vim.g.completion_enable_snippet = "UltiSnips"
 
   if vim.g.completion_enable_snippet == "vim-vsnip" then
@@ -30,6 +35,7 @@ local function on_attach()
     completion_auto_change_source = 1,
     completion_sorting = "length",
     completion_enable_snippet = "UltiSnips",
+    completion_enable_auto_hover = 0,
     enable_auto_signature = 1,
     completion_matching_ignore_case = 1,
     completion_trigger_on_delete = 0,

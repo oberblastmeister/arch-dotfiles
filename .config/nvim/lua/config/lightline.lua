@@ -9,7 +9,7 @@ local function setup()
         {'readonly', 'filename', 'fugitive'}
       },
       right = {
-        {'lspstatus', 'treesitter', 'percent'},
+        {'lspstatus', 'percent'},
       }
     },
     component = {

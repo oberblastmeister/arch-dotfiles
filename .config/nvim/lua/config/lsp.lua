@@ -10,14 +10,16 @@ if settings.lsp_status == true then
   lsp_status.register_progress()
 end
 
-local function on_attach(client)
-  diagnostic.on_attach(client)
+local function on_attach(client, bufnr)
+  diagnostic.on_attach(client, bufnr)
   rooter.on_attach(client, {
     rooter_echo = false
   })
   if settings.lsp_status == true then
-    lsp_status.on_attach(client)
+    lsp_status.on_attach(client, bufnr)
   end
+  -- auto diagnostic popup
+  -- vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
   vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
 end
 

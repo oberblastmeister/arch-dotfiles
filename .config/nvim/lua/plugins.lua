@@ -170,8 +170,6 @@ return require('packer').startup(function()
   -- lsp configs
   use {
     'neovim/nvim-lspconfig',
-    -- Todo: buggy
-    -- run = function() require'config/lsp'.install() end,
     config = function() require'config/lsp'.setup() end,
   }
 

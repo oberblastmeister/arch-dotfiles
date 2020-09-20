@@ -32,9 +32,12 @@ nnoremap <silent> <leader>lr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gr <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-" use treesitter
+nnoremap <silent> <leader>= <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>e <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>li <cmd>lua vim.lsp.buf.incoming_call()<CR>
+nnoremap <silent> <leader>lo <cmd>lua vim.lsp.buf.outgoing_calls()<CR>
 
 " autocmd CursorHold * lua vim.lsp.buf.document_highlight()
 " autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()

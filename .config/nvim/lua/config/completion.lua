@@ -19,7 +19,6 @@ local function on_attach()
       {complete_items = {'lsp', 'snippet'}},
       {complete_items = {'ts'}},
       {complete_items = {'path'}, triggered_only = {'/'}},
-      -- {complete_items = {'buffer'}},
       {complete_items = {'buffers'}},
     },
   }

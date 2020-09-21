@@ -61,7 +61,6 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
 
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
@@ -162,8 +161,4 @@ zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
 # source lf icons
-source ~/.lf_icons
-# eval "$(pyenv init -)"
-# autoenable virtualenvs
-# eval "$(pyenv virtualenv-init -)"
-### End of Zinit's installer chunk
+source ~/.config/zsh/.lf_icons

@@ -1,6 +1,5 @@
 local nvim_lsp = require('nvim_lsp')
 local nvim_lsp_configs = require('nvim_lsp/configs')
-local rooter = require('rooter')
 local diagnostic = require('diagnostic')
 local lsp_status = require('lsp-status')
 
@@ -10,11 +9,38 @@ if settings.lsp_status == true then
   lsp_status.register_progress()
 end
 
+local keymappings = {
+  {'n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>'},
+  {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>'},
+  {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>'},
+  {'n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>'},
+  {'n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>'},
+  {'n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>'},
+  {'n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>"},
+  {'n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>'},
+  {'n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>'},
+  {'n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
+  {'n', '<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>'},
+  {'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>'},
+  {'n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>'},
+  {'n', '<leader>li', '<cmd>lua vim.lsp.buf.incoming_call()<CR>'},
+  {'n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>'},
+}
+
+local function setup_keymappings()
+  local map = function(keymapping)
+    print('keymapping:', keymapping)
+    vim.api.nvim_buf_set_keymap(0, keymapping[1], keymapping[2], keymapping[3], {noremap = true, silent = true})
+  end
+
+  for _, keymapping in ipairs(keymappings) do
+    print('keymapping:', keymapping)
+    map(keymapping)
+  end
+end
+
 local function on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
-  rooter.on_attach(client, {
-    rooter_echo = false
-  })
   if settings.lsp_status == true then
     lsp_status.on_attach(client, bufnr)
   end

@@ -79,10 +79,10 @@ zinit ice wait lucid
 zinit snippet OMZL::completion.zsh
 
 # big four
-zinit ice wait lucid atinit"zicompinit; zicdreplay"
+zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice lucid atload"_zsh_autosuggest_start; bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept"
+zinit ice wait lucid atload"!_zsh_autosuggest_start; bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept"
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid atload"bindkey '^P' history-substring-search-up; bindkey '^N' history-substring-search-down"

@@ -370,6 +370,15 @@ return require('packer').startup(function()
     cond = function() return os.getenv('TMUX') ~= nil end,
   }
 
+  ----------------------------- Terminal ------------------------------------
+  use {
+    'hkupty/iron.nvim',
+    config = function()
+      vim.g.iron_map_defaults = 0
+      vim.g.iron_map_extended = 0
+    end,
+  }
+
   ----------------------------- Notes/Writing -------------------------------
   use {
     'iamcco/markdown-preview.nvim',

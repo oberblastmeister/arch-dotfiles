@@ -145,7 +145,7 @@ return require('packer').startup(function()
 
   use {
     'tjdevries/express_line.nvim',
-    config = function() require'config/express_line'.setup() end,
+    config = function() require'config/express_line'.start() end,
     requires = {
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',

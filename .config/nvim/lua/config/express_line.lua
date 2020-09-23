@@ -57,6 +57,70 @@ end
 -- ƒ
 -- ᶜ
 
+local status_line = {
+  left = {
+    get_mode,
+    {
+      builtin.file,
+      subscribe.buf_autocmd(
+      "el_file_icon",
+      "BufRead",
+      function(_, buffer)
+        return extensions.file_icon(_, buffer)
+      end
+      ),
+    },
+
+    helper.async_buf_setter(
+    win_id,
+    'el_git_branch',
+    git_branch,
+    2000
+    ),
+
+  },
+  right = {
+    lsp_status,
+    '\u{2113} %l \u{1d68c} %c'
+  },
+}
+
+local function separator(n, sep)
+  local sep
+  if sep == nil then
+    sep =  string.rep(' ', n)
+  else
+    sep = string.rep(sep, n)
+  end
+  return sep
+end
+
+local function insert_module(status_line, module)
+    if type(module) == "table" then
+      for _, submodule in ipairs(module) do
+        table.insert(res, submodule)
+        table.insert(separator(1))
+      end
+      table.insert(separator(1))
+    else
+      table.insert(module)
+      table.insert(separator(2))
+    end
+end
+
+local function insert_multiple_modules(status_line, modules)
+  for _, module in ipairs(modules) do
+    insert_module(status_line, module)
+  end
+end
+
+local function generator()
+  local res
+  insert_multiple_modules(status_line.left)
+  local left = status_line.left
+  return res
+end
+
 local function setup()
   local generator = function()
     local el_segments = {}
@@ -118,6 +182,105 @@ local function setup()
   el.setup({generator = generator})
 end
 
+local function start()
+  el.setup {
+    generator = function(win_id)
+      return {
+        get_mode,
+
+        separator(2),
+
+        builtin.file,
+        separator(1),
+        subscribe.buf_autocmd(
+        "el_file_icon",
+        "BufRead",
+        function(_, buffer)
+          return extensions.file_icon(_, buffer)
+        end
+        ),
+
+        separator(2),
+        helper.async_buf_setter(
+        win_id,
+        'el_git_branch',
+        git_branch,
+        2000
+        ),
+
+        separator(1),
+        helper.async_buf_setter(
+          win_id,
+          'el_git_stat',
+          extensions.git_changes,
+          2000
+        ),
+
+        sections.split,
+
+        -- sections.collapse_builtin {
+        --   lsp_status,
+        --   separator(2),
+        --   '\u{2113} %l \u{1d68c} %c',
+        --   separator(1),
+        -- },
+        lsp_status,
+
+        '\u{2113} %l \u{1d68c} %c',
+        separator(1),
+        -- sections.collapse_builtin {
+        --   '\u{2113} %l \u{1d68c} %c',
+        --   separator(2),
+        -- }
+      }
+    end
+  }
+end
+
+local function tj()
+  require('el').setup {
+    generator = function(win_id)
+      return {
+        extensions.mode,
+        sections.split,
+        subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
+          local icon = extensions.file_icon(_, bufnr)
+          if icon then
+            return icon .. ' '
+          end
+
+          return ''
+        end),
+        builtin.responsive_file(140, 90),
+        sections.collapse_builtin {
+          ' ',
+          builtin.modified_flag
+        },
+        sections.split,
+        -- lsp_statusline.current_function,
+        -- lsp_statusline.server_progress,
+        subscribe.buf_autocmd(
+        "el_git_changes",
+        "BufWritePost",
+        function(window, buffer)
+          return extensions.git_changes(window, buffer)
+        end
+        ),
+        '[', builtin.line_with_width(3), ':',  builtin.column_with_width(2), ']',
+        sections.collapse_builtin{
+          '[',
+          builtin.help_list,
+          builtin.readonly_list,
+          ']',
+        },
+        builtin.filetype,
+      }
+    end
+  }
+end
+
 return {
-  setup = setup
+  setup = setup,
+  start = start,
+  tj = tj,
 }

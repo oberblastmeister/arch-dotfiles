@@ -46,7 +46,7 @@ local function on_attach(client, bufnr)
   end
   -- auto diagnostic popup
   -- vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
-  vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
+  -- vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
   vim.cmd [[autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }]]
 end
 

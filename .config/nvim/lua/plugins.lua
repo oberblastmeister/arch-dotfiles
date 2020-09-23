@@ -5,9 +5,8 @@ local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 function InstallPacker()
   -- TODO: Maybe handle windows better?
   if packer_exists then
-    if vim.fn.input("Packer already exists. Are you sure that you want to download it? (y for yes)") ~= "y" then
-      return
-    end
+    vim.api.nvim_err_writeln('[plugins] Packer is already installed')
+    return
   end
 
   if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
@@ -45,6 +44,9 @@ vim.g.loaded_python_provider = 0
 -- command to start python3 executable
 vim.g.python3_host_prog = '/usr/bin/python3'
 
+-- disable netrw
+vim.g.loaded_netrwPlugin = 1
+
 return require('packer').startup(function()
   -- let packer optionally manage itself
   use {'wbthomason/packer.nvim', opt = true}
@@ -54,8 +56,8 @@ return require('packer').startup(function()
     "~/projects/",
   }
 
-  -- get the full path from the short name
-  local function get_path(name)
+  -- return the path of the name in dirs or nil if the name is not in dirs
+  local function name_in_dirs(name)
     for _, dir in ipairs(dirs) do
       if vim.fn.isdirectory(vim.fn.expand(dir .. name)) == 1 then
         return dir .. name
@@ -63,9 +65,23 @@ return require('packer').startup(function()
     end
   end
 
+  -- get the full path from the short name or return the path if the path is already full path
+  local function get_path(name)
+    if string.find(name, '/') == nil then
+      return name_in_dirs(name)
+    else
+      return name
+    end
+  end
+
   -- local use function
   local function local_use(options)
-    options[1] = get_path(options[1])
+    local path = get_path(options[1])
+    if path == nil then
+      vim.api.nvim_err_writeln('[plugins] ' .. options[1] .. ' was not found in the directories ' .. vim.inspect(dirs))
+      return
+    end
+    options[1] = path
 
     use(options)
   end
@@ -91,12 +107,33 @@ return require('packer').startup(function()
     config = function() require'highlighter' end,
   }
 
+  local_use {
+    'telescope.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    },
+  }
+
+  rtp_use {
+    'rooter.nvim'
+  }
+
   ----------------------------- Looks --------------------------------------
   -- colorscheme
   use {
     'morhetz/gruvbox',
     config = function() require'config/colorscheme'.setup() end,
   }
+
+  use {
+    'sainnhe/gruvbox-material',
+    setup = function() vim.g.gruvbox_material_palette = 'original' end,
+  }
+
+  use 'dracula/vim'
+
+  use 'joshdick/onedark.vim'
 
   -- indent lines
   use {
@@ -128,8 +165,6 @@ return require('packer').startup(function()
   -- lsp configs
   use {
     'neovim/nvim-lspconfig',
-    -- Todo: buggy
-    -- run = function() require'config/lsp'.install() end,
     config = function() require'config/lsp'.setup() end,
   }
 
@@ -169,6 +204,12 @@ return require('packer').startup(function()
   -- lsp status wrapper
   use 'nvim-lua/lsp-status.nvim'
 
+  -- lsp inlay hints
+  use {
+    'tjdevries/lsp_extensions.nvim',
+    config = function() require'config/lsp_extensions'.setup() end,
+  }
+
   -- lsp tagbar
   use {
     'liuchengxu/vista.vim',
@@ -191,13 +232,13 @@ return require('packer').startup(function()
 
   ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
-  use {
-    'nvim-lua/telescope.nvim',
-    requires = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-  }
+  -- use {
+  --   'nvim-lua/telescope.nvim',
+  --   requires = {
+  --     'nvim-lua/popup.nvim',
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  -- }
 
   use {
     'junegunn/fzf.vim',
@@ -248,9 +289,6 @@ return require('packer').startup(function()
   -- visualize undotree
   use {'mbbill/undotree', cmd = 'UndotreeToggle'}
 
-  -- zoom like tmux
-  use 'dhruvasagar/vim-zoom'
-
   -- indent aware pasting
   use 'sickill/vim-pasta'
 
@@ -259,6 +297,7 @@ return require('packer').startup(function()
     'airblade/vim-rooter',
     cmd = 'Rooter',
     config = function() require'config/rooter'.setup() end,
+    disable = true,
   }
 
   -- repl sratchpad
@@ -278,7 +317,6 @@ return require('packer').startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     cmd = 'LuaTreeFindFile',
-    disable = true,
     requires = {
       'kyazdani42/nvim-web-devicons',
       cmd = 'LuaTreeFindFile',
@@ -312,7 +350,6 @@ return require('packer').startup(function()
 
   use {
     'andymass/vim-matchup',
-    event = 'VimEnter *',
     config = function() require'config/matchup'.setup() end,
   }
 
@@ -332,6 +369,15 @@ return require('packer').startup(function()
   use {
     'benmills/vimux',
     cond = function() return os.getenv('TMUX') ~= nil end,
+  }
+
+  ----------------------------- Terminal ------------------------------------
+  use {
+    'hkupty/iron.nvim',
+    config = function()
+      vim.g.iron_map_defaults = 0
+      vim.g.iron_map_extended = 0
+    end,
   }
 
   ----------------------------- Notes/Writing -------------------------------
@@ -390,4 +436,6 @@ return require('packer').startup(function()
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end
   }
+
+  use {'Xuyuanp/scrollbar.nvim', disable = true}
 end)

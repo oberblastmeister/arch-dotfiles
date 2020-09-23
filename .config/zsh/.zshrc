@@ -61,7 +61,6 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
 
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
@@ -79,10 +78,10 @@ zinit ice wait lucid
 zinit snippet OMZL::completion.zsh
 
 # big four
-zinit ice wait lucid atinit"zicompinit; zicdreplay"
+zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice lucid atload"_zsh_autosuggest_start; bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept"
+zinit ice wait lucid atload"!_zsh_autosuggest_start; bindkey '^_' autosuggest-execute; bindkey '^]' autosuggest-accept"
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid atload"bindkey '^P' history-substring-search-up; bindkey '^N' history-substring-search-down"
@@ -162,8 +161,4 @@ zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
 # source lf icons
-source ~/.lf_icons
-# eval "$(pyenv init -)"
-# autoenable virtualenvs
-# eval "$(pyenv virtualenv-init -)"
-### End of Zinit's installer chunk
+source ~/.config/zsh/.lf_icons

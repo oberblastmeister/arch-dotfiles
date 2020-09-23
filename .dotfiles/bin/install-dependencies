@@ -12,6 +12,7 @@ packages=(
     git
     github-cli
     unclutter
+    libnotify
 
     # audio
     pulseaudio
@@ -21,6 +22,9 @@ packages=(
     pamixer
     alsa-utils # includes alsamixer
 
+    # bluetooth
+    bluez
+    bluez-utils
     blueman
 
     dunst
@@ -100,6 +104,9 @@ packages=(
     pavucontrol
     arandr
     thunar
+    flameshot
+    peek
+    gnome-sound-recorder
     xfce4-power-manager)
 
 for package in ${packages[@]}; do
@@ -119,7 +126,9 @@ aur_packages=(
     zoxide
     brave-bin
     mcmojave-cursors
-    betterlockscreen
+    googler
+    buku
+    buku_run
 )
 
 language_servers=(

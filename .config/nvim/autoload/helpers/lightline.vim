@@ -1,8 +1,8 @@
-function! helpers#lightline#read_only()
+function! helpers#lightline#read_only() abort
   return &readonly ? '' : ''
 endfunction
 
-function! helpers#lightline#fugitive()
+function! helpers#lightline#fugitive() abort
   if exists('*FugitiveHead')
     let branch = FugitiveHead()
     return branch !=# '' ? ''.branch : ''
@@ -16,4 +16,14 @@ function! helpers#lightline#lsp() abort
   endif
 
   return ''
+endfunction
+
+function! helpers#lightline#treesitter() abort
+  return nvim_treesitter#statusline(30)
+  " let l:string = nvim_treesitter#statusline(30)
+  " if l:string == null
+  "   return ''
+  " else
+  "   return l:string
+  " end
 endfunction

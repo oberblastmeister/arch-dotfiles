@@ -46,7 +46,6 @@ nmap ga <Plug>(EasyAlign)
 nmap <Up> <Nop>
 nmap <Down> <Nop>
 nmap <Left> <Nop>
-nmap <Right> <Nop>
 vmap <Up> <Nop>
 vmap <Down> <Nop>
 vmap <Left> <Nop>

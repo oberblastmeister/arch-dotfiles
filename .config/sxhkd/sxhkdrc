@@ -7,22 +7,26 @@ super + Return
 super + shift + Return
     $TERMINAL
 
-# program launcher
+# rofi
 super + d
     launcher-alt
 
 alt + Tab
     windows
 
+super + p ; b
+    buku_run
+
 # make sxhkd reload its configuration files:
 super + Escape
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd && notify-send 'sxhkd reloaded'
 
 super + alt + u
     powermenu
 
 ~button3
-    root_menu.sh
+    jgmenu --at-pointer
+
 #
 # bspwm hotkeys
 #
@@ -32,8 +36,8 @@ super + alt + {q,r}
     bspc {quit,wm -r}
 
 # lock screen
-super + alt + l
-    betterlockscreen -l dim
+# super + alt + l
+#     betterlockscreen -l dim
 
 # close and kill
 super + {_,shift + }q
@@ -65,6 +69,10 @@ super + {space,f}
 super + w
     bspworkmode
 
+# togle follow pointer
+super + alt + p
+    bspc config focus_follows_pointer {true,false} && notify-send "follow pointer toggled"
+
 # set the node flags
 super + ctrl + {m,x,y,z}
     bspc node -g {marked,locked,sticky,private}
@@ -78,8 +86,14 @@ super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-    bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+#     bspc node -f @{parent,brother,first,second}
+
+super + {b,comma,period}
+    bspc node -f @{brother,first,second}
+
+super + ctrl + p
+    bspc node -f @brother
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
@@ -94,7 +108,6 @@ super + alt + bracket{left,right}
     id=$(bspc query --nodes --node); \
     bspc node --to-desktop {prev,next}.local; \
     bspc node --focus ${id}; \
-    bspunhide &
 
 # send window to next/previous desktop, don't move
 super + shift + bracket{left,right}
@@ -156,6 +169,21 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# Smart resize, will grow or shrink depending on location.
+# Will always grow for floating nodes.
+super + ctrl + alt + {h,j,k,l}
+  n=10; \
+  { d1=left;   d2=right;  dx=-$n; dy=0;   \
+  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
+  , d1=right;  d2=left;   dx=$n;  dy=0;   \
+  } \
+  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
+
+#
+# multimedia keys
+#
+
 # audio
 XF86AudioRaiseVolume
     pamixer -i 5
@@ -173,7 +201,17 @@ XF86MonBrightnessDown
 XF86MonBrightnessUp
     xbacklight -inc 8
 
-# launching common apps keys
+# screenshot
+Print
+    flameshot gui
+
+super + Print
+    flameshot full
+
+ctrl + Print
+    flameshot screen
+
+# common apps keys
 super + ctrl + b
     $BROWSER
 
@@ -181,5 +219,5 @@ super + ctrl + b
 super + alt + t
     tdrop -ma -w -4 -y "$PANEL_HEIGHT" -s dropdown $TERMINAL
 
-super + alt + p
-    bspc config focus_follows_pointer {true,false}
+alt + b
+    ~/bin/buku-add

@@ -24,7 +24,7 @@ nnoremap <silent> <leader>. :nohl<CR>:cd ~<CR>:Dotfiles<CR>
 nnoremap <silent> <leader>H :nohl<CR>:Help<CR>
 nnoremap <silent> <leader>/ :nohl<CR>:BLines<CR>
 nnoremap <silent> <leader>? :nohl<CR>:Lines<CR>
-nnoremap <silent> <leader>e :CocFzfList diagnostics<CR>
+" nnoremap <silent> <leader>e :CocFzfList diagnostics<CR>
 
 " common fuzzy leader mappings info
 let g:which_key_map = {

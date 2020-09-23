@@ -2,7 +2,6 @@
 " Settings {{{
 " ============================================================================
 set number relativenumber
-set cursorline
 set smartindent
 set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus
@@ -21,8 +20,9 @@ set ttimeoutlen=20
 set ignorecase smartcase
 set mouse=a
 set nowrap
-set pumblend=15
-set winblend=0
+set pumheight=20
+" set pumblend=15
+" set winblend=0
 
 " no splash screen and shorter messages
 set shortmess+=I " no intro
@@ -37,6 +37,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+" }}}
 
 " ============================================================================
 " Coc {{{

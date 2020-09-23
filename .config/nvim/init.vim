@@ -13,12 +13,14 @@
 " ----------------------------- Important ----------------------------------
 lua require('plugins')
 
+" lua require('settings').setup()
+
   let g:fzf_preview_window = 'right'
 
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
   let g:fzf_buffers_jump = 1
 
-  " let test#strategy = "vimux"
+  let test#strategy = "vimux"
 
 " ----------------------------- General -------------------------------------
   let g:zoom#statustext = ''
@@ -80,14 +82,4 @@ nmap <Leader>c  <Plug>Commentary
 omap <Leader>c  <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
-
-" let g:signify_sign_add               = '┃'
-" let g:signify_sign_delete            = '┃'
-" let g:signify_sign_delete_first_line = '┃'
-" let g:signify_sign_change            = '┃'
-" " show count
-" let g:signify_sign_show_count = 1
-" let g:signify_sign_show_text = 1
-" let g:signify_disable_by_default = 0
-" let g:signify_line_highlight = 0
 " }}}

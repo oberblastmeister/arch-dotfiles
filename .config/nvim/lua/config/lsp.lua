@@ -88,7 +88,8 @@ local servers = {
         }
       }
     }
-  }
+  },
+  hls = {},
 }
 
 -- each server will always attach diagnostic

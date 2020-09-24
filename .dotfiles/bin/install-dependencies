@@ -107,7 +107,12 @@ packages=(
     flameshot
     peek
     gnome-sound-recorder
-    xfce4-power-manager)
+    xfce4-power-manager
+
+    # langague stuff
+    ghc
+    stack
+)
 
 for package in ${packages[@]}; do
     sudo pacman -S --noconfirm $package
@@ -138,6 +143,7 @@ language_servers=(
     vscode-json-languageserver-bin
     yaml-language-server-bin
     gopls
+    haskell-language-server-bin
 
     # non aur
     texlab

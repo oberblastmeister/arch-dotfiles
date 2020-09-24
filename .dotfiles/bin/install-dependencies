@@ -63,6 +63,7 @@ packages=(
     exa # ls
     ripgrep # better grep, needed for fzf
     broot
+    hexyl
 
     cronie # cron jobs
 
@@ -138,6 +139,10 @@ language_servers=(
     vscode-json-languageserver-bin
     yaml-language-server-bin
     gopls
+    grex
+    ripgrep-all-bin
+    xsv-bin
+    csview
 
     # non aur
     texlab

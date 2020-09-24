@@ -209,6 +209,12 @@ return require('packer').startup(function()
   -- lsp status wrapper
   use 'nvim-lua/lsp-status.nvim'
 
+  -- lsp inlay hints
+  use {
+    'tjdevries/lsp_extensions.nvim',
+    config = function() require'config/lsp_extensions'.setup() end,
+  }
+
   -- lsp tagbar
   use {
     'liuchengxu/vista.vim',

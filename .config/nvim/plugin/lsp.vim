@@ -1,16 +1,19 @@
 " Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ completion#trigger_completion()
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ completion#trigger_completion()
+
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
 
 let g:completion_confirm_key = ""
 imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
@@ -28,10 +31,10 @@ nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gy   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> <leader>lr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gr <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <leader>fr <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
+nnoremap <silent> g0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> <leader>= <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> <leader>e <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>

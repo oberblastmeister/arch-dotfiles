@@ -190,7 +190,8 @@ local function start()
 
         separator(2),
 
-        builtin.file,
+        -- builtin.file,
+        builtin.responsive_file(140, 90),
         separator(1),
         subscribe.buf_autocmd(
         "el_file_icon",
@@ -199,6 +200,10 @@ local function start()
           return extensions.file_icon(_, buffer)
         end
         ),
+        sections.collapse_builtin {
+          ' ',
+          builtin.modified_flag
+        },
 
         separator(2),
         helper.async_buf_setter(

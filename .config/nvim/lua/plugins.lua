@@ -210,6 +210,12 @@ return require('packer').startup(function()
     config = function() require'config/lsp_extensions'.setup() end,
   }
 
+  use {
+    'RishabhRD/nvim-lsputils',
+    config = function() require'config/lsp_utils'.setup() end,
+    requires = 'RishabhRD/popfix'
+  }
+
   -- lsp tagbar
   use {
     'liuchengxu/vista.vim',

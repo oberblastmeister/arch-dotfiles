@@ -7,6 +7,9 @@ super + Return
 super + shift + Return
     $TERMINAL
 
+super + alt + Return
+    neovide
+
 # rofi
 super + d
     launcher-alt

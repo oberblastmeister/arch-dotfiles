@@ -65,6 +65,8 @@ set completeopt=menuone,noinsert,noselect
 set omnifunc=v:lua.vim.lsp.omnifunc
 " }}}
 
+set guifont=FiraCode\ Nerd\ Font:h16
+
 " ============================================================================
 " Appearance {{{
 " ============================================================================

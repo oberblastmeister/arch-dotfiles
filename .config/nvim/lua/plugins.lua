@@ -107,14 +107,6 @@ return require('packer').startup(function()
     config = function() require'highlighter' end,
   }
 
-  local_use {
-    'telescope.nvim',
-    requires = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-  }
-
   rtp_use {
     'rooter.nvim'
   }
@@ -236,15 +228,25 @@ return require('packer').startup(function()
     cmd = 'LaunchVimspector'
   }
 
+  -- linting when there is no lsp (for now cannot run multiple lsp servers)
+  use {
+    'w0rp/ale',
+    ft = {'sh', 'zsh', 'bash', 'markdown'},
+    cmd = 'ALEEnable',
+    setup = function() vim.g.ale_disable_lsp = 1 end,
+    config = function() vim.cmd [[ ALEEnable ]] end,
+    disable = true,
+  }
+
   ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
-  -- use {
-  --   'nvim-lua/telescope.nvim',
-  --   requires = {
-  --     'nvim-lua/popup.nvim',
-  --     'nvim-lua/plenary.nvim',
-  --   },
-  -- }
+  use {
+    'nvim-lua/telescope.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    },
+  }
 
   use {
     'junegunn/fzf.vim',
@@ -426,7 +428,11 @@ return require('packer').startup(function()
   use {'plasticboy/vim-markdown', ft = 'markdown'}
 
   -- latex mode
-  use {'lervag/vimtex', ft = {'plaintex', 'latex'}}
+  use {
+    'lervag/vimtex',
+    ft = {'plaintex', 'tex'},
+    config = function() require'config/vimtex'.setup() end,
+  }
 
   -- rust pest files
   use {'pest-parser/pest.vim', ft = 'pest'}

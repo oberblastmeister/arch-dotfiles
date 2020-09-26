@@ -1,6 +1,7 @@
 " ============================================================================
 " Settings {{{
 " ============================================================================
+" filetype plugin on
 set number relativenumber
 set smartindent
 set lazyredraw " faster macros

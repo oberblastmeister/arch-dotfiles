@@ -2,4 +2,4 @@
 theme=KvAdaptaDark
 
 [Applications]
-KvAdaptaDark=virtualbox, calibre
+KvAdaptaDark=virtualbox, calibre, dolphin

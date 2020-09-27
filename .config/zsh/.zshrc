@@ -77,7 +77,11 @@ MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 zinit ice wait lucid 
 zinit snippet OMZL::completion.zsh
 
+# zinit ice lucid wait mv"yadm* -> _yadm" pick"_yadm"
+# zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
+
 # big four
+# zicompinit is just `autoload compinit; compinit`
 zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
@@ -103,7 +107,7 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 zinit ice lucid wait
 zinit snippet /usr/share/fzf/key-bindings.zsh
 
-zinit ice lucid wait
+zinit ice lucid wait blockf
 zinit snippet /usr/share/fzf/completion.zsh
 
 # let fzf find hidden files
@@ -132,9 +136,6 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --follow --hidden --color=always --exclude ".git" . "$1"
 }
-
-# zinit ice svn pick"yadm.zsh_completion"
-# zinit snippet https://github.com/TheLocehiliosan/yadm/trunk/completion
 
 # lfcd
 zinit light-mode for \

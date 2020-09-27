@@ -69,7 +69,7 @@ local servers = {
   jsonls = {
     cmd = {"json-languageserver", "--stdio"},
   },
-  yamlls = {},
+  -- yamlls = {},
   gopls = {
     -- root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', vim.fn.getcwd())
   },

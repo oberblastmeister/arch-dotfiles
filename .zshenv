@@ -20,6 +20,9 @@ export COLORTERM=truecolor
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_SCALE_FACTOR=1
 
+# qt
+export QT_STYLE_OVERRIDE=kvantum
+
 # makesure that there are no duplicates in path var
 typeset -U path
 path+=(~/.cargo/bin ~/bin ~/bin/rofi ~/bin/bspwm ~/.local/bin)

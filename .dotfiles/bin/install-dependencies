@@ -100,7 +100,10 @@ packages=(
     autorandr
 
     # gui stuff
+    # gtk
     lxappearance
+    # qt
+    kvantum-qt5
     pavucontrol
     arandr
     thunar

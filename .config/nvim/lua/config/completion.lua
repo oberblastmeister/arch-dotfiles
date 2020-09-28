@@ -1,4 +1,6 @@
 local function setup()
+  require'completion'.addCompletionSource('vimtex', require'config/vimtex'.complete_item)
+
   vim.o.completeopt='menuone,noinsert,noselect'
   vim.o.omnifunc='lua.vim.lsp.omnifunc'
 
@@ -26,6 +28,9 @@ local function on_attach()
       {complete_items = {'path'}, triggered_only = {'/'}},
       {complete_items = {'buffers'}},
     },
+    tex = {
+      {complete_items = {'lsp', 'vimtex'}},
+    }
   }
 
   require'completion'.on_attach({

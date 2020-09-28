@@ -46,7 +46,6 @@ local function on_attach(client, bufnr)
   end
   -- auto diagnostic popup
   -- vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
-  -- vim.cmd [[autocmd InsertEnter * ++once call lightline#update()]]
   vim.cmd [[autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }]]
 end
 
@@ -70,11 +69,13 @@ local servers = {
   jsonls = {
     cmd = {"json-languageserver", "--stdio"},
   },
-  yamlls = {},
+  -- yamlls = {},
   gopls = {
     -- root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', vim.fn.getcwd())
   },
-  texlab = {},
+  texlab = {
+    filetypes = {"tex", "bib", "plaintex"},
+  },
   bashls = {},
   html = {},
   tsserver = {},
@@ -90,6 +91,78 @@ local servers = {
     }
   },
   hls = {},
+  -- diagnosticls = {
+  --   filetypes = {},
+  --   init_options = {
+  --     linters = {
+  --       shellcheck = {
+  --         command = "shellcheck",
+  --         debounce = 100,
+  --         args = { "--format=gcc", "-"},
+  --         offsetLine = 0,
+  --         offsetColumn = 0,
+  --         sourceName = "shellcheck",
+  --         formatLines = 1,
+  --         formatPattern = {
+  --           "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+  --           {
+  --             line = 1,
+  --             column = 2,
+  --             message = 4,
+  --             security = 3
+  --           }
+  --         },
+  --         securities = {
+  --           error = "error",
+  --           warning = "warning",
+  --           note = "info"
+  --         }
+  --       },
+  --       languagetool = {
+  --         command = "languagetool",
+  --         debounce = 200,
+  --         -- args = {"-"},
+  --         args = {},
+  --         offsetLine = 0,
+  --         offsetColumn = 0,
+  --         sourceName = "languagetool",
+  --         formatLines = 2,
+  --         formatPattern = {
+  --           "^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
+  --           {
+  --             line = 1,
+  --             column = 2,
+  --             message = {4, 3}
+  --           }
+  --         },
+  --       },
+  --       markdownlint = {
+  --         command = "markdownlint",
+  --         isStderr = true,
+  --         debounce = 100,
+  --         args = { "--stdin" },
+  --         offsetLine = 0,
+  --         offsetColumn = 0,
+  --         sourceName = "markdownlint",
+  --         formatLines = 1,
+  --         formatPattern = {
+  --           "^.*?:\\s+(\\d+):\\s+(.*)(\\r|\\n)*$",
+  --           {
+  --             line = 1,
+  --             column = -1,
+  --             message = 2
+  --           }
+  --         }
+  --       }
+  --     },
+  --     filetypes = {
+  --       -- sh = "shellcheck",
+  --       -- markdown = "markdownlint",
+  --       -- markdown = "languagetool",
+  --       -- email = "languagetool",
+  --     },
+  --   },
+  -- }
 }
 
 -- each server will always attach diagnostic

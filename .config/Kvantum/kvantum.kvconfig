@@ -1,0 +1,5 @@
+[General]
+theme=KvAdaptaDark
+
+[Applications]
+KvAdaptaDark=virtualbox, calibre, dolphin

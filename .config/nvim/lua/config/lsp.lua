@@ -84,8 +84,8 @@ local servers = {
     settings = {
       ["rust-analyzer"] = {
         completion = {
-          addCallArgumentSnippets = false,
-          addCallParenthesis = false,
+          -- addCallArgumentSnippets = false,
+          -- addCallParenthesis = false,
         }
       }
     }

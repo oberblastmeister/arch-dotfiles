@@ -28,6 +28,11 @@ nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>li <cmd>lua vim.lsp.buf.incoming_call()<CR>
 nnoremap <silent> <leader>lo <cmd>lua vim.lsp.buf.outgoing_calls()<CR>
 
+imap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
 " autocmd CursorHold * lua vim.lsp.buf.document_highlight()
 " autocmd CursorHoldI * lua vim.lsp.buf.document_highlight()
 " autocmd CursorMoved * lua vim.lsp.buf.clear_references()

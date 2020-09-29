@@ -99,7 +99,7 @@ zinit ice lucid wait atload"bindkey '^_' autosuggest-execute"
 zinit light softmoth/zsh-vim-mode
 
 zinit ice lucid wait
-zinit snippet ~/.aliases
+zinit snippet ~/.config/zsh/.aliases
 
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true

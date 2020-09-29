@@ -6,8 +6,6 @@ export ZDOTDIR=$HOME/.config/zsh
 # export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export HISTFILE=~/.zsh_history
 
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-
 export TERMINAL=kitty
 export EDITOR=nvim
 export VISUAL=nvim

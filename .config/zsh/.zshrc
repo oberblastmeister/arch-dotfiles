@@ -62,6 +62,7 @@ setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
 
+# export LS_COLORS="$(vivid generate solarized-dark)"
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
@@ -109,6 +110,12 @@ zinit snippet /usr/share/fzf/key-bindings.zsh
 
 zinit ice lucid wait blockf
 zinit snippet /usr/share/fzf/completion.zsh
+
+zinit ice lucid wait atpull"zinit creinstall -q ." as"completion"
+zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
+
+# zinit ice lucid wait atpull"zinit creinstall -q ." as"completion"
+zinit light ~/.local/share/zsh/completions
 
 # let fzf find hidden files
 export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"

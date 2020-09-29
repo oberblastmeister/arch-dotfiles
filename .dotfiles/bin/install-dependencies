@@ -113,8 +113,17 @@ packages=(
     xfce4-power-manager
 
     # langague stuff
+
+    # haskell
     ghc
     stack
+
+    # rust
+    rustup
+    cargo-watch
+    cargo-audit
+    podman
+    docker
 )
 
 for package in ${packages[@]}; do
@@ -137,6 +146,7 @@ aur_packages=(
     googler
     buku
     buku_run
+    cargo-aur
 )
 
 language_servers=(

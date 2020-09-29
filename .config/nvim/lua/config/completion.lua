@@ -34,7 +34,7 @@ local function on_attach()
   }
 
   require'completion'.on_attach({
-    matching_strategy_list= {'exact', 'substring', 'fuzzy'},
+    matching_strategy_list= {'exact', 'substring'},
     chain_complete_list = chain_complete_list,
     completion_timer_cycle = 80,
     completion_auto_change_source = 1,

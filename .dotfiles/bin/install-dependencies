@@ -1,8 +1,9 @@
 #!/bin/bash
 
+apptitle="Brian's Auto-Rice Bootstaping Script (BARBS)"
+
 aurhelper=yay
 
-# declare -A packages
 packages=(
     # xorg
     xorg-server # graphical server
@@ -48,7 +49,7 @@ packages=(
     lightdm-webkit-theme-litarvan
     lightdm-webkit2-theme-glorious
     betterlockscreen
-    
+
     # polybar
     polybar
 
@@ -179,7 +180,45 @@ services=(
 )
 
 installpkg() {
-    pacman --noconfirm --needed -S "$1" >/dev/null 2>&1
+    pacman --noconfirm --needed -S "$1" > /dev/null 2>&1
+}
+
+getuserandpass() {
+    # Prompts user for new username an password.
+    name=$(whiptail --inputbox "First, please enter a name for the user account." 10 60 3>&1 1>&2 2>&3 3>&1) || exit
+    while ! echo "$name" | grep -q "^[a-z_][a-z0-9_-]*$"; do
+        name=$(whiptail --no-cancel --inputbox "Username not valid. Give a username beginning with a letter, with only lowercase letters, - or _." 10 60 3>&1 1>&2 2>&3 3>&1)
+    done
+    pass1=$(whiptail --nocancel --passwordbox "Enter a password for that user." 10 60 3>&1 1>&2 2>&3 3>&1)
+    pass2=$(whiptail --nocancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
+    while ! [ "$pass1" = "$pass2" ]; do
+        unset pass2
+        pass1=$(whiptail --nocancel --passwordbox "Passwords do not match.\\n\\nEnter password again." 10 60 3>&1 1>&2 2>&3 3>&1)
+        pass2=$(whiptail --nocancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
+    done
+}
+
+usercheck() { \
+    ! (id -u "$name" >/dev/null) 2>&1 ||
+    whiptail \
+        --backtitle "$apptitle" \
+        --title "WARNING!" \
+        --yes-button "CONTINUE" \
+        --no-button "No wait..." \
+        --yesno "The user \`$name\` already exists on this system.
+LARBS can install for a user already existing, but it will overwrite any conflicting settings/dotfiles on the user account.
+LARBS will not overwrite your user files, documents, videos, etc., so don't worry about that, but only click <CONTINUE> if you don't mind your settings being overwritten.
+Note also that LARBS will change $name's password to the one you just gave." 14 70
+}
+
+adduserandpass() {
+    # Adds user `$name` with password $pass1.
+    whiptail --infobox "Adding user \"$name\"..." 4 50
+    useradd -m -g wheel -s /bin/zsh "$name" >/dev/null 2>&1 ||
+    usermod -a -G wheel "$name" && mkdir -p /home/"$name" && chown "$name":wheel /home/"$name"
+    # repodir="/home/$name/.local/src"; mkdir -p "$repodir"; chown -R "$name":wheel "$(dirname "$repodir")"
+    # echo "$name:$pass1" | chpasswd
+    # unset pass1 pass2
 }
 
 enableservice() {
@@ -189,52 +228,74 @@ enableservice() {
 
 welcomemsg() {
     whiptail \
+        --backtitle "$apptitle" \
         --title "Welcome!" \
         --msgbox "Welcome to Brian's Auto-Rice Bootstrapping Script!
-
 This script will automatically install a fully-featured Linux desktop.
 -Brian"
 }
 
-error() { clear; printf "ERROR:\\n%s\\n" "$1"; exit;}
+preinstallmsg() {
+    whiptail --backtitle "$apptitle" \
+        --title "Confirm" \
+        --yes-button "Proceed to install" \
+        --no-button "Quit" \
+        --yesno "The rest of the installation will now be totally automated, so you can sit back and relax.
+It will take some time, but when done, you can relax even more with your complete system.
+Now just press <Proceed to install> and the system will begin installation!" 13 60 || { clear; exit; }
+}
+
+error() { clear; printf "Error:\\n%s\\n" "$1"; exit; }
+
+whipmsg() {
+    whiptail --backtitle "$apptitle" \
+        --title "Installing" \
+        --infobox "$1"
+}
+
+installmsg() {
+    whipmsg "$1"
+}
 
 manualinstall() { # Installs $1 manually if not installed. Used only for AUR helper here.
     [ -f "/usr/bin/$1" ] || (
-    cd /tmp || exit
+    whipmsg "Installing $1, and AUR helper..."
+    cd /tmp || error "Failed to change to temp directory"
     rm -rf /tmp/"$1"*
     curl -sO https://aur.archlinux.org/cgit/aur.git/snapshot/"$1".tar.gz &&
     sudo -u "$name" tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
     cd "$1" &&
     sudo -u "$name" makepkg --noconfirm -si >/dev/null 2>&1
-    cd /tmp || return) ;}
+    cd /tmp || return)
+}
 
 aurinstall() {
-    echo "Installing $1 ($n of $total)"
+    installmsg "$1"
     echo "$aurinstalled" | grep -q "^$1$" && return
     sudo -u "$name" $aurhelper -S --noconfirm "$1" >/dev/null 2>&1
 }
 
 rustinstall() {
     command -v rustup || installpkg rustup >/dev/null 2>&1
-    echo "Installing $1 rust toolchain with rustup ($n of $total)"
+    installmsg "$1"
     rustup toolchain install "$1"
 }
 
 pipinstall() { \
     command -v pip || installpkg python-pip >/dev/null 2>&1
-    echo "Installing $1 ($n of $total)"
+    installmsg "$1"
     yes | pip install "$1"
 }
 
 installneeded() {
     for package in curl base-devel git zsh; do
         echo "Installing $package which is required for this script to work"
-        installpkg "$package"
+        installpkg "$package" || return 1
     done
 }
 
 maininstall() {
-    echo "Install $1 ($n of total)"
+    installmsg "$1"
     installpkg "$1"
 }
 
@@ -276,12 +337,27 @@ finalize() {
 
 main() {
     installpkg libnewt || error "Are you sure you're running this as the root user, are on an Arch-based distribution and have an internet connection?"
-    installneeded
+
     welcomemsg || error "User exited."
+
+    getuserandpass || error "User exited."
+
+    usercheck || error "User exited."
+
+    preinstallmsg || error "User exited."
+
+    adduserandpass || error "Error adding username and/or password."
+
+    installneeded || error "Failed to install needed packages for this script to work"
+
     manualinstall $aurhelper || error "Failed to install AUR helper."
+
     installationloop
+
     finalize
+
     clear
 }
 
+main
 # sudo pacman -R gnu-free-fonts

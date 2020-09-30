@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.toml set filetype=toml
+au BufRead,BufNewFile *.conf,buku* set filetype=toml

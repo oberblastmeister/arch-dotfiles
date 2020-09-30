@@ -1,3 +1,10 @@
-local function setup()
-  vim.g.ale_disable_lsp = 1
+local function config()
+  vim.g.ale_linters = {
+    sh = {'shellcheck'},
+    markdown = {'markdownlint', 'languagetool'},
+  }
 end
+
+return {
+  config = config
+}

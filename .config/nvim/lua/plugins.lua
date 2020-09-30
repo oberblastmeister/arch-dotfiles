@@ -231,11 +231,13 @@ return require('packer').startup(function()
   -- linting when there is no lsp (for now cannot run multiple lsp servers)
   use {
     'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'markdown'},
-    cmd = 'ALEEnable',
-    setup = function() vim.g.ale_disable_lsp = 1 end,
-    config = function() vim.cmd [[ ALEEnable ]] end,
-    disable = true,
+    ft = {'sh', 'markdown'},
+    setup = function()
+      vim.g.ale_disable_lsp = 1
+    end,
+    config = function()
+      require'config/ale'.config()
+    end,
   }
 
   ----------------------------- Fuzzy Finding ----------------------------

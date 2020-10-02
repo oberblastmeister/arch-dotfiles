@@ -62,6 +62,7 @@ setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
 
+# export LS_COLORS="$(vivid generate solarized-dark)"
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
@@ -77,7 +78,11 @@ MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 zinit ice wait lucid 
 zinit snippet OMZL::completion.zsh
 
+# zinit ice lucid wait mv"yadm* -> _yadm" pick"_yadm"
+# zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
+
 # big four
+# zicompinit is just `autoload compinit; compinit`
 zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
@@ -95,7 +100,7 @@ zinit ice lucid wait atload"bindkey '^_' autosuggest-execute"
 zinit light softmoth/zsh-vim-mode
 
 zinit ice lucid wait
-zinit snippet ~/.aliases
+zinit snippet ~/.config/zsh/.aliases
 
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
@@ -103,8 +108,14 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 zinit ice lucid wait
 zinit snippet /usr/share/fzf/key-bindings.zsh
 
-zinit ice lucid wait
+zinit ice lucid wait blockf
 zinit snippet /usr/share/fzf/completion.zsh
+
+zinit ice lucid wait atpull"zinit creinstall -q ." as"completion"
+zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
+
+# zinit ice lucid wait atpull"zinit creinstall -q ." as"completion"
+zinit light ~/.local/share/zsh/completions
 
 # let fzf find hidden files
 export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"
@@ -132,9 +143,6 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --follow --hidden --color=always --exclude ".git" . "$1"
 }
-
-# zinit ice svn pick"yadm.zsh_completion"
-# zinit snippet https://github.com/TheLocehiliosan/yadm/trunk/completion
 
 # lfcd
 zinit light-mode for \

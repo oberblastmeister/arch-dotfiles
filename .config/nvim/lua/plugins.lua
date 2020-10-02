@@ -107,14 +107,6 @@ return require('packer').startup(function()
     config = function() require'highlighter' end,
   }
 
-  local_use {
-    'telescope.nvim',
-    requires = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-  }
-
   rtp_use {
     'rooter.nvim'
   }
@@ -143,18 +135,13 @@ return require('packer').startup(function()
     end,
   }
 
-  -- status bar
   use {
-    'itchyny/lightline.vim',
-    config = function() require'config/lightline'.setup() end,
-  }
-
-  -- turn buffers into tabs on tabline
-  use {
-    'mengelbrecht/lightline-bufferline',
-    requires = 'itchyny/lightline.vim',
-    config = function() require'config/lightline_bufferline'.setup() end,
-    opt = true,
+    'tjdevries/express_line.nvim',
+    config = function() require'config/express_line'.start() end,
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
   }
 
   -- colorize hex codes
@@ -215,6 +202,12 @@ return require('packer').startup(function()
     config = function() require'config/lsp_extensions'.setup() end,
   }
 
+  use {
+    'RishabhRD/nvim-lsputils',
+    config = function() require'config/lsp_utils'.setup() end,
+    requires = 'RishabhRD/popfix'
+  }
+
   -- lsp tagbar
   use {
     'liuchengxu/vista.vim',
@@ -235,15 +228,27 @@ return require('packer').startup(function()
     cmd = 'LaunchVimspector'
   }
 
+  -- linting when there is no lsp (for now cannot run multiple lsp servers)
+  use {
+    'w0rp/ale',
+    ft = {'sh', 'markdown'},
+    setup = function()
+      vim.g.ale_disable_lsp = 1
+    end,
+    config = function()
+      require'config/ale'.config()
+    end,
+  }
+
   ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
-  -- use {
-  --   'nvim-lua/telescope.nvim',
-  --   requires = {
-  --     'nvim-lua/popup.nvim',
-  --     'nvim-lua/plenary.nvim',
-  --   },
-  -- }
+  use {
+    'nvim-lua/telescope.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    },
+  }
 
   use {
     'junegunn/fzf.vim',
@@ -399,6 +404,11 @@ return require('packer').startup(function()
 
   use {'vimwiki/vimwiki', cmd = 'VimwikiIndex'}
 
+  use {
+    'reedes/vim-pencil',
+    ft = {'markdown'},
+  }
+
   ----------------------------- Web Developement ---------------------------
   use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}, disable = true}
   use {'alvan/vim-closetag', ft = 'html', disable = true}
@@ -425,7 +435,11 @@ return require('packer').startup(function()
   use {'plasticboy/vim-markdown', ft = 'markdown'}
 
   -- latex mode
-  use {'lervag/vimtex', ft = {'plaintex', 'latex'}}
+  use {
+    'lervag/vimtex',
+    ft = {'plaintex', 'tex'},
+    config = function() require'config/vimtex'.setup() end,
+  }
 
   -- rust pest files
   use {'pest-parser/pest.vim', ft = 'pest'}

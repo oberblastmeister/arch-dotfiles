@@ -404,6 +404,11 @@ return require('packer').startup(function()
 
   use {'vimwiki/vimwiki', cmd = 'VimwikiIndex'}
 
+  use {
+    'reedes/vim-pencil',
+    ft = {'markdown'},
+  }
+
   ----------------------------- Web Developement ---------------------------
   use {'mattn/emmet-vim', ft = {'html', 'css', 'javascript'}, disable = true}
   use {'alvan/vim-closetag', ft = 'html', disable = true}

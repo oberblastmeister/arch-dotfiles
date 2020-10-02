@@ -30,6 +30,9 @@ local function on_attach()
     },
     tex = {
       {complete_items = {'lsp', 'vimtex'}},
+    },
+    markdown = {
+      {complete_items = {}}
     }
   }
 

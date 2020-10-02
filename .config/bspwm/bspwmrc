@@ -32,9 +32,10 @@ bspc config normal_border_color "#504945"
 # -----------------------------------------------------
 
 YADM_CLASS=$(yadm config local.class)
-if [ $YADM_CLASS = "Laptop" ]; then
-    pulseaudio --start
+if [[ $YADM_CLASS = Laptop ]]; then
+    # pulseaudio --start
 	autorandr --change
+    amixer -c 0 set Master playback 100% unmute
 fi
 
 # -----------------------------------------------------
@@ -60,7 +61,7 @@ syncthing-gtk -m &
 # -----------------------------------------------------
 # ------------------- Miscellaneous Settings ----------
 # -----------------------------------------------------
-if [ $YADM_CLASS = "Laptop" ]; then
+if [[ $YADM_CLASS = Laptop ]]; then
     # set touchpad options
     xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
     xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Enabled" 1
@@ -71,9 +72,10 @@ if [ $YADM_CLASS = "Laptop" ]; then
     xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Middle Emulation Enabled" 1
 fi
 
+# r stand for autorepeat (key repeat)
+# delay, rate
 xset r rate 500 50
 
-# start keymappings
 setxkbmap -option ctrl:nocaps
 
 # Change from ugly 'X' cursor when hovering over background

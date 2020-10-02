@@ -20,7 +20,7 @@ local function setup()
       smart_rename = {
         enable = true,
         keymaps = {
-          smart_rename = "<leader>tn",
+          smart_rename = "<leader>tr",
         },
       },
       navigation = {

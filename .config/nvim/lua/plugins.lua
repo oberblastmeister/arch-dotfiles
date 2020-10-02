@@ -142,6 +142,12 @@ return require('packer').startup(function()
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',
     },
+    disable = true,
+  }
+
+  use {
+    'itchyny/lightline.vim',
+    config = function() require'config/lightline'.setup() end,
   }
 
   -- colorize hex codes

@@ -48,7 +48,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.xresources.set_dpi(200)
 beautiful.init("/home/brian/.config/awesome/themes/gruvbox/theme.lua")
--- beautiful.init("/home/brian/.config/awesome/themes/powerarrow/theme.lua")
+beautiful.wallpaper = "/home/brian/.dotfiles/wallpapers/monocolor.png"
 
 -- This is used later as the default terminal and editor to run.
 -- terminal = os.getenv("TERMINAL") or "xterm"
@@ -633,11 +633,11 @@ local autostart = {
   {"picom"},
   {"redshift"},
   {"xfce4-power-manager"},
-  -- {"udiskie", "--tray"},
+  {"udiskie", "--tray"},
   {"nm-applet"},
   {"flameshot"},
   {"blueman-applet"},
-  -- {"syncthing-gtk", "-m"},
+  {"syncthing-gtk", "-m"},
 
   -- xinput
   {"xinput", "set-prop", "SYNA2B31:00 06CB:CD3E Touchpad", "libinput Tapping Enabled", "1"},

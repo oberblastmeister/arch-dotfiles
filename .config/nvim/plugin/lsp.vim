@@ -5,6 +5,12 @@ let g:completion_confirm_key = ""
 imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
       \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
+" let g:completion_confirm_key = ""
+" imap <expr> <tab>  pumvisible() ? complete_info()["selected"] != "-1" ?
+"       \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<Tab>" :  "\<Tab>"
+
+" set completeopt-=noselect
+
 nnoremap <silent> ]g :NextDiagnostic<CR>
 nnoremap <silent> [g :PrevDiagnostic<CR>
 nnoremap <silent> ]G :FirstDiagnostic<CR>

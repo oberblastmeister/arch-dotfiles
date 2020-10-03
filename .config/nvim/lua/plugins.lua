@@ -120,8 +120,10 @@ return require('packer').startup(function()
 
   use {
     'sainnhe/gruvbox-material',
-    setup = function() vim.g.gruvbox_material_palette = 'original' end,
+    -- setup = function() vim.g.gruvbox_material_palette = 'original' end,
   }
+
+  use 'arcticicestudio/nord-vim'
 
   use 'dracula/vim'
 

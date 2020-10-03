@@ -524,6 +524,14 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 function theme.at_screen_connect(s)
 
+  -- dropdown terminal
+  s.quake = lain.util.quake {
+    app = terminal,
+  }
+  if s.quake.terminal ~= "xterm" then
+    s.quake.argname = "--name %s"
+  end
+
   -- Wallpaper
   set_wallpaper(s)
 

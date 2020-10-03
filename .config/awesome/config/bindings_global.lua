@@ -1,7 +1,9 @@
 local awful = require("awful")
 local gears = require("gears")
 local naughty = require("naughty")
+local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local revelation = require("revelation")
 
 local function setup()
   globalkeys = gears.table.join(
@@ -28,6 +30,7 @@ local function setup()
       awful.tag.viewprev()
     end,
     {description = "move client to previous tag and switch to it", group = "layout"}),
+
     awful.key({ modkey, "Mod1" }, "#35",
     function ()
       -- get current tag
@@ -41,6 +44,9 @@ local function setup()
       awful.tag.viewnext()
     end,
     {description = "move client to next tag and switch to it", group = "layout"}),
+
+    awful.key({ modkey,           }, "e",      revelation,
+    {description = "show all windows", group = "layout"}),
 
     awful.key({ modkey,           }, "o", awful.tag.history.restore,
     {description = "go back", group = "tag"}),
@@ -75,6 +81,11 @@ local function setup()
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
     {description = "focus the previous screen", group = "screen"}),
 
+    awful.key({ modkey, }, "c", function () awful.screen.focused().quake:toggle() end,
+    {description = "toggle dropdown terminal", group = "launcher"}),
+
+    -- awful.key({ modkey, }, "z", function () quake:toggle() end),
+
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
     {description = "jump to urgent client", group = "client"}),
 
@@ -107,11 +118,6 @@ local function setup()
 
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
     {description = "decrease master width factor", group = "layout"}),
-
-    -- awful.key({ modkey, "Mod1"    }, "Right",     function () awful.tag.incmwfact( 0.05)    end),
-    -- awful.key({ modkey, "Mod1"    }, "Left",     function () awful.tag.incmwfact(-0.05)    end),
-    -- awful.key({ modkey, "Mod1"    }, "Down",     function () awful.client.incwfact( 0.05)    end),
-    -- awful.key({ modkey, "Mod1"    }, "Up",     function () awful.client.incwfact(-0.05)    end),
 
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
     {description = "increase the number of master clients", group = "layout"}),

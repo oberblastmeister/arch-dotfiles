@@ -11,6 +11,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local lain = require("lain")
+local revelation = require("revelation")
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -45,6 +46,7 @@ end
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/brian/.config/awesome/themes/gruvbox/theme.lua")
+revelation.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"

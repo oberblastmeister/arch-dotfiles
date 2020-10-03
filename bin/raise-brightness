@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xbacklight -inc 10
+xbacklight -get > /tmp/xobpipe

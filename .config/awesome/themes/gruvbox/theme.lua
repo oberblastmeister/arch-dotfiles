@@ -591,7 +591,6 @@ function theme.at_screen_connect(s)
       fsicon,
       theme.fs.widget,
       vert_sep,
-      vert_sep,
       mykeyboardlayout,
       space,
       vert_sep,

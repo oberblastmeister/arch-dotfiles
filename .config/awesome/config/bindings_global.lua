@@ -133,14 +133,22 @@ local function setup()
       awful.spawn {"pamixer", "-t"}
     end, {description = "mute volume", group = "media"}),
 
-    -- birghtness keys
-    awful.key({}, "XF86MonBrightnessDown", function()
-      awful.spawn {"xbacklight", "-dec", "8"}
-    end, {description = "decrease brightness", group = "media"}),
+    -- brightness keys
+    -- awful.key({}, "XF86MonBrightnessDown", function()
+    --   awful.spawn {"xbacklight", "-dec", "10"}
+    -- end, {description = "decrease brightness", group = "media"}),
+
+    -- awful.key({}, "XF86MonBrightnessUp", function()
+    --   awful.spawn {"xbacklight", "-inc", "10"}
+    -- end, {description = "increase brightness", group = "media"}),
 
     awful.key({}, "XF86MonBrightnessUp", function()
-      awful.spawn {"xbacklight", "-inc", "8"}
+      awful.spawn.with_shell("raise-brightness")
     end, {description = "increase brightness", group = "media"}),
+
+    awful.key({}, "XF86MonBrightnessDown", function()
+      awful.spawn.with_shell("lower-brightness")
+    end, {description = "decrease brightness", group = "media"}),
 
     awful.key({}, "Print", function()
       awful.spawn {"flameshot", "gui"}

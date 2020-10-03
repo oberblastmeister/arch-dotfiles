@@ -34,6 +34,11 @@ configs() {
     xsetroot -cursor_name left_ptr &
 }
 
+setupxob() {
+  mkfifo /tmp/xobpipe
+  tail -f /tmp/xobpipe | xob -s gruvbox
+}
+
 laptopconfigs &
 
 run picom
@@ -44,5 +49,6 @@ run nm-applet
 run flameshot
 run blueman-applet
 run syncthing-gtk -m
-
+~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 configs &
+setupxob &

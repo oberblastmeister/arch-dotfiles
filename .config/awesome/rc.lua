@@ -380,12 +380,10 @@ awful.rules.rules = {
         "pinentry",
       },
       class = {
-        "Arandr",
         "Blueman-manager",
         "Gpick",
         "Kruler",
         "MessageWin",  -- kalarm.
-        "Sxiv",
         "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
         "Wpa_gui",
         "veromix",
@@ -478,41 +476,4 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-local autostart = {
-  {"autorandr", "--change"},
-  {"amixer", "-c", "0", "set", "Master", "playback", "100", "unmute"},
-
-  -- autostart apps
-  {"~/bin/polybar-launch.sh"},
-  {"xrdb", "~/.Xresources"},
-  {"feh", "--bg-scale ~/.dotfiles/wallpapers/monocolor.png"},
-  {"mopidy"},
-  {"picom"},
-  {"redshift"},
-  {"xfce4-power-manager"},
-  {"udiskie", "--tray"},
-  {"nm-applet"},
-  {"flameshot"},
-  {"blueman-applet"},
-  {"syncthing-gtk", "-m"},
-
-  -- xinput
-  {"xinput", "set-prop", "SYNA2B31:00 06CB:CD3E Touchpad", "libinput Tapping Enabled", "1"},
-  {"xinput", "set-prop", "SYNA2B31:00 06CB:CD3E Touchpad", "libinput Natural Scrolling Enabled", "1"},
-  {"xinput", "set-prop", "SYNA2B31:00 06CB:CD3E Touchpad", "libinput Disable While Typing Enabled", "0"},
-  {"xinput", "set-prop", "SYNA2B31:00 06CB:CD3E Touchpad", "libinput Click Method Enabled", "0", "1"},
-  {"xinput", "set-prop", "SYNA2B31:00 06CB:CD3E Touchpad", "libinput Middle Emulation Enabled", "1"},
-
-  -- xset
-  {"xset", "r", "rate", "500", "50"},
-
-  --setxkbmap caps as ctrl
-  {"setxkbmap", "-option", "ctrl:nocaps"},
-
-  -- change background cursor
-  {"xsetroot", "-cursor_name", "left_ptr"},
-}
-
-for _, command in ipairs(autostart) do
-  awful.spawn(command)
-end
+awful.spawn.with_shell("/home/brian/.config/awesome/autostart.sh")

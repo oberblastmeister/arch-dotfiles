@@ -15,6 +15,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local lain = require("lain")
+local dpi   = require("beautiful.xresources").apply_dpi
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -168,6 +169,13 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- local vert_sep = wibox.widget.separator {
+--     orientation = "vertical",
+--     forced_width = beautiful.border / 2,
+--     thickness = beautiful.border / 2,
+--     color = colors.bw_2,
+-- }
+
 awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   set_wallpaper(s)
@@ -199,11 +207,20 @@ awful.screen.connect_for_each_screen(function(s)
   s.mytasklist = awful.widget.tasklist {
     screen  = s,
     filter  = awful.widget.tasklist.filter.currenttags,
-    buttons = tasklist_buttons
+    buttons = tasklist_buttons,
+    style = {
+      shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, theme.border_radius or 0)
+      end,
+    }
   }
 
   -- Create the wibox
-  s.mywibox = awful.wibar({ position = "top", screen = s })
+  s.mywibox = awful.wibar {
+    position = "top",
+    screen = s,
+    height = dpi(20),
+  }
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -629,9 +646,9 @@ local autostart = {
   {"~/bin/polybar-launch.sh"},
   {"xrdb", "~/.Xresources"},
   {"feh", "--bg-scale ~/.dotfiles/wallpapers/monocolor.png"},
-  {"mopidy"},
+  -- {"mopidy"},
   {"picom"},
-  {"redshift"},
+  -- {"redshift"},
   {"xfce4-power-manager"},
   -- {"udiskie", "--tray"},
   {"nm-applet"},

@@ -138,7 +138,9 @@ end,
 {description = "go back", group = "client"}),
 
 -- Standard program
-awful.key({ modkey,           }, "Return", function () awful.spawn({terminal, "-e", "tmux"}) end,
+awful.key({ modkey,           }, "Return", function()
+  awful.spawn({terminal, "-e", "tmux"})
+end,
 {description = "open a terminal", group = "launcher"}),
 
 awful.key({modkey,}, "d", function() awful.spawn.with_shell("~/bin/rofi/launcher-alt") end,
@@ -149,8 +151,15 @@ awful.key({ modkey, "Control" }, "r", awesome.restart,
 awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 {description = "quit awesome", group = "awesome"}),
 
-awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+awful.key({modkey}, "l", function()
+  naughty.notify({
+    title = "testing",
+    text = "increment",
+  })
+  awful.tag.incmwfact(0.05)
+end,
 {description = "increase master width factor", group = "layout"}),
+
 awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
 {description = "decrease master width factor", group = "layout"}),
 awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
@@ -178,115 +187,137 @@ function ()
 end,
 {description = "restore minimized", group = "client"}),
 
--- Rofi
-awful.key({ modkey },            "r",     function ()
-  awful.util.spawn("rofi -show run") end,
-  {description = "launch rofi", group = "launcher"}),
+-- Firefox
+awful.key({ modkey }, "b", function() awful.spawn("brave") end,
+{description = "launch browser", group = "browser"}),
 
-  -- Firefox
-  awful.key({ modkey },            "b",     function ()
-    awful.util.spawn("brave") end,
-    {description = "launch browser", group = "browser"}),
+-- Volume keys
+awful.key({}, "XF86AudioRaiseVolume", function()
+  awful.spawn {"pamixer", "-i", "5"}
+end, {description = "raise volume", group = "media"}),
 
-    -- Volume keys
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 2%+", false) end),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 2%-", false) end),
-    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle", false) end),
+awful.key({}, "XF86AudioLowerVolume", function()
+  awful.spawn {"pamixer", "-d", "5"}
+end, {description = "lower volume", group = "media"}),
 
-    awful.key({ modkey }, "x",
-    function ()
-      awful.prompt.run {
-        prompt       = "Run Lua code: ",
-        textbox      = awful.screen.focused().mypromptbox.widget,
-        exe_callback = awful.util.eval,
-        history_path = awful.util.get_cache_dir() .. "/history_eval"
-      }
-    end,
-    {description = "lua execute prompt", group = "awesome"}),
+awful.key({}, "XF86AudioMute", function()
+  awful.spawn {"pamixer", "-t"}
+end, {description = "mute volume", group = "media"}),
 
-    awful.key({ modkey }, "u",
-    function ()
-      myscreen = awful.screen.focused()
-      myscreen.mywibox.visible = not myscreen.mywibox.visible
-    end,
-    {description = "toggle statusbar"}),
+-- birghtness keys
+awful.key({}, "XF86MonBrightnessDown", function()
+  awful.spawn {"xbacklight", "-dec", "8"}
+end, {description = "decrease brightness", group = "media"}),
 
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-    {description = "show the menubar", group = "launcher"}),
+awful.key({}, "XF86MonBrightnessUp", function()
+  awful.spawn {"xbacklight", "-inc", "8"}
+end, {description = "increase brightness", group = "media"}),
 
-    -- Win+Alt+Left/Right: move client to prev/next tag and switch to it
-    awful.key({ modkey, "Mod1" }, "Left",
-    function ()
-      -- get current tag
-      local t = client.focus and client.focus.first_tag or nil
-      if t == nil then
-        return
-      end
-      -- get previous tag (modulo 9 excluding 0 to wrap from 1 to 9)
-      local tag = client.focus.screen.tags[(t.name - 2) % 9 + 1]
-      awful.client.movetotag(tag)
-      awful.tag.viewprev()
-    end,
-    {description = "move client to previous tag and switch to it", group = "layout"}),
-    awful.key({ modkey, "Mod1" }, "Right",
-    function ()
-      -- get current tag
-      local t = client.focus and client.focus.first_tag or nil
-      if t == nil then
-        return
-      end
-      -- get next tag (modulo 9 excluding 0 to wrap from 9 to 1)
-      local tag = client.focus.screen.tags[(t.name % 9) + 1]
-      awful.client.movetotag(tag)
-      awful.tag.viewnext()
-    end,
-    {description = "move client to next tag and switch to it", group = "layout"})
-    )
+awful.key({}, "Print", function()
+  awful.spawn {"flameshot", "gui"}
+end, {description = "select part of screen to print", group = "media"}),
 
-    clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
-    function (c)
-      c.fullscreen = not c.fullscreen
-      c:raise()
-    end,
-    {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey,    }, "q",      function (c) c:kill()                         end,
-    {description = "close", group = "client"}),
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
-    {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
-    {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-    {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-    {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "n",
-    function (c)
-      -- The client currently has the input focus, so it cannot be
-      -- minimized, since minimized clients can't have the focus.
-      c.minimized = true
-    end ,
-    {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
-    function (c)
-      c.maximized = not c.maximized
-      c:raise()
-    end ,
-    {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control" }, "m",
-    function (c)
-      c.maximized_vertical = not c.maximized_vertical
-      c:raise()
-    end ,
-    {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "m",
-    function (c)
-      c.maximized_horizontal = not c.maximized_horizontal
-      c:raise()
-    end ,
-    {description = "(un)maximize horizontally", group = "client"})
-    )
+awful.key({ modkey }, "Print", function()
+  awful.spawn {"flameshot", "full"}
+end, {description = "print full screen", group = "media"}),
+
+awful.key({"Control"}, "Print", function()
+  awful.spawn {"flameshot", "screen"}
+end, {description = "print screen", group = "media"}),
+
+awful.key({ modkey }, "x",
+function ()
+  awful.prompt.run {
+    prompt       = "Run Lua code: ",
+    textbox      = awful.screen.focused().mypromptbox.widget,
+    exe_callback = awful.util.eval,
+    history_path = awful.util.get_cache_dir() .. "/history_eval"
+  }
+end,
+{description = "lua execute prompt", group = "awesome"}),
+
+awful.key({ modkey }, "u",
+function ()
+  myscreen = awful.screen.focused()
+  myscreen.mywibox.visible = not myscreen.mywibox.visible
+end,
+{description = "toggle statusbar"}),
+
+-- Win+Alt+Left/Right: move client to prev/next tag and switch to it
+awful.key({ modkey, "Mod1" }, "braceleft",
+function ()
+  -- get current tag
+  -- naughty.notify {
+  --   text = "hello"
+  -- }
+  local t = client.focus and client.focus.first_tag or nil
+  if t == nil then
+    return
+  end
+  -- get previous tag (modulo 9 excluding 0 to wrap from 1 to 9)
+  local tag = client.focus.screen.tags[(t.name - 2) % 9 + 1]
+  awful.client.movetotag(tag)
+  awful.tag.viewprev()
+end,
+{description = "move client to previous tag and switch to it", group = "layout"}),
+awful.key({ modkey, "Mod1" }, "Right",
+function ()
+  -- get current tag
+  local t = client.focus and client.focus.first_tag or nil
+  if t == nil then
+    return
+  end
+  -- get next tag (modulo 9 excluding 0 to wrap from 9 to 1)
+  local tag = client.focus.screen.tags[(t.name % 9) + 1]
+  awful.client.movetotag(tag)
+  awful.tag.viewnext()
+end,
+{description = "move client to next tag and switch to it", group = "layout"})
+)
+
+clientkeys = gears.table.join(
+awful.key({ modkey,           }, "f",
+function(c)
+  c.fullscreen = not c.fullscreen
+  c:raise()
+end,
+{description = "toggle fullscreen", group = "client"}),
+awful.key({ modkey,    }, "q",      function (c) c:kill()                         end,
+{description = "close", group = "client"}),
+awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
+{description = "toggle floating", group = "client"}),
+awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+{description = "move to master", group = "client"}),
+awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+{description = "move to screen", group = "client"}),
+awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+{description = "toggle keep on top", group = "client"}),
+awful.key({ modkey,           }, "n",
+function (c)
+  -- The client currently has the input focus, so it cannot be
+  -- minimized, since minimized clients can't have the focus.
+  c.minimized = true
+end ,
+{description = "minimize", group = "client"}),
+awful.key({ modkey,           }, "m",
+function (c)
+  c.maximized = not c.maximized
+  c:raise()
+end ,
+{description = "(un)maximize", group = "client"}),
+awful.key({ modkey, "Control" }, "m",
+function (c)
+  c.maximized_vertical = not c.maximized_vertical
+  c:raise()
+end ,
+{description = "(un)maximize vertically", group = "client"}),
+awful.key({ modkey, "Shift"   }, "m",
+function (c)
+  c.maximized_horizontal = not c.maximized_horizontal
+  c:raise()
+end ,
+{description = "(un)maximize horizontally", group = "client"})
+)
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.

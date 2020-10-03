@@ -1,5 +1,7 @@
 local theme_assets = require("beautiful.theme_assets")
+local lain = require("lain")
 local xresources = require("beautiful.xresources")
+local naughty = require("naughty")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup")
@@ -54,83 +56,282 @@ theme.name = "gruvbox"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/gruvbox"
 theme.wallpaper = theme.dir .. "/wallpapers/monocolor.png"
 
--- theme.font          = "FiraCode Nerd Font 9"
-theme.font          = "monospace 9"
-theme.bg_normal     = colors.bw_0
-theme.bg_focus      = colors.bw_2
-theme.bg_urgent     = colors.red_2
-theme.bg_minimize   = colors.bw_0
-theme.bg_systray    = theme.bg_normal
+-- local font_name                                 = "FiraCode Nerd Font"
+-- local font_name                                 = "Sauce Code Pro"
+-- local font_name                                 = "JetBrains Mono Nerd Font"
+local font_name = "monospace"
+local font_size                                 = "9"
+theme.font                                      = font_name .. " " ..                         font_size
+theme.font_bold                                 = font_name .. " " .. "Bold"        .. " " .. font_size
+theme.font_italic                               = font_name .. " " .. "Italic"      .. " " .. font_size
+theme.font_bold_italic                          = font_name .. " " .. "Bold Italic" .. " " .. font_size
+theme.font_big                                  = font_name .. " " .. "Bold"        .. " 16"
 
-theme.fg_normal     = colors.bw_9
-theme.fg_focus      = colors.bw_9
-theme.fg_urgent     = colors.bw_0
-theme.fg_minimize   = colors.bw_2
+theme.accent                                    = colors.red_2
+theme.border_normal                             = colors.bw_2
+theme.border_focus                              = colors.bw_5
+theme.border_marked                             = colors.bw_5
 
-theme.useless_gap   = dpi(30)
-theme.border = 4
-theme.border_width  = dpi(4)
-theme.border_normal = colors.bw_2
-theme.border_focus  = colors.bw_5
-theme.border_marked = colors.bw_5
+theme.titlebar_fg_normal                        = colors.bw_5
+theme.titlebar_fg_focus                         = colors.bw_8
+theme.titlebar_fg_marked                        = colors.bw_8
+theme.titlebar_fg_urgent                        = colors.red_2
+theme.titlebar_bg_normal                        = colors.bw_2
+theme.titlebar_bg_focus                         = colors.bw_5
+theme.titlebar_bg_marked                        = colors.bw_5
+theme.titlebar_bg_marked                        = colors.bw_5
 
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-taglist_square_size, theme.fg_normal
-)
+theme.fg_normal                                 = colors.bw_9
+theme.fg_focus                                  = colors.bw_9
+theme.fg_urgent                                 = colors.red_2
+theme.bg_normal                                 = colors.bw_0
+theme.bg_focus                                  = colors.bw_2
+theme.bg_urgent                                 = colors.bw_2
 
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.taglist_font                              = theme.font_bold
+theme.taglist_fg_normal                         = colors.bw_5
+theme.taglist_fg_occupied                       = colors.bw_5
+theme.taglist_fg_empty                          = colors.bw_1
+theme.taglist_fg_volatile                       = colors.aqua_2
+theme.taglist_fg_focus                          = colors.bw_9
+theme.taglist_fg_urgent                         = colors.red_2
+theme.taglist_bg_normal                         = colors.bw_0
+theme.taglist_bg_occupied                       = colors.bw_0
+theme.taglist_bg_empty                          = colors.bw_0
+theme.taglist_bg_volatile                       = colors.bw_0
+theme.taglist_bg_focus                          = colors.bw_2
+theme.taglist_bg_urgent                         = colors.bw_1
 
--- Define the image to load
-theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
-theme.titlebar_close_button_focus  = themes_path.."default/titlebar/close_focus.png"
+theme.tasklist_font_normal                      = theme.font
+theme.tasklist_font_focus                       = theme.font_bold
+theme.tasklist_font_minimized                   = theme.font
+theme.tasklist_font_urgent                      = theme.font_bold
 
-theme.titlebar_minimize_button_normal = themes_path.."default/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus  = themes_path.."default/titlebar/minimize_focus.png"
+theme.tasklist_fg_normal                        = colors.bw_5
+theme.tasklist_fg_focus                         = colors.bw_8
+theme.tasklist_fg_minimize                      = colors.bw_2
+theme.tasklist_fg_urgent                        = colors.red_2
+theme.tasklist_bg_normal                        = colors.bw_1
+theme.tasklist_bg_focus                         = colors.bw_2
+theme.tasklist_bg_minimize                      = colors.bw_0_s
+theme.tasklist_bg_urgent                        = colors.bw_1
 
-theme.titlebar_ontop_button_normal_inactive = themes_path.."default/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive  = themes_path.."default/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path.."default/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active  = themes_path.."default/titlebar/ontop_focus_active.png"
+theme.tasklist_shape_border_color               = colors.purple_2
+theme.tasklist_shape_border_color_focus         = colors.green_2
+theme.tasklist_shape_border_color_minimized     = colors.blue_2
+theme.tasklist_shape_border_color_urgent        = colors.red_2
 
-theme.titlebar_sticky_button_normal_inactive = themes_path.."default/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive  = themes_path.."default/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path.."default/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active  = themes_path.."default/titlebar/sticky_focus_active.png"
+theme.hotkeys_border_width                      = theme.border
+theme.hotkeys_border_color                      = colors.bw_5
+theme.hotkeys_group_margin                      = 50
 
-theme.titlebar_floating_button_normal_inactive = themes_path.."default/titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive  = themes_path.."default/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
+theme.prompt_bg                                 = colors.bw_0
+theme.prompt_fg                                 = theme.fg_normal
+theme.bg_systray                                = colors.bw_0
 
-theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
+theme.border                                    = 4
+theme.border_width                              = 4
+theme.border_radius                             = 0
+theme.fullscreen_hide_border                    = true
+theme.maximized_hide_border                     = true
+theme.menu_height                               = 20
+theme.menu_width                                = 250
+theme.tasklist_plain_task_name                  = true
+theme.tasklist_disable_icon                     = false
+theme.tasklist_spacing                          = 3
+theme.useless_gap                               = 34
+theme.systray_icon_spacing                      = 4
 
--- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."default/layouts/magnifierw.png"
-theme.layout_max = themes_path.."default/layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+theme.snap_bg                                   = colors.bw_5
+theme.snap_shape                                = function(cr, w, h)
+                                                      gears.shape.rounded_rect(cr, w, h, theme.border_radius or 0)
+                                                  end
+
+theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
+theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
+
+theme.layout_cascadetile                        = theme.dir .. "/layouts/cascadetile.png"
+theme.layout_centerwork                         = theme.dir .. "/layouts/centerwork.png"
+theme.layout_cornerne                           = theme.dir .. "/layouts/cornerne.png"
+theme.layout_cornernw                           = theme.dir .. "/layouts/cornernw.png"
+theme.layout_cornerse                           = theme.dir .. "/layouts/cornerse.png"
+theme.layout_cornersw                           = theme.dir .. "/layouts/cornersw.png"
+theme.layout_dwindle                            = theme.dir .. "/layouts/dwindle.png"
+theme.layout_fairh                              = theme.dir .. "/layouts/fairh.png"
+theme.layout_fairv                              = theme.dir .. "/layouts/fairv.png"
+theme.layout_floating                           = theme.dir .. "/layouts/floating.png"
+theme.layout_fullscreen                         = theme.dir .. "/layouts/fullscreen.png"
+theme.layout_magnifier                          = theme.dir .. "/layouts/magnifier.png"
+theme.layout_max                                = theme.dir .. "/layouts/max.png"
+theme.layout_spiral                             = theme.dir .. "/layouts/spiral.png"
+theme.layout_tile                               = theme.dir .. "/layouts/tile.png"
+theme.layout_tilebottom                         = theme.dir .. "/layouts/tilebottom.png"
+theme.layout_tileleft                           = theme.dir .. "/layouts/tileleft.png"
+theme.layout_tiletop                            = theme.dir .. "/layouts/tiletop.png"
+theme.layout_treetile                           = theme.dir .. "/layouts/treetile.png"
+
+theme.widget_ac                                 = theme.dir .. "/icons/ac.png"
+theme.widget_battery                            = theme.dir .. "/icons/battery.png"
+theme.widget_battery_low                        = theme.dir .. "/icons/battery_low.png"
+theme.widget_battery_empty                      = theme.dir .. "/icons/battery_empty.png"
+theme.widget_mem                                = theme.dir .. "/icons/mem.png"
+theme.widget_cpu                                = theme.dir .. "/icons/cpu.png"
+theme.widget_temp                               = theme.dir .. "/icons/temp.png"
+theme.widget_load                               = theme.dir .. "/icons/load.png"
+theme.widget_lock                               = theme.dir .. "/icons/lock.png"
+theme.widget_unlock                             = theme.dir .. "/icons/unlock.png"
+theme.widget_pacman                             = theme.dir .. "/icons/pacman.png"
+theme.widget_users                              = theme.dir .. "/icons/user.png"
+theme.widget_net                                = theme.dir .. "/icons/net.png"
+theme.widget_net_0                              = theme.dir .. "/icons/net_0.png"
+theme.widget_net_1                              = theme.dir .. "/icons/net_1.png"
+theme.widget_net_2                              = theme.dir .. "/icons/net_2.png"
+theme.widget_net_3                              = theme.dir .. "/icons/net_3.png"
+theme.widget_net_4                              = theme.dir .. "/icons/net_4.png"
+theme.widget_net_5                              = theme.dir .. "/icons/net_5.png"
+theme.widget_hdd                                = theme.dir .. "/icons/hdd.png"
+theme.widget_music                              = theme.dir .. "/icons/note.png"
+theme.widget_music_on                           = theme.dir .. "/icons/note_on.png"
+theme.widget_music_pause                        = theme.dir .. "/icons/pause.png"
+theme.widget_music_stop                         = theme.dir .. "/icons/stop.png"
+theme.widget_light                              = theme.dir .. "/icons/light.png"
+theme.widget_vol                                = theme.dir .. "/icons/vol.png"
+theme.widget_vol_low                            = theme.dir .. "/icons/vol_low.png"
+theme.widget_vol_no                             = theme.dir .. "/icons/vol_no.png"
+theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.png"
+theme.widget_mail                               = theme.dir .. "/icons/mail.png"
+theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
+theme.widget_task                               = theme.dir .. "/icons/task.png"
+theme.widget_scissors                           = theme.dir .. "/icons/scissors.png"
+
+theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
+theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
+theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_active       = theme.dir .. "/icons/titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_inactive      = theme.dir .. "/icons/titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_inactive     = theme.dir .. "/icons/titlebar/ontop_normal_inactive.png"
+theme.titlebar_sticky_button_focus_active       = theme.dir .. "/icons/titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_active      = theme.dir .. "/icons/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_inactive     = theme.dir .. "/icons/titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_inactive    = theme.dir .. "/icons/titlebar/sticky_normal_inactive.png"
+theme.titlebar_floating_button_focus_active     = theme.dir .. "/icons/titlebar/floating_focus_active.png"
+theme.titlebar_floating_button_normal_active    = theme.dir .. "/icons/titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_inactive   = theme.dir .. "/icons/titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_inactive  = theme.dir .. "/icons/titlebar/floating_normal_inactive.png"
+theme.titlebar_minimize_button_focus            = theme.dir .. "/icons/titlebar/minimized_focus.png"
+theme.titlebar_minimize_button_normal           = theme.dir .. "/icons/titlebar/minimized_normal.png"
+theme.titlebar_maximized_button_focus_active    = theme.dir .. "/icons/titlebar/maximized_focus_active.png"
+theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
+
+theme.tooltip_fg                                = colors.bw_8
+theme.tooltip_bg                                = colors.bw_2
+theme.tooltip_border_color                      = colors.bw_2
+theme.tooltip_border_width                      = theme.border
+
+theme.notification_fg                           = theme.fg_normal
+theme.notification_bg                           = theme.bg_normal
+theme.notification_border_color                 = colors.bw_2
+theme.notification_border_width                 = theme.border
+theme.notification_icon_size                    = 80
+theme.notification_opacity                      = 1
+theme.notification_max_width                    = 600
+theme.notification_max_height                   = 400
+theme.notification_margin                       = 20
+theme.notification_shape                        = function(cr, w, h)
+                                                      gears.shape.rounded_rect(cr, w, h, theme.border_radius or 0)
+                                                  end
+
+naughty.config.padding                          = 15
+naughty.config.spacing                          = 10
+naughty.config.defaults.timeout                 = 5
+naughty.config.defaults.font                    = theme.font
+naughty.config.defaults.fg                      = theme.notification_fg
+naughty.config.defaults.bg                      = theme.notification_bg
+naughty.config.defaults.border_width            = theme.notification_border_width
+naughty.config.defaults.margin                  = theme.notification_margin
+
+naughty.config.presets.normal                   = {
+                                                      font         = theme.font,
+                                                      fg           = theme.notification_fg,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                  }
+
+naughty.config.presets.low                      = {
+                                                      font         = theme.font,
+                                                      fg           = theme.notification_fg,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                  }
+
+naughty.config.presets.ok                       = {
+                                                      font         = theme.font,
+                                                      fg           = colors.aqua_2,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                      timeout      = 0,
+                                                  }
+
+naughty.config.presets.info                     = {
+                                                      font         = theme.font,
+                                                      fg           = colors.blue_2,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                      timeout      = 0,
+                                                  }
+
+naughty.config.presets.warn                     = {
+                                                      font         = theme.font,
+                                                      fg           = colors.yellow_2,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                      timeout      = 0,
+                                                  }
+
+naughty.config.presets.critical                 = {
+                                                      font         = theme.font,
+                                                      fg           = colors.red_2,
+                                                      bg           = theme.notification_bg,
+                                                      border_width = theme.notification_border_width,
+                                                      margin       = theme.notification_margin,
+                                                      timeout      = 0,
+                                                  }
+
+theme.calendar_margin                           = theme.notification_margin - theme.border_width
+theme.calendar_year_padding                     = naughty.config.padding
+theme.calendar_year_bg_color                    = colors.bw_0
+theme.calendar_month_padding                    = naughty.config.padding
+theme.calendar_month_bg_color                   = colors.bw_0
+
+theme.calendar_year_border_color                = colors.bw_1
+theme.calendar_year_border_width                = theme.border
+theme.calendar_month_border_color               = colors.bw_1
+theme.calendar_month_border_width               = theme.border
+theme.calendar_yearheader_border_color          = colors.bw_1
+theme.calendar_yearheader_border_width          = theme.border
+theme.calendar_header_border_color              = colors.bw_1
+theme.calendar_header_border_width              = theme.border
+theme.calendar_weekday_border_color             = colors.bw_0
+theme.calendar_weekday_border_width             = theme.border
+theme.calendar_weeknumber_border_color          = colors.bw_0
+theme.calendar_weeknumber_border_width          = theme.border
+theme.calendar_normal_border_color              = colors.bw_0
+theme.calendar_normal_border_width              = theme.border
+theme.calendar_focus_border_color               = colors.bw_9
+theme.calendar_focus_border_width               = theme.border
+
+theme.calendar_yearheader_bg_color              = colors.bw_1
+theme.calendar_header_bg_color                  = colors.bw_1
+theme.calendar_focus_fg_color                   = colors.bw_0
+theme.calendar_focus_bg_color                   = colors.bw_9
+theme.calendar_weeknumber_fg_color              = colors.bw_5
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
@@ -141,14 +342,21 @@ theme.menu_height, theme.bg_focus, theme.fg_focus
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = 'papirus'
 
--- warning! menubars give errors
--- myawesomemenu = {
---    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
---    { "manual", terminal .. " -e man awesome" },
---    { "edit config", editor_cmd .. " " .. awesome.conffile },
---    { "restart", awesome.restart },
---    { "quit", function() awesome.quit() end },
--- }
+local markup = lain.util.markup
+
+local space = wibox.widget.separator {
+    orientation = "vertical",
+    forced_width = 3,
+    thickness = 3,
+    color = "#00000000",
+}
+
+local vert_sep = wibox.widget.separator {
+    orientation = "vertical",
+    forced_width = theme.border / 2,
+    thickness = theme.border / 2,
+    color = colors.bw_2,
+}
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "open terminal", terminal }
@@ -168,6 +376,97 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- -- {{{ Wibar
 -- -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+mytextclock.font = theme.font
+
+theme.cal = lain.widget.cal({
+    attach_to = { mytextclock },
+    notification_preset = {
+        font = theme.font,
+        fg   = theme.fg_normal,
+        bg   = theme.bg_normal,
+    }
+})
+
+-- local volicon = wibox.widget.imagebox(theme.widget_vol)
+-- theme.volume = lain.widget.alsa {
+--   settings = function()
+--     if volume_now.status == "off" then
+--       volume_now.level = volume_now.level .. "M"
+--     end
+
+--     widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, volume_now.level .. "% "))
+--   end,
+--   notification_preset = {
+--     font = theme.font_bold,
+--     fg = theme.fg
+--   }
+-- }
+
+-- theme.volume = lain.widget.alsabar {
+--   notification_preset = { font = theme.font, fg = theme.fg_normal },
+-- }
+
+local memicon = wibox.widget.imagebox(theme.widget_mem)
+local mem = lain.widget.mem {
+    settings = function()
+        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "MB "))
+    end
+}
+
+local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
+local cpu = lain.widget.cpu {
+    settings = function()
+        widget:set_markup(markup.font(theme.font, " " .. cpu_now.usage .. "% "))
+    end
+}
+
+local baticon = wibox.widget.imagebox(theme.widget_battery)
+local bat = lain.widget.bat({
+    settings = function()
+        if bat_now.status and bat_now.status ~= "N/A" then
+            if bat_now.ac_status == 1 then
+                widget:set_markup(markup.font(theme.font, " AC "))
+                baticon:set_image(theme.widget_ac)
+                return
+            elseif not bat_now.perc and tonumber(bat_now.perc) <= 5 then
+                baticon:set_image(theme.widget_battery_empty)
+            elseif not bat_now.perc and tonumber(bat_now.perc) <= 15 then
+                baticon:set_image(theme.widget_battery_low)
+            else
+                baticon:set_image(theme.widget_battery)
+            end
+            widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
+        else
+            widget:set_markup()
+            baticon:set_image(theme.widget_ac)
+        end
+    end
+})
+
+local temp = lain.widget.temp({
+    settings = function()
+        widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
+    end
+})
+--]]
+local tempicon = wibox.widget.imagebox(theme.widget_temp)
+
+local fsicon = wibox.widget.imagebox(theme.widget_hdd)
+-- needs Gio/Glib >= 2.54
+theme.fs = lain.widget.fs({
+    notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Terminus 10" },
+    settings = function()
+        local fsp = string.format(" %3.2f %s ", fs_now["/"].free, fs_now["/"].units)
+        widget:set_markup(markup.font(theme.font, fsp))
+    end
+})
+
+local neticon = wibox.widget.imagebox(theme.widget_net)
+local net = lain.widget.net({
+    settings = function()
+        widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, " " .. net_now.received .. " ↓↑ " .. net_now.sent .. " "))
+    end
+})
 
 -- -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -255,7 +554,11 @@ function theme.at_screen_connect(s)
   s.mytasklist = awful.widget.tasklist {
     screen  = s,
     filter  = awful.widget.tasklist.filter.currenttags,
-    buttons = tasklist_buttons
+    buttons = tasklist_buttons,
+    bg_focus = theme.tasklist_bg_focus,
+    shape = function(cr, width, height)
+      gears.shape.rounded_rect(cr, width, height, theme.border_radius or 0)
+    end,
   }
 
   -- Create the wibox
@@ -273,9 +576,32 @@ function theme.at_screen_connect(s)
     s.mytasklist, -- Middle widget
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
+      memicon,
+      mem.widget,
+      vert_sep,
+      cpuicon,
+      cpu.widget,
+      vert_sep,
+      baticon,
+      bat.widget,
+      vert_sep,
+      tempicon,
+      temp.widget,
+      vert_sep,
+      fsicon,
+      theme.fs.widget,
+      vert_sep,
+      vert_sep,
       mykeyboardlayout,
+      space,
+      vert_sep,
+      space,
       wibox.widget.systray(),
+      space,
+      vert_sep,
       mytextclock,
+      vert_sep,
+      space,
       s.mylayoutbox,
     },
   }

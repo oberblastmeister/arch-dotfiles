@@ -1,5 +1,10 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
+local gears = require("gears")
+local beautiful = require("beautiful")
+local hotkeys_popup = require("awful.hotkeys_popup")
+local awful = require("awful")
+local wibox = require("wibox")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
@@ -44,8 +49,10 @@ local bar_fg            = colors.bw_5
 local bar_bg            = colors.bw_0
 
 local theme = {}
+theme.name = "gruvbox"
 
-theme.name = "blackout"
+theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/gruvbox"
+theme.wallpaper = theme.dir .. "/wallpapers/monocolor.png"
 
 -- theme.font          = "FiraCode Nerd Font 9"
 theme.font          = "monospace 9"
@@ -67,19 +74,6 @@ theme.border_normal = colors.bw_2
 theme.border_focus  = colors.bw_5
 theme.border_marked = colors.bw_5
 
--- There are other variable sets
--- overriding the default one when
--- defined, the sets are:
--- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
--- tasklist_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- mouse_finder_[color|timeout|animate_timeout|radius|factor]
--- prompt_[fg|bg|fg_cursor|bg_cursor|font]
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
--- Example:
---theme.taglist_bg_focus = "#ff0000"
-
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
@@ -89,23 +83,9 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 taglist_square_size, theme.fg_normal
 )
 
--- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
-
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
-
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
 
 -- Define the image to load
 theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
@@ -134,9 +114,6 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "/home/brian/.config/awesome/themes/gruvbox/wallpapers/wall.png"
--- theme.wallpaper                                 = theme.dir .. "/wallpapers/escheresque.png"
-
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
 theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
@@ -162,6 +139,147 @@ theme.menu_height, theme.bg_focus, theme.fg_focus
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = 'papirus'
+
+-- warning! menubars give errors
+-- myawesomemenu = {
+--    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+--    { "manual", terminal .. " -e man awesome" },
+--    { "edit config", editor_cmd .. " " .. awesome.conffile },
+--    { "restart", awesome.restart },
+--    { "quit", function() awesome.quit() end },
+-- }
+
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "open terminal", terminal }
+                                  }
+                        })
+
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+                                     menu = mymainmenu })
+
+-- -- Menubar configuration
+-- menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- -- }}}
+
+-- -- Keyboard map indicator and switcher
+mykeyboardlayout = awful.widget.keyboardlayout()
+
+-- -- {{{ Wibar
+-- -- Create a textclock widget
+mytextclock = wibox.widget.textclock()
+
+-- -- Create a wibox for each screen and add it
+local taglist_buttons = gears.table.join(
+awful.button({ }, 1, function(t) t:view_only() end),
+awful.button({ modkey }, 1, function(t)
+  if client.focus then
+    client.focus:move_to_tag(t)
+  end
+end),
+awful.button({ }, 3, awful.tag.viewtoggle),
+awful.button({ modkey }, 3, function(t)
+  if client.focus then
+    client.focus:toggle_tag(t)
+  end
+end),
+awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+)
+
+local tasklist_buttons = gears.table.join(
+awful.button({ }, 1, function (c)
+  if c == client.focus then
+    c.minimized = true
+  else
+    c:emit_signal(
+    "request::activate",
+    "tasklist",
+    {raise = true}
+    )
+  end
+end),
+awful.button({ }, 3, function()
+  awful.menu.client_list({ theme = { width = 250 } })
+end),
+awful.button({ }, 4, function ()
+  awful.client.focus.byidx(1)
+end),
+awful.button({ }, 5, function ()
+  awful.client.focus.byidx(-1)
+end))
+
+local function set_wallpaper(s)
+  -- Wallpaper
+  if beautiful.wallpaper then
+    local wallpaper = beautiful.wallpaper
+    -- If wallpaper is a function, call it with the screen
+    if type(wallpaper) == "function" then
+      wallpaper = wallpaper(s)
+    end
+    gears.wallpaper.maximized(wallpaper, s, true)
+  end
+end
+
+screen.connect_signal("property::geometry", set_wallpaper)
+
+function theme.at_screen_connect(s)
+
+  -- Wallpaper
+  set_wallpaper(s)
+
+  -- Each screen has its own tag table.
+  awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+
+  -- Create a promptbox for each screen
+  s.mypromptbox = awful.widget.prompt()
+  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+  -- We need one layoutbox per screen.
+  s.mylayoutbox = awful.widget.layoutbox(s)
+  s.mylayoutbox:buttons(
+  gears.table.join(
+  awful.button({ }, 1, function () awful.layout.inc( 1) end),
+  awful.button({ }, 3, function () awful.layout.inc(-1) end),
+  awful.button({ }, 4, function () awful.layout.inc( 1) end),
+  awful.button({ }, 5, function () awful.layout.inc(-1) end)
+  )
+  )
+  -- Create a taglist widget
+  s.mytaglist = awful.widget.taglist {
+    screen  = s,
+    filter  = awful.widget.taglist.filter.all,
+    buttons = taglist_buttons
+  }
+
+  -- Create a tasklist widget
+  s.mytasklist = awful.widget.tasklist {
+    screen  = s,
+    filter  = awful.widget.tasklist.filter.currenttags,
+    buttons = tasklist_buttons
+  }
+
+  -- Create the wibox
+  s.mywibox = awful.wibar({ position = "top", screen = s })
+
+  -- Add widgets to the wibox
+  s.mywibox:setup {
+    layout = wibox.layout.align.horizontal,
+    { -- Left widgets
+      layout = wibox.layout.fixed.horizontal,
+      mylauncher,
+      s.mytaglist,
+      s.mypromptbox,
+    },
+    s.mytasklist, -- Middle widget
+    { -- Right widgets
+      layout = wibox.layout.fixed.horizontal,
+      mykeyboardlayout,
+      wibox.widget.systray(),
+      mytextclock,
+      s.mylayoutbox,
+    },
+  }
+end
+-- }}}
 
 return theme

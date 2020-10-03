@@ -34,7 +34,7 @@ bspc config normal_border_color "#504945"
 YADM_CLASS=$(yadm config local.class)
 if [[ $YADM_CLASS = Laptop ]]; then
     # pulseaudio --start
-	autorandr --change
+	# autorandr --change
     amixer -c 0 set Master playback 100% unmute
 fi
 

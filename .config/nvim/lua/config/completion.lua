@@ -1,7 +1,8 @@
 local function setup()
   require'completion'.addCompletionSource('vimtex', require'config/vimtex'.complete_item)
 
-  vim.o.completeopt='menuone,noinsert,noselect'
+  -- vim.o.completeopt='menuone,noinsert,noselect'
+  vim.o.completeopt='menuone,noinsert'
   vim.o.omnifunc='lua.vim.lsp.omnifunc'
 
   -- auto change source
@@ -11,6 +12,9 @@ local function setup()
   -- ignore case for completion
   vim.g.completion_matching_ignore_case = 1
   vim.g.completion_enable_snippet = "vim-vsnip"
+  -- vim.g.completion_enable_auto_popup = 0
+  -- vim.cmd [[au TextChangedI,TextChangedP * call completion#trigger_completion()]]
+  -- vim.cmd [[au TextChangedI,TextChangedP * echo "trigger completion"]]
 
   -- if vim.g.completion_enable_snippet == "vim-vsnip" then
   --   vim.cmd [[imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']]

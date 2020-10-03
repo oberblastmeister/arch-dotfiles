@@ -1,0 +1,10 @@
+#!/bin/sh
+
+CLIP=$(xclip -o -sel clip)
+
+if [[ -n $CLIP ]]; then
+    notify-send "adding $CLIP to bookmarks"
+    buku --add "$CLIP" || notify-send "failed to add $CLIP"
+else
+    notify-send "$CLIP was not valid"
+fi

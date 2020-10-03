@@ -42,7 +42,11 @@ function! mappings#run_code()
     call VimuxRunCommand("clear; go " . bufname("%"))
   elseif &filetype == 'r'
     call VimuxRunCommand("clear; rscript " . bufname("%"))
-  endif
+  elseif &filetype == 'lua'
+    call VimuxRunCommand("clear; luajit " . bufname("%"))
+  elseif &filetype == 'tex'
+    VimtexCompile
+  end
 endfunction
 
 function mappings#configure_debugger()

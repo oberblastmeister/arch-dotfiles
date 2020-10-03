@@ -1,24 +1,8 @@
 " ============================================================================
 " Settings {{{
 " ============================================================================
-if has('termguicolors')
-  set termguicolors
-
-  " au! InsertEnter * ++once lua require'colorizer'.setup()
-  lua require'colorizer'.setup()
-endif
-
-fun! SetupColorizer()
-  if exists("loaded_colorizer")
-    lua require'colorizer'.setup()
-  endif
-endfun
-
-colorscheme gruvbox
-set background=dark
-
+" filetype plugin on
 set number relativenumber
-set cursorline
 set smartindent
 set lazyredraw " faster macros
 set clipboard^=unnamed,unnamedplus
@@ -26,14 +10,20 @@ set inccommand=nosplit
 set noshowmode
 set noshowcmd
 set foldmethod=syntax
+
+" treesitter folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 set foldlevelstart=99
 set timeoutlen=800
 set ttimeoutlen=20
 set ignorecase smartcase
 set mouse=a
 set nowrap
-set pumblend=15
-set winblend=0
+set pumheight=20
+" set pumblend=15
+" set winblend=0
 
 " no splash screen and shorter messages
 set shortmess+=I " no intro
@@ -48,13 +38,6 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-
-" for lightline bufferline
-set showtabline=2
-" allow lightline buffer line to be shown if gui is running
-if has('gui_running')
-  set guioptions-=e
-endif
 " }}}
 
 " ============================================================================
@@ -77,23 +60,32 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+set omnifunc=v:lua.vim.lsp.omnifunc
 " }}}
+
+set guifont=FiraCode\ Nerd\ Font:h16
 
 " ============================================================================
 " Appearance {{{
 " ============================================================================
 " make ~ for new lines be same color as background so they are not seen
-highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-" remove status line for press enter to continue msgs
-highlight! StatusLine ctermbg=bg ctermfg=bg guibg=bg guifg=bg
-highlight! CursorLineNr ctermbg=bg guibg=bg
-hi! FloatermBorder guifg=#928374
+" " remove status line for press enter to continue msgs
 
-" make sign column same as background, but keep highlight of virtual text
-hi! CocErrorVirtualText guibg=#3c3836 guifg=#fb4934
-hi! CocHintVirtualText guibg=#3c3836 guifg=#83a598
-hi! CocRustChainingHint guibg=#3c3836 guifg=#83a598
-hi! CocWarningVirtualText guibg=#3c3836 guifg=#fe8019
-hi! CocCursorRange guibg=#d3869b guifg=#282828
+" " make sign column same as background, but keep highlight of virtual text
 " set fillchars+=vert:\
 " }}}
+" execute 'highlight LspDiagnosticsError ' . pinnacle#decorate('italic,underline', 'ModeMsg')
+
+" execute 'highlight LspDiagnosticsHint ' . pinnacle#decorate('bold,italic,underline', 'Type')
+
+" execute 'highlight LspDiagnosticsHintSign ' . pinnacle#extract_highlight('GruvboxRedSign')
+
+" execute 'highlight LspDiagnosticsErrorSign ' . pinnacle#extract_highlight({
+"       \   'bg': pinnacle#extract_bg('ColorColumn'),
+"       \   'fg': pinnacle#extract_fg('GruvboxRedSign'),
+"       \ })
+" highlight! link LspDiagnosticsError GruvboxRed
+" errors

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+language_servers=(
+    lua-language-server-git
+    microsoft-python-language-server
+    typescript-language-server-bin
+    vscode-json-languageserver-bin
+    yaml-language-server-bin
+    gopls
+    vim-language-server
+
+    # non aur
+    texlab
+    rust-analyzer
+    bash-language-server
+)
+
+echo 'installing language servers now'
+
+for package in ${language_servers[@]}; do
+    yay -S $package --noconfirm
+done

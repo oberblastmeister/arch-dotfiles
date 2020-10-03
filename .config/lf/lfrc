@@ -19,6 +19,8 @@ set shell zsh
 set shellopts '-eu:--shwordsplit'
 set ifs "\n"
 
+set number
+set relativenumber
 set scrolloff 10
 set incsearch
 set color256
@@ -58,7 +60,7 @@ cmd paste &{{
 }}
 
 # move current file or selected files to trash folder
-cmd trash %trash-put $fx
+cmd trash %trash $fx
 
 # extract the current file with the right command
 cmd extract ${{

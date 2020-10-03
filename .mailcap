@@ -1,5 +1,0 @@
-video/*; mpv '%s';
-audio/*; mpv '%s';
-text/*; $EDITOR '%s';
-image/*; sxiv '%s' ;
-application/pdf; zathura '%s';

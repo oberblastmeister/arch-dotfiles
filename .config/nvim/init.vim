@@ -9,213 +9,21 @@
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
 
-" ============================================================================
-" Before {{{
-" ============================================================================
-
-" disable python 2 support
-let g:loaded_python_provider = 0
-" command to start python3 executable
-let g:python3_host_prog = '/usr/bin/python3'
-
-function! Cond(cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
-endfunction
-
-function! PlugLoaded(name)
-    return (
-        \ has_key(g:plugs, a:name) &&
-        \ isdirectory(g:plugs[a:name].dir) &&
-        \ stridx(&rtp, g:plugs[a:name].dir) >= 0)
-endfunction
-" }}}
-
-" ============================================================================
-" Vim-plug {{{
-" ============================================================================
-
-call plug#begin(stdpath('data') . '/plugged')
-
-" Plug '~/projects/yadm.nvim'
-" ----------------------------- Appearance -----------------------------------
-" Plug 'hardcoreplayers/dashboard-nvim'
-"   let g:dashboard_default_executive ='fzf'
-"   let g:dashboard_custom_shortcut={
-"     \ 'last_session'       : 'SPC s l',
-"     \ 'find_history'       : 'SPC f u',
-"     \ 'find_file'          : '<C-P>',
-"     \ 'new_file'           : 'SPC c n',
-"     \ 'change_colorscheme' : 'SPC t c',
-"     \ 'find_word'          : 'SPC f a',
-"     \ 'book_marks'         : 'SPC f b',
-"     \ }
-
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
-  let g:lightline = {
-    \ 'colorscheme': 'gruvbox',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste', 'zoom'],
-    \             ['cocstatus',  'fugitive'] ],
-    \   'right':   [ [ 'percent' ] ]
-    \ },
-    \ 'tabline': {
-    \   'left': [ ['buffers'] ],
-    \   'right': [ [] ]
-    \ },
-    \ 'component': {
-    \   'lineinfo': ' %3l:%-2v',
-    \ },
-    \ 'component_expand': {
-    \   'buffers': 'lightline#bufferline#buffers'
-    \ },
-    \ 'component_type': {
-    \   'buffers': 'tabsel',
-    \   'readonly': 'error',
-    \   'linter_warnings': 'warning',
-    \   'linter_errors': 'error'
-    \ },
-    \ 'component_function': {
-    \   'readonly': 'helpers#lightline#read_only',
-    \   'fugitive': 'helpers#lightline#fugitive',
-    \   'cocstatus': 'coc#status',
-    \   'currentfunction': 'CocCurrentFunction',
-    \   'zoom': 'zoom#statusline'
-    \ },
-    \ 'component_raw': {
-    \   'buffers': 1
-    \ }
-  \ }
-  autocmd! User CocStatusChange,CocDiagnosticChange call lightline#update()
-  let g:lightline#bufferline#show_number=2
-  let g:lightline#bufferline#clickable = 1
-  let g:lightline#bufferline#modified = ' '
-  let g:lightline#bufferline#read_only = ' '
-  let g:lightline#bufferline#more_buffers = '…'
-  let g:lightline#bufferline#unnamed = '_'
-
-" colors
-Plug 'morhetz/gruvbox'
-  let g:gruvbox_sign_column='bg0'
-
-Plug 'yggdroot/indentline'
-  let g:indentLine_fileTypeExclude = ['dashboard']
-
-Plug 'norcalli/nvim-colorizer.lua'
-
-Plug 'wincent/pinnacle'
-" Plug 'kyazdani42/nvim-web-devicons' " for file icons
-" Plug 'kyazdani42/nvim-tree.lua'
-  " let g:lua_tree_auto_close = 1
-" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
 " ----------------------------- Important ----------------------------------
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-let g:coc_global_extensions = [
-      \ 'coc-python',
-      \ 'coc-json',
-      \ 'coc-sh',
-      \ 'coc-rust-analyzer',
-      \ 'coc-tsserver',
-      \ 'coc-html',
-      \ 'coc-snippets',
-      \ 'coc-vimlsp',
-      \ 'coc-emmet',
-      \ 'coc-actions',
-      \ 'coc-java',
-      \ 'coc-marketplace',
-      \ 'coc-git',
-      \ 'coc-lua',
-      \ 'coc-yaml',
-      \ 'coc-go'
-      \ ]
+lua require('plugins')
 
-" Plug 'tmsvg/pear-tree'
-"   let g:pear_tree_repeatable_expand = 0
-"   let g:pear_tree_smart_openers = 1
-"   let g:pear_tree_smart_closers = 1
-"   let g:pear_tree_smart_backspace = 1
-"   let g:pear_tree_timeout = 60
-"   let g:pear_tree_map_special_keys = 1
-"   imap <space> <Plug>(PearTreeSpace)
+" lua require('settings').setup()
 
-" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-Plug 'liuchengxu/vim-which-key'
-  " autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
-
-Plug 'honza/vim-snippets'
-
-if !has('win32') || !has('win64')
-    let g:vimspector_enable_mappings = 'HUMAN'
-    let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'vscode-bash-debug' ]
-  " Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall --all --disable-tcl --force-enable-rust' }
-  Plug 'puremourning/vimspector', { 'do': ':VimspectorInstall' }
-  " ./install_gadget.py --all --force-enable-rust --disable-tcl --update-gadget-config
-endif
-
-" Use fzf for rg
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'antoinemadec/coc-fzf'
-Plug 'stsewd/fzf-checkout.vim', { 'on': ['GCheckout', 'GCheckoutTag'] }
-  " always show preview in fzf
   let g:fzf_preview_window = 'right'
 
-" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-
-  " let g:fzf_layout = { 'window': 'call fuzzy_finding#centered_floating_window(1)' }
   let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
-  " [Buffers] Jump to the existing window if possible
   let g:fzf_buffers_jump = 1
 
-Plug 'tpope/vim-dispatch'
-
-Plug 'janko/vim-test', { 'for': ['python', 'rust', 'vim'] }
   let test#strategy = "vimux"
 
-Plug 'liuchengxu/vista.vim'     " can't lazy load vista
-  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-  let g:vista_fzf_preview = ['right:50%']
-  let g:vista_default_executive = 'coc'
-  let g:vista_vimwiki_executive = 'markdown'
-
-Plug 'romainl/vim-cool'
-
-Plug 'ThePrimeagen/vim-be-good', { 'on': 'VimBeGood' }
-
-" ----------------------------- Editing -------------------------------------
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'tpope/vim-commentary'
-
-Plug 'machakann/vim-sandwich'
-
-Plug 'tpope/vim-repeat'
-
-Plug 'AndrewRadev/switch.vim'
-  let g:switch_custom_definitions =
-      \ [
-      \   ['foo', 'bar', 'baz'],
-      \   ['0', '1'],
-      \   ['==', '!='],
-      \   ['&', '|'],
-      \   ['&&', '||'],
-      \   ['and', 'or'],
-      \   ['on', 'off'],
-      \   ['yes', 'no'],
-      \   ['vim', 'emacs']
-      \ ]
-
-Plug 'AndrewRadev/splitjoin.vim', { 'for': ['python', 'rust', 'vim'] }
-Plug 'junegunn/vim-easy-align'
-
 " ----------------------------- General -------------------------------------
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-eunuch'
-Plug 'psliwka/vim-smoothie'
-Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-
-Plug 'sickill/vim-pasta'
+  let g:zoom#statustext = ''
 
 Plug 'airblade/vim-rooter'
   let g:rooter_silent_chdir = 1
@@ -241,12 +49,9 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-fugitive'
 
 " ----------------------------- Tmux ----------------------------------------
-Plug 'christoomey/vim-tmux-navigator', Cond($TMUX != '')
-Plug 'benmills/vimux', Cond($TMUX != '')
     let g:VimuxHeight = "20"
 
 " ----------------------------- Notes/Writing -------------------------------
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_no_default_key_mappings = 1
   let g:vim_markdown_conceal = 0
   let g:vim_markdown_conceal_code_blocks = 0
@@ -254,12 +59,6 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
-
-Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   let g:nv_window_command = 'call fuzzy_finding#centered_floating_window(1)'
   let g:nv_search_paths = ['~/notes']
   let g:nv_keymap = {
@@ -271,7 +70,6 @@ Plug 'alok/notational-fzf-vim', { 'on': 'NV' }
   " When adding notes don't put it in split
   let g:nv_create_note_window = 'edit'
 
-Plug 'vimwiki/vimwiki'
   let g:vimwiki_list = [{'path': '~/notes/',
         \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_map_prefix = '<Leader>n'
@@ -399,19 +197,7 @@ cnoremap jk <C-c>
 let g:mapleader="\<Space>"
 let g:maplocalleader="\\"
 
-" whichkey leader mappings
-call which_key#register('<Space>', "g:which_key_map")
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
-
-" whichkey localleader mappings
-nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
-vnoremap <silent> <localleader> :<c-u>WhichKeyVisual  '\'<CR>
-
-" set global whichkey dict
 let g:which_key_map = {}
-" let g:which_key_fallback_to_native_key=1
-let g:which_key_map['name'] = 'root'
 
 if has('nvim')
   tnoremap <C-o> <C-\><C-n>
@@ -426,4 +212,9 @@ nmap <Leader>c  <Plug>Commentary
 omap <Leader>c  <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
+
+let g:neovide_refresh_rate=240
+" let g:neovide_cursor_vfx_mode = "pixiedust"
+let g:neovide_cursor_vfx_mode = "railgun"
+" let g:neovide_cursor_animation_length=0.1
 " }}}

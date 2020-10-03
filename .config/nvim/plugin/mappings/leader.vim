@@ -2,11 +2,19 @@
 " Regular {{{
 " ============================================================================
 " nnoremap <silent> <leader><space> <C-^>
-nnoremap <silent> <leader>w :write<CR>
+function! Write()
+  write
+  edit
+  TSBufEnable highlight
+endfunction
+
+nnoremap <silent> <leader><leader> <c-^>
+nnoremap <silent> <leader>w <cmd>write<CR>
+nnoremap <silent> <leader>W :call Write()<CR>
 nnoremap <silent> <leader>x :xit<CR>
-nnoremap <silent> <leader>o :call zoom#toggle()<CR>
-nnoremap <leader>q :quit<CR>
-nnoremap <leader>Q :qa!<CR>
+nnoremap <silent> <leader>o :only<CR>
+nnoremap <silent> <leader>q :quit<CR>
+nnoremap <silent> <leader>Q :qa!<CR>
 nnoremap <silent> <leader>p :put<CR>
 nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}
@@ -93,6 +101,7 @@ nnoremap <silent> <leader>zz :call mappings#zap()<CR>
 nnoremap <silent> <leader>zh :so $VIMRUNTIME/syntax/hitest.vim<CR>
 nnoremap <silent> <leader>zg :call VimBeGood()<CR>
 nnoremap <silent> <leader>zv :Vista!!<CR>
+nnoremap <silent> <leader>zd :let g:diagnostic_show_sign = 0<CR>:let g:diagnostic_enable_virtual_text = 0<CR>
 
 let g:which_key_map.z = {
       \ 'name': '+misc',
@@ -209,23 +218,6 @@ let g:which_key_map.g.p = 'push current head'
 " toggle yadm mapping
 " nnoremap <silent> <leader>gy :call mappings#toggle_yadm()<CR>
 " nnoremap <silent> <leader>gy :let $GIT_DIR="/home/brian/.config/yadm/repo.git"<CR>
-
-let g:which_key_map.h = { 'name' : '+hunk' }
-
-nnoremap <silent> <leader>ha :CocCommand git.chunkStage<CR>
-let g:which_key_map.h.a = 'add (stage)'
-
-nnoremap <silent> <leader>hu :CocCommand git.chunkUndo<CR>
-let g:which_key_map.h.u = 'undo'
-
-nnoremap <silent> <leader>hi :CocCommand git.chunkInfo<CR>
-let g:which_key_map.h.i = 'show info'
-
-nnoremap <silent> <leader>hc :CocCommand git.showCommit<CR>
-let g:which_key_map.h.c = 'show commit'
-
-nnoremap <silent> <leader>ho :CocCommand git.browserOpen
-let g:which_key_map.h.o = 'open in browser'
 " }}}
 
 " ============================================================================
@@ -285,7 +277,10 @@ let g:which_key_map.t.v = 'visit file that was previously tested'
 " ============================================================================
 let g:which_key_map.d = { 'name' : '+debugger' }
 
-nnoremap <silent> <leader>D :call vimspector#Launch()<CR>
+command! -nargs=0 LaunchVimspector call vimspector#Launch()
+
+" nnoremap <silent> <leader>D :call vimspector#Launch()<CR>
+nnoremap <silent> <leader>D :LaunchVimspector<CR>
 let g:which_key_map.D = 'start debugger'
 nnoremap <silent> <leader>dc :call mappings#configure_debugger()<CR>
 let g:which_key_map.d.c = 'configure debugger'
@@ -308,3 +303,6 @@ let g:which_key_map.s = 'substitue word under cursor'
 
 " vista
 " nnoremap <leader>v :Vista!!<CR>
+
+" vimwiki
+nnoremap <leader>nw <cmd>VimwikiIndex<CR>

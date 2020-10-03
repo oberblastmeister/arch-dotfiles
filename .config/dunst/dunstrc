@@ -1,6 +1,6 @@
 [global]
     # font = "FiraCode Nerd Font 10"
-    font = "monospace 9"
+    font = "SauceCodePro Nerd Font 9"
     markup = full
     format = "%a: <b>%s</b>\n%b"
 

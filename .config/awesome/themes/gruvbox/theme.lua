@@ -49,6 +49,7 @@ colors.bw_10            = "#fbf1c7"
 
 local bar_fg            = colors.bw_5
 local bar_bg            = colors.bw_0
+local bar_height = 22
 
 local theme = {}
 theme.name = "gruvbox"
@@ -56,11 +57,11 @@ theme.name = "gruvbox"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/gruvbox"
 theme.wallpaper = theme.dir .. "/wallpapers/monocolor.png"
 
--- local font_name                                 = "FiraCode Nerd Font"
+local font_name                                 = "FiraCode Nerd Font"
 -- local font_name                                 = "Sauce Code Pro"
 -- local font_name                                 = "JetBrains Mono Nerd Font"
-local font_name = "monospace"
-local font_size                                 = "9"
+-- local font_name = "monospace"
+local font_size                                 = "11"
 theme.font                                      = font_name .. " " ..                         font_size
 theme.font_bold                                 = font_name .. " " .. "Bold"        .. " " .. font_size
 theme.font_italic                               = font_name .. " " .. "Italic"      .. " " .. font_size
@@ -139,7 +140,7 @@ theme.menu_width                                = 250
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = false
 theme.tasklist_spacing                          = 3
-theme.useless_gap                               = 34
+theme.useless_gap                               = 28
 theme.systray_icon_spacing                      = 4
 
 theme.snap_bg                                   = colors.bw_5
@@ -348,8 +349,8 @@ local space = wibox.widget.separator {
 
 local vert_sep = wibox.widget.separator {
     orientation = "vertical",
-    forced_width = theme.border / 2,
-    thickness = theme.border / 2,
+    forced_width = theme.border,
+    thickness = theme.border,
     color = colors.bw_2,
 }
 
@@ -565,7 +566,15 @@ function theme.at_screen_connect(s)
   }
 
   -- Create the wibox
-  s.mywibox = awful.wibar({ position = "top", screen = s })
+  s.mywibox = awful.wibar {
+    position = "top",
+    screen = s,
+    border_width = theme.border_width,
+    border_color = theme.border_normal,
+    height = bar_height,
+    fg = bar_fg,
+    bg = bar_bg,
+  }
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -579,22 +588,16 @@ function theme.at_screen_connect(s)
     s.mytasklist, -- Middle widget
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
-      vert_sep,
       memicon,
       mem.widget,
-      vert_sep,
       cpuicon,
       cpu.widget,
-      vert_sep,
       baticon,
       bat.widget,
-      vert_sep,
       tempicon,
       temp.widget,
-      vert_sep,
       fsicon,
       theme.fs.widget,
-      vert_sep,
       mykeyboardlayout,
       space,
       vert_sep,
@@ -603,8 +606,6 @@ function theme.at_screen_connect(s)
       space,
       vert_sep,
       mytextclock,
-      vert_sep,
-      space,
       s.mylayoutbox,
     },
   }

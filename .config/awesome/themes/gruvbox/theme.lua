@@ -333,11 +333,6 @@ theme.calendar_focus_fg_color                   = colors.bw_0
 theme.calendar_focus_bg_color                   = colors.bw_9
 theme.calendar_weeknumber_fg_color              = colors.bw_5
 
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-theme.menu_height, theme.bg_focus, theme.fg_focus
-)
-
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = '/usr/share/icons/Papirus'
@@ -584,6 +579,7 @@ function theme.at_screen_connect(s)
     s.mytasklist, -- Middle widget
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
+      vert_sep,
       memicon,
       mem.widget,
       vert_sep,

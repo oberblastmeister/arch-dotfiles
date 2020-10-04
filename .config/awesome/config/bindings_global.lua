@@ -1,7 +1,5 @@
 local awful = require("awful")
 local gears = require("gears")
-local naughty = require("naughty")
-local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local revelation = require("revelation")
 
@@ -44,6 +42,32 @@ local function setup()
       awful.tag.viewnext()
     end,
     {description = "move client to next tag and switch to it", group = "layout"}),
+
+    awful.key({ modkey, "Shift" }, "#34",
+    function ()
+      -- get current tag
+      local t = client.focus and client.focus.first_tag or nil
+      if t == nil then
+        return
+      end
+      -- get previous tag (modulo 9 excluding 0 to wrap from 1 to 9)
+      local tag = client.focus.screen.tags[(t.name - 2) % 9 + 1]
+      client.focus:move_to_tag(tag)
+    end,
+    {description = "move client to previous tag", group = "layout"}),
+
+    awful.key({ modkey, "Shift" }, "#35",
+    function ()
+      -- get current tag
+      local t = client.focus and client.focus.first_tag or nil
+      if t == nil then
+        return
+      end
+      -- get next tag (modulo 9 excluding 0 to wrap from 9 to 1)
+      local tag = client.focus.screen.tags[(t.name % 9) + 1]
+      client.focus:move_to_tag(tag)
+    end,
+    {description = "move client to next tag", group = "layout"}),
 
     awful.key({ modkey,           }, "e",      revelation,
     {description = "show all windows", group = "layout"}),

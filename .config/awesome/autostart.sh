@@ -48,6 +48,8 @@ run udiskie --tray
 run nm-applet
 run flameshot
 run blueman-applet
+run system-config-printer-applet
+run redshift-gtk
 run syncthing-gtk -m
 ~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 configs &

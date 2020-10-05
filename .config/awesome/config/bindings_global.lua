@@ -2,6 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local revelation = require("revelation")
+local lain = require("lain")
 
 local function setup()
   globalkeys = gears.table.join(
@@ -9,13 +10,13 @@ local function setup()
     {description="show help", group ="awesome"}),
 
     -- { and } to move to next and previous
-    awful.key({ modkey,           }, "#34",   awful.tag.viewprev,
+    awful.key({ modkey,           }, "[",   awful.tag.viewprev,
     {description = "view previous", group = "tag"}),
 
-    awful.key({ modkey,           }, "#35",  awful.tag.viewnext,
+    awful.key({ modkey,           }, "]",  awful.tag.viewnext,
     {description = "view next", group = "tag"}),
 
-    awful.key({ modkey, "Mod1" }, "#34",
+    awful.key({ modkey, "Mod1" }, "[",
     function ()
       -- get current tag
       local t = client.focus and client.focus.first_tag or nil
@@ -29,7 +30,7 @@ local function setup()
     end,
     {description = "move client to previous tag and switch to it", group = "layout"}),
 
-    awful.key({ modkey, "Mod1" }, "#35",
+    awful.key({ modkey, "Mod1" }, "]",
     function ()
       -- get current tag
       local t = client.focus and client.focus.first_tag or nil
@@ -43,7 +44,7 @@ local function setup()
     end,
     {description = "move client to next tag and switch to it", group = "layout"}),
 
-    awful.key({ modkey, "Shift" }, "#34",
+    awful.key({ modkey, "Shift" }, "[",
     function ()
       -- get current tag
       local t = client.focus and client.focus.first_tag or nil
@@ -56,7 +57,7 @@ local function setup()
     end,
     {description = "move client to previous tag", group = "layout"}),
 
-    awful.key({ modkey, "Shift" }, "#35",
+    awful.key({ modkey, "Shift" }, "]",
     function ()
       -- get current tag
       local t = client.focus and client.focus.first_tag or nil
@@ -228,7 +229,37 @@ local function setup()
         history_path = awful.util.get_cache_dir() .. "/history_eval"
       }
     end,
-    {description = "lua execute prompt", group = "awesome"})
+    {description = "lua execute prompt", group = "awesome"}),
+
+    awful.key({ "Mod1" }, "b", function()
+      awful.spawn.with_shell("~/bin/buku-add")
+    end,
+    {description = "add bookmark to buku", group = "bookmarks"}),
+
+    awful.key({ modkey, "Mod1" }, "u", function()
+      awful.spawn.with_shell("powermenu")
+    end,
+    {description = "powermenu", group = "menu"}),
+
+    awful.key( { modkey, "Mod1" }, "=", function()
+      awful.layout.inc(1)
+    end, {description = "go to next layout", group = "layout"}),
+
+    awful.key( { modkey, "Mod1" }, "-", function()
+      awful.layout.inc(-1)
+    end, {description = "go to previous layout", group = "layout"})
+
+    -- awful.key( { modkey }, "-", function()
+    --   lain.util.useless_gap_resize(1)
+    -- end, {description = "increase gap size", group = "layout"}),
+
+    -- awful.key( { modkey }, "+", function()
+    --   lain.util.useless_gap_resize(-1)
+    -- end, {description = "increase gap size", group = "layout"})
+
+    -- awful.key( { modkey }, "=", function()
+    --   lain.util.useless_gap_resize(-1)
+    -- end, {description = "increase gap size", group = "layout"})
 
     -- awful.key({ modkey }, "u",
     -- function ()

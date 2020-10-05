@@ -336,7 +336,7 @@ theme.calendar_weeknumber_fg_color              = colors.bw_5
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = '/usr/share/icons/Papirus'
+theme.icon_theme = 'Papirus'
 
 local markup = lain.util.markup
 
@@ -349,8 +349,8 @@ local space = wibox.widget.separator {
 
 local vert_sep = wibox.widget.separator {
     orientation = "vertical",
-    forced_width = theme.border,
-    thickness = theme.border,
+    forced_width = theme.border / 2,
+    thickness = theme.border / 2,
     color = colors.bw_2,
 }
 
@@ -371,17 +371,18 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- -- {{{ Wibar
 -- -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+-- mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(markup(theme.fg_normal, " %H:%M "))
 mytextclock.font = theme.font
 
-theme.cal = lain.widget.cal({
-    attach_to = { mytextclock },
-    notification_preset = {
-        font = theme.font,
-        fg   = theme.fg_normal,
-        bg   = theme.bg_normal,
-    }
-})
+theme.cal = lain.widget.cal {
+  attach_to = { mytextclock },
+  notification_preset = {
+    font = theme.font,
+    fg   = theme.fg_normal,
+    bg   = theme.bg_normal,
+  }
+}
 
 -- local volicon = wibox.widget.imagebox(theme.widget_vol)
 -- theme.volume = lain.widget.alsa {
@@ -581,6 +582,7 @@ function theme.at_screen_connect(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
+      s.mylayoutbox,
       mylauncher,
       s.mytaglist,
       s.mypromptbox,
@@ -606,7 +608,6 @@ function theme.at_screen_connect(s)
       space,
       vert_sep,
       mytextclock,
-      s.mylayoutbox,
     },
   }
 end

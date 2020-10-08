@@ -144,6 +144,7 @@ return require('packer').startup(function()
       'nvim-lua/plenary.nvim',
       'kyazdani42/nvim-web-devicons',
     },
+    disable = true,
   }
 
   -- colorize hex codes

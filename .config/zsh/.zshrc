@@ -62,7 +62,6 @@ setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
 
-# export LS_COLORS="$(vivid generate solarized-dark)"
 export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
@@ -170,3 +169,5 @@ zinit light exercism/cli
 
 # source lf icons
 source ~/.config/zsh/.lf_icons
+# export LS_COLORS="$(vivid generate solarized-dark)"
+eval "$(direnv hook zsh)"

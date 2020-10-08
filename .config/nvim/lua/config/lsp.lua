@@ -71,7 +71,7 @@ local servers = {
   },
   yamlls = {},
   gopls = {
-    -- root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', vim.fn.getcwd())
+    root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', '')
   },
   texlab = {
     filetypes = {"tex", "bib", "plaintex"},

@@ -42,7 +42,7 @@ vim.o.termguicolors = true
 vim.g.loaded_python_provider = 0
 
 -- command to start python3 executable
-vim.g.python3_host_prog = '/usr/bin/python3'
+-- vim.g.python3_host_prog = '/usr/bin/python3'
 
 -- disable netrw
 vim.g.loaded_netrwPlugin = 1
@@ -107,8 +107,9 @@ return require('packer').startup(function()
     config = function() require'highlighter' end,
   }
 
-  rtp_use {
-    'rooter.nvim'
+  local_use {
+    'rooter.nvim',
+    config = function() require'config/rooter'.setup() end,
   }
 
   ----------------------------- Looks --------------------------------------
@@ -140,11 +141,11 @@ return require('packer').startup(function()
   use {
     'tjdevries/express_line.nvim',
     config = function() require'config/express_line'.start() end,
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'kyazdani42/nvim-web-devicons',
-    },
+    disable = true,
   }
+
+  use 'nvim-lua/plenary.nvim'
+  use 'kyazdani42/nvim-web-devicons'
 
   -- colorize hex codes
   use {
@@ -240,6 +241,7 @@ return require('packer').startup(function()
     end,
     config = function()
       require'config/ale'.config()
+      vim.cmd [[ALEDisable]]
     end,
   }
 

@@ -6,7 +6,7 @@ configuration {
 	case-sensitive: false;
 	matching: "regex";
 	theme: "~/.config/rofi/gruvbox.rasi";
-    icon-theme: "Papirus";
+    icon-theme: "White-Sur dark";
     drun-display-format: "{name} [<span weight='normal' size='small'>({generic})</span>]";
 }
 /* @import "gruvbox" */

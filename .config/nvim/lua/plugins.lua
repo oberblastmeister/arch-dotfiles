@@ -461,5 +461,9 @@ return require('packer').startup(function()
     run = function() vim.fn['firenvim#install'](0) end
   }
 
-  use {'Xuyuanp/scrollbar.nvim', disable = true}
+  use {
+    'Xuyuanp/scrollbar.nvim',
+    disable = true,
+    config = function() require'config/scrollbar'.setup() end,
+  }
 end)

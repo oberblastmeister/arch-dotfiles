@@ -585,7 +585,9 @@ function theme.at_screen_connect(s)
       s.mylayoutbox,
       mylauncher,
       s.mytaglist,
+      space,
       s.mypromptbox,
+      space,
     },
     s.mytasklist, -- Middle widget
     { -- Right widgets

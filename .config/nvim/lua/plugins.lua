@@ -235,6 +235,7 @@ return require('packer').startup(function()
   use {
     'w0rp/ale',
     ft = {'sh', 'markdown'},
+    cmd = 'ALEEnable',
     setup = function()
       vim.g.ale_disable_lsp = 1
     end,

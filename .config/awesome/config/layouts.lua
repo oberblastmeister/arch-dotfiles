@@ -2,6 +2,8 @@ local awful = require("awful")
 local lain = require("lain")
 
 local function setup()
+  lain.layout.termfair.center.nmaster = 3
+
   awful.layout.layouts = {
   -- awful.layout.suit.floating,
   awful.layout.suit.tile,
@@ -11,7 +13,7 @@ local function setup()
   -- awful.layout.suit.fair,
   -- awful.layout.suit.fair.horizontal,
   awful.layout.suit.spiral,
-  lain.layout.termfair.center
+  lain.layout.termfair.center,
   -- awful.layout.suit.spiral.dwindle,
   -- awful.layout.suit.max,
   -- awful.layout.suit.max.fullscreen,

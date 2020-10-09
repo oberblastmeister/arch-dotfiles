@@ -77,9 +77,6 @@ MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 zinit ice wait lucid 
 zinit snippet OMZL::completion.zsh
 
-# zinit ice lucid wait mv"yadm* -> _yadm" pick"_yadm"
-# zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
-
 # big four
 # zicompinit is just `autoload compinit; compinit`
 zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay"
@@ -98,23 +95,15 @@ zinit light zsh-users/zsh-completions
 zinit ice lucid wait atload"bindkey '^_' autosuggest-execute"
 zinit light softmoth/zsh-vim-mode
 
-zinit ice lucid wait
-zinit snippet ~/.config/zsh/.aliases
-
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
-zinit ice lucid wait
-zinit snippet /usr/share/fzf/key-bindings.zsh
+zinit wait lucid is-snippet light-mode for \
+    /usr/share/fzf/key-bindings.zsh \
+    /usr/share/fzf/completion.zsh \
 
-zinit ice lucid wait blockf
-zinit snippet /usr/share/fzf/completion.zsh
-
-zinit ice lucid wait atpull"zinit creinstall -q ." as"completion"
+zinit ice lucid wait as"completion"
 zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
-
-# zinit ice lucid wait atpull"zinit creinstall -q ." as"completion"
-zinit light ~/.local/share/zsh/completions
 
 # let fzf find hidden files
 export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"
@@ -167,7 +156,10 @@ zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speed
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
+zinit wait lucid light-mode is-snippet for \
+    $ZDOTDIR/lazy/vivid.zsh \
+    $ZDOTDIR/lazy/direnv.zsh \
+    $ZDOTDIR/lazy/aliases.zsh
+
 # source lf icons
 source ~/.config/zsh/.lf_icons
-# export LS_COLORS="$(vivid generate solarized-dark)"
-eval "$(direnv hook zsh)"

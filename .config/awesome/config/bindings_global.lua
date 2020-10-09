@@ -9,12 +9,25 @@ local function setup()
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
     {description="show help", group ="awesome"}),
 
+    -- dynamic tagging
+    awful.key({ modkey, "Shift" }, "n", function () lain.util.add_tag(mylayout) end),
+    awful.key({ modkey, "Shift" }, "r", function () lain.util.rename_tag() end),
+    awful.key({ modkey, "Shift" }, "d", function () lain.util.delete_tag() end),
+
     -- { and } to move to next and previous
     awful.key({ modkey,           }, "[",   awful.tag.viewprev,
     {description = "view previous", group = "tag"}),
 
     awful.key({ modkey,           }, "]",  awful.tag.viewnext,
     {description = "view next", group = "tag"}),
+
+   awful.key({ modkey, "Control" }, "[", function()
+     lain.util.tag_view_nonempty(-1)
+   end, {description = "view previous non-empty tag", group = "tag"}),
+
+   awful.key({ modkey, "Control" }, "]", function()
+     lain.util.tag_view_nonempty(1)
+   end, {description = "view next non-empty tag", group = "tag"}),
 
     awful.key({ modkey, "Mod1" }, "[",
     function ()

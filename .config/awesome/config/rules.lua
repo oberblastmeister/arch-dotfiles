@@ -20,6 +20,18 @@ local function setup()
       }
     },
 
+    -- all clients with no borders
+    {
+      rule_any = {
+        class = {
+          "Cairo-dock"
+        },
+      },
+      properties = {
+        border_width = 0,
+      }
+    },
+
     -- Floating clients.
     {
       rule_any = {

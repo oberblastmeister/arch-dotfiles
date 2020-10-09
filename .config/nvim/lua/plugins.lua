@@ -110,6 +110,7 @@ return require('packer').startup(function()
   local_use {
     'rooter.nvim',
     config = function() require'config/rooter'.setup() end,
+    disable = true,
   }
 
   ----------------------------- Looks --------------------------------------

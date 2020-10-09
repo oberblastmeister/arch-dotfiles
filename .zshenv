@@ -24,7 +24,13 @@ export QT_STYLE_OVERRIDE=kvantum
 
 # makesure that there are no duplicates in path var
 typeset -U path
-path+=(~/.cargo/bin ~/bin ~/bin/rofi ~/bin/bspwm ~/.local/bin)
+path+=(~/.cargo/bin
+    ~/bin
+    ~/bin/rofi
+    ~/bin/bspwm
+    ~/.local/bin
+    $GOPATH/bin
+)
 # export to subprocesses
 export PATH
 

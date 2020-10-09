@@ -74,7 +74,7 @@ MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL"
 
 # good defaults
-zinit ice wait lucid 
+zinit ice wait lucid
 zinit snippet OMZL::completion.zsh
 
 # big four
@@ -88,7 +88,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid atload"bindkey '^P' history-substring-search-up; bindkey '^N' history-substring-search-down"
 zinit light zsh-users/zsh-history-substring-search
 
-zinit ice wait blockf lucid atpull"zinit creinstall -q ."
+zinit ice wait blockf lucid atpull'zinit creinstall -q "$PWD"'
 zinit light zsh-users/zsh-completions
 
 # overrides zsh autosuggest for some reason
@@ -98,7 +98,7 @@ zinit light softmoth/zsh-vim-mode
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
-zinit wait lucid is-snippet light-mode for \
+zinit wait lucid is-snippet light-mode blockf for \
     /usr/share/fzf/key-bindings.zsh \
     /usr/share/fzf/completion.zsh \
 

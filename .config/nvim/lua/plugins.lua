@@ -112,10 +112,6 @@ return require('packer').startup(function()
     config = function() require'config/rooter'.setup() end,
   }
 
-  local_use {
-    'direnv.nvim'
-  }
-
   ----------------------------- Looks --------------------------------------
   -- colorscheme
   use {

@@ -11,6 +11,10 @@
 
 
 " ----------------------------- Important ----------------------------------
+if exists('g:vscode')
+
+else
+
 lua require('plugins')
 
 " lua require('settings').setup()
@@ -88,3 +92,4 @@ let g:neovide_refresh_rate=240
 let g:neovide_cursor_vfx_mode = "railgun"
 " let g:neovide_cursor_animation_length=0.1
 " }}}
+endif

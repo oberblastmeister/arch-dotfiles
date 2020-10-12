@@ -112,6 +112,10 @@ return require('packer').startup(function()
     config = function() require'config/rooter'.setup() end,
   }
 
+  local_use {
+    'direnv.nvim'
+  }
+
   ----------------------------- Looks --------------------------------------
   -- colorscheme
   use {
@@ -448,6 +452,8 @@ return require('packer').startup(function()
 
   -- rust pest files
   use {'pest-parser/pest.vim', ft = 'pest'}
+
+  use 'qnighy/lalrpop.vim'
 
   -- better lua highlighting
   use 'euclidianAce/BetterLua.vim'

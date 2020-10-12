@@ -51,6 +51,7 @@ run blueman-applet
 run system-config-printer-applet
 run redshift-gtk
 run syncthing-gtk -m
+run greenclip daemon
 ~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 configs &
 setupxob &

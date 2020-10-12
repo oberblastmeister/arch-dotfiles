@@ -26,8 +26,6 @@ export QT_STYLE_OVERRIDE=kvantum
 typeset -U path
 path+=(~/.cargo/bin
     ~/bin
-    ~/bin/rofi
-    ~/bin/bspwm
     ~/.local/bin
     $GOPATH/bin
 )

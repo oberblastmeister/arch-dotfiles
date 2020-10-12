@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -z "$(bspc query --nodes --node .focused.floating)" ]; then
-    bspc node focused.tiled --state floating
-else
-    bspc node focused.floating --state tiled
-fi

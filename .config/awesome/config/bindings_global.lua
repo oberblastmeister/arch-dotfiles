@@ -3,6 +3,7 @@ local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local revelation = require("revelation")
 local lain = require("lain")
+local naughty = require("naughty")
 
 local function setup()
   globalkeys = gears.table.join(
@@ -119,8 +120,11 @@ local function setup()
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
     {description = "focus the previous screen", group = "screen"}),
 
-    awful.key({ modkey, }, "c", function () awful.screen.focused().quake:toggle() end,
-    {description = "toggle dropdown terminal", group = "launcher"}),
+    awful.key({ modkey, }, "c", function()
+      awful.spawn.with_shell [[rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}']]
+    end,
+    {description = "clipboard menu", group = "launcher"}),
+-- awful.screen.focused().quake:toggle()
 
     -- awful.key({ modkey, }, "z", function () quake:toggle() end),
 
@@ -138,7 +142,7 @@ local function setup()
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function()
-      awful.spawn({terminal, "-e", "tmux"})
+      awful.spawn {terminal, "-e", "tmux"}
     end,
     {description = "open a terminal", group = "launcher"}),
 
@@ -243,6 +247,34 @@ local function setup()
       }
     end,
     {description = "lua execute prompt", group = "awesome"}),
+
+    awful.key({ modkey }, "t",
+    function()
+      naughty.notify {
+        text = "this is just a test",
+        title = "test"
+      }
+    end,
+    {description = "test notifications"}),
+
+    awful.key({ modkey }, "y",
+    function()
+      local id = naughty.get_next_notification_id()
+      local notification = naughty.getById(id)
+      local res = naughty.destroy(notification)
+      naughty.notify {
+        text = "" .. res .. (id or "no id"),
+        title = "testing",
+      }
+    end,
+    {description = "test notifications"}),
+
+    awful.key({ modkey }, "`",
+    function()
+      local screen = awful.screen.focused()
+      naughty.destroy_all_notifications {screen}
+    end,
+    {description = "close all notifications", group = "notification"}),
 
     awful.key({ "Mod1" }, "b", function()
       awful.spawn.with_shell("~/bin/buku-add")

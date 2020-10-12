@@ -1,7 +1,0 @@
-#!/bin/sh
-# hide all the nodes
-NODES=$(bspc query --nodes --node .tiled --desktop focused)
-
-for node in $NODES; do
-  bspc node $node -g hidden=on
-done

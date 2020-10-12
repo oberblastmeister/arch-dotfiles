@@ -1,5 +1,0 @@
-#!/bin/bash
-
-## Created By Aditya Shakya
-
-rofi -modi run,drun -show drun -columns 2 -width 40 -show-icons -drun-icon-theme "Papirus"

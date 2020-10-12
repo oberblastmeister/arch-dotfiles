@@ -5,12 +5,8 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
-local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
-local lain = require("lain")
 local revelation = require("revelation")
 
 -- Enable hotkeys help widget for VIM and other apps
@@ -46,6 +42,7 @@ end
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/brian/.config/awesome/themes/gruvbox/theme.lua")
+-- must be called after beautiful
 revelation.init()
 
 -- This is used later as the default terminal and editor to run.

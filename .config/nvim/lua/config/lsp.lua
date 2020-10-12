@@ -64,7 +64,16 @@ local servers = {
   },
   vimls = {},
   sumneko_lua = {
-    cmd = {"lua-language-server"}
+    cmd = {"lua-language-server"},
+    settings = {
+      Lua = {
+        diagnostics = {
+          disable = {
+            "lowercase-global"
+          }
+        }
+      }
+    }
   },
   jsonls = {
     cmd = {"json-languageserver", "--stdio"},

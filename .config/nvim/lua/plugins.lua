@@ -168,6 +168,7 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = function() vim.cmd [[TSInstall all]] end,
     config = function() require'config/treesitter'.setup() end,
+    disable = true,
   }
 
   -- completion engine
@@ -184,7 +185,7 @@ return require('packer').startup(function()
         config = function() require'config/ultisnips'.setup() end,
       },
       'honza/vim-snippets',
-      'nvim-treesitter/completion-treesitter',
+      -- 'nvim-treesitter/completion-treesitter',
       'hrsh7th/vim-vsnip',
       'hrsh7th/vim-vsnip-integ',
     }

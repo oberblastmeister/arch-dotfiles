@@ -120,13 +120,24 @@ local function setup()
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
     {description = "focus the previous screen", group = "screen"}),
 
-    awful.key({ modkey, }, "c", function()
-      awful.spawn.with_shell [[rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}']]
-    end,
-    {description = "clipboard menu", group = "launcher"}),
--- awful.screen.focused().quake:toggle()
+    -- rofi/launchers
+    awful.key({modkey,}, "d", function() awful.spawn.with_shell [[launcher-alt]] end,
+    {description = "app launcher", group = "rofi"}),
 
-    -- awful.key({ modkey, }, "z", function () quake:toggle() end),
+    awful.key({ modkey, }, "c", function()
+      awful.spawn.with_shell [[clipmenu]]
+    end,
+    {description = "clipboard menu", group = "rofi"}),
+
+    awful.key({ "Mod1" }, "Tab", function()
+      awful.spawn.with_shell [[windows]]
+    end,
+    {description = "show opened windows", group = "rofi"}),
+
+    awful.key({ modkey }, "t", function()
+      awful.screen.focused().quake:toggle()
+    end,
+    {description = "toggle dropdown terminal"}),
 
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
     {description = "jump to urgent client", group = "client"}),
@@ -145,9 +156,6 @@ local function setup()
       awful.spawn {terminal, "-e", "tmux"}
     end,
     {description = "open a terminal", group = "launcher"}),
-
-    awful.key({modkey,}, "d", function() awful.spawn.with_shell("~/bin/rofi/launcher-alt") end,
-    {description = "open rofi app launcher", group = "launcher"}),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart,
     {description = "reload awesome", group = "awesome"}),
@@ -248,26 +256,26 @@ local function setup()
     end,
     {description = "lua execute prompt", group = "awesome"}),
 
-    awful.key({ modkey }, "t",
-    function()
-      naughty.notify {
-        text = "this is just a test",
-        title = "test"
-      }
-    end,
-    {description = "test notifications"}),
+    -- awful.key({ modkey }, "t",
+    -- function()
+    --   naughty.notify {
+    --     text = "this is just a test",
+    --     title = "test"
+    --   }
+    -- end,
+    -- {description = "test notifications"}),
 
-    awful.key({ modkey }, "y",
-    function()
-      local id = naughty.get_next_notification_id()
-      local notification = naughty.getById(id)
-      local res = naughty.destroy(notification)
-      naughty.notify {
-        text = "" .. res .. (id or "no id"),
-        title = "testing",
-      }
-    end,
-    {description = "test notifications"}),
+    -- awful.key({ modkey }, "y",
+    -- function()
+    --   local id = naughty.get_next_notification_id()
+    --   local notification = naughty.getById(id)
+    --   local res = naughty.destroy(notification)
+    --   naughty.notify {
+    --     text = "" .. res .. (id or "no id"),
+    --     title = "testing",
+    --   }
+    -- end,
+    -- {description = "test notifications"}),
 
     awful.key({ modkey }, "`",
     function()

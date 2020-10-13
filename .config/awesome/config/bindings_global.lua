@@ -153,7 +153,7 @@ local function setup()
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function()
-      awful.spawn {terminal, "-e", "tmux"}
+      awful.spawn.with_shell("$TERMINAL -e tmux")
     end,
     {description = "open a terminal", group = "launcher"}),
 
@@ -199,9 +199,16 @@ local function setup()
     end,
     {description = "restore minimized", group = "client"}),
 
-    -- Firefox
-    awful.key({ modkey }, "b", function() awful.spawn("brave") end,
+    -- Browser
+    awful.key({ modkey }, "b", function()
+      awful.spawn.with_shell("$BROWSER")
+    end,
     {description = "launch browser", group = "browser"}),
+
+    awful.key({ modkey, "Control" }, "b", function()
+      awful.spawn.with_shell("browser_private")
+    end,
+    {description = "launch private browser", group = "browser"}),
 
     -- Volume keys
     awful.key({}, "XF86AudioRaiseVolume", function()

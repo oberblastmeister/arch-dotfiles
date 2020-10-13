@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# open private browser window based on what the $BROWSER variable is
+
+if [[ $BROWSER == firefox ]]; then
+    firefox -private &
+elif [[ $BROWSER == chromium-browser || $BROWSER == chromium || $BROWSER == google-chrome || $BROWSER == brave ]]; then
+    # for all the chromium-based browsers
+    $BROWSER --incognito &
+fi

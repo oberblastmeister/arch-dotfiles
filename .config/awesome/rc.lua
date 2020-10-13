@@ -45,7 +45,7 @@ beautiful.init("/home/brian/.config/awesome/themes/gruvbox/theme.lua")
 -- must be called after beautiful
 revelation.init()
 
--- This is used later as the default terminal and editor to run.
+-- default apps before get_env_variables is run
 terminal = "kitty"
 editor = "nvim"
 editor_cmd = terminal .. " -e " .. editor
@@ -53,7 +53,9 @@ modkey = "Mod4"
 
 config.layouts.setup()
 
-awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
+awful.screen.connect_for_each_screen(function(s)
+  beautiful.at_screen_connect(s)
+end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(

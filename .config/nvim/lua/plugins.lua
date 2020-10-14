@@ -168,7 +168,6 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = function() vim.cmd [[TSInstall all]] end,
     config = function() require'config/treesitter'.setup() end,
-    disable = true,
   }
 
   -- completion engine

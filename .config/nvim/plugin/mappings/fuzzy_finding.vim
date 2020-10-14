@@ -26,6 +26,9 @@ nnoremap <silent> <leader>/ :nohl<CR>:BLines<CR>
 nnoremap <silent> <leader>? :nohl<CR>:Lines<CR>
 " nnoremap <silent> <leader>e :CocFzfList diagnostics<CR>
 
+" fuzzy command history
+nnoremap <silent> <leader>fh <cmd>lua require'telescope.builtin'.command_history{}<CR>
+
 " common fuzzy leader mappings info
 let g:which_key_map = {
       \ 'e': 'fuzzy diagnostics',

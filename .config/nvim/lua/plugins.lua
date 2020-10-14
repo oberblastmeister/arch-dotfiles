@@ -144,17 +144,20 @@ return require('packer').startup(function()
     disable = true,
   }
 
-  use 'nvim-lua/plenary.nvim'
-  use 'kyazdani42/nvim-web-devicons'
-
   -- colorize hex codes
   use {
     'norcalli/nvim-colorizer.lua',
     config = function() require'colorizer'.setup() end,
   }
 
+  ----------------------------- Dependencies ----------------------------------------
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-lua/popup.nvim'
+
   -- icons
+  use 'kyazdani42/nvim-web-devicons'
   use 'ryanoasis/vim-devicons'
+
 
   ----------------------------- LSP/Treesitter/DAP ----------------------------------
   -- lsp configs
@@ -168,7 +171,6 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = function() vim.cmd [[TSInstall all]] end,
     config = function() require'config/treesitter'.setup() end,
-    disable = true,
   }
 
   -- completion engine
@@ -248,13 +250,8 @@ return require('packer').startup(function()
 
   ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
-  use {
-    'nvim-lua/telescope.nvim',
-    requires = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-  }
+  use 'nvim-lua/telescope.nvim'
+  
 
   use {
     'junegunn/fzf.vim',
@@ -295,6 +292,8 @@ return require('packer').startup(function()
 
   use 'junegunn/vim-easy-align'
 
+  use 'tommcdo/vim-exchange'
+
   ----------------------------- General -------------------------------------
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-eunuch'
@@ -330,14 +329,8 @@ return require('packer').startup(function()
 
   ----------------------------- File Visualizers ----------------------------
   -- file tree lua, has issues with writing file
-  use {
-    'kyazdani42/nvim-tree.lua',
-    cmd = 'LuaTreeFindFile',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-      cmd = 'LuaTreeFindFile',
-    }
-  }
+  use 'kyazdani42/nvim-tree.lua'
+  
 
   -- python file tree
   use {

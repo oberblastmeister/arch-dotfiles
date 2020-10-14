@@ -1,5 +1,9 @@
+local rooter = require("rooter")
 local function setup()
-  require'rooter'.setup()
+  rooter.set_config {
+    echo = false,
+  }
+  rooter.setup()
 end
 
 return {

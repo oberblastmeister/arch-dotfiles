@@ -156,6 +156,7 @@ return require('packer').startup(function()
 
   -- icons
   use 'kyazdani42/nvim-web-devicons'
+
   use 'ryanoasis/vim-devicons'
 
 
@@ -187,7 +188,7 @@ return require('packer').startup(function()
         config = function() require'config/ultisnips'.setup() end,
       },
       'honza/vim-snippets',
-      -- 'nvim-treesitter/completion-treesitter',
+      'nvim-treesitter/completion-treesitter',
       'hrsh7th/vim-vsnip',
       'hrsh7th/vim-vsnip-integ',
     }
@@ -329,7 +330,10 @@ return require('packer').startup(function()
 
   ----------------------------- File Visualizers ----------------------------
   -- file tree lua, has issues with writing file
-  use 'kyazdani42/nvim-tree.lua'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function() require'config/tree'.setup() end,
+  }
   
   -- terminal float for lf
   use 'voldikss/vim-floaterm'

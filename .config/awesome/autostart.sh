@@ -52,7 +52,7 @@ run system-config-printer-applet
 run redshift-gtk
 run syncthing-gtk -m
 run greenclip daemon
-run mailspring
+run mailspring --background
 ~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 configs &
 setupxob &

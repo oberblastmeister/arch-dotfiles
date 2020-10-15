@@ -41,9 +41,6 @@ vim.o.termguicolors = true
 -- disable python 2 support
 vim.g.loaded_python_provider = 0
 
--- command to start python3 executable
--- vim.g.python3_host_prog = '/usr/bin/python3'
-
 -- disable netrw
 vim.g.loaded_netrwPlugin = 1
 
@@ -134,7 +131,8 @@ return require('packer').startup(function()
   use {
     'Yggdroot/indentLine',
     config = function()
-      vim.g.indentLine_fileTypeExclude = {'dashboard'}
+      -- remove on terminal files and dashboard
+      vim.g.indentLine_fileTypeExclude = {'dashboard', ''}
     end,
   }
 
@@ -333,6 +331,10 @@ return require('packer').startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     config = function() require'config/tree'.setup() end,
+    -- only turn on when yadm is not active, prevents lagging vim
+    cond = function()
+      return os.getenv("GIT_DIR") ~= vim.fn.expand("~/.config/yadm/repo.git")
+    end
   }
   
   -- terminal float for lf
@@ -436,7 +438,7 @@ return require('packer').startup(function()
   }
 
   -- rust pest files
-  use {'pest-parser/pest.vim', ft = 'pest'}
+  use 'pest-parser/pest.vim'
 
   use 'qnighy/lalrpop.vim'
 

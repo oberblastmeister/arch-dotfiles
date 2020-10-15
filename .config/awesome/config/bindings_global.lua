@@ -134,6 +134,11 @@ local function setup()
     end,
     {description = "show opened windows", group = "rofi"}),
 
+    awful.key({ modkey, "Mod1" }, "b", function()
+      awful.spawn [[buku_run]]
+    end,
+    {description = "bookmarks menu"}),
+
     awful.key({ modkey }, "t", function()
       awful.screen.focused().quake:toggle()
     end,

@@ -331,15 +331,6 @@ return require('packer').startup(function()
   -- file tree lua, has issues with writing file
   use 'kyazdani42/nvim-tree.lua'
   
-
-  -- python file tree
-  use {
-    'ms-jpq/chadtree',
-    branch = 'chad',
-    cmd = 'CHADopen',
-    run = ':UpdateRemotePlugins'
-  }
-
   -- terminal float for lf
   use 'voldikss/vim-floaterm'
 

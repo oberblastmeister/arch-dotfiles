@@ -306,3 +306,6 @@ let g:which_key_map.s = 'substitue word under cursor'
 
 " vimwiki
 nnoremap <leader>nw <cmd>VimwikiIndex<CR>
+
+" lua tree
+nnoremap <silent> <leader>- <cmd>LuaTreeFindFile<Cr>

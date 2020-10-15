@@ -15,9 +15,7 @@ if exists('g:vscode')
 
 else
 
-lua require('plugins')
-
-" lua require('settings').setup()
+lua require('init')
 
   let g:fzf_preview_window = 'right'
 

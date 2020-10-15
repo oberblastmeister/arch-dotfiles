@@ -35,15 +35,6 @@ if not packer_exists then
   return
 end
 
--- packer throws error if is not on
-vim.o.termguicolors = true
-
--- disable python 2 support
-vim.g.loaded_python_provider = 0
-
--- disable netrw
-vim.g.loaded_netrwPlugin = 1
-
 return require('packer').startup(function()
   -- let packer optionally manage itself
   use {'wbthomason/packer.nvim', opt = true}

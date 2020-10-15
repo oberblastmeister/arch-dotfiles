@@ -28,8 +28,8 @@ augroup LuaTreeOverride
   au!
   au FileType LuaTree setlocal nowrap
 augroup END
-]]
-, "")
+]],
+false)
 end
 
 return {

@@ -53,8 +53,8 @@ augroup lsp
   au!
   au CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 augroup END
-]]
-, "")
+]],
+false)
 end
 
 -- a table of lsp servers and their configs

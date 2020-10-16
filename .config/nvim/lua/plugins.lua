@@ -149,18 +149,11 @@ return require('packer').startup(function()
   use 'ryanoasis/vim-devicons'
 
 
-  ----------------------------- LSP/Treesitter/DAP ----------------------------------
+  ----------------------------- LSP/DAP ----------------------------------
   -- lsp configs
   use {
     'neovim/nvim-lspconfig',
     config = function() require'config/lsp'.setup() end,
-  }
-
-  -- better syntax highlighting (load after diagnostics and nvim-lsp)
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function() vim.cmd [[TSInstall all]] end,
-    config = function() require'config/treesitter'.setup() end,
   }
 
   -- completion engine
@@ -177,7 +170,6 @@ return require('packer').startup(function()
         config = function() require'config/ultisnips'.setup() end,
       },
       'honza/vim-snippets',
-      'nvim-treesitter/completion-treesitter',
       'hrsh7th/vim-vsnip',
       'hrsh7th/vim-vsnip-integ',
     }
@@ -237,6 +229,24 @@ return require('packer').startup(function()
       vim.cmd [[ALEDisable]]
     end,
   }
+
+  ----------------------------- Treesitter ----------------------------
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() vim.cmd [[TSInstall all]] end,
+    config = function() require'config/treesitter'.setup() end,
+  }
+
+  use 'nvim-treesitter/nvim-treesitter-refactor'
+
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+  use {
+    'nvim-treesitter/playground',
+    cmd = 'TSPlaygroundToggle',
+  }
+
+  use 'nvim-treesitter/completion-treesitter'
 
   ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
@@ -432,9 +442,6 @@ return require('packer').startup(function()
   use 'pest-parser/pest.vim'
 
   use 'qnighy/lalrpop.vim'
-
-  -- better lua highlighting
-  use 'euclidianAce/BetterLua.vim'
 
   use {'tjdevries/nlua.nvim', disable = true}
 

@@ -2,7 +2,7 @@ local function setup()
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",     -- one of "all", "language", or a list of languages
     highlight = {
-      enable = false,
+      enable = true,
       disable = {},  -- list of language that will be disabled
     },
     incremental_selection = {
@@ -28,6 +28,7 @@ local function setup()
         keymaps = {
           goto_definition = "<c-\\>",
           -- list_definitions = "gnD",
+          list_definitions_toc = "gO",
           goto_next_usage = "]t",
           goto_previous_usage = "[t",
         },
@@ -42,6 +43,7 @@ local function setup()
           ["if"] = "@function.inner",
           ["ac"] = "@class.outer",
           ["ic"] = "@class.inner",
+
           ["iF"] = {
             python = "(function_definition) @function",
             cpp = "(function_definition) @function",
@@ -76,6 +78,13 @@ local function setup()
         },
         swap_previous = {
           ["<leader>A"] = "@parameter.inner",
+        },
+      },
+      lsp_interop = {
+        enable = true,
+        peek_definition_code = {
+          ["<leader>df"] = "@function.outer",
+          ["<leader>dF"] = "@class.outer",
         },
       },
     }

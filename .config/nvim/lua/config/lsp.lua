@@ -9,7 +9,9 @@ if settings.lsp_status == true then
   lsp_status.register_progress()
 end
 
-local keymappings = {
+local M = {}
+
+M.keymappings = {
   {'n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>'},
   {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>'},
   {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>'},
@@ -27,7 +29,7 @@ local keymappings = {
   {'n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>'},
 }
 
-local function setup_keymappings()
+function M.setup_keymappings()
   local map = function(keymapping)
     print('keymapping:', keymapping)
     vim.api.nvim_buf_set_keymap(0, keymapping[1], keymapping[2], keymapping[3], {noremap = true, silent = true})
@@ -108,77 +110,6 @@ local servers = {
     }
   },
   hls = {},
-  -- diagnosticls = {
-  --   filetypes = {},
-  --   init_options = {
-  --     linters = {
-  --       shellcheck = {
-  --         command = "shellcheck",
-  --         debounce = 100,
-  --         args = { "--format=gcc", "-"},
-  --         offsetLine = 0,
-  --         offsetColumn = 0,
-  --         sourceName = "shellcheck",
-  --         formatLines = 1,
-  --         formatPattern = {
-  --           "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
-  --           {
-  --             line = 1,
-  --             column = 2,
-  --             message = 4,
-  --             security = 3
-  --           }
-  --         },
-  --         securities = {
-  --           error = "error",
-  --           warning = "warning",
-  --           note = "info"
-  --         }
-  --       },
-  --       languagetool = {
-  --         command = "languagetool",
-  --         debounce = 200,
-  --         -- args = {"-"},
-  --         args = {},
-  --         offsetLine = 0,
-  --         offsetColumn = 0,
-  --         sourceName = "languagetool",
-  --         formatLines = 2,
-  --         formatPattern = {
-  --           "^\\d+?\\.\\)\\s+Line\\s+(\\d+),\\s+column\\s+(\\d+),\\s+([^\\n]+)\nMessage:\\s+(.*)$",
-  --           {
-  --             line = 1,
-  --             column = 2,
-  --             message = {4, 3}
-  --           }
-  --         },
-  --       },
-  --       markdownlint = {
-  --         command = "markdownlint",
-  --         isStderr = true,
-  --         debounce = 100,
-  --         args = { "--stdin" },
-  --         offsetLine = 0,
-  --         offsetColumn = 0,
-  --         sourceName = "markdownlint",
-  --         formatLines = 1,
-  --         formatPattern = {
-  --           "^.*?:\\s+(\\d+):\\s+(.*)(\\r|\\n)*$",
-  --           {
-  --             line = 1,
-  --             column = -1,
-  --             message = 2
-  --           }
-  --         }
-  --       }
-  --     },
-  --     filetypes = {
-  --       sh = "shellcheck",
-  --       -- markdown = "markdownlint",
-  --       -- markdown = "languagetool",
-  --     },
-  --   },
-  -- }
 }
 
 -- each server will always attach diagnostic
@@ -190,21 +121,10 @@ if settings.lsp_status == true then
   default_config.capabilities = lsp_status.capabilities
 end
 
--- note! will change table 2!!
-local function table_merge(default, config)
-  for k, v in pairs(default) do
-    -- do not override config keys with default
-    -- only merge if config doesn't already have the defaults
-    if config[k] == nil then
-      config[k] = v end
-    end
-  return config
-end
-
 local function setup()
   for server, config in pairs(servers) do
-    table_merge(default_config, config)
-    nvim_lsp[server].setup(config)
+    local new_config = vim.tbl_extend("keep", config, default_config);
+    nvim_lsp[server].setup(new_config)
   end
 end
 

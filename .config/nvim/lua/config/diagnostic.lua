@@ -1,4 +1,6 @@
-local function toggle_diagnostics()
+local M = {}
+
+function M.toggle_diagnostics()
   if vim.g.diagnostic_enable_virtual_text == 1 then
     vim.g.diagnostic_enable_virtual_text = 0
   else
@@ -12,7 +14,7 @@ local function toggle_diagnostics()
   end
 end
 
-local function setup()
+function M.setup()
   vim.g.diagnostic_enable_underline = 1
   vim.g.diagnostic_insert_delay = 0
   vim.g.diagnostic_show_sign = 0
@@ -42,7 +44,4 @@ local function setup()
   vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 end
 
-return {
-  setup = setup,
-  toggle_diagnostics = toggle_diagnostics,
-}
+return M

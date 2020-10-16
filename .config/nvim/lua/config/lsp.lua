@@ -62,16 +62,7 @@ end
 -- a table of lsp servers and their configs
 -- custom commands are usually specified if the server isn't installed using LspInstall
 local servers = {
-  pyls_ms = {
-    callbacks = lsp_status.extensions.pyls_ms.setup(),
-    settings = {
-      python = {
-        workspaceSymbols = {
-          enabled = true,
-        }
-      }
-    }
-  },
+  pyls = {},
   vimls = {},
   sumneko_lua = {
     cmd = {"lua-language-server"},

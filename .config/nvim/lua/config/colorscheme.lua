@@ -1,3 +1,5 @@
+local Color, colors, Group, groups, styles = require('colorbuddy').setup()
+
 local function setup()
   -- gruvbox
   vim.cmd [[colorscheme gruvbox]]
@@ -22,6 +24,8 @@ local function setup()
   for _,value in ipairs(highlights) do
     vim.cmd('highlight ' .. value)
   end
+
+  print(dump(groups.background))
 
   -- local links = {
   --     -- errors

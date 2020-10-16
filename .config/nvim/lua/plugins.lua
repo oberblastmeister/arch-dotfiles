@@ -133,6 +133,8 @@ return require('packer').startup(function()
     disable = true,
   }
 
+  use 'tjdevries/colorbuddy.nvim'
+
   -- colorize hex codes
   use {
     'norcalli/nvim-colorizer.lua',

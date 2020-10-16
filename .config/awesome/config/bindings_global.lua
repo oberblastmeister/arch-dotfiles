@@ -312,7 +312,15 @@ local function setup()
 
     awful.key( { modkey, "Mod1" }, "-", function()
       awful.layout.inc(-1)
-    end, {description = "go to previous layout", group = "layout"})
+    end, {description = "go to previous layout", group = "layout"}),
+
+    awful.key( { modkey, "Control" }, "-", function()
+      awful.spawn({"xkb-switch", "-p"})
+    end, {description = "go to next keyboard layout", "keyboard"}),
+
+    awful.key( { modkey, "Control" }, "=", function()
+      awful.spawn({"xkb-switch", "-n"})
+    end, {description = "go to next keyboard layout", "keyboard"})
 
     -- awful.key( { modkey }, "-", function()
     --   lain.util.useless_gap_resize(1)

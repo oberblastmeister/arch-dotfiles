@@ -112,7 +112,7 @@ return require('packer').startup(function()
     -- setup = function() vim.g.gruvbox_material_palette = 'original' end,
   }
 
-  use 'arcticicestudio/nord-vim'
+  use 'sainnhe/sonokai'
 
   use 'dracula/vim'
 
@@ -188,6 +188,7 @@ return require('packer').startup(function()
   use {
     'tjdevries/lsp_extensions.nvim',
     config = function() require'config/lsp_extensions'.setup() end,
+    disable = true,
   }
 
   use {
@@ -423,7 +424,7 @@ return require('packer').startup(function()
     'sheerun/vim-polyglot',
     -- disable on some filetypes where there are other plugins running
     setup = function()
-      vim.g.polyglot_disabled = {'markdown', 'latex', 'pest', 'lua'}
+      vim.g.polyglot_disabled = {'markdown', 'latex', 'pest', 'lua', 'lalrpop'}
       vim.g.python_highlight_space_errors = 0
     end,
   }
@@ -443,9 +444,14 @@ return require('packer').startup(function()
 
   use 'qnighy/lalrpop.vim'
 
-  use {'tjdevries/nlua.nvim', disable = true}
+  use {
+    'tjdevries/nlua.nvim',
+    ft = 'lua',
+  }
 
-  use {'rafcamlet/nvim-luapad', ft = 'lua'}
+  use {
+    'rafcamlet/nvim-luapad', cmd = 'Luapad'
+  }
 
   use {
     'glacambre/firenvim',

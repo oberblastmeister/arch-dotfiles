@@ -10,6 +10,7 @@ function M.push()
   local command
   if git_dir == vim.fn.expand("~/.config/yadm/repo.git") then
     assert(vim.fn.executable("yadm") == 1, "yadm is not executable")
+    print("Using yadm instead of git")
     command = "yadm"
   else
     assert(vim.fn.executable("git") == 1, "git is not executable")
@@ -26,8 +27,27 @@ function M.push()
     stdout:close()
     stderr:close()
     handle:close()
-    print('finished pusshing')
+    print('finished pushing')
   end))
+
+  local function on_read_stdout(err, data)
+    assert(not err, "Failed to read stdout of command: " .. err)
+
+    if data then
+      print('Output: ', data)
+    end
+  end
+
+  local function on_read_stderr(err, data)
+    assert(not err, "Failed to read sterr of command: " .. (err or "no error"))
+
+    if data then
+      error("An error occured while calling push: " .. data)
+    end
+  end
+
+  loop.read_start(stdout, on_read_stdout)
+  loop.read_start(stderr, on_read_stderr)
 end
 
 return M

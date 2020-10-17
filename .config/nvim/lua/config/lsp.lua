@@ -49,14 +49,6 @@ local function on_attach(client, bufnr)
 
   -- auto diagnostic popup
   -- vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
-  vim.api.nvim_exec(
-[[
-augroup lsp
-  au!
-  au CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
-augroup END
-]],
-false)
 end
 
 -- a table of lsp servers and their configs

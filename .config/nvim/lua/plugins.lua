@@ -101,11 +101,8 @@ return require('packer').startup(function()
   }
 
   ----------------------------- Looks --------------------------------------
-  -- colorscheme
-  -- use {
-  --   'morhetz/gruvbox',
-  --   config = function() require'config/colorscheme'.setup() end,
-  -- }
+  use 'tjdevries/colorbuddy.nvim'
+
   use {
     'gruvbox-community/gruvbox',
     config = function() require'config/colorscheme'.setup() end,

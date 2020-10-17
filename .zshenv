@@ -9,7 +9,7 @@ export HISTFILE=~/.zsh_history
 export TERMINAL=kitty
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=brave
+export BROWSER=firefox
 export PAGER=less
 
 # neovim terminal doesn't export this for bat

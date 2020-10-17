@@ -25,8 +25,6 @@ local function setup()
     vim.cmd('highlight ' .. value)
   end
 
-  print(dump(groups.background))
-
   -- local links = {
   --     -- errors
   --     LspDiagnosticsError = 'CocErrorVirtualText',

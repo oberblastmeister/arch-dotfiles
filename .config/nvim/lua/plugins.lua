@@ -102,8 +102,12 @@ return require('packer').startup(function()
 
   ----------------------------- Looks --------------------------------------
   -- colorscheme
+  -- use {
+  --   'morhetz/gruvbox',
+  --   config = function() require'config/colorscheme'.setup() end,
+  -- }
   use {
-    'morhetz/gruvbox',
+    'gruvbox-community/gruvbox',
     config = function() require'config/colorscheme'.setup() end,
   }
 
@@ -130,7 +134,7 @@ return require('packer').startup(function()
   use {
     'tjdevries/express_line.nvim',
     config = function() require'config/express_line'.start() end,
-    disable = true,
+    disable = false,
   }
 
   -- colorize hex codes

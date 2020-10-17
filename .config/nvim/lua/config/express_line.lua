@@ -186,40 +186,41 @@ local function start()
   el.setup {
     generator = function(win_id)
       return {
-        get_mode,
+        extensions.mode,
 
         separator(2),
 
-        -- builtin.file,
-        builtin.responsive_file(140, 90),
-        separator(1),
-        subscribe.buf_autocmd(
-        "el_file_icon",
-        "BufRead",
-        function(_, buffer)
-          return extensions.file_icon(_, buffer)
-        end
-        ),
-        sections.collapse_builtin {
-          ' ',
-          builtin.modified_flag
-        },
-
-        separator(2),
-        helper.async_buf_setter(
-        win_id,
-        'el_git_branch',
-        git_branch,
-        2000
-        ),
+        builtin.file,
 
         separator(1),
-        helper.async_buf_setter(
-          win_id,
-          'el_git_stat',
-          extensions.git_changes,
-          2000
-        ),
+
+        -- subscribe.buf_autocmd(
+        -- "el_file_icon",
+        -- "BufRead",
+        -- function(_, buffer)
+        --   return extensions.file_icon(_, buffer)
+        -- end
+        -- ),
+        -- sections.collapse_builtin {
+        --   ' ',
+        --   builtin.modified_flag
+        -- },
+
+        -- separator(2),
+        -- helper.async_buf_setter(
+        -- win_id,
+        -- 'el_git_branch',
+        -- git_branch,
+        -- 2000
+        -- ),
+
+        -- separator(1),
+        -- helper.async_buf_setter(
+        --   win_id,
+        --   'el_git_stat',
+        --   extensions.git_changes,
+        --   2000
+        -- ),
 
         sections.split,
 

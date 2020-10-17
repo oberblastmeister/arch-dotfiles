@@ -428,6 +428,7 @@ return require('packer').startup(function()
       vim.g.polyglot_disabled = {'markdown', 'latex', 'pest', 'lua', 'lalrpop'}
       vim.g.python_highlight_space_errors = 0
     end,
+    ft = {},
   }
 
   -- markdown mode
@@ -463,5 +464,25 @@ return require('packer').startup(function()
     'Xuyuanp/scrollbar.nvim',
     disable = true,
     config = function() require'config/scrollbar'.setup() end,
+  }
+  -- Lisp stuff
+  local sexp_filetypes = {'clojure', 'lisp', 'scheme', 'racket', 'jbuild', 'fennel', 'pddl'}
+
+  use {
+    'eraserhd/parinfer-rust',
+    run = 'cargo build --release',
+    ft = sexp_filetypes
+  }
+
+  use {
+    'Olical/conjure',
+    tag = 'v4.7.0',
+    ft = {'fennel', 'clojure'},
+  }
+
+  use {
+    'Olical/aniseed',
+    tag = 'v3.9.0',
+    ft = 'fennel',
   }
 end)

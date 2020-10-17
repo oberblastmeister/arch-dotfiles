@@ -24,10 +24,12 @@ export QT_STYLE_OVERRIDE=kvantum
 
 # makesure that there are no duplicates in path var
 typeset -U path
-path+=(~/.cargo/bin
+path+=(
+    ~/.cargo/bin
     ~/bin
     ~/.local/bin
     $GOPATH/bin
+    ~/.luarocks/bin
 )
 # export to subprocesses
 export PATH

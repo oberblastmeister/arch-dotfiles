@@ -412,7 +412,7 @@ return require('packer').startup(function()
 
   use {
     'reedes/vim-pencil',
-    ft = {'markdown'},
+    cmd = 'Pencil',
   }
 
   ----------------------------- Web Developement ---------------------------
@@ -439,7 +439,7 @@ return require('packer').startup(function()
   }
 
   -- markdown mode
-  use {'plasticboy/vim-markdown', ft = 'markdown'}
+  use {'plasticboy/vim-markdown', ft = 'markdown', disable = true}
 
   -- latex mode
   use {

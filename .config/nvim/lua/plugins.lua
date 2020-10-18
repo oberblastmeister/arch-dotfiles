@@ -253,14 +253,14 @@ return require('packer').startup(function()
   ----------------------------- Fuzzy Finding ----------------------------
   -- lua fuzzy finder
   use 'nvim-lua/telescope.nvim'
-  
 
   use {
     'junegunn/fzf.vim',
     requires = {
       'junegunn/fzf',
       run = function() vim.fn['fzf#install()']() end,
-    }
+    },
+    config = function() require'config/fzf'.setup() end,
   }
 
   ----------------------------- Testing -------------------------------------
@@ -339,9 +339,12 @@ return require('packer').startup(function()
       return os.getenv("GIT_DIR") ~= vim.fn.expand("~/.config/yadm/repo.git")
     end
   }
-  
+
   -- terminal float for lf
-  use 'voldikss/vim-floaterm'
+  use {
+    'voldikss/vim-floaterm',
+    config = function() require'config/floaterm'.setup() end,
+  }
 
   ----------------------------- Text Objects --------------------------------
   use 'kana/vim-textobj-user'
@@ -401,7 +404,11 @@ return require('packer').startup(function()
   use {'junegunn/limelight.vim', cmd = 'Goyo'}
   use {'alok/notational-fzf-vim', cmd = 'NV'}
 
-  use {'vimwiki/vimwiki', cmd = 'VimwikiIndex'}
+  use {
+    'vimwiki/vimwiki',
+    cmd = 'VimwikiIndex',
+    config = function() require'config/vimwiki'.setup() end,
+  }
 
   use {
     'reedes/vim-pencil',

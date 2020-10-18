@@ -17,11 +17,6 @@ else
 
 lua require('init')
 
-  let g:fzf_preview_window = 'right'
-
-  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.5 } }
-  let g:fzf_buffers_jump = 1
-
   let test#strategy = "vimux"
 
 " ----------------------------- General -------------------------------------

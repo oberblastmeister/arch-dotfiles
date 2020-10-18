@@ -35,8 +35,8 @@ set shortmess+=A   " no swapfile messages
 set path+=**
 
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=4 " number of spaces that a tab counts for
+set shiftwidth=4 " number of spaces to use for each step of autoindent
 set softtabstop=4
 " }}}
 

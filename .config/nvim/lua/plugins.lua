@@ -476,13 +476,11 @@ return require('packer').startup(function()
 
   use {
     'Olical/conjure',
-    tag = 'v4.7.0',
     ft = {'fennel', 'clojure'},
   }
 
   use {
     'Olical/aniseed',
-    tag = 'v3.9.0',
     ft = 'fennel',
   }
 end)

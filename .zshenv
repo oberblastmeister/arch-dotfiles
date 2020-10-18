@@ -30,6 +30,7 @@ path+=(
     ~/.local/bin
     $GOPATH/bin
     ~/.luarocks/bin
+    ./node_modules/.bin
 )
 # export to subprocesses
 export PATH

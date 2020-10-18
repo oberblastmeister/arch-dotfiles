@@ -95,6 +95,7 @@ local servers = {
     }
   },
   hls = {},
+  clojure_lsp = {},
 }
 
 -- each server will always attach diagnostic

@@ -16,7 +16,7 @@ nnoremap <silent> <leader>o :only<CR>
 nnoremap <silent> <leader>q :quit<CR>
 nnoremap <silent> <leader>Q :qa!<CR>
 nnoremap <silent> <leader>p :put<CR>
-nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
+" nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}
 
 " ============================================================================

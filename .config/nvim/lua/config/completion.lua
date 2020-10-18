@@ -1,15 +1,12 @@
 local function setup()
   require'completion'.addCompletionSource('vimtex', require'config/vimtex'.complete_item)
 
-  -- vim.o.completeopt='menuone,noinsert,noselect'
-  vim.o.completeopt='menuone,noinsert'
+  vim.o.completeopt='menuone,noinsert,noselect'
   vim.o.omnifunc='lua.vim.lsp.omnifunc'
 
   -- auto change source
   vim.g.completion_auto_change_source = 1
-  -- turn off for now for performance reasons
-  vim.g.completion_enable_auto_hover = 0
-  -- ignore case for completion
+  vim.g.completion_enable_auto_hover = 1
   vim.g.completion_matching_ignore_case = 1
   vim.g.completion_enable_snippet = "vim-vsnip"
   -- vim.g.completion_enable_auto_popup = 0

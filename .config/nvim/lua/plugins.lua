@@ -381,6 +381,7 @@ return require('packer').startup(function()
   use {
     'benmills/vimux',
     cond = function() return os.getenv('TMUX') ~= nil end,
+    config = function() require'config/vimux.setup' end,
   }
 
   ----------------------------- Terminal ------------------------------------
@@ -402,7 +403,6 @@ return require('packer').startup(function()
 
   use {'junegunn/goyo.vim', cmd = 'Goyo'}
   use {'junegunn/limelight.vim', cmd = 'Goyo'}
-  use {'alok/notational-fzf-vim', cmd = 'NV'}
 
   use {
     'vimwiki/vimwiki',

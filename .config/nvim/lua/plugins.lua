@@ -381,7 +381,7 @@ return require('packer').startup(function()
   use {
     'benmills/vimux',
     cond = function() return os.getenv('TMUX') ~= nil end,
-    config = function() require'config/vimux.setup' end,
+    config = function() require'config/vimux'.setup() end,
   }
 
   ----------------------------- Terminal ------------------------------------
@@ -488,6 +488,5 @@ return require('packer').startup(function()
 
   use {
     'Olical/aniseed',
-    ft = 'fennel',
   }
 end)

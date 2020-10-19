@@ -153,6 +153,9 @@ zinit snippet https://cht.sh/:cht.sh
 zinit ice lucid wait id-as"speedtest" as"program"
 zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
 
+zinit ice lucid wait id-as"seed" as"program"
+zinit snippet https://raw.githubusercontent.com/Olical/aniseed/master/scripts/seed.sh
+
 zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 

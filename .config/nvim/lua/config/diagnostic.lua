@@ -16,7 +16,7 @@ end
 
 function M.setup()
   vim.g.diagnostic_enable_underline = 1
-  vim.g.diagnostic_insert_delay = 0
+  vim.g.diagnostic_insert_delay = 1
   vim.g.diagnostic_show_sign = 0
   vim.g.diagnostic_enable_virtual_text = 1
   vim.g.diagnostic_virtual_text_prefix = ' '

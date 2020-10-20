@@ -456,6 +456,7 @@ return require('packer').startup(function()
   use {
     'tjdevries/nlua.nvim',
     ft = 'lua',
+    disable = true,
   }
 
   use {

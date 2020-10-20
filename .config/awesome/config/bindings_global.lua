@@ -129,6 +129,11 @@ local function setup()
     end,
     {description = "clipboard menu", group = "rofi"}),
 
+    awful.key({ modkey, "Control" }, "c", function()
+      awful.spawn.with_shell [[xclip -selection c -o | xclip -selection c]]
+    end,
+    {description = "remove formatting from clipboard"}),
+
     awful.key({ "Mod1" }, "Tab", function()
       awful.spawn.with_shell [[windows]]
     end,

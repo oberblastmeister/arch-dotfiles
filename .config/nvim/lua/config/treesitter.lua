@@ -5,7 +5,9 @@ local function setup()
       enable = true,
       use_languagetree = false, -- language injection (highly unstable)
       disable = {},  -- list of language that will be disabled
-      custom_captures = {}
+        custom_captures = {
+          -- include = 
+        }
     },
     indent = {
       enable = true,

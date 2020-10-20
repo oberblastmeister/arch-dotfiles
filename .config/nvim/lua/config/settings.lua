@@ -1,5 +1,5 @@
 local settings = {
-  lsp_status = true,
+  lsp_status = false,
 }
 
 return settings

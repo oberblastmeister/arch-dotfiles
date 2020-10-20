@@ -80,7 +80,7 @@ local status_line = {
 
   },
   right = {
-    lsp_status,
+    -- lsp_status,
     '\u{2113} %l \u{1d68c} %c'
   },
 }
@@ -230,7 +230,7 @@ local function start()
         --   '\u{2113} %l \u{1d68c} %c',
         --   separator(1),
         -- },
-        lsp_status,
+        -- lsp_status,
 
         '\u{2113} %l \u{1d68c} %c',
         separator(1),

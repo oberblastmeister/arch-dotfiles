@@ -298,7 +298,6 @@ return require('packer').startup(function()
 
   ----------------------------- General -------------------------------------
   use 'tpope/vim-unimpaired'
-  use 'tpope/vim-eunuch'
 
   -- smooth scrolling
   use 'psliwka/vim-smoothie'
@@ -435,8 +434,10 @@ return require('packer').startup(function()
       vim.g.polyglot_disabled = {'markdown', 'latex', 'pest', 'lua', 'lalrpop'}
       vim.g.python_highlight_space_errors = 0
     end,
-    ft = {},
+    -- ft = {},
   }
+
+  use 'euclidianAce/BetterLua.vim'
 
   -- markdown mode
   use {'plasticboy/vim-markdown', ft = 'markdown', disable = true}

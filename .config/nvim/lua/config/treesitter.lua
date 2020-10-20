@@ -1,8 +1,8 @@
 local function setup()
   require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all",     -- one of "all", "language", or a list of languages
+    -- ensure_installed = "all",     -- one of "all", "language", or a list of languages
     highlight = {
-      enable = false,
+      enable = true,
       use_languagetree = false, -- language injection (highly unstable)
       disable = {},  -- list of language that will be disabled
       custom_captures = {}

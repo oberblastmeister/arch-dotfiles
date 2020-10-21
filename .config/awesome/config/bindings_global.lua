@@ -144,7 +144,7 @@ local function setup()
     end,
     {description = "bookmarks menu"}),
 
-    awful.key({ modkey }, "t", function()
+    awful.key({ modkey, "Shift" }, "t", function()
       awful.screen.focused().quake:toggle()
     end,
     {description = "toggle dropdown terminal"}),

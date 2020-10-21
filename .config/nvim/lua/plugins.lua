@@ -283,11 +283,6 @@ return require('packer').startup(function()
         config = function() require'config/switch'.setup() end,
       }
 
-    use {
-        'AndrewRadev/splitjoin.vim',
-        keys = {'n', 'gS', 'n', 'gJ'}
-      }
-
     use 'junegunn/vim-easy-align'
 
     use 'tommcdo/vim-exchange'
@@ -402,7 +397,7 @@ return require('packer').startup(function()
     use {
         'vimwiki/vimwiki',
         cmd = 'VimwikiIndex',
-        config = function() require'config/vimwiki'.setup() end,
+        setup = function() require'config/vimwiki'.setup() end,
       }
 
     use {

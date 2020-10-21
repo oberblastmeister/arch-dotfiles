@@ -58,7 +58,6 @@ local servers = {
   vimls = {},
   sumneko_lua = {
     cmd = {"lua-language-server"},
-    -- filetypes = {"fennel", "moonscript", "lua"},
     filetypes = {"moonscript", "lua"},
     settings = {
       Lua = {
@@ -70,6 +69,7 @@ local servers = {
       }
     }
   },
+  jdtls = {},
   jsonls = {
     cmd = {"json-languageserver", "--stdio"},
   },

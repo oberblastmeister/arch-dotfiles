@@ -3,7 +3,8 @@ local nvim_lsp_configs = require('nvim_lsp/configs')
 local diagnostic = require('diagnostic')
 local lsp_status = require('lsp-status')
 
-local settings = require'config/settings'
+local settings = require('config/settings')
+local utils = require('utils')
 
 if settings.lsp_status == true then
   lsp_status.register_progress()
@@ -11,34 +12,42 @@ end
 
 local M = {}
 
-M.keymappings = {
-  {'n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>'},
-  {'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>'},
-  {'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>'},
-  {'n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>'},
-  {'n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>'},
-  {'n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>'},
-  {'n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>"},
-  {'n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>'},
-  {'n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>'},
-  {'n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
-  {'n', '<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>'},
-  {'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>'},
-  {'n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>'},
-  {'n', '<leader>li', '<cmd>lua vim.lsp.buf.incoming_call()<CR>'},
-  {'n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>'},
-}
-
 function M.setup_keymappings()
-  local map = function(keymapping)
-    print('keymapping:', keymapping)
-    vim.api.nvim_buf_set_keymap(0, keymapping[1], keymapping[2], keymapping[3], {noremap = true, silent = true})
-  end
+  -- goto stuff
+  utils.nnoremap_buf('gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  utils.nnoremap_buf('<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  utils.nnoremap_buf('gD', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  utils.nnoremap_buf('gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
 
-  for _, keymapping in ipairs(keymappings) do
-    print('keymapping:', keymapping)
-    map(keymapping)
-  end
+  utils.nnoremap_buf('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+
+  -- references
+  utils.nnoremap_buf('<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  utils.nnoremap_buf('gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>") -- fuzzy references
+
+  -- symbols
+  utils.nnoremap_buf('g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+  utils.nnoremap_buf('gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+
+  -- format with lsp
+  utils.nnoremap_buf('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+
+  -- show diagnostic
+  utils.nnoremap_buf('<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+
+  -- actions
+  utils.nnoremap_buf('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+  utils.nnoremap_buf('<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+
+  -- calls
+  utils.nnoremap_buf('<leader>li', '<cmd>lua vim.lsp.buf.incoming_call()<CR>')
+  utils.nnoremap_buf('<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+
+  -- navigate diagnostics
+  utils.nnoremap_buf(']g', '<cmd>NextDiagnostic<CR>')
+  utils.nnoremap_buf('[g', '<cmd>PrevDiagnostic<CR>')
+  utils.nnoremap_buf(']G', '<cmd>FirstDiagnostic<CR>')
+  utils.nnoremap_buf('[G', '<cmd>LastDiagnostic<CR>')
 end
 
 local function on_attach(client, bufnr)
@@ -46,6 +55,7 @@ local function on_attach(client, bufnr)
   if settings.lsp_status == true then
     lsp_status.on_attach(client, bufnr)
   end
+  M.setup_keymappings()
 
   -- auto diagnostic popup
   -- vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]

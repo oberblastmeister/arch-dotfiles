@@ -14,12 +14,18 @@ local function setup()
   vim.g.completion_enable_snippet = "vim-vsnip"
   vim.g.completion_sorting = "alphabet"
   vim.g.completion_trigger_on_delete = 1
-  vim.g.matching_strategy_list = {'exact', 'substring', 'fuzzy'},
+  vim.g.matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
-  -- if vim.g.completion_enable_snippet == "vim-vsnip" then
-  --   vim.cmd [[imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']]
-  --   vim.cmd [[smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']]
-  -- end
+  vim.cmd [[imap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
+  vim.cmd [[smap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
+  vim.cmd [[imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
+  vim.cmd [[smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
+
+  -- keys to map
+  vim.g.completion_confirm_key = ""
+  vim.cmd [[imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"]]
+  vim.cmd [[imap <tab> <Plug>(completion_smart_tab)]]
+  vim.cmd [[imap <s-tab> <Plug>(completion_smart_s_tab)]]
 
   vim.cmd [[autocmd BufEnter * lua require'config/completion'.on_attach()]]
 end

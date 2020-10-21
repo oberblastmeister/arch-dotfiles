@@ -1,17 +1,20 @@
 local function setup()
-  require'completion'.addCompletionSource('vimtex', require'config/vimtex'.complete_item)
+  -- require'completion'.addCompletionSource('vimtex', require'config/vimtex'.complete_item)
 
+  -- vim settings
   vim.o.completeopt='menuone,noinsert,noselect'
   vim.o.omnifunc='lua.vim.lsp.omnifunc'
 
-  -- auto change source
   vim.g.completion_auto_change_source = 1
+
   vim.g.completion_enable_auto_hover = 1
+  vim.g.enable_auto_signature = 1
+
   vim.g.completion_matching_ignore_case = 1
   vim.g.completion_enable_snippet = "vim-vsnip"
-  -- vim.g.completion_enable_auto_popup = 0
-  -- vim.cmd [[au TextChangedI,TextChangedP * call completion#trigger_completion()]]
-  -- vim.cmd [[au TextChangedI,TextChangedP * echo "trigger completion"]]
+  vim.g.completion_sorting = "alphabet"
+  vim.g.completion_trigger_on_delete = 1
+  vim.g.matching_strategy_list = {'exact', 'substring', 'fuzzy'},
 
   -- if vim.g.completion_enable_snippet == "vim-vsnip" then
   --   vim.cmd [[imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']]
@@ -37,24 +40,9 @@ local function on_attach()
     }
   }
 
-  require'completion'.on_attach({
-    matching_strategy_list= {'exact', 'substring'},
+  require'completion'.on_attach {
     chain_complete_list = chain_complete_list,
-    completion_timer_cycle = 80,
-    completion_auto_change_source = 1,
-    completion_sorting = "length",
-    completion_enable_snippet = "vim-vsnip",
-    completion_enable_auto_hover = 1,
-    enable_auto_signature = 1,
-    completion_matching_ignore_case = 1,
-    completion_trigger_on_delete = 0,
-    completion_enable_auto_paren = 0,
-  })
-end
-
-local function start()
-  vim.cmd [[autocmd BufEnter * lua require'config/completion'.on_attach()]]
-  require('config/completion').on_attach()
+  }
 end
 
 return {

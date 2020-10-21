@@ -1,4 +1,7 @@
 local function setup()
+  -- remove markdown parser for now
+  require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
+
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",     -- one of "all", "language", or a list of languages
     highlight = {
@@ -6,7 +9,7 @@ local function setup()
       use_languagetree = false, -- language injection (highly unstable)
       disable = {},  -- list of language that will be disabled
         custom_captures = {
-          -- include = 
+          -- include =
         }
     },
     indent = {

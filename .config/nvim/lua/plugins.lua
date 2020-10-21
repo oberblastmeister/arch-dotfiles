@@ -182,7 +182,6 @@ return require('packer').startup(function()
     use {
         'tjdevries/lsp_extensions.nvim',
         config = function() require'config/lsp_extensions'.setup() end,
-        disable = true,
       }
 
     use {

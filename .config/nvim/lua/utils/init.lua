@@ -22,4 +22,10 @@ function M.nnoremap_buf(lhs, rhs, opts)
   api.nvim_buf_set_keymap(0, 'n', lhs, rhs, merged_opts)
 end
 
+function M.augroup(name)
+  vim.cmd("augroup " .. name)
+  vim.cmd("autocmd!")
+  vim.cmd("augroup END")
+end
+
 return M

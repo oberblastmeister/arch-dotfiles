@@ -3,12 +3,7 @@ local nvim_lsp_configs = require('nvim_lsp/configs')
 local diagnostic = require('diagnostic')
 local lsp_status = require('lsp-status')
 
-local settings = require('config/settings')
 local utils = require('utils')
-
-if settings.lsp_status == true then
-  lsp_status.register_progress()
-end
 
 local M = {}
 
@@ -22,8 +17,8 @@ function M.setup_keymappings()
   utils.nnoremap_buf('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 
   -- references
-  utils.nnoremap_buf('<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  utils.nnoremap_buf('gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>") -- fuzzy references
+  utils.nnoremap_buf('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  utils.nnoremap_buf('<leader>fr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>") -- fuzzy references
 
   -- symbols
   utils.nnoremap_buf('g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
@@ -32,9 +27,6 @@ function M.setup_keymappings()
   -- format with lsp
   utils.nnoremap_buf('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
-  -- show diagnostic
-  utils.nnoremap_buf('<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
-
   -- actions
   utils.nnoremap_buf('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
   utils.nnoremap_buf('<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>')
@@ -42,6 +34,9 @@ function M.setup_keymappings()
   -- calls
   utils.nnoremap_buf('<leader>li', '<cmd>lua vim.lsp.buf.incoming_call()<CR>')
   utils.nnoremap_buf('<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+
+  -- show diagnostic
+  utils.nnoremap_buf('<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
 
   -- navigate diagnostics
   utils.nnoremap_buf(']g', '<cmd>NextDiagnostic<CR>')
@@ -52,16 +47,22 @@ end
 
 local function custom_on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
-  if settings.lsp_status == true then
-    lsp_status.on_attach(client, bufnr)
-  end
+  lsp_status.on_attach(client, bufnr)
   M.setup_keymappings()
 
+  vim.cmd [[autocmd Lsp CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+  vim.cmd [[autocmd Lsp CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+  vim.cmd [[autocmd Lsp CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+
   -- auto diagnostic popup
-  -- vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
+  -- vim.cmd [[autocmd Lsp CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
 end
 
 function M.setup()
+  lsp_status.register_progress()
+
+  utils.augroup("Lsp")
+
   nvim_lsp.pyls.setup {on_attach = custom_on_attach}
 
   nvim_lsp.vimls.setup {on_attach = custom_on_attach}
@@ -125,11 +126,11 @@ function M.setup()
   nvim_lsp.clojure_lsp.setup {on_attach = custom_on_attach}
 end
 
-function M.install()
-  print('installing lsp servers, some may not be able to be installed')
-  for server, _ in pairs(servers) do
-    vim.cmd('LspInstall ' .. server)
-  end
-end
+-- function M.install()
+--   print('installing lsp servers, some may not be able to be installed')
+--   for server, _ in pairs(servers) do
+--     vim.cmd('LspInstall ' .. server)
+--   end
+-- end
 
 return M

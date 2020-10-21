@@ -38,7 +38,11 @@ end
 
 local function lsp_status()
   local count = 0
-  for _ in pairs(vim.lsp.buf_get_clients()) do count = count + 1 end
+
+  for _ in pairs(vim.lsp.buf_get_clients()) do
+    count = count + 1
+  end
+
   if count > 0 then
     return require('lsp-status').status()
   end
@@ -230,7 +234,7 @@ local function start()
         --   '\u{2113} %l \u{1d68c} %c',
         --   separator(1),
         -- },
-        -- lsp_status,
+        lsp_status,
 
         '\u{2113} %l \u{1d68c} %c',
         separator(1),

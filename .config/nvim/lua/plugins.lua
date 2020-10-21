@@ -156,10 +156,7 @@ return require('packer').startup(function()
     -- completion engine
     use {
         'nvim-lua/completion-nvim',
-        config = function()
-          local completion = require'config/completion'
-          completion.setup()
-        end,
+        config = function() require'config/completion'.setup() end,
         requires = {
           'steelsojka/completion-buffers',
           {
@@ -185,7 +182,6 @@ return require('packer').startup(function()
     use {
         'tjdevries/lsp_extensions.nvim',
         config = function() require'config/lsp_extensions'.setup() end,
-        disable = true,
       }
 
     use {

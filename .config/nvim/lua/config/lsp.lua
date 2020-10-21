@@ -50,7 +50,7 @@ function M.setup_keymappings()
   utils.nnoremap_buf('[G', '<cmd>LastDiagnostic<CR>')
 end
 
-local function on_attach(client, bufnr)
+local function custom_on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
   if settings.lsp_status == true then
     lsp_status.on_attach(client, bufnr)
@@ -61,12 +61,13 @@ local function on_attach(client, bufnr)
   -- vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
 end
 
--- a table of lsp servers and their configs
--- custom commands are usually specified if the server isn't installed using LspInstall
-local servers = {
-  pyls = {},
-  vimls = {},
-  sumneko_lua = {
+function M.setup()
+  nvim_lsp.pyls.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.vimls.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.sumneko_lua.setup {
+    on_attach = custom_on_attach,
     cmd = {"lua-language-server"},
     filetypes = {"moonscript", "lua"},
     settings = {
@@ -78,23 +79,37 @@ local servers = {
         }
       }
     }
-  },
-  jdtls = {},
-  jsonls = {
+  }
+
+  nvim_lsp.jdtls.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.jsonls.setup {
+    on_attach = custom_on_attach,
     cmd = {"json-languageserver", "--stdio"},
-  },
-  yamlls = {},
-  gopls = {
+  }
+
+  nvim_lsp.yamlls.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.gopls.setup {
+    on_attach = custom_on_attach,
     root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', '')
-  },
-  texlab = {
+  }
+
+  nvim_lsp.texlab.setup {
+    on_attach = custom_on_attach,
     filetypes = {"tex", "bib", "plaintex"},
-  },
-  bashls = {},
-  html = {},
-  tsserver = {},
-  cssls = {},
-  rust_analyzer = {
+  }
+
+  nvim_lsp.bashls.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.html.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.tsserver.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.cssls.setup {on_attach = custom_on_attach}
+
+  nvim_lsp.rust_analyzer.setup {
+    on_attach = custom_on_attach,
     settings = {
       ["rust-analyzer"] = {
         completion = {
@@ -103,35 +118,18 @@ local servers = {
         }
       }
     }
-  },
-  hls = {},
-  clojure_lsp = {},
-}
+  }
 
--- each server will always attach diagnostic
-local default_config = {
-  on_attach=on_attach,
-}
+  nvim_lsp.hls.setup {on_attach = custom_on_attach}
 
-if settings.lsp_status == true then
-  default_config.capabilities = lsp_status.capabilities
+  nvim_lsp.clojure_lsp.setup {on_attach = custom_on_attach}
 end
 
-local function setup()
-  for server, config in pairs(servers) do
-    local new_config = vim.tbl_extend("keep", config, default_config);
-    nvim_lsp[server].setup(new_config)
-  end
-end
-
-local function install()
+function M.install()
   print('installing lsp servers, some may not be able to be installed')
   for server, _ in pairs(servers) do
     vim.cmd('LspInstall ' .. server)
   end
 end
 
-return {
-  setup = setup,
-  install = install,
-}
+return M

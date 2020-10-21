@@ -10,8 +10,6 @@ run() {
 laptopconfigs() {
     YADM_CLASS=$(yadm config local.class)
     if [[ $YADM_CLASS = Laptop ]]; then
-        # pulseaudio --start
-        # autorandr --change
         amixer -c 0 set Master playback 100% unmute
         xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
         xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Enabled" 1

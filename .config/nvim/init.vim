@@ -53,6 +53,7 @@ nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 let g:neovide_refresh_rate=240
 " let g:neovide_cursor_vfx_mode = "pixiedust"
 let g:neovide_cursor_vfx_mode = "railgun"
+let g:neovide_cursor_animate_in_insert_mode=0
 " let g:neovide_cursor_animation_length=0.1
 " }}}
 endif

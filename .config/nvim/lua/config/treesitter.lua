@@ -1,4 +1,5 @@
 local function setup()
+  require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",     -- one of "all", "language", or a list of languages
     highlight = {

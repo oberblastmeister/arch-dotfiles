@@ -23,7 +23,7 @@ augroup settings
 
   autocmd User GoyoEnter Limelight
   autocmd User GoyoLeave Limelight!
-  " limelight turns on cursorline for some reason
+  " " limelight turns on cursorline for some reason
   autocmd User GoyoLeave set nocursorline
 
   " / does tag search in vista

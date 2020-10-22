@@ -13,7 +13,7 @@ local function setup()
         }
     },
     indent = {
-      enable = false,
+      enable = true,
     },
     incremental_selection = {
       enable = true,

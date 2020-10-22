@@ -387,7 +387,11 @@ return require('packer').startup(function()
         cmd = 'MarkdownPreview',
       }
 
-    use {'junegunn/goyo.vim', cmd = 'Goyo'}
+    use {
+        'junegunn/goyo.vim',
+        cmd = 'Goyo',
+      }
+
     use {'junegunn/limelight.vim', cmd = 'Goyo'}
 
     use {

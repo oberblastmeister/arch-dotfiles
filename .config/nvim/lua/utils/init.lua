@@ -28,4 +28,25 @@ function M.augroup(name)
   vim.cmd("augroup END")
 end
 
+local default_autocmd_opts = {
+  pat = "*",
+  once = false,
+  nested = false,
+  user = false,
+  group = nil,
+}
+
+function M.autocmd(event, vim_command, opts)
+  local opts = vim.tbl_extend("keep", opts, default_autocmd_opts)
+  local command = "autocmd"
+  if opts.user then command = command .. " User" end
+  if opts.group then command = command .. " " .. opts.group end
+  command = command .. " " .. event .. " " .. opts.pat
+  if opts.once then command = command .. " ++once" end
+  if opts.nested then command = command .. " ++nested" end
+  command = command .. " " .. vim_command
+  print(command)
+  vim.cmd(command)
+end
+
 return M

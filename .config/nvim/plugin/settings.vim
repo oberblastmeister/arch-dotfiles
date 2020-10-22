@@ -22,6 +22,8 @@ set ignorecase smartcase
 set mouse=a
 set nowrap
 set pumheight=20
+
+set sidescroll=5
 " set pumblend=15
 " set winblend=0
 
@@ -38,54 +40,18 @@ set expandtab
 set tabstop=4 " number of spaces that a tab counts for
 set shiftwidth=4 " number of spaces to use for each step of autoindent
 set softtabstop=4
-" }}}
 
-" ============================================================================
-" Coc {{{
-" ============================================================================
-" TextEdit might fail if hidden is not set.
 set hidden
-
-" Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
 
-" Having longer upatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
+" faster async updates
 set updatetime=100
 
-" Don't pass messages to |ins-completion-menu|.
+" do not pass messages to ins-completion-menu
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
+set signcolumn=yes " always show sign column so it doesn't drift
 
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-set omnifunc=v:lua.vim.lsp.omnifunc
+set guifont=FiraCode\ Nerd\ Font:h10:style=Retina " set guifont
 " }}}
-
-set guifont=FiraCode\ Nerd\ Font:h16
-
-" ============================================================================
-" Appearance {{{
-" ============================================================================
-" make ~ for new lines be same color as background so they are not seen
-" " remove status line for press enter to continue msgs
-
-" " make sign column same as background, but keep highlight of virtual text
-" set fillchars+=vert:\
-" }}}
-" execute 'highlight LspDiagnosticsError ' . pinnacle#decorate('italic,underline', 'ModeMsg')
-
-" execute 'highlight LspDiagnosticsHint ' . pinnacle#decorate('bold,italic,underline', 'Type')
-
-" execute 'highlight LspDiagnosticsHintSign ' . pinnacle#extract_highlight('GruvboxRedSign')
-
-" execute 'highlight LspDiagnosticsErrorSign ' . pinnacle#extract_highlight({
-"       \   'bg': pinnacle#extract_bg('ColorColumn'),
-"       \   'fg': pinnacle#extract_fg('GruvboxRedSign'),
-"       \ })
-" highlight! link LspDiagnosticsError GruvboxRed
-" errors

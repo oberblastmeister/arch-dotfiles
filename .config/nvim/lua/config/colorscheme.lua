@@ -3,12 +3,13 @@ local utils = require("utils")
 local M = {}
 
 function M.setup_gruvbox()
+  -- remove cursor line background highlight
   utils.hi {
     group = "CursorLineNr",
     guibg = "bg",
-    guifg = "bg",
   }
 
+  -- affectively remove ~ at the end of buffer
   utils.hi {
     group = "EndOfBuffer",
     guibg = "bg",

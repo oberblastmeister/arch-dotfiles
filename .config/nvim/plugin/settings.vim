@@ -23,7 +23,7 @@ set mouse=a
 set nowrap
 set pumheight=20
 
-set sidescroll=5
+" set sidescroll=5
 " set pumblend=15
 " set winblend=0
 

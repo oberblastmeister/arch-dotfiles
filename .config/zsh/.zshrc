@@ -143,10 +143,6 @@ zinit light-mode for \
 zinit ice lucid wait
 zinit snippet https://github.com/ajeetdsouza/zoxide/blob/master/zoxide.plugin.zsh
 
-# load programs
-zinit ice lucid wait
-zinit light soimort/translate-shell
-
 zinit ice lucid wait id-as"cht" as"program"
 zinit snippet https://cht.sh/:cht.sh
 

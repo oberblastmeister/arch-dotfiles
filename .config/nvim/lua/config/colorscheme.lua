@@ -1,4 +1,8 @@
-local function setup()
+local utils = require("utils")
+
+local M = {}
+
+function M.setup()
   -- gruvbox
   vim.cmd [[colorscheme gruvbox]]
   vim.g.gruvbox_sign_column='bg0'
@@ -19,9 +23,24 @@ local function setup()
     'CocCursorRange guibg=#d3869b guifg=#282828',
   }
 
-  for _,value in ipairs(highlights) do
-    vim.cmd('highlight ' .. value)
-  end
+  utils.hi("CursorLineNr", "bg", "bg")
+  utils.hi("EndOfBuffer", "bg", "bg", "bg", "bg")
+
+  utils.hi_link("LspDiagnosticsError", "GruvboxRed")
+  utils.hi_link("LspDiagnosticsErrorSign", "GruvboxRed")
+  utils.hi_link("LspDiagnosticsErrorFloating", "GruvboxRed")
+
+  utils.hi_link("LspDiagnosticsWarning", "GruvboxOrange")
+  utils.hi_link("LspDiagnosticsWarningSign", "GruvboxOrange")
+  utils.hi_link("LspDiagnosticsWarningFloating", "GruvboxOrange")
+
+  utils.hi_link("LspDiagnosticsInformation", "GruvboxYellow")
+  utils.hi_link("LspDiagnosticsInformationSign", "GruvboxYellow")
+  utils.hi_link("LspDiagnosticsInformationFloating", "GruvboxYellow")
+
+  utils.hi_link("LspDiagnosticsHint", "GruvboxBlue")
+  utils.hi_link("LspDiagnosticsHintSign", "GruvboxBlue")
+  utils.hi_link("LspDiagnosticsHintFloating", "GruvboxBlue")
 
   -- local links = {
   --     -- errors
@@ -69,53 +88,53 @@ local function setup()
   --     LspDiagnosticsHintSign = 'GruvboxBlue',
   --     LspDiagnosticsHintFloating = 'GruvboxBlue',
   -- }
-  local errors = {
-    LspDiagnosticsError = 'CocErrorVirtualText',
-    LspDiagnosticsErrorSign = 'GruvboxRed',
-    LspDiagnosticsErrorFloating = 'GruvboxRed',
-  }
-  local warnings = {
-    LspDiagnosticsWarning = 'CocWarningVirtualText',
-    LspDiagnosticsWarningSign = 'GruvboxOrange',
-    LspDiagnosticsWarningFloating = 'GruvboxOrange',
-  }
+  -- local errors = {
+  --   LspDiagnosticsError = 'CocErrorVirtualText',
+  --   LspDiagnosticsErrorSign = 'GruvboxRed',
+  --   LspDiagnosticsErrorFloating = 'GruvboxRed',
+  -- }
+  -- local warnings = {
+  --   LspDiagnosticsWarning = 'CocWarningVirtualText',
+  --   LspDiagnosticsWarningSign = 'GruvboxOrange',
+  --   LspDiagnosticsWarningFloating = 'GruvboxOrange',
+  -- }
 
-  local info = {
-    LspDiagnosticsInformation = 'CocInfoVirtualText',
-    LspDiagnosticsInformationSign = 'GruvboxYellow',
-    LspDiagnosticsInformationFloating = 'GruvboxYellow',
-  }
-  local hints = {
-    LspDiagnosticsHint = 'CocHintVirtualText',
-    LspDiagnosticsHintSign = 'GruvboxBlue',
-    LspDiagnosticsHintFloating = 'GruvboxBlue',
-  }
+  -- local info = {
+  --   LspDiagnosticsInformation = 'CocInfoVirtualText',
+  --   LspDiagnosticsInformationSign = 'GruvboxYellow',
+  --   LspDiagnosticsInformationFloating = 'GruvboxYellow',
+  -- }
+  -- local hints = {
+  --   LspDiagnosticsHint = 'CocHintVirtualText',
+  --   LspDiagnosticsHintSign = 'GruvboxBlue',
+  --   LspDiagnosticsHintFloating = 'GruvboxBlue',
+  -- }
 
-  local highlighter = require'highlighter'
+  -- local highlighter = require'highlighter'
 
-  for key, _ in pairs(errors) do
-    local info = highlighter.extract_fg('GruvboxRed')
-    local command = string.format("highlight %s %s guibg=NONE", key, info)
-    vim.cmd(command)
-  end
+  -- for key, _ in pairs(errors) do
+  --   local info = highlighter.extract_fg('GruvboxRed')
+  --   local command = string.format("highlight %s %s guibg=NONE", key, info)
+  --   vim.cmd(command)
+  -- end
 
-  for key, _ in pairs(warnings) do
-    local info = highlighter.extract_fg('GruvboxOrange')
-    local command = string.format("highlight %s %s guibg=NONE", key, info)
-    vim.cmd(command)
-  end
+  -- for key, _ in pairs(warnings) do
+  --   local info = highlighter.extract_fg('GruvboxOrange')
+  --   local command = string.format("highlight %s %s guibg=NONE", key, info)
+  --   vim.cmd(command)
+  -- end
 
-  for key, _ in pairs(info) do
-    local info = highlighter.extract_fg('GruvboxYellow')
-    local command = string.format("highlight %s %s guibg=NONE", key, info)
-    vim.cmd(command)
-  end
+  -- for key, _ in pairs(info) do
+  --   local info = highlighter.extract_fg('GruvboxYellow')
+  --   local command = string.format("highlight %s %s guibg=NONE", key, info)
+  --   vim.cmd(command)
+  -- end
 
-  for key, _ in pairs(hints) do
-    local info = highlighter.extract_fg('GruvboxBlue')
-    local command = string.format("highlight %s %s guibg=NONE", key, info)
-    vim.cmd(command)
-  end
+  -- for key, _ in pairs(hints) do
+  --   local info = highlighter.extract_fg('GruvboxBlue')
+  --   local command = string.format("highlight %s %s guibg=NONE", key, info)
+  --   vim.cmd(command)
+  -- end
 
   -- highlighter.highlight_components('CocWarningVirtualText', {
   --   fg = 'NONE',
@@ -153,6 +172,4 @@ local function setup()
   -- vim.cmd [[highlight! link LspDiagnosticsHintFloating CocHintFloat]]
 end
 
-return {
-  setup = setup
-}
+return M

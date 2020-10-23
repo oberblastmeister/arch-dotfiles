@@ -49,4 +49,16 @@ function M.autocmd(event, vim_command, opts)
   vim.cmd(command)
 end
 
+function M.hi_link(group1, group2)
+  vim.cmd(string.format("hi link %s %s", group1, group2))
+end
+
+function M.hi(group, guibg, guifg, ctermbg, ctermfg)
+  local command = string.format("hi %s guibg=%s guifg=%s", group, guibg, guifg) 
+  if ctermbg and ctermfg then
+    command = command .. " " .. string.format("ctermbg=%s ctermfg=%s", ctermbg, ctermfg)
+  end
+  vim.cmd(command)
+end
+
 return M

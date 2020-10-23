@@ -53,11 +53,12 @@ function M.hi_link(group1, group2)
   vim.cmd(string.format("hi link %s %s", group1, group2))
 end
 
-function M.hi(group, guibg, guifg, ctermbg, ctermfg)
-  local command = string.format("hi %s guibg=%s guifg=%s", group, guibg, guifg) 
-  if ctermbg and ctermfg then
-    command = command .. " " .. string.format("ctermbg=%s ctermfg=%s", ctermbg, ctermfg)
-  end
+function M.hi(opts)
+  local command = string.format("hi %s", opts.group)
+  if opts.guibg then command = string.format("%s guibg=%s", command, opts.guibg) end
+  if opts.guifg then command = string.format("%s guifg=%s", command, opts.guifg) end
+  if opts.ctermbg then command = string.format("%s ctermbg=%s", command, opts.ctermbg) end
+  if opts.ctermfg then command = string.format("%s ctermfg=%s", command, opts.ctermfg) end
   vim.cmd(command)
 end
 

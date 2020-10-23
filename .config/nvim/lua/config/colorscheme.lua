@@ -26,6 +26,10 @@ function M.setup()
   utils.hi("CursorLineNr", "bg", "bg")
   utils.hi("EndOfBuffer", "bg", "bg", "bg", "bg")
 
+  -- treesitter highlights
+  utils.hi_link("TSKeywordFunction", "GruvboxAqua") -- original is gruvbox red
+  utils.hi_link("TSInclude", "GruvboxRed") -- original is GruvboxAqua
+
   utils.hi_link("LspDiagnosticsError", "GruvboxRed")
   utils.hi_link("LspDiagnosticsErrorSign", "GruvboxRed")
   utils.hi_link("LspDiagnosticsErrorFloating", "GruvboxRed")

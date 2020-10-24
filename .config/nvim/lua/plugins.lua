@@ -235,6 +235,8 @@ return require('packer').startup(function()
 
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
+    use 'romgrk/nvim-treesitter-context'
+
     use {
         'nvim-treesitter/playground',
         cmd = 'TSPlaygroundToggle',
@@ -270,7 +272,10 @@ return require('packer').startup(function()
       }
 
     ----------------------------- Editing -------------------------------------
-    use 'tpope/vim-commentary'
+    -- use 'tpope/vim-commentary'
+    local_use {
+      'commentary.nvim'
+    }
 
     use 'tpope/vim-repeat'
 

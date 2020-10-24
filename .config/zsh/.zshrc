@@ -137,17 +137,11 @@ zinit light-mode for \
   atinit"bindkey -s '^o' 'lfcd\n'" \
     https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
 
-# zinit ice lucid wait
-# zinit snippet ~/.pyenv_init.zsh
-
 zinit ice lucid wait
 zinit snippet https://github.com/ajeetdsouza/zoxide/blob/master/zoxide.plugin.zsh
 
 zinit ice lucid wait id-as"cht" as"program"
 zinit snippet https://cht.sh/:cht.sh
-
-zinit ice lucid wait id-as"speedtest" as"program"
-zinit snippet https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
 
 zinit ice lucid wait id-as"seed" as"program"
 zinit snippet https://raw.githubusercontent.com/Olical/aniseed/master/scripts/seed.sh

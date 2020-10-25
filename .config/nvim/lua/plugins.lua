@@ -358,10 +358,18 @@ return require('packer').startup(function()
 
     ----------------------------- Git -----------------------------------------
     use 'tpope/vim-fugitive'
+
+    -- use gitsigns.nvim instead
     use {
-        'mhinz/vim-signify',
-        config = function() require'config/signify'.setup() end,
-      }
+      'mhinz/vim-signify',
+      config = function() require'config/signify'.setup() end,
+      disable = true,
+    }
+
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = function() require'config/gitsigns'.setup() end,
+    }
 
     ----------------------------- Tmux ----------------------------------------
     use {

@@ -11,7 +11,7 @@ local function setup()
   vim.g.enable_auto_signature = 1
 
   vim.g.completion_enable_snippet = "vim-vsnip"
-  vim.g.completion_sorting = "alphabet"
+  vim.g.completion_sorting = "length"
   vim.g.completion_trigger_on_delete = 1
 
   -- set this to avoid flickering for now and make completion faster

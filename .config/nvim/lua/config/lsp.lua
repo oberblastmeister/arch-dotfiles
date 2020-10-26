@@ -25,7 +25,7 @@ function M.setup_keymappings()
   utils.nnoremap_buf('gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
 
   -- format with lsp
-  utils.nnoremap_buf('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  utils.nnoremap_buf('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR><cmd>echo "Formatted!"<CR>')
 
   -- actions
   utils.nnoremap_buf('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')

@@ -272,10 +272,10 @@ return require('packer').startup(function()
       }
 
     ----------------------------- Editing -------------------------------------
-    -- use 'tpope/vim-commentary'
-    local_use {
-      'commentary.nvim'
-    }
+    use 'tpope/vim-commentary'
+    -- local_use {
+      -- 'commentary.nvim'
+    -- }
 
     use 'tpope/vim-repeat'
 

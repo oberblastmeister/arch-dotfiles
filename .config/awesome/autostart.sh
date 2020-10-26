@@ -39,6 +39,7 @@ setupxob() {
 
 laptopconfigs &
 
+# run xsettingsd
 run picom
 run redshift
 run xfce4-power-manager

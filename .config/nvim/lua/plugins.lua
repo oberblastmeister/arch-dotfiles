@@ -250,7 +250,10 @@ return require('packer').startup(function()
 
     ----------------------------- Fuzzy Finding ----------------------------
     -- lua fuzzy finder
-    use 'nvim-lua/telescope.nvim'
+    use {
+      'nvim-lua/telescope.nvim',
+      config = function() require'config/telescope'.setup() end,
+    }
 
     use {
         'junegunn/fzf.vim',

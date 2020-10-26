@@ -13,14 +13,24 @@ do
     silent =  true,
   }
 
-  function M.nnoremap_buf(lhs, rhs, opts)
+  local function get_merged_opts(opts)
     local merged_opts
     if opts then
       merged_opts = vim.tbl_extend("keep", opts, default_keymap_opts)
     else
       merged_opts = default_keymap_opts
     end
-    api.nvim_buf_set_keymap(0, 'n', lhs, rhs, merged_opts)
+    return merged_opts
+  end
+
+  function M.nnoremap_buf(lhs, rhs, opts)
+    opts = get_merged_opts(opts)
+    api.nvim_buf_set_keymap(0, 'n', lhs, rhs, opts)
+  end
+
+  function M.nnoremap(lhs, rhs, opts)
+    opts = get_merged_opts(opts)
+    api.nvim_set_keymap('n', lhs, rhs, opts)
   end
 end
 

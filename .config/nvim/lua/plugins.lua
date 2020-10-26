@@ -100,6 +100,10 @@ return require('packer').startup(function()
         config = function() require'config/rooter'.setup() end,
       }
 
+      local_use {
+        'termwrapper.nvim'
+      }
+
     ----------------------------- Looks --------------------------------------
     use 'tjdevries/colorbuddy.nvim'
 
@@ -495,5 +499,7 @@ return require('packer').startup(function()
     use {
         'Olical/aniseed',
       }
+
+    use 'kassio/neoterm'
   end
 )

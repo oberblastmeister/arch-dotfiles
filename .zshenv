@@ -63,3 +63,6 @@ export FZF_ALT_C_OPTS="--preview 'exa --level 3 --tree --color=always --group-di
 # bat
 export BAT_THEME="gruvbox"
 export BAT_CONFIG_PATH="$HOME/.config/bat/config"
+
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"

@@ -25,8 +25,12 @@ nnoremap gp a<CR><Esc>PkJxJx
 nnoremap c* *Ncgn
 
 nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
-" nnoremap <silent> <expr> <S-CR> empty(&buftype) ? '@q' : '<CR>'
-" nnoremap <C-CR> zz
+
+nnoremap <silent> <C-n> <cmd>tabnew<CR>
+
+nnoremap <silent> <leader>vo <cmd>belowright 13split <bar> T<CR>
+nnoremap <silent> <leader>vs <cmd>rightbelow vsplit <bar> T<CR>
+nnoremap <silent> <leader><CR> <cmd>T<CR>
 " }}}
 
 " ============================================================================

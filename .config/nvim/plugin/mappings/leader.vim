@@ -116,28 +116,15 @@ let g:which_key_map.z = {
 " ============================================================================
 " Vimux {{{
 " ============================================================================
-nnoremap <silent> <Leader>vo :call VimuxOpenRunner()<CR>
-nnoremap <silent> <Leader>vp :VimuxPromptCommand<CR>
-nnoremap <silent> <Leader>vl :VimuxRunLastCommand<CR>
-nnoremap <silent> <Leader>vi :VimuxInspectRunner<CR>
-nnoremap <silent> <Leader>vx :VimuxInterruptRunner<CR>
-nnoremap <silent> <Leader>vz :call VimuxZoomRunner()<silent> <CR>
-nnoremap <silent> <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
-nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
-nnoremap <silent> <Leader>vc :VimuxClearRunnerHistory<CR>
-
-let g:which_key_map.v = {
-      \ 'name': '+vimux',
-      \ 'o': 'open runner',
-      \ 'p': 'prompt command',
-      \ 'l': 'run last prompted command',
-      \ 'i': 'inspect (move into runner and enter copy mode)',
-      \ 'x': 'interrupt command in runner',
-      \ 'z': 'zoom runner',
-      \ '<CR>': 'send enter to runner',
-      \ 'q': 'close vimux runner',
-      \ 'c': 'clear runner history',
-      \ }
+" nnoremap <silent> <Leader>vo :call VimuxOpenRunner()<CR>
+" nnoremap <silent> <Leader>vp :VimuxPromptCommand<CR>
+" nnoremap <silent> <Leader>vl :VimuxRunLastCommand<CR>
+" nnoremap <silent> <Leader>vi :VimuxInspectRunner<CR>
+" nnoremap <silent> <Leader>vx :VimuxInterruptRunner<CR>
+" nnoremap <silent> <Leader>vz :call VimuxZoomRunner()<silent> <CR>
+" nnoremap <silent> <Leader>v<CR> :call VimuxSendKeys("Enter")<CR>
+" nnoremap <silent> <Leader>vq :VimuxCloseRunner<CR>
+" nnoremap <silent> <Leader>vc :VimuxClearRunnerHistory<CR>
 
 nnoremap <silent> <Leader>R :call mappings#run_code()<CR>
 let g:which_key_map.R = 'run code'

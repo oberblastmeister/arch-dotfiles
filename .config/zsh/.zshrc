@@ -62,7 +62,6 @@ setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
 
-export BAT_THEME="gruvbox"
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
 

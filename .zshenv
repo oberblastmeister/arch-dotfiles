@@ -66,3 +66,6 @@ export BAT_CONFIG_PATH="$HOME/.config/bat/config"
 
 # ripgrep
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
+
+# change default config path for starship (~/.config/starship.toml)
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"

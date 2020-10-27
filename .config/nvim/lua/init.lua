@@ -16,5 +16,9 @@ if not os.getenv('TMUX') then
   utils.nnoremap('<C-h>', '<cmd>normal! <C-W>h<CR>')
 end
 
+if vim.fn.has('nvim') then
+  vim.cmd [[let $GIT_EDITOR = 'nvr -cc split --remote-wait']]
+end
+
 require('plugins')
 require('utils')

@@ -335,7 +335,7 @@ return require('packer').startup(function()
         -- only turn on when yadm is not active, prevents lagging vim
         cond = function()
           return os.getenv("GIT_DIR") ~= vim.fn.expand("~/.config/yadm/repo.git")
-        end
+        end,
       }
 
     -- terminal float for lf
@@ -502,7 +502,5 @@ return require('packer').startup(function()
     use {
         'Olical/aniseed',
       }
-
-    use 'kassio/neoterm'
   end
 )

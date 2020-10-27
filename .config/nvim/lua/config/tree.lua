@@ -1,7 +1,9 @@
+local utils = require('utils')
+
 local function setup()
   vim.g.lua_tree_ignore = {".git"}
   vim.g.lua_tree_auto_close = 1
-  vim.g.lua_tree_follow = 1
+  vim.g.lua_tree_follow = 0
 
   vim.g.lua_tree_show_icons = {
     git = 1,
@@ -44,14 +46,12 @@ local function setup()
     next_git_item = ']c',
   }
 
-  vim.api.nvim_exec(
-[[
+  vim.api.nvim_exec([[
 augroup LuaTreeOverride
   au!
   au FileType LuaTree setlocal nowrap
 augroup END
-]],
-false)
+]], false)
 end
 
 return {

@@ -105,23 +105,6 @@ zinit wait lucid is-snippet light-mode blockf for \
 zinit ice lucid wait as"completion"
 zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
 
-# let fzf find hidden files
-export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
-export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --exclude .cache --color=always"
-export FZF_TMUX=1
-
-# default opts for fzf
-export FZF_DEFAULT_OPTS="
---layout=reverse --inline-info --ansi
---color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
---color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54,border:#928374"
-
-export FZF_COMPLETION_OPTS="--layout=reverse --inline-info"
-export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}'"
-export FZF_ALT_C_OPTS="--preview 'exa --level 3 --tree --color=always --group-directories-first --icons {} | head -50'"
-
 # use fd for completion
 _fzf_compgen_path() {
   fd --follow --hidden --color=always --exclude ".git" . "$1"

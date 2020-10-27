@@ -29,7 +29,7 @@ nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 nnoremap <silent> <C-n> <cmd>tabnew<CR>
 
 nnoremap <silent> <leader>vo <cmd>belowright 13split <bar> T<CR>
-nnoremap <silent> <leader>vs <cmd>rightbelow vsplit <bar> T<CR>
+nnoremap <silent> <leader>vs <cmd>vsplit <bar> T<CR>
 nnoremap <silent> <leader><CR> <cmd>T<CR>
 " }}}
 

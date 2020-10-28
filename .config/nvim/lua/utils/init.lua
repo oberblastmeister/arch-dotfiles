@@ -76,4 +76,43 @@ function M.hi(opts)
   vim.cmd(command)
 end
 
+function M.libuv_testing()
+  local Job = require("plenary/job")
+
+  local on_stdout = function(error, data)
+    assert(not error, error)
+    print('command stdout:', data)
+  end
+
+  local function on_stderr_factory(cmd)
+    return vim.schedule_wrap(function(error, data)
+      assert(not error, error)
+
+      if data then
+        vim.cmd(string.format('echoerr "Formatter %s failed: %s"', cmd, data))
+      end
+    end)
+  end
+
+  local function on_exit_factory(cmd)
+    return vim.schedule_wrap(function(self, code, signal)
+      assert(not error, error)
+      if code ~= 0 then
+        vim.cmd(string.format('echoerr "Formatter %s exited with a non-zero exit code %s"', cmd, code))
+      end
+    end)
+  end
+
+  Job:new {
+    command = 'cat',
+    -- args = {'hello this should be captured'},
+    on_stdout = on_stdout,
+    on_stderr = function(error, data)
+      assert(not error, error)
+      print('stderr:', data)
+    end,
+    writer = 'hello dude this should be captured'
+  }:start()
+end
+
 return M

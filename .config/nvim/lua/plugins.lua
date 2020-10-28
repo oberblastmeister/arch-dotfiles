@@ -485,22 +485,29 @@ return require('packer').startup(function()
         disable = true,
         config = function() require'config/scrollbar'.setup() end,
       }
+
     -- Lisp stuff
     local sexp_filetypes = {'clojure', 'lisp', 'scheme', 'racket', 'jbuild', 'fennel', 'pddl'}
 
     use {
-        'eraserhd/parinfer-rust',
-        run = 'cargo build --release',
-        ft = sexp_filetypes
-      }
+      'eraserhd/parinfer-rust',
+      run = 'cargo build --release',
+      ft = sexp_filetypes
+    }
 
     use {
-        'Olical/conjure',
-        ft = {'fennel', 'clojure'},
-      }
+      'Olical/conjure',
+      ft = {'fennel', 'clojure'},
+    }
 
     use {
-        'Olical/aniseed',
-      }
+      'Olical/aniseed',
+    }
+
+    local_use {
+      'pandoc.nvim',
+    }
+
+    use 'mhartington/formatter.nvim'
   end
 )

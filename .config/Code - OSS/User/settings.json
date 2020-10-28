@@ -2,6 +2,5 @@
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "editor.fontFamily": "'FiraCode Nerd Font'",
     "editor.fontLigatures": true,
-    "java.home": "/home/brian/wpilib/2020/jdk",
     "java.project.importHint": false
 }

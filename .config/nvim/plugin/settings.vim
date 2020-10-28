@@ -53,5 +53,7 @@ set shortmess+=c
 
 set signcolumn=yes " always show sign column so it doesn't drift
 
-set guifont=FiraCode\ Nerd\ Font:h12:style=Retina " set guifont
+" guistuff
+" set guifont=FiraCode\ Nerd\ Font:h12:style=Retina " set guifont
+set guifont=FiraCode\ Nerd\ Font:h12
 " }}}

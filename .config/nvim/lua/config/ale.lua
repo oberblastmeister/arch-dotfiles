@@ -1,8 +1,8 @@
 local function config()
   vim.g.ale_linters = {
-    sh = {'shellcheck'},
+    -- sh = {'shellcheck'},
     -- markdown = {'markdownlint', 'languagetool'},
-    markdown = {'languagetool'},
+    -- markdown = {'languagetool'},
   }
 end
 

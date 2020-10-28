@@ -163,7 +163,7 @@ local function setup()
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function()
-      awful.spawn.with_shell("$TERMINAL")
+      awful.spawn.with_shell("$TERMINAL -e tmux")
     end,
     {description = "open a terminal", group = "launcher"}),
 

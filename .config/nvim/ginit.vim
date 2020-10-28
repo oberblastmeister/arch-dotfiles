@@ -3,4 +3,5 @@
 " endif
 
 Guifont! FiraCode Nerd Font:h12
-" Guifont FiraCode\ Nerd\ Font:h12:style=Retina " set guifont
+GuiTabline 0
+GuiPopupmenu 0

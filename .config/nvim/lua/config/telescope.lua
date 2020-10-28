@@ -1,3 +1,10 @@
+local pickers = require('telescope.pickers')
+local finders = require('telescope.finders')
+local previewers = require('telescope.previewers')
+local conf = require('telescope.config').values
+local make_entry = require('telescope.make_entry')
+
+-- local pickers = require('telescope.pickers')
 local utils = require('utils')
 
 local M = {}
@@ -20,15 +27,30 @@ function M.setup()
   utils.nnoremap('<leader>fg', [[<cmd>lua require'telescope.builtin'.git_files{}<CR>]])
   utils.nnoremap('<leader>fu', [[<cmd>lua require'telescope.builtin'.oldfiles{}<CR>]])
   utils.nnoremap('<leader>fh', [[<cmd>lua require'telescope.builtin'.command_history(require('telescope.themes').get_dropdown())<CR>]])
+
+  -- custom
+  utils.nnoremap('<leader>.', [[<cmd>lua require'config/telescope'.dotfiles()<CR>]])
 end
 
--- function M.dotfiles()
---   Finder:new {
---     entry_maker = function(line) end,
---     fn_command = function() { command = "yadm" args = {"ls-files"} } end,
---     static = false,
---     maximum_results = false,
---   }
--- end
+function M.dotfiles(opts)
+  opts = opts or {}
+
+  opts.cwd = os.getenv('HOME')
+
+  opts.disable_devicons = true
+  -- By creating the entry maker after the cwd options,
+  -- we ensure the maker uses the cwd options when being created.
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
+
+  pickers.new(opts, {
+    prompt_title = 'Dotfiles',
+    finder = finders.new_oneshot_job(
+      {"yadm", "ls-files"},
+      opts
+    ),
+    previewer = previewers.cat.new(opts),
+    sorter = conf.file_sorter(opts),
+  }):find()
+end
 
 return M

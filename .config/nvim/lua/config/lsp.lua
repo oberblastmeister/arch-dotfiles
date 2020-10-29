@@ -45,10 +45,15 @@ function M.setup_keymappings()
   utils.nnoremap_buf('[G', '<cmd>LastDiagnostic<CR>')
 end
 
+function M.setup_commands()
+  vim.cmd [[command! -nargs=0 -buffer FormatLsp lua vim.lsp.buf.formatting_sync()]]
+end
+
 local function custom_on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
   lsp_status.on_attach(client, bufnr)
   M.setup_keymappings()
+  M.setup_commands()
 
   -- vim.cmd [[autocmd Lsp CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
   -- vim.cmd [[autocmd Lsp CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]

@@ -19,15 +19,21 @@ function M.setup()
 
   -- common
   utils.nnoremap('<c-b>', [[<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown())<cr>]])
+  utils.nnoremap('<leader>/', [[<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())<cr>]])
 
   -- treesitter
   utils.nnoremap('<leader>fT', [[<cmd>lua require'telescope.builtin'.treesitter{}<CR>]])
+  utils.nnoremap('<leader>H', [[<cmd>lua require'telescope.builtin'.help_tags{}<CR>]])
 
   -- misc
   utils.nnoremap('<leader>fh', [[<cmd>lua require'telescope.builtin'.command_history(require('telescope.themes').get_dropdown())<CR>]])
+  utils.nnoremap('<leader>fc', [[<cmd>lua require'telescope.builtin'.colorscheme(require('telescope.themes').get_dropdown())<CR>]])
+  utils.nnoremap('<leader>fm', [[<cmd>lua require'telescope.builtin'.marks(require('telescope.themes').get_dropdown())<CR>]])
+  utils.nnoremap('<leader>fM', [[<cmd>lua require'telescope.builtin'.man_pages(require('telescope.themes').get_dropdown())<CR>]])
   utils.nnoremap('<leader>fg', [[<cmd>lua require'telescope.builtin'.git_files{}<CR>]])
   utils.nnoremap('<leader>fu', [[<cmd>lua require'telescope.builtin'.oldfiles{}<CR>]])
   utils.nnoremap('<leader>fh', [[<cmd>lua require'telescope.builtin'.command_history(require('telescope.themes').get_dropdown())<CR>]])
+  utils.nnoremap('<leader>fb', [[<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown())<CR>]])
 
   -- custom
   utils.nnoremap('<leader>.', [[<cmd>lua require'config/telescope'.dotfiles()<CR>]])

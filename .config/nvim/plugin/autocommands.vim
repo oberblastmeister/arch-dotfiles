@@ -37,6 +37,9 @@ augroup nostatusline
   autocmd FileType fzf set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
+  autocmd FileType TelescopePrompt set laststatus=0 noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 ruler
+
   autocmd FileType floaterm set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
 

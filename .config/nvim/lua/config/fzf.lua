@@ -14,10 +14,6 @@ local function setup()
   utils.nnoremap('<c-p>', [[:nohl<CR>:Files<CR>]])
   utils.nnoremap('<c-f>', [[:nohl<CR>:Rg<CR>]])
 
-  utils.nnoremap('<leader>.', [[:nohl<CR>:cd ~<CR>:Dotfiles<CR>]])
-  utils.nnoremap('<leader>H', [[:nohl<CR>:Help<CR>]])
-  utils.nnoremap('<leader>/', [[:nohl<CR>:BLines<CR>]])
-  utils.nnoremap('<leader>?', [[:nohl<CR>:Lines<CR>]])
   utils.nnoremap('<leader>fw', [[:Windows<CR>]])
 end
 

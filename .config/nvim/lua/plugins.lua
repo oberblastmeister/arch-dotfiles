@@ -475,9 +475,7 @@ return require("packer").startup(
     use {
       "vimwiki/vimwiki",
       cmd = "VimwikiIndex",
-      setup = function()
-        require "config/vimwiki".setup()
-      end
+      setup = function() require "config/vimwiki".setup() end,
     }
 
     use {

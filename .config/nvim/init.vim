@@ -36,9 +36,7 @@ let g:maplocalleader="\\"
 
 let g:which_key_map = {}
 
-if has('nvim')
-  tnoremap <C-o> <C-\><C-n>
-endif
+tnoremap <C-o> <C-\><C-n>
 
 " delete default commentary mappings
 noremap gc <Nop>

@@ -13,6 +13,8 @@
 " ----------------------------- Important ----------------------------------
 if exists('g:vscode')
 
+  set noloadplugins
+
 else
 
 lua require('init')

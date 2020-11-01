@@ -38,6 +38,8 @@ function M.setup_gruvbox()
   utils.hi_link("LspDiagnosticsHint", "GruvboxBlue")
   utils.hi_link("LspDiagnosticsHintSign", "GruvboxBlue")
   utils.hi_link("LspDiagnosticsHintFloating", "GruvboxBlue")
+
+  utils.hi_link("LuaTreeIndentMarker", "GruvboxFg2")
 end
 
 function M.setup()

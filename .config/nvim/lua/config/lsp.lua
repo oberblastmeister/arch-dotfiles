@@ -126,7 +126,10 @@ function M.setup()
     }
   }
 
-  nvim_lsp.hls.setup {on_attach = custom_on_attach}
+  nvim_lsp.hls.setup {
+    on_attach = custom_on_attach,
+    root_dir = nvim_lsp.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git"),
+  }
 
   nvim_lsp.clojure_lsp.setup {on_attach = custom_on_attach}
 end

@@ -9,13 +9,20 @@ function! Write()
 endfunction
 
 nnoremap <silent> <leader><leader> <c-^>
+
 nnoremap <silent> <leader>w <cmd>write<CR>
-nnoremap <silent> <leader>W :call Write()<CR>
+nnoremap <silent> <leader>W <cmd>wall<CR>
+
 nnoremap <silent> <leader>x :xit<CR>
-nnoremap <silent> <leader>o :only<CR>
+nnoremap <silent> <leader>X :xall<CR>
+
+
 nnoremap <silent> <leader>q :quit<CR>
 nnoremap <silent> <leader>Q :qa!<CR>
+
 nnoremap <silent> <leader>p :put<CR>
+
+nnoremap <silent> <leader>o :only<CR>
 " nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}
 

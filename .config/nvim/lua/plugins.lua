@@ -579,5 +579,7 @@ return require("packer").startup(
         require "config/formatter".setup()
       end
     }
+
+    use 'romgrk/searchReplace.vim.git'
   end
 )

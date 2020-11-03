@@ -28,6 +28,7 @@ if exists('g:vscode')
   nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
   xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 
+  " vscode commenting
   xmap <silent> <leader>c  <Plug>VSCodeCommentary
   nmap <silent> <leader>c  <Plug>VSCodeCommentary
   omap <silent> <leader>c  <Plug>VSCodeCommentary
@@ -44,7 +45,6 @@ if exists('g:vscode')
 
   nnoremap <leader>o :Only<CR>
 
-  nnoremap <leader><CR> :call VSCodeNotify('workbench.action.togglePanel')<CR>
 else
 
 lua require('init')

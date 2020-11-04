@@ -31,6 +31,8 @@ nnoremap <silent> <C-n> <cmd>tabnew<CR>
 nnoremap <silent> <leader>vo <cmd>belowright 13split <bar> T<CR>
 nnoremap <silent> <leader>vs <cmd>vsplit <bar> T<CR>
 nnoremap <silent> <leader><CR> <cmd>T<CR>
+nnoremap <silent> <c-t> <cmd>Ttoggle<CR>
+tnoremap <silent> <c-t> <cmd>Ttoggle<CR>
 " }}}
 
 " ============================================================================

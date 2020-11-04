@@ -119,8 +119,8 @@ function M.setup()
     settings = {
       ["rust-analyzer"] = {
         completion = {
-          -- addCallArgumentSnippets = false,
-          -- addCallParenthesis = false,
+          addCallArgumentSnippets = true,
+          addCallParenthesis = true,
         }
       }
     }

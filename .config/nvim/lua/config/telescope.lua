@@ -12,8 +12,7 @@ local M = {}
 
 function M.setup()
   -- lsp stuff
-  utils.nnoremap('<c-t>', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]])
-  utils.nnoremap('<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>]])
+  -- utils.nnoremap('<c-t>', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]])
   utils.nnoremap('<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>]])
   utils.nnoremap('<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]])
 

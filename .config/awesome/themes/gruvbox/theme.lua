@@ -140,9 +140,9 @@ theme.menu_width                                = 250
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = false
 theme.tasklist_spacing                          = 3
--- theme.useless_gap                               = 28
+theme.useless_gap                               = 28
 -- theme.useless_gap                               = 15
-theme.useless_gap                               = 10
+-- theme.useless_gap                               = 10
 theme.systray_icon_spacing                      = 4
 
 theme.snap_bg                                   = colors.bw_5

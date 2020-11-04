@@ -107,6 +107,14 @@ return require("packer").startup(
       "termwrapper.nvim"
     }
 
+    local_use {
+      "pandoc.nvim"
+    }
+
+    local_use {
+      "zoom.nvim"
+    }
+
     ----------------------------- Looks --------------------------------------
     use "tjdevries/colorbuddy.nvim"
 
@@ -569,10 +577,6 @@ return require("packer").startup(
       "Olical/aniseed"
     }
 
-    local_use {
-      "pandoc.nvim"
-    }
-
     use {
       "mhartington/formatter.nvim",
       config = function()
@@ -580,6 +584,6 @@ return require("packer").startup(
       end
     }
 
-    use 'romgrk/searchReplace.vim.git'
+    use "romgrk/searchReplace.vim"
   end
 )

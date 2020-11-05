@@ -77,6 +77,22 @@ omap <Leader>c  <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
 let g:neovide_refresh_rate=240
 " let g:neovide_cursor_vfx_mode = "pixiedust"
 let g:neovide_cursor_vfx_mode = "railgun"

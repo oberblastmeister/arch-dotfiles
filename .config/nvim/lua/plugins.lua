@@ -31,6 +31,10 @@ if not packer_exists then
   return
 end
 
+-- if packer_exists then
+--   vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
+-- end
+
 return require("packer").startup(
   function()
     -- let packer optionally manage itself
@@ -142,6 +146,8 @@ return require("packer").startup(
         vim.g.indentLine_fileTypeExclude = {"dashboard", ""}
       end
     }
+
+    use "romgrk/barbar.nvim"
 
     use {
       "tjdevries/express_line.nvim",
@@ -436,6 +442,11 @@ return require("packer").startup(
       end
     }
 
+    use {
+      'TimUntersberger/neogit',
+      cmd = 'Neogit',
+    }
+
     ----------------------------- Tmux ----------------------------------------
     use {
       "christoomey/vim-tmux-navigator",
@@ -510,8 +521,15 @@ return require("packer").startup(
       setup = function()
         vim.g.polyglot_disabled = {"markdown", "latex", "pest", "lua", "lalrpop"}
         vim.g.python_highlight_space_errors = 0
+        require'filetypes/haskell'.setup()
       end
-      -- ft = {},
+    }
+
+    use {
+      'neovimhaskell/haskell-vim',
+      ft = 'haskell',
+      disable = true,
+      config = function() require'filetypes/haskell'.setup() end,
     }
 
     use "euclidianAce/BetterLua.vim"

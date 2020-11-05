@@ -1,29 +1,41 @@
 " ============================================================================
 " Settings {{{
 " ============================================================================
-" filetype plugin on
+" correct number options
 set number relativenumber
+
 set smartindent
+
 set lazyredraw " faster macros
+
+" use system clipboard
 set clipboard^=unnamed,unnamedplus
+
+" live search and replace
 set inccommand=nosplit
+
+" don't show mode or command (has status line)
 set noshowmode
 set noshowcmd
-set foldmethod=syntax
 
 " treesitter folding
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-
 set foldlevelstart=99
+
 set timeoutlen=800
 set ttimeoutlen=20
+
 set ignorecase smartcase
+
+" allow mouse to be used for everything
 set mouse=a
+
+" do not wrap text
 set nowrap
+
 set pumheight=20
 
-" set sidescroll=5
 " set pumblend=15
 " set winblend=0
 
@@ -36,6 +48,7 @@ set shortmess+=T
 set shortmess+=A   " no swapfile messages
 set path+=**
 
+" tabs/spaces setting
 set expandtab
 set tabstop=4 " number of spaces that a tab counts for
 set shiftwidth=4 " number of spaces to use for each step of autoindent
@@ -56,4 +69,10 @@ set signcolumn=yes " always show sign column so it doesn't drift
 " guistuff
 " set guifont=FiraCode\ Nerd\ Font:h12:style=Retina " set guifont
 set guifont=FiraCode\ Nerd\ Font:h12
+
+" set default spell checking language (when spell checking is on)
+set spelllang=en_us
+
+" set spell file directory
+set spellfile=$HOME/Sync/vim/spell/en_us.utf-8.add
 " }}}

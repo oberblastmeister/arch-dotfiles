@@ -13,33 +13,47 @@ nnoremap <silent> <leader><leader> <c-^>
 nnoremap <silent> <leader>w <cmd>write<CR>
 nnoremap <silent> <leader>W <cmd>wall<CR>
 
-nnoremap <silent> <leader>x :xit<CR>
-nnoremap <silent> <leader>X :xall<CR>
+nnoremap <silent> <leader>x <cmd>xit<CR>
+nnoremap <silent> <leader>X <cmd>xall<CR>
 
 
-nnoremap <silent> <leader>q :quit<CR>
-nnoremap <silent> <leader>Q :qa!<CR>
+nnoremap <silent> <leader>q <cmd>quit<CR>
+nnoremap <silent> <leader>Q <cmd>qa!<CR>
+nnoremap <silent> <C-q> <cmd>BufferClose<CR>
 
-nnoremap <silent> <leader>p :put<CR>
+nnoremap <silent> <leader>p <cmd>put<CR>
 
-nnoremap <silent> <leader>o :only<CR>
+nnoremap <silent> <leader>O <cmd>only<CR>
+nnoremap <silent> <leader>o <cmd>Zoom<CR>
+
 " nnoremap <LocalLeader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 " }}}
 
 " ============================================================================
 " Buffer {{{
 " ============================================================================
+nnoremap <silent> <C-s> <cmd>BufferPick<CR>
+
+" Move to previous/next
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <A->> :BufferMoveNext<CR>
+
+nnoremap <silent>    <A-c> :BufferClose<CR>
+
 " go to relative buffer numbers
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+nnoremap <silent> <Leader>1 <cmd>BufferGoto 1<CR>
+nnoremap <silent> <Leader>2 <cmd>BufferGoto 2<CR>
+nnoremap <silent> <Leader>3 <cmd>BufferGoto 3<CR>
+nnoremap <silent> <Leader>4 <cmd>BufferGoto 4<CR>
+nnoremap <silent> <Leader>5 <cmd>BufferGoto 5<CR>
+nnoremap <silent> <Leader>6 <cmd>BufferGoto 6<CR>
+nnoremap <silent> <Leader>7 <cmd>BufferGoto 7<CR>
+nnoremap <silent> <Leader>8 <cmd>BufferGoto 8<CR>
+nnoremap <silent> <Leader>9 <cmd>BufferGoto 9<CR>  
+nnoremap <silent> <Leader>0 <cmd>BufferGoto 10<CR>
 
 " info
 let g:which_key_map = {
@@ -62,17 +76,8 @@ let g:which_key_map = {
       \ 'p': 'put below',
       \ }
 
-" delete relative buffer numbers
-nmap <Leader>b1 <Plug>lightline#bufferline#delete(1)
-nmap <Leader>b2 <Plug>lightline#bufferline#delete(2)
-nmap <Leader>b3 <Plug>lightline#bufferline#delete(3)
-nmap <Leader>b4 <Plug>lightline#bufferline#delete(4)
-nmap <Leader>b5 <Plug>lightline#bufferline#delete(5)
-nmap <Leader>b6 <Plug>lightline#bufferline#delete(6)
-nmap <Leader>b7 <Plug>lightline#bufferline#delete(7)
-nmap <Leader>b8 <Plug>lightline#bufferline#delete(8)
-nmap <Leader>b9 <Plug>lightline#bufferline#delete(9)
-nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
+nnoremap <silent> <leader>bd :BufferOrderByDirectory<CR>
+nnoremap <silent> <leader>bl :BufferOrderByLanguage<CR>
 
 " misc buffer mappings
 nnoremap <silent> <leader>bD :Bufonly<CR>

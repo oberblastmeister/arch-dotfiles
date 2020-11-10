@@ -1,7 +1,7 @@
 local nvim_lsp = require('nvim_lsp')
 local nvim_lsp_configs = require('nvim_lsp/configs')
 local diagnostic = require('diagnostic')
-local lsp_status = require('lsp-status')
+-- local lsp_status = require('lsp-status')
 
 local utils = require('utils')
 
@@ -46,12 +46,19 @@ function M.setup_keymappings()
 end
 
 function M.setup_commands()
-  vim.cmd [[command! -nargs=0 -buffer FormatLsp lua vim.lsp.buf.formatting_sync()]]
+  vim.cmd [[command! -nargs=0 -buffer FormatLsp lua vim.lsp.buf.formatting()]]
 end
 
 local function custom_on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
-  lsp_status.on_attach(client, bufnr)
+  -- lsp_status.on_attach(client, bufnr)
+  -- print('attached')
+  -- print('client:')
+  -- dump(client)
+  -- print('root dir:', client.config.root_dir)
+  -- print('client:')
+  -- dump(client)
+  -- print('bufnr:', bufnr)
   M.setup_keymappings()
   M.setup_commands()
 
@@ -64,9 +71,11 @@ local function custom_on_attach(client, bufnr)
 end
 
 function M.setup()
-  lsp_status.register_progress()
+  -- lsp_status.register_progress()
 
   utils.augroup("Lsp")
+
+  -- vim.cmd [[autocmd Lsp BufEnter * lua print('num_clients: ', vim.tbl_count(vim.lsp.buf_get_clients(0)))]]
 
   nvim_lsp.pyls.setup {on_attach = custom_on_attach}
 

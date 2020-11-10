@@ -76,3 +76,12 @@ set spelllang=en_us
 " set spell file directory
 set spellfile=$HOME/Sync/vim/spell/en_us.utf-8.add
 " }}}
+
+" Firenvim specific settings
+if exists('g:started_by_firenvim') && g:started_by_firenvim
+    " general options
+    set signcolumn=no
+    set laststatus=0 noruler noshowcmd
+    set showtabline=0
+    set guifont=FiraCode\ Nerd\ Font:h10:style=Retina
+endif

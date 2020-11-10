@@ -72,7 +72,8 @@ alias tl='tmux ls'
 alias t='task'
 
 alias pac="sudo pacman -Syu"
-alias fyay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
+alias fyay="fuzzy_yay"
+alias syay="sk_yay"
 alias faura="yay -Slq | fzf -m --preview 'bat --paging=never <(aura -Ai {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 alias aurasyu="sudo aura -Akuax"
 alias pacaura="sudo pacman -Syu && sudo aura -Akuax"

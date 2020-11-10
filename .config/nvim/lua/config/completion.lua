@@ -11,11 +11,13 @@ local function setup()
   vim.g.enable_auto_signature = 1
 
   vim.g.completion_enable_snippet = "vim-vsnip"
-  vim.g.completion_sorting = "length"
+  vim.g.completion_sorting = "none"
   vim.g.completion_trigger_on_delete = 1
 
   -- set this to avoid flickering for now and make completion faster
   vim.g.matching_strategy_list = {'exact'}
+  -- more precise, less flickery
+  vim.g.completion_matching_ignore_case = 0
   -- vim.g.matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
   vim.cmd [[imap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]

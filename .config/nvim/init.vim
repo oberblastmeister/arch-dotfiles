@@ -8,8 +8,6 @@
 "    ███  ░██░░██████░░██████   ░░██   ░██ ███ ░██ ░██
 "   ░░░   ░░  ░░░░░░  ░░░░░░     ░░    ░░ ░░░  ░░  ░░
 
-
-
 " ----------------------------- Important ----------------------------------
 let g:mapleader="\<Space>"
 let g:maplocalleader="\\"
@@ -96,7 +94,15 @@ endfunction
 let g:neovide_refresh_rate=240
 " let g:neovide_cursor_vfx_mode = "pixiedust"
 let g:neovide_cursor_vfx_mode = "railgun"
-let g:neovide_cursor_animate_in_insert_mode=0
+" let g:neovide_cursor_animate_in_insert_mode=0
 " let g:neovide_cursor_animation_length=0.1
+
+function! TermWrapperStrategy(cmd)
+  call v:lua.require('termwrapper').send_or_toggle(a:cmd)
+endfunction
+
+let g:test#custom_strategies = {'termwrapper': function('TermWrapperStrategy')}
+let g:test#strategy = 'termwrapper'
+
 " }}}
 endif

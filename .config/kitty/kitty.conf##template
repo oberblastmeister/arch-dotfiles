@@ -36,7 +36,7 @@ allow_remote_control yes
 
 {% if yadm.class == "Desktop" %}
 
-font_size 12
+font_size 11
 
 {% else %}
 

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+yay -Slq | sk -m --preview 'bat --paging=never <(aura -Ai {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S

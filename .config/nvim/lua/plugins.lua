@@ -141,20 +141,26 @@ return require("packer").startup(
     -- indent lines
     use {
       "Yggdroot/indentLine",
-      config = function()
-        -- remove on terminal files and dashboard
-        vim.g.indentLine_fileTypeExclude = {"dashboard", ""}
-      end
+      config = function() require'config/indent_line'.setup() end
     }
 
-    use "romgrk/barbar.nvim"
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      branch = "lua",
+    }
+
+    use {
+      "romgrk/barbar.nvim",
+      cond = function()
+        return vim.fn.exists('g:started_by_firenvim') == 0
+      end
+    }
 
     use {
       "tjdevries/express_line.nvim",
       config = function()
         require "config/express_line".start()
       end,
-      disable = false
     }
 
     -- colorize hex codes
@@ -212,7 +218,7 @@ return require("packer").startup(
     }
 
     -- lsp status wrapper
-    use "nvim-lua/lsp-status.nvim"
+    use {"nvim-lua/lsp-status.nvim", disable = true}
 
     -- lsp inlay hints
     use {
@@ -311,6 +317,8 @@ return require("packer").startup(
         require "config/fzf".setup()
       end
     }
+
+    use {'lotabout/skim.vim', disable = true}
 
     ----------------------------- Testing -------------------------------------
     use {
@@ -522,14 +530,7 @@ return require("packer").startup(
         vim.g.polyglot_disabled = {"markdown", "latex", "pest", "lua", "lalrpop"}
         vim.g.python_highlight_space_errors = 0
         require'filetypes/haskell'.setup()
-      end
-    }
-
-    use {
-      'neovimhaskell/haskell-vim',
-      ft = 'haskell',
-      disable = true,
-      config = function() require'filetypes/haskell'.setup() end,
+      end,
     }
 
     use "euclidianAce/BetterLua.vim"
@@ -599,9 +600,13 @@ return require("packer").startup(
       "mhartington/formatter.nvim",
       config = function()
         require "config/formatter".setup()
-      end
+      end,
+      cmd = "Format",
     }
 
-    use "romgrk/searchReplace.vim"
+    use {
+      "romgrk/searchReplace.vim",
+      cmd = "Search",
+    }
   end
 )

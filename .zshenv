@@ -27,7 +27,6 @@ path+=(
     ~/.local/bin
     $GOPATH/bin
     ~/.luarocks/bin
-    ./node_modules/.bin
 )
 # export to subprocesses
 export PATH
@@ -59,6 +58,14 @@ export FZF_DEFAULT_OPTS="
 export FZF_COMPLETION_OPTS="--layout=reverse --inline-info"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 --theme=gruvbox {}'"
 export FZF_ALT_C_OPTS="--preview 'exa --level 3 --tree --color=always --group-directories-first --icons {} | head -50'"
+
+# sk
+export SKIM_DEFAULT_COMMAND="fd --type file --follow --color=always"
+# export SKIM_DEFAULT_OPTS="--ansi"
+# export SKIM_DEFAULT_OPTS="
+# --layout=reverse --inline-info --ansi
+# --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+# --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54,border:#928374"
 
 # bat
 export BAT_THEME="gruvbox"

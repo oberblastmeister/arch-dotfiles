@@ -43,7 +43,7 @@ local function setup()
     create = 'a',
     remove = 'D',
     rename = 'r',
-    cut = 'd',
+    cut = 'x',
     copy = 'y',
     paste = 'p',
     prev_git_item = '[c',

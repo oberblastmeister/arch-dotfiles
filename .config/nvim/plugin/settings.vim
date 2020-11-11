@@ -84,4 +84,13 @@ if exists('g:started_by_firenvim')
     set laststatus=0 noruler noshowcmd
     set showtabline=0
     set guifont=FiraCode\ Nerd\ Font:h10:style=Retina
+
+    augroup Firenvim
+      au!
+      au BufEnter github.com_*.txt set filetype=markdown
+    augroup END
+
+    let fc = g:firenvim_config['localSettings']
+    let fc['https://www\.spanishdict\.com.*'] = { 'takeover': 'never', 'priority': 1 }
+    let fc['https://docs\.google\.com.*'] = { 'takeover': 'never', 'priority': 1 }
 endif

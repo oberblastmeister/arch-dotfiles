@@ -12,6 +12,7 @@ application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 image/gif=org.gnome.gThumb.desktop;
+application/pdf=org.gnome.Nautilus.desktop;
 
 [Default Applications]
 application/json=nvim.desktop;

@@ -56,3 +56,6 @@ mouse:
 
 env:
   TERM: xterm-256color
+
+cursor:
+  thickness: 0.17

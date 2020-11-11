@@ -1,6 +1,7 @@
 local nvim_lsp = require('nvim_lsp')
 local nvim_lsp_configs = require('nvim_lsp/configs')
 local diagnostic = require('diagnostic')
+local settings = require('settings')
 -- local lsp_status = require('lsp-status')
 
 local utils = require('utils')
@@ -77,7 +78,56 @@ function M.setup()
 
   -- vim.cmd [[autocmd Lsp BufEnter * lua print('num_clients: ', vim.tbl_count(vim.lsp.buf_get_clients(0)))]]
 
-  nvim_lsp.pyls.setup {on_attach = custom_on_attach}
+  if settings.python_lsp == PythonLsp.pyls then
+    nvim_lsp.pyls.setup {
+      on_attach = custom_on_attach,
+      settings = {
+        pyls = {
+          configurationSources = {"pycodestyle", "pyflakes"},
+          plugins = {
+            jedi_completion = {
+              enabled = true,
+              fuzzy = false,
+            },
+            mccabe = {
+              enabled = true
+            },
+            pycodestyle = {
+              enabled = true
+            },
+            pydocstyle = {
+              enabled = true
+            },
+            pyflakes = {
+              enabled = true
+            },
+            pylint = {
+              enabled = false
+            },
+            rope_completion = {
+              enabled = true
+            },
+            yapf = {
+              enabled = true
+            },
+            -- mypy type checking
+            pyls_mypy = {
+              enabled = true,
+              live_mode = true,
+            }
+          }
+        }
+      }
+    }
+  elseif settings.python_lsp == PythonLsp.pyls_ms then
+
+    nvim_lsp.pyls_ms.setup {on_attach = custom_on_attach}
+
+  elseif settings.python_lsp == PythonLsp.jedi_language_server then
+
+    nvim_lsp.jedi_language_server.setup{on_attach = custom_on_attach}
+
+  end
 
   nvim_lsp.vimls.setup {on_attach = custom_on_attach}
 

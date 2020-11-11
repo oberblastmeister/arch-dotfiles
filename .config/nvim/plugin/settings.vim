@@ -78,7 +78,7 @@ set spellfile=$HOME/Sync/vim/spell/en_us.utf-8.add
 " }}}
 
 " Firenvim specific settings
-if exists('g:started_by_firenvim') && g:started_by_firenvim
+if exists('g:started_by_firenvim')
     " general options
     set signcolumn=no
     set laststatus=0 noruler noshowcmd

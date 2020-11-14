@@ -146,6 +146,7 @@ return require("packer").startup(
 
     use {
       "lukas-reineke/indent-blankline.nvim",
+      branch = "lua",
     }
 
     use {
@@ -524,12 +525,7 @@ return require("packer").startup(
     -- syntax highlighting pack
     use {
       "sheerun/vim-polyglot",
-      -- disable on some filetypes where there are other plugins running
-      setup = function()
-        vim.g.polyglot_disabled = {"markdown", "latex", "pest", "lua", "lalrpop"}
-        vim.g.python_highlight_space_errors = 0
-        require'filetypes/haskell'.setup()
-      end,
+      setup = function() require'config/polyglot'.setup() end,
     }
 
     use "euclidianAce/BetterLua.vim"

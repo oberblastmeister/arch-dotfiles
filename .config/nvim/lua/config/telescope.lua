@@ -60,4 +60,23 @@ function M.dotfiles(opts)
   }):find()
 end
 
+function M.cargo_search(opts)
+  opts = opts or {}
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts)
+
+  local live_search = finders.new_job(function(prompt)
+      return {'cargo', 'search'}
+    end,
+    opts.entry_maker,
+    opts.max_results
+  )
+
+  pickers.new(opts, {
+    prompt_title = 'Live cargo search',
+    finder = live_search,
+    previewer = nil,
+    sorter = conf.generic_sorter(opts),
+  }):find()
+end
+
 return M

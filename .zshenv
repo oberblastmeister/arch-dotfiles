@@ -76,3 +76,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 
 # change default config path for starship (~/.config/starship.toml)
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
+# xmonad
+export XMONAD_CONFIG_HOME="$XDG_CONFIG_HOME/xmonad"
+export XMONAD_DATA_HOME="$XDG_DATA_HOME/xmonad"
+export XMONAD_CACHE_HOME="$XDG_CACHE_HOME/xmonad"

@@ -52,14 +52,6 @@ end
 
 local function custom_on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
-  -- lsp_status.on_attach(client, bufnr)
-  -- print('attached')
-  -- print('client:')
-  -- dump(client)
-  -- print('root dir:', client.config.root_dir)
-  -- print('client:')
-  -- dump(client)
-  -- print('bufnr:', bufnr)
   M.setup_keymappings()
   M.setup_commands()
 
@@ -69,6 +61,18 @@ local function custom_on_attach(client, bufnr)
 
   -- auto diagnostic popup
   -- vim.cmd [[autocmd Lsp CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
+end
+
+-- debugs information from lsp client
+local function debug_client(client, bufnr)
+  -- lsp_status.on_attach(client, bufnr)
+  -- print('attached')
+  -- print('client:')
+  -- dump(client)
+  -- print('root dir:', client.config.root_dir)
+  -- print('client:')
+  -- dump(client)
+  -- print('bufnr:', bufnr)
 end
 
 function M.setup()
@@ -187,6 +191,7 @@ function M.setup()
 
   nvim_lsp.hls.setup {
     on_attach = custom_on_attach,
+    -- root_dir = nvim_lsp.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git", "xmonad.hs");
     root_dir = nvim_lsp.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
   }
 

@@ -125,4 +125,12 @@ function enum(tbl)
     return tbl
 end
 
+do
+  local counter = 0
+  M.counter_scroll = function()
+    print("The counter is", counter)
+    counter = counter + 1
+  end
+end
+
 return M

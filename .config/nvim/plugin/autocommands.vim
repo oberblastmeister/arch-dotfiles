@@ -29,6 +29,8 @@ augroup settings
   autocmd FileType vista,vista_kind nnoremap <buffer> <silent> / :<c-u>call vista#finder#fzf#Run()<CR>
   " autocmd VimEnter * call SetupLightlineColors()
 
+  " autocmd WinScrolled * lua require'utils'.counter_scroll()
+
 augroup end
 
 augroup nostatusline

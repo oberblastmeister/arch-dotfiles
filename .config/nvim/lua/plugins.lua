@@ -289,7 +289,7 @@ return require("packer").startup(
     use "nvim-treesitter/nvim-treesitter-textobjects"
 
     -- TODO: Report bug, this does really wierd things with scrolling side to side <13-11-20, Brian> --
-    use {"romgrk/nvim-treesitter-context", disable = true}
+    use {"romgrk/nvim-treesitter-context"}
 
     use {
       "nvim-treesitter/playground",

@@ -146,6 +146,7 @@ return require("packer").startup(
 
     use {
       "lukas-reineke/indent-blankline.nvim",
+      branch = "lua",
     }
 
     use {
@@ -204,7 +205,7 @@ return require("packer").startup(
         },
         "honza/vim-snippets",
         "hrsh7th/vim-vsnip",
-        "hrsh7th/vim-vsnip-integ"
+        "hrsh7th/vim-vsnip-integ",
       }
     }
 
@@ -268,7 +269,8 @@ return require("packer").startup(
       config = function()
         require "config/ale".config()
         vim.cmd [[ALEDisable]]
-      end
+      end,
+      disable = true,
     }
 
     ----------------------------- Treesitter ----------------------------
@@ -286,7 +288,8 @@ return require("packer").startup(
 
     use "nvim-treesitter/nvim-treesitter-textobjects"
 
-    use "romgrk/nvim-treesitter-context"
+    -- TODO: Report bug, this does really wierd things with scrolling side to side <13-11-20, Brian> --
+    use {"romgrk/nvim-treesitter-context", disable = true}
 
     use {
       "nvim-treesitter/playground",
@@ -341,13 +344,6 @@ return require("packer").startup(
 
     use "tpope/vim-repeat"
 
-    use {
-      "AndrewRadev/switch.vim",
-      config = function()
-        require "config/switch".setup()
-      end
-    }
-
     use "junegunn/vim-easy-align"
 
     use "tommcdo/vim-exchange"
@@ -362,7 +358,7 @@ return require("packer").startup(
     use {"mbbill/undotree", cmd = "UndotreeToggle"}
 
     -- indent aware pasting
-    use "sickill/vim-pasta"
+    -- use "sickill/vim-pasta"
 
     -- auto change to root dir
     use {
@@ -408,9 +404,6 @@ return require("packer").startup(
     }
 
     ----------------------------- Text Objects --------------------------------
-    use "kana/vim-textobj-user"
-    use "kana/vim-textobj-entire"
-    use "glts/vim-textobj-comment"
     use "wellle/targets.vim"
 
     ----------------------------- Delimiters ----------------------------------
@@ -478,7 +471,8 @@ return require("packer").startup(
       config = function()
         vim.g.iron_map_defaults = 0
         vim.g.iron_map_extended = 0
-      end
+      end,
+      disable = true,
     }
 
     ----------------------------- Notes/Writing -------------------------------
@@ -532,10 +526,15 @@ return require("packer").startup(
       end,
     }
 
-    use "euclidianAce/BetterLua.vim"
+    use {
+      "euclidianAce/BetterLua.vim",
+      ft = "lua",
+    }
 
     -- markdown mode
-    use {"plasticboy/vim-markdown", ft = "markdown", disable = true}
+    use {
+      "plasticboy/vim-markdown", ft = "markdown"
+    }
 
     -- latex mode
     use {
@@ -600,6 +599,12 @@ return require("packer").startup(
       config = function()
         require "config/formatter".setup()
       end,
+      cmd = "Format",
+      disable = true,
+    }
+
+    use {
+      "lukas-reineke/format.nvim",
       cmd = "Format",
     }
 

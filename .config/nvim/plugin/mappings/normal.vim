@@ -16,7 +16,8 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 nnoremap Y y$
 
 " delete inner line (without line break)
-nnoremap dil ^D
+nmap dil ^D
+nmap dal ^D"_dd
 
 " paste without newline
 nnoremap gP i<CR><Esc>PkJxJx

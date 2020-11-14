@@ -104,5 +104,9 @@ endfunction
 let g:test#custom_strategies = {'termwrapper': function('TermWrapperStrategy')}
 let g:test#strategy = 'termwrapper'
 
+" inner entire mapping
+vnoremap <silent> ie :<C-U>normal! ggVG<CR>
+omap ie <cmd>normal vie<CR>
+
 " }}}
 endif

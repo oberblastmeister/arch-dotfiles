@@ -197,9 +197,9 @@ function M.setup()
 
   nvim_lsp.clojure_lsp.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.ccls.setup {on_attach = custom_on_attach}
+  -- nvim_lsp.ccls.setup {on_attach = custom_on_attach}
 
-  -- nvim_lsp.clangd.setup {on_attach = custom_on_attach}
+  nvim_lsp.clangd.setup {on_attach = custom_on_attach}
 end
 
 -- function M.install()

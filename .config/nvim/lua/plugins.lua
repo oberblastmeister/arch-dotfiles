@@ -34,8 +34,9 @@ end
 -- if packer_exists then
 --   vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 -- end
+local packer = require("packer")
 
-return require("packer").startup(
+return packer.startup {
   function()
     -- let packer optionally manage itself
     use {"wbthomason/packer.nvim", opt = true}
@@ -607,5 +608,10 @@ return require("packer").startup(
       "romgrk/searchReplace.vim",
       cmd = "Search",
     }
-  end
-)
+  end,
+  config = {
+    display = {
+      open_fn = require'packer/util'.float
+    }
+  }
+}

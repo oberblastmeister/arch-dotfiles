@@ -34,7 +34,8 @@ symbol = " "
 symbol = " "
 
 [java]
-symbol = " "
+# symbol = " "
+symbol = " "
 
 [julia]
 symbol = " "
@@ -46,7 +47,8 @@ symbol = " "
 symbol = " "
 
 [nix_shell]
-symbol = " "
+# symbol = " "
+symbol = " "
 
 [nodejs]
 disabled = false
@@ -72,3 +74,15 @@ symbol = " "
 
 [swift]
 symbol = "ﯣ "
+
+[lua]
+symbol = " "
+
+[env_var]
+# variable = "RUST_LOG"
+# default = ""
+
+[character]
+# success_symbol = "[➜](bold green) "
+# success_symbol = "[](bold green) "
+# error_symbol = "[➜](bold red) "

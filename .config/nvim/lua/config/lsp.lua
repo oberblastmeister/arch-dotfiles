@@ -1,5 +1,5 @@
-local nvim_lsp = require('nvim_lsp')
-local nvim_lsp_configs = require('nvim_lsp/configs')
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig/configs')
 local diagnostic = require('diagnostic')
 local settings = require('settings')
 -- local lsp_status = require('lsp-status')
@@ -83,7 +83,7 @@ function M.setup()
   -- vim.cmd [[autocmd Lsp BufEnter * lua print('num_clients: ', vim.tbl_count(vim.lsp.buf_get_clients(0)))]]
 
   if settings.python_lsp == PythonLsp.pyls then
-    nvim_lsp.pyls.setup {
+    lspconfig.pyls.setup {
       on_attach = custom_on_attach,
       settings = {
         pyls = {
@@ -125,17 +125,17 @@ function M.setup()
     }
   elseif settings.python_lsp == PythonLsp.pyls_ms then
 
-    nvim_lsp.pyls_ms.setup {on_attach = custom_on_attach}
+    lspconfig.pyls_ms.setup {on_attach = custom_on_attach}
 
   elseif settings.python_lsp == PythonLsp.jedi_language_server then
 
-    nvim_lsp.jedi_language_server.setup{on_attach = custom_on_attach}
+    lspconfig.jedi_language_server.setup{on_attach = custom_on_attach}
 
   end
 
-  nvim_lsp.vimls.setup {on_attach = custom_on_attach}
+  lspconfig.vimls.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.sumneko_lua.setup {
+  lspconfig.sumneko_lua.setup {
     on_attach = custom_on_attach,
     cmd = {"lua-language-server"},
     filetypes = {"moonscript", "lua"},
@@ -150,34 +150,34 @@ function M.setup()
     }
   }
 
-  nvim_lsp.jdtls.setup {on_attach = custom_on_attach}
+  lspconfig.jdtls.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.jsonls.setup {
+  lspconfig.jsonls.setup {
     on_attach = custom_on_attach,
     cmd = {"json-languageserver", "--stdio"},
   }
 
-  nvim_lsp.yamlls.setup {on_attach = custom_on_attach}
+  -- nvim_lsp.yamlls.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.gopls.setup {
+  lspconfig.gopls.setup {
     on_attach = custom_on_attach,
-    root_dir = nvim_lsp.util.root_pattern('go.mod', '.git', '')
+    root_dir = lspconfig.util.root_pattern('go.mod', '.git', '')
   }
 
-  nvim_lsp.texlab.setup {
+  lspconfig.texlab.setup {
     on_attach = custom_on_attach,
     filetypes = {"tex", "bib", "plaintex"},
   }
 
-  nvim_lsp.bashls.setup {on_attach = custom_on_attach}
+  lspconfig.bashls.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.html.setup {on_attach = custom_on_attach}
+  lspconfig.html.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.tsserver.setup {on_attach = custom_on_attach}
+  lspconfig.tsserver.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.cssls.setup {on_attach = custom_on_attach}
+  lspconfig.cssls.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.rust_analyzer.setup {
+  lspconfig.rust_analyzer.setup {
     on_attach = custom_on_attach,
     settings = {
       ["rust-analyzer"] = {
@@ -189,17 +189,23 @@ function M.setup()
     }
   }
 
-  nvim_lsp.hls.setup {
+  lspconfig.hls.setup {
     on_attach = custom_on_attach,
     -- root_dir = nvim_lsp.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git", "xmonad.hs");
-    root_dir = nvim_lsp.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
+    root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
+    settings = {
+      haskell = {
+        formattingProvider = "ormolu"
+        -- formattingProvider = "brittany"
+      }
+    }
   }
 
-  nvim_lsp.clojure_lsp.setup {on_attach = custom_on_attach}
+  lspconfig.clojure_lsp.setup {on_attach = custom_on_attach}
 
   -- nvim_lsp.ccls.setup {on_attach = custom_on_attach}
 
-  nvim_lsp.clangd.setup {on_attach = custom_on_attach}
+  lspconfig.clangd.setup {on_attach = custom_on_attach}
 end
 
 -- function M.install()

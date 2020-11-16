@@ -38,6 +38,23 @@ function M.setup()
     text = "○",
     texthl = "LspDiagnosticsHint"
   })
+
+end
+
+-- diagnostic-nvim deprecation
+function M.setup_new()
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with {
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = true,
+
+      virtual_text = {
+        spacing = 1,
+        prefix = ' ',
+      },
+
+      update_in_insert = false,
+    }
+  }
 end
 
 return M

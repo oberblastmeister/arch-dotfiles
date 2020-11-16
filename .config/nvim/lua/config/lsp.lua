@@ -44,6 +44,10 @@ function M.setup_keymappings()
   utils.nnoremap_buf('[g', '<cmd>PrevDiagnostic<CR>')
   utils.nnoremap_buf(']G', '<cmd>FirstDiagnostic<CR>')
   utils.nnoremap_buf('[G', '<cmd>LastDiagnostic<CR>')
+
+  -- diagnostic-nvim deprecation
+  -- utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>')
+  -- utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>')
 end
 
 function M.setup_commands()

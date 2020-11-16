@@ -162,6 +162,14 @@ return packer.startup {
       config = function()
         require "config/express_line".start()
       end,
+      disable = true,
+    }
+
+    use {
+      'glepnir/galaxyline.nvim',
+      branch = 'main',
+      -- config = function() require"config/galaxyline/spaceline".setup() end,
+      config = function() require"config/galaxyline/eviline".setup() end,
     }
 
     -- colorize hex codes

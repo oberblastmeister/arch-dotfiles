@@ -289,7 +289,7 @@ return require("packer").startup(
     use "nvim-treesitter/nvim-treesitter-textobjects"
 
     -- TODO: Report bug, this does really wierd things with scrolling side to side <13-11-20, Brian> --
-    use {"romgrk/nvim-treesitter-context"}
+    use "romgrk/nvim-treesitter-context"
 
     use {
       "nvim-treesitter/playground",
@@ -606,6 +606,12 @@ return require("packer").startup(
     use {
       "romgrk/searchReplace.vim",
       cmd = "Search",
+    }
+
+    use {
+      "romgrk/todoist.nvim",
+      run = ":TodoistInstall",
+      cmd = "Todoist",
     }
   end
 )

@@ -39,7 +39,8 @@ local function on_attach()
     default = {
       {complete_items = {'lsp', 'snippet'}},
       {complete_items = {'ts'}},
-      {complete_items = {'path'}, triggered_only = {'/'}},
+      -- {complete_items = {'path'}},
+      -- {complete_items = {'path'}, triggered_only = {'/'}},
       {complete_items = {'buffers'}},
     },
     tex = {

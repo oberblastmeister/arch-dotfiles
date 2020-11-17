@@ -210,6 +210,9 @@ function M.setup()
   -- nvim_lsp.ccls.setup {on_attach = custom_on_attach}
 
   lspconfig.clangd.setup {on_attach = custom_on_attach}
+
+  -- general purpose language server (Experimental)
+  lspconfig.efm.setup{on_attach = custom_on_attach}
 end
 
 -- function M.install()

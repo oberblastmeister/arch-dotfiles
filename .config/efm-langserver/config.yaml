@@ -144,9 +144,10 @@ languages:
   yaml:
     - <<: *yaml-yamllint
 
-  python:
-    - <<: *python-flake8
-    - <<: *python-mypy
+  # python language server already does this
+  # python:
+  #   - <<: *python-flake8
+  #   - <<: *python-mypy
 
   dockerfile:
     - <<: *dockerfile-hadolint

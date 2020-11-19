@@ -221,7 +221,8 @@ return packer.startup {
       "nvim-lua/diagnostic-nvim",
       config = function()
         require "config/diagnostic".setup()
-      end
+      end,
+      disable = true,
     }
 
     -- lsp status wrapper
@@ -621,6 +622,7 @@ return packer.startup {
       cmd = "Todoist",
     }
   end,
+
   config = {
     display = {
       open_fn = require'packer/util'.float

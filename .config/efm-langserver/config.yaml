@@ -1,11 +1,6 @@
 version: 2
 root-markers:
   - .git/
-commands:
-  - command: notepad
-    arguments:
-      - ${INPUT}
-    title: メモ帳
 
 tools:
   eruby-erb: &eruby-erb
@@ -25,7 +20,8 @@ tools:
     lint-stdin: true
 
   markdown-markdownlint: &markdown-markdownlint
-    lint-command: 'markdownlint -s -c %USERPROFILE%\.markdownlintrc'
+    # lint-command: 'markdownlint -s -c %USERPROFILE%\.markdownlintrc'
+    lint-command: 'markdownlint -s'
     lint-stdin: true
     lint-formats:
       - '%f:%l %m'
@@ -144,9 +140,10 @@ languages:
   yaml:
     - <<: *yaml-yamllint
 
-  python:
-    - <<: *python-flake8
-    - <<: *python-mypy
+  # python language server already does this
+  # python:
+  #   - <<: *python-flake8
+  #   - <<: *python-mypy
 
   dockerfile:
     - <<: *dockerfile-hadolint

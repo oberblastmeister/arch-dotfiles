@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig/configs')
--- local diagnostic = require('diagnostic')
+local diagnostic = require('diagnostic')
 local settings = require('settings')
 -- local lsp_status = require('lsp-status')
 
@@ -67,7 +67,7 @@ local function debug_client(client, bufnr)
 end
 
 local function custom_on_attach(client, bufnr)
-  -- diagnostic.on_attach(client, bufnr)
+  diagnostic.on_attach(client, bufnr)
   M.setup_keymappings()
   M.setup_commands()
 

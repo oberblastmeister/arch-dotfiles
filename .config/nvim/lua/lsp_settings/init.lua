@@ -81,8 +81,6 @@ end
 
 -- debugs information from lsp client
 function M.setup()
-  require'lsp_settings/diagnostics'.setup()
-
   -- lsp_status.register_progress()
 
   utils.augroup("Lsp")

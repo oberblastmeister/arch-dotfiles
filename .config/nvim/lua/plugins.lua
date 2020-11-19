@@ -109,7 +109,8 @@ return packer.startup {
     }
 
     local_use {
-      "termwrapper.nvim"
+      "termwrapper.nvim",
+      config = function() require"config/termwrapper".setup() end,
     }
 
     local_use {

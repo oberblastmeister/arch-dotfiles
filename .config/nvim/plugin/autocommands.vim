@@ -15,8 +15,6 @@ augroup settings
   " highlighted yank
   autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=250}
 
-  " autocmd TermOpen * startinsert
-
   autocmd User GoyoEnter nested call mappings#goyo_enter()
   autocmd User GoyoLeave nested call mappings#goyo_leave()
 

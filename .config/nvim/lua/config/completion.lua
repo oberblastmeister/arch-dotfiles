@@ -37,11 +37,11 @@ end
 local function on_attach()
   local chain_complete_list = {
     default = {
-      {complete_items = {'lsp', 'snippet'}},
-      {complete_items = {'ts'}},
+      {complete_items = {'lsp', 'snippet', 'ts', 'path', 'buffers'}},
+      -- {complete_items = {'path', 'lsp', 'snippet', 'ts', 'buffers'}},
       -- {complete_items = {'path'}},
-      -- {complete_items = {'path'}, triggered_only = {'/'}},
-      {complete_items = {'buffers'}},
+      -- {complete_items = {'buffers'}},
+      -- {complete_items = {'lsp', 'snippet'}},
     },
     tex = {
       {complete_items = {'lsp', 'vimtex'}},

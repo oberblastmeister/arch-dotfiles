@@ -193,9 +193,7 @@ return packer.startup {
     -- lsp configs
     use {
       "neovim/nvim-lspconfig",
-      config = function()
-        require "config/lsp".setup()
-      end
+      config = function() require "lsp_settings".setup() end
     }
 
     -- completion engine

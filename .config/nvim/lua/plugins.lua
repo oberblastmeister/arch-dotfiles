@@ -128,7 +128,7 @@ return packer.startup {
       "gruvbox-community/gruvbox",
       config = function()
         require "config/colorscheme".setup()
-      end
+      end,
     }
 
     use {

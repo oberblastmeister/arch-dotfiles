@@ -8,7 +8,7 @@ augroup settings
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'FloatermNew lf' argv()[0] | endif
 
-  " autocmd VimResized * wincmd =
+  autocmd VimResized * wincmd =
 
   autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 

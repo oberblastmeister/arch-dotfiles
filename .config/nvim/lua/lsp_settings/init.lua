@@ -169,7 +169,8 @@ function M.setup()
 
   lspconfig.diagnosticls.setup {
     on_attach = custom_on_attach,
-    filetypes = {"markdown", "sh", "lua"},
+    -- filetypes = {"markdown", "sh", "lua"},
+    filetypes = {"sh", "lua"},
     init_options = require"lsp_settings/diagnosticls",
   }
 

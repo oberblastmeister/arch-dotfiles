@@ -1,6 +1,6 @@
 local function setup()
   require'termwrapper'.setup {
-    log = 2,
+    log = 1,
   }
 end
 

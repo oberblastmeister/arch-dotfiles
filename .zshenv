@@ -6,7 +6,7 @@ export ZDOTDIR=$HOME/.config/zsh
 # export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export HISTFILE=~/.zsh_history
 
-export TERMINAL=kitty
+export TERMINAL=alacritty
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox

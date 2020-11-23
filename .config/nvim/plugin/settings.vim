@@ -68,7 +68,8 @@ set signcolumn=yes " always show sign column so it doesn't drift
 
 " guistuff
 " set guifont=FiraCode\ Nerd\ Font:h12:style=Retina " set guifont
-set guifont=FiraCode\ Nerd\ Font:h12
+" set guifont=FiraCode\ Nerd\ Font:h12
+" set guifont=OperatorMono\ Nerd\ Font:h18:style=Book
 
 " set default spell checking language (when spell checking is on)
 set spelllang=en_us

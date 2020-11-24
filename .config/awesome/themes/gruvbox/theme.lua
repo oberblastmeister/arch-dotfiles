@@ -55,7 +55,8 @@ local theme = {}
 theme.name = "gruvbox"
 
 theme.dir = os.getenv("HOME") .. "/.config/awesome/themes/gruvbox"
-theme.wallpaper = theme.dir .. "/wallpapers/monocolor.png"
+-- theme.wallpaper = theme.dir .. "/wallpapers/monocolor.png"
+theme.wallpaper = theme.dir .. "/wallpapers/forest.jpg"
 
 local font_name                                 = "FiraCode Nerd Font"
 -- local font_name                                 = "Sauce Code Pro"
@@ -130,8 +131,9 @@ theme.prompt_bg                                 = colors.bw_0
 theme.prompt_fg                                 = theme.fg_normal
 theme.bg_systray                                = colors.bw_0
 
-theme.border                                    = 4
-theme.border_width                              = 4
+theme.border                                    = 0
+-- theme.border_width                              = 4
+theme.border_width                              = 0
 theme.border_radius                             = 0
 theme.fullscreen_hide_border                    = true
 theme.maximized_hide_border                     = true

@@ -52,6 +52,7 @@ run redshift-gtk
 run syncthing-gtk -m
 run greenclip daemon
 run mailspring --background
+run unclutter --timeout 4
 ~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 configs &
 setupxob &

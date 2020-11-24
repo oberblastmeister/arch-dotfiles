@@ -132,8 +132,8 @@ theme.prompt_fg                                 = theme.fg_normal
 theme.bg_systray                                = colors.bw_0
 
 theme.border                                    = 0
--- theme.border_width                              = 4
-theme.border_width                              = 0
+theme.border_width                              = 4
+-- theme.border_width                              = 0
 theme.border_radius                             = 0
 theme.fullscreen_hide_border                    = true
 theme.maximized_hide_border                     = true

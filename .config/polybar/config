@@ -22,8 +22,8 @@ margin-bottom = 0
 [colors]
 
 background = #282828
-color1 = #b8bb26
-color2 = #98971a
+color2 = #b8bb26
+color1 = #98971a
 color3 = #8ec07c
 
 ;  _                    
@@ -39,8 +39,10 @@ font-2=FontAwesome5Free:style=Solid:size=9:antialias=true;3
 font-3=IPAGothic:style=Regular:size=11:antialias=true;3
 
 
-height = 45
+; height = 45
+height = 4.2%
 radius = 20
+; radius = 10
 ;Works very well with a ;radius like this! Put it on every bar.
 
 background = ${colors.background}

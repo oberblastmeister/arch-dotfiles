@@ -540,82 +540,82 @@ function theme.at_screen_connect(s)
   awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
   -- Create a promptbox for each screen
-  s.mypromptbox = awful.widget.prompt()
-  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-  -- We need one layoutbox per screen.
-  s.mylayoutbox = awful.widget.layoutbox(s)
-  s.mylayoutbox:buttons(
-  gears.table.join(
-  awful.button({ }, 1, function () awful.layout.inc( 1) end),
-  awful.button({ }, 3, function () awful.layout.inc(-1) end),
-  awful.button({ }, 4, function () awful.layout.inc( 1) end),
-  awful.button({ }, 5, function () awful.layout.inc(-1) end)
-  )
-  )
-  -- Create a taglist widget
-  s.mytaglist = awful.widget.taglist {
-    screen  = s,
-    filter  = awful.widget.taglist.filter.all,
-    buttons = taglist_buttons
-  }
+  -- s.mypromptbox = awful.widget.prompt()
+  -- -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+  -- -- We need one layoutbox per screen.
+  -- s.mylayoutbox = awful.widget.layoutbox(s)
+  -- s.mylayoutbox:buttons(
+  -- gears.table.join(
+  -- awful.button({ }, 1, function () awful.layout.inc( 1) end),
+  -- awful.button({ }, 3, function () awful.layout.inc(-1) end),
+  -- awful.button({ }, 4, function () awful.layout.inc( 1) end),
+  -- awful.button({ }, 5, function () awful.layout.inc(-1) end)
+  -- )
+  -- )
+  -- -- Create a taglist widget
+  -- s.mytaglist = awful.widget.taglist {
+  --   screen  = s,
+  --   filter  = awful.widget.taglist.filter.all,
+  --   buttons = taglist_buttons
+  -- }
 
-  -- Create a tasklist widget
-  s.mytasklist = awful.widget.tasklist {
-    screen  = s,
-    filter  = awful.widget.tasklist.filter.currenttags,
-    buttons = tasklist_buttons,
-    bg_focus = theme.tasklist_bg_focus,
-    shape = function(cr, width, height)
-      gears.shape.rounded_rect(cr, width, height, theme.border_radius or 0)
-    end,
-  }
+  -- -- Create a tasklist widget
+  -- s.mytasklist = awful.widget.tasklist {
+  --   screen  = s,
+  --   filter  = awful.widget.tasklist.filter.currenttags,
+  --   buttons = tasklist_buttons,
+  --   bg_focus = theme.tasklist_bg_focus,
+  --   shape = function(cr, width, height)
+  --     gears.shape.rounded_rect(cr, width, height, theme.border_radius or 0)
+  --   end,
+  -- }
 
-  -- Create the wibox
-  s.mywibox = awful.wibar {
-    position = "top",
-    screen = s,
-    -- border_width = theme.border_width,
-    -- border_color = theme.border_normal,
-    height = bar_height,
-    fg = bar_fg,
-    bg = bar_bg,
-  }
+  -- -- Create the wibox
+  -- s.mywibox = awful.wibar {
+  --   position = "top",
+  --   screen = s,
+  --   -- border_width = theme.border_width,
+  --   -- border_color = theme.border_normal,
+  --   height = bar_height,
+  --   fg = bar_fg,
+  --   bg = bar_bg,
+  -- }
 
-  -- Add widgets to the wibox
-  s.mywibox:setup {
-    layout = wibox.layout.align.horizontal,
-    { -- Left widgets
-      layout = wibox.layout.fixed.horizontal,
-      s.mylayoutbox,
-      mylauncher,
-      s.mytaglist,
-      space,
-      s.mypromptbox,
-      space,
-    },
-    s.mytasklist, -- Middle widget
-    { -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
-      memicon,
-      mem.widget,
-      cpuicon,
-      cpu.widget,
-      baticon,
-      bat.widget,
-      tempicon,
-      temp.widget,
-      fsicon,
-      theme.fs.widget,
-      mykeyboardlayout,
-      space,
-      vert_sep,
-      space,
-      wibox.widget.systray(),
-      space,
-      vert_sep,
-      mytextclock,
-    },
-  }
+  -- -- Add widgets to the wibox
+  -- s.mywibox:setup {
+  --   layout = wibox.layout.align.horizontal,
+  --   { -- Left widgets
+  --     layout = wibox.layout.fixed.horizontal,
+  --     s.mylayoutbox,
+  --     mylauncher,
+  --     s.mytaglist,
+  --     space,
+  --     s.mypromptbox,
+  --     space,
+  --   },
+  --   s.mytasklist, -- Middle widget
+  --   { -- Right widgets
+  --     layout = wibox.layout.fixed.horizontal,
+  --     memicon,
+  --     mem.widget,
+  --     cpuicon,
+  --     cpu.widget,
+  --     baticon,
+  --     bat.widget,
+  --     tempicon,
+  --     temp.widget,
+  --     fsicon,
+  --     theme.fs.widget,
+  --     mykeyboardlayout,
+  --     space,
+  --     vert_sep,
+  --     space,
+  --     wibox.widget.systray(),
+  --     space,
+  --     vert_sep,
+  --     mytextclock,
+  --   },
+  -- }
 end
 -- }}}
 

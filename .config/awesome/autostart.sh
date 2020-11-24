@@ -40,6 +40,7 @@ setupxob() {
 laptopconfigs &
 
 # run xsettingsd
+run polybar-launch.sh
 run picom
 run redshift
 run xfce4-power-manager

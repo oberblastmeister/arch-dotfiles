@@ -106,7 +106,7 @@ function M.setup()
 
   lspconfig.sumneko_lua.setup {
     on_attach = custom_on_attach,
-    cmd = {"lua-language-server"},
+    -- cmd = {"lua-language-server"},
     settings = {
       Lua = {
         diagnostics = {

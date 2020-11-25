@@ -53,6 +53,7 @@ run redshift-gtk
 run syncthing-gtk -m
 run greenclip daemon
 run mailspring --background
+run ~/.config/polybar/launch.sh
 ~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 configs &
 setupxob &

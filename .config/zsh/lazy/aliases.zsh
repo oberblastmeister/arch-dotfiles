@@ -47,6 +47,7 @@ alias top='btm'
 
 alias chtsh='cht --shell'
 alias mopen='mimeopen &>/dev/null'
+alias open='handlr open'
 alias icat="kitty +kitten icat"
 
 alias mutt='neomutt'

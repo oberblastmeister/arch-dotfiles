@@ -30,6 +30,7 @@ image/jpg=sxiv.desktop;
 image/pjpeg=sxiv.desktop;
 image/png=sxiv.desktop;
 text/html=firefox.desktop;
+text/markdown=nvim.desktop;
 text/vim=nvim.desktop;
 video/webm=mpv.desktop;
 x-scheme-handler/chrome=firefox.desktop;

@@ -38,8 +38,8 @@ function M.setup_keymappings()
   -- show diagnostic
   utils.nnoremap_buf('<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
 
-  utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>')
-  utils.nnoremap_buf('[g', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>')
+  utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  utils.nnoremap_buf('[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 end
 
 function M.setup_commands()

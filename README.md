@@ -12,7 +12,6 @@ This command downloads yadm and places it in your PATH. Yadm clone is the same a
 ```sh
 sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm && yadm clone https://github.com/oberblastmeister/dotfiles.git
 ```
-
 ```sh
 curl -fL https://raw.githubusercontent.com/oberblastmeister/dotfiles-install/master/install | sh
 ```

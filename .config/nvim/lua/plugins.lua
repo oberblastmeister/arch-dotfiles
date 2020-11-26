@@ -209,7 +209,8 @@ return packer.startup {
           "SirVer/ultisnips",
           config = function()
             require "config/ultisnips".setup()
-          end
+          end,
+          disable = true,
         },
         "honza/vim-snippets",
         "hrsh7th/vim-vsnip",

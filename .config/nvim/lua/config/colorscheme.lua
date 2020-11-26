@@ -23,21 +23,22 @@ function M.setup_gruvbox()
   utils.hi_link("TSInclude", "GruvboxRed") -- original is GruvboxAqua
   utils.hi_link("TSInclude", "GruvboxRed") -- original is GruvboxAqua
 
-  utils.hi_link("LspDiagnosticsError", "GruvboxRed")
-  utils.hi_link("LspDiagnosticsErrorSign", "GruvboxRed")
-  utils.hi_link("LspDiagnosticsErrorFloating", "GruvboxRed")
+  utils.hi_link("LspDiagnosticsDefaultError", "GruvboxRed")
+  utils.hi_link("LspDiagnosticsDefaultWarning", "GruvboxOrange")
+  utils.hi_link("LspDiagnosticsDefaultHint", "GruvboxAqua")
+  utils.hi_link("LspDiagnosticsDefaultInfo", "GruvboxBlue")
 
-  utils.hi_link("LspDiagnosticsWarning", "GruvboxOrange")
-  utils.hi_link("LspDiagnosticsWarningSign", "GruvboxOrange")
-  utils.hi_link("LspDiagnosticsWarningFloating", "GruvboxOrange")
+  -- utils.hi_link("LspDiagnosticsWarning", "GruvboxOrange")
+  -- utils.hi_link("LspDiagnosticsWarningSign", "GruvboxOrange")
+  -- utils.hi_link("LspDiagnosticsWarningFloating", "GruvboxOrange")
 
-  utils.hi_link("LspDiagnosticsInformation", "GruvboxYellow")
-  utils.hi_link("LspDiagnosticsInformationSign", "GruvboxYellow")
-  utils.hi_link("LspDiagnosticsInformationFloating", "GruvboxYellow")
+  -- utils.hi_link("LspDiagnosticsInformation", "GruvboxYellow")
+  -- utils.hi_link("LspDiagnosticsInformationSign", "GruvboxYellow")
+  -- utils.hi_link("LspDiagnosticsInformationFloating", "GruvboxYellow")
 
-  utils.hi_link("LspDiagnosticsHint", "GruvboxBlue")
-  utils.hi_link("LspDiagnosticsHintSign", "GruvboxBlue")
-  utils.hi_link("LspDiagnosticsHintFloating", "GruvboxBlue")
+  -- utils.hi_link("LspDiagnosticsHint", "GruvboxBlue")
+  -- utils.hi_link("LspDiagnosticsHintSign", "GruvboxBlue")
+  -- utils.hi_link("LspDiagnosticsHintFloating", "GruvboxBlue")
 
   utils.hi_link("LuaTreeIndentMarker", "GruvboxFg2")
 end

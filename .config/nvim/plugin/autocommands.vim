@@ -8,14 +8,12 @@ augroup settings
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'FloatermNew lf' argv()[0] | endif
 
-  " autocmd VimResized * wincmd =
+  autocmd VimResized * wincmd =
 
   autocmd BufNewFile,BufRead * if empty(&filetype) | execute 'IndentLinesToggle'
 
   " highlighted yank
   autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="Visual", timeout=250}
-
-  " autocmd TermOpen * startinsert
 
   autocmd User GoyoEnter nested call mappings#goyo_enter()
   autocmd User GoyoLeave nested call mappings#goyo_leave()

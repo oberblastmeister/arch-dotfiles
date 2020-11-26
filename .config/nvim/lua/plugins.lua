@@ -109,7 +109,8 @@ return packer.startup {
     }
 
     local_use {
-      "termwrapper.nvim"
+      "termwrapper.nvim",
+      config = function() require"config/termwrapper".setup() end,
     }
 
     local_use {
@@ -127,7 +128,7 @@ return packer.startup {
       "gruvbox-community/gruvbox",
       config = function()
         require "config/colorscheme".setup()
-      end
+      end,
     }
 
     use {

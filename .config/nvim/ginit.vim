@@ -3,5 +3,6 @@
 " endif
 
 Guifont! FiraCode Nerd Font:h12
+" Guifont! OperatorMono Nerd Font:h12:style=Book
 GuiTabline 0
 GuiPopupmenu 0

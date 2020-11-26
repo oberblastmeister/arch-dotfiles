@@ -11,6 +11,20 @@ local utils = require('utils')
 local M = {}
 
 function M.setup()
+  dropdown_theme = require('telescope.themes').get_dropdown({
+    results_height = 20;
+    winblend = 20;
+    width = 0.8;
+    prompt_title = '';
+    prompt_prefix = 'Files>';
+    previewer = false;
+    borderchars = {
+      prompt = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
+      results = {' ', '▐', '▄', '▌', '▌', '▐', '▟', '▙' };
+      preview = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
+    };
+  })
+
   -- lsp stuff
   utils.nnoremap('<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]])
   utils.nnoremap('<leader>fw', [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>]])
@@ -32,8 +46,13 @@ function M.setup()
   utils.nnoremap('<leader>fM', [[<cmd>lua require'telescope.builtin'.man_pages(require('telescope.themes').get_dropdown())<CR>]])
   utils.nnoremap('<leader>fg', [[<cmd>lua require'telescope.builtin'.git_files{}<CR>]])
   utils.nnoremap('<leader>fu', [[<cmd>lua require'telescope.builtin'.oldfiles{}<CR>]])
-  utils.nnoremap('<leader>fb', [[<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown())<CR>]])
-  utils.nnoremap('<leader>fc', [[<cmd>lua require'telescope.builtin'.commands(require('telescope.themes').get_dropdown())<CR>]])
+  utils.nnoremap('<C-S-P>', [[<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown())<CR>]])
+  utils.nnoremap('<leader>:', [[<cmd>lua require'telescope.builtin'.commands(require('telescope.themes').get_dropdown())<CR>]])
+
+  -- git
+  utils.nnoremap('<leader>fs', [[<cmd>lua require'telescope.builtin'.git_status{}<CR>]])
+  utils.nnoremap('<leader>fb', [[<cmd>lua require'telescope.builtin'.git_branches{}<CR>]])
+  utils.nnoremap('<leader>fc', [[<cmd>lua require'telescope.builtin'.git_commits{}<CR>]])
 
   -- custom
   utils.nnoremap('<leader>.', [[<cmd>lua require'config/telescope'.dotfiles()<CR>]])

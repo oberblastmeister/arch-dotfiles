@@ -1,11 +1,13 @@
 {
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-    "editor.fontFamily": "'FiraCode Nerd Font'",
+    "editor.fontFamily": "'OperatorMono Nerd Font'",
     "editor.fontLigatures": true,
     "workbench.colorTheme": "Gruvbox Dark Medium",
     "gruvboxMaterial.darkPalette": "mix",
     "workbench.list.automaticKeyboardNavigation": false,
     "editor.lineNumbers": "relative",
     "editor.smoothScrolling": true,
-    "workbench.list.smoothScrolling": true
+    "workbench.list.smoothScrolling": true,
+    "editor.fontWeight": "book",
+    "editor.fontSize": 16
 }

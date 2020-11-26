@@ -165,6 +165,11 @@ local function setup()
     awful.key({ modkey,           }, "Return", function()
       awful.spawn.with_shell("$TERMINAL -e tmux")
     end,
+    {description = "open a terminal with tmux", group = "launcher"}),
+
+    awful.key({ modkey, "Shift"   }, "Return", function()
+      awful.spawn.with_shell("$TERMINAL")
+    end,
     {description = "open a terminal", group = "launcher"}),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart,

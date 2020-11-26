@@ -92,3 +92,11 @@ env:
 
 cursor:
   thickness: 0.17
+
+key_bindings:
+  - { key: PageUp,                    action: ScrollPageUp                 }
+  - { key: PageDown,                  action: ScrollPageDown               }
+  # - { key: U,      mods: Control,       mode: Vi, action: ScrollHalfPageUp        }
+  # - { key: D,      mods: Control,       mode: Vi, action: ScrollHalfPageDown      }
+  # - { key: U,      mods: Control,       mode: Vi, action: ScrollPageUp        }
+  # - { key: D,      mods: Control,       mode: Vi, action: ScrollPageDown      }

@@ -1,6 +1,5 @@
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig/configs')
-local diagnostic = require('diagnostic')
 local settings = require('settings')
 -- local lsp_status = require('lsp-status')
 
@@ -37,17 +36,10 @@ function M.setup_keymappings()
   utils.nnoremap_buf('<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
 
   -- show diagnostic
-  utils.nnoremap_buf('<leader>e', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+  utils.nnoremap_buf('<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
 
-  -- navigate diagnostics
-  utils.nnoremap_buf(']g', '<cmd>NextDiagnostic<CR>')
-  utils.nnoremap_buf('[g', '<cmd>PrevDiagnostic<CR>')
-  utils.nnoremap_buf(']G', '<cmd>FirstDiagnostic<CR>')
-  utils.nnoremap_buf('[G', '<cmd>LastDiagnostic<CR>')
-
-  -- diagnostic-nvim deprecation
-  -- utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>')
-  -- utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>')
+  utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>')
+  utils.nnoremap_buf('[g', '<cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>')
 end
 
 function M.setup_commands()
@@ -67,7 +59,7 @@ local function debug_client(client, bufnr)
 end
 
 local function custom_on_attach(client, bufnr)
-  diagnostic.on_attach(client, bufnr)
+  -- diagnostic.on_attach(client, bufnr)
   M.setup_keymappings()
   M.setup_commands()
 
@@ -79,9 +71,28 @@ local function custom_on_attach(client, bufnr)
   -- vim.cmd [[autocmd Lsp CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
 end
 
+function setup_diagnostics()
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = true,
+
+      virtual_text = true,
+
+      signs = false,
+
+      virtual_text = {
+        spacing = 1,
+        prefix = ' ',
+      },
+
+      update_in_insert = true,
+    }
+  )
+end
+
 -- debugs information from lsp client
 function M.setup()
-  -- lsp_status.register_progress()
+  setup_diagnostics()
 
   utils.augroup("Lsp")
 
@@ -106,16 +117,8 @@ function M.setup()
 
   lspconfig.sumneko_lua.setup {
     on_attach = custom_on_attach,
-    cmd = {"lua-language-server"},
-    settings = {
-      Lua = {
-        diagnostics = {
-          disable = {
-            "lowercase-global"
-          }
-        }
-      }
-    }
+    -- cmd = {"lua-language-server"},
+    settings = require'lsp_settings/sumneko_lua'
   }
 
   lspconfig.jdtls.setup {on_attach = custom_on_attach}
@@ -125,7 +128,7 @@ function M.setup()
     cmd = {"json-languageserver", "--stdio"},
   }
 
-  -- nvim_lsp.yamlls.setup {on_attach = custom_on_attach}
+  -- lspconfig.yamlls.setup {on_attach = custom_on_attach}
 
   lspconfig.gopls.setup {
     on_attach = custom_on_attach,
@@ -153,12 +156,7 @@ function M.setup()
   lspconfig.hls.setup {
     on_attach = custom_on_attach,
     root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
-    settings = {
-      haskell = {
-        formattingProvider = "ormolu"
-        -- formattingProvider = "brittany"
-      }
-    }
+    settings = require'lsp_settings/hls',
   }
 
   lspconfig.clojure_lsp.setup {on_attach = custom_on_attach}

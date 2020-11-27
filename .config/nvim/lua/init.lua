@@ -1,5 +1,7 @@
 local utils = require('utils')
 
+utils.disable_distribution_plugins()
+
 -- packer throws error if is not on
 vim.o.termguicolors = true
 

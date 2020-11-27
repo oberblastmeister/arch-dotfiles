@@ -121,6 +121,12 @@ return packer.startup {
       "zoom.nvim"
     }
 
+    local_use {
+      "autopairs.nvim",
+      config = function() require'config/autopairs'.setup() end,
+      disable = true,
+    }
+
     ----------------------------- Looks --------------------------------------
     use "tjdevries/colorbuddy.nvim"
 
@@ -422,7 +428,10 @@ return packer.startup {
       end
     }
 
-    use "jiangmiao/auto-pairs"
+    use {
+      "jiangmiao/auto-pairs",
+      disable = false,
+    }
 
     use {
       "andymass/vim-matchup",

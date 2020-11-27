@@ -25,6 +25,9 @@ function M.setup()
     };
   })
 
+  -- general
+  utils.nnoremap('<leader>ff', [[<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown())<CR>]])
+
   -- lsp stuff
   utils.nnoremap('<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]])
   utils.nnoremap('<leader>fw', [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>]])
@@ -46,7 +49,6 @@ function M.setup()
   utils.nnoremap('<leader>fM', [[<cmd>lua require'telescope.builtin'.man_pages(require('telescope.themes').get_dropdown())<CR>]])
   utils.nnoremap('<leader>fg', [[<cmd>lua require'telescope.builtin'.git_files{}<CR>]])
   utils.nnoremap('<leader>fu', [[<cmd>lua require'telescope.builtin'.oldfiles{}<CR>]])
-  utils.nnoremap('<C-S-P>', [[<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown())<CR>]])
   utils.nnoremap('<leader>:', [[<cmd>lua require'telescope.builtin'.commands(require('telescope.themes').get_dropdown())<CR>]])
 
   -- git

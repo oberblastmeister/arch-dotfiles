@@ -9,5 +9,8 @@
     "editor.smoothScrolling": true,
     "workbench.list.smoothScrolling": true,
     "editor.fontWeight": "book",
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.languageServer": "Microsoft"
 }

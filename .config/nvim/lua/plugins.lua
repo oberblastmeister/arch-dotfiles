@@ -121,6 +121,10 @@ return packer.startup {
       "zoom.nvim"
     }
 
+    local_use {
+      "autopairs.nvim"
+    }
+
     ----------------------------- Looks --------------------------------------
     use "tjdevries/colorbuddy.nvim"
 

@@ -154,4 +154,20 @@ function M.disable_distribution_plugins()
   vim.g.loaded_netrwFileHandlers = 1
 end
 
+function M.echo_node()
+  local ts_utils = require 'nvim-treesitter.ts_utils'
+  local node = ts_utils.get_node_at_cursor()
+  print(node:type())
+end
+
+local is_valid = function(node, type_patterns)
+  local node_type = node:type()
+  for _, rgx in ipairs(type_patterns) do
+    if node_type:find(rgx) then
+      return true
+    end
+  end
+  return false
+end
+
 return M

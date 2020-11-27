@@ -14,7 +14,7 @@ local function setup()
   awful.key({ modkey,    }, "q",      function (c) c:kill()                         end,
   {description = "close", group = "client"}),
 
-  awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
+  awful.key({ modkey     }, "space",  awful.client.floating.toggle                     ,
   {description = "toggle floating", group = "client"}),
 
   awful.key({ modkey }, "g", function (c) c:swap(awful.client.getmaster()) end,

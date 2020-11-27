@@ -122,7 +122,9 @@ return packer.startup {
     }
 
     local_use {
-      "autopairs.nvim"
+      "autopairs.nvim",
+      config = function() require'config/autopairs'.setup() end,
+      disable = true,
     }
 
     ----------------------------- Looks --------------------------------------
@@ -428,7 +430,10 @@ return packer.startup {
       end
     }
 
-    use "jiangmiao/auto-pairs"
+    use {
+      "jiangmiao/auto-pairs",
+      disable = false,
+    }
 
     use {
       "andymass/vim-matchup",

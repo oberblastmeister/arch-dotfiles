@@ -4,17 +4,17 @@
 " inoremap <C-d> <Del>
 
 " arrow key raplcements
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
-inoremap <C-d> <Del>
-inoremap <C-y> <C-d>
+imap <C-f> <Right>
+imap <C-b> <Left>
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-d> <Del>
+imap <C-y> <C-d>
 imap <C-h> <BS>
 
 " home and end insert mappings
-inoremap <C-a> <Esc>I
-inoremap <C-e> <End>
+imap <C-a> <Esc>I
+imap <C-e> <End>
 
 " Path completion with custom source command
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')

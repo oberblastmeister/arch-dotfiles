@@ -1,3 +1,5 @@
+local api = vim.api
+
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig/configs')
 local settings = require('settings')
@@ -9,37 +11,38 @@ local M = {}
 
 function M.setup_keymappings()
   -- goto stuff
-  utils.nnoremap_buf('gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  utils.nnoremap_buf('<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  utils.nnoremap_buf('gD', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  utils.nnoremap_buf('gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', {noremap = true})
 
-  utils.nnoremap_buf('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap = true})
 
   -- references
-  utils.nnoremap_buf('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  utils.nnoremap_buf('<leader>fr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>") -- fuzzy references
+  -- utils.nnoremap_buf('<leader>fr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", {noremap = true}) -- fuzzy references
 
   -- symbols
-  utils.nnoremap_buf('g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-  utils.nnoremap_buf('gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', {noremap = true})
 
   -- format with lsp
-  utils.nnoremap_buf('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR><cmd>echo "Formatted!"<CR>')
+  api.nvim_buf_set_keymap(0, 'n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR><cmd>echo "Formatted!"<CR>', {noremap = true})
 
   -- actions
-  utils.nnoremap_buf('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  utils.nnoremap_buf('<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', {noremap = true})
 
   -- calls
-  utils.nnoremap_buf('<leader>li', '<cmd>lua vim.lsp.buf.incoming_call()<CR>')
-  utils.nnoremap_buf('<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', '<leader>li', '<cmd>lua vim.lsp.buf.incoming_call()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'n', '<leader>lo', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>', {noremap = true})
 
   -- show diagnostic
-  utils.nnoremap_buf('<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', {noremap = true})
 
-  utils.nnoremap_buf(']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-  utils.nnoremap_buf('[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+  api.nvim_buf_set_keymap(0, 'n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', {noremap = true})
+  api.nvim_buf_set_keymap(0, 'n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', {noremap = true})
 end
 
 function M.setup_commands()
@@ -50,16 +53,15 @@ local function debug_client(client, bufnr)
   print('attached')
   print('client:')
   dump(client.config.cmd)
-  -- dump(client.cmd)
-  -- dump(client)
-  -- print('root dir:', client.config.root_dir)
-  -- print('client:')
-  -- dump(client)
-  -- print('bufnr:', bufnr)
+  dump(client.cmd)
+  dump(client)
+  print('root dir:', client.config.root_dir)
+  print('client:')
+  dump(client)
+  print('bufnr:', bufnr)
 end
 
 local function custom_on_attach(client, bufnr)
-  -- diagnostic.on_attach(client, bufnr)
   M.setup_keymappings()
   M.setup_commands()
 

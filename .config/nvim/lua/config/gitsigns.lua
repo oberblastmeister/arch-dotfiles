@@ -8,16 +8,23 @@ local function setup()
       changedelete = {hl = 'GitGutterChangeDelete', text = '┃'},
     },
     keymaps = {
-      [']h']         = '<cmd>lua require("gitsigns").next_hunk()<CR>',
-      ['[h']         = '<cmd>lua require("gitsigns").prev_hunk()<CR>',
-      ['<leader>hs'] = '<cmd>lua require("gitsigns").stage_hunk()<CR>',
-      ['<leader>hu'] = '<cmd>lua require("gitsigns").undo_stage_hunk()<CR>',
-      ['<leader>hr'] = '<cmd>lua require("gitsigns").reset_hunk()<CR>',
+      -- default keymap options
+      noremap = true,
+      buffer = true,
+
+      ['n ]h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'"},
+      ['n [h'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'"},
+
+      ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+      ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+      ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+      ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
     },
     watch_index = {
-      enabled = true,
       interval = 1000
-    }
+    },
+    sign_priority = 6,
+    status_formatter = nil, -- Use default
   }
 end
 

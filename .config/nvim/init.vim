@@ -13,7 +13,6 @@ let g:mapleader="\<Space>"
 let g:maplocalleader="\\"
 
 if exists('g:vscode')
-
   set noloadplugins
 
   " better vscode navigation
@@ -43,6 +42,17 @@ if exists('g:vscode')
 
   nnoremap <leader>o :Only<CR>
 
+  " inoremap <C-b> :call VSCodeNotify('cursorLeft')<CR>
+  " inoremap <C-f> :call VSCodeNotify('cursorRight')<CR>
+  " imap <C-b> <Left>
+  " imap <C-p> <Up>
+  " imap <C-n> <Down>
+  " imap <C-d> <Del>
+  " imap <C-y> <C-d>
+  " imap <C-h> <BS>
+
+  " imap <C-a> <Home>
+  " imap <C-e> <End>
 else
 
 lua require('init')

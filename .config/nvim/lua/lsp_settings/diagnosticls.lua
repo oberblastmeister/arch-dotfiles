@@ -159,6 +159,29 @@ return {
       }
     },
 
+    -- cppcheck = {
+    --   command = "cppcheck",
+    --   args = {"%file"},
+    --   debounce = 100,
+    --   isStderr = true,
+    --   isStdout = false,
+    --   offsetLine = 0,
+    --   offsetColumn = 0,
+    --   formatPattern = {
+    --     "^[^:]+:(\\d+):(\\d+):\\s+([^:]+)\\s([^:])$"
+    --     {
+    --       line = 1,
+    --       column = 2,
+    --       security = 3,
+    --       message = 4,
+    --     }
+    --   },
+    --   securities = {
+    --     note = "warning",
+    --     error = "error",
+    --   }
+    -- },
+
     hlint = {
       command = "hlint",
       debounce = 100,
@@ -221,7 +244,7 @@ return {
   formatters = {
     ["lua-format"] = {
       command = "lua-format",
-      args = {"-i"},
+      args = {"-i", [[--indent-width]], "2"},
     },
 
     shfmt = {

@@ -68,9 +68,6 @@ local function custom_on_attach(client, bufnr)
   -- vim.cmd [[autocmd Lsp CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
   -- vim.cmd [[autocmd Lsp CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
   -- vim.cmd [[autocmd Lsp CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-
-  -- auto diagnostic popup
-  -- vim.cmd [[autocmd Lsp CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()]]
 end
 
 function setup_diagnostics()
@@ -92,13 +89,23 @@ function setup_diagnostics()
   )
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local LspDefaults = {
+  on_attach = custom_on_attach,
+  capabilities = capabilities,
+}
+
+function LspDefaults:with(user_config)
+  return vim.tbl_extend("keep", user_config, self)
+end
+
 -- debugs information from lsp client
 function M.setup()
   setup_diagnostics()
 
   utils.augroup("Lsp")
-
-  -- vim.cmd [[autocmd Lsp BufEnter * lua print('num_clients: ', vim.tbl_count(vim.lsp.buf_get_clients(0)))]]
 
   if settings.python_lsp == PythonLsp.pyls then
     lspconfig.pyls.setup {
@@ -107,72 +114,63 @@ function M.setup()
     }
   elseif settings.python_lsp == PythonLsp.pyls_ms then
 
-    lspconfig.pyls_ms.setup {on_attach = custom_on_attach}
+    lspconfig.pyls_ms.setup(LspDefaults)
 
   elseif settings.python_lsp == PythonLsp.jedi_language_server then
 
-    lspconfig.jedi_language_server.setup{on_attach = custom_on_attach}
+    lspconfig.jedi_language_server.setup(LspDefaults)
 
   end
 
-  lspconfig.vimls.setup {on_attach = custom_on_attach}
+  lspconfig.vimls.setup(LspDefaults)
 
-  lspconfig.sumneko_lua.setup {
-    on_attach = custom_on_attach,
-    -- cmd = {"lua-language-server"},
+  lspconfig.sumneko_lua.setup(LspDefaults:with {
     settings = require'lsp_settings/sumneko_lua'
-  }
+  })
 
-  lspconfig.jdtls.setup {on_attach = custom_on_attach}
+  lspconfig.jdtls.setup(LspDefaults)
 
-  lspconfig.jsonls.setup {
-    on_attach = custom_on_attach,
+  lspconfig.jsonls.setup(LspDefaults:with {
     cmd = {"json-languageserver", "--stdio"},
-  }
+  })
 
   -- lspconfig.yamlls.setup {on_attach = custom_on_attach}
 
-  lspconfig.gopls.setup {
-    on_attach = custom_on_attach,
+  lspconfig.gopls.setup(LspDefaults:with {
     root_dir = lspconfig.util.root_pattern('go.mod', '.git', '')
-  }
+  })
 
-  lspconfig.texlab.setup {
-    on_attach = custom_on_attach,
+  lspconfig.texlab.setup(LspDefaults:with {
     filetypes = {"tex", "bib", "plaintex"},
-  }
+  })
 
-  lspconfig.bashls.setup {on_attach = custom_on_attach}
+  lspconfig.bashls.setup(LspDefaults)
 
-  lspconfig.html.setup {on_attach = custom_on_attach}
+  lspconfig.html.setup(LspDefaults)
 
-  lspconfig.tsserver.setup {on_attach = custom_on_attach}
+  lspconfig.tsserver.setup(LspDefaults)
 
-  lspconfig.cssls.setup {on_attach = custom_on_attach}
+  lspconfig.cssls.setup(LspDefaults)
 
-  lspconfig.rust_analyzer.setup {
-    on_attach = custom_on_attach,
+  lspconfig.rust_analyzer.setup(LspDefaults:with {
     settings = require"lsp_settings/rust_analyzer"
-  }
+  })
 
-  lspconfig.hls.setup {
-    on_attach = custom_on_attach,
+  lspconfig.hls.setup(LspDefaults:with {
     root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
     settings = require'lsp_settings/hls',
-  }
+  })
 
-  lspconfig.clojure_lsp.setup {on_attach = custom_on_attach}
+  lspconfig.clojure_lsp.setup(LspDefaults)
 
   -- nvim_lsp.ccls.setup {on_attach = custom_on_attach}
 
-  lspconfig.clangd.setup {on_attach = custom_on_attach}
+  lspconfig.clangd.setup(LspDefaults)
 
-  lspconfig.diagnosticls.setup {
-    on_attach = custom_on_attach,
-    -- filetypes = {"markdown", "sh", "lua"},
+  lspconfig.diagnosticls.setup(LspDefaults:with {
     filetypes = {"sh", "lua"},
     init_options = require"lsp_settings/diagnosticls",
-  }
+  })
 
   -- general purpose language server for linters
   -- lspconfig.efm.setup{on_attach = custom_on_attach}
@@ -185,4 +183,4 @@ end
   --   end
   -- end
 
-  return M
+return M

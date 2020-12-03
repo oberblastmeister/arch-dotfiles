@@ -94,13 +94,6 @@ return packer.startup {
       end
     end
 
-    rtp_use {
-      "highlighter.nvim",
-      config = function()
-        require "highlighter"
-      end
-    }
-
     local_use {
       "rooter.nvim",
       config = function()
@@ -115,10 +108,6 @@ return packer.startup {
 
     local_use {
       "pandoc.nvim"
-    }
-
-    local_use {
-      "zoom.nvim"
     }
 
     local_use {
@@ -620,6 +609,7 @@ return packer.startup {
     use {
       "lukas-reineke/format.nvim",
       cmd = "Format",
+      disable = true,
     }
 
     use {

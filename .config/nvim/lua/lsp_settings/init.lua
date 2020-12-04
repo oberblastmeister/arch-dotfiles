@@ -108,10 +108,9 @@ function M.setup()
   utils.augroup("Lsp")
 
   if settings.python_lsp == PythonLsp.pyls then
-    lspconfig.pyls.setup {
-      on_attach = custom_on_attach,
+    lspconfig.pyls.setup(LspDefaults:with {
       settings = require"lsp_settings/pyls",
-    }
+    })
   elseif settings.python_lsp == PythonLsp.pyls_ms then
 
     lspconfig.pyls_ms.setup(LspDefaults)
@@ -163,7 +162,7 @@ function M.setup()
 
   lspconfig.clojure_lsp.setup(LspDefaults)
 
-  -- nvim_lsp.ccls.setup {on_attach = custom_on_attach}
+  -- lspconfig.ccls.setup(LspDefaults)
 
   lspconfig.clangd.setup(LspDefaults)
 
@@ -173,7 +172,7 @@ function M.setup()
   })
 
   -- general purpose language server for linters
-  -- lspconfig.efm.setup{on_attach = custom_on_attach}
+  -- lspconfig.efm.setup(LspDefaults)
 end
 
 -- function M.install()

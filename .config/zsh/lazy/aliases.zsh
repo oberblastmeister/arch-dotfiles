@@ -23,7 +23,7 @@ alias rust="evcxr"
 alias vim="nvim"
 alias vi="nvim"
 
-alias man="batman"
+# alias man="batman"
 
 alias wttr="curl wttr.in"
 

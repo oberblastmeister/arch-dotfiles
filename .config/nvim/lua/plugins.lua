@@ -619,6 +619,7 @@ return packer.startup {
     use {
       "lukas-reineke/format.nvim",
       cmd = "Format",
+      disable = true,
     }
 
     use {

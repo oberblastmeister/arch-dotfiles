@@ -1,44 +1,49 @@
+local telescope = require('telescope')
 local pickers = require('telescope.pickers')
 local finders = require('telescope.finders')
 local previewers = require('telescope.previewers')
 local conf = require('telescope.config').values
 local make_entry = require('telescope.make_entry')
 local sorters = require('telescope.sorters')
-
--- local pickers = require('telescope.pickers')
 local utils = require('utils')
 
 local M = {}
 
 function M.setup()
-  dropdown_theme = require('telescope.themes').get_dropdown({
-    results_height = 20;
-    winblend = 20;
-    width = 0.8;
-    prompt_title = '';
-    prompt_prefix = 'Files>';
-    previewer = false;
-    borderchars = {
-      prompt = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
-      results = {' ', '▐', '▄', '▌', '▌', '▐', '▟', '▙' };
-      preview = {'▀', '▐', '▄', '▌', '▛', '▜', '▟', '▙' };
-    };
-  })
+  telescope.setup()
+  telescope.load_extension('fzy_native')
+  telescope.load_extension('ghcli')
+  -- require('telescope').setup{
+  --   prompt_prefix = "dude"
+  -- }
+  -- telescope.setup {
+  --   set_env = { ['COLORTERM'] = 'truecolor' },
+  --   prmopt_prefix = "this is a prefix",
+  -- }
+
+  -- dropdown_theme = require('telescope.themes').get_dropdown({
+  --   results_height = 20;
+  --   winblend = 20;
+  --   width = 0.8;
+  --   prompt_title = '';
+  --   prompt_prefix = 'Files>';
+  --   previewer = false;
+  -- })
 
   -- general
   utils.nnoremap('<leader>ff', [[<cmd>lua require'telescope.builtin'.builtin(require('telescope.themes').get_dropdown())<CR>]])
 
   -- lsp stuff
-  utils.nnoremap('<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]])
+  utils.nnoremap('<C-t>', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]])
   utils.nnoremap('<leader>fw', [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>]])
   utils.nnoremap('<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]])
 
   -- common
-  utils.nnoremap('<c-b>', [[<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown())<cr>]])
+  utils.nnoremap('<c-b>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]])
   utils.nnoremap('<leader>/', [[<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())<cr>]])
 
   -- treesitter
-  utils.nnoremap('<leader>fT', [[<cmd>lua require'telescope.builtin'.treesitter{}<CR>]])
+  utils.nnoremap('<leader>ft', [[<cmd>lua require'telescope.builtin'.treesitter{}<CR>]])
   utils.nnoremap('<leader>H', [[<cmd>lua require'telescope.builtin'.help_tags{}<CR>]])
 
   -- misc
@@ -49,7 +54,7 @@ function M.setup()
   utils.nnoremap('<leader>fM', [[<cmd>lua require'telescope.builtin'.man_pages(require('telescope.themes').get_dropdown())<CR>]])
   utils.nnoremap('<leader>fg', [[<cmd>lua require'telescope.builtin'.git_files{}<CR>]])
   utils.nnoremap('<leader>fu', [[<cmd>lua require'telescope.builtin'.oldfiles{}<CR>]])
-  utils.nnoremap('<leader>:', [[<cmd>lua require'telescope.builtin'.commands(require('telescope.themes').get_dropdown())<CR>]])
+  utils.nnoremap('<leader>;', [[<cmd>lua require'telescope.builtin'.commands(require('telescope.themes').get_dropdown())<CR>]])
 
   -- git
   utils.nnoremap('<leader>fs', [[<cmd>lua require'telescope.builtin'.git_status{}<CR>]])

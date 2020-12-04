@@ -150,7 +150,8 @@ return packer.startup {
       "romgrk/barbar.nvim",
       cond = function()
         return vim.fn.exists('g:started_by_firenvim') == 0
-      end
+      end,
+      disable = true,
     }
 
     use {
@@ -308,8 +309,15 @@ return packer.startup {
       "telescope.nvim",
       config = function()
         require "config/telescope".setup()
-      end
+      end,
+      requires = {
+        "nvim-telescope/telescope-fzy-native.nvim",
+        "nvim-telescope/telescope-github.nvim",
+        "nvim-telescope/telescope-packer.nvim",
+        "nvim-telescope/telescope-fzf-writer.nvim",
+      }
     }
+
 
     use {
       "junegunn/fzf.vim",

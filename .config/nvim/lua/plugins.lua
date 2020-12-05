@@ -151,7 +151,6 @@ return packer.startup {
       cond = function()
         return vim.fn.exists('g:started_by_firenvim') == 0
       end,
-      disable = true,
     }
 
     use {

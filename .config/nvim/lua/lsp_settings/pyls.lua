@@ -12,10 +12,10 @@ return {
         enabled = true
       },
       pycodestyle = {
-        enabled = true
+        enabled = false
       },
       pydocstyle = {
-        enabled = true
+        enabled = false
       },
       pyflakes = {
         enabled = true

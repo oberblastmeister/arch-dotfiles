@@ -85,6 +85,16 @@ omap <Leader>c  <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 
+" imap <silent><expr> <Tab> <SID>expand()
+" imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+" imap <expr> <Tab>  pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<Tab>" :  "\<Tab>"
+
+function! s:expand()
+  if pumvisible()
+    return "\<Plug>(completion_confirm_completion)"
+  endif
+endfunction
+
 function! MaximizeToggle()
   if exists("s:maximize_session")
     exec "source " . s:maximize_session

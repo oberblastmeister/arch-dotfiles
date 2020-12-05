@@ -6,7 +6,7 @@ set number relativenumber
 
 set smartindent
 
-" set lazyredraw " faster macros
+set lazyredraw " faster macros
 
 " use system clipboard
 set clipboard^=unnamed,unnamedplus

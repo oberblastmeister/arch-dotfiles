@@ -119,7 +119,12 @@ function M.setup()
 
     lspconfig.jedi_language_server.setup(LspDefaults)
 
+  elseif settings.python_lsp == PythonLsp.pyright then
+
+    lspconfig.pyright.setup(LspDefaults)
+
   end
+
 
   lspconfig.vimls.setup(LspDefaults)
 

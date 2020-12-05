@@ -24,6 +24,7 @@ alias vim="nvim"
 alias vi="nvim"
 
 # alias man="batman"
+alias man="nvim +Man!"
 
 alias wttr="curl wttr.in"
 

@@ -1,4 +1,8 @@
-local function setup()
+local api = vim.api
+
+local M = {}
+
+function M.setup()
   -- require'completion'.addCompletionSource('vimtex', require'config/vimtex'.complete_item)
 
   -- vim settings
@@ -27,14 +31,53 @@ local function setup()
 
   -- keys to map
   vim.g.completion_confirm_key = ""
-  vim.cmd [[imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"]]
-  vim.cmd [[imap <tab> <Plug>(completion_smart_tab)]]
   vim.cmd [[imap <s-tab> <Plug>(completion_smart_s_tab)]]
-
+  vim.cmd [[imap <Tab> <cmd>lua require'config/completion'.expand_tab()<CR>]]
   vim.cmd [[autocmd BufEnter * lua require'config/completion'.on_attach()]]
+  vim.cmd [[inoremap <CR> <cmd>lua require'config/completion'.always_cr()<CR>]]
 end
 
-local function on_attach()
+local function feedkeys(s)
+  api.nvim_feedkeys(api.nvim_replace_termcodes(s, true, true, true), 'n', true)
+end
+
+function M.expand_tab()
+  if vim.fn.pumvisible() == 1 then
+    if vim.fn.complete_info({"selected"})["selected"] == -1 then
+      api.nvim_input("<C-n><Plug>(completion_confirm_completion)")
+    else
+      api.nvim_input("<Plug>(completion_confirm_completion)")
+    end
+  else
+    feedkeys("<Tab>")
+  end
+end
+
+function M.smart_n()
+  if vim.fn.pumvisible() == 1 then
+    -- api.nvim_select_popupmenu_item(vim.fn.complete_info({"selected")}["selected"] + 1)
+    feedkeys("<Down>")
+    -- local current_selected = vim.fn.complete_info({"selected"})["selected"] + 1
+    -- api.nvim_select_popupmenu_item(current_selected, false, false, {})
+  else
+    feedkeys()
+    -- print('no')
+    -- feedkeys("<C-n>")
+  end
+end
+
+function M.always_cr()
+  if vim.fn.pumvisible() then
+    feedkeys("<C-e><CR>")
+  else
+    feedkeys("<CR>")
+  end
+end
+
+function M.smart_p()
+end
+
+function M.on_attach()
   local chain_complete_list = {
     default = {
       {complete_items = {'lsp', 'snippet', 'ts', 'path', 'buffers'}},
@@ -52,7 +95,4 @@ local function on_attach()
   }
 end
 
-return {
-  setup = setup,
-  on_attach = on_attach,
-}
+return M

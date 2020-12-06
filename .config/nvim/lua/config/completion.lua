@@ -31,8 +31,10 @@ function M.setup()
 
   -- keys to map
   vim.g.completion_confirm_key = ""
-  vim.cmd [[imap <s-tab> <Plug>(completion_smart_s_tab)]]
-  vim.cmd [[imap <Tab> <cmd>lua require'config/completion'.expand_tab()<CR>]]
+  -- vim.cmd [[imap <s-tab> <Plug>(completion_smart_s_tab)]]
+  -- vim.cmd [[imap <tab> <Plug>(completion_smart_tab)]]
+
+  vim.cmd [=[imap <Tab> <cmd>lua require'config/completion'.expand_snippet([[<Tab>]])<CR>]=]
   vim.cmd [[autocmd BufEnter * lua require'config/completion'.on_attach()]]
   vim.cmd [[inoremap <CR> <cmd>lua require'config/completion'.always_cr()<CR>]]
 end
@@ -41,7 +43,8 @@ local function feedkeys(s)
   api.nvim_feedkeys(api.nvim_replace_termcodes(s, true, true, true), 'n', true)
 end
 
-function M.expand_tab()
+--- maps the key to only expand snippet when pumvisible is open
+function M.expand_snippet(key)
   if vim.fn.pumvisible() == 1 then
     if vim.fn.complete_info({"selected"})["selected"] == -1 then
       api.nvim_input("<C-n><Plug>(completion_confirm_completion)")
@@ -49,7 +52,7 @@ function M.expand_tab()
       api.nvim_input("<Plug>(completion_confirm_completion)")
     end
   else
-    feedkeys("<Tab>")
+    feedkeys(key)
   end
 end
 

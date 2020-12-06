@@ -427,7 +427,9 @@ return packer.startup {
 
     use {
       "jiangmiao/auto-pairs",
-      disable = false,
+      config = function()
+        require "config/auto_pairs_vim".setup()
+      end,
     }
 
     use {

@@ -31,13 +31,9 @@ function M.setup()
 
   -- keys to map
   vim.g.completion_confirm_key = ""
-  -- vim.cmd [[imap <s-tab> <Plug>(completion_smart_s_tab)]]
-  -- vim.cmd [[imap <tab> <Plug>(completion_smart_tab)]]
-
   vim.cmd [=[imap <Tab> <cmd>lua require'config/completion'.expand_snippet([[<Tab>]])<CR>]=]
   vim.cmd [[autocmd BufEnter * lua require'config/completion'.on_attach()]]
-  vim.cmd [[imap <CR> <cmd>lua require'config/completion'.always_cr()<CR>]]
-  -- vim.cmd [[imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"]]
+  vim.cmd [[imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ? "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"]]
 end
 
 local function feedkeys(s)
@@ -68,6 +64,14 @@ function M.smart_n()
     -- print('no')
     -- feedkeys("<C-n>")
   end
+end
+
+function M.auto_pairs_cr()
+  if vim.fn.pumvisible() == 1 then
+    feedkeys("<C-y>")
+  end
+  -- vim.fn.AutoPairsReturn()
+  feedkeys("<C-R>=AutoPairsReturn()<CR>")
 end
 
 function M.always_cr()

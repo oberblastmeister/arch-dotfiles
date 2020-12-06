@@ -117,6 +117,8 @@ return packer.startup {
     }
 
     ----------------------------- Looks --------------------------------------
+    -- require "plugins/looks".use()
+
     use "tjdevries/colorbuddy.nvim"
 
     use {

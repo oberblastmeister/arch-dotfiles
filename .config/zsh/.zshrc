@@ -132,9 +132,9 @@ zinit ice id-as"exercism" from"gh-r" as"program" mv"exercism* -> exercism"
 zinit light exercism/cli
 
 zinit wait lucid light-mode is-snippet for \
-    $ZDOTDIR/lazy/vivid.zsh \
     $ZDOTDIR/lazy/aliases.zsh \
     $ZDOTDIR/lazy/direnv.zsh \
+    $ZDOTDIR/lazy/vivid.zsh \
 
 # source lf icons
 source ~/.config/zsh/.lf_icons

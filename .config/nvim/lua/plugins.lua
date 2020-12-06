@@ -113,7 +113,7 @@ return packer.startup {
     local_use {
       "autopairs.nvim",
       -- config = function() require'config/autopairs'.setup() end,
-      disable = false,
+      disable = true,
     }
 
     ----------------------------- Looks --------------------------------------

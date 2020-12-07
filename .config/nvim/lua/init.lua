@@ -22,5 +22,5 @@ if vim.fn.has('nvim') then
   vim.cmd [[let $GIT_EDITOR = 'nvr -cc split --remote-wait']]
 end
 
-require('plugins')
+require"plugins".setup()
 require('utils')

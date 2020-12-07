@@ -569,7 +569,7 @@ return packer.startup {
 
     use {
       "rafcamlet/nvim-luapad",
-      cmd = "Luapad"
+      cmd = {"Lua", "LuaRun", "Luapad"}
     }
 
     use {

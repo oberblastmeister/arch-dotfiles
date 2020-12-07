@@ -25,6 +25,17 @@ local function setup()
       "honza/vim-snippets",
       "hrsh7th/vim-vsnip",
       "hrsh7th/vim-vsnip-integ",
+    },
+    disable = true,
+  }
+
+  use {
+    "hrsh7th/nvim-compe",
+    config = function()
+      require "config/compe".setup()
+    end,
+    requires = {
+      "hrsh7th/vim-vsnip"
     }
   }
 

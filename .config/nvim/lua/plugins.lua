@@ -33,9 +33,12 @@ end
 
 local packer = nil
 local function setup()
+
   if packer == nil then
     packer = require('packer')
-    packer.init({})
+    packer.init {
+      disable_commands = false,
+    }
   end
 
   local use = packer.use
@@ -60,6 +63,10 @@ local function setup()
   require"plugins/text_objects".setup()
   require"plugins/files".setup()
   require"plugins/deps".setup()
+  require"plugins/debugging".setup()
+  require"plugins/dispatch".setup()
+
+  -- todo: add testing
 end
 
 return {

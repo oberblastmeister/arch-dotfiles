@@ -32,6 +32,7 @@ local function setup()
 
   vim.g.lua_tree_bindings = {
     edit = {'<CR>', 'o'},
+    close_node = {'<S-CR>', '<BS>', 'h'},
     edit_vsplit = '<C-v>',
     edit_split = '<C-x>',
     edit_tab = '<C-t>',
@@ -50,13 +51,13 @@ local function setup()
     next_git_item = ']c',
   }
 
-  vim.api.nvim_exec([[
-augroup LuaTreeOverride
-  au!
-  au FileType LuaTree setlocal nowrap
-  au FileType LuaTree nnoremap <buffer> h :execute "normal ggo"<CR>
-augroup END
-]], false)
+  -- vim.api.nvim_exec([[
+-- augroup LuaTreeOverride
+  -- au!
+  -- au FileType LuaTree setlocal nowrap
+  -- au FileType LuaTree nnoremap <buffer> h :execute "normal ggo"<CR>
+-- augroup END
+-- ]], false)
 end
 
 return {

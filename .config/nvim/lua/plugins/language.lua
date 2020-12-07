@@ -33,17 +33,6 @@ local function setup()
   use "qnighy/lalrpop.vim"
 
   use {
-    "tjdevries/nlua.nvim",
-    ft = "lua",
-    disable = true
-  }
-
-  use {
-    "rafcamlet/nvim-luapad",
-    cmd = "Luapad"
-  }
-
-  use {
     "glacambre/firenvim",
     run = function()
       vim.fn["firenvim#install"](0)

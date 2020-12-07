@@ -65,8 +65,7 @@ local function setup()
   require"plugins/deps".setup()
   require"plugins/debugging".setup()
   require"plugins/dispatch".setup()
-
-  -- todo: add testing
+  require"plugins/nvim".setup()
 end
 
 return {

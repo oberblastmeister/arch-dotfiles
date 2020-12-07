@@ -128,8 +128,16 @@ function M.setup()
 
   lspconfig.vimls.setup(LspDefaults)
 
-  lspconfig.sumneko_lua.setup(LspDefaults:with {
-    settings = require'lsp_settings/sumneko_lua'
+  -- lspconfig.sumneko_lua.setup(LspDefaults:with {
+  --   settings = require'lsp_settings/sumneko_lua'
+  -- })
+
+  -- wraps sumneko lua
+  require('nlua.lsp.nvim').setup(require('lspconfig'), {
+    LspDefaults:with {
+      -- include glboal you want to tell the Lsp are real
+      globals = {}
+    }
   })
 
   lspconfig.jdtls.setup(LspDefaults)

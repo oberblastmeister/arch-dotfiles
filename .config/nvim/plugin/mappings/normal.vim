@@ -34,10 +34,9 @@ nnoremap <silent> <leader>vo <cmd>lua require'termwrapper'.TermWrapper.new(nil, 
 nnoremap <silent> <leader>vs <cmd>vsplit <bar> T<CR>
 nnoremap <silent> <leader>vs <cmd>lua require'termwrapper'.TermWrapper.new(nil, "vsplit", nil, nil)<CR>
 nnoremap <silent> <leader><CR> <cmd>T<CR>
-" nnoremap <silent> <c-t> <cmd>Ttoggle<CR>
-" nnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_count()<CR>
+nnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_count()<CR>
 " only toggle current termwrapper
-" tnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_or_first(0)<CR>
+tnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_or_first(0)<CR>
 " tnoremap <silent> <c-t> <cmd>Ttoggle<CR>
 " }}}
 

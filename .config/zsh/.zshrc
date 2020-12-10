@@ -9,6 +9,7 @@
 #    ░░░░░░ ░░░░░░  ░░   ░░
 
 eval "$(starship init zsh)"
+export LS_COLORS="$(vivid generate gruvbox-dark)"
 
 # ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -134,7 +135,6 @@ zinit light exercism/cli
 zinit wait lucid light-mode is-snippet for \
     $ZDOTDIR/lazy/aliases.zsh \
     $ZDOTDIR/lazy/direnv.zsh \
-    $ZDOTDIR/lazy/vivid.zsh \
 
 # source lf icons
 source ~/.config/zsh/.lf_icons

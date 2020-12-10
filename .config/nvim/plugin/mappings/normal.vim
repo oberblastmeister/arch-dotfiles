@@ -31,12 +31,12 @@ nnoremap <silent> <C-n> <cmd>tabnew<CR>
 
 " nnoremap <silent> <leader>vo <cmd>belowright 13split <bar> T<CR>
 nnoremap <silent> <leader>vo <cmd>lua require'termwrapper'.TermWrapper.new(nil, "belowright split", nil, nil)<CR>
-nnoremap <silent> <leader>vs <cmd>vsplit <bar> T<CR>
-nnoremap <silent> <leader>vs <cmd>lua require'termwrapper'.TermWrapper.new(nil, "vsplit", nil, nil)<CR>
+nnoremap <silent> <leader>vs <cmd>lua require'termwrapper'.TermWrapper.new(nil, "vsplit")<CR>
 nnoremap <silent> <leader><CR> <cmd>T<CR>
 nnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_count()<CR>
 " only toggle current termwrapper
-tnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_or_first(0)<CR>
+" tnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_or_first(0)<CR>
+tnoremap <silent> <c-t> <cmd>lua require'termwrapper'.close_current()<CR>
 " tnoremap <silent> <c-t> <cmd>Ttoggle<CR>
 " }}}
 

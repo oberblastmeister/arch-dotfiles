@@ -1,6 +1,11 @@
 local use = require"packer".use
 
 local function setup()
+  use {
+    "liuchengxu/vim-which-key",
+    config = function() require"config/whichkey".setup() end,
+  }
+
   use "tpope/vim-unimpaired"
 
   -- smooth scrolling

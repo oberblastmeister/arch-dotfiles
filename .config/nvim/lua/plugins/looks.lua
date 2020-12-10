@@ -1,8 +1,6 @@
 local use = require"packer".use
 
 local function setup()
-  use "liuchengxu/vim-which-key"
-
   -- indent lines
   use {
     "Yggdroot/indentLine",

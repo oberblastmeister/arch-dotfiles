@@ -11,6 +11,7 @@ local function setup()
       "nvim-telescope/telescope-github.nvim",
       "nvim-telescope/telescope-packer.nvim",
       "nvim-telescope/telescope-fzf-writer.nvim",
+      "nvim-telescope/telescope-vimspector.nvim",
     }
   }
 

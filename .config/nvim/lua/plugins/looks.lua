@@ -30,11 +30,13 @@ local function setup()
   }
 
   use {
-    'glepnir/galaxyline.nvim',
+    "glepnir/galaxyline.nvim",
     branch = 'main',
     -- config = function() require"config/galaxyline/spaceline".setup() end,
     config = function() require"config/galaxyline/eviline".setup() end,
   }
+
+  use {"datwaft/bubbly.nvim", disable = true}
 
   -- colorize hex codes
   use {

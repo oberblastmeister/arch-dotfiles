@@ -15,6 +15,7 @@ x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 
 [Default Applications]
+application/epub+zip=org.pwmt.zathura.desktop;
 application/json=nvim.desktop;
 application/pdf=org.pwmt.zathura.desktop;
 application/x-extension-htm=firefox.desktop;

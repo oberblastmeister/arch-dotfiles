@@ -17,6 +17,7 @@ function M.setup()
   vim.g.completion_enable_snippet = "vim-vsnip"
   vim.g.completion_sorting = "none"
   vim.g.completion_trigger_on_delete = 1
+  vim.g.completion_timer_cycle = 100
 
   -- set this to avoid flickering for now and make completion faster
   vim.g.matching_strategy_list = {'exact'}

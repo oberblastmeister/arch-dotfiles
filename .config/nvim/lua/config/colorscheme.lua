@@ -19,9 +19,9 @@ function M.setup_gruvbox()
   }
 
   -- treesitter highlights
-  utils.hi_link("TSKeywordFunction", "GruvboxAqua") -- original is gruvbox red
-  utils.hi_link("TSInclude", "GruvboxRed") -- original is GruvboxAqua
-  utils.hi_link("TSInclude", "GruvboxRed") -- original is GruvboxAqua
+  -- utils.hi_link("TSKeywordFunction", "GruvboxAqua") -- original is gruvbox red
+  -- utils.hi_link("TSInclude", "GruvboxRed") -- original is GruvboxAqua
+  -- utils.hi_link("TSInclude", "GruvboxRed") -- original is GruvboxAqua
 
   utils.hi_link("LspDiagnosticsDefaultError", "GruvboxRed")
   utils.hi_link("LspDiagnosticsDefaultWarning", "GruvboxOrange")

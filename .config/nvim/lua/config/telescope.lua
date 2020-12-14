@@ -19,7 +19,8 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
 
   -- common
-  api.nvim_set_keymap('n', '<c-b>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]], {noremap = true})
+  -- api.nvim_set_keymap('n', '<c-b>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]], {noremap = true})
+  api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>/', [[<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())<cr>]], {noremap = true})
 
   -- treesitter

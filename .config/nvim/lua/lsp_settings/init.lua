@@ -20,7 +20,7 @@ function M.setup_keymappings()
   api.nvim_buf_set_keymap(0, 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap = true})
 
   -- references
-  -- utils.nnoremap_buf('<leader>fr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  utils.nnoremap_buf('<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>')
   api.nvim_buf_set_keymap(0, 'n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", {noremap = true}) -- fuzzy references
 
   -- symbols

@@ -53,7 +53,8 @@ local function setup()
     config = function()
       require "config/lsp_utils".setup()
     end,
-    requires = "RishabhRD/popfix"
+    requires = "RishabhRD/popfix",
+    disable = true,
   }
 
   -- lsp tagbar

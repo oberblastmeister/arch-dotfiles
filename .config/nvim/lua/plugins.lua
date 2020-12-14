@@ -66,6 +66,7 @@ local function setup()
   require"plugins/debugging".setup()
   require"plugins/dispatch".setup()
   require"plugins/nvim".setup()
+  require"plugins/libmodal".setup()
 end
 
 return {

@@ -65,6 +65,22 @@ local function setup()
   }
 
   local_use {
+    "telescope.nvim",
+    config = function()
+      require "config/telescope".setup()
+    end,
+    requires = {
+      "nvim-telescope/telescope-symbols.nvim",
+      "nvim-telescope/telescope-fzy-native.nvim",
+      "nvim-telescope/telescope-github.nvim",
+      "nvim-telescope/telescope-packer.nvim",
+      "nvim-telescope/telescope-fzf-writer.nvim",
+      "nvim-telescope/telescope-vimspector.nvim",
+    },
+  }
+
+
+  local_use {
     "termwrapper.nvim",
     config = function() require"config/termwrapper".setup() end,
   }
@@ -77,6 +93,10 @@ local function setup()
     "autopairs.nvim",
     -- config = function() require'config/autopairs'.setup() end,
     disable = true,
+  }
+  
+  local_use {
+    "windowmode.nvim",
   }
 end
 

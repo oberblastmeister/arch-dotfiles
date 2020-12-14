@@ -14,6 +14,18 @@ local function setup()
     end,
     cmd = "LaunchVimspector"
   }
+
+  use {
+    "mfussenegger/nvim-dap",
+    requires = {
+      "theHamsta/nvim-dap-virtual-text",
+      "mfussenegger/nvim-dap-python",
+      "nvim-telescope/telescope-dap.nvim",
+    },
+    config = function()
+      require'config/dap'.setup()
+    end,
+  }
 end
 
 return {

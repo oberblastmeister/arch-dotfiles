@@ -123,6 +123,9 @@ zinit light-mode for \
 zinit ice lucid wait
 zinit snippet https://github.com/ajeetdsouza/zoxide/blob/master/zoxide.plugin.zsh
 
+zinit ice lucid wait
+zinit snippet OMZP::zsh-interactive-cd
+
 zinit ice lucid wait id-as"cht" as"program"
 zinit snippet https://cht.sh/:cht.sh
 

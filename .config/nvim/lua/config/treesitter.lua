@@ -9,7 +9,7 @@ local function setup()
       enable = true,
       use_languagetree = true, -- language injection (highly unstable)
       disable = {},  -- list of language that will be disabled
-        custom_captures = {}
+      custom_captures = {}
     },
 
     indent = {

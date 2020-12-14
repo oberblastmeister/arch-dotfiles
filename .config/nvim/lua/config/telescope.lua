@@ -1,12 +1,14 @@
 local vim = vim
 local api = vim.api
 local telescope = require('telescope')
+local previewers = require('telescope.previewers')
 
 local M = {}
 
 function M.load_extensions()
   telescope.load_extension('fzy_native')
   telescope.load_extension('ghcli')
+  telescope.load_extension('dap')
 end
 
 function M.setup_keymappings()
@@ -30,7 +32,10 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>fo', [[<cmd>lua require'telescope.builtin'.vim_options()<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fh', [[<cmd>lua require'telescope.builtin'.command_history(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fC', [[<cmd>lua require'telescope.builtin'.colorscheme(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
-  api.nvim_set_keymap('n', '<leader>fm', [[<cmd>lua require'telescope.builtin'.marks(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
+  -- api.nvim_set_keymap('n', '<leader>fm', [[<cmd>lua require'telescope.builtin'.marks(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
+
+  api.nvim_set_keymap('n', '<leader>fm', [[<cmd>lua require'telescope.builtin'.test_menu()<CR>]], {noremap = true})
+
   api.nvim_set_keymap('n', '<leader>fM', [[<cmd>lua require'telescope.builtin'.man_pages(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fg', [[<cmd>lua require'telescope.builtin'.git_files{}<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fu', [[<cmd>lua require'telescope.builtin'.oldfiles{}<CR>]], {noremap = true})
@@ -47,10 +52,19 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>cd', [[<cmd>lua require'config/telescope/my_builtin'.cd()<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>`', [[<cmd>cd ~<CR><cmd>echo 'cd ~'<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>c.', [[<cmd>cd ..<CR><cmd>pwd<CR>]], {noremap = true})
+
+  -- api.nvim_set_keymap('i', '<C-s>', [[<cmd>Telescope symbols<CR>]], {noremap = true})
 end
 
 function M.setup()
-  telescope.setup()
+  telescope.setup {
+    defaults = {
+      set_env = { ['COLORTERM'] = 'truecolor' },
+      file_previewer = previewers.vim_buffer_cat.new, -- experimental
+      color_devicons = false, -- slows down telescope
+    }
+  }
+
   M.load_extensions()
   M.setup_keymappings()
 end

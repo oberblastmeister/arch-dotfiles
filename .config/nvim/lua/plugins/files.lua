@@ -9,7 +9,8 @@ local function setup()
     -- only turn on when yadm is not active, prevents lagging vim
     cond = function()
       return os.getenv("GIT_DIR") ~= vim.fn.expand("~/.config/yadm/repo.git")
-    end
+    end,
+    disable = true,
   }
 
   -- terminal float for lf

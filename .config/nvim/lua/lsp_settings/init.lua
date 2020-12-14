@@ -136,7 +136,8 @@ function M.setup()
   require('nlua.lsp.nvim').setup(require('lspconfig'), {
     LspDefaults:with {
       -- include glboal you want to tell the Lsp are real
-      globals = {}
+      globals = {},
+      settings = require'lsp_settings/sumneko_lua'
     }
   })
 

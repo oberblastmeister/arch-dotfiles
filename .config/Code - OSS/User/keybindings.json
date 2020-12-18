@@ -200,7 +200,8 @@
     },
     {
         "key": "ctrl+shift+t",
-        "command": "-workbench.action.reopenClosedEditor"
+        "command": "-workbench.action.reopenClosedEditor",
+        "wo whtis": "woeihtih"
     },
     {
         "key": "ctrl+shift+t",

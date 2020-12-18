@@ -12,6 +12,8 @@ local actions = require('telescope.actions')
 local from_entry = require('telescope/from_entry')
 local defaulter = tutils.make_default_callable
 local builtin = require('telescope/builtin')
+local flatten = vim.tbl_flatten
+local Job = require('plenary/job')
 
 local M = {}
 
@@ -81,7 +83,8 @@ function M.dotfiles(opts)
 
   opts.cwd = os.getenv('HOME')
 
-  opts.disable_devicons = true
+  opts.disable_devicons = false
+
   -- By creating the entry maker after the cwd options,
   -- we ensure the maker uses the cwd options when being created.
   opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
@@ -92,8 +95,8 @@ function M.dotfiles(opts)
       {"yadm", "ls-files"},
       opts
     ),
-    previewer = previewers.cat.new(opts),
-    sorter = conf.file_sorter(opts),
+    previewer = previewers.vim_buffer_cat.new(opts),
+    sorter = sorters.get_fuzzy_file(opts),
   }):find()
 end
 
@@ -184,10 +187,14 @@ end
 
 function M.cargo_search(opts)
   opts = opts or {}
-  opts.entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts)
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_string(opts)
 
   local live_search = finders.new_job(function(prompt)
-      return {'cargo', 'search'}
+      if not prompt or prompt == "" then
+        return nil
+      end
+
+      return {'cargo', 'search', prompt}
     end,
     opts.entry_maker,
     opts.max_results
@@ -196,6 +203,125 @@ function M.cargo_search(opts)
   pickers.new(opts, {
     prompt_title = 'Live cargo search',
     finder = live_search,
+    previewer = nil,
+    sorter = conf.generic_sorter(opts),
+  }):find()
+end
+
+function M.cargo_index(opts)
+  opts = opts or {}
+
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_string(opts)
+
+  pickers.new(opts, {
+    prompt_title = 'cargo search',
+    finder = finders.new_oneshot_job(
+      {"crates-index", "list"},
+      opts
+    ),
+    previewer = nil,
+    sorter = conf.generic_sorter(opts),
+    attach_mappings = function(prompt_bufnr)
+      actions._goto_file_selection:replace(function()
+        local entry = actions.get_selected_entry()
+        local value = entry.value
+        actions.close(prompt_bufnr)
+
+        builtin.menu {
+          t = {
+            "yes",
+            "no",
+          },
+          title = "use latest version?",
+          callback = function(res)
+            if res == "no" then
+              M.crate_version(value)
+              api.nvim_input('i')
+            else
+              M.latest_version(value)
+            end
+          end
+        }
+        api.nvim_input('i')
+      end)
+
+      return true
+    end,
+  }):find()
+end
+
+function M.crate_version(crate)
+  pickers.new(opts, {
+    prompt_title = 'pick version',
+    finder = finders.new_oneshot_job(
+    {"crates-index", "versions", crate},
+    opts
+    ),
+    previewer = nil,
+    sorter = conf.generic_sorter(opts),
+    attach_mappings = function(prompt_bufnr)
+      actions._goto_file_selection:replace(function()
+        local entry = actions.get_selected_entry()
+        actions.close(prompt_bufnr)
+        api.nvim_put({string.format('%s = "%s"', crate, entry.value)}, "l", true, true)
+      end)
+
+      return true
+    end
+  }):find()
+end
+
+function M.latest_version(crate)
+  Job:new {
+    command = 'crates-index',
+    args = {'latest', crate},
+    on_stderr = function(_, _)
+    end,
+    on_stdout = vim.schedule_wrap(function(error, data)
+      assert(not error, error)
+      api.nvim_put({string.format('%s = "%s"', crate, data)}, "l", true, true)
+    end),
+    on_exit = function(_, _, _)
+    end,
+  }:start()
+end
+
+function M.my_fd(opts)
+  opts = opts or {}
+
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_string(opts)
+
+  pickers.new(opts, {
+    prompt_title = 'cargo search',
+    finder = finders.new_oneshot_job(
+      {"fd"},
+      opts
+    ),
+    previewer = nil,
+    sorter = conf.generic_sorter(opts),
+  }):find()
+end
+
+function M.my_rg(opts)
+  opts = opts or {}
+
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_vimgrep(opts)
+
+  pickers.new(opts, {
+    prompt_title = 'ripgrep',
+    finder = finders.new_oneshot_job(
+      {
+        'rg',
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        ".*",
+      },
+      opts
+    ),
     previewer = nil,
     sorter = conf.generic_sorter(opts),
   }):find()

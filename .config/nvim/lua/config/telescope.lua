@@ -53,6 +53,7 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>cd', [[<cmd>lua require'config/telescope/my_builtin'.cd()<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>`', [[<cmd>cd ~<CR><cmd>echo 'cd ~'<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>c.', [[<cmd>cd ..<CR><cmd>pwd<CR>]], {noremap = true})
+  api.nvim_set_keymap('n', '<leader>fp', [[<cmd>lua require'config/telescope/my_builtin'.packer()<CR>]], {noremap = true})
 
   -- api.nvim_set_keymap('i', '<C-s>', [[<cmd>Telescope symbols<CR>]], {noremap = true})
 end

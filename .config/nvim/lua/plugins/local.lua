@@ -28,14 +28,19 @@ end
 
 -- local use function
 local function local_use(options)
-  local path = get_path(options[1])
-  if path == nil then
-    vim.api.nvim_err_writeln(
-    "[plugins] " .. options[1] .. " was not found in the directories " .. vim.inspect(dirs)
-    )
-    return
+  if type(options) == "table" then
+    local path = get_path(options[1])
+    if path == nil then
+      vim.api.nvim_err_writeln(
+      "[plugins] " .. options[1] .. " was not found in the directories " .. vim.inspect(dirs)
+      )
+      return
+    end
+    options[1] = path
+  elseif type(options) == "string" then
+    local path = get_path(options)
+    options = path
   end
-  options[1] = path
 
   use(options)
 end
@@ -95,9 +100,7 @@ local function setup()
     disable = true,
   }
   
-  local_use {
-    "windowmode.nvim",
-  }
+  local_use "windowmode.nvim"
 end
 
 return {

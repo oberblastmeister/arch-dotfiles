@@ -14,6 +14,7 @@ local defaulter = tutils.make_default_callable
 local builtin = require('telescope/builtin')
 local flatten = vim.tbl_flatten
 local Job = require('plenary/job')
+local Node = require('telescope/builtin/menu').Node
 
 local M = {}
 
@@ -96,7 +97,7 @@ function M.dotfiles(opts)
       opts
     ),
     previewer = previewers.vim_buffer_cat.new(opts),
-    sorter = sorters.get_fuzzy_file(opts),
+    sorter = conf.file_sorter(opts),
   }):find()
 end
 
@@ -185,7 +186,7 @@ function M.workspace_cd(opts)
   }):find()
 end
 
-function M.cargo_search(opts)
+function M.cargo_search_live(opts)
   opts = opts or {}
   opts.entry_maker = opts.entry_maker or make_entry.gen_from_string(opts)
 
@@ -320,10 +321,57 @@ function M.my_rg(opts)
         '--smart-case',
         ".*",
       },
+
+function M.cargo_search_query(opts)
+  opts = opts or {}
+
+  pickers.new(opts, {
+    prompt_title = 'cargo search',
+    finder = finders.new_oneshot_job(
+      {"cargo", "search", opts.search},
+      opts
+    ),
+    sorter = conf.generic_sorter(opts),
+  }):find()
+end
+
+function M.packer()
+  builtin.menu(Node.new_root {
+    {
+      "sync",
+      "install",
+      "update",
+      "clean",
+      "compile",
+    },
+    callback = function(selections)
+      require('packer')[selections:last()]()
+    end,
+    title = 'packer'
+  })
+end
+
+function M.yay()
+  opts = opts or {}
+
+  pickers.new(opts, {
+    prompt_title = 'Yay search',
+    finder = finders.new_oneshot_job(
+      {"yay", "-Slq"},
       opts
     ),
     previewer = nil,
     sorter = conf.generic_sorter(opts),
+    -- attach_mappings = function(prompt_bufnr)
+    --   actions._goto_file_selection:replace(function()
+    --     local entry = actions.get_selected_entry()
+    --     actions.close(prompt_bufnr)
+    --     local dir = entry[1]
+    --     if dir ~= nil or dir ~= '' then
+    --       vim.cmd('cd ' .. dir)
+    --     end
+    --   end)
+    -- end
   }):find()
 end
 

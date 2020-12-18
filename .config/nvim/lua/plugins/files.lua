@@ -20,6 +20,8 @@ local function setup()
       require "config/floaterm".setup()
     end
   }
+
+  use "haorenW1025/floatLf-nvim"
 end
 
 return {

@@ -65,6 +65,11 @@ local function custom_on_attach(client, bufnr)
   M.setup_keymappings()
   M.setup_commands()
 
+  if client.config.flags then
+    print('there is flags')
+    client.config.flags.allow_incremental_sync = true
+  end
+
   -- vim.cmd [[autocmd Lsp CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
   -- vim.cmd [[autocmd Lsp CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
   -- vim.cmd [[autocmd Lsp CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]

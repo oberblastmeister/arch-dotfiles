@@ -141,3 +141,6 @@ zinit wait lucid light-mode is-snippet for \
 
 # source lf icons
 source ~/.config/zsh/.lf_icons
+
+# luarocks path
+eval $(luarocks path --bin)

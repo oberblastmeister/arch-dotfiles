@@ -48,7 +48,7 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --color=always"
 # export FZF_ALT_C_COMMAND="fd --type directory --hidden --follow --exclude .git --exclude .cache --color=always"
-export FZF_ALT_C_COMMAND="fd --type directory --follow --exclude .git --exclude --color=always"
+export FZF_ALT_C_COMMAND="fd --type directory --follow --exclude .git --color=always"
 export FZF_TMUX=1
 
 # default opts for fzf

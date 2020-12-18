@@ -12,6 +12,7 @@ local actions = require('telescope.actions')
 local from_entry = require('telescope/from_entry')
 local defaulter = tutils.make_default_callable
 local builtin = require('telescope/builtin')
+local Node = require('telescope/builtin/menu').Node
 
 local M = {}
 
@@ -81,7 +82,7 @@ function M.dotfiles(opts)
 
   opts.cwd = os.getenv('HOME')
 
-  opts.disable_devicons = true
+  opts.disable_devicons = false
   -- By creating the entry maker after the cwd options,
   -- we ensure the maker uses the cwd options when being created.
   opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
@@ -92,7 +93,7 @@ function M.dotfiles(opts)
       {"yadm", "ls-files"},
       opts
     ),
-    previewer = previewers.cat.new(opts),
+    previewer = previewers.vim_buffer_cat.new(opts),
     sorter = conf.file_sorter(opts),
   }):find()
 end
@@ -182,7 +183,7 @@ function M.workspace_cd(opts)
   }):find()
 end
 
-function M.cargo_search(opts)
+function M.cargo_search_live(opts)
   opts = opts or {}
   opts.entry_maker = opts.entry_maker or make_entry.gen_from_quickfix(opts)
 
@@ -198,6 +199,59 @@ function M.cargo_search(opts)
     finder = live_search,
     previewer = nil,
     sorter = conf.generic_sorter(opts),
+  }):find()
+end
+
+function M.cargo_search_query(opts)
+  opts = opts or {}
+
+  pickers.new(opts, {
+    prompt_title = 'cargo search',
+    finder = finders.new_oneshot_job(
+      {"cargo", "search", opts.search},
+      opts
+    ),
+    sorter = conf.generic_sorter(opts),
+  }):find()
+end
+
+function M.packer()
+  builtin.menu(Node.new_root {
+    {
+      "sync",
+      "install",
+      "update",
+      "clean",
+      "compile",
+    },
+    callback = function(selections)
+      require('packer')[selections:last()]()
+    end,
+    title = 'packer'
+  })
+end
+
+function M.yay()
+  opts = opts or {}
+
+  pickers.new(opts, {
+    prompt_title = 'Yay search',
+    finder = finders.new_oneshot_job(
+      {"yay", "-Slq"},
+      opts
+    ),
+    previewer = nil,
+    sorter = conf.generic_sorter(opts),
+    -- attach_mappings = function(prompt_bufnr)
+    --   actions._goto_file_selection:replace(function()
+    --     local entry = actions.get_selected_entry()
+    --     actions.close(prompt_bufnr)
+    --     local dir = entry[1]
+    --     if dir ~= nil or dir ~= '' then
+    --       vim.cmd('cd ' .. dir)
+    --     end
+    --   end)
+    -- end
   }):find()
 end
 

@@ -64,6 +64,7 @@ function M.setup()
       set_env = { ['COLORTERM'] = 'truecolor' },
       file_previewer = previewers.vim_buffer_cat.new, -- experimental
       color_devicons = false, -- slows down telescope
+      layout_strategy = "flex",
     }
   }
 

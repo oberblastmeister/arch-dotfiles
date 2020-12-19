@@ -303,25 +303,6 @@ function M.my_fd(opts)
   }):find()
 end
 
-function M.my_rg(opts)
-  opts = opts or {}
-
-  opts.entry_maker = opts.entry_maker or make_entry.gen_from_vimgrep(opts)
-
-  pickers.new(opts, {
-    prompt_title = 'ripgrep',
-    finder = finders.new_oneshot_job(
-      {
-        'rg',
-        '--color=never',
-        '--no-heading',
-        '--with-filename',
-        '--line-number',
-        '--column',
-        '--smart-case',
-        ".*",
-      },
-
 function M.cargo_search_query(opts)
   opts = opts or {}
 

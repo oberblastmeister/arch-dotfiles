@@ -10,7 +10,7 @@ M.PACKER_DIR = M.PACK_DIR .. 'packer/'
 M.START_DIR = M.PACKER_DIR .. 'start/'
 M.OPT_DIR = M.PACKER_DIR .. 'opt/'
 
-local VIMSPECTOR_DIR = M.OPT_DIR .. '/vimspector/'
+local VIMSPECTOR_DIR = M.OPT_DIR .. 'vimspector/'
 
 dap.adapters.haskell = {
   type = 'executable';
@@ -45,16 +45,27 @@ end
 
 dap.adapters.cpp = {
   type = 'executable',
+  name = "cppdbg",
+  command = VIMSPECTOR_DIR .. "gadgets/linux/vscode-cpptools/debugAdapters/OpenDebugAD7",
+  args = {},
   attach = {
-    pidProperty = "pid",
+    pidProperty = "processId",
     pidSelect = "ask"
-  },
-  command = "lldb-vscode",
-  env = {
-    LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
-  },
-  name = "lldb"
+  }
 }
+
+-- dap.adapters.cpp = {
+--   type = 'executable',
+--   attach = {
+--     pidProperty = "pid",
+--     pidSelect = "ask"
+--   },
+--   command = "lldb-vscode",
+--   env = {
+--     LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
+--   },
+--   name = "lldb"
+-- }
 
 function M.start_rust_debugger()
   local config = {

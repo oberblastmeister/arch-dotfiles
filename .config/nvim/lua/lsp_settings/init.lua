@@ -80,8 +80,6 @@ function setup_diagnostics()
     vim.lsp.diagnostic.on_publish_diagnostics, {
       underline = true,
 
-      virtual_text = true,
-
       signs = false,
 
       virtual_text = {
@@ -194,11 +192,31 @@ function M.setup()
   -- lspconfig.efm.setup(LspDefaults)
 end
 
--- function M.install()
-  --   print('installing lsp servers, some may not be able to be installed')
-  --   for server, _ in pairs(servers) do
-  --     vim.cmd('LspInstall ' .. server)
-  --   end
-  -- end
+do
+  local servers = {
+    "rust_analyzer",
+    "pyls",
+    "sumneko_lua",
+    "vimls",
+    "jdtls",
+    "clangd",
+    "jsonls",
+    "clojure_lsp",
+    "texlab",
+    "hls",
+    "html",
+    "cssls",
+    "diagnosticls",
+    "gopls",
+    "bashls",
+  }
+
+  function M.install()
+    print('installing lsp servers, some may not be able to be installed')
+    for _, server in ipairs(servers) do
+      vim.cmd('LspInstall ' .. server)
+    end
+  end
+end
 
 return M

@@ -90,9 +90,8 @@ local function setup()
     config = function() require"config/termwrapper".setup() end,
   }
 
-  local_use {
-    "pandoc.nvim"
-  }
+  local_use "pandoc.nvim"
+  
 
   local_use {
     "autopairs.nvim",

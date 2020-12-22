@@ -13,8 +13,6 @@ local from_entry = require('telescope/from_entry')
 local defaulter = tutils.make_default_callable
 local builtin = require('telescope/builtin')
 local flatten = vim.tbl_flatten
-local Job = require('plenary/job')
-local Node = require('telescope/builtin/menu').Node
 
 local M = {}
 

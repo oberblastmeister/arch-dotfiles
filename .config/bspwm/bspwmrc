@@ -39,3 +39,5 @@ if [[ $YADM_CLASS = Laptop ]]; then
 fi
 
 ~/bin/autostart.sh &
+# feh -g 640x480 ~/.config/awesome/themes/gruvbox/wallpapers/monocolor.png
+feh --bg-max ~/.config/awesome/themes/gruvbox/wallpapers/monocolor.png &

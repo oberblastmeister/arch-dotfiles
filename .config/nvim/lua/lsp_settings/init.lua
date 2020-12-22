@@ -109,6 +109,7 @@ end
 -- debugs information from lsp client
 function M.setup()
   setup_diagnostics()
+  require"lsp_settings/handlers".setup()
 
   utils.augroup("Lsp")
 

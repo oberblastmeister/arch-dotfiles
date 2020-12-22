@@ -317,19 +317,21 @@ function M.cargo_search_query(opts)
 end
 
 function M.packer()
-  builtin.menu(Node.new_root {
-    {
-      "sync",
-      "install",
-      "update",
-      "clean",
-      "compile",
-    },
-    callback = function(selections)
-      require('packer')[selections:last()]()
-    end,
-    title = 'packer'
-  })
+  builtin.menu {
+    tree = {
+      {
+        "sync",
+        "install",
+        "update",
+        "clean",
+        "compile",
+      },
+      callback = function(selections)
+        require('packer')[selections[#selections]]()
+      end,
+      title = 'packer'
+    }
+  }
 end
 
 function M.yay()

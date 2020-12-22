@@ -28,6 +28,10 @@ function M.setup_gruvbox()
   utils.hi_link("LspDiagnosticsDefaultHint", "GruvboxAqua")
   utils.hi_link("LspDiagnosticsDefaultInfo", "GruvboxBlue")
 
+  vim.cmd [[highlight TelescopeBorder guifg=#928374]]
+  vim.cmd [[highlight TelescopePromptBorder guifg=#928374]]
+  vim.cmd [[highlight TelescopeResultsBorder guifg=#928374]]
+  vim.cmd [[highlight TelescopePreviewBorder guifg=#928374]]
   -- utils.hi_link("LspDiagnosticsWarning", "GruvboxOrange")
   -- utils.hi_link("LspDiagnosticsWarningSign", "GruvboxOrange")
   -- utils.hi_link("LspDiagnosticsWarningFloating", "GruvboxOrange")

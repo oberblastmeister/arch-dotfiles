@@ -50,6 +50,10 @@ super + {_,shift + }q
 super + m
     bspc desktop -l next
 
+# toggle hidden
+super + n
+    bsphide
+
 # send the newest marked node to the newest preselected node
 super + y
     bspc node newest.marked.local -n newest.!automatic.local
@@ -110,7 +114,7 @@ super + bracket{left,right}
 super + alt + bracket{left,right}
     id=$(bspc query --nodes --node); \
     bspc node --to-desktop {prev,next}.local; \
-    bspc node --focus ${id}; \
+    bspc node --focus "$id"
 
 # send window to next/previous desktop, don't move
 super + shift + bracket{left,right}
@@ -134,7 +138,7 @@ super + alt + {1-9,0}
     id=$(bspc query --nodes --node); \
     bspc node --to-desktop '^{1-9,10}'; \
     bspc desktop --focus '^{1-9,10}'; \
-    bspc node --focus ${id}
+    bspc node --focus "$id"
 
 #
 # preselect

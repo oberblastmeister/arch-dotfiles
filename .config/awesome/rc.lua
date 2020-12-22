@@ -74,4 +74,4 @@ config.rules.setup()
 config.signals.setup()
 
 -- autostart apps
-awful.spawn.with_shell("/home/brian/.config/awesome/autostart.sh")
+awful.spawn.with_shell("/home/brian/bin/autostart.sh")

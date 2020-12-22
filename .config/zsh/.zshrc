@@ -95,6 +95,10 @@ zinit light zsh-users/zsh-completions
 zinit ice lucid wait atload"bindkey '^_' autosuggest-execute"
 zinit light softmoth/zsh-vim-mode
 
+# source ~/builds/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# zinit ice lucid wait
+# zinit light marlonrichert/zsh-autocomplete
+
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
@@ -141,6 +145,3 @@ zinit wait lucid light-mode is-snippet for \
 
 # source lf icons
 source ~/.config/zsh/.lf_icons
-
-# luarocks path
-eval $(luarocks path --bin)

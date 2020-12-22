@@ -38,45 +38,4 @@ if [[ $YADM_CLASS = Laptop ]]; then
     amixer -c 0 set Master playback 100% unmute
 fi
 
-# -----------------------------------------------------
-# ------------------- Autostart apps ------------------
-# -----------------------------------------------------
-
-~/bin/polybar-launch.sh &
-xrdb ~/.Xresources &
-feh --bg-scale ~/.dotfiles/wallpapers/monocolor.png
-mopidy &
-picom &
-redshift &
-
-# tray icons
-xfce4-power-manager &
-udiskie --tray &
-nm-applet &
-flameshot &
-# flameshot config --showhelp false --maincolor '#83a598' --contrastcolor '#458588' --trayicon true
-blueman-applet &
-syncthing-gtk -m &
-
-# -----------------------------------------------------
-# ------------------- Miscellaneous Settings ----------
-# -----------------------------------------------------
-if [[ $YADM_CLASS = Laptop ]]; then
-    # set touchpad options
-    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
-    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Enabled" 1
-    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Disable While Typing Enabled" 0
-    # allow two finger click
-    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Click Method Enabled" 0 1
-    # allow two finger right click and middle click emulation
-    xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Middle Emulation Enabled" 1
-fi
-
-# r stand for autorepeat (key repeat)
-# delay, rate
-xset r rate 500 50
-
-setxkbmap -option ctrl:nocaps
-
-# Change from ugly 'X' cursor when hovering over background
-xsetroot -cursor_name left_ptr
+~/bin/autostart.sh &

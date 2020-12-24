@@ -20,9 +20,11 @@ local function setup()
   }
 
   use {
-    'TimUntersberger/neogit',
+    "TimUntersberger/neogit",
     cmd = 'Neogit',
   }
+
+  use "pwntester/octo.nvim"
 end
 
 return {

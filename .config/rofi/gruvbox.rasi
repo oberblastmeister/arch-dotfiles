@@ -8,7 +8,9 @@
     foregroundcolorinverse: #ebdbb2;
     selectioncolor: #504945;
 
-    font: "Fira Code Nerd Font 14";
+    /* font: "Fira Code Nerd Font 14"; */
+    /* font: "Fira Code Nerd Font 10"; */
+    font: "SF Mono 11";
     /* font: "monospace 14"; */
     border-color: @separatorcolor;
     background-color: @backgroundcolor;

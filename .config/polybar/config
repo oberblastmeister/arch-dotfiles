@@ -47,7 +47,8 @@ background = ${colors.background}
 offset-y = 10
 
 wm-restack = bspwm
-override-redirect=true
+override-redirect=false
+; ignore_ewmh_struts=true
 
 [bar/ws]
 inherit = bar/base
@@ -80,7 +81,9 @@ offset-x = 50.7%
 ; Spotify (uses playerctl)
 ;modules-left = previous playpause next spotify
 ; Mpd
-modules-left = mpd
+; modules-left = mpd
+modules-left = wireless-network
+; tray-position = right
 
 [bar/tray]
 inherit = bar/base
@@ -166,7 +169,7 @@ label-urgent-foreground = ${colors.background}
 [module/bspwm]
 type = internal/bspwm
 format = <label-state>
-format-padding = 5
+format-padding = 4
 format-background = ${colors.color1}
 format-foreground = ${colors.background}
 enable-click = true
@@ -178,7 +181,9 @@ label-focused-font = 3
 label-focused-foreground = ${colors.background}
 label-focused-padding = 1
 
-label-empty = 
+; make nothing to not show empty ones
+label-empty = 
+label-empty-padding = 1
 
 label-occupied = 
 label-occupied-font = 2
@@ -200,7 +205,7 @@ label-urgent-foreground = ${colors.background}
 type = custom/text
 content = 
 content-foreground = ${colors.color3}
-click-left = powermenu
+click-left = ~/.config/polybar/scripts/powermenu
 content-margin = 0
 
 [module/mpd]
@@ -310,9 +315,13 @@ format-padding = 3
 tail = true
 interval = 1
 
+[module/wireless-network]
+type = internal/network
+interface = wlp0s20f3
+
 [settings]
 screenchange-reload = true
-;compositing-background = xor
+; compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
@@ -320,7 +329,7 @@ screenchange-reload = true
 
 [global/wm]
 margin-top = 0
-margin-bottom = 0
+; margin-bottom = 0
 
 ; vim:ft=dosini
                       

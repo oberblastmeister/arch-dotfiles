@@ -5,7 +5,8 @@
 # -----------------------------------------------------
 sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+# bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d I II III IV V VI
 
 bspc config border_width         4.5
 # bspc config window_gap          35
@@ -38,6 +39,7 @@ if [[ $YADM_CLASS = Laptop ]]; then
     amixer -c 0 set Master playback 100% unmute
 fi
 
+feh --bg-fill ~/.config/bspwm/monocolor.png
+~/.config/polybar/launch.sh &
 ~/bin/autostart.sh &
-# feh -g 640x480 ~/.config/awesome/themes/gruvbox/wallpapers/monocolor.png
-feh --bg-max ~/.config/awesome/themes/gruvbox/wallpapers/monocolor.png &
+jgmenu --at-pointer --hide-on-startup &

@@ -1,12 +1,11 @@
 configuration {
-    width: 20;
-    modi: "window,run,ssh,drun,combi,keys";
+    width: 40;
+    modi: "window,run,ssh,drun,combi,keys,windowcd,file-browser";
 	lines: 10;
     terminal: "kitty";
 	case-sensitive: false;
-	matching: "regex";
-	theme: "~/.config/rofi/gruvbox.rasi";
-    icon-theme: "White-Sur dark";
+	matching: "fuzzy";
+    icon-theme: "Papirus";
     drun-display-format: "{name} [<span weight='normal' size='small'>({generic})</span>]";
 }
-/* @import "gruvbox" */
+@import "gruvbox"

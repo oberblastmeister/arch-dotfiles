@@ -27,8 +27,8 @@ super + Escape
 super + alt + u
     powermenu
 
-~button3
-    jgmenu --at-pointer
+shift + ~button3
+    jgmenu_run
 
 #
 # bspwm hotkeys
@@ -95,9 +95,6 @@ super + {_,shift + }{h,j,k,l}
 # focus the node for the given path jump
 # super + {p,b,comma,period}
 #     bspc node -f @{parent,brother,first,second}
-
-super + {b,comma,period}
-    bspc node -f @{brother,first,second}
 
 super + ctrl + p
     bspc node -f @brother
@@ -219,8 +216,11 @@ ctrl + Print
     flameshot screen
 
 # common apps keys
-super + ctrl + b
+super + b
     $BROWSER
+
+super + ctrl + b
+    browser_private
 
 # dropdown terminal
 super + alt + t

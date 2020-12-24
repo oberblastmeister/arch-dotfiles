@@ -42,16 +42,29 @@ laptopconfigs &
 # run xsettingsd
 run picom
 run redshift
+w
 run xfce4-power-manager
+wo wt
+wo wthis
+wow 
+jj
 run udiskie --tray
 run nm-applet
+wo wt
 run flameshot
 run blueman-applet
+wo wt
 run system-config-printer-applet
 run redshift-gtk
+wo wthi
 run syncthing-gtk -m
+wo wthis this isjust so coo
+ wot
 run greenclip daemon
+this isjust so coo
 run mailspring --background
+this hti sth
+wo wthis
 run unclutter --timeout 4
 ~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 configs &

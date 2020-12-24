@@ -23,7 +23,6 @@ set number
 set relativenumber
 set scrolloff 10
 set incsearch
-# set color256
 set icons
 set hidden!
 

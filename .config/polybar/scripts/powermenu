@@ -1,0 +1,13 @@
+#!/bin/bash
+
+## Created By Aditya Shakya
+
+MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 5 -xoffset -10 -yoffset -80 -width 15 -lines 6 <<< "> Lock|> Logout|> Reboot|> Shutdown|> Suspend|> Hibernate")"
+            case "$MENU" in
+                *Lock) betterlockscreen -l dim;;
+                *Logout) bspc quit;;
+                *Reboot) systemctl reboot;;
+                *Shutdown) systemctl poweroff;;
+                *Suspend) systemctl suspend;;
+                *Hibernate) systemctl hibernate;;
+            esac

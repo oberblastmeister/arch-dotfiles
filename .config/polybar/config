@@ -31,12 +31,13 @@ color3 = #bdae93
 
 [bar/base]
 enable-ipc = true
-; font-0=SF Mono:style=Regular:pixelsize=9:antialias=true;1
-; font-0=FiraCode Nerd Font:style=Regular:pixelsize=9:antialias=true;1
-font-0=FiraCode:style=Regular:pixelsize=9:antialias=true;1
+; font-0=SF Mono:style=Regular:pixelsize=9:antialias=true;2
+; font-0=OperatorMono Nerd Font:style=Medium:pixelsize=10:antialias=true;2
+font-0=FiraCode:style=Regular:pixelsize=9:antialias=true;2
+; font-0=Source Code Pro:style=Regular:pixelsize=9:antialias=true;2
 font-1=FontAwesome5Free:style=Regular:pixelsize=8:antialias=true;2
 font-2=FontAwesome5Free:style=Solid:pixelsize=8:antialias=true;2
-font-3=IPAGothic:style=Regular:size=11:antialias=true;3
+; font-3=IPAGothic:style=Regular:size=11:antialias=true;3
 
 bottom = true
 border-size = 4
@@ -50,7 +51,6 @@ offset-y = 10
 
 wm-restack = bspwm
 override-redirect=false
-; ignore_ewmh_struts=true
 
 [bar/ws]
 inherit = bar/base

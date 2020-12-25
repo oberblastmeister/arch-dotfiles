@@ -42,4 +42,3 @@ fi
 feh --bg-fill ~/.config/bspwm/monocolor.png
 ~/.config/polybar/launch.sh &
 ~/bin/autostart.sh &
-jgmenu --at-pointer --hide-on-startup &

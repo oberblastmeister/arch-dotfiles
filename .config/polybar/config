@@ -31,7 +31,9 @@ color3 = #bdae93
 
 [bar/base]
 enable-ipc = true
-font-0=SF Mono:style=Regular:pixelsize=9:antialias=true;1
+; font-0=SF Mono:style=Regular:pixelsize=9:antialias=true;1
+; font-0=FiraCode Nerd Font:style=Regular:pixelsize=9:antialias=true;1
+font-0=FiraCode:style=Regular:pixelsize=9:antialias=true;1
 font-1=FontAwesome5Free:style=Regular:pixelsize=8:antialias=true;2
 font-2=FontAwesome5Free:style=Solid:pixelsize=8:antialias=true;2
 font-3=IPAGothic:style=Regular:size=11:antialias=true;3
@@ -70,7 +72,7 @@ scroll-down = bspwm-deskprev
 ; scroll-down = i3wm-wsprev
  
 
-[bar/music]
+[bar/misc]
 inherit = bar/base
 enable-ipc = true
 width = 32%
@@ -82,7 +84,8 @@ offset-x = 50.7%
 ;modules-left = previous playpause next spotify
 ; Mpd
 ; modules-left = mpd
-modules-left = wireless-network
+; modules-left = wireless-network
+modules-left = launcher
 ; tray-position = right
 
 [bar/tray]
@@ -92,7 +95,7 @@ width = 16.2%
 offset-x = 83.3%
 foreground = ${colors.color3}
 
-;tray-position = right
+; tray-position = right
 
 modules-left = pulseaudio time power
 
@@ -317,7 +320,22 @@ interval = 1
 
 [module/wireless-network]
 type = internal/network
-interface = wlp0s20f3
+; interface = wlp0s20f3
+interface = enp30s0
+
+[module/launcher]
+type = custom/text
+
+content = 
+; content = Menu
+; content = 
+; content = 
+content-background = ${colors.color1}
+content-foreground = ${colors.background}
+content-padding = 5
+
+click-left = ~/.config/polybar/scripts/launcher
+click-right = ~/.config/polybar/scripts/launcher-alt
 
 [settings]
 screenchange-reload = true

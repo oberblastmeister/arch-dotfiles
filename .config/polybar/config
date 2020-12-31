@@ -186,7 +186,8 @@ label-focused-foreground = ${colors.background}
 label-focused-padding = 1
 
 ; make nothing to not show empty ones
-label-empty = 
+; label-empty = 
+label-empty = " "
 label-empty-padding = 1
 
 label-occupied = 

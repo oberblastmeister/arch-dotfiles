@@ -24,6 +24,7 @@ end
 local function setup()
   api.nvim_set_keymap('n', 'gzb', [[<cmd>lua require'neuron'.rib {address = "127.0.0.1:8200", verbose = true}<CR>]], {noremap = true})
   api.nvim_set_keymap('n', 'gzO', [[<cmd>lua require'neuron'.open()<CR>]], {noremap = true})
+  require"neuron".setup()
 end
 
 return {

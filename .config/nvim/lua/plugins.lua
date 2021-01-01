@@ -44,7 +44,10 @@ local function setup()
   local use = packer.use
   packer.reset()
 
-  use {"wbthomason/packer.nvim", opt = true}
+  use {
+    "wbthomason/packer.nvim", opt = true,
+    branch = 'feat-luarocks',
+  }
 
   require"plugins/looks".setup()
   require"plugins/colorschemes".setup()

@@ -112,9 +112,11 @@ function M.setup()
   utils.augroup("Lsp")
 
   if settings.python_lsp == PythonLsp.pyls then
+
     lspconfig.pyls.setup(LspDefaults:with {
       settings = require"lsp_settings/pyls",
     })
+
   elseif settings.python_lsp == PythonLsp.pyls_ms then
 
     lspconfig.pyls_ms.setup(LspDefaults)

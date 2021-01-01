@@ -12,9 +12,10 @@ PythonLsp = enum {
   "pyls",
   "pyls_ms",
   "jedi_language_server",
+  "pyright",
 }
 
 return {
   -- the python language server to use
-  python_lsp = PythonLsp.pyls
+  python_lsp = PythonLsp.pyright
 }

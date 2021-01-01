@@ -1,4 +1,5 @@
 local use = require"packer".use
+local local_use = require"plugins/local".local_use
 
 local function setup()
   use {
@@ -21,11 +22,21 @@ local function setup()
     "vimwiki/vimwiki",
     cmd = "VimwikiIndex",
     setup = function() require "config/vimwiki".setup() end,
+    disable = true,
   }
 
   use {
     "reedes/vim-pencil",
     cmd = "Pencil"
+  }
+
+  use {
+    "fiatjaf/neuron.vim",
+  }
+
+  local_use {
+    "neuron.nvim",
+    setup = function() require"config/neuron".setup() end,
   }
 end
 

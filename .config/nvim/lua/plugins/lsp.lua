@@ -22,7 +22,6 @@ local function setup()
         end,
         disable = true,
       },
-      "honza/vim-snippets",
       "hrsh7th/vim-vsnip",
       "hrsh7th/vim-vsnip-integ",
     }
@@ -37,15 +36,13 @@ local function setup()
     disable = true,
   }
 
-  -- lsp status wrapper
-  use {"nvim-lua/lsp-status.nvim", disable = true}
-
   -- lsp inlay hints
   use {
     "tjdevries/lsp_extensions.nvim",
     config = function()
       require "config/lsp_extensions".setup()
-    end
+    end,
+    disable = true,
   }
 
   use {
@@ -64,6 +61,12 @@ local function setup()
     config = function()
       require "config/vista".setup()
     end
+  }
+
+  use {
+    "aca/pylance.nvim",
+    run = "./install.sh",
+    disable = true,
   }
 end
 

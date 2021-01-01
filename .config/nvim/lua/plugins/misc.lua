@@ -4,6 +4,7 @@ local function setup()
   use {
     "liuchengxu/vim-which-key",
     config = function() require"config/whichkey".setup() end,
+    disable = true,
   }
 
   use "tpope/vim-unimpaired"

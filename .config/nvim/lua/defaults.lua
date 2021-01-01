@@ -31,6 +31,9 @@ let maplocalleader = "\\"
   if vim.fn.has('nvim') then
     vim.cmd [[let $GIT_EDITOR = 'nvr -cc split --remote-wait']]
   end
+
+  vim.cmd [[command! NeuronIndex lua require'config/neuron'.goto_index()]]
+  vim.cmd [[nnoremap <leader>ni <cmd>NeuronIndex<CR>]]
 end
 
 return {setup = setup}

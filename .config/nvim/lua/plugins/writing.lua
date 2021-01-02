@@ -36,8 +36,7 @@ local function setup()
 
   local_use {
     "neuron.nvim",
-    setup = function() require"config/neuron".setup() end,
-    rocks = {"lunajson"},
+    config = function() require"config/neuron".setup() end,
   }
 end
 

@@ -50,15 +50,7 @@ function M.setup_commands()
 end
 
 local function debug_client(client, bufnr)
-  print('attached')
-  print('client:')
-  dump(client.config.cmd)
-  dump(client.cmd)
-  dump(client)
-  print('root dir:', client.config.root_dir)
-  print('client:')
-  dump(client)
-  print('bufnr:', bufnr)
+  print(string.format("lsp client: %s, root dir: %s", client.config.cmd[1], client.config.root_dir))
 end
 
 local function custom_on_attach(client, bufnr)
@@ -69,6 +61,7 @@ local function custom_on_attach(client, bufnr)
     print('there is flags')
     client.config.flags.allow_incremental_sync = true
   end
+  -- debug_client(client)
 
   -- vim.cmd [[autocmd Lsp CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
   -- vim.cmd [[autocmd Lsp CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
@@ -153,7 +146,7 @@ function M.setup()
     cmd = {"json-languageserver", "--stdio"},
   })
 
-  -- lspconfig.yamlls.setup {on_attach = custom_on_attach}
+  lspconfig.yamlls.setup(LspDefaults)
 
   lspconfig.gopls.setup(LspDefaults:with {
     root_dir = lspconfig.util.root_pattern('go.mod', '.git', '')
@@ -190,6 +183,8 @@ function M.setup()
     filetypes = {"sh", "lua"},
     init_options = require"lsp_settings/diagnosticls",
   })
+
+  lspconfig.dhall_lsp_server.setup(LspDefaults)
 
   -- general purpose language server for linters
   -- lspconfig.efm.setup(LspDefaults)

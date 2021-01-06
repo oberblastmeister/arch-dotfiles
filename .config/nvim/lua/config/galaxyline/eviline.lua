@@ -78,24 +78,18 @@ local function setup()
     }
   }
 
-  local function find_git_root()
-    local path = vim.fn.expand('%:p:h')
-    local get_git_dir = require('galaxyline.provider_vcs').get_git_dir
-    return get_git_dir(path)
-  end
-
   gls.left[5] = {
     GitIcon = {
       provider = function() return '  ' end,
-      condition = find_git_root,
+      condition = require('galaxyline.provider_vcs').check_git_workspace,
       highlight = {colors.orange,colors.line_bg},
     }
   }
   gls.left[6] = {
     GitBranch = {
       provider = 'GitBranch',
-      condition = find_git_root,
-      highlight = {colors.fg,colors.line_bg,'bold'},
+      condition = require('galaxyline.provider_vcs').check_git_workspace,
+      highlight = {'#8FBCBB',colors.line_bg,'bold'},
     }
   }
 
@@ -107,30 +101,31 @@ local function setup()
     return false
   end
 
-  gls.left[7] = {
-    DiffAdd = {
-      provider = 'DiffAdd',
-      condition = checkwidth,
-      icon = ' ',
-      highlight = {colors.green,colors.line_bg},
-    }
-  }
-  gls.left[8] = {
-    DiffModified = {
-      provider = 'DiffModified',
-      condition = checkwidth,
-      icon = ' ',
-      highlight = {colors.orange,colors.line_bg},
-    }
-  }
-  gls.left[9] = {
-    DiffRemove = {
-      provider = 'DiffRemove',
-      condition = checkwidth,
-      icon = ' ',
-      highlight = {colors.red,colors.line_bg},
-    }
-  }
+  -- gls.left[7] = {
+  --   DiffAdd = {
+  --     provider = 'DiffAdd',
+  --     condition = checkwidth,
+  --     icon = ' ',
+  --     highlight = {colors.green,colors.line_bg},
+  --   }
+  -- }
+  -- gls.left[8] = {
+  --   DiffModified = {
+  --     provider = 'DiffModified',
+  --     condition = checkwidth,
+  --     icon = ' ',
+  --     highlight = {colors.orange,colors.line_bg},
+  --   }
+  -- }
+  -- gls.left[9] = {
+  --   DiffRemove = {
+  --     provider = 'DiffRemove',
+  --     condition = checkwidth,
+  --     icon = ' ',
+  --     highlight = {colors.red,colors.line_bg},
+  --   }
+  -- }
+
   gls.left[10] = {
     LeftEnd = {
       provider = function() return '' end,
@@ -163,7 +158,7 @@ local function setup()
       provider = 'FileFormat',
       separator = ' ',
       separator_highlight = {colors.bg,colors.line_bg},
-      highlight = {colors.fg,colors.line_bg},
+      highlight = {colors.fg,colors.line_bg,'bold'},
     }
   }
   gls.right[2] = {
@@ -179,7 +174,7 @@ local function setup()
       provider = 'LinePercent',
       separator = ' ',
       separator_highlight = {colors.line_bg,colors.line_bg},
-      highlight = {colors.fg,colors.darkblue},
+      highlight = {colors.cyan,colors.darkblue,'bold'},
     }
   }
   gls.right[4] = {

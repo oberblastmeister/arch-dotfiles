@@ -32,6 +32,7 @@ local function setup()
 
   use {
     "fiatjaf/neuron.vim",
+    disable = true,
   }
 
   local_use {

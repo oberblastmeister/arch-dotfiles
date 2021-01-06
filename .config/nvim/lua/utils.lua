@@ -1,5 +1,6 @@
 local vim = vim
 local api = vim.api
+local uv = vim.loop
 
 local M = {}
 
@@ -170,5 +171,139 @@ local is_valid = function(node, type_patterns)
   end
   return false
 end
+
+do
+  local namespace = api.nvim_create_namespace("buffer updates testing")
+
+  function M.buffer_updates()
+    vim.api.nvim_buf_attach(0, true, {
+        on_lines = vim.schedule_wrap(function(...)
+          local params = {...}
+          local buf = params[2]
+          local changedtick = params[3]
+          local firstline = params[4]
+          local lastline = params[5]
+          local new_lastline = params[6]
+          print(string.format("firstline: %s, lastline: %s, new_lastline: %s", firstline, lastline, new_lastline))
+          -- dump(params)
+          local lines = api.nvim_buf_get_lines(buf, firstline, new_lastline, false)
+          print('the changedtick is', changedtick)
+          if #lines == 0 then
+            local extmarks = api.nvim_buf_get_extmarks(0, namespace, {firstline, 0}, {new_lastline, 0}, {})
+            for _, v in ipairs(extmarks) do
+              api.nvim_buf_del_extmark(0, namespace, v[1])
+            end
+            -- print('the changed tick is', changedtick)
+            -- print('clearing from', firstline, 'to', lastline)
+            -- api.nvim_buf_clear_namespace(0, namespace, firstline, lastline)
+            -- api.nvim_buf_set_virtual_text(0, namespace, firstline, {{"", "TabLineFill"}}, {})
+            -- api.nvim_buf_clear_namespace(0, namespace, new_lastline + 1, new_lastline + 2)
+            -- api.nvim_buf_clear_namespace(0, namespace, firstline, firstline + vim.fn.abs(lastline - new_lastline))
+          else
+            -- api.nvim_buf_set_virtual_text(0, namespace, firstline, {{"virtual text here " .. firstline, "TabLineFill"}}, {})
+            api.nvim_buf_set_extmark(0, namespace, firstline, 0, {
+              virt_text = {{"extmark virtual text", "TabLineFill"}},
+            })
+            -- api.nvim_buf_set_extmark(0, namespace, firstline, 0, {
+            --   -- ephemeral = true,
+            --   hl_group = "TabLineSel",
+            --   virt_text = {{"extmark virtual text", "TabLineFill"}},
+            -- })
+          end
+          dump(lines)
+          -- if #lines == 0 then
+          --   print("did not add, removed")
+          -- end
+        end),
+      })
+  end
+end
+
+local w = vim.loop.new_fs_event()
+
+local function on_change(err, fname, status)
+  -- Do work...
+  print(string.format('changed: %s, renamed: %s, fname: %s', status.change, status.rename, fname))
+  vim.api.nvim_command('checktime')
+  -- Debounce: stop/start.
+  w:stop()
+  watch_file(fname)
+end
+
+function watch_file(fname)
+  local fullpath = vim.fn.fnamemodify(fname, ":p")
+  w:start(fullpath, {}, vim.schedule_wrap(function(...)
+    on_change(...)
+  end))
+end
+
+function M.async_testing(msg)
+  local async
+  async = uv.new_async(function(msg)
+    print('msg:', msg)
+    async:close()
+  end)
+
+  async:send("hello world async")
+end
+
+function M.map_par(tbl, f)
+  for idx, v in ipairs(tbl) do
+    uv.new_thread(vim.schedule_wrap(function()
+      dump(f(v))
+      -- tbl[idx] = f(v)
+    end))
+  end
+end
+
+function M.join_all(handles)
+  for _, handle in ipairs(handles) do
+    uv.thread_join(handle)
+  end
+end
+
+function M.map_test()
+  local tbl = {1, 2, 3, 4, 5} 
+  for idx, v in iapris(tbl) do
+    uv.new_thread(function()
+    end)
+  end
+end
+
+function M.thread_test_works()
+  local handle = vim.loop.new_thread(vim.schedule_wrap(function()
+    print(1 + 1)
+  end))
+  handle:join()
+  -- handle:close()
+end
+
+function M.thread_test()
+  local run = vim.schedule_wrap(function()
+    print(vim.api.nvim_get_current_line())
+  end)
+  local handle = vim.loop.new_thread(run)
+  handle:join()
+end
+
+function M.work_test()
+  local res = {}
+
+  local function first(a, b)
+    return a + b
+  end
+
+  local function second(c)
+    table.insert(res, c)
+    vim.api.nvim_out_write("The result is: " .. c .. "\n")
+    print(vim.api.nvim_get_current_line())
+  end
+
+  local work = vim.loop.new_work(first, vim.schedule_wrap(second))
+  work:queue(1, 2)
+end
+
+vim.api.nvim_command(
+  "command! -nargs=1 Watch call luaeval('watch_file(_A)', expand('<args>'))")
 
 return M

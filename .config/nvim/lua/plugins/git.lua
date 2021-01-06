@@ -16,7 +16,8 @@ local function setup()
     "lewis6991/gitsigns.nvim",
     config = function()
       require "config/gitsigns".setup()
-    end
+    end,
+    disable = true,
   }
 
   use {

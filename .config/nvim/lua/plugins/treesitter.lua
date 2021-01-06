@@ -1,8 +1,19 @@
 local use = require"packer".use
+local local_use = require"plugins/local".local_use
 
 local function setup()
-  use {
-    "nvim-treesitter/nvim-treesitter",
+  -- use {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   run = function()
+  --     vim.cmd [[TSInstall all]]
+  --   end,
+  --   config = function()
+  --     require "config/treesitter".setup()
+  --   end
+  -- }
+
+  local_use {
+    "nvim-treesitter",
     run = function()
       vim.cmd [[TSInstall all]]
     end,

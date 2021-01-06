@@ -7,7 +7,7 @@ local function setup()
 
     highlight = {
       enable = true,
-      use_languagetree = true, -- language injection (highly unstable)
+      -- use_languagetree = true, -- language injection (highly unstable)
       disable = {},  -- list of language that will be disabled
       custom_captures = {}
     },

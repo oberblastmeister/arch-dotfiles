@@ -21,8 +21,8 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
 
   -- common
-  -- api.nvim_set_keymap('n', '<c-b>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]], {noremap = true})
-  api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]], {noremap = true})
+  api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require'telescope.builtin'.find_files()<cr>]], {noremap = true})
+  api.nvim_set_keymap('n', '<c-b>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>/', [[<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())<cr>]], {noremap = true})
 
   -- treesitter
@@ -63,7 +63,7 @@ function M.setup()
     defaults = {
       set_env = { ['COLORTERM'] = 'truecolor' },
       file_previewer = previewers.vim_buffer_cat.new, -- experimental
-      color_devicons = false, -- slows down telescope
+      color_devicons = true, -- slows down telescope
       layout_strategy = "flex",
     }
   }

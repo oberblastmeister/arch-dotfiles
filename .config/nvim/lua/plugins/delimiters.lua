@@ -10,7 +10,15 @@ local function setup()
 
   use {
     "jiangmiao/auto-pairs",
-    disable = false,
+    -- disable = true,
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require('nvim-autopairs').setup()
+    end,
+    disable = true,
   }
 
   use {

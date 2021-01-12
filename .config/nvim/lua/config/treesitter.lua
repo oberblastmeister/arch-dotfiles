@@ -1,6 +1,7 @@
 local function setup()
   -- remove markdown parser for now
   -- require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
+  require "nvim-treesitter.parsers".get_parser_configs().haskell = nil --haskell will crash the editor
 
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",     -- one of "all", "language", or a list of languages
@@ -8,7 +9,7 @@ local function setup()
     highlight = {
       enable = true,
       -- use_languagetree = true, -- language injection (highly unstable)
-      disable = {},  -- list of language that will be disabled
+      disable = {"haskell"},  -- list of language that will be disabled
       custom_captures = {}
     },
 
@@ -130,6 +131,12 @@ local function setup()
           ["<leader>dF"] = "@class.outer",
         },
       },
+
+      query_linter = {
+        enable = true,
+        use_virtual_text = true,
+        lint_events = {"BufWrite", "CursorHold"},
+      }
     }
   }
 end

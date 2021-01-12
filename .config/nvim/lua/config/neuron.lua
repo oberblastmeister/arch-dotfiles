@@ -23,7 +23,6 @@ end
 
 local function setup()
   require"neuron".setup()
-  vim.cmd [[nnoremap gzi <cmd>lua require'neuron'.goto_index()<CR>]]
 end
 
 return {

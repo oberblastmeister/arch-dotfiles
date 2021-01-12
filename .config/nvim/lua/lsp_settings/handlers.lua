@@ -19,38 +19,38 @@ local function setup()
   -- end
 
   -- workaround for rust-analyzers
-  lsp.handlers["textDocument/rename"] = function(_, _, result)
-    if not result then return end
-    if result.documentChanges then
-      local merged_changes = {}
-      local versions = {}
-      for _, change in ipairs(result.documentChanges) do
-        if change.kind then
-          error("not supported")
-        else
-          local edits = merged_changes[change.textDocument.uri] or {}
-          versions[change.textDocument.uri] = change.textDocument.version
+  -- lsp.handlers["textDocument/rename"] = function(_, _, result)
+  --   if not result then return end
+  --   if result.documentChanges then
+  --     local merged_changes = {}
+  --     local versions = {}
+  --     for _, change in ipairs(result.documentChanges) do
+  --       if change.kind then
+  --         error("not supported")
+  --       else
+  --         local edits = merged_changes[change.textDocument.uri] or {}
+  --         versions[change.textDocument.uri] = change.textDocument.version
 
-          for _, edit in ipairs(change.edits) do table.insert(edits, edit) end
+  --         for _, edit in ipairs(change.edits) do table.insert(edits, edit) end
 
-          merged_changes[change.textDocument.uri] = edits
-        end
-      end
-      local new_changes = {}
-      for uri, edits in pairs(merged_changes) do
-        table.insert(new_changes, {
-          edits = edits,
-          textDocument = {
-            uri = uri,
-            version = versions[uri],
-          }
-        })
-      end
-      result.documentChanges = new_changes
-    end
+  --         merged_changes[change.textDocument.uri] = edits
+  --       end
+  --     end
+  --     local new_changes = {}
+  --     for uri, edits in pairs(merged_changes) do
+  --       table.insert(new_changes, {
+  --         edits = edits,
+  --         textDocument = {
+  --           uri = uri,
+  --           version = versions[uri],
+  --         }
+  --       })
+  --     end
+  --     result.documentChanges = new_changes
+  --   end
 
-    vim.lsp.util.apply_workspace_edit(result)
-  end
+  --   vim.lsp.util.apply_workspace_edit(result)
+  -- end
 end
 
 return {setup = setup}

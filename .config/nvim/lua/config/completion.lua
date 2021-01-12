@@ -14,10 +14,10 @@ function M.setup()
   vim.g.completion_enable_auto_hover = 1
   vim.g.enable_auto_signature = 1
 
+  -- vim.g.completion_enable_snippet = "snippets.nvim"
   vim.g.completion_enable_snippet = "vim-vsnip"
   vim.g.completion_sorting = "none"
   vim.g.completion_trigger_on_delete = 1
-  vim.g.completion_timer_cycle = 100
 
   -- set this to avoid flickering for now and make completion faster
   vim.g.matching_strategy_list = {'exact'}
@@ -25,10 +25,17 @@ function M.setup()
   vim.g.completion_matching_ignore_case = 0
   -- vim.g.matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
-  vim.cmd [[imap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
-  vim.cmd [[smap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
-  vim.cmd [[imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
-  vim.cmd [[smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
+  if vim.g.completion_enable_snippet == "snippets.nvim" then
+
+    vim.cmd([[inoremap <c-k> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>]])
+    vim.cmd([[inoremap <c-j> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>]])
+
+  elseif vim.g.completion_enable_snippet == "vim-vsnip" then
+    vim.cmd [[imap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
+    vim.cmd [[smap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
+    vim.cmd [[imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
+    vim.cmd [[smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
+  end
 
   -- keys to map
   vim.g.completion_confirm_key = ""
@@ -87,9 +94,9 @@ function M.on_attach()
     default = {
       {complete_items = {'lsp', 'snippet', 'ts', 'path', 'buffers'}},
     },
-    tex = {
-      {complete_items = {'lsp', 'vimtex'}},
-    },
+    -- tex = {
+    --   {complete_items = {'lsp', 'vimtex'}},
+    -- },
     markdown = {
       {complete_items = {}}
     }

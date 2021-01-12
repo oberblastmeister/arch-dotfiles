@@ -1,6 +1,9 @@
 local vim = vim
 local api = vim.api
+local parsers = require'nvim-treesitter.parsers'
 local uv = vim.loop
+local queries = require'nvim-treesitter.query'
+local ts_utils = require("nvim-treesitter.ts_utils")
 
 local M = {}
 
@@ -275,15 +278,20 @@ function M.thread_test_works()
     print(1 + 1)
   end))
   handle:join()
-  -- handle:close()
+  handle:close()
+  uv.close(handle)
 end
 
 function M.thread_test()
-  local run = vim.schedule_wrap(function()
-    print(vim.api.nvim_get_current_line())
-  end)
+  -- local run = vim.schedule_wrap(function()
+  --   print(vim.api.nvim_get_current_line())
+  -- end)
+  local run = function()
+    print(1 + 1)
+  end
   local handle = vim.loop.new_thread(run)
   handle:join()
+  uv.close(handle)
 end
 
 function M.work_test()
@@ -301,9 +309,77 @@ function M.work_test()
 
   local work = vim.loop.new_work(first, vim.schedule_wrap(second))
   work:queue(1, 2)
+  -- uv.stop()
+  -- print(uv.run())
 end
 
 vim.api.nvim_command(
   "command! -nargs=1 Watch call luaeval('watch_file(_A)', expand('<args>'))")
+
+function M.check_test()
+  local check = uv.new_check()
+  local counter = 0
+  check:start(function()
+    print("After I/O polling, counter:", counter)
+    counter = counter + 1
+  end)
+end
+
+function M.idle_test()
+  local idle = uv.new_idle()
+end
+
+function M.ts_test()
+  local matches = queries.get_parent_matches(0, '@scope', 'locals')  
+  dump(matches)
+  for _, match in ipairs(matches) do
+    dump(ts_utils.get_node_text(match))
+  end
+end
+
+function M.query_test(bufnr)
+  bufnr = bufnr or 0
+  local lang = parsers.get_buf_lang(bufnr)
+  if not lang then return function() end end
+
+  local query = queries.get_query(lang, "locals")
+  if not query then return function() end end
+
+  local parser = parsers.get_parser(bufnr, lang)
+  if not parser then return function() end end
+
+  local root = root or parser:parse()[1]:root()
+  local start_row, _, end_row, _ = root:range()
+
+  local curr_node = ts_utils.get_node_at_cursor()
+
+  local _, captured_node, _ = query:iter_captures(curr_node, bufnr, curr_node:start(), curr_node:end_())()
+
+  if captured_node then
+    print('node matched local')
+    print(ts_utils.get_node_text(captured_node)[1])
+  else
+    print('node did not match local')
+  end
+end
+
+function M.parent_test()
+  local node = ts_utils.get_node_at_cursor()
+  for parent in queries.iter_parents(node) do
+    dump(ts_utils.get_node_text(parent)[1])
+  end
+end
+
+function M.current_node_test()
+  local node = ts_utils.get_node_at_cursor()
+
+  local lang = parsers.get_buf_lang(0)
+  if not lang then return end
+
+  local query = queries.get_query(lang, 'locals')
+  if not query then return end
+
+  print(queries.node_matches(0, query, node))
+end
 
 return M

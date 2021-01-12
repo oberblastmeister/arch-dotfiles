@@ -68,7 +68,7 @@ return {
 
     languagetool = {
       command = "languagetool",
-      debounce = 1500,
+      debounce = 2000,
       args = {"%filepath"},
       -- args = {"-"},
       offsetLine = 0,
@@ -284,8 +284,8 @@ return {
     javascript = "eslint",
     typescript = "eslint",
 
-    -- markdown = "languagetool",
-    markdown = {"markdownlint", "write-good"},
+    markdown = "languagetool",
+    -- markdown = {"markdownlint", "write-good"},
 
     sh = "shellcheck",
     fish = "fish",

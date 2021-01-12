@@ -28,6 +28,11 @@ local function setup()
     }
   }
 
+  -- use {
+  --   "norcalli/snippets.nvim",
+  --   config = function() require"config/snippets".setup() end,
+  -- }
+
   -- diagnostic wrapper
   use {
     "nvim-lua/diagnostic-nvim",
@@ -46,14 +51,14 @@ local function setup()
     disable = true,
   }
 
-  use {
-    "RishabhRD/nvim-lsputils",
-    config = function()
-      require "config/lsp_utils".setup()
-    end,
-    requires = "RishabhRD/popfix",
-    disable = true,
-  }
+  -- use {
+  --   "RishabhRD/nvim-lsputils",
+  --   config = function()
+  --     require "config/lsp_utils".setup()
+  --   end,
+  --   requires = "RishabhRD/popfix",
+  --   disable = true,
+  -- }
 
   -- lsp tagbar
   use {

@@ -18,6 +18,15 @@ local function setup()
   }
 
   use {
+    "Yggdroot/LeaderF",
+    run = ':LeaderfInstallCExtension',
+    disable = true,
+  }
+
+  -- use "RishabhRD/nvim-finder"
+  -- use "RishabhRD/popfix"
+
+  use {
     "junegunn/fzf.vim",
     requires = {
       "junegunn/fzf",

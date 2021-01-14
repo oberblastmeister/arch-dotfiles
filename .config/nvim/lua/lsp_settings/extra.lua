@@ -18,7 +18,7 @@ local function setup()
 
   configs.testlsp ={
     default_config = {
-      cmd = {"lsp-server"};
+      cmd = {"/home/brian/projects/lsp-server/target/release/lsp-server"};
       filetypes = {"rust"};
       root_dir = util.root_pattern(".git", vim.fn.getcwd());
       docs = {

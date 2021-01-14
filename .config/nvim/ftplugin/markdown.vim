@@ -6,6 +6,11 @@ setlocal linebreak
 setlocal conceallevel=0
 
 nmap <buffer> _ <Plug>VimwikiRemoveHeaderLevel
+
+nmap <buffer> j gj
+nmap <buffer> k gk
+xmap <buffer> j gj
+xmap <buffer> k gk
 " nnoremap <buffer> <CR> <cmd>lua require'neuron'.enter_link()<CR>
 " nnoremap <buffer> gzn <cmd>lua require'neuron'.new()<CR>
 " nnoremap <buffer> gzz <cmd>lua require'neuron'.find_zettels()<CR>

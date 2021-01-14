@@ -76,6 +76,8 @@ set spelllang=en_us
 
 " set spell file directory
 set spellfile=$HOME/Sync/vim/spell/en_us.utf-8.add
+
+set conceallevel=1
 " }}}
 
 " Firenvim specific settings

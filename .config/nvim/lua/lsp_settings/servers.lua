@@ -94,10 +94,6 @@ local function setup()
 
   lspconfig.cssls.setup(LspDefaults)
 
-  lspconfig.rust_analyzer.setup(LspDefaults:with {
-    settings = require"lsp_settings/servers/rust_analyzer"
-  })
-
   lspconfig.hls.setup(LspDefaults:with {
     root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
     settings = require'lsp_settings/servers/hls',
@@ -116,6 +112,12 @@ local function setup()
   lspconfig.dhall_lsp_server.setup(LspDefaults)
 
   lspconfig.amuletlsp.setup(LspDefaults)
+
+  lspconfig.rust_analyzer.setup(LspDefaults:with {
+    settings = require"lsp_settings/servers/rust_analyzer"
+  })
+
+  -- lspconfig.testlsp.setup(LspDefaults)
 end
 
 return {setup = setup}

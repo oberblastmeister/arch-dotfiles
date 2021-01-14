@@ -23,8 +23,11 @@ alias rust="evcxr"
 alias vim="nvim"
 alias vi="nvim"
 
-alias man="batman"
-# alias man="nvim +Man!"
+# alias man="batman"
+# alias man="nvim +Man"
+function man {
+    nvim -c "Man $1 | only"
+}
 
 alias wttr="curl wttr.in"
 

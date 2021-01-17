@@ -117,7 +117,7 @@ local function setup()
     settings = require"lsp_settings/servers/rust_analyzer"
   })
 
-  -- lspconfig.testlsp.setup(LspDefaults)
+  lspconfig.tomllsp.setup(LspDefaults)
 end
 
 return {setup = setup}

@@ -3,8 +3,6 @@ local api = vim.api
 local M = {}
 
 function M.setup()
-  -- require'completion'.addCompletionSource('vimtex', require'config/vimtex'.complete_item)
-
   -- vim settings
   vim.o.completeopt='menuone,noinsert,noselect'
   vim.o.omnifunc='lua.vim.lsp.omnifunc'

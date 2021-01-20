@@ -37,6 +37,19 @@ local function setup()
       },
     }
   }
+
+  configs.taplolsp = {
+    default_config = {
+      -- cmd = {"/home/brian/projects/taplo/target/release/taplo-lsp", "run"},
+      cmd = {"taplo-lsp", "run"},
+      filetypes = {"toml"},
+      root_dir = util.root_pattern("*.toml", vim.fn.getcwd()),
+      docs = {
+        description = [[]],
+        default_config = {root_dir = [[root_pattern(".git", vim.fn.getcwd())]]},
+      },
+    }
+  }
 end
 
 return {setup = setup}

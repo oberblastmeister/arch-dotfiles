@@ -356,4 +356,28 @@ function M.yay()
   }):find()
 end
 
+function M.hoogle(opts)
+  opts = opts or {}
+
+  local live_hoogle = finders.new_job(function(prompt)
+      -- TODO: Probably could add some options for smart case and whatever else rg offers.
+
+      if not prompt or prompt == "" then
+        return nil
+      end
+
+      return {'hoogle', 'search', prompt}
+    end,
+    opts.entry_maker or make_entry.gen_from_string(opts),
+    opts.max_results
+  )
+
+  pickers.new(opts, {
+    prompt_title = 'Live Hoogle',
+    finder = live_hoogle,
+    previewer = nil,
+    sorter = conf.generic_sorter(opts),
+  }):find()
+end
+
 return M

@@ -84,6 +84,10 @@ local function setup()
   }
   
   local_use "windowmode.nvim"
+
+  local_use {
+    "repl.nvim",
+  }
 end
 
 return {

@@ -9,6 +9,11 @@ local function setup()
   }
 
   use {
+    "neovimhaskell/haskell-vim",
+    setup = function() require"config/polyglot/haskell".setup() end,
+  }
+
+  use {
     "euclidianAce/BetterLua.vim",
     ft = "lua",
   }

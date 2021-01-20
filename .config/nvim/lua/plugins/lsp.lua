@@ -3,8 +3,8 @@ local use = require"packer".use
 
 local function setup()
   -- lsp configs
-  local_use {
-    "nvim-lspconfig",
+  use {
+    "neovim/nvim-lspconfig",
     config = function() require "lsp_settings".setup() end
   }
 

@@ -1,9 +1,8 @@
 local use = require"packer".use
-local local_use = require"plugins/local".local_use
 
 local function setup()
-  local_use {
-    "telescope.nvim",
+  use {
+    "nvim-telescope/telescope.nvim",
     config = function()
       require "config/telescope".setup()
     end,

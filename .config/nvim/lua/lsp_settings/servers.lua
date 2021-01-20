@@ -118,6 +118,11 @@ local function setup()
   })
 
   lspconfig.tomllsp.setup(LspDefaults)
+
+  -- lspconfig.taplolsp.setup(LspDefaults)
+  -- lspconfig.taplolsp.setup(LspDefaults:with {
+  --   filetypes = {"toml"}
+  -- })
 end
 
 return {setup = setup}

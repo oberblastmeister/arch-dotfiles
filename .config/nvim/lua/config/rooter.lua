@@ -1,6 +1,6 @@
 local function setup()
   require'rooter'.setup {
-    echo = false
+    echo = true
   }
 end
 

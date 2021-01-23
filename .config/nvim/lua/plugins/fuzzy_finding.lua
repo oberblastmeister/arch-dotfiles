@@ -17,13 +17,37 @@ local function setup()
   }
 
   use {
+    "nvim-telescope/telescope-frecency.nvim",
+    requires = {
+      "tami5/sql.nvim"
+    },
+    config = function()
+      require"telescope".load_extension("frecency")
+    end,
+  }
+
+  use {
+    "nvim-telescope/telescope-cheat.nvim",
+    requires = {
+      "tami5/sql.nvim"
+    },
+    config = function()
+      require"telescope".load_extension("cheat")
+    end,
+  }
+
+  use {
+    "nvim-telescope/telescope-media-files.nvim",
+    config = function()
+      require"telescope".load_extension("cheat")
+    end
+  }
+
+  use {
     "Yggdroot/LeaderF",
     run = ':LeaderfInstallCExtension',
     disable = true,
   }
-
-  -- use "RishabhRD/nvim-finder"
-  -- use "RishabhRD/popfix"
 
   use {
     "junegunn/fzf.vim",

@@ -6,7 +6,7 @@ local function setup()
   vim.g.haskell_indent_where = 2
   vim.g.haskell_indent_after_bare_where = 2
   vim.g.haskell_indent_do = 2
-  vim.g.haskell_indent_in = 2
+  vim.g.haskell_indent_in = 1
   vim.g.haskell_indent_guard = 2
   vim.g.haskell_indent_case_alternative = 2
 

@@ -2,7 +2,8 @@
 
 # terminal emulator
 super + Return
-    $TERMINAL -e tmux
+    $TERMINAL
+    # $TERMINAL -e tmux
 
 super + shift + Return
     $TERMINAL

@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local api = vim.api
 local settings = require('settings')
 
 local function debug_client(client, bufnr)
@@ -25,6 +26,9 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local LspDefaults = {
   on_attach = custom_on_attach,
+  on_new_config = function()
+    api.nvim_echo({{"New config created", "LspDiagnosticsDefaultHint"}}, true, {})
+  end,
   capabilities = capabilities,
 }
 

@@ -9,8 +9,8 @@ local function setup()
   }
 
   -- completion engine
-  use {
-    "nvim-lua/completion-nvim",
+  local_use {
+    "completion-nvim",
     config = function()
       require "config/completion".setup()
     end,
@@ -25,7 +25,54 @@ local function setup()
       },
       "hrsh7th/vim-vsnip",
       "hrsh7th/vim-vsnip-integ",
-    }
+    },
+  }
+
+  -- use {
+  --   "nvim-lua/completion-nvim",
+  --   config = function()
+  --     require "config/completion".setup()
+  --   end,
+  --   requires = {
+  --     "steelsojka/completion-buffers",
+  --     {
+  --       "SirVer/ultisnips",
+  --       config = function()
+  --         require "config/ultisnips".setup()
+  --       end,
+  --       disable = true,
+  --     },
+  --     "hrsh7th/vim-vsnip",
+  --     "hrsh7th/vim-vsnip-integ",
+  --   },
+  -- }
+
+  use {
+    "hrsh7th/nvim-compe",
+    config = function()
+      require'compe'.setup {
+        enabled = true,
+        debug = false,
+        preselect = 'always',
+        -- throttle_time = 40,
+        -- source_timeout = ... number ...;
+        incomplete_delay = 60,
+        allow_prefix_unmatch = false,
+
+        source = {
+          path = true,
+          buffer = true,
+          vsnip = true,
+          nvim_lsp = true,
+        };
+      };
+      vim.cmd [[inoremap <silent><expr> <Tab> compe#confirm('<Tab>')]]
+    end,
+    requires = {
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/vim-vsnip-integ",
+    },
+    disable = true,
   }
 
   -- use {

@@ -80,6 +80,8 @@ function M.always_cr()
   if vim.fn.pumvisible() then
     feedkeys("<C-y><CR>")
   else
+    -- vim.lsp.buf.formatting()
+    -- print('formatted')
     feedkeys("<CR>")
   end
 end

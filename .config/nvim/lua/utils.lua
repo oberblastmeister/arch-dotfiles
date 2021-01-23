@@ -391,5 +391,12 @@ function M.win_float_test()
   vim.api.nvim_open_win(0, false, {relative = 'win', width = 12, height = 3})
 end
 
+function M.parent_test()
+  local matches = queries.get_capture_matches(0, '@scope', 'locals')
+  for match in pairs(matches) do
+    print(match)
+  end
+end
+
 
 return M

@@ -25,6 +25,7 @@ bspc rule -a Nm-connection-editor
 bspc rule -a Emacs state=tiled
 bspc rule -a Peek state=floating
 bspc rule -a Todoist state=floating
+bspc rule -a Pavucontrol state=floating
 
 bspc config focused_border_color "#928374"
 bspc config normal_border_color "#504945"

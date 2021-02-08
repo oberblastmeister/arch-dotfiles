@@ -9,6 +9,8 @@ local function setup()
   use "tpope/vim-repeat"
 
   use "junegunn/vim-easy-align"
+
+  use "tpope/vim-unimpaired"
 end
 
 return {

@@ -41,14 +41,15 @@ laptopconfigs &
 
 # run xsettingsd
 run picom
-run redshift
+# run redshift
+# run gammy
 run xfce4-power-manager
 run udiskie --tray
 run nm-applet
 run flameshot
 run blueman-applet
 run system-config-printer-applet
-run redshift-gtk
+# run redshift-gtk
 run syncthing-gtk -m
 run greenclip daemon
 run mailspring --background

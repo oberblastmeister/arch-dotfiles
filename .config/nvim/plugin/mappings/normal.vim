@@ -25,7 +25,7 @@ nnoremap gp a<CR><Esc>PkJxJx
 
 nnoremap c* *Ncgn
 
-nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+" nnoremap <silent> <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
 nnoremap <silent> <C-n> <cmd>tabnew<CR>
 
@@ -94,4 +94,21 @@ omap ih <plug>(signify-motion-inner-pending)
 xmap ih <plug>(signify-motion-inner-visual)
 omap ah <plug>(signify-motion-outer-pending)
 xmap ah <plug>(signify-motion-outer-visual)
+
+inoremap <c-x><c-m> <cmd>call ListMonths()<CR>
+set completeopt=menuone,noinsert,noselect
+
+fun! GetMonths(findstart, base)
+  return ['January', 'February', 'March',
+        \ 'April', 'May', 'June', 'July', 'August', 'September',
+        \ 'October', 'November', 'December']
+endfun
+
+func! ListMonths()
+  let coll = col('.')-1
+  call complete(coll, ['January', 'February', 'March',
+        \ 'April', 'May', 'June', 'July', 'August', 'September',
+        \ 'October', 'November', 'December'])
+  return ''
+endfunc
 " }}}

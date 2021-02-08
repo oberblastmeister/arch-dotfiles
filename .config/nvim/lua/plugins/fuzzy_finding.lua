@@ -1,8 +1,24 @@
+local local_use = require"plugins/local".local_use
 local use = require"packer".use
 
 local function setup()
-  use {
-    "nvim-telescope/telescope.nvim",
+  -- use {
+  --   "nvim-telescope/telescope.nvim",
+  --   config = function()
+  --     require "config/telescope".setup()
+  --   end,
+  --   requires = {
+  --     "nvim-telescope/telescope-symbols.nvim",
+  --     "nvim-telescope/telescope-fzy-native.nvim",
+  --     "nvim-telescope/telescope-github.nvim",
+  --     "nvim-telescope/telescope-packer.nvim",
+  --     "nvim-telescope/telescope-fzf-writer.nvim",
+  --     "nvim-telescope/telescope-vimspector.nvim",
+  --   },
+  -- }
+
+  local_use {
+    "telescope.nvim",
     config = function()
       require "config/telescope".setup()
     end,
@@ -22,7 +38,7 @@ local function setup()
       "tami5/sql.nvim"
     },
     config = function()
-      require"telescope".load_extension("frecency")
+      require"config/frecency".setup()
     end,
   }
 

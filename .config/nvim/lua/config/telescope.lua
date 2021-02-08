@@ -19,6 +19,7 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fw', [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
+  api.nvim_set_keymap('x', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
 
   -- common
   api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require'telescope.builtin'.find_files()<cr>]], {noremap = true})
@@ -55,6 +56,8 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>c.', [[<cmd>cd ..<CR><cmd>pwd<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fp', [[<cmd>lua require'config/telescope/my_builtin'.packer()<CR>]], {noremap = true})
 
+  api.nvim_set_keymap("n", "<leader><leader>", "<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>", {noremap = true, silent = true})
+
   -- api.nvim_set_keymap('i', '<C-s>', [[<cmd>Telescope symbols<CR>]], {noremap = true})
 end
 
@@ -65,7 +68,22 @@ function M.setup()
       file_previewer = previewers.vim_buffer_cat.new, -- experimental
       color_devicons = true,
       layout_strategy = "flex",
-    }
+      sorting_strategy = "descending"
+    },
+    extensions = {
+      frecency = {
+        show_scores = true,
+        show_unindexed = true,
+        ignore_patterns = {"*.git/*", "*/tmp/*"},
+        workspaces = {
+          conf    = "/home/brian/.config",
+          analyzer = "/home/brian/projects/rust-analyzer",
+          trashy = "/home/brian/projects/trashy",
+          grammar = "/home/brian/projects/macro_grammar",
+          books = "/home/brian/Documents/programming_books",
+        }
+      }
+    },
   }
 
   M.load_extensions()

@@ -5,8 +5,11 @@ local function setup()
     "machakann/vim-sandwich",
     config = function()
       require "config/sandwhich".setup()
-    end
+    end,
+    disable = true,
   }
+
+  use {"tpope/vim-surround"}
 
   use {
     "jiangmiao/auto-pairs",
@@ -25,7 +28,8 @@ local function setup()
     "andymass/vim-matchup",
     config = function()
       require "config/matchup".setup()
-    end
+    end,
+    disable = true,
   }
 end
 

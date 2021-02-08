@@ -1,7 +1,7 @@
 local function setup()
   -- remove markdown parser for now
   -- require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
-  require "nvim-treesitter.parsers".get_parser_configs().haskell = nil --haskell will crash the editor
+  -- require "nvim-treesitter.parsers".get_parser_configs().haskell = nil --haskell will crash the editor
 
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",     -- one of "all", "language", or a list of languages
@@ -20,16 +20,16 @@ local function setup()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "<BS>",
-        node_incremental = "<BS>",
+        init_selection = "<CR>",
+        node_incremental = "<CR>",
         scope_incremental = "<c-s>",
-        node_decremental = "<A-BS>",
+        node_decremental = "<BS>",
       },
     },
 
     refactor = {
-      highlight_definitions = { enable = true },
-      highlight_current_scope = { enable = true },
+      -- highlight_definitions = { enable = true },
+      -- highlight_current_scope = { enable = true },
 
       smart_rename = {
         enable = true,

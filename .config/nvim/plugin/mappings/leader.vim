@@ -8,8 +8,6 @@ function! Write()
   TSBufEnable highlight
 endfunction
 
-nnoremap <silent> <leader><leader> <c-^>
-
 nnoremap <silent> <leader>w <cmd>write<CR>
 nnoremap <silent> <leader>W <cmd>wall<CR>
 
@@ -32,7 +30,7 @@ nnoremap <silent> <leader>o <cmd>Zoom<CR>
 " ============================================================================
 " Buffer {{{
 " ============================================================================
-nnoremap <silent> <C-s> <cmd>BufferPick<CR>
+" nnoremap <silent> <C-s> <cmd>BufferPick<CR>
 
 " Move to previous/next
 nnoremap <silent>    <A-,> :BufferPrevious<CR>

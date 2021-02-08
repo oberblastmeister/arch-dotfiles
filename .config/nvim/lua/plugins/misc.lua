@@ -7,8 +7,6 @@ local function setup()
     disable = true,
   }
 
-  use "tpope/vim-unimpaired"
-
   -- smooth scrolling
   use "psliwka/vim-smoothie"
 
@@ -58,12 +56,14 @@ local function setup()
   use {
     "romgrk/searchReplace.vim",
     cmd = "Search",
+    disable = true,
   }
 
   use {
     "romgrk/todoist.nvim",
     run = ":TodoistInstall",
     cmd = "Todoist",
+    disable = true,
   }
 
   -- linting when there is no lsp (for now cannot run multiple lsp servers)

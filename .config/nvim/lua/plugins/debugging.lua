@@ -13,7 +13,7 @@ local function setup()
       vim.g.vimspector_enable_mappings = "HUMAN"
     end,
     cmd = "LaunchVimspector",
-    -- disable = true,
+    disable = true,
   }
 
   use {

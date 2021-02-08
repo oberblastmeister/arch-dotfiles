@@ -36,6 +36,10 @@ do
   end
 end
 
+function M.feedkeys(keys)
+  api.nvim_feedkeys(api.nvim_replace_termcodes(keys, true, true, true), 'n', true)
+end
+
 function M.augroup(name)
   vim.cmd("augroup " .. name)
   vim.cmd("autocmd!")
@@ -296,15 +300,20 @@ function M.thread_test()
   uv.close(handle)
 end
 
+function M.another(a, b)
+  print(a, b)
+end
+
 function M.work_test()
   local res = {}
 
-  local function first(a, b) return a + b end
+  local function first(a, b) 
+    -- require"utils".another(a, b)
+    return a, b
+  end
 
-  local function second(c)
-    table.insert(res, c)
-    vim.api.nvim_out_write("The result is: " .. c .. "\n")
-    print(vim.api.nvim_get_current_line())
+  local function second(a, b)
+    print(a, b)
   end
 
   local work = vim.loop.new_work(first, vim.schedule_wrap(second))
@@ -391,12 +400,287 @@ function M.win_float_test()
   vim.api.nvim_open_win(0, false, {relative = 'win', width = 12, height = 3})
 end
 
-function M.parent_test()
-  local matches = queries.get_capture_matches(0, '@scope', 'locals')
-  for match in pairs(matches) do
-    print(match)
+local function rpairs(t)
+	return function(t, i)
+		i = i - 1
+		if i ~= 0 then
+			return i, t[i]
+		end
+	end, t, #t + 1
+end
+
+function tbl_reverse(tbl)
+  for i=1, math.floor(#tbl / 2) do
+    tbl[i], tbl[#tbl - i + 1] = tbl[#tbl - i + 1], tbl[i]
   end
 end
 
+function M.get_parent_matches()
+  local contains = vim.tbl_contains
+
+  local matches = queries.get_capture_matches(0, '@scope.node', 'locals')
+  local curr_node = ts_utils.get_node_at_cursor()
+  local parent_matches = {}
+  while true do
+    if contains(matches, curr_node) then
+      table.insert(parent_matches, curr_node)
+    end
+    curr_node = curr_node:parent()
+    if curr_node == nil then
+      break
+    end
+  end
+
+  tbl_reverse(parent_matches)
+
+  return parent_matches
+end
+
+function M.co_test()
+  local co = coroutine
+  local Executor = require("co_executor/core")
+  local exe = Executor.new {}
+
+  exe:add(co.create(function()
+    print('hello world first')
+    co.yield()
+    print('hello world second')
+  end))
+
+  exe:add(co.create(function()
+    print('another hello world')
+    co.yield()
+    print('another hello world second')
+  end))
+
+  exe:run()
+end
+
+function M.get_id(buf, query, target_node)
+  local row, col, rowend, colend = target_node:range()
+  if row == rowend then
+    rowend = rowend + 1
+  end
+
+  local iter = query:iter_captures(target_node, buf)
+  local id, node, meta = iter()
+  local node_text = ts_utils.get_node_text(node)
+  print('id node text:', node_text[1])
+  print('id', id)
+  return id
+end
+
+function M.get_highlight()
+  local buf = api.nvim_get_current_buf()
+  local buf_highlighter = vim.treesitter.highlighter.active[buf]
+  local buf_queries = buf_highlighter._queries
+
+  local curr_node = ts_utils.get_node_at_cursor()
+  local node_text = ts_utils.get_node_text(curr_node)
+  print('node text:', node_text[1])
+  print('node type:', curr_node:type())
+
+  local lua_query = buf_queries[vim.bo.filetype]
+
+  -- local id = curr_node:symbol()
+  local id = M.get_id(buf, lua_query:query(), curr_node)
+
+  local hl = lua_query.hl_cache[id]
+
+  -- print('hl', hl)
+  local hl_name = vim.fn.synIDattr(hl, "name")
+  print(hl_name)
+  -- api.nvim_echo({{"this is the highlight", hl_name}}, true, {})
+  -- print(string.format("hl: %s, hl_name: %s", hl, hl_name))
+
+  -- for capture, node in lua_query:query():iter_captures(curr_node, buf, row, endrow) do
+  --   print('id', capture)
+  --   local node_text = ts_utils.get_node_text(node)
+  --   print('node text:', node_text[1])
+
+  --   local hl = lua_query.hl_cache[capture]
+  --   local hl_name = vim.fn.synIDattr(hl, "name")
+  --   print(string.format('hl: %s, name: %s', hl, hl_name))
+  -- end
+
+end
+
+function M.node_type()
+  local curr_node = ts_utils.get_node_at_cursor()
+  print(type(curr_node))
+end
+
+function M.show_cursor_diagnostic(bufnr)
+  local diagnostics = vim.lsp.diagnostic
+
+  bufnr = bufnr or api.nvim_get_current_buf()
+  local pos = api.nvim_win_get_cursor()
+  local line = pos[1] - 1
+  local col = pos[2]
+  local my_diagnostics = diagnostics.get_line_diagnostics(bufnr, line)
+end
+
+function M.spawn(fn)
+  local idle = uv.new_idle()
+
+  local start
+  if type(fn) == "function" then
+    start = function()
+      idle:start(function()
+        vim.schedule(fn)
+      end)
+    end
+  elseif type(fn) == "thread" then
+    print('its a thread')
+    start = function()
+      idle:start(function()
+        local _, _ = coroutine.resume(fn)
+
+        if coroutine.status(fn) == "dead" then
+          idle:stop()
+        end
+      end)
+    end
+  end
+
+  local function stop()
+    idle:stop()
+  end
+
+  return start, stop
+end
+
+function M.test_idle()
+  local start, stop = M.spawn(function()
+    print('hello')
+    vim.fn.wait(100, 1)
+  end)
+  start()
+end
+
+function M.nvim_headless()
+    local nvim = vim.fn.jobstart({'nvim', '--embed'}, {rpc = true})
+    print(vim.fn.rpcnotify(nvim, 'nvim_eval', '"Hello " . "world!"'))
+    vim.fn.jobstop(nvim)
+end
+
+function M.get_inserted_text(old, new)
+   local prv = {}
+   for o = 0, #old do
+      prv[o] = ""
+   end
+   for n = 1, #new do
+      local nxt = {[0] = new:sub(1, n)}
+      local nn = new:sub(n, n)
+      for o = 1, #old do
+         local result
+         if nn == old:sub(o, o) then
+            result = prv[o-1]
+         else
+            result = prv[o]..nn
+            if #nxt[o-1] <= #result then
+               result = nxt[o-1]
+            end
+         end
+         nxt[o] = result
+      end
+      prv = nxt
+   end
+   return prv[#old]
+end
+
+do
+  local line_difference
+
+  vim.cmd [[autocmd! InsertLeave * lua require'utils'.reset_indices()]]
+  vim.cmd [[autocmd! CursorMovedI * lua require'utils'.reset_indices()]]
+
+  function M.test_on_lines()
+    api.nvim_buf_attach(0, false, {
+      on_lines = function()
+        local mode = api.nvim_get_mode()["mode"]
+        if mode ~= "i" and mode ~= "ic" then return end
+        print(M.set_byte_index())
+      end
+    })
+  end
+
+  function M.test_byte_index()
+    vim.cmd [[autocmd TextChangedP <buffer> lua vim.api.nvim_out_write(require'utils'.set_byte_index() .. '\n')]]
+    
+  end
+
+  function M.TextDeleteP()
+    vim.cmd [[autocmd User TextDeleteP lua require'utils'.echo_counter()]]
+  end
+
+  function M.print_item()
+    dump(vim.v.completd_item)
+  end
+
+  function M.set_byte_index()
+    if vim.fn.pumvisible() == 1 then return '' end
+    local new_difference = vim.fn.col('$')
+    if line_difference == nil then
+      line_difference = new_difference
+      return ''
+    end
+    local res = new_difference - line_difference
+    line_difference = new_difference
+    return res
+  end
+
+  function M.reset_indices()
+    line_difference = nil
+  end
+end
+
+do
+  local counter = 0
+  function M.echo_counter()
+    print(counter)
+    counter = counter + 1
+  end
+end
+
+function M.keystroke()
+  local function matches_delete(key)
+    local termcode = function(key_vim)
+      vim.api.nvim_replace_termcodes(key_vim, true, false, true)
+    end
+
+    if key == termcode("<BS>")
+      or key == termcode("<Del>")
+      or key == termcode("<C-H>")
+      or key == termcode("<C-W>") then return true end
+    return false
+  end
+
+  vim.register_keystroke_callback(function(key) 
+    if matches_delete(key) then
+      print('yes')
+    else
+      print('no')
+    end
+  end, 0)
+end
+
+function M.test_complete()
+  local entries = {}
+  for _ = 1, 100 do
+    table.insert(entries, {
+      word = "",
+      abbr = "00000000000000000000000000000000000000000000000000000000000000000000000",
+      equal = 1,
+      dup = 1,
+      empty = 1,
+    })
+  end
+  vim.api.nvim_complete(1, entries, {})
+end
+
+function M.test_complete_au()
+  vim.cmd [[autocmd CompleteDone <buffer> lua require'utils'.echo_counter()]]
+end
 
 return M

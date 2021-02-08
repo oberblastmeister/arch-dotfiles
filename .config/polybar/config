@@ -87,7 +87,7 @@ offset-x = 50.7%
 ; modules-left = mpd
 ; modules-left = wireless-network
 modules-left = launcher
-; tray-position = right
+tray-position = right
 
 [bar/tray]
 inherit = bar/base

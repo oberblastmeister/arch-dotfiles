@@ -75,7 +75,8 @@ local function setup()
   }
 
   local_use "pandoc.nvim"
-  
+
+  local_use "co_executor.nvim"
 
   local_use {
     "autopairs.nvim",

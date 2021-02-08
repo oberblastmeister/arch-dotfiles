@@ -111,12 +111,12 @@ zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/comp
 
 # use fd for completion
 _fzf_compgen_path() {
-  fd --follow --hidden --color=always --exclude ".git" . "$1"
+  fd --follow --color=always --exclude ".git" . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --follow --hidden --color=always --exclude ".git" . "$1"
+  fd --type d --follow --color=always --exclude ".git" . "$1"
 }
 
 # lfcd

@@ -25,7 +25,7 @@ local function setup()
     cmd = 'Neogit',
   }
 
-  use "pwntester/octo.nvim"
+  use {"pwntester/octo.nvim", disable = true}
 end
 
 return {

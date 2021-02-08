@@ -1,7 +1,7 @@
 [Editor]
 
 ExtCmdline   = false
-ExtPopupmenu = false
+ExtPopupmenu = true
 ExtTabline   = false
 ExtMessages  = false
 IndentGuide = false

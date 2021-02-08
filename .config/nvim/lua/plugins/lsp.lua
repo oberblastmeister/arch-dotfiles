@@ -8,24 +8,45 @@ local function setup()
     config = function() require "lsp_settings".setup() end
   }
 
-  -- completion engine
   local_use {
-    "completion-nvim",
+    "rofl.nvim",
+  }
+
+  -- completion engine
+  -- use {
+  --   "nvim-lua/completion-nvim",
+  --   config = function()
+  --     require "config/completion".setup()
+  --   end,
+  --   requires = {
+  --     "steelsojka/completion-buffers",
+  --     {
+  --       "SirVer/ultisnips",
+  --       config = function()
+  --         require "config/ultisnips".setup()
+  --       end,
+  --       disable = true,
+  --     },
+  --     "hrsh7th/vim-vsnip",
+  --     "hrsh7th/vim-vsnip-integ",
+  --   },
+  -- }
+
+  use {
+    "ms-jpq/kok.nvim",
     config = function()
-      require "config/completion".setup()
+      require("kok/recommends").all()
+      -- vim.cmd [[autocmd InsertEnter * ++once KoKstart]]
     end,
-    requires = {
-      "steelsojka/completion-buffers",
-      {
-        "SirVer/ultisnips",
-        config = function()
-          require "config/ultisnips".setup()
-        end,
-        disable = true,
-      },
-      "hrsh7th/vim-vsnip",
-      "hrsh7th/vim-vsnip-integ",
-    },
+    disable = true,
+  }
+
+  use {
+    "Shougo/deoplete.nvim",
+    setup = function()
+      vim.g['deoplete#enable_at_startup'] = 1
+    end,
+    disable = true,
   }
 
   -- use {
@@ -50,29 +71,12 @@ local function setup()
   use {
     "hrsh7th/nvim-compe",
     config = function()
-      require'compe'.setup {
-        enabled = true,
-        debug = false,
-        preselect = 'always',
-        -- throttle_time = 40,
-        -- source_timeout = ... number ...;
-        incomplete_delay = 60,
-        allow_prefix_unmatch = false,
-
-        source = {
-          path = true,
-          buffer = true,
-          vsnip = true,
-          nvim_lsp = true,
-        };
-      };
-      vim.cmd [[inoremap <silent><expr> <Tab> compe#confirm('<Tab>')]]
+      require"config/compe".setup()
     end,
-    requires = {
-      "hrsh7th/vim-vsnip",
-      "hrsh7th/vim-vsnip-integ",
-    },
-    disable = true,
+  }
+
+  use {
+    "hrsh7th/vim-vsnip",
   }
 
   -- use {

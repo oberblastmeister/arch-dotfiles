@@ -1,4 +1,6 @@
 local lspconfig = require('lspconfig')
+local configs = require("lspconfig/configs")
+local util = require "lspconfig/util"
 local api = vim.api
 local settings = require('settings')
 
@@ -37,7 +39,6 @@ function LspDefaults:with(user_config)
 end
 
 local function setup()
-
   if settings.python_lsp == PythonLsp.pyls then
 
     lspconfig.pyls.setup(LspDefaults:with {
@@ -98,9 +99,12 @@ local function setup()
 
   lspconfig.cssls.setup(LspDefaults)
 
+  local hls_capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = false
   lspconfig.hls.setup(LspDefaults:with {
     root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
     settings = require'lsp_settings/servers/hls',
+    cababilities = hls_capabilities,
   })
 
   lspconfig.clojure_lsp.setup(LspDefaults)
@@ -115,13 +119,13 @@ local function setup()
 
   lspconfig.dhall_lsp_server.setup(LspDefaults)
 
-  lspconfig.amuletlsp.setup(LspDefaults)
+  -- lspconfig.amuletlsp.setup(LspDefaults)
 
   lspconfig.rust_analyzer.setup(LspDefaults:with {
     settings = require"lsp_settings/servers/rust_analyzer"
   })
 
-  lspconfig.tomllsp.setup(LspDefaults)
+  -- lspconfig.tomllsp.setup(LspDefaults)
 
   -- lspconfig.taplolsp.setup(LspDefaults)
   -- lspconfig.taplolsp.setup(LspDefaults:with {

@@ -4,9 +4,8 @@
 " correct number options
 set number relativenumber
 
-set smartindent
-
-set lazyredraw " faster macros
+" many issues
+" set lazyredraw " faster macros
 
 " use system clipboard
 set clipboard^=unnamed,unnamedplus
@@ -53,13 +52,12 @@ set expandtab
 set tabstop=4 " number of spaces that a tab counts for
 set shiftwidth=4 " number of spaces to use for each step of autoindent
 set softtabstop=4
+set autoindent
 
 set hidden
-set nobackup
-set nowritebackup
 
 " faster async updates
-set updatetime=100
+" set updatetime=100
 
 " do not pass messages to ins-completion-menu
 set shortmess+=c

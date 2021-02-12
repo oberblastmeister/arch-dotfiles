@@ -10,7 +10,6 @@ local function setup()
     cond = function()
       return os.getenv("GIT_DIR") ~= vim.fn.expand("~/.config/yadm/repo.git")
     end,
-    disable = true,
   }
 
   -- terminal float for lf

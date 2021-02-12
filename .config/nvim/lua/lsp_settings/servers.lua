@@ -99,12 +99,9 @@ local function setup()
 
   lspconfig.cssls.setup(LspDefaults)
 
-  local hls_capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = false
   lspconfig.hls.setup(LspDefaults:with {
     root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
     settings = require'lsp_settings/servers/hls',
-    cababilities = hls_capabilities,
   })
 
   lspconfig.clojure_lsp.setup(LspDefaults)

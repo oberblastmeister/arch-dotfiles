@@ -23,6 +23,9 @@ local function setup()
   use {
     "TimUntersberger/neogit",
     cmd = 'Neogit',
+    config = function()
+      vim.cmd [[nnoremap <leader>gs <cmd>Neogit<CR>]]
+    end
   }
 
   use {"pwntester/octo.nvim", disable = true}

@@ -18,3 +18,5 @@ vim.cmd
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc]]
+
+vim.cmd [[let loaded_matchparen = 1]]

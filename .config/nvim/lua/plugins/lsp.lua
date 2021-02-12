@@ -8,6 +8,13 @@ local function setup()
     config = function() require "lsp_settings".setup() end
   }
 
+  use {
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+    end
+  }
+
   local_use {
     "rofl.nvim",
   }

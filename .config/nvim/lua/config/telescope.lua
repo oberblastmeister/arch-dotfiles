@@ -56,7 +56,7 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>c.', [[<cmd>cd ..<CR><cmd>pwd<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fp', [[<cmd>lua require'config/telescope/my_builtin'.packer()<CR>]], {noremap = true})
 
-  api.nvim_set_keymap("n", "<leader><leader>", "<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>", {noremap = true, silent = true})
+  -- api.nvim_set_keymap("n", "<leader><leader>", "<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>", {noremap = true, silent = true})
 
   -- api.nvim_set_keymap('i', '<C-s>', [[<cmd>Telescope symbols<CR>]], {noremap = true})
 end
@@ -77,9 +77,10 @@ function M.setup()
         ignore_patterns = {"*.git/*", "*/tmp/*"},
         workspaces = {
           conf    = "/home/brian/.config",
-          analyzer = "/home/brian/projects/rust-analyzer",
+          ra = "/home/brian/projects/rust-analyzer",
           trashy = "/home/brian/projects/trashy",
-          grammar = "/home/brian/projects/macro_grammar",
+          hs = "/home/brian/code/haskell-stuff",
+          gr = "/home/brian/projects/macro_grammar",
           books = "/home/brian/Documents/programming_books",
         }
       }

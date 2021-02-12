@@ -57,7 +57,7 @@ set autoindent
 set hidden
 
 " faster async updates
-" set updatetime=100
+" set updatetime=500
 
 " do not pass messages to ins-completion-menu
 set shortmess+=c

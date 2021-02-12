@@ -27,7 +27,7 @@ local function setup()
   use "nvim-treesitter/nvim-treesitter-textobjects"
 
   -- use "romgrk/nvim-treesitter-context"
-  local_use {"nvim-treesitter-context"}
+  local_use {"nvim-treesitter-context", disable = true}
 
   use {
     "nvim-treesitter/playground",

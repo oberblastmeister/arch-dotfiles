@@ -1,21 +1,21 @@
 local utils = require('utils')
 
 local function setup()
-  vim.g.lua_tree_ignore = {".git", ".cache"}
+  vim.g.nvim_tree_ignore = {".git", ".cache"}
 
-  vim.g.lua_tree_auto_close = 1
+  vim.g.nvim_tree_auto_close = 1
 
-  vim.g.lua_tree_indent_markers = 0 -- 0 by default, this option shows indent markers when folders are open
+  vim.g.nvim_tree_indent_markers = 0 -- 0 by default, this option shows indent markers when folders are open
 
-  vim.g.lua_tree_follow = 0
+  vim.g.nvim_tree_follow = 0
 
-  vim.g.lua_tree_show_icons = {
+  vim.g.nvim_tree_show_icons = {
     git = 1,
     folders = 1,
     files = 1
   }
 
-  vim.g.lua_tree_icons = {
+  vim.g.nvim_tree_icons = {
     default = "",
     git = {
       unstaged = "✗",
@@ -30,25 +30,27 @@ local function setup()
     }
   }
 
-  vim.g.lua_tree_bindings = {
-    edit = {'<CR>', 'o'},
-    close_node = {'<S-CR>', '<BS>', 'h'},
-    edit_vsplit = '<C-v>',
-    edit_split = '<C-x>',
-    edit_tab = '<C-t>',
-    toggle_ignored = '.',
+  vim.g.nvim_tree_bindings = {
+    edit =            {'<CR>', 'o', 'l'},
+    edit_vsplit =     '<C-v>',
+    edit_split =      '<C-x>',
+    edit_tab =        '<C-t>',
+    close_node =      {'<S-CR>', '<BS>', 'h'},
+    toggle_ignored =  '.',
     toggle_dotfiles = 'H',
-    refresh = 'R',
-    preview = '<Tab>',
-    cd = 'l',
-    create = 'a',
-    remove = 'D',
-    rename = 'r',
-    cut = 'x',
-    copy = 'y',
-    paste = 'p',
-    prev_git_item = '[c',
-    next_git_item = ']c',
+    refresh =         'R',
+    preview =         '<Tab>',
+    cd =              '<C-]>',
+    create =          'a',
+    remove =          'D',
+    rename =          'r',
+    cut =             'x',
+    copy =            'c',
+    paste =           'p',
+    prev_git_item =   '[c',
+    next_git_item =   ']c',
+    dir_up =          '-',
+    close =           'q',
   }
 
   -- vim.api.nvim_exec([[

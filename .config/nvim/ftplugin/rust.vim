@@ -27,5 +27,3 @@ function! NewProject(flag)
     execute 'Dispatch cargo new' s:cargo_project a:flag
   endif
 endfunction
-
-setlocal tabstop=4

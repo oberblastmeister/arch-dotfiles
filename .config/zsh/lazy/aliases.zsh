@@ -72,12 +72,13 @@ alias yp='yadm push'
 
 # tmux
 alias ta='tmux attach'
-alias tl='tmux ls'
+# alias tl='tmux ls'
 
 alias t='task'
 
 alias pac="sudo pacman -Syu"
 alias fyay="fuzzy_yay"
+alias fparu="fuzzy_paru"
 alias syay="sk_yay"
 alias faura="yay -Slq | fzf -m --preview 'bat --paging=never <(aura -Ai {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
 alias aurasyu="sudo aura -Akuax"
@@ -89,3 +90,8 @@ alias ytdl="youtube-dl"
 alias irust="jupyter console --kernel rust"
 
 alias nvim-dev="VIMRUNTIME=runtime ./build/bin/nvim"
+
+# julia
+
+alias juliaserver='julia --startup-file=no -e "using DaemonMode; serve()"'
+alias juliaclient='julia --startup-file=no -e "using DaemonMode; runargs()"'

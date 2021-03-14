@@ -9,7 +9,8 @@ local function setup()
     highlight = {
       enable = true,
       -- use_languagetree = true, -- language injection (highly unstable)
-      disable = {"haskell"},  -- list of language that will be disabled
+      -- disable = {"haskell"},  -- list of language that will be disabled
+      disable = {},
       custom_captures = {}
     },
 

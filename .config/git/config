@@ -18,5 +18,5 @@
 	email = littlebubu.shu@gmail.com
 	name = Brian Shu
 
-[pull]
-	rebase = false
+[github]
+	user = oberblastmeister

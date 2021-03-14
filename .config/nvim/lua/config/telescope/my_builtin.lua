@@ -13,6 +13,9 @@ local from_entry = require('telescope/from_entry')
 local defaulter = tutils.make_default_callable
 local builtin = require('telescope/builtin')
 local flatten = vim.tbl_flatten
+local filter = vim.tbl_filter
+local action_state = require('telescope.actions.state')
+local state = require('telescope.state')
 
 local M = {}
 
@@ -378,6 +381,185 @@ function M.hoogle(opts)
     previewer = nil,
     sorter = conf.generic_sorter(opts),
   }):find()
+end
+
+local function gen_buffer_finder(opts)
+  local opts = opts or {}
+
+  local bufnrs = filter(function(b)
+    if 1 ~= vim.fn.buflisted(b) then
+        return false
+    end
+    if not opts.show_all_buffers and not vim.api.nvim_buf_is_loaded(b) then
+      return false
+    end
+    if opts.ignore_current_buffer and b == vim.api.nvim_get_current_buf() then
+      return false
+    end
+    return true
+  end, vim.api.nvim_list_bufs())
+  if not next(bufnrs) then return end
+
+  local buffers = {}
+  local default_selection_idx = 1
+  for _, bufnr in ipairs(bufnrs) do
+    local flag = bufnr == vim.fn.bufnr('') and '%' or (bufnr == vim.fn.bufnr('#') and '#' or ' ')
+
+    if opts.sort_lastused and not opts.ignore_current_buffer and flag == "#" then
+      default_selection_idx = 2
+    end
+
+    local element = {
+      bufnr = bufnr,
+      flag = flag,
+      info = vim.fn.getbufinfo(bufnr)[1],
+    }
+
+    if opts.sort_lastused and (flag == "#" or flag == "%") then
+      local idx = ((buffers[1] ~= nil and buffers[1].flag == "%") and 2 or 1)
+      table.insert(buffers, idx, element)
+    else
+      table.insert(buffers, element)
+    end
+  end
+
+  if not opts.bufnr_width then
+    local max_bufnr = math.max(unpack(bufnrs))
+    opts.bufnr_width = #tostring(max_bufnr)
+  end
+
+    return finders.new_table {
+      results = buffers,
+      entry_maker = opts.entry_maker or make_entry.gen_from_buffer(opts)
+    }
+end
+
+local function gen_file_finder(opts)
+  opts = opts or {}
+
+  local find_command = opts.find_command
+  local hidden = opts.hidden
+  local follow = opts.follow
+  local search_dirs = opts.search_dirs
+
+  if search_dirs then
+    for k,v in pairs(search_dirs) do
+      search_dirs[k] = vim.fn.expand(v)
+    end
+  end
+
+  if not find_command then
+    if 1 == vim.fn.executable("fd") then
+      find_command = { 'fd', '--type', 'f' }
+      if hidden then table.insert(find_command, '--hidden') end
+      if follow then table.insert(find_command, '-L') end
+      if search_dirs then
+        table.insert(find_command, '.')
+        for _,v in pairs(search_dirs) do
+          table.insert(find_command, v)
+        end
+      end
+    elseif 1 == vim.fn.executable("fdfind") then
+      find_command = { 'fdfind', '--type', 'f' }
+      if hidden then table.insert(find_command, '--hidden') end
+      if follow then table.insert(find_command, '-L') end
+      if search_dirs then
+        table.insert(find_command, '.')
+        for _,v in pairs(search_dirs) do
+          table.insert(find_command, v)
+        end
+      end
+    elseif 1 == vim.fn.executable("rg") then
+      find_command = { 'rg', '--files' }
+      if hidden then table.insert(find_command, '--hidden') end
+      if follow then table.insert(find_command, '-L') end
+      if search_dirs then
+        for _,v in pairs(search_dirs) do
+          table.insert(find_command, v)
+        end
+      end
+    elseif 1 == vim.fn.executable("find") then
+      find_command = { 'find', '.', '-type', 'f' }
+      if not hidden then
+        table.insert(find_command, { '-not', '-path', "*/.*" })
+        find_command = vim.tbl_flatten(find_command)
+      end
+      if follow then table.insert(find_command, '-L') end
+      if search_dirs then
+        table.remove(find_command, 2)
+        for _,v in pairs(search_dirs) do
+          table.insert(find_command, 2, v)
+        end
+      end
+    end
+  end
+
+  if not find_command then
+    print("You need to install either find, fd, or rg. " ..
+          "You can also submit a PR to add support for another file finder :)")
+    return
+  end
+
+  if opts.cwd then
+    opts.cwd = vim.fn.expand(opts.cwd)
+  end
+
+  opts.entry_maker = opts.entry_maker or make_entry.gen_from_file(opts)
+
+  return finders.new_oneshot_job(
+    find_command,
+    opts
+  )
+end
+
+do
+  local bufnr
+  local done = false
+  local start = false
+
+  function M.buffer_files(opts)
+    opts = opts or {}
+
+    local buffer_finder = gen_buffer_finder()
+    local files_finder = gen_file_finder()
+
+    pickers.new(opts, {
+      prompt_title = 'Find Buffers and Files',
+      finder = buffer_finder,
+      -- previewer = conf.file_previewer(opts),
+      previewer = conf.grep_previewer(opts),
+      sorter = conf.generic_sorter(opts),
+
+      attach_mappings = function(prompt_bufnr, _)
+        bufnr = prompt_bufnr
+        return true
+      end,
+
+      on_input_filter_cb = function()
+        local entry = action_state.get_selected_entry()
+        if entry == nil then
+          -- print(bufnr)
+          -- if not done then
+          --   done = true
+          --   vim.defer_fn(function()
+          --     print('refreshing')
+          --     local current_picker = action_state.get_current_picker(bufnr)
+          --     current_picker:refresh(files_finder, { reset_prompt = false })
+          --   end, 2000)
+          -- end
+          if start then
+            local current_picker = action_state.get_current_picker(bufnr)
+            if current_picker then
+              current_picker:refresh(buffer_finder, { reset_prompt = false })
+            end
+          end
+          vim.defer_fn(function()
+            start = true
+          end, 2000)
+        end
+      end
+    }):find()
+  end
 end
 
 return M

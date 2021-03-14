@@ -15,9 +15,9 @@ local function setup()
     end
   }
 
-  local_use {
-    "rofl.nvim",
-  }
+  -- local_use {
+  --   "rofl.nvim",
+  -- }
 
   -- completion engine
   -- use {
@@ -48,12 +48,11 @@ local function setup()
     disable = true,
   }
 
-  use {
-    "Shougo/deoplete.nvim",
-    setup = function()
-      vim.g['deoplete#enable_at_startup'] = 1
-    end,
-    disable = true,
+  local_use {
+    "project.nvim",
+    config = function()
+      require'config/project'.setup()
+    end
   }
 
   -- use {
@@ -91,45 +90,12 @@ local function setup()
   --   config = function() require"config/snippets".setup() end,
   -- }
 
-  -- diagnostic wrapper
-  use {
-    "nvim-lua/diagnostic-nvim",
-    config = function()
-      require "config/diagnostic".setup()
-    end,
-    disable = true,
-  }
-
   -- lsp inlay hints
   use {
     "tjdevries/lsp_extensions.nvim",
     config = function()
       require "config/lsp_extensions".setup()
     end,
-    disable = true,
-  }
-
-  -- use {
-  --   "RishabhRD/nvim-lsputils",
-  --   config = function()
-  --     require "config/lsp_utils".setup()
-  --   end,
-  --   requires = "RishabhRD/popfix",
-  --   disable = true,
-  -- }
-
-  -- lsp tagbar
-  use {
-    "liuchengxu/vista.vim",
-    cmd = "Vista",
-    config = function()
-      require "config/vista".setup()
-    end
-  }
-
-  use {
-    "aca/pylance.nvim",
-    run = "./install.sh",
     disable = true,
   }
 end

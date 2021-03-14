@@ -10,15 +10,18 @@ local function setup()
     cond = function()
       return os.getenv("GIT_DIR") ~= vim.fn.expand("~/.config/yadm/repo.git")
     end,
+    disable = true,
   }
 
   -- terminal float for lf
-  use {
-    "voldikss/vim-floaterm",
-    config = function()
-      require "config/floaterm".setup()
-    end
-  }
+  -- use {
+  --   "voldikss/vim-floaterm",
+  --   config = function()
+  --     require "config/floaterm".setup()
+  --   end
+  -- }
+
+  -- use "justinmk/vim-dirvish"
 end
 
 return {

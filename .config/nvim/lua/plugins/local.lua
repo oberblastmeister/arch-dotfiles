@@ -63,10 +63,7 @@ end
 
 local function setup()
   local_use {
-    "rooter.nvim",
-    config = function()
-      require "config/rooter".setup()
-    end
+    "rust-analyzer.nvim"
   }
 
   local_use {
@@ -74,20 +71,8 @@ local function setup()
     config = function() require"config/termwrapper".setup() end,
   }
 
-  local_use "pandoc.nvim"
-
-  local_use "co_executor.nvim"
-
   local_use {
-    "autopairs.nvim",
-    -- config = function() require'config/autopairs'.setup() end,
-    disable = true,
-  }
-  
-  local_use "windowmode.nvim"
-
-  local_use {
-    "repl.nvim",
+    "insta.nvim"
   }
 end
 

@@ -19,4 +19,14 @@ vim.cmd
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc]]
 
-vim.cmd [[let loaded_matchparen = 1]]
+vim.cmd [[nmap <leader>tt <Plug>PlenaryTestFile]]
+
+vim.cmd
+[[
+function! SynGroup()                                                            
+    let l:s = synID(line('.'), col('.'), 1)                                       
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+]]
+
+vim.cmd [[noremap <Plug>(DisableSearchHl) <cmd>nohl<CR>]]

@@ -10,6 +10,16 @@ local function setup()
     end,
   }
 
+  -- use "rktjmp/lush.nvim"
+
+  -- use {
+  --   "npxbr/gruvbox.nvim",
+  --   requires = {"rktjmp/lush.nvim"},
+  --   config = function()
+  --     require "config/colorscheme".setup()
+  --   end
+  -- }
+
   use {
     "sainnhe/gruvbox-material",
     setup = function()

@@ -18,23 +18,6 @@ local function setup()
 
   use {"junegunn/limelight.vim", cmd = "Goyo"}
 
-  use {
-    "vimwiki/vimwiki",
-    cmd = "VimwikiIndex",
-    setup = function() require "config/vimwiki".setup() end,
-    disable = true,
-  }
-
-  use {
-    "reedes/vim-pencil",
-    cmd = "Pencil"
-  }
-
-  use {
-    "fiatjaf/neuron.vim",
-    disable = true,
-  }
-
   local_use {
     "neuron.nvim",
     config = function() require"config/neuron".setup() end,

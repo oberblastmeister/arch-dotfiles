@@ -28,6 +28,7 @@ path+=(
     ~/.local/bin
     $GOPATH/bin
     ~/.luarocks/bin
+    ./node_modules/.bin
 )
 # export to subprocesses
 export PATH
@@ -87,3 +88,7 @@ export XMONAD_CACHE_HOME="$XDG_CACHE_HOME/xmonad"
 # trashy
 export TRASHY_BORDER="reinforced"
 export TRASHY_SIZE="compact"
+
+# julia
+export JULIA_NUM_THREADS=4
+

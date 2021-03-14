@@ -17,52 +17,31 @@ local function setup()
   --   },
   -- }
 
+  -- use {
+  --   "nvim-lua/telescope.nvim",
+  --   config = function()
+  --     require "config/telescope".setup()
+  --   end,
+  --   requires = {
+  --     "nvim-telescope/telescope-symbols.nvim",
+  --     "nvim-telescope/telescope-fzy-native.nvim",
+  --     "nvim-telescope/telescope-github.nvim",
+  --     "nvim-telescope/telescope-packer.nvim",
+  --     "nvim-telescope/telescope-fzf-writer.nvim",
+  --     "nvim-telescope/telescope-vimspector.nvim",
+  --   },
+  -- }
+
   local_use {
     "telescope.nvim",
     config = function()
       require "config/telescope".setup()
     end,
     requires = {
-      "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
       "nvim-telescope/telescope-github.nvim",
-      "nvim-telescope/telescope-packer.nvim",
-      "nvim-telescope/telescope-fzf-writer.nvim",
-      "nvim-telescope/telescope-vimspector.nvim",
+      -- "nvim-telescope/telescope-vimspector.nvim",
     },
-  }
-
-  use {
-    "nvim-telescope/telescope-frecency.nvim",
-    requires = {
-      "tami5/sql.nvim"
-    },
-    config = function()
-      require"config/frecency".setup()
-    end,
-  }
-
-  use {
-    "nvim-telescope/telescope-cheat.nvim",
-    requires = {
-      "tami5/sql.nvim"
-    },
-    config = function()
-      require"telescope".load_extension("cheat")
-    end,
-  }
-
-  use {
-    "nvim-telescope/telescope-media-files.nvim",
-    config = function()
-      require"telescope".load_extension("cheat")
-    end
-  }
-
-  use {
-    "Yggdroot/LeaderF",
-    run = ':LeaderfInstallCExtension',
-    disable = true,
   }
 
   use {
@@ -77,8 +56,6 @@ local function setup()
       require "config/fzf".setup()
     end
   }
-
-  use {'lotabout/skim.vim', disable = true}
 end
 
 return {

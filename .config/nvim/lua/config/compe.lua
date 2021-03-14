@@ -5,7 +5,7 @@ local function setup()
   compe.setup {
     enabled = true,
     debug = false,
-    preselect = 'always',
+    preselect = 'confirm',
     -- throttle_time = 40,
     -- source_timeout = ... number ...;
     -- incomplete_delay = 10,
@@ -22,15 +22,12 @@ local function setup()
     },
   }
 
-  vim.cmd [[imap <silent><expr> <Tab> compe#confirm('<Tab>')]]
+  vim.cmd [[imap <silent><expr> <Tab> luaeval('require("compe").confirm("<Tab>")')]]
 
   vim.cmd [[imap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
   vim.cmd [[smap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
   vim.cmd [[imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
   vim.cmd [[smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
-  -- vim.cmd [[inoremap <silent><expr> <CR>      compe#confirm('<CR>')]]
-
-  vim.cmd [[set completeopt=menu,menuone,noselect]]
 end
 
 return {setup = setup}

@@ -1,5 +1,3 @@
---theme="gruvbox"
+--theme="gruvbox-dark"
 
 --style="numbers,changes,header,grid"
-
---color=always

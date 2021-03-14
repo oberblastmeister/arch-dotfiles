@@ -26,6 +26,7 @@ local function setup()
     config = function()
       require'config/dap'.setup()
     end,
+    disable = true,
   }
 end
 

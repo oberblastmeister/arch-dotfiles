@@ -22,11 +22,13 @@
     },
     {
         "key": "ctrl+e",
-        "command": "workbench.view.explorer"
+        "command": "workbench.view.explorer",
+        "when": "neovim.mode == normal"
     },
     {
         "key": "shift+ctrl+e",
-        "command": "-workbench.view.explorer"
+        "command": "-workbench.view.explorer",
+        "when": "neovim.mode == normal"
     },
 
     {
@@ -206,5 +208,53 @@
     {
         "key": "ctrl+shift+t",
         "command": "workbench.action.toggleMaximizedPanel"
+    },
+
+    // {
+        // "key": "g r",
+        // "command": "editor.action.referenceSearch.trigger",
+        // "when": "editorTextFocus && neovim.mode == normal"
+    // },
+    // {
+        // "key": "g y",
+        // "command": "editor.action.goToTypeDefinition",
+        // "when": "editorTextFocus && neovim.mode == normal"
+    // },
+    // {
+        // "key": "g shift+y",
+        // "command": "editor.action.peekTypeDefinition",
+        // "when": "editorTextFocus && neovim.mode == normal"
+    // },
+
+    // emacs like
+    {
+        "key": "ctrl+capslock ctrl+e",
+        "command": "cursorEnd",
+        "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
+        "key": "ctrl+capslock ctrl+a",
+        "command": "cursorHome",
+        "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
+        "key": "ctrl+capslock ctrl+f",
+        "command": "cursorRight",
+        "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
+        "key": "right",
+        "command": "-cursorRight",
+        "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
+        "key": "ctrl+capslock ctrl+b",
+        "command": "cursorLeft",
+        "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
+        "key": "left",
+        "command": "-cursorLeft",
+        "when": "textInputFocus && neovim.mode == insert"
     }
 ]

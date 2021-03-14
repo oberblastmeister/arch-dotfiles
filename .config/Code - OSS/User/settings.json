@@ -1,16 +1,36 @@
 {
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-    "editor.fontFamily": "'OperatorMono Nerd Font'",
-    "editor.fontLigatures": true,
+
+    // colorscheme
     "workbench.colorTheme": "Gruvbox Dark Medium",
     "gruvboxMaterial.darkPalette": "mix",
+
+    // turn off fuzzy finding on type in exploerer
     "workbench.list.automaticKeyboardNavigation": false,
+
     "editor.lineNumbers": "relative",
+
+    // scrolling
     "editor.smoothScrolling": true,
     "workbench.list.smoothScrolling": true,
+
+    // fonts
     "editor.fontWeight": "book",
     "editor.fontSize": 16,
+    "editor.fontFamily": "'OperatorMono Nerd Font'",
+    "editor.fontLigatures": true,
+
     "editor.suggestSelection": "first",
+
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.languageServer": "Microsoft"
+
+    "python.languageServer": "Microsoft",
+
+    // do not accept completions on enter
+    "editor.acceptSuggestionOnEnter": "off",
+    "window.menuBarVisibility": "toggle",
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.enableTelemetry": false
 }

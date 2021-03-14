@@ -3,28 +3,8 @@ local use = require"packer".use
 local function setup()
   -- indent lines
   use {
-    "Yggdroot/indentLine",
-    config = function() require'config/indent_line'.setup() end
-  }
-
-  use {
     "lukas-reineke/indent-blankline.nvim",
     branch = "lua",
-  }
-
-  use {
-    "romgrk/barbar.nvim",
-    cond = function()
-      return vim.fn.exists('g:started_by_firenvim') == 0
-    end,
-    disable = true,
-  }
-
-  use {
-    "tjdevries/express_line.nvim",
-    config = function()
-      require "config/express_line".start()
-    end,
     disable = true,
   }
 
@@ -35,14 +15,12 @@ local function setup()
     config = function() require"config/galaxyline/eviline".setup() end,
   }
 
-  use {"datwaft/bubbly.nvim", disable = true}
-
   -- colorize hex codes
   use {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require "colorizer".setup()
-    end
+    end,
   }
 end
 

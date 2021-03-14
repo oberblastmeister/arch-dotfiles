@@ -1,12 +1,7 @@
 " ============================================================================
 " Defaults {{{
 " ============================================================================
-nnoremap U :UndotreeToggle<CR>
-
 nnoremap <s-tab> za
-
-" stop that stupid window from popping up
-nmap q: :q
 
 " add move keys to jumplist and also swap j and k with gj gk
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
@@ -33,22 +28,9 @@ nnoremap <silent> <C-n> <cmd>tabnew<CR>
 nnoremap <silent> <leader>vo <cmd>lua require'termwrapper'.TermWrapper.new(nil, "belowright split", nil, nil)<CR>
 nnoremap <silent> <leader>vs <cmd>lua require'termwrapper'.TermWrapper.new(nil, "vsplit")<CR>
 nnoremap <silent> <leader><CR> <cmd>T<CR>
-" nnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_count()<CR>
 nnoremap <silent> <c-t> <cmd>lua vim.schedule(function() require'termwrapper'.toggle_count() end)<CR>
-" only toggle current termwrapper
-" tnoremap <silent> <c-t> <cmd>lua require'termwrapper'.toggle_or_first(0)<CR>
 tnoremap <silent> <c-t> <cmd>lua require'termwrapper'.close_current()<CR>
-" tnoremap <silent> <c-t> <cmd>Ttoggle<CR>
 " }}}
-
-" ============================================================================
-" EasyAlign {{{
-" ============================================================================
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
 " Put arrow keys to use
 " nmap <Up> [e
@@ -70,45 +52,35 @@ vmap <Right> <Nop>
 
 " like vim vinegar
 " select file in lf
-nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
+" nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
 " nnoremap <silent> - :Lf<CR>
 " open dir in lf
-nnoremap <silent> _ :exe "FloatermNew lf " . getcwd()<CR>
+" nnoremap <silent> _ :exe "FloatermNew lf " . getcwd()<CR>
 " nnoremap <silent> _ :LfCurrentWorkingDirectory<CR>
 " }}}
 
-" ============================================================================
-" Chunk {{{
-" ============================================================================
-" jump chunk and add position to jumplist
-" nmap <silent> [h :silent execute "normal m'\<Plug>(coc-git-prevchunk)"<CR>
-" nmap <silent> ]h :silent execute "normal m'\<Plug>(coc-git-nextchunk)"<CR>
+" noremap <expr> <Plug>(StopHL) execute('nohlsearch')[-1]
+" noremap! <expr> <Plug>(StopHL) execute('nohlsearch')[-1]
 
-nmap <silent> ]h <plug>(signify-next-hunk)
-nmap <silent> [h <plug>(signify-prev-hunk)
-nmap <silent> [H 9999<leader>[h
-nmap <silent> ]H 9999<leader>]h
+" fu! HlSearch()
+"     let s:pos = match(getline('.'), @/, col('.') - 1) + 1
+"     if s:pos != col('.')
+"         call StopHL()
+"     endif
+"     call StopHL()
+" endfu
 
-" chunk text objects
-omap ih <plug>(signify-motion-inner-pending)
-xmap ih <plug>(signify-motion-inner-visual)
-omap ah <plug>(signify-motion-outer-pending)
-xmap ah <plug>(signify-motion-outer-visual)
+" fu! StopHL()
+"     if !v:hlsearch || mode() isnot 'n'
+"         return
+"     else
+"         sil call feedkeys("\<Plug>(StopHL)", 'm')
+"     endif
+" endfu
 
-inoremap <c-x><c-m> <cmd>call ListMonths()<CR>
-set completeopt=menuone,noinsert,noselect
-
-fun! GetMonths(findstart, base)
-  return ['January', 'February', 'March',
-        \ 'April', 'May', 'June', 'July', 'August', 'September',
-        \ 'October', 'November', 'December']
-endfun
-
-func! ListMonths()
-  let coll = col('.')-1
-  call complete(coll, ['January', 'February', 'March',
-        \ 'April', 'May', 'June', 'July', 'August', 'September',
-        \ 'October', 'November', 'December'])
-  return ''
-endfunc
+" augroup SearchHighlight
+" au!
+"     au CursorMoved * call HlSearch()
+"     au InsertEnter * call StopHL()
+" augroup end
 " }}}

@@ -12,10 +12,6 @@ local function custom_on_attach(client, bufnr)
   require"lsp_settings/mappings".setup()
   require"lsp_settings/commands".setup()
 
-  if client.config.flags then
-    print('there is flags')
-    client.config.flags.allow_incremental_sync = true
-  end
   -- debug_client(client)
 
   -- vim.cmd [[autocmd Lsp CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
@@ -23,15 +19,22 @@ local function custom_on_attach(client, bufnr)
   -- vim.cmd [[autocmd Lsp CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 end
 
+local function custom_on_init(client)
+  if client.config.flags then
+    print('there is flags')
+    client.config.flags.allow_incremental_sync = true
+  end
+
+  require'project'.on_init(client)
+end
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local LspDefaults = {
   on_attach = custom_on_attach,
-  on_new_config = function()
-    api.nvim_echo({{"New config created", "LspDiagnosticsDefaultHint"}}, true, {})
-  end,
   capabilities = capabilities,
+  on_init = custom_on_init,
 }
 
 function LspDefaults:with(user_config)
@@ -59,12 +62,7 @@ local function setup()
 
   end
 
-
   lspconfig.vimls.setup(LspDefaults)
-
-  -- lspconfig.sumneko_lua.setup(LspDefaults:with {
-  --   settings = require'lsp_settings/sumneko_lua'
-  -- })
 
   -- wraps sumneko lua
   require('nlua.lsp.nvim').setup(require('lspconfig'), {
@@ -100,7 +98,6 @@ local function setup()
   lspconfig.cssls.setup(LspDefaults)
 
   lspconfig.hls.setup(LspDefaults:with {
-    root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml", ".git");
     settings = require'lsp_settings/servers/hls',
   })
 
@@ -109,18 +106,19 @@ local function setup()
   lspconfig.clangd.setup(LspDefaults)
 
   lspconfig.diagnosticls.setup(LspDefaults:with {
-    -- filetypes = {"sh", "lua", "markdown"},
     filetypes = {"sh", "lua"},
     init_options = require"lsp_settings/servers/diagnosticls",
   })
 
   lspconfig.dhall_lsp_server.setup(LspDefaults)
 
-  -- lspconfig.amuletlsp.setup(LspDefaults)
-
   lspconfig.rust_analyzer.setup(LspDefaults:with {
     settings = require"lsp_settings/servers/rust_analyzer"
   })
+
+  lspconfig.julials.setup(LspDefaults)
+
+  -- lspconfig.amuletlsp.setup(LspDefaults)
 
   -- lspconfig.tomllsp.setup(LspDefaults)
 

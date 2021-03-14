@@ -6,21 +6,19 @@ local function setup()
   use {
     "sheerun/vim-polyglot",
     setup = function() require'config/polyglot'.setup() end,
+    disable = true,
   }
 
   use {
     "neovimhaskell/haskell-vim",
     setup = function() require"config/polyglot/haskell".setup() end,
+    ft = "haskell",
   }
 
   use {
     "euclidianAce/BetterLua.vim",
     ft = "lua",
-  }
-
-  -- markdown mode
-  use {
-    "plasticboy/vim-markdown", ft = "markdown"
+    disable = true,
   }
 
   -- latex mode
@@ -41,14 +39,6 @@ local function setup()
     "glacambre/firenvim",
     run = function()
       vim.fn["firenvim#install"](0)
-    end
-  }
-
-  use {
-    "Xuyuanp/scrollbar.nvim",
-    disable = true,
-    config = function()
-      require "config/scrollbar".setup()
     end
   }
 

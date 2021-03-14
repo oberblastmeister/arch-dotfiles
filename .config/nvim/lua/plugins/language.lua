@@ -49,7 +49,6 @@ local function setup()
     "eraserhd/parinfer-rust",
     run = "cargo build --release",
     ft = sexp_filetypes,
-    disable = true,
   }
 
   use {

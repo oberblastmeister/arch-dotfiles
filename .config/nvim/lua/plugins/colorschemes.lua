@@ -24,10 +24,14 @@ local function setup()
     "sainnhe/gruvbox-material",
     setup = function()
       vim.g.gruvbox_material_palette = "mix"
-    end
+    end,
+    disable = true
   }
 
-  use "sainnhe/sonokai"
+  use {
+    "sainnhe/sonokai",
+    disable = true,
+  }
 end
 
 return {

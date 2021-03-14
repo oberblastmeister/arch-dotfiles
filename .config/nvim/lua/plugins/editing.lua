@@ -8,9 +8,7 @@ local function setup()
 
   use "tpope/vim-repeat"
 
-  use { "junegunn/vim-easy-align", disable = true }
-
-  use "tpope/vim-unimpaired"
+  -- use { "junegunn/vim-easy-align", disable = true }
 end
 
 return {

@@ -89,7 +89,7 @@ alias ytdl="youtube-dl"
 # jupyter aliases
 alias irust="jupyter console --kernel rust"
 
-alias nvim-dev="VIMRUNTIME=runtime ./build/bin/nvim"
+alias nvim-dev="VIMRUNTIME=~/projects/neovim/runtime ~/projects/neovim/build/bin/nvim"
 
 # julia
 

@@ -30,6 +30,13 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 
 local LspDefaults = {
   on_attach = custom_on_attach,
@@ -65,13 +72,19 @@ local function setup()
   lspconfig.vimls.setup(LspDefaults)
 
   -- wraps sumneko lua
-  require('nlua.lsp.nvim').setup(require('lspconfig'), {
-    LspDefaults:with {
-      -- include glboal you want to tell the Lsp are real
-      globals = {},
-      settings = require'lsp_settings/servers/sumneko_lua'
-    }
+  lspconfig.sumneko_lua.setup(LspDefaults:with {
+    globals = {},
+    settings = require'lsp_settings/servers/sumneko_lua',
+    cmd = {"lua-language-server"},
+    -- cmd = "lua-language-server"
   })
+  -- require('nlua.lsp.nvim').setup(require('lspconfig'), {
+  --   LspDefaults:with {
+  --     -- include glboal you want to tell the Lsp are real
+  --     globals = {},
+  --     settings = require'lsp_settings/servers/sumneko_lua',
+  --   }
+  -- })
 
   lspconfig.jdtls.setup(LspDefaults)
 

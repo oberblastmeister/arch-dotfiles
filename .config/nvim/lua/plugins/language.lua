@@ -12,7 +12,6 @@ local function setup()
   use {
     "neovimhaskell/haskell-vim",
     setup = function() require"config/polyglot/haskell".setup() end,
-    ft = "haskell",
   }
 
   use {

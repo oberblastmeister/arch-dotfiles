@@ -14,12 +14,12 @@ local function setup()
   }
 
   -- terminal float for lf
-  -- use {
-  --   "voldikss/vim-floaterm",
-  --   config = function()
-  --     require "config/floaterm".setup()
-  --   end
-  -- }
+  use {
+    "voldikss/vim-floaterm",
+    config = function()
+      require "config/floaterm".setup()
+    end
+  }
 
   -- use "justinmk/vim-dirvish"
 end

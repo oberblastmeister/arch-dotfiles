@@ -22,12 +22,14 @@ local function setup()
     },
   }
 
-  vim.cmd [[imap <silent><expr> <Tab> luaeval('require("compe").confirm("<Tab>")')]]
+  vim.cmd [[imap <silent><expr> <Tab> compe#confirm({ 'select': v:true, 'keys': '<Tab>' })]]
 
   vim.cmd [[imap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
   vim.cmd [[smap <expr> <c-j> vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>']]
   vim.cmd [[imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
   vim.cmd [[smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
+
+  vim.cmd [[set completeopt=menuone,noselect]]
 end
 
 return {setup = setup}

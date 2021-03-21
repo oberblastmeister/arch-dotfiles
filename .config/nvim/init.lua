@@ -1,3 +1,7 @@
+-- some globals for convenience
+R = require
+A = vim.api
+
 if vim.fn.exists('g:vscode') == 1 then
   require"vscode"
   return
@@ -29,4 +33,13 @@ function! SynGroup()
 endfun
 ]]
 
-vim.cmd [[noremap <Plug>(DisableSearchHl) <cmd>nohl<CR>]]
+function feedkeys(keys, mode)
+  keys = A.nvim_replace_termcodes(keys, true, true, true)
+  A.nvim_feedkeys(keys, mode, true)
+end
+
+function replace(keys)
+  return A.nvim_replace_termcodes(keys, true, true, true)
+end
+
+vim.cmd [[nnoremap <leader><CR> <cmd>luafile %<CR>]]

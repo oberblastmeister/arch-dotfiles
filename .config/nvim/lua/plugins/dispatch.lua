@@ -1,7 +1,7 @@
 local use = require("packer").use
 
 local function setup()
-  -- use "vim-test/vim-test"
+  use "vim-test/vim-test"
 
   -- use {
   --   "tpope/vim-dispatch",

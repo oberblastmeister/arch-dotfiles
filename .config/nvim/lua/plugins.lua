@@ -50,6 +50,7 @@ local function setup()
   require"plugins/colorschemes".setup()
   require"plugins/local".setup()
   require"plugins/lsp".setup()
+  require"plugins/nvim".setup()
   require"plugins/treesitter".setup()
   require"plugins/fuzzy_finding".setup()
   require"plugins/editing".setup()
@@ -65,7 +66,6 @@ local function setup()
   require"plugins/deps".setup()
   require"plugins/debugging".setup()
   require"plugins/dispatch".setup()
-  require"plugins/nvim".setup()
 end
 
 return {

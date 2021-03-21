@@ -71,9 +71,9 @@ local function setup()
     config = function() require"config/termwrapper".setup() end,
   }
 
-  local_use {
-    "insta.nvim"
-  }
+  -- local_use {
+  --   "insta.nvim"
+  -- }
 end
 
 return {

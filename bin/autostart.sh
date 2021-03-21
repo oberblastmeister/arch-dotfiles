@@ -52,7 +52,7 @@ run system-config-printer-applet
 # run redshift-gtk
 run syncthing-gtk -m
 run greenclip daemon
-run mailspring --background
+# run mailspring --background
 run unclutter --timeout 4
 ~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 run jgmenu --at-pointer --hide-on-startup

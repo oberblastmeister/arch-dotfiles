@@ -1,7 +1,7 @@
 local utils = require('utils')
 
 local function setup()
-  vim.g.nvim_tree_ignore = {".git", ".cache"}
+  vim.g.nvim_tree_ignore = {".git"}
 
   vim.g.nvim_tree_auto_close = 1
 

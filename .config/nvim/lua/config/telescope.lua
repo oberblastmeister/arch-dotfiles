@@ -27,7 +27,6 @@ function M.setup_keymappings()
 
   -- common
   api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require'telescope.builtin'.find_files()<cr>]], {noremap = true})
-  api.nvim_set_keymap('n', '<leader><tab>', [[<cmd>lua require'telescope.builtin'.file_browser { cwd = vim.fn.expand('%:p:h') }<cr>]], {noremap = true})
   api.nvim_set_keymap('n', '<c-b>', [[<cmd>lua require'telescope.builtin'.buffers()<cr>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>/', [[<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())<cr>]], {noremap = true})
 
@@ -62,7 +61,8 @@ function M.setup_keymappings()
   api.nvim_set_keymap('n', '<leader>fp', [[<cmd>lua require'config/telescope/my_builtin'.packer()<CR>]], {noremap = true})
 
   -- file browser
-  api.nvim_set_keymap('n', '-', [[<cmd>lua require'telescope.builtin'.file_browser()<cr>]], {noremap = true})
+  api.nvim_set_keymap('n', '_', [[<cmd>lua require'telescope.builtin'.file_browser()<cr>]], {noremap = true})
+  api.nvim_set_keymap('n', '-', [[<cmd>lua require'telescope.builtin'.file_browser { cwd = vim.fn.expand('%:p:h') }<cr>]], {noremap = true})
 
   -- api.nvim_set_keymap("n", "<leader><leader>", "<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>", {noremap = true, silent = true})
 

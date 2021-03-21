@@ -1,4 +1,5 @@
 local vim = vim
+local uv = vim.loop
 local api = vim.api
 
 local M = {}
@@ -105,7 +106,88 @@ function M.disable_distribution_plugins()
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
   vim.g.loaded_netrwSettings = 1
-  vim.g.loaded_netrwFileHandlers = 1
+  -- vim.g.loaded_netrwFileHandlers = 1
+end
+
+function M.import_test()
+  local import = require"plenary.import"
+
+  local module = {}
+  function module.hello() return 'hello' end
+
+  local function before()
+    print(hello())
+  end
+
+  import { "*", from = module, into = before }
+
+  -- dump(getfenv(before).vim)
+
+  local function after() end
+
+  local work = uv.new_work(before, after)
+  work:queue()
+end
+
+function M.another()
+  return 1 + 1
+end
+function M.test()
+  return M.another()
+end
+
+function M.work_test()
+  local function before()
+    local utils = require'utils'
+    utils.test()
+  end
+
+  local function after(...)
+    dump({...})
+  end
+
+  local work = uv.new_work(before, after)
+  work:queue()
+end
+
+function M.ffi_test()
+  local ffi = require("ffi")
+  ffi.cdef[[
+  typedef struct { uint8_t red, green, blue, alpha; } rgba_pixel;
+  ]]
+
+  local rgb = ffi.new("rgba_pixel")
+
+  rgb.red = 10
+  rgb.blue = 10
+  rgb.green = 123
+  rgb.alpha = 1
+
+  print(rgb.red)
+
+  return tostring(rgb)
+end
+
+function M.term_test()
+  local a = vim.api
+
+  x = a.nvim_create_buf(true, true)
+  -- w = a.nvim_open_win(x, false, {relative = 'win', width = 12, height = 3, row = 3, col = 3})
+
+  function input(_,t,b,data)
+    -- do something fun with "data", write back to "t" or whatever
+  end
+
+  t = a.nvim_open_term(x, {})
+  a.nvim_chan_send(t, "buh meme this")
+  -- a.nvim_chan_send(t, io.open("/path/to/smile.cat", "r"):read("*a"))
+end
+
+function M.keystroke()
+  local ns = api.nvim_create_namespace('testing')
+  vim.register_keystroke_callback(function(key)
+    print('keystroke is enter', key == replace("<CR>"))
+  end, ns)
 end
 
 return M

@@ -1,8 +1,4 @@
 local lspconfig = require('lspconfig')
-local configs = require("lspconfig/configs")
-local util = require "lspconfig/util"
-local api = vim.api
-local settings = require('settings')
 
 local function debug_client(client, bufnr)
   print(string.format("lsp client: %s, root dir: %s", client.config.cmd[1], client.config.root_dir))
@@ -49,39 +45,21 @@ function LspDefaults:with(user_config)
 end
 
 local function setup()
-  if settings.python_lsp == PythonLsp.pyls then
-
-    lspconfig.pyls.setup(LspDefaults:with {
-      settings = require"lsp_settings/servers/pyls",
-    })
-
-  elseif settings.python_lsp == PythonLsp.pyls_ms then
-
-    lspconfig.pyls_ms.setup(LspDefaults)
-
-  elseif settings.python_lsp == PythonLsp.jedi_language_server then
-
-    lspconfig.jedi_language_server.setup(LspDefaults)
-
-  elseif settings.python_lsp == PythonLsp.pyright then
-
-    lspconfig.pyright.setup(LspDefaults)
-
-  end
+  lspconfig.pyright.setup(LspDefaults)
 
   lspconfig.vimls.setup(LspDefaults)
 
   -- wraps sumneko lua
   lspconfig.sumneko_lua.setup(LspDefaults:with {
-    globals = {},
     settings = require'lsp_settings/servers/sumneko_lua',
     cmd = {"lua-language-server"},
-    -- cmd = "lua-language-server"
   })
+  -- lspconfig.lua_analyzer.setup(LspDefaults)
   -- require('nlua.lsp.nvim').setup(require('lspconfig'), {
   --   LspDefaults:with {
   --     -- include glboal you want to tell the Lsp are real
-  --     globals = {},
+  --     -- globals = {},
+  --     cmd = {"lua-language-server"},
   --     settings = require'lsp_settings/servers/sumneko_lua',
   --   }
   -- })

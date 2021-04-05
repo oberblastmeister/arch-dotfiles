@@ -229,3 +229,6 @@ super + alt + t
 
 alt + b
     ~/bin/buku-add
+
+super + ctrl + c
+    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'

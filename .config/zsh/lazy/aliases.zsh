@@ -92,6 +92,7 @@ alias irust="jupyter console --kernel rust"
 alias nvim-dev="VIMRUNTIME=~/projects/neovim/runtime ~/projects/neovim/build/bin/nvim"
 
 # julia
-
 alias juliaserver='julia --startup-file=no -e "using DaemonMode; serve()"'
 alias juliaclient='julia --startup-file=no -e "using DaemonMode; runargs()"'
+
+alias luajit='rlwrap luajit'

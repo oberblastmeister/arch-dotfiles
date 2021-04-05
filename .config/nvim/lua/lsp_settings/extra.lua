@@ -38,6 +38,18 @@ local function setup()
       },
     }
   }
+
+  configs.lua_analyzer = {
+    default_config = {
+      cmd = { "lua-analyzer" },
+      filetypes = {"lua"},
+      root_dir = util.root_pattern("*.lua", vim.fn.getcwd()),
+      docs = {
+        description = [[]],
+        default_config = {root_dir = [[root_pattern(".git", vim.fn.getcwd())]]},
+      },
+    }
+  }
 end
 
 return {setup = setup}

@@ -1,4 +1,4 @@
-function enum(tbl)
+local function enum(tbl)
     local length = #tbl
     for i = 1, length do
         local v = tbl[i]
@@ -7,15 +7,3 @@ function enum(tbl)
 
     return tbl
 end
-
-PythonLsp = enum {
-  "pyls",
-  "pyls_ms",
-  "jedi_language_server",
-  "pyright",
-}
-
-return {
-  -- the python language server to use
-  python_lsp = PythonLsp.pyright
-}

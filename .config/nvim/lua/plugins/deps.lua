@@ -10,6 +10,16 @@ local function setup()
 
   -- icons
   use "kyazdani42/nvim-web-devicons"
+
+  use {
+    "norcalli/nvim-terminal.lua",
+    config = function()
+      require'terminal'.setup()
+    end
+  }
+
+  -- docgen
+  -- use "tjdevries/tree-sitter-lua"
 end
 
 return {

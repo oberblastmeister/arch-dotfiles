@@ -190,4 +190,18 @@ function M.keystroke()
   end, ns)
 end
 
+function M.make_test_window()
+  local initial_config = {
+    relative = 'editor',
+    row = 10,
+    col = 10,
+    width = 100,
+    height = 25,
+    border = { "/", "-", "\\", "|" },
+    style = "minimal",
+  }
+  local bufnr = vim.api.nvim_create_buf(false, true)
+  local win_id = vim.api.nvim_open_win(bufnr, true, initial_config)
+end
+
 return M

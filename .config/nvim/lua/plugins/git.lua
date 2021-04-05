@@ -1,14 +1,20 @@
 local use = require"packer".use
+local local_use = require"plugins/local".local_use
 
 local function setup()
   use "tpope/vim-fugitive"
 
-  use {
-    "lewis6991/gitsigns.nvim",
+  -- use {
+  --   "lewis6991/gitsigns.nvim",
+  --   config = function()
+  --     require "config/gitsigns".setup()
+  --   end,
+  -- }
+  local_use {
+    "gitsigns.nvim",
     config = function()
       require "config/gitsigns".setup()
     end,
-    disable = true,
   }
 
   use {
@@ -16,7 +22,10 @@ local function setup()
     cmd = 'Neogit',
   }
 
-  use {"pwntester/octo.nvim", disable = true}
+  use {
+    "pwntester/octo.nvim",
+    cmd = 'Octo',
+  }
 end
 
 return {

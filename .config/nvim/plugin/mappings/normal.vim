@@ -52,7 +52,6 @@ vmap <Right> <Nop>
 
 " like vim vinegar
 " select file in lf
-" nnoremap <silent> - :exe "FloatermNew lf " . expand('%:p')<CR>
 " nnoremap <silent> - :Lf<CR>
 " open dir in lf
 " nnoremap <silent> _ :exe "FloatermNew lf " . getcwd()<CR>

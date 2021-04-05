@@ -14,7 +14,7 @@ local function setup()
     source = {
       path = true,
       buffer = true,
-      vsnip = true,
+      -- vsnip = true,
       nvim_lsp = true,
       nvim_lua = true,
       -- this is slow for now
@@ -29,7 +29,7 @@ local function setup()
   vim.cmd [[imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
   vim.cmd [[smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-k>']]
 
-  vim.cmd [[set completeopt=menuone,noselect]]
+  vim.cmd [[set completeopt=menuone,noinsert,noselect]]
 end
 
 return {setup = setup}

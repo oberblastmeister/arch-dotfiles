@@ -13,6 +13,7 @@ local function setup()
     branch = 'main',
     -- config = function() require"config/galaxyline/spaceline".setup() end,
     config = function() require"config/galaxyline/eviline".setup() end,
+    disable = true,
   }
 
   -- colorize hex codes

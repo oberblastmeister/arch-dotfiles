@@ -17,7 +17,7 @@ function M.setup_keymappings()
 
   -- lsp stuff
   api.nvim_set_keymap('n', '<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]], {noremap = true})
-  api.nvim_set_keymap('n', '<leader>fw', [[<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>]], {noremap = true})
+  api.nvim_set_keymap('n', '<leader>fw', [[<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
   api.nvim_set_keymap('x', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
 

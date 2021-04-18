@@ -75,6 +75,14 @@ local function setup()
     "test_plug.nvim"
   }
 
+  local_use {
+    "ungrammar.nvim"
+  }
+
+  -- local_use {
+  --   "tree-sitter-lua"
+  -- }
+
   -- local_use {
   --   "insta.nvim"
   -- }

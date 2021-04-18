@@ -129,13 +129,6 @@ function M.import_test()
   work:queue()
 end
 
-function M.another()
-  return 1 + 1
-end
-function M.test()
-  return M.another()
-end
-
 function M.work_test()
   local function before()
     local utils = require'utils'
@@ -202,6 +195,16 @@ function M.make_test_window()
   }
   local bufnr = vim.api.nvim_create_buf(false, true)
   local win_id = vim.api.nvim_open_win(bufnr, true, initial_config)
+end
+
+function M.wrap_mlua_async(mlua_async_fn)
+  return function(...)
+    local thread = coroutine.create(function()
+      mlua_async_fn()
+    end)
+
+    thread.resume()
+  end
 end
 
 return M

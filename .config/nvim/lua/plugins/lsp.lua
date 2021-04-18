@@ -19,26 +19,6 @@ local function setup()
   --   "rofl.nvim",
   -- }
 
-  -- completion engine
-  -- use {
-  --   "nvim-lua/completion-nvim",
-  --   config = function()
-  --     require "config/completion".setup()
-  --   end,
-  --   requires = {
-  --     "steelsojka/completion-buffers",
-  --     {
-  --       "SirVer/ultisnips",
-  --       config = function()
-  --         require "config/ultisnips".setup()
-  --       end,
-  --       disable = true,
-  --     },
-  --     "hrsh7th/vim-vsnip",
-  --     "hrsh7th/vim-vsnip-integ",
-  --   },
-  -- }
-
   use {
     "ms-jpq/kok.nvim",
     config = function()
@@ -54,25 +34,6 @@ local function setup()
       require'config/project'.setup()
     end
   }
-
-  -- use {
-  --   "nvim-lua/completion-nvim",
-  --   config = function()
-  --     require "config/completion".setup()
-  --   end,
-  --   requires = {
-  --     "steelsojka/completion-buffers",
-  --     {
-  --       "SirVer/ultisnips",
-  --       config = function()
-  --         require "config/ultisnips".setup()
-  --       end,
-  --       disable = true,
-  --     },
-  --     "hrsh7th/vim-vsnip",
-  --     "hrsh7th/vim-vsnip-integ",
-  --   },
-  -- }
 
   use {
     "hrsh7th/nvim-compe",

@@ -7,6 +7,8 @@ local function setup()
       topdelete    = {hl = 'GitGutterDelete', text = '┃'},
       changedelete = {hl = 'GitGutterChangeDelete', text = '┃'},
     },
+    use_decoration_api = false,
+    -- current_line_blame = true,
   }
 end
 

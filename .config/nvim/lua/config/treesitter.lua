@@ -4,11 +4,10 @@ local function setup()
   -- require "nvim-treesitter.parsers".get_parser_configs().haskell = nil --haskell will crash the editor
 
   require'nvim-treesitter.configs'.setup {
-    -- ensure_installed = "maintained",     -- one of "all", "language", or a list of languages
+    ensure_installed = "maintained",     -- one of "all", "language", or a list of languages
 
     highlight = {
       enable = true,
-      -- use_languagetree = true, -- language injection (highly unstable)
       -- disable = {"haskell"},  -- list of language that will be disabled
       disable = {},
       custom_captures = {}

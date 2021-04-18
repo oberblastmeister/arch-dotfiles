@@ -93,3 +93,6 @@ export TRASHY_SIZE="compact"
 # julia
 export JULIA_NUM_THREADS=4
 
+# misc
+export TUIR_URLVIEWER=urlscan
+export PISTOL_CHROMA_FORMATTER=terminal256

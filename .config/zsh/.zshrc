@@ -25,14 +25,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 # conflicts with zoxide
 unalias zi
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-# zinit light-mode for \
-#     zinit-zsh/z-a-patch-dl \
-#     zinit-zsh/z-a-as-monitor \
-#     zinit-zsh/z-a-bin-gem-node
-
-# keytimeout=0 might have bad effects
 # vi mode
 bindkey -v
 bindkey 'jk' vi-cmd-mode
@@ -64,9 +56,6 @@ setopt share_history          # share command history data
 HISTSIZE=10000
 SAVEHIST=10000
 
-export TUIR_URLVIEWER=urlscan
-export PISTOL_CHROMA_FORMATTER=terminal256
-
 MODE_CURSOR_VIINS="block"
 MODE_CURSOR_REPLACE="underline"
 MODE_CURSOR_VICMD="block"
@@ -96,10 +85,6 @@ zinit light zsh-users/zsh-completions
 zinit ice lucid wait atload"bindkey '^_' autosuggest-execute"
 zinit light softmoth/zsh-vim-mode
 
-# source ~/builds/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# zinit ice lucid wait
-# zinit light marlonrichert/zsh-autocomplete
-
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=21
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
@@ -125,8 +110,8 @@ zinit light-mode for \
   atinit"bindkey -s '^o' 'lfcd\n'" \
     https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
 
-# zinit ice lucid wait
-# zinit snippet https://github.com/ajeetdsouza/zoxide/blob/master/zoxide.plugin.zsh
+zinit ice lucid wait
+zinit snippet https://github.com/ajeetdsouza/zoxide/blob/main/zoxide.plugin.zsh
 
 zinit ice lucid wait
 zinit snippet OMZP::zsh-interactive-cd

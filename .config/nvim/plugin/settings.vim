@@ -4,9 +4,6 @@
 " correct number options
 set number relativenumber
 
-" many issues
-" set lazyredraw " faster macros
-
 " use system clipboard
 set clipboard^=unnamed,unnamedplus
 
@@ -32,6 +29,9 @@ set mouse=a
 
 " do not wrap text
 set nowrap
+
+" number of lines kept in terminal buffer
+set scrollback=50000
 
 set pumheight=20
 
@@ -67,7 +67,7 @@ set signcolumn=yes " always show sign column so it doesn't drift
 " guistuff
 " set guifont=FiraCode\ Nerd\ Font:h11:style=Retina " set guifont
 " set guifont=FiraCode\ Nerd\ Font:h12
-set guifont=FiraCode\ Nerd\ Font:h16
+set guifont=FiraCode\ Nerd\ Font:10
 " set guifont=OperatorMono\ Nerd\ Font:h18:style=Medium
 
 " set default spell checking language (when spell checking is on)

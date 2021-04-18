@@ -17,11 +17,8 @@ end
 
 local function custom_on_init(client)
   if client.config.flags then
-    print('there is flags')
     client.config.flags.allow_incremental_sync = true
   end
-
-  require'project'.on_init(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

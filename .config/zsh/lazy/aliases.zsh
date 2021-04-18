@@ -72,7 +72,7 @@ alias yp='yadm push'
 
 # tmux
 alias ta='tmux attach'
-# alias tl='tmux ls'
+alias tl='tmux ls'
 
 alias t='task'
 

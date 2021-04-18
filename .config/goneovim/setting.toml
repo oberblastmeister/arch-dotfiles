@@ -3,5 +3,5 @@
 ExtCmdline   = true
 ExtPopupmenu = false
 ExtTabline   = true
-ExtMessages  = false
+ExtMessages  = true
 IndentGuide = false

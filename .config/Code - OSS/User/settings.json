@@ -32,5 +32,6 @@
     "terminal.integrated.commandsToSkipShell": [
         "language-julia.interrupt"
     ],
-    "julia.enableTelemetry": false
+    "julia.enableTelemetry": false,
+    "editor.largeFileOptimizations": false
 }

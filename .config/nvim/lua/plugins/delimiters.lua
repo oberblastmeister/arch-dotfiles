@@ -5,6 +5,14 @@ local function setup()
 
   use {
     "jiangmiao/auto-pairs",
+    disable = true,
+  }
+
+  use {
+    "steelsojka/pears.nvim",
+    config = function()
+      require"config/pears".setup()
+    end
   }
 end
 

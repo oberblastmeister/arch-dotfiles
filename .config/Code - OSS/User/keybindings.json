@@ -165,10 +165,6 @@
         "when": "!terminalFocus"
     },
     {
-        "key": "ctrl+t",
-        "command": "workbench.action.togglePanel"
-    },
-    {
         "key": "ctrl+j",
         "command": "-workbench.action.togglePanel"
     },
@@ -256,5 +252,15 @@
         "key": "left",
         "command": "-cursorLeft",
         "when": "textInputFocus && neovim.mode == insert"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-vscode-neovim.send",
+        "when": "neovim.mode == 'cmdline_insert' || neovim.mode == 'cmdline_normal' || neovim.mode == 'cmdline_replace'"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert && neovim.recording && neovim.mode == 'insert'"
     }
 ]

@@ -60,6 +60,9 @@ local function setup()
   --     settings = require'lsp_settings/servers/sumneko_lua',
   --   }
   -- })
+  -- lspconfig.lua_analyzer.setup(LspDefaults:with {
+  --   settings = require"lsp_settings/servers/lua_analyzer"
+  -- })
 
   lspconfig.jdtls.setup(LspDefaults)
 

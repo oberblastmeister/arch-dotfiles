@@ -9,6 +9,11 @@ return {
     },
     assist = {
       importPrefix = true,
+    },
+    rustfmt = {
+      override = {
+        Command = "rustfmt",
+      }
     }
   }
 }

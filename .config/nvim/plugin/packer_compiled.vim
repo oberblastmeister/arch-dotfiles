@@ -12,6 +12,41 @@ packadd packer.nvim
 try
 
 lua << END
+  local time
+  local profile_info
+  local should_profile = false
+  if should_profile then
+    local hrtime = vim.loop.hrtime
+    profile_info = {}
+    time = function(chunk, start)
+      if start then
+        profile_info[chunk] = hrtime()
+      else
+        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
+      end
+    end
+  else
+    time = function(chunk, start) end
+  end
+  
+local function save_profiles(threshold)
+  local sorted_times = {}
+  for chunk_name, time_taken in pairs(profile_info) do
+    sorted_times[#sorted_times + 1] = {chunk_name, time_taken}
+  end
+  table.sort(sorted_times, function(a, b) return a[2] > b[2] end)
+  local results = {}
+  for i, elem in ipairs(sorted_times) do
+    if not threshold or threshold and elem[2] > threshold then
+      results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
+    end
+  end
+
+  _G._packer = _G._packer or {}
+  _G._packer.profile_output = results
+end
+
+time("Luarocks path setup", true)
 local package_path_str = "/home/brian/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/brian/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/brian/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/brian/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
 local install_cpath_pattern = "/home/brian/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
@@ -22,6 +57,8 @@ if not string.find(package.cpath, install_cpath_pattern, 1, true) then
   package.cpath = package.cpath .. ';' .. install_cpath_pattern
 end
 
+time("Luarocks path setup", false)
+time("try_loadstring definition", true)
 local function try_loadstring(s, component, name)
   local success, result = pcall(loadstring(s))
   if not success then
@@ -31,6 +68,8 @@ local function try_loadstring(s, component, name)
   return result
 end
 
+time("try_loadstring definition", false)
+time("Defining packer_plugins", true)
 _G.packer_plugins = {
   aniseed = {
     loaded = true,
@@ -104,10 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brian/.local/share/nvim/site/pack/packer/start/neuron.nvim"
   },
-  ["nlua.nvim"] = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nlua.nvim"
-  },
   ["nvim-colorizer.lua"] = {
     config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0" },
     loaded = true,
@@ -166,11 +201,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/brian/.local/share/nvim/site/pack/packer/opt/packer.nvim"
-  },
-  ["pears.nvim"] = {
-    config = { "\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17config/pears\frequire\0" },
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/pears.nvim"
   },
   ["pest.vim"] = {
     loaded = true,
@@ -267,64 +297,105 @@ _G.packer_plugins = {
   }
 }
 
+time("Defining packer_plugins", false)
 -- Setup for: haskell-vim
+time("Setup for haskell-vim", true)
 try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\28config/polyglot/haskell\frequire\0", "setup", "haskell-vim")
+time("Setup for haskell-vim", false)
+time("packadd for haskell-vim", true)
 vim.cmd [[packadd haskell-vim]]
--- Config for: nvim-lightbulb
-try_loadstring("\27LJ\2\ns\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0Tautocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()\bcmd\bvim\0", "config", "nvim-lightbulb")
--- Config for: neuron.nvim
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18config/neuron\frequire\0", "config", "neuron.nvim")
--- Config for: vim-commentary
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/commentary\frequire\0", "config", "vim-commentary")
--- Config for: nvim-terminal.lua
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rterminal\frequire\0", "config", "nvim-terminal.lua")
--- Config for: nvim-lspconfig
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17lsp_settings\frequire\0", "config", "nvim-lspconfig")
--- Config for: nvim-colorizer.lua
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
--- Config for: telescope.nvim
-try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/telescope\frequire\0", "config", "telescope.nvim")
--- Config for: pears.nvim
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17config/pears\frequire\0", "config", "pears.nvim")
--- Config for: gruvbox
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\23config/colorscheme\frequire\0", "config", "gruvbox")
--- Config for: gitsigns.nvim
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config/gitsigns\frequire\0", "config", "gitsigns.nvim")
--- Config for: nvim-treesitter
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/treesitter\frequire\0", "config", "nvim-treesitter")
+time("packadd for haskell-vim", false)
 -- Config for: nvim-compe
+time("Config for nvim-compe", true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17config/compe\frequire\0", "config", "nvim-compe")
+time("Config for nvim-compe", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21config/telescope\frequire\0", "config", "telescope.nvim")
+time("Config for telescope.nvim", false)
 -- Config for: project.nvim
+time("Config for project.nvim", true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19config/project\frequire\0", "config", "project.nvim")
--- Config for: vim-floaterm
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config/floaterm\frequire\0", "config", "vim-floaterm")
+time("Config for project.nvim", false)
 -- Config for: fzf.vim
+time("Config for fzf.vim", true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config/fzf\frequire\0", "config", "fzf.vim")
+time("Config for fzf.vim", false)
+-- Config for: nvim-treesitter
+time("Config for nvim-treesitter", true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/treesitter\frequire\0", "config", "nvim-treesitter")
+time("Config for nvim-treesitter", false)
+-- Config for: neuron.nvim
+time("Config for neuron.nvim", true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18config/neuron\frequire\0", "config", "neuron.nvim")
+time("Config for neuron.nvim", false)
 -- Config for: termwrapper.nvim
+time("Config for termwrapper.nvim", true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\23config/termwrapper\frequire\0", "config", "termwrapper.nvim")
+time("Config for termwrapper.nvim", false)
+-- Config for: vim-floaterm
+time("Config for vim-floaterm", true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config/floaterm\frequire\0", "config", "vim-floaterm")
+time("Config for vim-floaterm", false)
+-- Config for: vim-commentary
+time("Config for vim-commentary", true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config/commentary\frequire\0", "config", "vim-commentary")
+time("Config for vim-commentary", false)
+-- Config for: nvim-lspconfig
+time("Config for nvim-lspconfig", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17lsp_settings\frequire\0", "config", "nvim-lspconfig")
+time("Config for nvim-lspconfig", false)
+-- Config for: nvim-lightbulb
+time("Config for nvim-lightbulb", true)
+try_loadstring("\27LJ\2\ns\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0Tautocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()\bcmd\bvim\0", "config", "nvim-lightbulb")
+time("Config for nvim-lightbulb", false)
+-- Config for: nvim-colorizer.lua
+time("Config for nvim-colorizer.lua", true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time("Config for nvim-colorizer.lua", false)
+-- Config for: gitsigns.nvim
+time("Config for gitsigns.nvim", true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config/gitsigns\frequire\0", "config", "gitsigns.nvim")
+time("Config for gitsigns.nvim", false)
+-- Config for: nvim-terminal.lua
+time("Config for nvim-terminal.lua", true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rterminal\frequire\0", "config", "nvim-terminal.lua")
+time("Config for nvim-terminal.lua", false)
+-- Config for: gruvbox
+time("Config for gruvbox", true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\23config/colorscheme\frequire\0", "config", "gruvbox")
+time("Config for gruvbox", false)
 
 -- Command lazy-loads
-vim.cmd [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim', 'limelight.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-vim.cmd [[command! -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+time("Defining lazy-load commands", true)
 vim.cmd [[command! -nargs=* -range -bang -complete=file LuaRun lua require("packer.load")({'nvim-luapad'}, { cmd = "LuaRun", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Luapad lua require("packer.load")({'nvim-luapad'}, { cmd = "Luapad", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim', 'limelight.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Lua lua require("packer.load")({'nvim-luapad'}, { cmd = "Lua", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file TSPlaygroundToggle lua require("packer.load")({'playground'}, { cmd = "TSPlaygroundToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file Octo lua require("packer.load")({'octo.nvim'}, { cmd = "Octo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+time("Defining lazy-load commands", false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
-vim.cmd [[au FileType fennel ++once lua require("packer.load")({'conjure'}, { ft = "fennel" }, _G.packer_plugins)]]
-vim.cmd [[au FileType clojure ++once lua require("packer.load")({'conjure'}, { ft = "clojure" }, _G.packer_plugins)]]
-vim.cmd [[au FileType plaintex ++once lua require("packer.load")({'vimtex'}, { ft = "plaintex" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tex ++once lua require("packer.load")({'vimtex'}, { ft = "tex" }, _G.packer_plugins)]]
+time("Defining lazy-load filetype autocommands", true)
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vimwiki ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "vimwiki" }, _G.packer_plugins)]]
+vim.cmd [[au FileType plaintex ++once lua require("packer.load")({'vimtex'}, { ft = "plaintex" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tex ++once lua require("packer.load")({'vimtex'}, { ft = "tex" }, _G.packer_plugins)]]
+vim.cmd [[au FileType clojure ++once lua require("packer.load")({'conjure'}, { ft = "clojure" }, _G.packer_plugins)]]
+vim.cmd [[au FileType fennel ++once lua require("packer.load")({'conjure'}, { ft = "fennel" }, _G.packer_plugins)]]
+time("Defining lazy-load filetype autocommands", false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
+time("Sourcing ftdetect script at: /home/brian/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim", true)
 vim.cmd [[source /home/brian/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]]
+time("Sourcing ftdetect script at: /home/brian/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim", false)
 vim.cmd("augroup END")
+if should_profile then save_profiles() end
+
 END
 
 catch

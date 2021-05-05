@@ -136,7 +136,19 @@ local function setup()
         enable = true,
         use_virtual_text = true,
         lint_events = {"BufWrite", "CursorHold"},
-      }
+      },
+
+      -- pairs = {
+      --   enable = true,
+      --   disable = {},
+      --   highlight_pair_events = {"CursorMoved"}, -- e.g. {"CursorMoved"}, -- when to highlight the pairs, use {} to deactivate highlighting
+      --   highlight_self = false, -- whether to highlight also the part of the pair under cursor (or only the partner)
+      --   goto_right_end = false, -- whether to go to the end of the right partner or the beginning
+      --   fallback_cmd_normal = "call matchit#Match_wrapper('',1,'n')", -- What command to issue when we can't find a pair (e.g. "normal! %")
+      --   keymaps = {
+      --     goto_partner = "%"
+      --   }
+      -- }
     }
   }
 end

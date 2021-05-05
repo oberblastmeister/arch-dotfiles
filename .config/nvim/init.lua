@@ -2,6 +2,14 @@
 R = require
 A = vim.api
 
+function each(z)
+  return (function (x) return x(x) end) (function (x) return function (...) z(...) return x(x) end end)
+end
+
+function reload(module)
+  require('plenary.reload').reload_module(module)
+end
+
 if vim.fn.exists('g:vscode') == 1 then
   require"vscode"
   return

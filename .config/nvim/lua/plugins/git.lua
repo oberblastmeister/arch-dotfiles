@@ -10,6 +10,7 @@ local function setup()
       require "config/gitsigns".setup()
     end,
   }
+
   -- local_use {
   --   "gitsigns.nvim",
   --   config = function()

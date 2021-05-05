@@ -37,6 +37,8 @@ local function setup()
     cmd = "TSPlaygroundToggle"
   }
 
+  -- use "theHamsta/nvim-treesitter-pairs"
+
   -- use "lewis6991/spellsitter.nvim"
 end
 

@@ -78,4 +78,7 @@ au!
     au CursorMoved * call HlSearch()
     au InsertEnter * call StopHL()
 augroup end
+
+nnoremap ]q <cmd>cnext<CR>
+nnoremap [q <cmd>cprevious<CR>
 " }}}

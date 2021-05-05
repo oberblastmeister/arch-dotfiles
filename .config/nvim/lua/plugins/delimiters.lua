@@ -12,7 +12,8 @@ local function setup()
     "steelsojka/pears.nvim",
     config = function()
       require"config/pears".setup()
-    end
+    end,
+    disable = true,
   }
 end
 

@@ -29,7 +29,6 @@ path+=(
     $GOPATH/bin
     ~/.luarocks/bin
     ./node_modules/.bin
-    ~/.local/share/gem/ruby/2.7.0/bin
 )
 # export to subprocesses
 export PATH

@@ -47,10 +47,10 @@ local function setup()
   lspconfig.vimls.setup(LspDefaults)
 
   -- wraps sumneko lua
-  -- lspconfig.sumneko_lua.setup(LspDefaults:with {
-  --   settings = require'lsp_settings/servers/sumneko_lua',
-  --   cmd = {"lua-language-server"},
-  -- })
+  lspconfig.sumneko_lua.setup(LspDefaults:with {
+    settings = require'lsp_settings/servers/sumneko_lua',
+    cmd = {"lua-language-server"},
+  })
   -- lspconfig.lua_analyzer.setup(LspDefaults)
   -- require('nlua.lsp.nvim').setup(require('lspconfig'), {
   --   LspDefaults:with {
@@ -60,10 +60,10 @@ local function setup()
   --     settings = require'lsp_settings/servers/sumneko_lua',
   --   }
   -- })
-  lspconfig.lua_analyzer.setup(LspDefaults:with {
-    settings = require"lsp_settings/servers/lua_analyzer",
-    -- cmd = {"/home/brian/projects/lua-analyzer/run_flamegraph"},
-  })
+  -- lspconfig.lua_analyzer.setup(LspDefaults:with {
+  --   settings = require"lsp_settings/servers/lua_analyzer",
+  --   -- cmd = {"/home/brian/projects/lua-analyzer/run_flamegraph"},
+  -- })
 
   lspconfig.jdtls.setup(LspDefaults)
 

@@ -79,6 +79,10 @@ local function setup()
     "ungrammar.nvim"
   }
 
+  local_use {
+    "mlua_testing"
+  }
+
   -- local_use {
   --   "tree-sitter-lua"
   -- }

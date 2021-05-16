@@ -131,13 +131,12 @@ end
 
 function M.work_test()
   local function before()
-    local utils = require'utils'
-    utils.test()
+    -- local utils = require'my_module'
+    -- utils.hello("world")
+    require'my_module'.hello("world")
   end
 
-  local function after(...)
-    dump({...})
-  end
+  local function after(...) end
 
   local work = uv.new_work(before, after)
   work:queue()

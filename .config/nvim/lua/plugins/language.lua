@@ -44,11 +44,11 @@ local function setup()
   -- Lisp stuff
   local sexp_filetypes = {"clojure", "lisp", "scheme", "racket", "jbuild", "fennel", "pddl"}
 
-  -- use {
-  --   "eraserhd/parinfer-rust",
-  --   run = "cargo build --release",
-  --   ft = sexp_filetypes,
-  -- }
+  use {
+    "eraserhd/parinfer-rust",
+    run = "cargo build --release",
+    ft = sexp_filetypes,
+  }
 
   use {
     "Olical/conjure",

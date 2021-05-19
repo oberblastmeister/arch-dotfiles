@@ -62,26 +62,26 @@ local function rtp_use(options)
 end
 
 local function setup()
-  local_use {
-    "rust-analyzer.nvim"
-  }
+  -- local_use {
+  --   "rust-analyzer.nvim"
+  -- }
 
-  local_use {
-    "termwrapper.nvim",
-    config = function() require"config/termwrapper".setup() end,
-  }
+  -- local_use {
+  --   "termwrapper.nvim",
+  --   config = function() require"config/termwrapper".setup() end,
+  -- }
 
-  local_use {
-    "test_plug.nvim"
-  }
+  -- local_use {
+  --   "test_plug.nvim"
+  -- }
 
-  local_use {
-    "ungrammar.nvim"
-  }
+  -- local_use {
+  --   "ungrammar.nvim"
+  -- }
 
-  local_use {
-    "mlua_testing"
-  }
+  -- local_use {
+  --   "mlua_testing"
+  -- }
 
   -- local_use {
   --   "tree-sitter-lua"

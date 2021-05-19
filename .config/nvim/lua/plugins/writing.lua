@@ -18,10 +18,10 @@ local function setup()
 
   use {"junegunn/limelight.vim", cmd = "Goyo"}
 
-  local_use {
-    "neuron.nvim",
-    config = function() require"config/neuron".setup() end,
-  }
+  -- local_use {
+  --   "neuron.nvim",
+  --   config = function() require"config/neuron".setup() end,
+  -- }
 end
 
 return {

@@ -9,7 +9,6 @@
 #    ░░░░░░ ░░░░░░  ░░   ░░
 
 eval "$(starship init zsh)"
-eval "$(navi widget zsh)"
 export LS_COLORS="$(vivid generate gruvbox-dark)"
 
 # ### Added by Zinit's installer

@@ -92,8 +92,8 @@ zinit wait lucid is-snippet light-mode blockf for \
     /usr/share/fzf/key-bindings.zsh \
     /usr/share/fzf/completion.zsh \
 
-zinit ice lucid wait as"completion"
-zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
+# zinit ice lucid wait as"completion"
+# zinit snippet https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/yadm.zsh_completion
 
 # use fd for completion
 _fzf_compgen_path() {

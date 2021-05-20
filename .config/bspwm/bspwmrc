@@ -41,6 +41,6 @@ if [[ $YADM_CLASS = Laptop ]]; then
     amixer -c 0 set Master playback 100% unmute
 fi
 
-feh --bg-fill ~/.config/bspwm/monocolor.png
+feh --bg-scale ~/.config/bspwm/monocolor.png
 ~/.config/polybar/launch.sh &
 ~/bin/autostart.sh &

@@ -1,6 +1,6 @@
 # Font configuration (changes require restart)
 font:
-  size: 12
+  size: 8
 
   # OperatorMono ----------------------------------------------------------------------
   normal:

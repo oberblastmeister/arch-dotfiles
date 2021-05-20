@@ -109,8 +109,8 @@ zinit light-mode for \
   atinit"bindkey -s '^o' 'lfcd\n'" \
     https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh
 
-zinit ice lucid wait
-zinit snippet https://github.com/ajeetdsouza/zoxide/blob/main/zoxide.plugin.zsh
+# zinit ice lucid wait
+# zinit snippet https://github.com/ajeetdsouza/zoxide/blob/main/zoxide.plugin.zsh
 
 zinit ice lucid wait
 zinit snippet OMZP::zsh-interactive-cd

@@ -10,7 +10,7 @@ run() {
 laptopconfigs() {
     YADM_CLASS=$(yadm config local.class)
     if [[ $YADM_CLASS = Laptop ]]; then
-        amixer -c 0 set Master playback 100% unmute
+        # amixer -c 0 set Master playback 100% unmute
         xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Tapping Enabled" 1
         xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Natural Scrolling Enabled" 1
         xinput set-prop "SYNA2B31:00 06CB:CD3E Touchpad" "libinput Disable While Typing Enabled" 0
@@ -32,17 +32,9 @@ configs() {
     xsetroot -cursor_name left_ptr &
 }
 
-setupxob() {
-  mkfifo /tmp/xobpipe
-  tail -f /tmp/xobpipe | xob -s gruvbox
-}
-
 laptopconfigs &
 
-# run xsettingsd
 run picom
-# run redshift
-# run gammy
 run xfce4-power-manager
 run udiskie --tray
 run nm-applet
@@ -54,7 +46,5 @@ run syncthing-gtk -m
 run greenclip daemon
 # run mailspring --background
 run unclutter --timeout 4
-~/bin/pulse-volume-watcher.py | xob -s gruvbox &
 run jgmenu --at-pointer --hide-on-startup
 configs &
-setupxob &

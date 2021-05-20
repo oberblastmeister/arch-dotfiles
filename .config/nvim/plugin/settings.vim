@@ -15,8 +15,8 @@ set noshowmode
 set noshowcmd
 
 " treesitter folding
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 set foldlevelstart=99 " open all folds when starting to edit buffer
 
 " set timeoutlen=800

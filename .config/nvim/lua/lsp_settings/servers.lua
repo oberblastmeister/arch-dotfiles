@@ -104,6 +104,8 @@ local function setup()
 
   lspconfig.dhall_lsp_server.setup(LspDefaults)
 
+  lspconfig.ocamllsp.setup(LspDefaults)
+
   lspconfig.rust_analyzer.setup(LspDefaults:with {
     settings = require"lsp_settings/servers/rust_analyzer"
   })

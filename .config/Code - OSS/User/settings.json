@@ -2,7 +2,7 @@
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
 
     // colorscheme
-    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.colorTheme": "Gruvbox Material Dark",
     "gruvboxMaterial.darkPalette": "mix",
 
     // turn off fuzzy finding on type in exploerer

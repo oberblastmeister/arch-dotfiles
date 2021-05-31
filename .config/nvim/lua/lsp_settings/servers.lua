@@ -112,6 +112,8 @@ local function setup()
 
   lspconfig.julials.setup(LspDefaults)
 
+  lspconfig.rnix.setup(LspDefaults)
+
   -- lspconfig.amuletlsp.setup(LspDefaults)
 
   -- lspconfig.tomllsp.setup(LspDefaults)

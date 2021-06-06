@@ -52,8 +52,8 @@ super + m
     bspc desktop -l next
 
 # toggle hidden
-super + n
-    bsphide
+# super + n
+#     bsphide
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -201,10 +201,10 @@ XF86AudioMute
 
 # brightness
 XF86MonBrightnessDown
-    xbacklight -dec 8
+    xbacklight -dec 6
 
 XF86MonBrightnessUp
-    xbacklight -inc 8
+    xbacklight -inc 6
 
 # screenshot
 Print

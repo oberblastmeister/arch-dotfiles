@@ -73,7 +73,7 @@ end
 function M.setup()
   telescope.setup {
     defaults = {
-      -- layout_strategy = "flex",
+      layout_strategy = "flex",
       sorting_strategy = "descending",
     },
 

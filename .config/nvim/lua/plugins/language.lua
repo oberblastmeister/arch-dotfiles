@@ -14,6 +14,8 @@ local function setup()
     setup = function() require"config/polyglot/haskell".setup() end,
   }
 
+  use "baskerville/vim-sxhkdrc"
+
   use {
     "euclidianAce/BetterLua.vim",
     ft = "lua",

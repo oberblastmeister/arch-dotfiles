@@ -1,6 +1,6 @@
 return {
   haskell = {
-    formattingProvider = "ormolu"
-    -- formattingProvider = "brittany"
+    formattingProvider = "ormolu",
+    completionSnippetsOn = false,
   }
 }

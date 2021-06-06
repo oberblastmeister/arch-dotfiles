@@ -95,3 +95,4 @@ export JULIA_NUM_THREADS=4
 # misc
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
+export HELIX_RUNTIME=~/builds/helix/runtime

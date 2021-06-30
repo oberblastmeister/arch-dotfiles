@@ -262,4 +262,88 @@
         "command": "-jumpToPrevSnippetPlaceholder",
         "when": "editorTextFocus && hasPrevTabstop && inSnippetMode"
     },
+
+    // escape stuff
+    {
+        "key": "ctrl+[",
+        "command": "closeMarkersNavigation",
+        "when": "editorFocus && markersNavigationVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-closeMarkersNavigation",
+        "when": "editorFocus && markersNavigationVisible"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "cancelRenameInput",
+        "when": "editorFocus && renameInputVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-cancelRenameInput",
+        "when": "editorFocus && renameInputVisible"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "gitlens.key.escape",
+        "when": "editorTextFocus && gitlens:key:escape && !findWidgetVisible && !isInEmbeddedEditor && !renameInputVisible && !suggestWidgetVisible"
+    },
+    {
+        "key": "escape",
+        "command": "-gitlens.key.escape",
+        "when": "editorTextFocus && gitlens:key:escape && !findWidgetVisible && !isInEmbeddedEditor && !renameInputVisible && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "filesExplorer.cancelCut",
+        "when": "explorerResourceCut && explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "escape",
+        "command": "-filesExplorer.cancelCut",
+        "when": "explorerResourceCut && explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+
+    // Close reference to escape
+    {
+        "key": "ctrl+[",
+        "command": "closeReferenceSearch",
+        "when": "inReferenceSearchEditor && !config.editor.stablePeek"
+    },
+    {
+        "key": "escape",
+        "command": "-closeReferenceSearch",
+        "when": "inReferenceSearchEditor && !config.editor.stablePeek"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "closeReferenceSearch",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+    },
+    {
+        "key": "escape",
+        "command": "-closeReferenceSearch",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "closeReferenceSearch",
+        "when": "inReferenceSearchEditor && !config.editor.stablePeek && neovim.mode == 'normal'"
+    },
+    {
+        "key": "escape",
+        "command": "-closeReferenceSearch",
+        "when": "inReferenceSearchEditor && !config.editor.stablePeek && neovim.mode == 'normal'"
+    },
+    {
+        "key": "shift+escape",
+        "command": "-closeReferenceSearch",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+    },
+    {
+        "key": "shift+escape",
+        "command": "-closeReferenceSearch",
+        "when": "inReferenceSearchEditor && !config.editor.stablePeek"
+    }
 ]

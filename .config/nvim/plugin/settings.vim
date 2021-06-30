@@ -41,6 +41,8 @@ set pumheight=20
 " no splash screen and shorter messages
 set shortmess+=I " no intro
 set shortmess+=O
+" I think one thing that contributes to vscode's completion being more smooth in my opinion than comparable neovim engines is that the completion popup will follow the cursor which is very nice. It also starts up much quicker than compe. I think it throttles trailing instead of leading.
+" I think one thing that contributes to vscode's completion being more smoothe in my opinion is that
 set shortmess+=a   " use abbreviations
 set shortmess+=W   " dont' echo written when writing, lightline already has symbol
 set shortmess+=T

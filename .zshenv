@@ -96,3 +96,10 @@ export JULIA_NUM_THREADS=4
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
 export HELIX_RUNTIME=~/builds/helix/runtime
+
+# vscode
+VSCODE_GALLERY_SERVICE_URL='https://marketplace.visualstudio.com/_apis/public/gallery'
+VSCODE_GALLERY_CACHE_URL='https://vscode.blob.core.windows.net/gallery/index'
+VSCODE_GALLERY_ITEM_URL='https://marketplace.visualstudio.com/items'
+VSCODE_GALLERY_CONTROL_URL=''
+VSCODE_GALLERY_RECOMMENDATIONS_URL=''

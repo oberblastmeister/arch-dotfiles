@@ -56,6 +56,21 @@ local function setup()
       require "config/fzf".setup()
     end
   }
+
+  use {
+    'camspiers/snap',
+    config = function()
+      function snap_grep()
+        local snap = require'snap'
+        snap.run {
+          producer = snap.get'producer.ripgrep.vimgrep',
+          select = snap.get'select.vimgrep'.select,
+          multiselect = snap.get'select.vimgrep'.multiselect,
+          views = {snap.get'preview.vimgrep'}
+        }
+      end
+    end
+  }
 end
 
 return {

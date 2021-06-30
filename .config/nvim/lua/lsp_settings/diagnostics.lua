@@ -5,10 +5,11 @@ local function setup()
 
       signs = false,
 
-      virtual_text = {
-        spacing = 1,
-        prefix = ' ',
-      },
+      virtual_text = false,
+      -- virtual_text = {
+      --   spacing = 1,
+      --   prefix = ' ',
+      -- },
 
       update_in_insert = true,
     }

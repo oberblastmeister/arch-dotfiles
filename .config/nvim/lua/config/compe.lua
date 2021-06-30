@@ -6,17 +6,13 @@ local function setup()
     enabled = true,
     debug = false,
     preselect = 'confirm',
-    -- throttle_time = 40,
-    -- source_timeout = ... number ...;
-    -- incomplete_delay = 10,
-    -- allow_prefix_unmatch = false,
 
     source = {
       path = true,
       buffer = true,
       -- vsnip = true,
       nvim_lsp = true,
-      nvim_lua = true,
+      -- nvim_lua = true,
       -- this is slow for now
       -- treesitter = true,
     },

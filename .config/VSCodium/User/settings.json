@@ -51,5 +51,6 @@
     ],
     "javascript.suggest.names": false,
     "gitlens.codeLens.enabled": false,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "none"
 }

@@ -11,9 +11,14 @@ function reload(module)
 end
 
 if vim.fn.exists('g:vscode') == 1 then
-  vim.cmd [[set noloadplugins]]
-
   vim.cmd [[
+    set noloadplugins
+
+    set clipboard^=unnamed,unnamedplus
+
+    nnoremap <C-/> <Cmd>call VSCodeNotify('editor.action.startFindReplaceAction')<CR>
+    nnoremap <space>/ <Cmd>call VSCodeNotify('workbench.action.replaceInFiles')<CR>
+
     xmap <space>c  <Plug>VSCodeCommentary
     nmap <space>c  <Plug>VSCodeCommentary
     omap <space>c  <Plug>VSCodeCommentary

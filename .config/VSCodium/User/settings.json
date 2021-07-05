@@ -34,7 +34,7 @@
     ],
     "julia.enableTelemetry": false,
     "editor.largeFileOptimizations": false,
-    "outline.problems.colors": false,
+    // "outline.problems.colors": false,
     "problems.showCurrentInStatus": true,
     "editor.renderWhitespace": "none",
     "workbench.statusBar.visible": false,
@@ -45,12 +45,10 @@
         "editor.tabSize": 2
     },
 
-    "terminal.integrated.commandsToSkipShell": [
-        "-workbench.action.terminal.scrollDown",
-        "-workbench.action.quickOpenNavigateNextInFilePicker"
-    ],
     "javascript.suggest.names": false,
     "gitlens.codeLens.enabled": false,
     "editor.minimap.enabled": false,
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "typescript.suggest.paths": false,
+    "rust-analyzer.hover.linksInHover": false
 }

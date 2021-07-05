@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.x set filetype=haskell
+au BufRead,BufNewFile *.x,*.y set filetype=haskell

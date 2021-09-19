@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local coq = require 'coq'
 
 local function debug_client(client, bufnr)
   print(string.format("lsp client: %s, root dir: %s", client.config.cmd[1], client.config.root_dir))
@@ -31,7 +32,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
-local LspDefaults = {
+local LspDefaults = coq.lsp_ensure_capabilities {
   on_attach = custom_on_attach,
   capabilities = capabilities,
   on_init = custom_on_init,
@@ -97,10 +98,10 @@ local function setup()
 
   lspconfig.clangd.setup(LspDefaults)
 
-  lspconfig.diagnosticls.setup(LspDefaults:with {
-    filetypes = {"sh", "lua"},
-    init_options = require"lsp_settings/servers/diagnosticls",
-  })
+  -- lspconfig.diagnosticls.setup(LspDefaults:with {
+  --   filetypes = {"sh", "lua"},
+  --   init_options = require"lsp_settings/servers/diagnosticls",
+  -- })
 
   lspconfig.dhall_lsp_server.setup(LspDefaults)
 
@@ -113,6 +114,10 @@ local function setup()
   lspconfig.julials.setup(LspDefaults)
 
   lspconfig.rnix.setup(LspDefaults)
+
+  lspconfig.zls.setup(LspDefaults)
+
+  lspconfig.racket_langserver.setup(LspDefaults)
 
   -- lspconfig.amuletlsp.setup(LspDefaults)
 

@@ -37,7 +37,6 @@
     // "outline.problems.colors": false,
     "problems.showCurrentInStatus": true,
     "editor.renderWhitespace": "none",
-    "workbench.statusBar.visible": false,
     "workbench.activityBar.visible": false,
     "redhat.telemetry.enabled": false,
 
@@ -50,5 +49,14 @@
     "editor.minimap.enabled": false,
     "workbench.startupEditor": "none",
     "typescript.suggest.paths": false,
-    "rust-analyzer.hover.linksInHover": false
+    "rust-analyzer.hover.linksInHover": false,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.cursorBlinking": "solid",
+    "terminal.integrated.scrollback": 10000
 }

@@ -25,9 +25,9 @@ alias vi="nvim"
 
 # alias man="batman"
 # alias man="nvim +Man"
-function man {
-    nvim -c "Man $1 | only"
-}
+# function man {
+#     nvim -c "Man $1 | only"
+# }
 
 alias wttr="curl wttr.in"
 
@@ -90,6 +90,7 @@ alias ytdl="youtube-dl"
 alias irust="jupyter console --kernel rust"
 
 alias nvim-dev="VIMRUNTIME=~/projects/neovim/runtime ~/projects/neovim/build/bin/nvim"
+alias hx-dev="HELIX_RUNTIME=~/projects/helix/runtime ~/projects/helix/target/release/hx"
 
 # julia
 alias juliaserver='julia --startup-file=no -e "using DaemonMode; serve()"'

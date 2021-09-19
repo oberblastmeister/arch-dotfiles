@@ -13,6 +13,8 @@ x-scheme-handler/chrome=firefox.desktop;
 x-scheme-handler/ftp=firefox.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
+text/x-java=nvim.desktop;
+application/zip=anki.desktop;
 
 [Default Applications]
 application/epub+zip=org.pwmt.zathura.desktop;

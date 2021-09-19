@@ -81,4 +81,31 @@ augroup end
 
 nnoremap ]q <cmd>cnext<CR>
 nnoremap [q <cmd>cprevious<CR>
+
+" let g:autocomplete_type="buffer"
+" let g:autocompletion=v:true
+
+" function! OpenCompletion()
+"     if pumvisible() && (g:autocompletion == v:true)
+"         if g:autocomplete_type == "buffer"
+"             call feedkeys("\<C-e>\<C-n>", "i")
+"         endif
+"         if g:autocomplete_type == "omni"
+"             call feedkeys("\<C-e>\<C-x>\<C-o>", "i")
+"         endif
+"         return
+"         redraw
+"     endif
+"     if ((v:char >= 'a' && v:char <= 'z') || (v:char >= 'A' && v:char <= 'Z')) && (g:autocompletion == v:true)
+"         if g:autocomplete_type == "buffer"
+"             call feedkeys("\<C-n>", "i")
+"         endif
+"         if g:autocomplete_type == "omni"
+"             call feedkeys("\<C-x>\<C-o>", "i")
+"         endif
+"         redraw
+"     endif
+" endfunction
+
+" autocmd InsertCharPre * noautocmd call OpenCompletion()
 " }}}

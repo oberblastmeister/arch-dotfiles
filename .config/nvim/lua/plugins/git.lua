@@ -21,6 +21,9 @@ local function setup()
   use {
     "TimUntersberger/neogit",
   }
+  -- local_use {
+  --   "neogit",
+  -- }
 
   use {
     "pwntester/octo.nvim",

@@ -11,14 +11,14 @@ export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox
 export PAGER=less
-export MANPAGER='nvim +Man'
 
 # scaling
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export QT_SCALE_FACTOR=1
+# export QT_AUTO_SCREEN_SCALE_FACTOR=0
+# export QT_SCALE_FACTOR=1
 
 # qt
-export QT_STYLE_OVERRIDE=kvantum
+# export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=gtk2
 
 # makesure that there are no duplicates in path var
 typeset -U path
@@ -29,6 +29,7 @@ path+=(
     $GOPATH/bin
     ~/.luarocks/bin
     ./node_modules/.bin
+    ~/.cabal/bin
 )
 # export to subprocesses
 export PATH
@@ -38,10 +39,6 @@ if [ -n "$DESKTOP_SESSION" ]; then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
 fi
-
-# scaling
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export QT_SCALE_FACTOR=1
 
 # fzf
 # let fzf find hidden files
@@ -95,7 +92,6 @@ export JULIA_NUM_THREADS=4
 # misc
 export TUIR_URLVIEWER=urlscan
 export PISTOL_CHROMA_FORMATTER=terminal256
-export HELIX_RUNTIME=~/builds/helix/runtime
 
 # vscode
 VSCODE_GALLERY_SERVICE_URL='https://marketplace.visualstudio.com/_apis/public/gallery'

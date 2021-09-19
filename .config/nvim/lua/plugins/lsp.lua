@@ -19,14 +19,23 @@ local function setup()
   --   "rofl.nvim",
   -- }
 
+  -- use {
+  --   "ms-jpq/kok.nvim",
+  --   config = function()
+  --     require("kok/recommends").all()
+  --     -- vim.cmd [[autocmd InsertEnter * ++once KoKstart]]
+  --   end,
+  --   disable = true,
+  -- }
   use {
-    "ms-jpq/kok.nvim",
-    config = function()
-      require("kok/recommends").all()
-      -- vim.cmd [[autocmd InsertEnter * ++once KoKstart]]
-    end,
-    disable = true,
+    'ms-jpq/coq_nvim',
+    branch = 'coq',
   }
+
+  -- use {
+  --   'ms-jpq/coq.artifacts',
+  --   branch = 'artifacts',
+  -- }
 
   local_use {
     "project.nvim",
@@ -35,16 +44,25 @@ local function setup()
     end
   }
 
-  use {
-    "hrsh7th/nvim-compe",
-    config = function()
-      require"config/compe".setup()
-    end,
-  }
+  -- use {
+  --   "hrsh7th/nvim-compe",
+  --   config = function()
+  --     require"config/compe".setup()
+  --   end,
+  -- }
 
-  use {
-    "hrsh7th/vim-vsnip",
-  }
+  -- use {
+  --   "hrsh7th/nvim-cmp",
+  --   config = function()
+  --     require"config/cmp".setup()
+  --   end,
+  -- }
+
+  -- use "hrsh7th/cmp-buffer"
+
+  -- use "hrsh7th/cmp-nvim-lsp"
+
+  -- use "hrsh7th/vim-vsnip"
 
   -- use {
   --   "norcalli/snippets.nvim",

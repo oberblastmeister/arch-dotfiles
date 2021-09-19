@@ -52,6 +52,7 @@ function M.setup()
   vim.cmd [[colorscheme gruvbox]]
   vim.g.gruvbox_sign_column='bg0'
   vim.g.gruvbox_italic = 1
+  vim.g.gruvbox_invert_selection = 0
   vim.o.background = 'dark'
 
   M.setup_gruvbox()

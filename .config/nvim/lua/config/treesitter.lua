@@ -109,7 +109,7 @@ local function setup()
 
       -- same keys as above but prefixed with s for swap
       swap = {
-        enable = true,
+        enable = false,
         swap_next = {
           ["<leader>a"] = "@parameter.inner",
           ["<leader>sm"] = "@function.outer",

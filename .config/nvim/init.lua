@@ -10,6 +10,50 @@ function reload(module)
   require('plenary.reload').reload_module(module)
 end
 
+function make_buffer()
+  compl_buf = vim.api.nvim_create_buf(false, false)
+end
+
+function key_callback()
+  local counter = 0
+
+  vim.register_keystroke_callback(function(k)
+    if not A.nvim_get_mode().mode:find("i", 1, true) then
+      return
+    end
+
+    if k == "(" then
+      print('hit', counter)
+      A.nvim_put({')'}, 'c', false, false)
+    elseif k == "{" then
+      print('hit', counter)
+      A.nvim_put({'}'}, 'c', false, false)
+    end
+
+    counter = counter + 1
+  end)
+end
+
+compl_config = {
+  relative = "cursor",
+  width = 20,
+  height = 20,
+  focusable = false,
+  border = "shadow",
+  style = "minimal",
+  row = 1,
+  col = 1,
+}
+
+function open_float()
+  compl_win = vim.api.nvim_open_win(compl_buf, false, compl_config)
+  vim.cmd[[autocmd InsertCharPre * noautocmd call v:lua.move_float()]]
+end
+
+function move_float()
+  vim.api.nvim_win_set_config(compl_win, compl_config)
+end
+
 if vim.fn.exists('g:vscode') == 1 then
   vim.cmd [[
     set noloadplugins
@@ -74,9 +118,41 @@ vim.o.termguicolors = true
 
 vim.g.loaded_python_provider = 0
 
+vim.g.coq_settings = {
+  auto_start = true,
+  ["keymap.recommended"] = false,
+  ["keymap.jump_to_mark"] = "<Down>"
+}
+
+function smart_select()
+  local t = termcodes
+  if vim.fn.pumvisible() ~= 0 then
+    if vim.fn.complete_info().selected == -1 then
+      A.nvim_select_popupmenu_item(0, true, true, {})
+    else
+      feedkeys(t'<C-e><Tab>', 'm')
+    end
+  else
+    feedkeys(t'<Tab>', 'n')
+  end
+end
+
+vim.cmd [[
+ino <silent> <Tab> <cmd>lua smart_select()<CR>
+ino <silent><expr> <CR>    pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"
+ino <silent><expr> <Tab>    pumvisible() ? (complete_info().selected == -1 ? "\<C-e><Tab>" : "\<C-y>") : "\<Tab>"
+ino <silent><expr> <Esc>   pumvisible() ? "\<C-e><Esc>" : "\<Esc>"
+ino <silent><expr> <C-c>   pumvisible() ? "\<C-e><C-c>" : "\<C-c>"
+ino <silent><expr> <BS>    pumvisible() ? "\<C-e><BS>"  : "\<BS>"
+]]
+
 require"defaults".setup()
 require"plugins".setup()
 require"config/neovide".setup()
+
+termcodes = function(keys)
+  return A.nvim_replace_termcodes(keys, true, true, true)
+end
 
 function feedkeys(keys, mode)
   keys = A.nvim_replace_termcodes(keys, true, true, true)

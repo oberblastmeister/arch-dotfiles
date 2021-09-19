@@ -17,32 +17,30 @@ local function setup()
   --   },
   -- }
 
-  -- use {
-  --   "nvim-lua/telescope.nvim",
-  --   config = function()
-  --     require "config/telescope".setup()
-  --   end,
-  --   requires = {
-  --     "nvim-telescope/telescope-symbols.nvim",
-  --     "nvim-telescope/telescope-fzy-native.nvim",
-  --     "nvim-telescope/telescope-github.nvim",
-  --     "nvim-telescope/telescope-packer.nvim",
-  --     "nvim-telescope/telescope-fzf-writer.nvim",
-  --     "nvim-telescope/telescope-vimspector.nvim",
-  --   },
-  -- }
-
-  local_use {
-    "telescope.nvim",
+  use {
+    "nvim-lua/telescope.nvim",
     config = function()
       require "config/telescope".setup()
     end,
     requires = {
+      "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
-      "nvim-telescope/telescope-github.nvim",
-      -- "nvim-telescope/telescope-vimspector.nvim",
     },
   }
+
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+  -- local_use {
+  --   "telescope.nvim",
+  --   config = function()
+  --     require "config/telescope".setup()
+  --   end,
+  --   requires = {
+  --     "nvim-telescope/telescope-fzy-native.nvim",
+  --     "nvim-telescope/telescope-github.nvim",
+  --     -- "nvim-telescope/telescope-vimspector.nvim",
+  --   },
+  -- }
 
   use {
     "junegunn/fzf.vim",

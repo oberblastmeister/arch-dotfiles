@@ -1,0 +1,21 @@
+theme = "gruvbox"
+
+[editor]
+update-menu = false
+line-number = "relative"
+
+[keys.normal]
+"C-]" = "goto_definition"
+"space" = { c = "toggle_comments" }
+"^" = "goto_line_start"
+"$" = "goto_line_end"
+G = "goto_last_line" 
+"C-6" = "goto_last_accessed_file"
+"C-p" = "file_picker"
+
+[keys.insert]
+j = { k = "normal_mode" }
+"C-e" = "goto_line_end_newline"
+"C-a" = "goto_line_start"
+"C-f" = "move_char_right"
+"C-b" = "move_char_left"

@@ -18,7 +18,7 @@ function M.setup_keymappings()
   -- lsp stuff
   api.nvim_set_keymap('n', '<leader>ft', [[<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>]], {noremap = true})
   api.nvim_set_keymap('n', '<leader>fw', [[<cmd>lua require'telescope.builtin'.lsp_dynamic_workspace_symbols{}<CR>]], {noremap = true})
-  api.nvim_set_keymap('n', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
+  api.nvim_set_keymap('n', '<leader>a', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
   api.nvim_set_keymap('x', '<leader>fa', [[<cmd>lua require'telescope.builtin'.lsp_code_actions(require('telescope.themes').get_dropdown())<CR>]], {noremap = true})
 
   -- diagnostics
@@ -78,18 +78,11 @@ function M.setup()
     },
 
     extensions = {
-      frecency = {
-        show_scores = true,
-        show_unindexed = true,
-        ignore_patterns = {"*.git/*", "*/tmp/*"},
-        workspaces = {
-          conf    = "/home/brian/.config",
-          ra = "/home/brian/projects/rust-analyzer",
-          trashy = "/home/brian/projects/trashy",
-          hs = "/home/brian/code/haskell-stuff",
-          gr = "/home/brian/projects/macro_grammar",
-          books = "/home/brian/Documents/programming_books",
-        }
+      fzf = {
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = true, -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
       }
     },
   }
